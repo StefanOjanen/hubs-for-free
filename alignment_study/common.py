@@ -81,20 +81,36 @@ def shared_mode(G):
     return S.reshape(G.shape[1], G.shape[2]), a, e, frac
 
 
-def sink_column(A):
-    """Empirical sink column: modal argmax over heads of column mass,
-    column mass excluding row 0 and the diagonal receiver row."""
+def sink_column(A, min_rows=16):
+    """Empirical sink column: modal argmax over heads of column mass.
+    Columns with fewer than min_rows contributing rows are excluded, which
+    removes the near-final-column artifact (a column receivable by only one
+    or two rows can look concentrated from a single recency entry)."""
     n, T, _ = A.shape
+    cmax = T - 1 - min_rows
     best = []
     for h in range(n):
-        cm = np.zeros(T)
-        for c in range(T):
+        cm = np.zeros(max(cmax, 1))
+        for c in range(max(cmax, 1)):
             rows = np.arange(max(1, c + 1), T)
-            if len(rows):
-                cm[c] = A[h, rows, c].mean()
+            cm[c] = A[h, rows, c].mean()
         best.append(int(cm.argmax()))
     vals, counts = np.unique(best, return_counts=True)
     return int(vals[counts.argmax()])
+
+
+def sink_generator(T, c):
+    """Ideal causal sink generator at column c, unit Frobenius norm:
+    A_sink rows i > c put all mass on column c (rows i <= c on the
+    diagonal), G = (A - A^T)/2 normalized."""
+    A = np.zeros((T, T))
+    for i in range(T):
+        if i > c:
+            A[i, c] = 1.0
+        else:
+            A[i, i] = 1.0
+    G = (A - A.T) / 2.0
+    return G / np.sqrt((G ** 2).sum())
 
 
 def col_mass(A, c):
