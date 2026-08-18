@@ -27,7 +27,7 @@ def wikitext_windows(n, stride, seq, tok):
 
 def humaneval_windows(n, stride, seq, tok):
     from datasets import load_dataset
-    ds = load_dataset("openai_humaneval", split="test")
+    ds = load_dataset("openai/openai_humaneval", split="test")
     pool = [r["prompt"] + r["canonical_solution"] for r in ds]
     texts = [pool[(i * stride) % len(pool)] for i in range(n)]
     return [tok(t, return_tensors="pt", truncation=True, max_length=seq)

@@ -1,0 +1,135 @@
+[transformers] The following generation flags are not valid and may be ignored: ['output_attentions']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 15745.36it/s]
+gpt2-medium WIN 0
+gpt2-medium WIN 1
+gpt2-medium WIN 2
+gpt2-medium WIN 3
+gpt2-medium WIN 4
+gpt2-medium WIN 5
+gpt2-medium WIN 6
+gpt2-medium WIN 7
+gpt2-medium WIN 8
+gpt2-medium WIN 9
+gpt2-medium WIN 10
+gpt2-medium WIN 11
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights:  93%|█████████▎| 272/292 [00:00<00:00, 2675.72it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 2757.81it/s]
+EleutherAI/pythia-410m WIN 0
+EleutherAI/pythia-410m WIN 1
+EleutherAI/pythia-410m WIN 2
+EleutherAI/pythia-410m WIN 3
+EleutherAI/pythia-410m WIN 4
+EleutherAI/pythia-410m WIN 5
+EleutherAI/pythia-410m WIN 6
+EleutherAI/pythia-410m WIN 7
+EleutherAI/pythia-410m WIN 8
+EleutherAI/pythia-410m WIN 9
+EleutherAI/pythia-410m WIN 10
+EleutherAI/pythia-410m WIN 11
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 37597.78it/s]
+TinyLlama/TinyLlama_v1.1 WIN 0
+TinyLlama/TinyLlama_v1.1 WIN 1
+TinyLlama/TinyLlama_v1.1 WIN 2
+TinyLlama/TinyLlama_v1.1 WIN 3
+TinyLlama/TinyLlama_v1.1 WIN 4
+TinyLlama/TinyLlama_v1.1 WIN 5
+TinyLlama/TinyLlama_v1.1 WIN 6
+TinyLlama/TinyLlama_v1.1 WIN 7
+TinyLlama/TinyLlama_v1.1 WIN 8
+TinyLlama/TinyLlama_v1.1 WIN 9
+TinyLlama/TinyLlama_v1.1 WIN 10
+TinyLlama/TinyLlama_v1.1 WIN 11
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:   0%|          | 1/338 [00:02<13:49,  2.46s/it]Loading weights:  65%|██████▍   | 219/338 [00:02<00:01, 113.53it/s]Loading weights:  84%|████████▎ | 283/338 [00:03<00:00, 84.79it/s] Loading weights:  95%|█████████▍| 320/338 [00:04<00:00, 79.19it/s]Loading weights: 100%|██████████| 338/338 [00:04<00:00, 73.75it/s]
+Qwen/Qwen2.5-1.5B WIN 0
+Qwen/Qwen2.5-1.5B WIN 1
+Qwen/Qwen2.5-1.5B WIN 2
+Qwen/Qwen2.5-1.5B WIN 3
+Qwen/Qwen2.5-1.5B WIN 4
+Qwen/Qwen2.5-1.5B WIN 5
+Qwen/Qwen2.5-1.5B WIN 6
+Qwen/Qwen2.5-1.5B WIN 7
+Qwen/Qwen2.5-1.5B WIN 8
+Qwen/Qwen2.5-1.5B WIN 9
+Qwen/Qwen2.5-1.5B WIN 10
+Qwen/Qwen2.5-1.5B WIN 11
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:   0%|          | 1/338 [00:01<08:36,  1.53s/it]Loading weights:  68%|██████▊   | 231/338 [00:01<00:00, 190.23it/s]Loading weights:  97%|█████████▋| 328/338 [00:03<00:00, 105.44it/s]Loading weights: 100%|██████████| 338/338 [00:03<00:00, 103.19it/s]
+Qwen/Qwen2.5-1.5B-Instruct WIN 0
+Qwen/Qwen2.5-1.5B-Instruct WIN 1
+Qwen/Qwen2.5-1.5B-Instruct WIN 2
+Qwen/Qwen2.5-1.5B-Instruct WIN 3
+Qwen/Qwen2.5-1.5B-Instruct WIN 4
+Qwen/Qwen2.5-1.5B-Instruct WIN 5
+Qwen/Qwen2.5-1.5B-Instruct WIN 6
+Qwen/Qwen2.5-1.5B-Instruct WIN 7
+Qwen/Qwen2.5-1.5B-Instruct WIN 8
+Qwen/Qwen2.5-1.5B-Instruct WIN 9
+Qwen/Qwen2.5-1.5B-Instruct WIN 10
+Qwen/Qwen2.5-1.5B-Instruct WIN 11
+H0-H4 DONE {"H0": {"frac_plain_r1_gt_0.9": 0.9603174603174603, "pass": true}, "H1": {"passes": 5, "testable": 5, "pass": true}, "H2": {"passes": 4, "testable": 5, "pass": true}, "H3": {"passes": 5, "testable": 5, "pass": true}, "H4": {"spearman": -0.7607775640376633, "pass": true, "H4b_n_edge_layers": 16, "H4b_pass": false}, "per_model": {"gpt2-medium": {"testable": true, "n_high_sink": 19, "H1_frac": 1.0, "H1_pass": true, "H2_frac": 0.8947368421052632, "H2_pass": true, "H3_frac": 1.0, "H3_pass": true}, "EleutherAI/pythia-410m": {"testable": true, "n_high_sink": 18, "H1_frac": 1.0, "H1_pass": true, "H2_f
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:00<01:36,  2.98it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 729.95it/s]
+Qwen/Qwen2.5-0.5B WIN 0
+Qwen/Qwen2.5-0.5B WIN 1
+Qwen/Qwen2.5-0.5B WIN 2
+Qwen/Qwen2.5-0.5B WIN 3
+Qwen/Qwen2.5-0.5B WIN 4
+Qwen/Qwen2.5-0.5B WIN 5
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 3535.34it/s]
+Qwen/Qwen2.5-0.5B WIN 0
+Qwen/Qwen2.5-0.5B WIN 1
+Qwen/Qwen2.5-0.5B WIN 2
+Qwen/Qwen2.5-0.5B WIN 3
+Qwen/Qwen2.5-0.5B WIN 4
+Qwen/Qwen2.5-0.5B WIN 5
+H5 DONE {"breakdown_layers_T64": 6, "breakdown_layers_T256": 6, "pass": true}
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:00<01:59,  2.43it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 628.29it/s]
+Qwen/Qwen2.5-0.5B WIN 0
+Qwen/Qwen2.5-0.5B WIN 1
+Qwen/Qwen2.5-0.5B WIN 2
+Qwen/Qwen2.5-0.5B WIN 3
+Qwen/Qwen2.5-0.5B WIN 4
+Qwen/Qwen2.5-0.5B WIN 5
+Qwen/Qwen2.5-0.5B WIN 6
+Qwen/Qwen2.5-0.5B WIN 7
+Qwen/Qwen2.5-0.5B WIN 8
+Qwen/Qwen2.5-0.5B WIN 9
+Qwen/Qwen2.5-0.5B WIN 10
+Qwen/Qwen2.5-0.5B WIN 11
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 3694.17it/s]
+Traceback (most recent call last):
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/alignment_study/heldout_round.py", line 182, in <module>
+    qcode = r1_only("Qwen/Qwen2.5-0.5B", humaneval_windows, 12, 64)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/alignment_study/heldout_round.py", line 165, in r1_only
+    rows = run_model(name, windows_fn, nwin=nwin, seq=seq, families=False,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/alignment_study/heldout_round.py", line 70, in run_model
+    wins = windows_fn(nwin, STRIDE, seq, tok)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/alignment_study/common.py", line 30, in humaneval_windows
+    ds = load_dataset("openai_humaneval", split="test")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/.venv/lib/python3.12/site-packages/datasets/load.py", line 1696, in load_dataset
+    builder_instance = load_dataset_builder(
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/.venv/lib/python3.12/site-packages/datasets/load.py", line 1323, in load_dataset_builder
+    dataset_module = dataset_module_factory(
+                     ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/.venv/lib/python3.12/site-packages/datasets/load.py", line 1215, in dataset_module_factory
+    raise e1 from None
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/.venv/lib/python3.12/site-packages/datasets/load.py", line 1190, in dataset_module_factory
+    ).get_module()
+      ^^^^^^^^^^^^
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/.venv/lib/python3.12/site-packages/datasets/load.py", line 608, in get_module
+    standalone_yaml_path = cached_path(
+                           ^^^^^^^^^^^^
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/.venv/lib/python3.12/site-packages/datasets/utils/file_utils.py", line 180, in cached_path
+    ).resolve_path(url_or_filename)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/.venv/lib/python3.12/site-packages/huggingface_hub/hf_file_system.py", line 305, in resolve_path
+    parsed = parse_hf_uri(f"{constants.HF_PROTOCOL}{path}")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_hf_uris.py", line 319, in parse_hf_uri
+    return _parse_repo_body(location, type_, raw=raw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_hf_uris.py", line 617, in _parse_repo_body
+    raise HfUriError(uri=raw, msg=f"Repository id must be 'namespace/name', got '{repo_id}'.")
+huggingface_hub.errors.HfUriError: Invalid HF URI 'hf://datasets/openai_humaneval@7dce6050a7d6d172f3cc5c32aa97f52fa1a2e544/.huggingface.yaml'. Repository id must be 'namespace/name', got 'openai_humaneval'.

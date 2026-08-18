@@ -118,3 +118,46 @@ is the shared sink operator, its cross term with per-head deviations is
 the commutator's dominant content, and one preserved number per row
 reproduces the phenomenology. Integration into the paper is an editorial
 decision not taken here.
+
+## Hardening round (2026-08-18, tiers 1 and 2)
+
+Dev calibration (`tier1_robust.py`, Qwen2.5-0.5B, 24 windows): the r1
+ill-conditioning diagnosis confirmed (layer 22 has cv(gn) = 0.09, lowest of
+all layers); the empirical sink column equals column 0 at every high-sink
+layer, validating the proxy; the per-pair z statistic revealed that the
+plain surrogate has its own shared mode (the diffuse row profile), so z is
+non-monotone in alignment: positive at intermediate alignment, strongly
+negative at extreme alignment. The toy model (`tier2_toy.py`) reproduces
+exactly this non-monotonicity and localizes the r1/z regime flip between
+shared-energy 0.85 and 0.93, which is where the real Qwen layers flip
+(0.83 to 0.84 intact, 0.92 to 0.94 broken). The previously unexplained
+A1 heterogeneity is therefore position on a one-parameter curve indexed by
+alignment fraction. Toy dissociation: shared-column concentration drives
+r1 to -0.98 as alignment rises; distinct-column concentration returns r1
+to +0.95, collapses the shared mode, and elevates commutators. Two lemmas
+verified: causal generator inner products are never negative (min 0 over
+200 ensembles), and the closed form E[<G_h,G_k>] = (1/2) sum_i i m_hi m_ki
+for the plain surrogate matches sampling to 0.5 percent. Generic-deviation
+test: (S, a_h, e_h) with random deviation directions predicts the r1 depth
+profile (Spearman 0.81, median abs error 0.08) but not z magnitudes
+(Spearman -0.34): deviation directions carry real structure.
+
+Held-out round (`PREREGISTRATION2.md` frozen at 0f1ac3f before any
+held-out model was downloaded; evaluation script committed at cd05475
+before results): five held-out models (gpt2-medium, Pythia-410m,
+TinyLlama-1.1B, Qwen2.5-1.5B base and Instruct). Scorecard: H0 pass
+(plain r1 > 0.9 in 96 percent of pooled layers). H1 pass 5/5 models, at
+100 percent of high-sink layers in every model (median |cos(S, sink)|
+0.96 to 0.99). H2 (one-column sufficiency) pass 4/5; TinyLlama fails as
+registered (57 percent versus 2/3). H3 (dissociation) pass 5/5 (median
+rho ratio altsink/real 0.14 to 0.25; median r1_altsink2 0.86 to 0.98).
+H4 pass: pooled Spearman(sharedE, r1) = -0.76; H4b fails as registered
+(the sharedE 0.90 regime edge does not transfer across architectures;
+16 pooled edge layers, not all below r1 = 0.2). H5 pass (breakdown layer
+count stable from T = 64 to T = 256). H6 pass (WikiText/HumanEval
+breakdown-set Jaccard 0.5; code breaks at layers 11, 16, 21, a subset of
+the WikiText set). Instruction tuning leaves all statistics essentially
+unchanged. Protocol notes: the HumanEval dataset id needed its namespaced
+form mid-run (resume script `resume_h6.py`, H0-H5 untouched); the sink
+column detector gained a minimum-contributing-rows restriction relative
+to the dev run (documented in PREREGISTRATION2.md).

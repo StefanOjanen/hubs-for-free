@@ -1,0 +1,29 @@
+[transformers] The following generation flags are not valid and may be ignored: ['output_attentions']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 3275.25it/s]
+Qwen/Qwen2.5-0.5B WIN 0
+Qwen/Qwen2.5-0.5B WIN 1
+Qwen/Qwen2.5-0.5B WIN 2
+Qwen/Qwen2.5-0.5B WIN 3
+Qwen/Qwen2.5-0.5B WIN 4
+Qwen/Qwen2.5-0.5B WIN 5
+Qwen/Qwen2.5-0.5B WIN 6
+Qwen/Qwen2.5-0.5B WIN 7
+Qwen/Qwen2.5-0.5B WIN 8
+Qwen/Qwen2.5-0.5B WIN 9
+Qwen/Qwen2.5-0.5B WIN 10
+Qwen/Qwen2.5-0.5B WIN 11
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 3482.44it/s]
+Generating test split:   0%|          | 0/164 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 164/164 [00:00<00:00, 7043.19 examples/s]
+Qwen/Qwen2.5-0.5B WIN 0
+Qwen/Qwen2.5-0.5B WIN 1
+Qwen/Qwen2.5-0.5B WIN 2
+Qwen/Qwen2.5-0.5B WIN 3
+Qwen/Qwen2.5-0.5B WIN 4
+Qwen/Qwen2.5-0.5B WIN 5
+Qwen/Qwen2.5-0.5B WIN 6
+Qwen/Qwen2.5-0.5B WIN 7
+Qwen/Qwen2.5-0.5B WIN 8
+Qwen/Qwen2.5-0.5B WIN 9
+Qwen/Qwen2.5-0.5B WIN 10
+Qwen/Qwen2.5-0.5B WIN 11
+H6 DONE {"wikitext_set": [9, 11, 16, 17, 20, 21], "code_set": [11, 16, 21], "jaccard": 0.5, "pass": true}
