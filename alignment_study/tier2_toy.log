@@ -1,0 +1,55 @@
+toy aligned b= 0.0 sharedE 0.535 zmed -0.2 r1 0.98
+toy misaligned b= 0.0 sharedE 0.492 zmed -0.06 r1 0.98
+toy aligned b= 0.5 sharedE 0.524 zmed 0.25 r1 0.98
+toy misaligned b= 0.5 sharedE 0.512 zmed 0.25 r1 0.98
+toy aligned b= 1.0 sharedE 0.559 zmed 1.34 r1 0.96
+toy misaligned b= 1.0 sharedE 0.475 zmed 0.97 r1 0.96
+toy aligned b= 1.5 sharedE 0.562 zmed 2.28 r1 0.92
+toy misaligned b= 1.5 sharedE 0.474 zmed 3.0 r1 0.89
+toy aligned b= 2.0 sharedE 0.649 zmed 3.91 r1 0.89
+toy misaligned b= 2.0 sharedE 0.409 zmed 6.38 r1 0.75
+toy aligned b= 2.5 sharedE 0.692 zmed 5.25 r1 0.82
+toy misaligned b= 2.5 sharedE 0.329 zmed 10.51 r1 0.27
+toy aligned b= 3.0 sharedE 0.729 zmed 7.78 r1 0.72
+toy misaligned b= 3.0 sharedE 0.276 zmed 19.07 r1 0.22
+toy aligned b= 4.0 sharedE 0.815 zmed 9.47 r1 -0.38
+toy misaligned b= 4.0 sharedE 0.183 zmed 39.55 r1 0.45
+toy aligned b= 5.0 sharedE 0.877 zmed 7.69 r1 -0.74
+toy misaligned b= 5.0 sharedE 0.138 zmed 60.98 r1 0.88
+toy aligned b= 6.0 sharedE 0.934 zmed -3.53 r1 -0.89
+toy misaligned b= 6.0 sharedE 0.114 zmed 77.69 r1 0.95
+toy aligned b= 8.0 sharedE 0.978 zmed -23.15 r1 -0.98
+toy misaligned b= 8.0 sharedE 0.097 zmed 96.69 r1 0.95
+[transformers] The following generation flags are not valid and may be ignored: ['output_attentions']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:01<09:06,  1.89s/it]Loading weights: 100%|██████████| 290/290 [00:01<00:00, 151.71it/s]
+GD WIN 0
+GD WIN 2
+GD WIN 4
+GD WIN 6
+{"spearman_r1": 0.8139130434782607, "spearman_z": -0.33999999999999997, "median_abs_err_r1": 0.08124970839772416}
+{"min_inner_product_over_200_ensembles": 0, "closed_form_vs_sampled_offdiag_relerr_median": 0.004762062276826983}
+GD layer | r1_real | r1_pred | z_real | z_pred
+  0 | +0.88 | +0.99 |   -1.46 |   -2.11
+  1 | +0.57 | +0.98 |   -1.93 |   -2.72
+  2 | +0.79 | +0.96 |   -3.90 |   -4.45
+  3 | +0.69 | +0.67 |   +9.49 |  -12.91
+  4 | +0.86 | +0.85 |  +12.79 |   -9.44
+  5 | +0.67 | +0.63 |  +13.87 |  -10.37
+  6 | +0.68 | +0.46 |   +4.32 |   -9.62
+  7 | +0.46 | +0.41 |  +10.96 |  -13.34
+  8 | +0.55 | +0.96 |   +4.96 |   -6.38
+  9 | +0.21 | +0.31 |   +9.97 |  -13.63
+ 10 | +0.84 | +0.80 |   +9.15 |  -10.17
+ 11 | -0.20 | -0.36 |   +6.09 |  -14.18
+ 12 | +0.83 | +0.83 |   +4.90 |   -8.39
+ 13 | +0.64 | +0.48 |   +7.21 |  -12.14
+ 14 | +0.89 | +0.92 |   +8.29 |   -9.33
+ 15 | +0.43 | +0.62 |   +4.83 |  -10.20
+ 16 | -0.27 | -0.35 |   -0.47 |  -22.21
+ 17 | +0.13 | +0.13 |  +10.42 |  -14.42
+ 18 | +0.57 | +0.43 |   +7.24 |  -15.18
+ 19 | +0.78 | +0.76 |  +11.27 |  -10.07
+ 20 | -0.02 | -0.21 |  +12.14 |  -13.19
+ 21 | -0.58 | -0.49 |   -5.57 |  -20.26
+ 22 | +0.83 | +0.81 |   -2.59 |   -8.17
+ 23 | +0.69 | +0.69 |   -1.61 |   -7.81
