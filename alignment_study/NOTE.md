@@ -4,7 +4,7 @@ Date: 2026-08-18. Status: preregistered study executed and adversarially
 reviewed; two registered predictions failed and are reported as failures.
 Every number below regenerates from the committed scripts in this directory
 into the committed JSONs. Prereg: `PREREGISTRATION.md` (committed at
-1323911 / 09f58e2 before the confirmatory runs; the git history is the
+f886ce9 / 91b87ff before the confirmatory runs; the git history is the
 ex-ante evidence). Exploratory basis in `exploratory/`.
 
 ## Result in one paragraph
@@ -142,8 +142,8 @@ test: (S, a_h, e_h) with random deviation directions predicts the r1 depth
 profile (Spearman 0.81, median abs error 0.08) but not z magnitudes
 (Spearman -0.34): deviation directions carry real structure.
 
-Held-out round (`PREREGISTRATION2.md` frozen at c7451a3 before any
-held-out model was downloaded; evaluation script committed at 3e5b5cb
+Held-out round (`PREREGISTRATION2.md` frozen at a4ee0a8 before any
+held-out model was downloaded; evaluation script committed at 914fdcb
 before results): five held-out models (gpt2-medium, Pythia-410m,
 TinyLlama-1.1B, Qwen2.5-1.5B base and Instruct). Scorecard: H0 pass
 (plain r1 > 0.9 in 96 percent of pooled layers). H1 pass 5/5 models, at
