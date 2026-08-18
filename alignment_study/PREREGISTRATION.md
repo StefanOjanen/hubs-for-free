@@ -23,6 +23,12 @@ to causal entries only; all preserve row sums, row IPR, and the diagonal
 exactly, hence every gn_h exactly (Proposition 2):
 - plain: permute columns 0..i-1 (the family in run_qwen_protocol.py).
 - sinkfix: permute columns 1..i-1; column 0 and diagonal fixed.
+- altsink (control separating per-head sinkiness from cross-head alignment):
+  head h gets target column t_h = h mod 4; per row i, among the causal
+  off-diagonal entries (columns 0..i-1), swap the row maximum into column
+  t_h when t_h <= i-1, then permute the remaining off-diagonal entries;
+  rows with t_h > i-1 are plain-permuted. Every head stays individually
+  sink-like (one dominant column) but heads no longer share a column.
 
 Shared-mode decomposition, per (layer, window): stack vec(G_h); S = top
 principal component (unit Frobenius norm, sign arbitrary); a_h = <G_h, S>;
@@ -54,6 +60,12 @@ normalized. rho is invariant to head relabeling and to the sign of S.
   highest-sink Qwen layers is below 6 (informative, not vacuous).
 - A6 (identity of the shared mode). Predict |cosine(S, ideal sink
   generator)| > 0.7 at every Qwen layer with mean column-0 mass > 0.3.
+- A7 (alignment, not sinkiness, is load-bearing). At layers with
+  D_l > 0.3, predict the altsink family restores rank-1 behavior
+  (median altsink r1 > 0.7) and collapses the shared mode
+  (median rho(altsink) < 0.5 x median rho(real)) in at least 2/3 of
+  those layers. If A7 holds, per-head sink concentration alone cannot
+  explain the phenomenon; cross-head column alignment is required.
 
 ## Falsification
 
