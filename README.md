@@ -103,8 +103,6 @@ statistics; and the out-of-sample alignment-fraction law.
   (`NOTE.md`).
 - `run_qwen_protocol.py`, `qwen_results.json` - the six-prediction
   protocol on Qwen2.5-0.5B.
-- Earlier project material predating the paper is retained for
-  provenance; `paper.md` supersedes it.
 
 ## Reproduce
 

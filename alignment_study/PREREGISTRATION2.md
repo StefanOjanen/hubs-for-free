@@ -1,7 +1,7 @@
 # Preregistration 2: held-out confirmation of the shared sink-operator claim
 
 Date: 2026-08-18. Frozen after dev calibration on Qwen2.5-0.5B
-(`tier1_robust.py`, commit 6042832) and the synthetic theory runs
+(`tier1_robust.py`, commit 87526ad) and the synthetic theory runs
 (`tier2_toy.py`), and BEFORE any held-out model listed below was downloaded
 or run. Thresholds below were calibrated on the development model only;
 the held-out models are the test. Git history is the ex-ante evidence.
