@@ -21,8 +21,7 @@ from common import (wikitext_windows, generators, gnorms, r1, rho,
                     zstats, zmed_of)
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
-MODELS = ["Qwen/Qwen2.5-7B", "mistralai/Mistral-7B-v0.1",
-          "allenai/OLMo-2-1124-7B", "microsoft/Phi-3-mini-4k-instruct"]
+MODELS = ["microsoft/Phi-3-mini-4k-instruct", "allenai/OLMo-2-1124-7B"]
 NWIN, STRIDE, SEQ, KPLAIN, KFAM = 12, 40, 64, 12, 8
 CUDA = torch.cuda.is_available()
 DEV = "cuda" if CUDA else "cpu"
