@@ -1,0 +1,76 @@
+{
+ "S": {
+  "S1": {
+   "passes": 5,
+   "testable": 5,
+   "pass": true
+  },
+  "S2": {
+   "passes": 4,
+   "testable": 5,
+   "pass": true
+  },
+  "S3": {
+   "passes": 2,
+   "testable": 5,
+   "pass": false
+  },
+  "S4": {
+   "spearman": -0.7613240656024252,
+   "n_pooled_high_sink_layers": 130,
+   "pass": true
+  }
+ },
+ "per_model": {
+  "Qwen/Qwen2.5-3B": {
+   "testable": true,
+   "n_high_sink": 29,
+   "S1_frac": 1.0,
+   "S2_frac": 1.0,
+   "S3_frac": 1.0,
+   "S1_pass": true,
+   "S2_pass": true,
+   "S3_pass": true
+  },
+  "Qwen/Qwen2.5-7B": {
+   "testable": true,
+   "n_high_sink": 24,
+   "S1_frac": 1.0,
+   "S2_frac": 1.0,
+   "S3_frac": 0.9583333333333334,
+   "S1_pass": true,
+   "S2_pass": true,
+   "S3_pass": true
+  },
+  "mistralai/Mistral-7B-v0.1": {
+   "testable": true,
+   "n_high_sink": 32,
+   "S1_frac": 1.0,
+   "S2_frac": 0.875,
+   "S3_frac": 0.5625,
+   "S1_pass": true,
+   "S2_pass": true,
+   "S3_pass": false
+  },
+  "microsoft/Phi-3-mini-4k-instruct": {
+   "testable": true,
+   "n_high_sink": 29,
+   "S1_frac": 1.0,
+   "S2_frac": 1.0,
+   "S3_frac": 0.3793103448275862,
+   "S1_pass": true,
+   "S2_pass": true,
+   "S3_pass": false
+  },
+  "allenai/OLMo-2-1124-7B": {
+   "testable": true,
+   "n_high_sink": 16,
+   "S1_frac": 1.0,
+   "S2_frac": 0.1875,
+   "S3_frac": 0.1875,
+   "S1_pass": true,
+   "S2_pass": false,
+   "S3_pass": false
+  }
+ }
+}

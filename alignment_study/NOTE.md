@@ -161,3 +161,33 @@ unchanged. Protocol notes: the HumanEval dataset id needed its namespaced
 form mid-run (resume script `resume_h6.py`, H0-H5 untouched); the sink
 column detector gained a minimum-contributing-rows restriction relative
 to the dev run (documented in PREREGISTRATION2.md).
+
+## Scale round (2026-09-01, preregistration 3, Colab T4)
+
+Five models at 3B to 7B across five architecture families (Qwen2.5-3B/7B,
+Mistral-7B-v0.1, Phi-3-mini-3.8B instruct, OLMo-2-7B), protocol and
+thresholds frozen and publicly pushed before execution (PREREGISTRATION3.md);
+run history and the v1-to-v2 implementation deviation in RUNLOG.md.
+Scorecard: S1 (shared sink operator) PASS 5/5 models, at 100 percent of
+high-sink layers in every model. S2 (one-column sufficiency) PASS 4/5:
+100 percent in both Qwens and Phi-3, 87.5 percent in Mistral; OLMo-2
+fails as registered (19 percent) because its sink sits on a mid-sequence
+column that varies across windows, so a per-window pinned column does not
+capture its alignment; under the registered falsification clause (2 or
+more failures reject) the claim survives with OLMo documented as the
+exception. S3 (dissociation) FAIL 2/5: the rho-collapse and
+commutator-elevation clauses hold essentially everywhere, but the
+registered r1_altsink2 > 0.8 clause fails at many high-sink layers of
+the 32-head models; with targets t_h = h + 1 spanning half the causal
+width at n = 32, late heads have most rows plain-permuted, so the
+control's restoration weakens structurally with head count. Per the
+registered clause, dissociation is unconfirmed at this scale under this
+control; the synthetic and sub-2B dissociation results stand. S4
+(alignment-fraction law) PASS: Spearman(sharedE, r1) = -0.76 pooled over
+130 high-sink layers, matching the sub-2B round's -0.76. The law now
+holds at 0.1B to 7B. New textures: Mistral is the most sink-aligned
+model measured (shared energy up to 0.99, sinkfix tracking real r1 to
+three decimals at its deepest layers); Qwen2.5-3B's last five layers and
+all of OLMo-2 sink on mid-sequence columns rather than column 0, where
+the ideal-sink identification weakens (cos 0.61 to 0.82), marking the
+claim's boundary.

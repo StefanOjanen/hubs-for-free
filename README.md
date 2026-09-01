@@ -14,9 +14,9 @@ models the thresholds never saw.
 
 **1. One shared operator, identified.** Stack the generators
 G_h = (A_h - A_h^T)/2 of a layer's heads and take the top principal
-component S. Across eight models (Qwen2.5-0.5B/1.5B base and Instruct,
-GPT-2 small/medium, Pythia-160m/410m, TinyLlama-1.1B), at every high-sink
-layer tested, S is the sink operator, the shared-energy fraction is 0.73
+component S. Across thirteen models spanning 0.1B to 7B and six architecture
+families (Qwen2.5 0.5B/1.5B/3B/7B, GPT-2, Pythia, TinyLlama,
+Mistral-7B, Phi-3-mini, OLMo-2-7B), at every high-sink layer tested, S is the sink operator, the shared-energy fraction is 0.73
 to 0.94, and the alignment spans grouped-query KV groups (within-group
 and across-group generator cosines are equal, so the architecture does
 not explain it). Instruction tuning leaves it unchanged.
@@ -44,7 +44,8 @@ are elevated rather than suppressed.
 **4. A one-parameter law that transfers.** The rank-1 statistic of the
 coupling matrix is predicted by the layer's shared-energy fraction:
 Spearman -0.76 pooled across the high-sink layers of five held-out
-models, with the regime flip located where a fully synthetic toy
+models at or below 1.5B, and -0.76 again in a separately preregistered
+3B-to-7B round (130 pooled layers), with the regime flip located where a fully synthetic toy
 ensemble places it (shared energy 0.85 to 0.93). Three numbers per head
 (a_h, e_h, and S) reproduce the r1 depth profile of the development
 model at Spearman 0.81.
@@ -118,8 +119,11 @@ complete in minutes to about an hour on a laptop CPU.
 
 ## Scope
 
-Results cover eight models up to 1.5B parameters, English text and code,
-contexts up to 256 tokens. Known open items: the residual deviation
+Results cover thirteen models up to 7B parameters, English text and
+code, contexts up to 256 tokens. At models whose sink sits on a
+mid-sequence, window-varying column (OLMo-2, late Qwen2.5-3B layers) the
+sink-operator identification weakens; the distinct-target dissociation
+control loses power at 32 heads (see NOTE.md scale round). Known open items: the residual deviation
 directions carry structure not captured by the three-number summary; one
 low-dispersion layer is ill-conditioned for the correlation statistic
 (diagnosed, flagged); larger models remain untested.

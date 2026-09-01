@@ -23,3 +23,12 @@ the highest-value results bank earliest if the session is reclaimed;
 per-model results print as MODEL_RESULT blocks for progressive capture.
 Evaluation of S1-S4 merges the captured session-1 Qwen2.5-3B block with
 the session-2 models.
+
+Session 3 (same day): scale_round_v2.py with the two remaining models
+completed both (Phi-3-mini, OLMo-2-7B) in about 18 minutes. All five
+registered models are therefore complete across three sessions. Per-model
+blocks were captured from cell output into scale_partial/ (the script
+rounds aggregates to 4 decimals before printing, so the captured blocks
+are the complete output, not truncations). Session 2 was reclaimed during
+OLMo's 29 GB download; no computed results were lost across the three
+sessions. Evaluation: eval_scale_round.py -> scale_round_results.json.
