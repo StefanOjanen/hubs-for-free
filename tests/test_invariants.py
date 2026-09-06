@@ -25,3 +25,14 @@ def test_noise_is_rank1():
     A = _A(3)
     G = generators(A)
     assert rank1_corr(coupling(G), gnorms(G)) > 0.85
+
+
+def test_bidirectional_surrogates():
+    rng = np.random.default_rng(5)
+    lo = rng.normal(size=(4, 10, 10)); ex = np.exp(lo); A = ex / ex.sum(-1, keepdims=True)
+    S = surrogate_plain(A, rng, 2)
+    assert np.abs(A.sum(-1) - S.sum(-1)).max() < 1e-12
+    assert np.abs(np.diagonal(A, axis1=1, axis2=2) - np.diagonal(S[0], axis1=1, axis2=2)).max() == 0.0
+    assert np.abs(np.sort(A, -1) - np.sort(S[0], -1)).max() < 1e-12
+    C = surrogate_colfix(A, rng, (0, 9), 1)[0]
+    assert np.abs(A[:, :, [0, 9]] - C[:, :, [0, 9]]).max() == 0.0

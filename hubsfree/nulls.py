@@ -20,24 +20,41 @@ def random_causal_softmax(rng, n, T, temp_sigma=0.5, sink_frac=0.0, sink_bias=3.
     return ex / ex.sum(-1, keepdims=True)
 
 
-def surrogate_plain(A, rng, draws=1):
-    """Permute each causal row's off-diagonal entries independently."""
+def is_causal(A, tol=1e-9):
+    """True when every head is lower-triangular (causal attention)."""
+    T = A.shape[-1]
+    return bool(np.abs(A[:, np.triu_indices(T, 1)[0], np.triu_indices(T, 1)[1]]).max() < tol)
+
+
+def _free_cols(i, T, causal, keep=()):
+    cols = range(i) if causal else range(T)
+    return np.array([c for c in cols if c != i and c not in keep])
+
+
+def surrogate_plain(A, rng, draws=1, causal=None):
+    """Permute each row's off-diagonal entries independently (within the
+    causal support for causal maps, across the full row for bidirectional
+    maps). Row sums, row IPR, and the diagonal are preserved exactly."""
     n, T, _ = A.shape
+    causal = is_causal(A) if causal is None else causal
     S = np.repeat(A[None], draws, 0)
-    for i in range(1, T):
-        block = S[:, :, i, :i].reshape(draws * n, i)
-        S[:, :, i, :i] = rng.permuted(block, axis=1).reshape(draws, n, i)
+    for i in range(T):
+        free = _free_cols(i, T, causal)
+        if len(free) > 1:
+            block = S[:, :, i, free].reshape(draws * n, len(free))
+            S[:, :, i, free] = rng.permuted(block, axis=1).reshape(draws, n, len(free))
     return S
 
 
-def surrogate_colfix(A, rng, cols=(0,), draws=1):
+def surrogate_colfix(A, rng, cols=(0,), draws=1, causal=None):
     """Permute off-diagonal entries while keeping the given columns (for
-    example the shared sink column) and the diagonal fixed."""
+    example the shared sink or separator columns) and the diagonal fixed."""
     n, T, _ = A.shape
+    causal = is_causal(A) if causal is None else causal
     S = np.repeat(A[None], draws, 0)
     keep = set(cols)
-    for i in range(1, T):
-        free = np.array([c for c in range(i) if c not in keep])
+    for i in range(T):
+        free = _free_cols(i, T, causal, keep)
         if len(free) > 1:
             block = S[:, :, i, free].reshape(draws * n, len(free))
             S[:, :, i, free] = rng.permuted(block, axis=1).reshape(draws, n, len(free))
