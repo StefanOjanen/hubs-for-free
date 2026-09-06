@@ -97,8 +97,13 @@ statistics; and the out-of-sample alignment-fraction law.
 
 ## Repository map
 
+![regenerate](https://github.com/StefanOjanen/hubs-for-free/actions/workflows/regenerate.yml/badge.svg)
+
 - `paper.md` - methods paper: what commutator-based analyses of
   attention measure, with the full null battery and a case study.
+- `experiments.py`, `results.json`, `figures/` - the synthetic null
+  battery behind paper.md Sections 3 to 4.6; regenerates in under a
+  minute on CPU and is checked by CI on every push.
 - `alignment_study/` - the shared sink-operator studies: preregistrations,
   all scripts, all result JSONs, study note with scorecards
   (`NOTE.md`).
@@ -110,6 +115,7 @@ statistics; and the out-of-sample alignment-fraction law.
 ```
 python3 -m venv .venv && source .venv/bin/activate
 pip install torch transformers datasets numpy
+python experiments.py                       # synthetic null battery, under a minute
 python alignment_study/tier1_robust.py      # development-model study
 python alignment_study/heldout_round.py     # five held-out models
 ```

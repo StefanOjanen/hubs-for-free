@@ -1,0 +1,9 @@
+datasets==5.0.1
+huggingface_hub==1.27.0
+matplotlib==3.11.1
+numpy==2.5.2
+safetensors==0.8.0
+scipy==1.18.1
+tokenizers==0.22.2
+torch==2.13.0
+transformers==5.15.0

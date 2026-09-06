@@ -25,12 +25,16 @@ case-study material; do not treat their claims as established.
    mathematical property is verified and a null is shown.
 5. Single-input results characterize (model, input); report distributions.
 
-## Missing artifacts still in the claude.ai chat
+## Artifact status
 
-experiments.py, results.json, figures/ (fig1-fig7 PNGs), gptmini.py,
-train_chunk.py, analyze_local.py, local_results.json. These regenerate the
-synthetic null battery and the local pilot cited in paper.md. Remind the user
-to download them from the chat before submission.
+experiments.py, results.json, and figures/fig1 to fig6 were reimplemented
+from paper.md's specifications on 2026-09-02 (the August originals were
+never committed); the paper's synthetic numbers are the regenerated values
+and CI (.github/workflows/regenerate.yml) checks they regenerate. Still
+author-held and missing from the repo: the local pilot (gptmini.py,
+train_chunk.py, analyze_local.py, local_results.json, fig7). Section 7's
+pilot numbers therefore have no committed artifact; remind the user to
+upload them or mark the pilot as unreproduced.
 
 ## Style
 
