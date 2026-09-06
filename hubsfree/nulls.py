@@ -6,16 +6,18 @@ exactly, hence every generator norm (Proposition 2 of the paper)."""
 import numpy as np
 
 
-def random_causal_softmax(rng, n, T, temp_sigma=0.5, sink_frac=0.0, sink_bias=3.0):
-    """Gaussian-logit causal softmax with lognormal per-head temperatures and
-    an optional first-column bias on a fraction of heads."""
+def random_causal_softmax(rng, n, T, temp_sigma=0.5, sink_frac=0.0, sink_bias=3.0, causal=True):
+    """Gaussian-logit softmax attention with lognormal per-head temperatures
+    and an optional first-column bias on a fraction of heads. causal=False
+    gives bidirectional maps (for encoder models such as BERT)."""
     tau = np.exp(rng.normal(0, temp_sigma, n))
     lo = rng.normal(size=(n, T, T)) / tau[:, None, None]
     if sink_frac > 0:
         k = max(1, int(round(sink_frac * n)))
         lo[rng.choice(n, k, replace=False), :, 0] += sink_bias
-    mask = np.tril(np.ones((T, T), bool))
-    lo = np.where(mask, lo, -1e9)
+    if causal:
+        mask = np.tril(np.ones((T, T), bool))
+        lo = np.where(mask, lo, -1e9)
     ex = np.exp(lo - lo.max(-1, keepdims=True))
     return ex / ex.sum(-1, keepdims=True)
 

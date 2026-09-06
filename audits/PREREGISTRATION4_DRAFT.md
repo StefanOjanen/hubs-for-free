@@ -48,10 +48,37 @@ before any other outcome is reported.
 
 ## Per-target sections (to be completed after reproduction)
 
-### Target 1: Clark et al. 2019
-Base result R_1: [fill after reproduction: JS-distance matrix between all
-144 BERT-base heads on N inputs; layer-clustering statistic as in the
-paper's Section 6]. Statistic T_1: [fill]. Nulls: (a), (b), (c), (d).
+### Target 1: Clark et al. 2019 (criteria frozen 2026-09-06, before any battery run)
+Base result R_1, reproduced 2026-09-06 (`audits/clark2019/reproduce.py`,
+bert-base-uncased, 38 WikiText-103 validation windows, T = 64, JS
+divergence averaged over inputs and query positions for all 144 x 144 head
+pairs): mean JS between heads in the same layer 0.253, in different layers
+0.380, contrast 0.126; a head's nearest neighbor is in its own layer for
+38.9 percent of heads (chance 7.7 percent). The source reports the layer
+clustering qualitatively (its Figure 6), so the reproduction criterion is
+qualitative agreement: same-layer JS lower than different-layer JS by more
+than 0.05 and nearest-neighbor fraction above three times chance. Met.
+
+Statistic T_1: the contrast D = mean JS(different layer) - mean JS(same
+layer). Secondary: the nearest-neighbor same-layer fraction.
+
+Nulls: (a) random bidirectional softmax maps, 144 heads with arbitrary
+12 x 12 layer labels, T = 64, 100 ensembles (D is near zero by symmetry;
+this gives the noise floor of D); (b) 100 per-row marginal-matched
+surrogate draws of the real maps, per window; (c) 100 column-preserving
+draws keeping the [CLS] column (0) and the [SEP] column (last token), the
+separator columns that carry BERT's vertical pattern; (d) untrained
+bert-base architecture, five random initializations, same inputs.
+
+Effect size and shrinkage: D_real versus the null median D under (b) and
+(c); shrinkage = (median D_null) / D_real, i.e. the share of the layer
+clustering reproduced by the null.
+
+Registered expectation (an instance of E2): survives against (a) and (d)
+(percentile above 95); against (b) and (c) survives with shrinkage between
+20 and 70 percent. Reading: heads in the same layer share more than their
+marginals and their separator columns, but a substantial part of the
+reported layer clustering is the shared vertical pattern.
 
 ### Target 2: Kovaleva et al. 2019
 Base result R_2: [fraction of heads classified as vertical per layer].

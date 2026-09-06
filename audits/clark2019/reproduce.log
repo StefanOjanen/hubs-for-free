@@ -1,0 +1,30 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8853.53it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+WIN 0
+WIN 8
+WIN 16
+WIN 24
+WIN 32
+{
+ "model": "bert-base-uncased",
+ "n_windows": 38,
+ "T": 64,
+ "mean_js_same_layer": 0.25344237729535457,
+ "mean_js_diff_layer": 0.37980069069826655,
+ "contrast": 0.12635831340291198,
+ "nearest_neighbor_same_layer_frac": 0.3888888888888889,
+ "js_min": 0.0007298361225822086,
+ "js_max": 0.6797716698931803
+}

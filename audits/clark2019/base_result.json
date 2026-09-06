@@ -1,0 +1,11 @@
+{
+ "model": "bert-base-uncased",
+ "n_windows": 38,
+ "T": 64,
+ "mean_js_same_layer": 0.25344237729535457,
+ "mean_js_diff_layer": 0.37980069069826655,
+ "contrast": 0.12635831340291198,
+ "nearest_neighbor_same_layer_frac": 0.3888888888888889,
+ "js_min": 0.0007298361225822086,
+ "js_max": 0.6797716698931803
+}
