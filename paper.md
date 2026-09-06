@@ -1,7 +1,7 @@
 # Hubs for Free: What Commutator-Based Analyses of Attention Discover in Random Matrices
 
 **Author:** Stefan Ojanen (draft v0.1, August 2026)
-**Code and data:** `experiments.py`, `run_qwen_protocol.py`, `analyze_local.py`, `results.json`, `local_results.json`, `qwen_results.json` (all synthetic results in this paper regenerate from a single script in under one minute on CPU; the Qwen protocol runs in minutes on a laptop)
+**Code and data:** `experiments.py`, `results.json`, `run_qwen_protocol.py`, `qwen_results.json`; the pilot files `analyze_local.py` and `local_results.json` are author-held pending upload (all synthetic results in this paper regenerate from a single script in under one minute on CPU; the Qwen protocol runs in minutes on a laptop)
 
 ## Abstract
 
