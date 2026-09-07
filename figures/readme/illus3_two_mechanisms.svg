@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="698.771094pt" height="283.720664pt" viewBox="0 0 698.771094 283.720664" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-07T13:35:18.719872</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 283.720664 
+L 698.771094 283.720664 
+L 698.771094 -0 
+L 0 -0 
+z
+" style="fill: #fcfcfb"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 65.885547 107.763143 
+L 313.181001 107.763143 
+L 313.181001 20.798438 
+L 65.885547 20.798438 
+z
+" style="fill: #fcfcfb"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 77.126249 107.763143 
+L 96.003765 107.763143 
+L 96.003765 81.608345 
+L 77.126249 81.608345 
+z
+" clip-path="url(#pe66ad3f0e5)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 111.449005 107.763143 
+L 130.326521 107.763143 
+L 130.326521 83.787911 
+L 111.449005 83.787911 
+z
+" clip-path="url(#pe66ad3f0e5)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 145.771761 107.763143 
+L 164.649276 107.763143 
+L 164.649276 24.939614 
+L 145.771761 24.939614 
+z
+" clip-path="url(#pe66ad3f0e5)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 180.094516 107.763143 
+L 198.972032 107.763143 
+L 198.972032 85.967478 
+L 180.094516 85.967478 
+z
+" clip-path="url(#pe66ad3f0e5)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 214.417272 107.763143 
+L 233.294788 107.763143 
+L 233.294788 79.428778 
+L 214.417272 79.428778 
+z
+" clip-path="url(#pe66ad3f0e5)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 248.740028 107.763143 
+L 267.617543 107.763143 
+L 267.617543 82.480171 
+L 248.740028 82.480171 
+z
+" clip-path="url(#pe66ad3f0e5)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 283.062783 107.763143 
+L 301.940299 107.763143 
+L 301.940299 80.736518 
+L 283.062783 80.736518 
+z
+" clip-path="url(#pe66ad3f0e5)" style="fill: #2a78d6"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2"/>
+   <g id="text_1">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #0b0b0b" x="65.885547" y="14.798438" transform="rotate(-0 65.885547 14.798438)">random matrices: one head happens to have a large norm</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_10">
+    <path d="M 65.885547 242.558438 
+L 313.181001 242.558438 
+L 313.181001 155.593732 
+L 65.885547 155.593732 
+z
+" style="fill: #fcfcfb"/>
+   </g>
+   <g clip-path="url(#pe7364e4a3d)">
+    <image xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAVcAAAB5CAYAAACN4GLqAAADDElEQVR4nO3dzWqVVxiG4Xe73TFS4w9B01BRQVs7EzvoSfVQPAPHnk3poCOxQkX8Q0Uba0sTE5OSc/CBJ3hdR7D51lr3WqN3LzZ+/uVoCj24f28aPXr9aRqdXZ2aRnsHldtrbl5eTaPHbzr317Hvr6xNo9VyMY06TyTACSeuAAHiChAgrgAB4goQIK4AAeIKECCuAAHiChAgrgAB4goQIK4AAeIKECCuAAHiChAgrgABp6fU878OptHh4VQ6vZxKW+c7t9gfpUPPN78pXciZeffP52n0927nofRyBQgQV4AAcQUIEFeAAHEFCBBXgABxBQgQV4AAcQUIEFeAAHEFCBBXgABxBQgQV4AAcQUIEFeAAHEFCOgcEz8zi8VUWi07f9jR0VR6XDrx/6cb69PoxfvOf+A4tizd+7e/XZtGXq4AAeIKECCuAAHiChAgrgAB4goQIK4AAeIKECCuAAHiChAgrgAB4goQIK4AAeIKECCuAAHiCvA1Dct++/HzNDp/tvM+ah3ifWurc5Dx3n7ndPEXO73Dsr+72JmLw86l9HIFSOh8hgGccOIKECCuAAHiChAgrgAB4goQIK4AAeIKECCuAAHiChAgrgAB4goQIK4AAeIKECCuAAGd029n5u619Wm081/nEO9za5335EHpJOM/3+5Pox+3O4eLH/t3r3Mtf3u6O406TyTACSeuAAHiChAgrgAB4goQIK4AAeIKECCuAAHiChAgrgAB4goQIK4AAeIKECCuAAHiChAgrgBf07DsVx8OptG1zc5P9vDlp2m0sd55f29f6FzHZ+879/2xq5c6v9n1zdU06tz5ACecuAIEiCtAgLgCBIgrQIC4AgSIK0CAuAIEiCtAgLgCBIgrQIC4AgSIK0CAuAIEiCtAgLgCBIgrQEDnaPGZWS6m0q9PdqfRnatnptHvz/em0Q9ba9Po8sZyWj19tz+Nti92ZszLFSBAXAECxBUgQFwBAsQVIEBcAQLEFSBAXAECxBUgQFwBAsQVIEBcAQLEFSBAXAECxBUgQFwB5sv7HwfvT6XOnIq7AAAAAElFTkSuQmCC" id="image522ead74ff" transform="scale(1 -1) translate(0 -87.12)" x="66.24" y="-155.560664" width="246.96" height="87.12"/>
+   </g>
+   <g id="matplotlib.axis_3"/>
+   <g id="matplotlib.axis_4"/>
+   <g id="text_2">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #0b0b0b" x="65.885547" y="149.593732" transform="rotate(-0 65.885547 149.593732)">trained model: every head shares one column</text>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="patch_11">
+    <path d="M 461.558274 242.558438 
+L 651.785547 242.558438 
+L 651.785547 20.798438 
+L 461.558274 20.798438 
+z
+" style="fill: #fcfcfb"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 470.204968 161.759689 
+L 484.726134 161.759689 
+L 484.726134 30.878438 
+L 470.204968 30.878438 
+z
+" clip-path="url(#pebe85f877f)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 496.607088 161.759689 
+L 511.128254 161.759689 
+L 511.128254 170.998868 
+L 496.607088 170.998868 
+z
+" clip-path="url(#pebe85f877f)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 523.009208 161.759689 
+L 537.530374 161.759689 
+L 537.530374 172.82473 
+L 523.009208 172.82473 
+z
+" clip-path="url(#pebe85f877f)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 549.411328 161.759689 
+L 563.932493 161.759689 
+L 563.932493 173.995609 
+L 549.411328 173.995609 
+z
+" clip-path="url(#pebe85f877f)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 575.813447 161.759689 
+L 590.334613 161.759689 
+L 590.334613 174.934717 
+L 575.813447 174.934717 
+z
+" clip-path="url(#pebe85f877f)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 602.215567 161.759689 
+L 616.736733 161.759689 
+L 616.736733 176.207024 
+L 602.215567 176.207024 
+z
+" clip-path="url(#pebe85f877f)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 628.617687 161.759689 
+L 643.138853 161.759689 
+L 643.138853 232.478438 
+L 628.617687 232.478438 
+z
+" clip-path="url(#pebe85f877f)" style="fill: #2a78d6"/>
+   </g>
+   <g id="matplotlib.axis_5"/>
+   <g id="matplotlib.axis_6"/>
+   <g id="text_3">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #0b0b0b" x="461.558274" y="14.798438" transform="rotate(-0 461.558274 14.798438)">the same hub and eigengap</text>
+   </g>
+  </g>
+  <g id="patch_19">
+   <path d="M 351.143579 67.827217 
+Q 394.743577 91.357374 437.162901 114.250343 
+" style="fill: none; stroke: #8a8984; stroke-width: 1.2; stroke-linecap: round"/>
+   <path d="M 433.564588 109.126658 
+L 437.162901 114.250343 
+L 430.904965 114.054782 
+z
+" style="fill: #8a8984; stroke: #8a8984; stroke-width: 1.2; stroke-linecap: round"/>
+  </g>
+  <g id="patch_20">
+   <path d="M 351.193413 186.977549 
+Q 394.74728 166.237612 437.089833 146.074492 
+" style="fill: none; stroke: #8a8984; stroke-width: 1.2; stroke-linecap: round"/>
+   <path d="M 430.83 145.95411 
+L 437.089833 146.074492 
+L 433.237628 151.010129 
+z
+" style="fill: #8a8984; stroke: #8a8984; stroke-width: 1.2; stroke-linecap: round"/>
+  </g>
+  <g id="text_4">
+   <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #52514e" x="349.385547" y="274.238438" transform="rotate(-0 349.385547 274.238438)">Bare statistics cannot tell the two apart. Marginal-matched surrogates reproduce the first; only a sink-column surrogate reproduces the second.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pe66ad3f0e5">
+   <rect x="65.885547" y="20.798438" width="247.295455" height="86.964706"/>
+  </clipPath>
+  <clipPath id="pe7364e4a3d">
+   <rect x="65.885547" y="155.593732" width="247.295455" height="86.964706"/>
+  </clipPath>
+  <clipPath id="pebe85f877f">
+   <rect x="461.558274" y="20.798438" width="190.227273" height="221.76"/>
+  </clipPath>
+ </defs>
+</svg>

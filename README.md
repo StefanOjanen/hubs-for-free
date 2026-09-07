@@ -26,6 +26,14 @@ every attention layer, and for causal attention the generator norm obeys
 attention and nothing else. The whole battery regenerates in under a
 minute on a laptop.
 
+<p align="center"><img src="figures/readme/fig1_coordinator_from_noise.png" alt="Coupling matrix and eigenvalue spectrum of fourteen random attention heads, showing a hub row and a one-versus-the-rest spectrum" width="880"></p>
+
+<p align="center"><em>Fourteen random heads, no training: a hub that couples to everyone and a 59-fold spectral gap.</em></p>
+
+<p align="center"><img src="figures/readme/fig2_false_flag_rate.png" alt="Line chart of the false-flag rate of the 2-sigma rule against the number of heads" width="880"></p>
+
+<p align="center"><em>The 2-sigma rule finds a special head in noise most of the time, and almost always past 24 heads.</em></p>
+
 **Trained models depart from the random picture, in one specific way.**
 On noise, the pairwise coupling matrix of a layer's heads is almost
 exactly rank one in the head norms (correlation 0.98 with the norm-product
@@ -34,6 +42,10 @@ correlation falls to -0.5 and below. Surrogates that keep every head's
 per-row sharpness and self-mass but scramble the rest restore the random
 picture perfectly, so the departure is real inter-head structure, and the
 question became what it is.
+
+<p align="center"><img src="figures/readme/fig3_depth_profile.png" alt="Rank-1 correlation across the 24 layers of Qwen2.5-0.5B for real attention, marginal-matched surrogates, and sink-column surrogates, with sink mass per layer beneath" width="880"></p>
+
+<p align="center"><em>Marginal-matched surrogates stay at the noise level; the sink-column surrogate follows the real curve layer by layer.</em></p>
 
 **It is one shared operator, and the operator is the sink.** Stack the
 skew-symmetric parts of a layer's heads and take their top principal
@@ -44,6 +56,14 @@ operator at every one of them, with cosine 0.71 to 1.00 and above 0.87 at
 91 percent of layers. It carries 0.51 to 0.99 of each head's energy. It
 spans grouped-query KV groups, so the architecture does not create it, and
 instruction tuning leaves it untouched.
+
+<p align="center"><img src="figures/readme/illus1_shared_operator.svg" alt="Diagram of three attention heads decomposed into a shared sink operator plus a per-head residual" width="880"></p>
+
+<p align="center"><em>Every head is a multiple of the same operator plus a residual of its own.</em></p>
+
+<p align="center"><img src="figures/readme/fig4_shared_operator_is_sink.png" alt="Scatter of the cosine between each layer's shared component and the ideal sink operator against the layer's sink mass, 230 layers" width="880"></p>
+
+<p align="center"><em>230 high-sink layers across eleven models: the shared component is the sink operator in every one.</em></p>
 
 **The shared operator cancels out of every interaction statistic.**
 Writing each head as G_h = a_h S + E_h, the shared-times-shared term
@@ -57,6 +77,10 @@ entry, reproduces the real coupling statistics layer by layer, to three
 decimals at the deepest layers of Mistral-7B. At this resolution the
 statistics contain nothing else.
 
+<p align="center"><img src="figures/readme/illus3_two_mechanisms.svg" alt="Diagram showing that norm heterogeneity in random matrices and a shared column in trained models produce the same hub and eigengap" width="880"></p>
+
+<p align="center"><em>The same signature from two mechanisms; only constrained surrogates tell them apart.</em></p>
+
 **Alignment does it, not concentration.** Heads that are each sharply
 concentrated but on different columns show the opposite signature in
 synthetic ensembles and in redesigned controls on five held-out models:
@@ -64,6 +88,10 @@ the shared mode collapses, the rank-one geometry returns, and commutators
 grow rather than shrink. What the heads share is a column, not a habit of
 sharpness. (At 32 heads the control loses power and the dissociation at
 7B stands as unconfirmed rather than assumed.)
+
+<p align="center"><img src="figures/readme/fig6_alignment_not_concentration.png" alt="Two-panel chart of shared-energy fraction and rank-1 correlation against sink strength for heads sharing one column versus heads on distinct columns" width="880"></p>
+
+<p align="center"><em>Same per-head concentration, opposite outcomes: only the shared column builds the shared mode and collapses the geometry.</em></p>
 
 **One number per layer predicts the geometry, and the prediction
 transfers.** The layer's shared-energy fraction predicts its coupling
@@ -75,9 +103,21 @@ shared energy 0.85 and 0.93, exactly where the real layers flip. Three
 numbers per head reproduce the development model's depth profile at
 Spearman 0.81.
 
+<p align="center"><img src="figures/readme/fig5_alignment_law.png" alt="Scatter of rank-1 correlation against shared-energy fraction for two held-out rounds, with the toy-ensemble curve and its regime-flip band" width="880"></p>
+
+<p align="center"><em>Ten held-out models across two preregistered rounds fall along the curve a noise-plus-one-column toy predicted in advance.</em></p>
+
 ## What you can use today
 
 Each instrument below exists because a finding above required it.
+
+<p align="center"><img src="figures/readme/illus4_toolkit.svg" alt="Flow diagram of the toolkit: attention maps, a statistic, four null families, a percentile report" width="880"></p>
+
+<p align="center"><em>The toolkit in one line.</em></p>
+
+<p align="center"><img src="figures/readme/illus2_null_families.svg" alt="Five small attention matrices: the real map and the four null families, each captioned with what it preserves" width="880"></p>
+
+<p align="center"><em>What each null keeps; the real map's distance from each is the report.</em></p>
 
 - **The `hubsfree` toolkit.** Because the standard signatures appear on
   noise, every statistic computed on attention maps (clusters, hubs,
@@ -186,6 +226,8 @@ alignment-fraction law; and the toolkit that packages the nulls.
 - `experiments.py`, `results.json`, `figures/` - the synthetic battery
   behind paper.md Sections 3 to 4.6; `check_results.py` and
   `.github/workflows/regenerate.yml` verify it regenerates.
+- `make_readme_figures.py` - renders every chart and illustration on this
+  page from the committed result files.
 - `alignment_study/` - the shared-operator studies: three
   preregistrations, all scripts and result JSONs, the run log, and the
   study note with scorecards (`NOTE.md`).
@@ -204,6 +246,7 @@ source .venv/bin/activate
 python experiments.py                       # synthetic battery, under a minute on CPU
 pip install -e . && hubsfree demo           # the random-matrix coordinator, one second
 python -m pytest tests                      # surrogate invariants and anchors
+python make_readme_figures.py               # the figures on this page, from the JSONs
 python alignment_study/tier1_robust.py      # development-model study
 python alignment_study/heldout_round.py     # five held-out models
 ```
