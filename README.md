@@ -57,7 +57,7 @@ operator at every one of them, with cosine 0.71 to 1.00 and above 0.87 at
 spans grouped-query KV groups, so the architecture does not create it, and
 instruction tuning leaves it untouched.
 
-<p align="center"><img src="figures/readme/illus1_shared_operator.svg" alt="Diagram of three attention heads decomposed into a shared sink operator plus a per-head residual" width="880"></p>
+<p align="center"><img src="figures/readme/illus1_shared_operator.png" alt="Diagram of three attention heads decomposed into a shared sink operator plus a per-head residual" width="880"></p>
 
 <p align="center"><em>Every head is a multiple of the same operator plus a residual of its own.</em></p>
 
@@ -77,7 +77,7 @@ entry, reproduces the real coupling statistics layer by layer, to three
 decimals at the deepest layers of Mistral-7B. At this resolution the
 statistics contain nothing else.
 
-<p align="center"><img src="figures/readme/illus3_two_mechanisms.svg" alt="Diagram showing that norm heterogeneity in random matrices and a shared column in trained models produce the same hub and eigengap" width="880"></p>
+<p align="center"><img src="figures/readme/illus3_two_mechanisms.png" alt="Diagram showing that norm heterogeneity in random matrices and a shared column in trained models produce the same hub and eigengap" width="880"></p>
 
 <p align="center"><em>The same signature from two mechanisms; only constrained surrogates tell them apart.</em></p>
 
@@ -111,11 +111,11 @@ Spearman 0.81.
 
 Each instrument below exists because a finding above required it.
 
-<p align="center"><img src="figures/readme/illus4_toolkit.svg" alt="Flow diagram of the toolkit: attention maps, a statistic, four null families, a percentile report" width="880"></p>
+<p align="center"><img src="figures/readme/illus4_toolkit.png" alt="Flow diagram of the toolkit: attention maps, a statistic, four null families, a percentile report" width="880"></p>
 
 <p align="center"><em>The toolkit in one line.</em></p>
 
-<p align="center"><img src="figures/readme/illus2_null_families.svg" alt="Five small attention matrices: the real map and the four null families, each captioned with what it preserves" width="880"></p>
+<p align="center"><img src="figures/readme/illus2_null_families.png" alt="Five small attention matrices: the real map and the four null families, each captioned with what it preserves" width="880"></p>
 
 <p align="center"><em>What each null keeps; the real map's distance from each is the report.</em></p>
 
