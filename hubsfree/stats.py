@@ -71,6 +71,30 @@ def sink_column(A, min_rows=16):
     return int(vals[counts.argmax()])
 
 
+def column_masses(A, min_rows=16):
+    """Layer-level mean attention mass per column, over heads and the rows
+    below the column (row 0 excluded), for columns with at least min_rows
+    contributing rows. Index c of the result is column c."""
+    n, T, _ = A.shape
+    cmax = max(T - 1 - min_rows, 1)
+    return np.array([A[:, max(1, c + 1):, c].mean() for c in range(cmax)])
+
+
+def sink_columns(A, thresh=0.10, kmax=3, min_rows=16):
+    """Sink column set: the modal sink column (sink_column) plus up to
+    kmax - 1 further columns whose layer-level column mass reaches thresh,
+    in decreasing mass order. Models whose sink sits on a mid-sequence,
+    window-varying column (OLMo-2, late Qwen2.5-3B layers) need the set;
+    single-sink layers return one column. Pass the result to
+    surrogate_colfix as cols. Calibration: alignment_study/
+    multicolumn_dev_calibration.py."""
+    modal = sink_column(A, min_rows)
+    cm = column_masses(A, min_rows)
+    order = [int(c) for c in np.argsort(cm)[::-1]]
+    extra = [c for c in order if c != modal and cm[c] >= thresh][:max(kmax - 1, 0)]
+    return sorted([modal] + extra)
+
+
 def sink_generator(T, c):
     """Ideal causal sink generator at column c, unit Frobenius norm."""
     A = np.zeros((T, T))

@@ -1,6 +1,7 @@
 import numpy as np
 from hubsfree import (generators, gnorms, random_causal_softmax, surrogate_plain,
-                      surrogate_colfix, surrogate_altsink, surrogate_shift, coupling, rank1_corr)
+                      surrogate_colfix, surrogate_altsink, surrogate_shift, coupling, rank1_corr,
+                      sink_column, sink_columns)
 
 
 def _A(seed=0, n=14, T=26):
@@ -52,3 +53,15 @@ def test_shift_is_a_head_specific_cyclic_shift_with_distinct_offsets():
             assert np.allclose(np.roll(A[h, i, :i], d % i), S[h, i, :i])
         assert np.allclose(A[h, :2], S[h, :2])
     assert sorted(offsets) == list(range(1, n + 1))
+
+
+def test_sink_columns_finds_two_shared_columns_and_one_alone():
+    rng = np.random.default_rng(11)
+    n, T = 8, 64
+    lo = rng.normal(size=(n, T, T)); lo[:, :, 0] += 4.0; lo[:, :, 20] += 3.0
+    lo = np.where(np.tril(np.ones((T, T), bool)), lo, -1e9)
+    A = np.exp(lo - lo.max(-1, keepdims=True)); A /= A.sum(-1, keepdims=True)
+    assert sink_column(A) == 0
+    assert sink_columns(A, thresh=0.10) == [0, 20]
+    B = random_causal_softmax(np.random.default_rng(12), n, T, sink_frac=1.0, sink_bias=4.0)
+    assert sink_columns(B, thresh=0.10) == [0]
