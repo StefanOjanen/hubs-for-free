@@ -110,8 +110,9 @@ Spearman 0.81.
 
 **Training replaces one shared operator with another.** An untrained
 network already has a dominant shared component: with near-uniform
-attention every head carries the same causal operator, at 0.9 of its
-energy, and that component is not the sink (cosine 0.27). Ten public
+attention every head carries the same operator, the uniform causal
+operator (cosine 1.00 to it in every layer), at 0.9 of its energy, and
+that component is not the sink (cosine 0.27). Ten public
 checkpoints each of Pythia-160m and Pythia-410m, with every prediction
 frozen and pushed before the first download, show what training does with
 it. The initial component is broken up first, and by step 1000 the layers
