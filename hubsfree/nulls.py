@@ -85,3 +85,24 @@ def surrogate_altsink(A, rng, draws=1):
             else:
                 S[:, h, i, :i] = rng.permuted(block, axis=1)
     return S
+
+
+def surrogate_shift(A, rng, draws=1):
+    """Matched-geometry dissociation control (causal maps). Each head's causal
+    row is cyclically shifted by a head-specific offset d_h, drawn per draw as
+    a permutation of 1..n, so the head's dominant column moves to d_h mod i
+    while the row's internal pattern is kept: every head stays exactly as
+    concentrated, with exactly the same row geometry, but heads no longer
+    share a column. Rows 0 and 1 (nothing to shift) are unchanged. Row sums,
+    row IPR, the diagonal and every generator norm are preserved exactly.
+    Toy validation: control_redesign_toy*.py in alignment_study/."""
+    if not is_causal(A):
+        raise NotImplementedError("surrogate_shift is defined for causal attention maps")
+    n, T, _ = A.shape
+    S = np.repeat(A[None], draws, 0)
+    for d in range(draws):
+        offs = rng.permutation(n) + 1
+        for h in range(n):
+            for i in range(2, T):
+                S[d, h, i, :i] = np.roll(A[h, i, :i], int(offs[h]) % i)
+    return S

@@ -1,6 +1,6 @@
 import numpy as np
 from hubsfree import (generators, gnorms, random_causal_softmax, surrogate_plain,
-                      surrogate_colfix, surrogate_altsink, coupling, rank1_corr)
+                      surrogate_colfix, surrogate_altsink, surrogate_shift, coupling, rank1_corr)
 
 
 def _A(seed=0, n=14, T=26):
@@ -9,7 +9,7 @@ def _A(seed=0, n=14, T=26):
 
 def test_surrogates_preserve_row_sums_and_generator_norms():
     A = _A(); rng = np.random.default_rng(1)
-    for fam in (surrogate_plain(A, rng, 3), surrogate_colfix(A, rng, (0,), 3), surrogate_altsink(A, rng, 3)):
+    for fam in (surrogate_plain(A, rng, 3), surrogate_colfix(A, rng, (0,), 3), surrogate_altsink(A, rng, 3), surrogate_shift(A, rng, 3)):
         for S in fam:
             assert np.abs(A.sum(-1) - S.sum(-1)).max() < 1e-12
             assert np.abs(np.sort(A, -1) - np.sort(S, -1)).max() < 1e-12
@@ -36,3 +36,19 @@ def test_bidirectional_surrogates():
     assert np.abs(np.sort(A, -1) - np.sort(S[0], -1)).max() < 1e-12
     C = surrogate_colfix(A, rng, (0, 9), 1)[0]
     assert np.abs(A[:, :, [0, 9]] - C[:, :, [0, 9]]).max() == 0.0
+
+
+def test_shift_is_a_head_specific_cyclic_shift_with_distinct_offsets():
+    n, T = 8, 40
+    A = random_causal_softmax(np.random.default_rng(7), n, T, sink_frac=1.0, sink_bias=4.0)
+    S = surrogate_shift(A, np.random.default_rng(8), 1)[0]
+    offsets = []
+    for h in range(n):
+        # recover the offset from a row deeper than n, where d % i == d
+        row = A[h, T - 1, :T - 1]
+        d = next(d for d in range(1, n + 1) if np.allclose(np.roll(row, d), S[h, T - 1, :T - 1]))
+        offsets.append(d)
+        for i in range(2, T):
+            assert np.allclose(np.roll(A[h, i, :i], d % i), S[h, i, :i])
+        assert np.allclose(A[h, :2], S[h, :2])
+    assert sorted(offsets) == list(range(1, n + 1))
