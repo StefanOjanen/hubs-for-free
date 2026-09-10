@@ -1,0 +1,67 @@
+[transformers] The following generation flags are not valid and may be ignored: ['output_attentions']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:00<04:08,  1.16it/s]Loading weights:  80%|███████▉  | 231/290 [00:00<00:00, 314.52it/s]Loading weights: 100%|██████████| 290/290 [00:01<00:00, 234.48it/s]
+Qwen/Qwen2.5-0.5B: 24 layers, dtype float32, 23s
+  L 0 sink cols [0, 1, 2, 5, 43, 44, 46] smass 0.05 r1 real +0.88 plain +1.00 | t10: k=1 R=0.99 cos 0.09 t15: k=1 R=0.99 cos 0.09 t20: k=1 R=1.00 cos 0.09 | single cos 0.09
+  L 1 sink cols [0, 1, 5, 8, 40, 44, 45] smass 0.07 r1 real +0.65 plain +0.99 | t10: k=1 R=1.00 cos 0.13 t15: k=1 R=0.99 cos 0.13 t20: k=1 R=1.00 cos 0.13 | single cos 0.13
+  L 2 sink cols [0, 2, 3, 5, 9, 24] smass 0.12 r1 real +0.78 plain +0.98 | t10: k=1 R=0.94 cos 0.32 t15: k=1 R=0.93 cos 0.31 t20: k=1 R=0.92 cos 0.31 | single cos 0.31
+  L 3 sink cols [0] smass 0.60 r1 real +0.69 plain +0.99 | t10: k=1 R=0.01 cos 0.97 t15: k=1 R=0.01 cos 0.97 t20: k=1 R=0.01 cos 0.97 | single cos 0.97
+  L 4 sink cols [0] smass 0.43 r1 real +0.88 plain +0.99 | t10: k=1 R=0.16 cos 0.94 t15: k=1 R=0.16 cos 0.94 t20: k=1 R=0.16 cos 0.94 | single cos 0.94
+  L 5 sink cols [0] smass 0.51 r1 real +0.66 plain +0.99 | t10: k=1 R=0.21 cos 0.97 t15: k=1 R=0.21 cos 0.97 t20: k=1 R=0.21 cos 0.97 | single cos 0.97
+  L 6 sink cols [0] smass 0.43 r1 real +0.68 plain +0.96 | t10: k=1 R=0.21 cos 0.94 t15: k=1 R=0.21 cos 0.94 t20: k=1 R=0.19 cos 0.94 | single cos 0.94
+  L 7 sink cols [0] smass 0.61 r1 real +0.46 plain +0.98 | t10: k=1 R=0.05 cos 0.96 t15: k=1 R=0.05 cos 0.96 t20: k=1 R=0.05 cos 0.96 | single cos 0.96
+  L 8 sink cols [0] smass 0.29 r1 real +0.52 plain +0.99 | t10: k=1 R=0.71 cos 0.73 t15: k=1 R=0.71 cos 0.73 t20: k=1 R=0.71 cos 0.73 | single cos 0.73
+  L 9 sink cols [0] smass 0.69 r1 real +0.16 plain +0.99 | t10: k=1 R=0.00 cos 0.99 t15: k=1 R=0.00 cos 0.99 t20: k=1 R=0.00 cos 0.99 | single cos 0.99
+  L10 sink cols [0] smass 0.42 r1 real +0.84 plain +0.99 | t10: k=1 R=0.22 cos 0.93 t15: k=1 R=0.22 cos 0.93 t20: k=1 R=0.21 cos 0.93 | single cos 0.93
+  L11 sink cols [0] smass 0.73 r1 real -0.23 plain +0.99 | t10: k=1 R=0.01 cos 0.99 t15: k=1 R=0.01 cos 0.99 t20: k=1 R=0.01 cos 0.99 | single cos 0.99
+  L12 sink cols [0] smass 0.37 r1 real +0.82 plain +0.99 | t10: k=1 R=0.13 cos 0.91 t15: k=1 R=0.14 cos 0.91 t20: k=1 R=0.13 cos 0.91 | single cos 0.91
+  L13 sink cols [0] smass 0.58 r1 real +0.60 plain +0.99 | t10: k=1 R=0.04 cos 0.97 t15: k=1 R=0.03 cos 0.97 t20: k=1 R=0.03 cos 0.97 | single cos 0.97
+  L14 sink cols [0] smass 0.37 r1 real +0.90 plain +0.99 | t10: k=1 R=0.06 cos 0.89 t15: k=1 R=0.06 cos 0.89 t20: k=1 R=0.06 cos 0.89 | single cos 0.89
+  L15 sink cols [0] smass 0.45 r1 real +0.42 plain +0.98 | t10: k=1 R=0.34 cos 0.93 t15: k=1 R=0.33 cos 0.93 t20: k=1 R=0.33 cos 0.93 | single cos 0.93
+  L16 sink cols [0] smass 0.84 r1 real -0.43 plain +0.97 | t10: k=1 R=0.00 cos 0.99 t15: k=1 R=0.00 cos 0.99 t20: k=1 R=0.00 cos 0.99 | single cos 0.99
+  L17 sink cols [0] smass 0.65 r1 real +0.13 plain +0.98 | t10: k=1 R=0.06 cos 0.97 t15: k=1 R=0.06 cos 0.97 t20: k=1 R=0.06 cos 0.97 | single cos 0.97
+  L18 sink cols [0] smass 0.62 r1 real +0.57 plain +0.98 | t10: k=1 R=0.01 cos 0.96 t15: k=1 R=0.01 cos 0.96 t20: k=1 R=0.01 cos 0.96 | single cos 0.96
+  L19 sink cols [0] smass 0.47 r1 real +0.77 plain +0.99 | t10: k=1 R=0.09 cos 0.94 t15: k=1 R=0.10 cos 0.94 t20: k=1 R=0.10 cos 0.94 | single cos 0.94
+  L20 sink cols [0] smass 0.63 r1 real -0.03 plain +0.99 | t10: k=1 R=0.14 cos 0.98 t15: k=1 R=0.14 cos 0.98 t20: k=1 R=0.14 cos 0.98 | single cos 0.98
+  L21 sink cols [0] smass 0.74 r1 real -0.50 plain +0.99 | t10: k=1 R=0.03 cos 0.99 t15: k=1 R=0.03 cos 0.99 t20: k=1 R=0.03 cos 0.99 | single cos 0.99
+  L22 sink cols [0, 1, 2, 3, 4, 5, 6, 7, 15] smass 0.19 r1 real +0.84 plain +0.87 | t10: k=2 R=0.59 cos 0.60 t15: k=1 R=1.01 cos 0.49 t20: k=1 R=0.86 cos 0.45 | single cos 0.45
+  L23 sink cols [0, 1, 2, 4, 5, 6, 7, 35] smass 0.15 r1 real +0.71 plain +0.98 | t10: k=2 R=0.47 cos 0.58 t15: k=1 R=0.83 cos 0.45 t20: k=1 R=0.83 cos 0.45 | single cos 0.45
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]Fetching 2 files:  50%|█████     | 1/2 [06:03<06:03, 363.05s/it]Fetching 2 files: 100%|██████████| 2/2 [06:52<00:00, 178.34s/it]Fetching 2 files: 100%|██████████| 2/2 [06:52<00:00, 206.05s/it]
+Loading weights:   0%|          | 0/434 [00:00<?, ?it/s]Loading weights:   0%|          | 1/434 [00:05<39:38,  5.49s/it]Loading weights:  39%|███▉      | 171/434 [00:05<00:06, 41.39it/s]Loading weights:  48%|████▊     | 207/434 [00:06<00:05, 38.58it/s]Loading weights:  53%|█████▎    | 228/434 [00:07<00:05, 39.03it/s]Loading weights:  56%|█████▌    | 243/434 [00:08<00:05, 36.33it/s]Loading weights:  59%|█████▊    | 254/434 [00:08<00:04, 38.98it/s]Loading weights:  61%|██████    | 264/434 [00:08<00:04, 38.91it/s]Loading weights:  63%|██████▎   | 272/434 [00:08<00:04, 36.92it/s]Loading weights:  64%|██████▍   | 279/434 [00:08<00:04, 35.69it/s]Loading weights:  67%|██████▋   | 291/434 [00:09<00:03, 37.02it/s]Loading weights:  70%|██████▉   | 303/434 [00:09<00:03, 37.80it/s]Loading weights:  71%|███████   | 308/434 [00:09<00:03, 38.06it/s]Loading weights:  73%|███████▎  | 315/434 [00:09<00:03, 35.60it/s]Loading weights:  74%|███████▎  | 319/434 [00:10<00:03, 35.08it/s]Loading weights:  75%|███████▌  | 327/434 [00:10<00:02, 37.19it/s]Loading weights:  78%|███████▊  | 339/434 [00:10<00:02, 38.54it/s]Loading weights:  81%|████████  | 351/434 [00:10<00:02, 41.10it/s]Loading weights:  82%|████████▏ | 356/434 [00:10<00:01, 41.65it/s]Loading weights:  84%|████████▎ | 363/434 [00:11<00:01, 39.48it/s]Loading weights:  86%|████████▋ | 375/434 [00:11<00:01, 41.24it/s]Loading weights:  89%|████████▉ | 387/434 [00:11<00:01, 39.50it/s]Loading weights:  92%|█████████▏| 399/434 [00:11<00:00, 41.26it/s]Loading weights:  93%|█████████▎| 404/434 [00:12<00:00, 39.54it/s]Loading weights:  95%|█████████▍| 411/434 [00:12<00:00, 39.00it/s]Loading weights:  96%|█████████▌| 415/434 [00:12<00:00, 35.13it/s]Loading weights:  97%|█████████▋| 423/434 [00:12<00:00, 34.76it/s]Loading weights: 100%|██████████| 434/434 [00:12<00:00, 34.14it/s]
+Qwen/Qwen2.5-3B: 36 layers, dtype float32, 41s
+  L 0 sink cols [0, 26, 33, 40, 41, 42, 45, 46] smass 0.04 r1 real +0.85 plain +0.99 | t10: k=1 R=1.00 cos 0.08 t15: k=1 R=1.00 cos 0.08 t20: k=1 R=1.00 cos 0.08 | single cos 0.08
+  L 1 sink cols [0, 2, 4, 40, 42, 44, 45] smass 0.05 r1 real +0.77 plain +0.98 | t10: k=1 R=0.99 cos 0.13 t15: k=1 R=0.99 cos 0.13 t20: k=1 R=1.00 cos 0.13 | single cos 0.13
+  L 2 sink cols [0] smass 0.14 r1 real +0.30 plain +0.91 | t10: k=1 R=0.65 cos 0.45 t15: k=1 R=0.64 cos 0.45 t20: k=1 R=0.63 cos 0.45 | single cos 0.45
+  L 3 sink cols [0] smass 0.70 r1 real +0.19 plain +0.94 | t10: k=1 R=0.02 cos 0.98 t15: k=1 R=0.02 cos 0.98 t20: k=1 R=0.02 cos 0.98 | single cos 0.98
+  L 4 sink cols [0] smass 0.67 r1 real +0.46 plain +0.97 | t10: k=1 R=0.06 cos 0.98 t15: k=1 R=0.06 cos 0.98 t20: k=1 R=0.06 cos 0.98 | single cos 0.98
+  L 5 sink cols [0] smass 0.79 r1 real -0.38 plain +0.99 | t10: k=1 R=0.01 cos 0.99 t15: k=1 R=0.01 cos 0.99 t20: k=1 R=0.01 cos 0.99 | single cos 0.99
+  L 6 sink cols [0] smass 0.69 r1 real +0.47 plain +0.98 | t10: k=1 R=0.02 cos 0.98 t15: k=1 R=0.03 cos 0.98 t20: k=1 R=0.03 cos 0.98 | single cos 0.98
+  L 7 sink cols [0] smass 0.68 r1 real +0.54 plain +0.97 | t10: k=1 R=0.05 cos 0.98 t15: k=1 R=0.05 cos 0.98 t20: k=1 R=0.05 cos 0.98 | single cos 0.98
+  L 8 sink cols [0] smass 0.69 r1 real +0.42 plain +0.98 | t10: k=1 R=0.08 cos 0.99 t15: k=1 R=0.08 cos 0.99 t20: k=1 R=0.07 cos 0.99 | single cos 0.99
+  L 9 sink cols [0] smass 0.64 r1 real +0.48 plain +0.96 | t10: k=1 R=0.02 cos 0.98 t15: k=1 R=0.03 cos 0.98 t20: k=1 R=0.02 cos 0.98 | single cos 0.98
+  L10 sink cols [0] smass 0.64 r1 real +0.34 plain +0.98 | t10: k=1 R=0.11 cos 0.98 t15: k=1 R=0.11 cos 0.98 t20: k=1 R=0.11 cos 0.98 | single cos 0.98
+  L11 sink cols [0] smass 0.53 r1 real +0.68 plain +0.97 | t10: k=1 R=0.05 cos 0.96 t15: k=1 R=0.04 cos 0.96 t20: k=1 R=0.05 cos 0.96 | single cos 0.96
+  L12 sink cols [0] smass 0.51 r1 real +0.64 plain +0.98 | t10: k=1 R=0.25 cos 0.96 t15: k=1 R=0.25 cos 0.96 t20: k=1 R=0.25 cos 0.96 | single cos 0.96
+  L13 sink cols [0] smass 0.61 r1 real +0.63 plain +0.97 | t10: k=1 R=0.07 cos 0.97 t15: k=1 R=0.07 cos 0.97 t20: k=1 R=0.07 cos 0.97 | single cos 0.97
+  L14 sink cols [0] smass 0.43 r1 real +0.82 plain +0.98 | t10: k=1 R=0.15 cos 0.90 t15: k=1 R=0.15 cos 0.90 t20: k=1 R=0.15 cos 0.90 | single cos 0.90
+  L15 sink cols [0] smass 0.51 r1 real +0.86 plain +0.99 | t10: k=1 R=0.05 cos 0.95 t15: k=1 R=0.05 cos 0.95 t20: k=1 R=0.05 cos 0.95 | single cos 0.95
+  L16 sink cols [0] smass 0.44 r1 real +0.80 plain +0.97 | t10: k=1 R=0.04 cos 0.90 t15: k=1 R=0.03 cos 0.90 t20: k=1 R=0.04 cos 0.90 | single cos 0.90
+  L17 sink cols [0] smass 0.60 r1 real +0.56 plain +0.99 | t10: k=1 R=0.02 cos 0.98 t15: k=1 R=0.02 cos 0.98 t20: k=1 R=0.02 cos 0.98 | single cos 0.98
+  L18 sink cols [0] smass 0.41 r1 real +0.79 plain +0.97 | t10: k=1 R=0.16 cos 0.89 t15: k=1 R=0.16 cos 0.89 t20: k=1 R=0.16 cos 0.89 | single cos 0.89
+  L19 sink cols [0] smass 0.47 r1 real +0.64 plain +0.98 | t10: k=1 R=0.35 cos 0.94 t15: k=1 R=0.35 cos 0.94 t20: k=1 R=0.36 cos 0.94 | single cos 0.94
+  L20 sink cols [0] smass 0.66 r1 real +0.57 plain +0.99 | t10: k=1 R=0.02 cos 0.99 t15: k=1 R=0.01 cos 0.99 t20: k=1 R=0.01 cos 0.99 | single cos 0.99
+  L21 sink cols [0] smass 0.49 r1 real +0.65 plain +0.97 | t10: k=1 R=0.08 cos 0.92 t15: k=1 R=0.08 cos 0.92 t20: k=1 R=0.08 cos 0.92 | single cos 0.92
+  L22 sink cols [0] smass 0.53 r1 real +0.55 plain +0.98 | t10: k=1 R=0.07 cos 0.95 t15: k=1 R=0.07 cos 0.95 t20: k=1 R=0.07 cos 0.95 | single cos 0.95
+  L23 sink cols [0] smass 0.40 r1 real +0.81 plain +0.98 | t10: k=1 R=0.36 cos 0.89 t15: k=1 R=0.37 cos 0.89 t20: k=1 R=0.37 cos 0.89 | single cos 0.89
+  L24 sink cols [0] smass 0.39 r1 real +0.84 plain +0.98 | t10: k=1 R=0.10 cos 0.88 t15: k=1 R=0.09 cos 0.88 t20: k=1 R=0.10 cos 0.88 | single cos 0.88
+  L25 sink cols [0] smass 0.68 r1 real +0.39 plain +0.99 | t10: k=1 R=0.01 cos 0.98 t15: k=1 R=0.01 cos 0.98 t20: k=1 R=0.01 cos 0.98 | single cos 0.98
+  L26 sink cols [0] smass 0.50 r1 real +0.88 plain +0.99 | t10: k=1 R=0.01 cos 0.94 t15: k=1 R=0.02 cos 0.94 t20: k=1 R=0.02 cos 0.94 | single cos 0.94
+  L27 sink cols [0] smass 0.46 r1 real +0.82 plain +0.99 | t10: k=1 R=0.18 cos 0.93 t15: k=1 R=0.17 cos 0.93 t20: k=1 R=0.18 cos 0.93 | single cos 0.93
+  L28 sink cols [0] smass 0.48 r1 real +0.78 plain +0.98 | t10: k=1 R=0.07 cos 0.92 t15: k=1 R=0.07 cos 0.92 t20: k=1 R=0.07 cos 0.92 | single cos 0.92
+  L29 sink cols [0] smass 0.63 r1 real +0.69 plain +0.99 | t10: k=1 R=0.01 cos 0.96 t15: k=1 R=0.01 cos 0.96 t20: k=1 R=0.01 cos 0.96 | single cos 0.96
+  L30 sink cols [0] smass 0.63 r1 real +0.23 plain +0.99 | t10: k=1 R=0.01 cos 0.98 t15: k=1 R=0.01 cos 0.98 t20: k=1 R=0.01 cos 0.98 | single cos 0.98
+  L31 sink cols [0, 12, 14, 15, 17] smass 0.27 r1 real +0.33 plain +0.95 | t10: k=2 R=0.50 cos 0.75 t15: k=1 R=0.64 cos 0.70 t20: k=1 R=0.80 cos 0.63 | single cos 0.60
+  L32 sink cols [0, 1, 5, 12, 14, 15, 17, 30] smass 0.44 r1 real -0.40 plain +0.82 | t10: k=2 R=0.09 cos 0.79 t15: k=2 R=0.07 cos 0.79 t20: k=1 R=0.21 cos 0.80 | single cos 0.73
+  L33 sink cols [0, 1, 5, 12, 14, 15, 17, 30] smass 0.51 r1 real -0.55 plain +0.74 | t10: k=2 R=0.07 cos 0.78 t15: k=2 R=0.07 cos 0.81 t20: k=1 R=0.22 cos 0.84 | single cos 0.78
+  L34 sink cols [0, 7, 12, 14, 15, 17, 30] smass 0.22 r1 real +0.67 plain +0.96 | t10: k=1 R=0.30 cos 0.66 t15: k=1 R=0.38 cos 0.66 t20: k=1 R=0.39 cos 0.66 | single cos 0.61
+  L35 sink cols [0, 1, 5, 7, 12, 14, 15, 17, 30] smass 0.25 r1 real +0.67 plain +0.97 | t10: k=1 R=0.41 cos 0.76 t15: k=1 R=0.42 cos 0.76 t20: k=1 R=0.41 cos 0.76 | single cos 0.70
+MULTICOL_DONE
