@@ -296,3 +296,53 @@ Primary statistics (T3.1): per-pair z against the plain ensemble and rho
 excess over the plain surrogate are primary in preregistration 6; r1 enters
 only the law (S4), restricted to layers with cv(gn) >= 0.1, with the
 unrestricted value reported alongside.
+
+## Rerun round (2026-09-10, preregistration 6, local MPS)
+
+All thirteen models under one protocol with the fixed instruments: 48
+windows from distinct documents at T = 64 (protocol A) and 6 windows at
+T = 256 for the dissociation control (protocol B). Frozen and pushed
+(3d5b337, 20:13 UTC) before execution; twelve models ran from 20:15 to
+22:33 UTC, OLMo-2 from 22:35 to 23:25 UTC once the disk had freed
+(RUNLOG.md). Qwen2.5-0.5B and Qwen2.5-3B calibrated the instruments and
+are excluded from the tallies. Scorecard (`eval_rerun.py` ->
+`rerun_results.json`; 11 testable models, 207 high-sink layers in
+protocol A, 182 in protocol B):
+
+- S1' pass 11 of 11, at 100 percent of high-sink layers in every model.
+- S2' pass 11 of 11: R_z < 0.4 at 71 to 100 percent of high-sink layers.
+  TinyLlama, the round-2 exception at 57 percent with one column, is at
+  71 percent; OLMo-2, the round-3 exception at 19 percent, is at 79.
+- S3' pass 11 of 11, at 100 percent of high-sink layers in every model.
+  With the wrapped-target control at T = 256 the shared mode collapses to
+  a median 0.07 to 0.09 of the real rho and the median per-pair z rises
+  from 78 to 271 (Mistral-7B, 32 of 32 layers), 88 to 295 (Phi-3-mini, 27
+  of 27) and 43 to 184 (OLMo-2, 11 of 11); r1 is restored above 0.8 at 96
+  to 100 percent of layers (secondary clause).
+- S4 pass: Spearman(shared energy, r1) = -0.70 [-0.76, -0.62] over the 182
+  layers with cv(gn) >= 0.1 (25 ill-conditioned layers excluded), -0.75
+  over all 207.
+- Secondary clauses: R_r1 < 0.4 at 89 percent or more of high-sink layers
+  in every model. The shift control passes the robust clauses in 11 of 11
+  models, Pythia-160m lowest at 75 percent with r1 restored at 50 percent,
+  as the toy predicted for that control. altsink-v2 at T = 256 passes the
+  robust clauses in every model with r1 restored at 96 percent or more,
+  which confirms that its round-3 failure was the 64-token causal width.
+- Sanity anchor: the development model's per-layer values at 48 windows
+  agree with the 12-window tier-1 run (Spearman across layers 0.99 for
+  r1, shared energy, sink mass and z; largest difference 0.12 in r1) and
+  its broken-layer set {9, 11, 16, 17, 20, 21} is identical.
+
+OLMo-2 texture: the modal sink column is 0 at every high-sink layer, but
+the modal column changes across 5 to 22 of the 48 windows per layer, and
+the sink set has two columns in the median window (three at most). The
+set captures 0.59 to 0.98 of column mass against 0.41 to 0.66 for the
+single column and lifts the cosine to the sink-set operator to 0.88 to
+0.91. Four of its 19 high-sink layers still have R_z above 0.4 (layers
+25, 26, 29, 30: 0.50 to 0.85), so the column set resolves most, not all,
+of the window-varying sink.
+
+Reading: the three registered failures of the earlier instruments (S2 on
+TinyLlama and OLMo-2, S3 at 32 heads) resolve under the fixed instruments
+without moving any threshold, and S1 to S4 hold in 11 of 11
+out-of-calibration models under one protocol.

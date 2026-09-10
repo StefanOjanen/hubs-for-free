@@ -62,3 +62,12 @@ of models at or above 3B parameters after their run so the two 7B models
 fit the disk in sequence. Downloads run at about 1 MB/s behind the upload,
 so the round is expected to take many hours; results appear per model in
 `rerun/` and the evaluation is `eval_rerun.py`.
+The twelve queued models completed at 2026-09-10 22:33 UTC (2 h 18 min;
+the download rate recovered once the photo archive had left the disk).
+Phi-3-mini ran in float32 under the precision policy (3.8B parameters);
+Mistral-7B and Qwen2.5-7B in bfloat16. OLMo-2-7B launched at 22:35 UTC
+under the same frozen file (`rerun_round.py --purge-large`, log
+`rerun_round_olmo.log`), 129 GB free.
+OLMo-2-7B completed at 23:25 UTC (52 min, bfloat16, 19 high-sink layers);
+its cache was purged. All thirteen models are in `rerun/`; scorecard in
+`rerun_results.json` and NOTE.md.

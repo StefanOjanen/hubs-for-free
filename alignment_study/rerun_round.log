@@ -1,0 +1,695 @@
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+[transformers] The following generation flags are not valid and may be ignored: ['output_attentions']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 7994.91it/s]
+gpt2 DEVICE mps DTYPE float32 layers 12 heads 12
+    window 1/48 T=64
+    window 2/48 T=64
+    window 3/48 T=64
+    window 4/48 T=64
+    window 5/48 T=64
+    window 6/48 T=64
+    window 7/48 T=64
+    window 8/48 T=64
+    window 9/48 T=64
+    window 10/48 T=64
+    window 11/48 T=64
+    window 12/48 T=64
+    window 13/48 T=64
+    window 14/48 T=64
+    window 15/48 T=64
+    window 16/48 T=64
+    window 17/48 T=64
+    window 18/48 T=64
+    window 19/48 T=64
+    window 20/48 T=64
+    window 21/48 T=64
+    window 22/48 T=64
+    window 23/48 T=64
+    window 24/48 T=64
+    window 25/48 T=64
+    window 26/48 T=64
+    window 27/48 T=64
+    window 28/48 T=64
+    window 29/48 T=64
+    window 30/48 T=64
+    window 31/48 T=64
+    window 32/48 T=64
+    window 33/48 T=64
+    window 34/48 T=64
+    window 35/48 T=64
+    window 36/48 T=64
+    window 37/48 T=64
+    window 38/48 T=64
+    window 39/48 T=64
+    window 40/48 T=64
+    window 41/48 T=64
+    window 42/48 T=64
+    window 43/48 T=64
+    window 44/48 T=64
+    window 45/48 T=64
+    window 46/48 T=64
+    window 47/48 T=64
+    window 48/48 T=64
+    window 1/6 T=256
+    window 2/6 T=256
+    window 3/6 T=256
+    window 4/6 T=256
+    window 5/6 T=256
+    window 6/6 T=256
+MODEL_DONE gpt2 layers=12 high_sink=9 dtype=float32 108.4s
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 12630.19it/s]
+gpt2-medium DEVICE mps DTYPE float32 layers 24 heads 16
+    window 1/48 T=64
+    window 2/48 T=64
+    window 3/48 T=64
+    window 4/48 T=64
+    window 5/48 T=64
+    window 6/48 T=64
+    window 7/48 T=64
+    window 8/48 T=64
+    window 9/48 T=64
+    window 10/48 T=64
+    window 11/48 T=64
+    window 12/48 T=64
+    window 13/48 T=64
+    window 14/48 T=64
+    window 15/48 T=64
+    window 16/48 T=64
+    window 17/48 T=64
+    window 18/48 T=64
+    window 19/48 T=64
+    window 20/48 T=64
+    window 21/48 T=64
+    window 22/48 T=64
+    window 23/48 T=64
+    window 24/48 T=64
+    window 25/48 T=64
+    window 26/48 T=64
+    window 27/48 T=64
+    window 28/48 T=64
+    window 29/48 T=64
+    window 30/48 T=64
+    window 31/48 T=64
+    window 32/48 T=64
+    window 33/48 T=64
+    window 34/48 T=64
+    window 35/48 T=64
+    window 36/48 T=64
+    window 37/48 T=64
+    window 38/48 T=64
+    window 39/48 T=64
+    window 40/48 T=64
+    window 41/48 T=64
+    window 42/48 T=64
+    window 43/48 T=64
+    window 44/48 T=64
+    window 45/48 T=64
+    window 46/48 T=64
+    window 47/48 T=64
+    window 48/48 T=64
+    window 1/6 T=256
+    window 2/6 T=256
+    window 3/6 T=256
+    window 4/6 T=256
+    window 5/6 T=256
+    window 6/6 T=256
+MODEL_DONE gpt2-medium layers=24 high_sink=19 dtype=float32 392.8s
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 3660.90it/s]
+EleutherAI/pythia-160m DEVICE mps DTYPE float32 layers 12 heads 12
+    window 1/48 T=64
+    window 2/48 T=64
+    window 3/48 T=64
+    window 4/48 T=64
+    window 5/48 T=64
+    window 6/48 T=64
+    window 7/48 T=64
+    window 8/48 T=64
+    window 9/48 T=64
+    window 10/48 T=64
+    window 11/48 T=64
+    window 12/48 T=64
+    window 13/48 T=64
+    window 14/48 T=64
+    window 15/48 T=64
+    window 16/48 T=64
+    window 17/48 T=64
+    window 18/48 T=64
+    window 19/48 T=64
+    window 20/48 T=64
+    window 21/48 T=64
+    window 22/48 T=64
+    window 23/48 T=64
+    window 24/48 T=64
+    window 25/48 T=64
+    window 26/48 T=64
+    window 27/48 T=64
+    window 28/48 T=64
+    window 29/48 T=64
+    window 30/48 T=64
+    window 31/48 T=64
+    window 32/48 T=64
+    window 33/48 T=64
+    window 34/48 T=64
+    window 35/48 T=64
+    window 36/48 T=64
+    window 37/48 T=64
+    window 38/48 T=64
+    window 39/48 T=64
+    window 40/48 T=64
+    window 41/48 T=64
+    window 42/48 T=64
+    window 43/48 T=64
+    window 44/48 T=64
+    window 45/48 T=64
+    window 46/48 T=64
+    window 47/48 T=64
+    window 48/48 T=64
+    window 1/6 T=256
+    window 2/6 T=256
+    window 3/6 T=256
+    window 4/6 T=256
+    window 5/6 T=256
+    window 6/6 T=256
+MODEL_DONE pythia-160m layers=12 high_sink=8 dtype=float32 134.8s
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights:  97%|█████████▋| 283/292 [00:00<00:00, 2829.04it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 2891.95it/s]
+EleutherAI/pythia-410m DEVICE mps DTYPE float32 layers 24 heads 16
+    window 1/48 T=64
+    window 2/48 T=64
+    window 3/48 T=64
+    window 4/48 T=64
+    window 5/48 T=64
+    window 6/48 T=64
+    window 7/48 T=64
+    window 8/48 T=64
+    window 9/48 T=64
+    window 10/48 T=64
+    window 11/48 T=64
+    window 12/48 T=64
+    window 13/48 T=64
+    window 14/48 T=64
+    window 15/48 T=64
+    window 16/48 T=64
+    window 17/48 T=64
+    window 18/48 T=64
+    window 19/48 T=64
+    window 20/48 T=64
+    window 21/48 T=64
+    window 22/48 T=64
+    window 23/48 T=64
+    window 24/48 T=64
+    window 25/48 T=64
+    window 26/48 T=64
+    window 27/48 T=64
+    window 28/48 T=64
+    window 29/48 T=64
+    window 30/48 T=64
+    window 31/48 T=64
+    window 32/48 T=64
+    window 33/48 T=64
+    window 34/48 T=64
+    window 35/48 T=64
+    window 36/48 T=64
+    window 37/48 T=64
+    window 38/48 T=64
+    window 39/48 T=64
+    window 40/48 T=64
+    window 41/48 T=64
+    window 42/48 T=64
+    window 43/48 T=64
+    window 44/48 T=64
+    window 45/48 T=64
+    window 46/48 T=64
+    window 47/48 T=64
+    window 48/48 T=64
+    window 1/6 T=256
+    window 2/6 T=256
+    window 3/6 T=256
+    window 4/6 T=256
+    window 5/6 T=256
+    window 6/6 T=256
+MODEL_DONE pythia-410m layers=24 high_sink=18 dtype=float32 309.0s
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 69484.47it/s]
+TinyLlama/TinyLlama_v1.1 DEVICE mps DTYPE float32 layers 22 heads 32
+    window 1/48 T=64
+    window 2/48 T=64
+    window 3/48 T=64
+    window 4/48 T=64
+    window 5/48 T=64
+    window 6/48 T=64
+    window 7/48 T=64
+    window 8/48 T=64
+    window 9/48 T=64
+    window 10/48 T=64
+    window 11/48 T=64
+    window 12/48 T=64
+    window 13/48 T=64
+    window 14/48 T=64
+    window 15/48 T=64
+    window 16/48 T=64
+    window 17/48 T=64
+    window 18/48 T=64
+    window 19/48 T=64
+    window 20/48 T=64
+    window 21/48 T=64
+    window 22/48 T=64
+    window 23/48 T=64
+    window 24/48 T=64
+    window 25/48 T=64
+    window 26/48 T=64
+    window 27/48 T=64
+    window 28/48 T=64
+    window 29/48 T=64
+    window 30/48 T=64
+    window 31/48 T=64
+    window 32/48 T=64
+    window 33/48 T=64
+    window 34/48 T=64
+    window 35/48 T=64
+    window 36/48 T=64
+    window 37/48 T=64
+    window 38/48 T=64
+    window 39/48 T=64
+    window 40/48 T=64
+    window 41/48 T=64
+    window 42/48 T=64
+    window 43/48 T=64
+    window 44/48 T=64
+    window 45/48 T=64
+    window 46/48 T=64
+    window 47/48 T=64
+    window 48/48 T=64
+    window 1/6 T=256
+    window 2/6 T=256
+    window 3/6 T=256
+    window 4/6 T=256
+    window 5/6 T=256
+    window 6/6 T=256
+MODEL_DONE TinyLlama_v1.1 layers=22 high_sink=7 dtype=float32 836.9s
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:00<01:31,  3.14it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 779.28it/s]
+Qwen/Qwen2.5-0.5B DEVICE mps DTYPE float32 layers 24 heads 14
+    window 1/48 T=64
+    window 2/48 T=64
+    window 3/48 T=64
+    window 4/48 T=64
+    window 5/48 T=64
+    window 6/48 T=64
+    window 7/48 T=64
+    window 8/48 T=64
+    window 9/48 T=64
+    window 10/48 T=64
+    window 11/48 T=64
+    window 12/48 T=64
+    window 13/48 T=64
+    window 14/48 T=64
+    window 15/48 T=64
+    window 16/48 T=64
+    window 17/48 T=64
+    window 18/48 T=64
+    window 19/48 T=64
+    window 20/48 T=64
+    window 21/48 T=64
+    window 22/48 T=64
+    window 23/48 T=64
+    window 24/48 T=64
+    window 25/48 T=64
+    window 26/48 T=64
+    window 27/48 T=64
+    window 28/48 T=64
+    window 29/48 T=64
+    window 30/48 T=64
+    window 31/48 T=64
+    window 32/48 T=64
+    window 33/48 T=64
+    window 34/48 T=64
+    window 35/48 T=64
+    window 36/48 T=64
+    window 37/48 T=64
+    window 38/48 T=64
+    window 39/48 T=64
+    window 40/48 T=64
+    window 41/48 T=64
+    window 42/48 T=64
+    window 43/48 T=64
+    window 44/48 T=64
+    window 45/48 T=64
+    window 46/48 T=64
+    window 47/48 T=64
+    window 48/48 T=64
+    window 1/6 T=256
+    window 2/6 T=256
+    window 3/6 T=256
+    window 4/6 T=256
+    window 5/6 T=256
+    window 6/6 T=256
+MODEL_DONE Qwen2.5-0.5B layers=24 high_sink=16 dtype=float32 220.5s
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:   0%|          | 1/338 [00:01<06:12,  1.11s/it]Loading weights:  51%|█████     | 171/338 [00:01<00:00, 173.83it/s]Loading weights:  65%|██████▌   | 220/338 [00:02<00:01, 116.52it/s]Loading weights:  74%|███████▍  | 250/338 [00:02<00:00, 111.12it/s]Loading weights:  80%|████████  | 272/338 [00:02<00:00, 106.76it/s]Loading weights:  86%|████████▌ | 289/338 [00:03<00:00, 76.06it/s] Loading weights:  89%|████████▉ | 302/338 [00:03<00:00, 75.95it/s]Loading weights:  93%|█████████▎| 313/338 [00:03<00:00, 73.61it/s]Loading weights:  96%|█████████▌| 323/338 [00:03<00:00, 68.22it/s]Loading weights:  98%|█████████▊| 331/338 [00:03<00:00, 67.05it/s]Loading weights: 100%|██████████| 338/338 [00:03<00:00, 87.35it/s]
+Qwen/Qwen2.5-1.5B DEVICE mps DTYPE float32 layers 28 heads 12
+    window 1/48 T=64
+    window 2/48 T=64
+    window 3/48 T=64
+    window 4/48 T=64
+    window 5/48 T=64
+    window 6/48 T=64
+    window 7/48 T=64
+    window 8/48 T=64
+    window 9/48 T=64
+    window 10/48 T=64
+    window 11/48 T=64
+    window 12/48 T=64
+    window 13/48 T=64
+    window 14/48 T=64
+    window 15/48 T=64
+    window 16/48 T=64
+    window 17/48 T=64
+    window 18/48 T=64
+    window 19/48 T=64
+    window 20/48 T=64
+    window 21/48 T=64
+    window 22/48 T=64
+    window 23/48 T=64
+    window 24/48 T=64
+    window 25/48 T=64
+    window 26/48 T=64
+    window 27/48 T=64
+    window 28/48 T=64
+    window 29/48 T=64
+    window 30/48 T=64
+    window 31/48 T=64
+    window 32/48 T=64
+    window 33/48 T=64
+    window 34/48 T=64
+    window 35/48 T=64
+    window 36/48 T=64
+    window 37/48 T=64
+    window 38/48 T=64
+    window 39/48 T=64
+    window 40/48 T=64
+    window 41/48 T=64
+    window 42/48 T=64
+    window 43/48 T=64
+    window 44/48 T=64
+    window 45/48 T=64
+    window 46/48 T=64
+    window 47/48 T=64
+    window 48/48 T=64
+    window 1/6 T=256
+    window 2/6 T=256
+    window 3/6 T=256
+    window 4/6 T=256
+    window 5/6 T=256
+    window 6/6 T=256
+MODEL_DONE Qwen2.5-1.5B layers=28 high_sink=21 dtype=float32 237.1s
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:  22%|██▏       | 75/338 [00:00<00:00, 717.98it/s]Loading weights:  48%|████▊     | 161/338 [00:00<00:00, 794.75it/s]Loading weights:  71%|███████▏  | 241/338 [00:00<00:00, 766.86it/s]Loading weights:  94%|█████████▍| 318/338 [00:01<00:00, 152.10it/s]Loading weights: 100%|██████████| 338/338 [00:01<00:00, 202.94it/s]
+Qwen/Qwen2.5-1.5B-Instruct DEVICE mps DTYPE float32 layers 28 heads 12
+    window 1/48 T=64
+    window 2/48 T=64
+    window 3/48 T=64
+    window 4/48 T=64
+    window 5/48 T=64
+    window 6/48 T=64
+    window 7/48 T=64
+    window 8/48 T=64
+    window 9/48 T=64
+    window 10/48 T=64
+    window 11/48 T=64
+    window 12/48 T=64
+    window 13/48 T=64
+    window 14/48 T=64
+    window 15/48 T=64
+    window 16/48 T=64
+    window 17/48 T=64
+    window 18/48 T=64
+    window 19/48 T=64
+    window 20/48 T=64
+    window 21/48 T=64
+    window 22/48 T=64
+    window 23/48 T=64
+    window 24/48 T=64
+    window 25/48 T=64
+    window 26/48 T=64
+    window 27/48 T=64
+    window 28/48 T=64
+    window 29/48 T=64
+    window 30/48 T=64
+    window 31/48 T=64
+    window 32/48 T=64
+    window 33/48 T=64
+    window 34/48 T=64
+    window 35/48 T=64
+    window 36/48 T=64
+    window 37/48 T=64
+    window 38/48 T=64
+    window 39/48 T=64
+    window 40/48 T=64
+    window 41/48 T=64
+    window 42/48 T=64
+    window 43/48 T=64
+    window 44/48 T=64
+    window 45/48 T=64
+    window 46/48 T=64
+    window 47/48 T=64
+    window 48/48 T=64
+    window 1/6 T=256
+    window 2/6 T=256
+    window 3/6 T=256
+    window 4/6 T=256
+    window 5/6 T=256
+    window 6/6 T=256
+MODEL_DONE Qwen2.5-1.5B-Instruct layers=28 high_sink=21 dtype=float32 443.9s
+Loading weights:   0%|          | 0/434 [00:00<?, ?it/s]Loading weights:   0%|          | 1/434 [00:01<08:10,  1.13s/it]Loading weights:  34%|███▍      | 147/434 [00:01<00:01, 160.66it/s]Loading weights:  50%|█████     | 219/434 [00:02<00:02, 100.94it/s]Loading weights:  60%|██████    | 261/434 [00:04<00:03, 55.17it/s] Loading weights:  66%|██████▋   | 288/434 [00:04<00:02, 55.48it/s]Loading weights:  71%|███████   | 307/434 [00:05<00:02, 48.13it/s]Loading weights:  74%|███████▍  | 321/434 [00:05<00:02, 47.83it/s]Loading weights:  76%|███████▋  | 332/434 [00:05<00:02, 46.87it/s]Loading weights:  79%|███████▊  | 341/434 [00:06<00:02, 37.61it/s]Loading weights:  81%|████████  | 351/434 [00:06<00:02, 40.66it/s]Loading weights:  82%|████████▏ | 358/434 [00:06<00:01, 38.75it/s]Loading weights:  84%|████████▍ | 364/434 [00:06<00:01, 36.19it/s]Loading weights:  85%|████████▌ | 369/434 [00:07<00:01, 35.35it/s]Loading weights:  86%|████████▋ | 375/434 [00:07<00:01, 32.35it/s]Loading weights:  89%|████████▉ | 387/434 [00:07<00:01, 32.42it/s]Loading weights:  92%|█████████▏| 399/434 [00:07<00:00, 36.57it/s]Loading weights:  93%|█████████▎| 403/434 [00:08<00:00, 31.89it/s]Loading weights:  95%|█████████▍| 411/434 [00:08<00:00, 34.32it/s]Loading weights:  96%|█████████▌| 415/434 [00:08<00:00, 32.72it/s]Loading weights:  97%|█████████▋| 423/434 [00:08<00:00, 33.05it/s]Loading weights: 100%|██████████| 434/434 [00:08<00:00, 49.41it/s]
+Qwen/Qwen2.5-3B DEVICE mps DTYPE float32 layers 36 heads 16
+    window 1/48 T=64
+    window 2/48 T=64
+    window 3/48 T=64
+    window 4/48 T=64
+    window 5/48 T=64
+    window 6/48 T=64
+    window 7/48 T=64
+    window 8/48 T=64
+    window 9/48 T=64
+    window 10/48 T=64
+    window 11/48 T=64
+    window 12/48 T=64
+    window 13/48 T=64
+    window 14/48 T=64
+    window 15/48 T=64
+    window 16/48 T=64
+    window 17/48 T=64
+    window 18/48 T=64
+    window 19/48 T=64
+    window 20/48 T=64
+    window 21/48 T=64
+    window 22/48 T=64
+    window 23/48 T=64
+    window 24/48 T=64
+    window 25/48 T=64
+    window 26/48 T=64
+    window 27/48 T=64
+    window 28/48 T=64
+    window 29/48 T=64
+    window 30/48 T=64
+    window 31/48 T=64
+    window 32/48 T=64
+    window 33/48 T=64
+    window 34/48 T=64
+    window 35/48 T=64
+    window 36/48 T=64
+    window 37/48 T=64
+    window 38/48 T=64
+    window 39/48 T=64
+    window 40/48 T=64
+    window 41/48 T=64
+    window 42/48 T=64
+    window 43/48 T=64
+    window 44/48 T=64
+    window 45/48 T=64
+    window 46/48 T=64
+    window 47/48 T=64
+    window 48/48 T=64
+    window 1/6 T=256
+    window 2/6 T=256
+    window 3/6 T=256
+    window 4/6 T=256
+    window 5/6 T=256
+    window 6/6 T=256
+MODEL_DONE Qwen2.5-3B layers=36 high_sink=28 dtype=float32 459.5s
+PURGED cache /Users/stefanojanen/.cache/huggingface/hub/models--Qwen--Qwen2.5-3B
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]Fetching 2 files:  50%|█████     | 1/2 [06:59<06:59, 419.79s/it]Fetching 2 files: 100%|██████████| 2/2 [08:26<00:00, 223.64s/it]Fetching 2 files: 100%|██████████| 2/2 [08:26<00:00, 253.06s/it]
+Loading weights:   0%|          | 0/195 [00:00<?, ?it/s]Loading weights:   1%|          | 1/195 [00:00<01:54,  1.69it/s]Loading weights:   1%|          | 2/195 [00:01<01:35,  2.02it/s]Loading weights:   6%|▌         | 11/195 [00:01<00:17, 10.72it/s]Loading weights:   9%|▊         | 17/195 [00:01<00:16, 10.87it/s]Loading weights:  12%|█▏        | 23/195 [00:02<00:13, 12.62it/s]Loading weights:  15%|█▍        | 29/195 [00:02<00:13, 11.88it/s]Loading weights:  18%|█▊        | 35/195 [00:03<00:13, 11.78it/s]Loading weights:  21%|██        | 41/195 [00:03<00:12, 12.09it/s]Loading weights:  24%|██▍       | 47/195 [00:04<00:12, 11.98it/s]Loading weights:  27%|██▋       | 53/195 [00:05<00:13, 10.80it/s]Loading weights:  30%|███       | 59/195 [00:05<00:12, 10.72it/s]Loading weights:  33%|███▎      | 65/195 [00:06<00:11, 10.93it/s]Loading weights:  36%|███▋      | 71/195 [00:06<00:11, 10.58it/s]Loading weights:  39%|███▉      | 77/195 [00:07<00:11, 10.35it/s]Loading weights:  43%|████▎     | 83/195 [00:07<00:10, 10.37it/s]Loading weights:  46%|████▌     | 89/195 [00:08<00:10, 10.59it/s]Loading weights:  49%|████▊     | 95/195 [00:08<00:09, 10.81it/s]Loading weights:  52%|█████▏    | 101/195 [00:09<00:08, 11.14it/s]Loading weights:  55%|█████▍    | 107/195 [00:10<00:07, 11.17it/s]Loading weights:  58%|█████▊    | 113/195 [00:10<00:07, 11.09it/s]Loading weights:  61%|██████    | 119/195 [00:11<00:07, 10.72it/s]Loading weights:  64%|██████▍   | 125/195 [00:11<00:06, 10.86it/s]Loading weights:  67%|██████▋   | 131/195 [00:12<00:05, 10.76it/s]Loading weights:  70%|███████   | 137/195 [00:12<00:05, 10.81it/s]Loading weights:  73%|███████▎  | 143/195 [00:13<00:04, 10.90it/s]Loading weights:  76%|███████▋  | 149/195 [00:13<00:03, 11.68it/s]Loading weights:  79%|███████▉  | 155/195 [00:14<00:03, 12.08it/s]Loading weights:  83%|████████▎ | 161/195 [00:14<00:02, 12.45it/s]Loading weights:  86%|████████▌ | 167/195 [00:15<00:02, 12.81it/s]Loading weights:  89%|████████▊ | 173/195 [00:15<00:01, 12.55it/s]Loading weights:  92%|█████████▏| 179/195 [00:16<00:01, 12.62it/s]Loading weights:  95%|█████████▍| 185/195 [00:16<00:00, 13.04it/s]Loading weights:  98%|█████████▊| 191/195 [00:16<00:00, 14.97it/s]Loading weights: 100%|██████████| 195/195 [00:16<00:00, 11.63it/s]
+microsoft/Phi-3-mini-4k-instruct DEVICE mps DTYPE float32 layers 32 heads 32
+    window 1/48 T=64
+    window 2/48 T=64
+    window 3/48 T=64
+    window 4/48 T=64
+    window 5/48 T=64
+    window 6/48 T=64
+    window 7/48 T=64
+    window 8/48 T=64
+    window 9/48 T=64
+    window 10/48 T=64
+    window 11/48 T=64
+    window 12/48 T=64
+    window 13/48 T=64
+    window 14/48 T=64
+    window 15/48 T=64
+    window 16/48 T=64
+    window 17/48 T=64
+    window 18/48 T=64
+    window 19/48 T=64
+    window 20/48 T=64
+    window 21/48 T=64
+    window 22/48 T=64
+    window 23/48 T=64
+    window 24/48 T=64
+    window 25/48 T=64
+    window 26/48 T=64
+    window 27/48 T=64
+    window 28/48 T=64
+    window 29/48 T=64
+    window 30/48 T=64
+    window 31/48 T=64
+    window 32/48 T=64
+    window 33/48 T=64
+    window 34/48 T=64
+    window 35/48 T=64
+    window 36/48 T=64
+    window 37/48 T=64
+    window 38/48 T=64
+    window 39/48 T=64
+    window 40/48 T=64
+    window 41/48 T=64
+    window 42/48 T=64
+    window 43/48 T=64
+    window 44/48 T=64
+    window 45/48 T=64
+    window 46/48 T=64
+    window 47/48 T=64
+    window 48/48 T=64
+    window 1/6 T=256
+    window 2/6 T=256
+    window 3/6 T=256
+    window 4/6 T=256
+    window 5/6 T=256
+    window 6/6 T=256
+MODEL_DONE Phi-3-mini-4k-instruct layers=32 high_sink=29 dtype=float32 1585.1s
+PURGED cache /Users/stefanojanen/.cache/huggingface/hub/models--microsoft--Phi-3-mini-4k-instruct
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]Fetching 2 files:  50%|█████     | 1/2 [10:37<10:37, 637.62s/it]Fetching 2 files: 100%|██████████| 2/2 [15:50<00:00, 446.63s/it]Fetching 2 files: 100%|██████████| 2/2 [15:50<00:00, 475.28s/it]
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 6974.93it/s]
+mistralai/Mistral-7B-v0.1 DEVICE mps DTYPE bfloat16 layers 32 heads 32
+    window 1/48 T=64
+    window 2/48 T=64
+    window 3/48 T=64
+    window 4/48 T=64
+    window 5/48 T=64
+    window 6/48 T=64
+    window 7/48 T=64
+    window 8/48 T=64
+    window 9/48 T=64
+    window 10/48 T=64
+    window 11/48 T=64
+    window 12/48 T=64
+    window 13/48 T=64
+    window 14/48 T=64
+    window 15/48 T=64
+    window 16/48 T=64
+    window 17/48 T=64
+    window 18/48 T=64
+    window 19/48 T=64
+    window 20/48 T=64
+    window 21/48 T=64
+    window 22/48 T=64
+    window 23/48 T=64
+    window 24/48 T=64
+    window 25/48 T=64
+    window 26/48 T=64
+    window 27/48 T=64
+    window 28/48 T=64
+    window 29/48 T=64
+    window 30/48 T=64
+    window 31/48 T=64
+    window 32/48 T=64
+    window 33/48 T=64
+    window 34/48 T=64
+    window 35/48 T=64
+    window 36/48 T=64
+    window 37/48 T=64
+    window 38/48 T=64
+    window 39/48 T=64
+    window 40/48 T=64
+    window 41/48 T=64
+    window 42/48 T=64
+    window 43/48 T=64
+    window 44/48 T=64
+    window 45/48 T=64
+    window 46/48 T=64
+    window 47/48 T=64
+    window 48/48 T=64
+    window 1/6 T=256
+    window 2/6 T=256
+    window 3/6 T=256
+    window 4/6 T=256
+    window 5/6 T=256
+    window 6/6 T=256
+MODEL_DONE Mistral-7B-v0.1 layers=32 high_sink=32 dtype=bfloat16 1917.5s
+PURGED cache /Users/stefanojanen/.cache/huggingface/hub/models--mistralai--Mistral-7B-v0.1
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files:  25%|██▌       | 1/4 [13:13<39:40, 793.35s/it]Fetching 4 files:  50%|█████     | 2/4 [13:18<10:59, 329.55s/it]Fetching 4 files:  75%|███████▌  | 3/4 [14:40<03:36, 216.70s/it]Fetching 4 files: 100%|██████████| 4/4 [16:57<00:00, 185.09s/it]Fetching 4 files: 100%|██████████| 4/4 [16:57<00:00, 254.32s/it]
+Loading weights:   0%|          | 0/339 [00:00<?, ?it/s]Loading weights: 100%|██████████| 339/339 [00:00<00:00, 6734.60it/s]
+Qwen/Qwen2.5-7B DEVICE mps DTYPE bfloat16 layers 28 heads 28
+    window 1/48 T=64
+    window 2/48 T=64
+    window 3/48 T=64
+    window 4/48 T=64
+    window 5/48 T=64
+    window 6/48 T=64
+    window 7/48 T=64
+    window 8/48 T=64
+    window 9/48 T=64
+    window 10/48 T=64
+    window 11/48 T=64
+    window 12/48 T=64
+    window 13/48 T=64
+    window 14/48 T=64
+    window 15/48 T=64
+    window 16/48 T=64
+    window 17/48 T=64
+    window 18/48 T=64
+    window 19/48 T=64
+    window 20/48 T=64
+    window 21/48 T=64
+    window 22/48 T=64
+    window 23/48 T=64
+    window 24/48 T=64
+    window 25/48 T=64
+    window 26/48 T=64
+    window 27/48 T=64
+    window 28/48 T=64
+    window 29/48 T=64
+    window 30/48 T=64
+    window 31/48 T=64
+    window 32/48 T=64
+    window 33/48 T=64
+    window 34/48 T=64
+    window 35/48 T=64
+    window 36/48 T=64
+    window 37/48 T=64
+    window 38/48 T=64
+    window 39/48 T=64
+    window 40/48 T=64
+    window 41/48 T=64
+    window 42/48 T=64
+    window 43/48 T=64
+    window 44/48 T=64
+    window 45/48 T=64
+    window 46/48 T=64
+    window 47/48 T=64
+    window 48/48 T=64
+    window 1/6 T=256
+    window 2/6 T=256
+    window 3/6 T=256
+    window 4/6 T=256
+    window 5/6 T=256
+    window 6/6 T=256
+MODEL_DONE Qwen2.5-7B layers=28 high_sink=24 dtype=bfloat16 1666.1s
+PURGED cache /Users/stefanojanen/.cache/huggingface/hub/models--Qwen--Qwen2.5-7B
+EXCLUDED (run later under the same preregistration) allenai/OLMo-2-1124-7B
+RERUN_DONE

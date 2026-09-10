@@ -199,6 +199,45 @@ cb.ax.set_xticklabels(["0", "512", "2k", "8k", "32k", "143k"], fontsize=10); cb.
 cb.set_label("training step", color=INK2, fontsize=11)
 fig.savefig(OUT + "fig7_training_dynamics.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
+
+# ============ Figure 8: dissociation under the fixed control (preregistration 6) ============
+RR = {}
+for f in glob.glob("alignment_study/rerun/*.json"):
+    c = json.load(open(f)); RR[c["model"]] = c
+CALIB = {"Qwen/Qwen2.5-0.5B", "Qwen/Qwen2.5-3B"}
+HEADS = {"gpt2": 12, "gpt2-medium": 16, "EleutherAI/pythia-160m": 12, "EleutherAI/pythia-410m": 16, "TinyLlama/TinyLlama_v1.1": 32,
+         "Qwen/Qwen2.5-1.5B": 12, "Qwen/Qwen2.5-1.5B-Instruct": 12, "microsoft/Phi-3-mini-4k-instruct": 32,
+         "mistralai/Mistral-7B-v0.1": 32, "Qwen/Qwen2.5-7B": 28, "allenai/OLMo-2-1124-7B": 32}
+order = sorted([m for m in RR if m not in CALIB], key=lambda m: (HEADS.get(m, 0), m))
+fig, ax = plt.subplots(1, 2, figsize=(8.8, 4.9), gridspec_kw={"wspace": 0.3, "top": 0.86, "bottom": 0.3, "width_ratios": [1.25, 1]})
+rng8 = np.random.default_rng(0)
+for i, m in enumerate(order):
+    rows = [r for r in RR[m]["protocol_B"]["rows"] if r["smass"] > 0.4]
+    col = S2 if HEADS.get(m, 0) >= 32 else S1
+    y = [r["rho_wrapped"] / r["rho_real"] for r in rows]
+    ax[0].scatter(i + rng8.uniform(-0.18, 0.18, len(y)), y, s=26, color=col, edgecolors=SURF, linewidths=0.9, zorder=3)
+ax[0].axhline(0.5, color=INK2, lw=1.2, zorder=2); ax[0].text(len(order) - 0.6, 0.53, "registered threshold 0.5", color=INK2, fontsize=10, ha="right", va="bottom")
+ax[0].set_ylim(0, 0.6); ax[0].set_xlim(-0.6, len(order) - 0.4)
+short = {"gpt2": "GPT-2", "gpt2-medium": "GPT-2 M", "EleutherAI/pythia-160m": "Pythia 160m", "EleutherAI/pythia-410m": "Pythia 410m", "TinyLlama/TinyLlama_v1.1": "TinyLlama",
+         "Qwen/Qwen2.5-1.5B": "Qwen 1.5B", "Qwen/Qwen2.5-1.5B-Instruct": "Qwen 1.5B-I", "microsoft/Phi-3-mini-4k-instruct": "Phi-3 mini",
+         "mistralai/Mistral-7B-v0.1": "Mistral 7B", "Qwen/Qwen2.5-7B": "Qwen 7B", "allenai/OLMo-2-1124-7B": "OLMo-2 7B"}
+ax[0].set_xticks(range(len(order))); ax[0].set_xticklabels([f"{short[m]}\n{HEADS[m]} heads" for m in order], fontsize=8.5, rotation=90)
+ax[0].set_ylabel("shared mode under the control, as a fraction of real"); ax[0].grid(axis="x", visible=False)
+style(ax[0], "The shared mode collapses", "182 high-sink layers, eleven models, T = 256")
+for m in order:
+    rows = [r for r in RR[m]["protocol_B"]["rows"] if r["smass"] > 0.4]
+    col = S2 if HEADS.get(m, 0) >= 32 else S1
+    ax[1].scatter([r["zmed_real"] for r in rows], [r["zmed_wrapped"] for r in rows], s=26, color=col, edgecolors=SURF, linewidths=0.9, zorder=3)
+lim = max(max(r["zmed_wrapped"] for m in order for r in RR[m]["protocol_B"]["rows"] if r["smass"] > 0.4), 10) * 1.05
+lo = min(min(r["zmed_real"] for m in order for r in RR[m]["protocol_B"]["rows"] if r["smass"] > 0.4), 0) - 10
+ax[1].plot([lo, lim], [lo, lim], color=INK2, lw=1.2, zorder=2); ax[1].text(150, 150 + 14, "equal", color=INK2, fontsize=10, rotation=21, ha="right", va="bottom")
+ax[1].set_xlim(lo, 175); ax[1].set_ylim(lo, lim)
+ax[1].set_xlabel("per-pair z of the real layer"); ax[1].set_ylabel("per-pair z under the control")
+ax[1].scatter([], [], color=S1, s=40, label="12 to 28 heads"); ax[1].scatter([], [], color=S2, s=40, label="32 heads")
+ax[1].legend(loc="upper left", fontsize=10)
+style(ax[1], "Commutators grow", "per-pair z, control against real")
+fig.savefig(OUT + "fig8_dissociation_fixed.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
 # ============ Illustrations (conceptual, drawn at display size, 2x PNG) ============
 CARD, CARD_EDGE, SHADOW = "#f3f2ee", "#dedcd6", "#000000"
 plt.rcParams["axes.grid"] = False

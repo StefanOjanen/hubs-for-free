@@ -56,7 +56,9 @@ Mistral-7B, Phi-3-mini, OLMo-2-7B) that component is the ideal sink
 operator at every one of them, with cosine 0.71 to 1.00 and above 0.87 at
 91 percent of layers. It carries 0.51 to 0.99 of each head's energy. It
 spans grouped-query KV groups, so the architecture does not create it, and
-instruction tuning leaves it untouched.
+instruction tuning leaves it untouched. A later rerun of all thirteen
+models under one protocol, with 48 windows per model and the instruments
+fixed, reproduces this at every high-sink layer of every model.
 
 <p align="center"><img src="figures/readme/illus1_shared_operator.png" alt="Diagram of three attention heads decomposed into a shared sink operator plus a per-head residual" width="880"></p>
 
@@ -76,7 +78,10 @@ trained attention behave as they do: a surrogate that preserves each
 row's sharpness, self-mass, and one number per row, the sink-column
 entry, reproduces the real coupling statistics layer by layer, to three
 decimals at the deepest layers of Mistral-7B. At this resolution the
-statistics contain nothing else.
+statistics contain nothing else. Where the sink wanders between columns
+from one input to the next (OLMo-2), a set of at most three columns does
+the same job: the model that failed the one-column test at 19 percent of
+layers passes the column-set test at 79.
 
 <p align="center"><img src="figures/readme/illus3_two_mechanisms.png" alt="Diagram showing that norm heterogeneity in random matrices and a shared column in trained models produce the same hub and eigengap" width="880"></p>
 
@@ -87,22 +92,33 @@ concentrated but on different columns show the opposite signature in
 synthetic ensembles and in redesigned controls on five held-out models:
 the shared mode collapses, the rank-one geometry returns, and commutators
 grow rather than shrink. What the heads share is a column, not a habit of
-sharpness. (At 32 heads the control loses power and the dissociation at
-7B stands as unconfirmed rather than assumed.)
+sharpness. The first control lost its power at 32 heads, and a toy sweep
+found the reason: in 64-token windows half of the rows cannot host 32
+distinct target columns, so no permutation can misalign such a layer. At
+256 tokens, with a control that treats every row alike, the dissociation
+holds at every high-sink layer of every one of eleven models. In
+Mistral-7B the shared mode falls to a tenth and the median per-pair z
+rises from 78 to 271 across all 32 layers.
 
 <p align="center"><img src="figures/readme/fig6_alignment_not_concentration.png" alt="Two-panel chart of shared-energy fraction and rank-1 correlation against sink strength for heads sharing one column versus heads on distinct columns" width="880"></p>
 
 <p align="center"><em>Same per-head concentration, opposite outcomes: only the shared column builds the shared mode and collapses the geometry.</em></p>
 
+<p align="center"><img src="figures/readme/fig8_dissociation_fixed.png" alt="Two-panel chart of the dissociation control at 256 tokens across eleven models: the shared mode's collapse ratio per layer, and the per-pair z of the control against the real value" width="880"></p>
+
+<p align="center"><em>The fixed control on 182 high-sink layers of eleven models at 256 tokens: the shared mode collapses below half everywhere, and commutators grow at every layer, 32-head models included.</em></p>
+
 **One number per layer predicts the geometry, and the prediction
 transfers.** The layer's shared-energy fraction predicts its coupling
 statistic at Spearman -0.76 across the high-sink layers of five held-out
 models at or below 1.5B, and again at -0.76 in a separately preregistered
-3B-to-7B round of 130 layers. A fully synthetic toy ensemble, built from
-nothing but noise plus one shared column, places the regime flip between
-shared energy 0.85 and 0.93, exactly where the real layers flip. Three
-numbers per head reproduce the development model's depth profile at
-Spearman 0.81.
+3B-to-7B round of 130 layers, and at -0.70 (interval -0.76 to -0.62)
+over 182 layers when all thirteen models were rerun under one protocol
+with the ill-conditioned layers excluded. A fully synthetic toy ensemble,
+built from nothing but noise plus one shared column, places the regime
+flip between shared energy 0.85 and 0.93, exactly where the real layers
+flip. Three numbers per head reproduce the development model's depth
+profile at Spearman 0.81.
 
 <p align="center"><img src="figures/readme/fig5_alignment_law.png" alt="Scatter of rank-1 correlation against shared-energy fraction for two held-out rounds, with the toy-ensemble curve and its regime-flip band" width="880"></p>
 
@@ -206,21 +222,24 @@ Each instrument below exists because a finding above required it.
 
 ## Evidence standard
 
-Four preregistrations with numeric thresholds and falsification clauses
+Five preregistrations with numeric thresholds and falsification clauses
 were frozen in git before their runs (`alignment_study/PREREGISTRATION.md`,
-`PREREGISTRATION2.md`, `PREREGISTRATION3.md`, `PREREGISTRATION5.md`; the
-second committed before the held-out models were downloaded, the third
-and the fifth pushed publicly before execution, evaluation scripts
-committed before results existed). Registered predictions that failed are
+`PREREGISTRATION2.md`, `PREREGISTRATION3.md`, `PREREGISTRATION5.md`,
+`PREREGISTRATION6.md`; the second committed before the held-out models
+were downloaded, the third, fifth and sixth pushed publicly before
+execution, evaluation scripts committed before results existed). Registered predictions that failed are
 reported as failures, not reinterpreted: the universal-breakdown
 prediction (A1), the first dissociation control (A7, design flaw
 documented and replaced), the sharp regime-edge threshold (H4b),
 one-column sufficiency on TinyLlama (H2) and OLMo-2 (S2), the
 dissociation control at 32 heads (S3), and early sink formation on
 Pythia-160m (D4). Out of sample, 7 of 8 registered clauses passed in the
-sub-2B round, 3 of 4 in the 3B-to-7B round, and 5 of 5 primary clauses in
-the training-dynamics round. Development calibration that shaped a
-preregistration is committed and labeled as such. A blind reimplementation from the written specification
+sub-2B round, 3 of 4 in the 3B-to-7B round, 5 of 5 primary clauses in the
+training-dynamics round, and 4 of 4 in 11 of 11 models in the
+fixed-instrument rerun, where the earlier failures on TinyLlama, OLMo-2
+and the 32-head models resolved without moving a threshold. Development
+calibration that shaped a preregistration is committed and labeled as
+such. A blind reimplementation from the written specification
 reproduced the anchor values to four decimals; surrogate invariants hold
 to 1e-15; per-layer bootstrap confidence intervals are reported;
 adversarial review objections (statistic ill-conditioning, GQA confound,
@@ -255,10 +274,10 @@ alignment-fraction law; and the toolkit that packages the nulls.
   `.github/workflows/regenerate.yml` verify it regenerates.
 - `make_readme_figures.py` - renders every chart and illustration on this
   page from the committed result files.
-- `alignment_study/` - the shared-operator studies: four
+- `alignment_study/` - the shared-operator studies: five
   preregistrations, all scripts and result JSONs (per-checkpoint dynamics
-  results in `dynamics/`), the run log, and the study note with
-  scorecards (`NOTE.md`).
+  results in `dynamics/`, per-model rerun results in `rerun/`), the run
+  log, and the study note with scorecards (`NOTE.md`).
 - `hubsfree/`, `tests/`, `pyproject.toml` - the toolkit (v0.1.0.dev0):
   statistics, null families, battery report, CLI.
 - `audits/` - audit targets, the preregistration-4 draft, per-target
@@ -279,6 +298,8 @@ python alignment_study/tier1_robust.py      # development-model study
 python alignment_study/heldout_round.py     # five held-out models
 python alignment_study/dynamics_round.py    # Pythia checkpoints, about 22 GB of downloads
 python alignment_study/eval_dynamics.py     # dynamics scorecard D0 to D5
+python alignment_study/rerun_round.py       # thirteen models, fixed instruments, about 3 hours plus downloads
+python alignment_study/eval_rerun.py        # rerun scorecard S1' to S4
 ```
 
 Models and datasets download from Hugging Face on first use. The 3B-to-7B
@@ -294,8 +315,10 @@ Results cover thirteen models up to 7B parameters, English text and code,
 contexts up to 256 tokens, and training dynamics for two models of one
 family. Where the sink sits on a mid-sequence,
 window-varying column (OLMo-2, late Qwen2.5-3B layers) the sink-operator
-identification weakens and one-column surrogates lose their grip; the
-distinct-target dissociation control loses power at 32 heads. The
+identification weakens and one-column surrogates lose their grip, which
+a set of up to three columns repairs in most layers but not all. In
+64-token windows no permutation control can misalign 32 heads, so the
+dissociation test needs 256-token windows. The
 residual deviation directions carry structure the three-number summary
 does not capture, and one low-dispersion layer is ill-conditioned for the
 correlation statistic (diagnosed and flagged). Larger models, other
