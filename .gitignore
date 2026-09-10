@@ -37,3 +37,5 @@ private/
 *.egg-info/
 build/
 dist/
+alignment_study/rerun_smoke/
+alignment_study/rerun_smoke_results.json

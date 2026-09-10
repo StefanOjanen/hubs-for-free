@@ -1,0 +1,37 @@
+n=12 T= 64 b=2.0 | real r1  0.917 sE 0.666 | mis r1  0.470 | v2: r1  0.862 full 0.00 robust 0.00 wrapped: r1  0.915 full 0.00 robust 0.00 shift: r1  0.350 full 0.00 robust 0.00 | inv 8.9e-16 | 2s
+n=12 T= 64 b=4.0 | real r1 -0.353 sE 0.826 | mis r1  0.610 | v2: r1  0.775 full 0.25 robust 1.00 wrapped: r1  0.756 full 0.38 robust 1.00 shift: r1  0.559 full 0.12 robust 0.88 | inv 8.9e-16 | 3s
+n=12 T= 64 b=6.0 | real r1 -0.904 sE 0.951 | mis r1  0.960 | v2: r1  0.875 full 0.62 robust 1.00 wrapped: r1  0.908 full 0.88 robust 1.00 shift: r1  0.887 full 1.00 robust 1.00 | inv 8.9e-16 | 5s
+n=12 T= 64 b=8.0 | real r1 -0.971 sE 0.969 | mis r1  0.939 | v2: r1  0.850 full 0.62 robust 1.00 wrapped: r1  0.900 full 0.88 robust 1.00 shift: r1  0.918 full 0.88 robust 1.00 | inv 8.9e-16 | 7s
+n=12 T=128 b=2.0 | real r1  0.916 sE 0.611 | mis r1  0.799 | v2: r1  0.947 full 0.00 robust 0.00 wrapped: r1  0.960 full 0.00 robust 0.00 shift: r1  0.460 full 0.00 robust 0.00 | inv 8.9e-16 | 15s
+n=12 T=128 b=4.0 | real r1  0.148 sE 0.696 | mis r1 -0.197 | v2: r1  0.616 full 0.12 robust 1.00 wrapped: r1  0.629 full 0.12 robust 1.00 shift: r1 -0.416 full 0.00 robust 0.88 | inv 8.9e-16 | 23s
+n=12 T=128 b=6.0 | real r1 -0.889 sE 0.913 | mis r1  0.986 | v2: r1  0.969 full 1.00 robust 1.00 wrapped: r1  0.964 full 1.00 robust 1.00 shift: r1  0.940 full 1.00 robust 1.00 | inv 1.8e-15 | 32s
+n=12 T=128 b=8.0 | real r1 -0.966 sE 0.973 | mis r1  0.982 | v2: r1  0.967 full 1.00 robust 1.00 wrapped: r1  0.973 full 1.00 robust 1.00 shift: r1  0.964 full 1.00 robust 1.00 | inv 1.8e-15 | 40s
+n=12 T=256 b=2.0 | real r1  0.906 sE 0.558 | mis r1  0.707 | v2: r1  0.937 full 0.00 robust 0.00 wrapped: r1  0.940 full 0.00 robust 0.00 shift: r1  0.295 full 0.00 robust 0.00 | inv 8.9e-16 | 100s
+n=12 T=256 b=4.0 | real r1  0.001 sE 0.746 | mis r1 -0.421 | v2: r1  0.706 full 0.12 robust 1.00 wrapped: r1  0.707 full 0.12 robust 1.00 shift: r1 -0.116 full 0.00 robust 1.00 | inv 8.9e-16 | 162s
+n=12 T=256 b=6.0 | real r1 -0.847 sE 0.885 | mis r1  0.966 | v2: r1  0.987 full 1.00 robust 1.00 wrapped: r1  0.988 full 1.00 robust 1.00 shift: r1  0.981 full 1.00 robust 1.00 | inv 1.8e-15 | 221s
+n=12 T=256 b=8.0 | real r1 -0.966 sE 0.976 | mis r1  0.990 | v2: r1  0.988 full 1.00 robust 1.00 wrapped: r1  0.991 full 1.00 robust 1.00 shift: r1  0.984 full 1.00 robust 1.00 | inv 3.6e-15 | 280s
+n=16 T= 64 b=2.0 | real r1  0.898 sE 0.678 | mis r1  0.723 | v2: r1  0.872 full 0.00 robust 0.00 wrapped: r1  0.873 full 0.00 robust 0.00 shift: r1  0.380 full 0.00 robust 0.00 | inv 4.4e-16 | 283s
+n=16 T= 64 b=4.0 | real r1 -0.307 sE 0.831 | mis r1  0.623 | v2: r1  0.697 full 0.38 robust 1.00 wrapped: r1  0.675 full 0.12 robust 1.00 shift: r1  0.657 full 0.12 robust 1.00 | inv 8.9e-16 | 285s
+n=16 T= 64 b=6.0 | real r1 -0.864 sE 0.924 | mis r1  0.945 | v2: r1  0.815 full 0.75 robust 1.00 wrapped: r1  0.842 full 0.88 robust 1.00 shift: r1  0.900 full 0.88 robust 1.00 | inv 8.9e-16 | 288s
+n=16 T= 64 b=8.0 | real r1 -0.964 sE 0.984 | mis r1  0.935 | v2: r1  0.708 full 0.12 robust 1.00 wrapped: r1  0.733 full 0.38 robust 1.00 shift: r1  0.753 full 0.38 robust 1.00 | inv 8.9e-16 | 291s
+n=16 T=128 b=2.0 | real r1  0.913 sE 0.586 | mis r1  0.800 | v2: r1  0.969 full 0.00 robust 0.00 wrapped: r1  0.968 full 0.00 robust 0.00 shift: r1  0.781 full 0.00 robust 0.00 | inv 8.9e-16 | 306s
+n=16 T=128 b=4.0 | real r1 -0.126 sE 0.768 | mis r1 -0.020 | v2: r1  0.655 full 0.25 robust 1.00 wrapped: r1  0.685 full 0.00 robust 1.00 shift: r1  0.271 full 0.00 robust 1.00 | inv 8.9e-16 | 321s
+n=16 T=128 b=6.0 | real r1 -0.866 sE 0.923 | mis r1  0.942 | v2: r1  0.944 full 1.00 robust 1.00 wrapped: r1  0.958 full 1.00 robust 1.00 shift: r1  0.944 full 1.00 robust 1.00 | inv 1.8e-15 | 336s
+n=16 T=128 b=8.0 | real r1 -0.954 sE 0.972 | mis r1  0.978 | v2: r1  0.946 full 1.00 robust 1.00 wrapped: r1  0.950 full 1.00 robust 1.00 shift: r1  0.961 full 1.00 robust 1.00 | inv 1.8e-15 | 357s
+n=16 T=256 b=2.0 | real r1  0.890 sE 0.510 | mis r1  0.673 | v2: r1  0.977 full 0.00 robust 0.00 wrapped: r1  0.982 full 0.00 robust 0.00 shift: r1  0.749 full 0.00 robust 0.00 | inv 1.8e-15 | 462s
+n=16 T=256 b=4.0 | real r1  0.163 sE 0.709 | mis r1 -0.285 | v2: r1  0.550 full 0.00 robust 1.00 wrapped: r1  0.537 full 0.00 robust 1.00 shift: r1 -0.449 full 0.00 robust 0.62 | inv 8.9e-16 | 565s
+n=16 T=256 b=6.0 | real r1 -0.824 sE 0.867 | mis r1  0.918 | v2: r1  0.981 full 1.00 robust 1.00 wrapped: r1  0.980 full 1.00 robust 1.00 shift: r1  0.902 full 0.88 robust 1.00 | inv 1.8e-15 | 669s
+n=16 T=256 b=8.0 | real r1 -0.957 sE 0.948 | mis r1  0.990 | v2: r1  0.988 full 1.00 robust 1.00 wrapped: r1  0.989 full 1.00 robust 1.00 shift: r1  0.975 full 1.00 robust 1.00 | inv 1.8e-15 | 772s
+n=32 T= 64 b=2.0 | real r1  0.882 sE 0.631 | mis r1  0.820 | v2: r1  0.801 full 0.00 robust 0.00 wrapped: r1  0.863 full 0.00 robust 0.00 shift: r1  0.617 full 0.00 robust 0.00 | inv 4.4e-16 | 783s
+n=32 T= 64 b=4.0 | real r1 -0.285 sE 0.803 | mis r1  0.504 | v2: r1  0.453 full 0.00 robust 0.88 wrapped: r1  0.538 full 0.00 robust 1.00 shift: r1  0.486 full 0.00 robust 0.75 | inv 8.9e-16 | 793s
+n=32 T= 64 b=6.0 | real r1 -0.909 sE 0.926 | mis r1  0.897 | v2: r1  0.627 full 0.00 robust 1.00 wrapped: r1  0.651 full 0.00 robust 1.00 shift: r1  0.689 full 0.00 robust 1.00 | inv 8.9e-16 | 803s
+n=32 T= 64 b=8.0 | real r1 -0.954 sE 0.970 | mis r1  0.902 | v2: r1  0.530 full 0.00 robust 1.00 wrapped: r1  0.508 full 0.00 robust 1.00 shift: r1  0.676 full 0.00 robust 1.00 | inv 8.9e-16 | 813s
+n=32 T=128 b=2.0 | real r1  0.894 sE 0.604 | mis r1  0.838 | v2: r1  0.932 full 0.00 robust 0.00 wrapped: r1  0.929 full 0.00 robust 0.00 shift: r1  0.707 full 0.00 robust 0.00 | inv 8.9e-16 | 871s
+n=32 T=128 b=4.0 | real r1 -0.019 sE 0.776 | mis r1  0.143 | v2: r1  0.564 full 0.00 robust 1.00 wrapped: r1  0.492 full 0.00 robust 1.00 shift: r1 -0.011 full 0.00 robust 0.62 | inv 1.8e-15 | 929s
+n=32 T=128 b=6.0 | real r1 -0.870 sE 0.884 | mis r1  0.933 | v2: r1  0.859 full 1.00 robust 1.00 wrapped: r1  0.865 full 0.88 robust 1.00 shift: r1  0.883 full 1.00 robust 1.00 | inv 1.8e-15 | 987s
+n=32 T=128 b=8.0 | real r1 -0.958 sE 0.959 | mis r1  0.948 | v2: r1  0.797 full 0.38 robust 1.00 wrapped: r1  0.841 full 0.62 robust 1.00 shift: r1  0.836 full 0.75 robust 1.00 | inv 1.8e-15 | 1044s
+n=32 T=256 b=2.0 | real r1  0.911 sE 0.534 | mis r1  0.880 | v2: r1  0.970 full 0.00 robust 0.00 wrapped: r1  0.968 full 0.00 robust 0.00 shift: r1  0.874 full 0.00 robust 0.00 | inv 8.9e-16 | 1448s
+n=32 T=256 b=4.0 | real r1  0.146 sE 0.669 | mis r1 -0.179 | v2: r1  0.791 full 0.50 robust 1.00 wrapped: r1  0.822 full 0.50 robust 1.00 shift: r1 -0.505 full 0.00 robust 0.00 | inv 1.8e-15 | 1852s
+n=32 T=256 b=6.0 | real r1 -0.865 sE 0.887 | mis r1  0.939 | v2: r1  0.938 full 1.00 robust 1.00 wrapped: r1  0.942 full 1.00 robust 1.00 shift: r1  0.911 full 0.62 robust 1.00 | inv 1.8e-15 | 2255s
+n=32 T=256 b=8.0 | real r1 -0.958 sE 0.964 | mis r1  0.982 | v2: r1  0.954 full 1.00 robust 1.00 wrapped: r1  0.959 full 1.00 robust 1.00 shift: r1  0.947 full 1.00 robust 1.00 | inv 1.8e-15 | 2658s
+CONTROL_TOY2_DONE

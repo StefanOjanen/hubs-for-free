@@ -249,3 +249,50 @@ first; the sink then appears and becomes the shared operator within one
 checkpoint; deeper alignment carries the layer through the regime flip
 where the toy curve puts it. The alignment-fraction law holds at every
 stage with a sink, not only at convergence.
+
+## Instrument fixes (2026-09-10, development for preregistration 6)
+
+Three weaknesses recorded in rounds 1 to 3 were addressed before the
+rerun, each with a labeled development artifact.
+
+Dissociation control (T3.2; `control_redesign_toy.py`,
+`control_redesign_toy2.py`): the registered altsink-v2 plain-permutes the
+rows above a head's target, so at 32 heads half the rows of the late heads
+lose their geometry. Two alternatives were built: wrapped targets (every
+row treated alike, targets a random permutation of 1..n per draw) and a
+matched-geometry shift (each head's causal rows cyclically shifted by a
+head-specific offset, no randomization; `hubsfree.surrogate_shift`). On
+aligned toy ensembles at n in {8, 12, 14, 16, 32}, T in {64, 128, 256},
+boosts 2 to 8: (i) the r1 restoration clause is limited by the causal
+width, not by the control. At T = 64 no control restores r1 above 0.8 for
+32 heads (median 0.51 to 0.68 at boost 8) although a genuinely misaligned
+toy ensemble reaches 0.90 there, because half the rows cannot host 32
+distinct targets; at T = 128 restoration is partial (0.38 to 0.75 of
+trials at boost 8); at T = 256 it is complete for every control (8 of 8 at
+n = 12, 16, 32). This is why S3 failed in round 3 at T = 64. (ii) The two
+robust clauses, rho collapse below half and commutator elevation above the
+real value, hold in every trial for the wrapped control at every (n, T)
+with boost >= 4 (shared energy >= 0.67), for altsink-v2 in every row but
+(32, 64, 4) at 7 of 8, and for the shift control only at boost >= 6: at
+boost 4 its elevation clause fails in six rows (0 of 8 at n = 32,
+T = 256), because keeping each head's row pattern also keeps the
+plain-like part of the commutators. (iii) The shift control is the most
+faithful on r1 at intermediate concentration, where the permuting controls
+inflate it. Decision: wrapped targets as the primary S3' control on the
+robust clauses at T = 256, r1 restoration secondary, shift and altsink-v2
+reported alongside. Gate G2 of the plan passes on the toy at n = 32 under
+the robust clauses and not under the r1 clause at T = 64.
+
+Multi-column surrogates (T3.3; `multicolumn_dev_calibration.py`;
+`hubsfree.sink_columns`): sink set = modal column plus columns whose
+layer-level mass reaches 0.10, at most three. On the dev model every
+high-sink layer selects one column, so the instrument reduces to the
+registered one; on Qwen2.5-3B layers 3 to 30 likewise, while layers 31 to
+33 select two columns and the column-set surrogate cuts R_r1 from 0.21 to
+0.22 to 0.07 to 0.09 and raises the cosine to the sink-set operator at
+layer 31 from 0.60 to 0.75. OLMo-2, the round-3 exception, waits for disk.
+
+Primary statistics (T3.1): per-pair z against the plain ensemble and rho
+excess over the plain surrogate are primary in preregistration 6; r1 enters
+only the law (S4), restricted to layers with cv(gn) >= 0.1, with the
+unrestricted value reported alongside.
