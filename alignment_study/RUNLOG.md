@@ -51,3 +51,14 @@ windows) agrees between CPU and MPS float32 on every printed statistic to
 four decimals except zmed at layer 20 (10.9165 against 10.9166).
 Consequence for the 3B to 7B set: Qwen2.5-3B and Phi-3-mini run in float32
 locally; Mistral-7B, Qwen2.5-7B and OLMo-2-7B run in bfloat16 as on the T4.
+
+Rerun round (PREREGISTRATION6.md, frozen and pushed as 3d5b337 at
+2026-09-10 20:13 UTC). Launched 2026-09-10 20:15 UTC on the M1 Max with
+`--exclude=allenai/OLMo-2-1124-7B --purge-large`. OLMo-2 needs a 27 GB
+download that does not fit the 23 GB free while the author's photo archive
+uploads to Drive; it runs later under the same frozen file and its date is
+recorded here when it does. `--purge-large` removes the Hugging Face cache
+of models at or above 3B parameters after their run so the two 7B models
+fit the disk in sequence. Downloads run at about 1 MB/s behind the upload,
+so the round is expected to take many hours; results appear per model in
+`rerun/` and the evaluation is `eval_rerun.py`.
