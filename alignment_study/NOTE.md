@@ -191,3 +191,61 @@ three decimals at its deepest layers); Qwen2.5-3B's last five layers and
 all of OLMo-2 sink on mid-sequence columns rather than column 0, where
 the ideal-sink identification weakens (cos 0.61 to 0.82), marking the
 claim's boundary.
+
+## Dynamics round (2026-09-10, preregistration 5, local MPS)
+
+Pythia-160m and Pythia-410m at ten checkpoints (step0 to step143000),
+protocol of rounds 2 and 3, predictions frozen and pushed (68b65f9) before
+any checkpoint was downloaded. Development calibration on random-init
+models from config (`dynamics_dev_calibration.json`, labeled, outside the
+registered set) showed that an untrained network already has shared energy
+0.88 to 0.96, carried by the uniform causal operator that every
+near-uniform head shares, with cos(S, sink) 0.27, sink mass 0.06 and r1
+0.15 to 0.47 (degenerate, near-identical heads). The predictions were
+therefore written about the identity of the shared mode and the law, not
+about the level of shared energy. Scorecard (`eval_dynamics.py` ->
+`dynamics_results.json`; 360 cells, 152 high-sink): D0 pass (step0 max
+sink mass 0.064, max cosine 0.276 in both models). D1 pass:
+Spearman(sink mass, cos(S, sink)) = 0.935 [0.909, 0.957] over all cells.
+D1b pass: cosine above 0.7 in 100 percent of the 152 high-sink cells. D2
+pass: Spearman(shared energy, r1) = -0.736 [-0.802, -0.661] over high-sink
+cells, against -0.76 in both converged rounds. D3 pass: the first
+checkpoint at which cos(S, sink) exceeds 0.7 lies within one checkpoint of
+the first at which sink mass exceeds 0.4 in 8 of 8 final-high-sink layers
+of the 160m and 17 of 18 of the 410m. D4 (secondary) FAIL: the 160m's
+first high-sink layer appears at step 8000, later than the registered
+step 4000 (410m: step 2000). D5 (secondary, exploratory) pass: shared
+energy dips below both its step0 and its final value by more than 0.05 in
+75 percent (160m) and 96 percent (410m) of layers. Anchor: the step143000
+cell of the 410m reproduces `heldout_round.json` to four decimals in sink
+mass, shared energy and cosine, and r1 within 0.0002 (identical windows;
+surrogate draws differ). Run log: `dynamics_round.log`; per-cell results
+in `dynamics/`.
+
+Post-hoc descriptions (`posthoc_dynamics.py` -> `posthoc_dynamics.json`;
+labeled, not registered): (a) a generic interlude: at steps 512 and 1000,
+before any sink exists, the layers sit in the random-matrix regime (410m
+median r1 0.90 and 0.86, with 88 and 71 percent of layers above 0.8; 160m
+0.81 and 0.77) while shared energy has fallen from about 0.9 at
+initialization to 0.5 to 0.65; (b) sinks form abruptly, between steps
+1000 and 2000 in the 410m (0 to 13 high-sink layers) and between 4000 and
+8000 in the 160m (0 to 7), and cos(S, sink) exceeds 0.9 in the same
+checkpoint; (c) along training r1 changes sign 14 times between
+consecutive high-sink checkpoints, at interpolated shared energy 0.77 to
+0.87 (median 0.83, IQR 0.81 to 0.85), against the aligned toy curve's zero
+crossing at 0.785; (d) late reversals: four layers of the 160m (7 to 10)
+lose 0.18 to 0.24 of shared energy between their peak (steps 16000 to
+64000) and step143000 with sink mass steady, and r1 returns toward
+positive values (layer 8: shared energy 0.82 to 0.58, r1 -0.01 to +0.64);
+the 410m shows one such layer (22). Layer 0 of both models also declines,
+but that continues the interlude at low sink mass and is not a reversal.
+The converged state is therefore not the maximum-alignment state for
+every layer; whether the reversals follow the learning-rate schedule is
+open.
+
+Reading: training does not create a shared component, it replaces one.
+The uniform causal operator every untrained head carries is broken up
+first; the sink then appears and becomes the shared operator within one
+checkpoint; deeper alignment carries the layer through the regime flip
+where the toy curve puts it. The alignment-fraction law holds at every
+stage with a sink, not only at convergence.

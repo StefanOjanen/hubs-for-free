@@ -8,8 +8,9 @@ language model and it finds the same things, for a different reason: the
 attention heads of a layer are, to first order, one shared operator, and
 that operator is the attention sink. This repository follows that thread
 from a null result to a one-parameter law that holds from 0.1B to 7B
-parameters across six architecture families, and turns the instruments
-built along the way into a toolkit that anyone analyzing attention can run.
+parameters across six architecture families and along the training of two
+models, and turns the instruments built along the way into a toolkit that
+anyone analyzing attention can run.
 
 ## How the findings connect
 
@@ -107,6 +108,27 @@ Spearman 0.81.
 
 <p align="center"><em>Ten held-out models across two preregistered rounds fall along the curve a noise-plus-one-column toy predicted in advance.</em></p>
 
+**Training replaces one shared operator with another.** An untrained
+network already has a dominant shared component: with near-uniform
+attention every head carries the same causal operator, at 0.9 of its
+energy, and that component is not the sink (cosine 0.27). Ten public
+checkpoints each of Pythia-160m and Pythia-410m, with every prediction
+frozen and pushed before the first download, show what training does with
+it. The initial component is broken up first, and by step 1000 the layers
+sit in the random-matrix regime with no sink anywhere. Then the sink forms
+abruptly, between steps 1000 and 2000 in the 410m and between 4000 and
+8000 in the 160m, and in the same checkpoint the shared component becomes
+the sink operator, cosine above 0.9, in 25 of the 26 layers that end
+high-sink. From there alignment deepens and the layers ride down the same
+curve as the converged models (Spearman -0.74 across 152 checkpoint-layer
+cells), changing sign at shared energy 0.77 to 0.87, where the toy put
+the crossing. One registered secondary prediction failed: the 160m forms
+its sink later than step 4000.
+
+<p align="center"><img src="figures/readme/fig7_training_dynamics.png" alt="Two-panel chart over Pythia training checkpoints: cosine of the shared component to the sink operator against sink mass, and rank-1 correlation against shared energy with the toy curve" width="880"></p>
+
+<p align="center"><em>Left: the shared component locks onto the sink operator as the sink appears, 360 checkpoint-layer cells colored by training step. Right: the alignment law along training, on the toy curve fixed before the run.</em></p>
+
 ## What you can use today
 
 Each instrument below exists because a finding above required it.
@@ -176,24 +198,28 @@ Each instrument below exists because a finding above required it.
   `audits/PREREGISTRATION4_DRAFT.md`; results follow with the original
   authors' responses.
 - **Deriving the operator rather than measuring it.** The shared energy
-  tracks sink mass closely enough (Spearman 0.80 across depth) that a
-  closed form may exist; the training dynamics of the shared mode on
-  public Pythia checkpoints are the other open thread.
+  tracks sink mass closely enough (Spearman 0.80 across depth, and the
+  shared mode locks onto the sink within one checkpoint of its formation
+  during training) that a closed form may exist; deriving the shared
+  energy from the per-head sink profile is the next registered step.
 
 ## Evidence standard
 
-Three preregistrations with numeric thresholds and falsification clauses
+Four preregistrations with numeric thresholds and falsification clauses
 were frozen in git before their runs (`alignment_study/PREREGISTRATION.md`,
-`PREREGISTRATION2.md`, `PREREGISTRATION3.md`; the second committed before
-the held-out models were downloaded, the third pushed publicly before
-execution, evaluation scripts committed before results existed).
-Registered predictions that failed are reported as failures, not
-reinterpreted: the universal-breakdown prediction (A1), the first
-dissociation control (A7, design flaw documented and replaced), the sharp
-regime-edge threshold (H4b), one-column sufficiency on TinyLlama (H2) and
-OLMo-2 (S2), and the dissociation control at 32 heads (S3). Out of sample,
-7 of 8 registered clauses passed in the sub-2B round and 3 of 4 in the
-3B-to-7B round. A blind reimplementation from the written specification
+`PREREGISTRATION2.md`, `PREREGISTRATION3.md`, `PREREGISTRATION5.md`; the
+second committed before the held-out models were downloaded, the third
+and the fifth pushed publicly before execution, evaluation scripts
+committed before results existed). Registered predictions that failed are
+reported as failures, not reinterpreted: the universal-breakdown
+prediction (A1), the first dissociation control (A7, design flaw
+documented and replaced), the sharp regime-edge threshold (H4b),
+one-column sufficiency on TinyLlama (H2) and OLMo-2 (S2), the
+dissociation control at 32 heads (S3), and early sink formation on
+Pythia-160m (D4). Out of sample, 7 of 8 registered clauses passed in the
+sub-2B round, 3 of 4 in the 3B-to-7B round, and 5 of 5 primary clauses in
+the training-dynamics round. Development calibration that shaped a
+preregistration is committed and labeled as such. A blind reimplementation from the written specification
 reproduced the anchor values to four decimals; surrogate invariants hold
 to 1e-15; per-layer bootstrap confidence intervals are reported;
 adversarial review objections (statistic ill-conditioning, GQA confound,
@@ -228,9 +254,10 @@ alignment-fraction law; and the toolkit that packages the nulls.
   `.github/workflows/regenerate.yml` verify it regenerates.
 - `make_readme_figures.py` - renders every chart and illustration on this
   page from the committed result files.
-- `alignment_study/` - the shared-operator studies: three
-  preregistrations, all scripts and result JSONs, the run log, and the
-  study note with scorecards (`NOTE.md`).
+- `alignment_study/` - the shared-operator studies: four
+  preregistrations, all scripts and result JSONs (per-checkpoint dynamics
+  results in `dynamics/`), the run log, and the study note with
+  scorecards (`NOTE.md`).
 - `hubsfree/`, `tests/`, `pyproject.toml` - the toolkit (v0.1.0.dev0):
   statistics, null families, battery report, CLI.
 - `audits/` - audit targets, the preregistration-4 draft, per-target
@@ -249,17 +276,22 @@ python -m pytest tests                      # surrogate invariants and anchors
 python make_readme_figures.py               # the figures on this page, from the JSONs
 python alignment_study/tier1_robust.py      # development-model study
 python alignment_study/heldout_round.py     # five held-out models
+python alignment_study/dynamics_round.py    # Pythia checkpoints, about 22 GB of downloads
+python alignment_study/eval_dynamics.py     # dynamics scorecard D0 to D5
 ```
 
 Models and datasets download from Hugging Face on first use. The 3B-to-7B
 round ran on a Colab T4 from `scale_colab.ipynb`; its captured outputs and
 run history are in `alignment_study/scale_partial/` and
-`alignment_study/RUNLOG.md`.
+`alignment_study/RUNLOG.md`. The dynamics round ran on an Apple M1 Max
+through MPS; the device and precision policy and its measured fidelity
+against the CPU protocol are in `hubsfree/adapters.py` and the run log.
 
 ## Scope and open items
 
 Results cover thirteen models up to 7B parameters, English text and code,
-contexts up to 256 tokens. Where the sink sits on a mid-sequence,
+contexts up to 256 tokens, and training dynamics for two models of one
+family. Where the sink sits on a mid-sequence,
 window-varying column (OLMo-2, late Qwen2.5-3B layers) the sink-operator
 identification weakens and one-column surrogates lose their grip; the
 distinct-target dissociation control loses power at 32 heads. The

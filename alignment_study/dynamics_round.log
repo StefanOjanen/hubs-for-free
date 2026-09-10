@@ -1,0 +1,43 @@
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+[transformers] The following generation flags are not valid and may be ignored: ['output_attentions']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 17583.19it/s]
+CELL_DONE pythia-160m step0 layers=12 high_sink=0 dtype=float32 7.8s
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 13262.90it/s]
+CELL_DONE pythia-160m step512 layers=12 high_sink=0 dtype=float32 7.5s
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 13419.16it/s]
+CELL_DONE pythia-160m step1000 layers=12 high_sink=0 dtype=float32 7.5s
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 13024.97it/s]
+CELL_DONE pythia-160m step2000 layers=12 high_sink=0 dtype=float32 8.6s
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 12797.00it/s]
+CELL_DONE pythia-160m step4000 layers=12 high_sink=0 dtype=float32 8.7s
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 12530.42it/s]
+CELL_DONE pythia-160m step8000 layers=12 high_sink=7 dtype=float32 8.6s
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 10697.36it/s]
+CELL_DONE pythia-160m step16000 layers=12 high_sink=7 dtype=float32 8.6s
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 14810.61it/s]
+CELL_DONE pythia-160m step32000 layers=12 high_sink=8 dtype=float32 8.6s
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 15415.26it/s]
+CELL_DONE pythia-160m step64000 layers=12 high_sink=8 dtype=float32 8.7s
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 14298.21it/s]
+CELL_DONE pythia-160m step143000 layers=12 high_sink=8 dtype=float32 8.6s
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 13885.59it/s]
+CELL_DONE pythia-410m step0 layers=24 high_sink=0 dtype=float32 22.2s
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 12196.02it/s]
+CELL_DONE pythia-410m step512 layers=24 high_sink=0 dtype=float32 22.3s
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 9567.58it/s]
+CELL_DONE pythia-410m step1000 layers=24 high_sink=0 dtype=float32 22.1s
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 12634.75it/s]
+CELL_DONE pythia-410m step2000 layers=24 high_sink=13 dtype=float32 22.2s
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 11242.41it/s]
+CELL_DONE pythia-410m step4000 layers=24 high_sink=15 dtype=float32 22.1s
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 11964.29it/s]
+CELL_DONE pythia-410m step8000 layers=24 high_sink=16 dtype=float32 22.3s
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 12483.43it/s]
+CELL_DONE pythia-410m step16000 layers=24 high_sink=16 dtype=float32 23.2s
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 11928.05it/s]
+CELL_DONE pythia-410m step32000 layers=24 high_sink=18 dtype=float32 23.6s
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 11998.75it/s]
+CELL_DONE pythia-410m step64000 layers=24 high_sink=18 dtype=float32 23.5s
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 9604.27it/s]
+CELL_DONE pythia-410m step143000 layers=24 high_sink=18 dtype=float32 24.5s
+DYNAMICS_DONE

@@ -1,0 +1,201 @@
+{
+ "toy_r1_zero_crossing_sharedE": 0.785,
+ "generic_interlude": {
+  "pythia-410m_step512": {
+   "frac_r1_above_0.8": 0.875,
+   "median_r1": 0.902,
+   "median_sharedE": 0.648,
+   "max_smass": 0.103
+  },
+  "pythia-410m_step1000": {
+   "frac_r1_above_0.8": 0.708,
+   "median_r1": 0.855,
+   "median_sharedE": 0.518,
+   "max_smass": 0.209
+  },
+  "pythia-160m_step512": {
+   "frac_r1_above_0.8": 0.5,
+   "median_r1": 0.809,
+   "median_sharedE": 0.571,
+   "max_smass": 0.132
+  },
+  "pythia-160m_step1000": {
+   "frac_r1_above_0.8": 0.5,
+   "median_r1": 0.768,
+   "median_sharedE": 0.483,
+   "max_smass": 0.113
+  }
+ },
+ "crossings": [
+  {
+   "model": "pythia-410m",
+   "layer": 10,
+   "from_step": 2000,
+   "to_step": 4000,
+   "sharedE_at_crossing": 0.838
+  },
+  {
+   "model": "pythia-410m",
+   "layer": 11,
+   "from_step": 2000,
+   "to_step": 4000,
+   "sharedE_at_crossing": 0.838
+  },
+  {
+   "model": "pythia-410m",
+   "layer": 11,
+   "from_step": 8000,
+   "to_step": 16000,
+   "sharedE_at_crossing": 0.866
+  },
+  {
+   "model": "pythia-410m",
+   "layer": 13,
+   "from_step": 8000,
+   "to_step": 16000,
+   "sharedE_at_crossing": 0.848
+  },
+  {
+   "model": "pythia-410m",
+   "layer": 13,
+   "from_step": 32000,
+   "to_step": 64000,
+   "sharedE_at_crossing": 0.869
+  },
+  {
+   "model": "pythia-410m",
+   "layer": 16,
+   "from_step": 4000,
+   "to_step": 8000,
+   "sharedE_at_crossing": 0.823
+  },
+  {
+   "model": "pythia-410m",
+   "layer": 17,
+   "from_step": 64000,
+   "to_step": 143000,
+   "sharedE_at_crossing": 0.87
+  },
+  {
+   "model": "pythia-410m",
+   "layer": 18,
+   "from_step": 2000,
+   "to_step": 4000,
+   "sharedE_at_crossing": 0.796
+  },
+  {
+   "model": "pythia-410m",
+   "layer": 19,
+   "from_step": 2000,
+   "to_step": 4000,
+   "sharedE_at_crossing": 0.768
+  },
+  {
+   "model": "pythia-410m",
+   "layer": 20,
+   "from_step": 2000,
+   "to_step": 4000,
+   "sharedE_at_crossing": 0.779
+  },
+  {
+   "model": "pythia-410m",
+   "layer": 21,
+   "from_step": 8000,
+   "to_step": 16000,
+   "sharedE_at_crossing": 0.82
+  },
+  {
+   "model": "pythia-160m",
+   "layer": 5,
+   "from_step": 64000,
+   "to_step": 143000,
+   "sharedE_at_crossing": 0.837
+  },
+  {
+   "model": "pythia-160m",
+   "layer": 8,
+   "from_step": 32000,
+   "to_step": 64000,
+   "sharedE_at_crossing": 0.802
+  },
+  {
+   "model": "pythia-160m",
+   "layer": 9,
+   "from_step": 16000,
+   "to_step": 32000,
+   "sharedE_at_crossing": 0.822
+  }
+ ],
+ "late_reversals": {
+  "pythia-410m": [
+   {
+    "layer": 0,
+    "max_sharedE_from_step2000": 0.718,
+    "at_step": 2000,
+    "final_sharedE": 0.545,
+    "final_smass": 0.059,
+    "final_r1": 0.373
+   },
+   {
+    "layer": 22,
+    "max_sharedE_from_step2000": 0.778,
+    "at_step": 32000,
+    "final_sharedE": 0.625,
+    "final_smass": 0.602,
+    "final_r1": 0.45
+   }
+  ],
+  "pythia-160m": [
+   {
+    "layer": 0,
+    "max_sharedE_from_step2000": 0.67,
+    "at_step": 2000,
+    "final_sharedE": 0.509,
+    "final_smass": 0.066,
+    "final_r1": 0.723
+   },
+   {
+    "layer": 7,
+    "max_sharedE_from_step2000": 0.833,
+    "at_step": 64000,
+    "final_sharedE": 0.65,
+    "final_smass": 0.497,
+    "final_r1": 0.569
+   },
+   {
+    "layer": 8,
+    "max_sharedE_from_step2000": 0.818,
+    "at_step": 32000,
+    "final_sharedE": 0.581,
+    "final_smass": 0.562,
+    "final_r1": 0.638
+   },
+   {
+    "layer": 9,
+    "max_sharedE_from_step2000": 0.823,
+    "at_step": 32000,
+    "final_sharedE": 0.662,
+    "final_smass": 0.665,
+    "final_r1": 0.144
+   },
+   {
+    "layer": 10,
+    "max_sharedE_from_step2000": 0.762,
+    "at_step": 16000,
+    "final_sharedE": 0.579,
+    "final_smass": 0.616,
+    "final_r1": 0.631
+   }
+  ]
+ },
+ "crossing_summary": {
+  "n": 14,
+  "median": 0.83,
+  "iqr": [
+   0.806,
+   0.845
+  ],
+  "min": 0.768,
+  "max": 0.87
+ }
+}

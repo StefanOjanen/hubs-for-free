@@ -161,6 +161,44 @@ hs, ls = b1.get_legend_handles_labels(); fig.legend(hs, ls, loc="lower center", 
 style(b1, "Shared mode", "Same per-head concentration in both worlds"); style(b2, "Interaction geometry", "Only the shared column collapses it")
 fig.savefig(OUT + "fig6_alignment_not_concentration.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
+
+# ============ Figure 7: training dynamics (preregistration 5) ============
+STEPS = [0, 512, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 143000]
+DYN = {}
+for f in glob.glob("alignment_study/dynamics/*.json"):
+    c = json.load(open(f)); DYN.setdefault(c["model"], {})[c["step"]] = c["rows"]
+PH = json.load(open("alignment_study/posthoc_dynamics.json"))
+DR = json.load(open("alignment_study/dynamics_results.json"))
+step_colors = [CMAP(v) for v in np.linspace(0.08, 1.0, len(STEPS))]
+cells = [(k, r) for m in DYN for k, s in enumerate(STEPS) for r in DYN[m][s]]
+fig, ax = plt.subplots(1, 2, figsize=(8.8, 4.9), gridspec_kw={"wspace": 0.3, "top": 0.86, "bottom": 0.24})
+for k, r in cells:
+    ax[0].scatter(r["smass"], r["cosS"], s=34, color=step_colors[k], edgecolors=SURF, linewidths=1.0, zorder=3)
+ax[0].axvline(0.4, color=GRID, lw=1.2, zorder=1); ax[0].axhline(0.7, color=GRID, lw=1.2, zorder=1)
+ax[0].text(0.41, 0.03, "high-sink\nthreshold", color=MUTED, fontsize=9.5, va="bottom")
+ax[0].annotate("step 0: the uniform\ncausal operator", xy=(0.11, 0.3), xytext=(0.32, 0.36), color=INK2, fontsize=10, va="center",
+               arrowprops=dict(arrowstyle="-", color=MUTED, lw=1.0, shrinkA=0, shrinkB=6))
+ax[0].text(0.83, 0.66, "sink formed: the shared\nmode is the sink operator", color=INK2, fontsize=10, va="top", ha="right")
+ax[0].set_xlim(0, 0.85); ax[0].set_ylim(0, 1.03); ax[0].set_xlabel("sink mass of the layer"); ax[0].set_ylabel("cos(shared component, sink operator)")
+style(ax[0], "The shared mode follows the sink", f"all 360 cells, Spearman {DR['D']['D1']['spearman']:.2f}")
+tc = sorted((r["sharedE"], r["r1"]) for r in TOY["aligned"])
+ax[1].plot([e for e, _ in tc], [v for _, v in tc], color=S3, lw=2.6, zorder=2, label="toy curve")
+for k, r in cells:
+    if r["smass"] > 0.4:
+        ax[1].scatter(r["sharedE"], r["r1_real"], s=34, color=step_colors[k], edgecolors=SURF, linewidths=1.0, zorder=3)
+cs = PH["crossing_summary"]
+ax[1].axvspan(cs["min"], cs["max"], color=S2, alpha=0.10, lw=0, zorder=1)
+ax[1].text(0.455, -0.36, f"r1 changes sign along training\nat shared energy {cs['min']:.2f} to {cs['max']:.2f}\n({cs['n']} crossings, median {cs['median']:.2f};\ntoy crossing {PH['toy_r1_zero_crossing_sharedE']:.2f})", color=S2, fontsize=9.5, ha="left", va="top")
+ax[1].set_xlim(0.44, 1.0); ax[1].set_ylim(-1.0, 1.05); ax[1].set_xlabel("shared-energy fraction of the layer"); ax[1].set_ylabel("rank-1 correlation r1")
+ax[1].legend(loc="lower left", fontsize=9.5, handlelength=1.6)
+style(ax[1], "The law holds along training", f"{DR['D']['D2']['n']} high-sink cells, Spearman {DR['D']['D2']['spearman']:.2f}")
+from matplotlib.colors import ListedColormap, BoundaryNorm
+cax = fig.add_axes([0.3, 0.075, 0.4, 0.028])
+cb = matplotlib.colorbar.ColorbarBase(cax, cmap=ListedColormap(step_colors), norm=BoundaryNorm(np.arange(len(STEPS) + 1) - 0.5, len(STEPS)), orientation="horizontal", ticks=[0, 1, 3, 5, 7, 9])
+cb.ax.set_xticklabels(["0", "512", "2k", "8k", "32k", "143k"], fontsize=10); cb.outline.set_visible(False); cb.ax.tick_params(length=0)
+cb.set_label("training step", color=INK2, fontsize=11)
+fig.savefig(OUT + "fig7_training_dynamics.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
 # ============ Illustrations (conceptual, drawn at display size, 2x PNG) ============
 CARD, CARD_EDGE, SHADOW = "#f3f2ee", "#dedcd6", "#000000"
 plt.rcParams["axes.grid"] = False
