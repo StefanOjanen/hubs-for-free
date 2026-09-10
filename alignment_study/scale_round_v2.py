@@ -8,14 +8,21 @@
 # 2. Commutator norms run on the GPU via torch when available.
 # 3. Runs the four models session 1 did not finish; Qwen2.5-3B's completed
 #    session-1 results are merged from the captured block at evaluation.
+# 4. Device selection (2026-09-10, after the round): cuda, then Apple MPS,
+#    then CPU, with the precision policy in hubsfree/adapters.py (float32
+#    whenever the weights fit, bfloat16 otherwise). Statistics unchanged;
+#    the local-platform fidelity check is in RUNLOG.md.
 # Validate locally with: python alignment_study/scale_round_v2.py --validate
 import json
+import os
 import sys
 import traceback
 import numpy as np
 import torch
 
 sys.path.insert(0, "alignment_study")
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from hubsfree.adapters import pick_device, pick_dtype, device_label, release_memory
 from common import (wikitext_windows, generators, gnorms, r1, rho,
                     shared_mode, sink_column, col_mass, sink_generator,
                     zstats, zmed_of)
@@ -23,8 +30,8 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 
 MODELS = ["microsoft/Phi-3-mini-4k-instruct", "allenai/OLMo-2-1124-7B"]
 NWIN, STRIDE, SEQ, KPLAIN, KFAM = 12, 40, 64, 12, 8
-CUDA = torch.cuda.is_available()
-DEV = "cuda" if CUDA else "cpu"
+DEV = pick_device("auto")
+CUDA = DEV == "cuda"
 torch.set_grad_enabled(False)
 
 
@@ -36,7 +43,7 @@ def coup_batch(Gs):
     out = np.zeros((m, n, n))
     step = max(1, int(2e8 / (n * n * T * T * 4)))
     for a in range(0, m, step):
-        g = torch.as_tensor(Gs[a:a + step], dtype=torch.float32, device=DEV)
+        g = torch.from_numpy(np.ascontiguousarray(Gs[a:a + step])).float().to(DEV)
         P = torch.einsum('maij,mbjk->mabik', g, g)
         K = P - P.permute(0, 2, 1, 3, 4)
         out[a:a + step] = K.square().sum((-1, -2)).sqrt().cpu().numpy()
@@ -131,10 +138,13 @@ def layer_stats(A, rg):
 
 def run_model(name):
     tok = AutoTokenizer.from_pretrained(name)
+    dt = pick_dtype(name, DEV, "auto")
     model = AutoModelForCausalLM.from_pretrained(
         name, output_attentions=True, attn_implementation="eager",
-        dtype=torch.bfloat16 if CUDA else torch.float32,
-        device_map="auto" if CUDA else None).eval()
+        dtype=getattr(torch, dt), device_map="auto" if CUDA else None).eval()
+    if not CUDA:
+        model = model.to(DEV)
+    print(name, "DEVICE", DEV, "DTYPE", dt, flush=True)
     L = model.config.num_hidden_layers
     wins = wikitext_windows(NWIN, STRIDE, SEQ, tok)
     rg = np.random.default_rng(0)
@@ -158,10 +168,7 @@ def run_model(name):
                            else float(np.median(vals)), 6 if k == "inv_dev" else 4)
         rows.append(agg)
     del model
-    import gc
-    gc.collect()
-    if CUDA:
-        torch.cuda.empty_cache()
+    release_memory(DEV)
     return rows
 
 
@@ -171,14 +178,15 @@ if "--validate" in sys.argv:
     tok = AutoTokenizer.from_pretrained(name)
     model = AutoModelForCausalLM.from_pretrained(
         name, output_attentions=True, attn_implementation="eager",
-        dtype=torch.float32).eval()
+        dtype=torch.float32).eval().to(DEV)
+    print("VALIDATE DEVICE", device_label(DEV), "float32", flush=True)
     wins = wikitext_windows(6, STRIDE, SEQ, tok)
     rg = np.random.default_rng(0)
     for l in (2, 11, 20):
         vals = []
         for ids in wins:
-            out = model(**ids)
-            A = out.attentions[l].squeeze(0).numpy().astype(np.float64)
+            out = model(**{k: v.to(DEV) for k, v in ids.items()})
+            A = out.attentions[l].squeeze(0).float().cpu().numpy().astype(np.float64)
             vals.append(layer_stats(A, rg))
         med = {k: float(np.median([v[k] for v in vals]))
                for k in ("r1_real", "r1_plain", "r1_sinkfix", "r1_alt2",
@@ -187,7 +195,7 @@ if "--validate" in sys.argv:
     sys.exit(0)
 
 if __name__ == "__main__":
-    print("DEVICE", "cuda:" + torch.cuda.get_device_name(0) if CUDA else "cpu", flush=True)
+    print("DEVICE", device_label(DEV), flush=True)
     res = {"models": {}}
     for name in MODELS:
         try:

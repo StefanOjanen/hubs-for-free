@@ -36,6 +36,13 @@ train_chunk.py, analyze_local.py, local_results.json, fig7). Section 7's
 pilot numbers therefore have no committed artifact; remind the user to
 upload them or mark the pilot as unreproduced.
 
+Compute since 2026-09-10 is the author's M1 Max (32 GB) through Apple MPS;
+the device and precision policy lives in hubsfree/adapters.py (float32
+whenever the weights fit, bfloat16 above about 4B parameters) and the
+measured fidelity against the CPU float32 protocol is in
+alignment_study/platform_fidelity.json and RUNLOG.md. Every model run
+writes results per model as it completes.
+
 ## Style
 
 Direct, measured, no em-dashes, no hype. Claims sized to evidence. The paper
