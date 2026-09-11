@@ -69,3 +69,10 @@ weeks to respond before any preprint; responses are published alongside.
   smoke run on Qwen2.5-0.5B at 512 tokens retrieved the needle in 4 of 4
   instances with 11.6 percent of heads above 0.1 (short contexts inflate the
   fraction, as expected). Reproduction scheduled on a 7B model.
+- Target 4 reproduction (2026-09-11, `dewage2026/reproduce.py` on
+  Mistral-7B-v0.1, 128 matrices, 21 minutes on the CPU): outlier counts per
+  matrix match the paper's Table II to within 0.3 percent (Q 1511, K 341,
+  V 212, O 1450); the paper's percentages are the outliers' share of
+  spectral energy (reproduced within 2.1 percent), not the share of
+  singular values (21 to 37 percent here). Reproduced; criteria frozen in
+  PREREGISTRATION4_DRAFT.md.

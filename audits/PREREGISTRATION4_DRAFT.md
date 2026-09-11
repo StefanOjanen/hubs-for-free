@@ -92,9 +92,41 @@ Base result R_3: [attention-map correlation clustering; fraction of heads
 mergeable at the paper's threshold on Llama-7B or the largest open
 substitute that fits the available GPU]. Statistic T_3: [fill].
 
-### Target 4: Dewage et al. (2026)
-Base result R_4: [MP outlier counts per projection matrix on one of the
-paper's models]. Statistic T_4: [fill]. Nulls: (a'), (b'), (c').
+### Target 4: Dewage et al. 2026 (criteria frozen 2026-09-11, before any battery run)
+Base result R_4, reproduced 2026-09-11 (`audits/dewage2026/reproduce.py`,
+Mistral-7B-v0.1, 128 projection matrices, the paper's recipe: gamma =
+max/min, sigma^2 = median(s^2) / (1 + gamma), lambda_plus = sigma^2
+(1 + sqrt(gamma))^2, outlier s^2 > lambda_plus): mean outliers per matrix
+Q 1510.8, K 340.6, V 211.5, O 1449.7 against the paper's 1511, 341,
+212 and 1450 (relative error at most 0.3 percent); the share of spectral
+energy in the outliers Q 89.3, K 75.7, V 43.0, O 84.4 percent against the
+paper's percentages 87.5, 74.7, 43.6 and 84.6 (relative error at most 2.1
+percent), which identifies the paper's percentage column as the energy
+share rather than the count share (the count share is 21 to 37 percent).
+Reproduction criterion (10 percent relative error) met on both.
+
+Statistic T_4: per matrix, the number of MP outliers and their energy
+share; per model, the mean over layers for each projection type.
+
+Nulls, 200 draws each where random: (a') Gaussian weights of the same shape
+and Frobenius norm (the MP null itself; expected near zero outliers);
+(b') row-norm-matched random weights: each row a random Gaussian direction
+scaled to the real row's norm; (c') within-matrix permutation of the real
+entries (keeps the entry distribution, destroys row and column structure);
+(d') the same matrices of an untrained model of the same architecture
+(config-initialized weights, five seeds), which fixes the initialization's
+own outlier count.
+
+Effect size and shrinkage: the outlier count and energy share of the real
+matrix versus the null median; shrinkage = (null median) / real.
+
+Registered expectation (an instance of E5): outliers survive (a') at the
+99th percentile in every matrix type; against (c') at least half of the
+outlier count is matched (the entry distribution alone produces MP
+outliers when it is heavy-tailed); against (b') the energy share shrinks
+by less than 50 percent (row norms do not carry the structure); (d') gives
+an untrained baseline of outliers that is reported and subtracted in the
+discussion, not in the labels.
 
 ### Target 5: Retrieval Heads (2024), positive control
 Base result R_5: [retrieval scores per head on a needle task]. Statistic

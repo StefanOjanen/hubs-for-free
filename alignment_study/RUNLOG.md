@@ -84,3 +84,10 @@ the merge round) for the seven models cached locally: gpt2, gpt2-medium,
 Pythia-160m, Pythia-410m, TinyLlama, Qwen2.5-1.5B base and Instruct. The
 five larger models run under the same frozen file once their weights are
 downloaded again (the merge round purges them after use); dates below.
+
+Audit reproductions (2026-09-11). Target 4 (Dewage 2026) reproduced on the
+Mistral-7B-v0.1 weights on the CPU while the GPU ran the merge round
+(`audits/dewage2026/reproduce.log`, 21 minutes, float32 SVD of 128
+matrices). CHAI (Target 3) and retrieval heads (Target 5) reproductions
+queued on the GPU behind the merge round (`alignment_study/mps_pipeline.log`
+records their start and end times).
