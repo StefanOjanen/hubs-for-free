@@ -319,6 +319,26 @@ if RR2:
     fig.text(0.02, 0.91, "Shared-energy fraction and sink mass by relative depth, 48 windows per model at T = 64; the line at 0.4 is the high-sink threshold", fontsize=10.5, color=INK2, va="top")
     fig.savefig(OUT + "fig11_depth_profiles.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
+
+# ============ Figure 12: the sink-profile generative model (preregistration 9) ============
+SP = [json.load(open(f)) for f in sorted(glob.glob("alignment_study/sinkprofile/*.json"))]
+if SP:
+    SPR = json.load(open("alignment_study/sinkprofile_results.json")) if glob.glob("alignment_study/sinkprofile_results.json") else None
+    fig, ax = plt.subplots(1, 2, figsize=(8.8, 4.7), gridspec_kw={"wspace": 0.3, "top": 0.86, "bottom": 0.16}, sharey=True)
+    zr = [r["z_real"] for c in SP for r in c["rows"]]; zp = [r["z_profile"] for c in SP for r in c["rows"]]; zd = [r["z_dense"] for c in SP for r in c["rows"]]
+    hs = [r["smass"] > 0.4 for c in SP for r in c["rows"]]
+    lo, hi = min(zr + zp + zd) - 2, max(zr + zp + zd) + 2
+    for a_, xs, title, sub in ((ax[0], zd, "Shared operator plus random deviations", f"pooled Spearman {SPR['P']['P4']['pooled_spearman_z_dense']:.2f}" if SPR else ""),
+                                (ax[1], zp, "Each head's own sink column plus random rest", f"pooled Spearman {SPR['P']['P4']['pooled_spearman_z_profile']:.2f}, {SPR['P']['P1']['passes']} of 12 models" if SPR else "")):
+        a_.plot([lo, hi], [lo, hi], color=GRID, lw=1.2, zorder=1)
+        a_.scatter([x for x, h in zip(xs, hs) if not h], [y for y, h in zip(zr, hs) if not h], s=20, color=SEQ[1], edgecolors=SURF, linewidths=0.8, zorder=2, label="low-sink layers")
+        a_.scatter([x for x, h in zip(xs, hs) if h], [y for y, h in zip(zr, hs) if h], s=26, color=S1, edgecolors=SURF, linewidths=0.9, zorder=3, label="high-sink layers")
+        a_.set_xlim(lo, hi); a_.set_ylim(lo, hi); a_.set_xlabel("per-pair z of the rebuilt layer")
+        style(a_, title, sub)
+    ax[0].set_ylabel("per-pair z of the real layer"); ax[0].legend(loc="upper left", fontsize=10)
+    ax[1].text(0.97, 0.05, "diagonal: rebuilt equals real", color=INK2, fontsize=9.5, ha="right", transform=ax[1].transAxes)
+    fig.savefig(OUT + "fig12_sink_profile_model.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
 # ============ Illustrations (conceptual, drawn at display size, 2x PNG) ============
 CARD, CARD_EDGE, SHADOW = "#f3f2ee", "#dedcd6", "#000000"
 plt.rcParams["axes.grid"] = False
