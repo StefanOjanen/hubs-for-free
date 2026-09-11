@@ -111,7 +111,7 @@ Statistic T_3: per layer, the mean off-diagonal Pearson correlation of the
 heads' last-token attention rows and the share of heads in the largest
 complete-linkage cluster at 0.95 (secondary: at 0.90).
 
-Nulls, 100 draws each on the same documents: (a) random causal softmax
+Nulls, 200 draws each on the same documents: (a) random causal softmax
 maps matched in n and T; (b) per-row marginal-matched surrogates of the
 full maps (the last row's entries permuted across positions); (c)
 column-set-preserving surrogates (the sink set fixed, the rest permuted);
