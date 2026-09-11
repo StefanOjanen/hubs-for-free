@@ -238,6 +238,59 @@ ax[1].legend(loc="upper left", fontsize=10)
 style(ax[1], "Commutators grow", "per-pair z, control against real")
 fig.savefig(OUT + "fig8_dissociation_fixed.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
+
+# ============ Figure 9: shared energy derived from per-head sink profiles (preregistration 8) ============
+DER = [json.load(open(f)) for f in sorted(glob.glob("alignment_study/derivation/*.json"))]
+if DER:
+    DRS = json.load(open("alignment_study/derivation_results.json")) if glob.glob("alignment_study/derivation_results.json") else None
+    fig, ax = plt.subplots(1, 2, figsize=(8.8, 4.7), gridspec_kw={"wspace": 0.3, "top": 0.86, "bottom": 0.16, "width_ratios": [1, 1]})
+    hs_x, hs_y, lo_x, lo_y, lo_d = [], [], [], [], []
+    for c in DER:
+        for r in c["rows"]:
+            (hs_x if r["smass"] > 0.4 else lo_x).append(r["derived_ideal"]); (hs_y if r["smass"] > 0.4 else lo_y).append(r["measured"])
+            if r["smass"] <= 0.4: lo_d.append(r["derived_dict"])
+    ax[0].plot([0, 1], [0, 1], color=GRID, lw=1.2, zorder=1)
+    ax[0].scatter(lo_x, lo_y, s=22, color=SEQ[1], edgecolors=SURF, linewidths=0.8, zorder=2, label="low-sink layers")
+    ax[0].scatter(hs_x, hs_y, s=30, color=S1, edgecolors=SURF, linewidths=0.9, zorder=3, label="high-sink layers")
+    ax[0].set_xlim(0, 1); ax[0].set_ylim(0, 1); ax[0].set_xlabel("derived from per-head sink mass and sharpness"); ax[0].set_ylabel("measured shared-energy fraction")
+    ax[0].legend(loc="upper left", fontsize=10)
+    ax[0].text(0.98, 0.04, "diagonal: derived equals measured", color=INK2, fontsize=9.5, ha="right", transform=ax[0].transAxes)
+    sub0 = f"{len(DER)} models, {DRS['G']['G1']['n']} high-sink layers, linear R² {DRS['G']['G1']['pearson_r2_linear']:.2f}" if DRS else f"{len(DER)} models"
+    style(ax[0], "Sink-only derivation", sub0)
+    ax[1].plot([0, 1], [0, 1], color=GRID, lw=1.2, zorder=1)
+    ax[1].scatter(lo_d, lo_y, s=22, color=SEQ[1], edgecolors=SURF, linewidths=0.8, zorder=2, label="low-sink layers")
+    ax[1].scatter([r["derived_dict"] for c in DER for r in c["rows"] if r["smass"] > 0.4], hs_y, s=30, color=S1, edgecolors=SURF, linewidths=0.9, zorder=3, label="high-sink layers")
+    ax[1].set_xlim(0, 1); ax[1].set_ylim(0, 1); ax[1].set_xlabel("derived: sink plus uniform causal operator"); ax[1].set_ylabel("measured shared-energy fraction")
+    sub1 = f"all layers: median error {DRS['G']['G4']['dict_median_abs_err_all']:.3f}" if DRS else ""
+    style(ax[1], "With the untrained operator added", sub1)
+    fig.savefig(OUT + "fig9_derived_shared_energy.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
+
+# ============ Figure 10: head-merging tolerance (preregistration 7) ============
+MER = [json.load(open(f)) for f in sorted(glob.glob("alignment_study/merge/*.json"))]
+if MER:
+    MRS = json.load(open("alignment_study/merge_results.json")) if glob.glob("alignment_study/merge_results.json") else None
+    fig, ax = plt.subplots(1, 2, figsize=(8.8, 4.7), gridspec_kw={"wspace": 0.32, "top": 0.86, "bottom": 0.16})
+    cols = [S1, S2, S3]
+    floor = 1e-4
+    for k, c in enumerate(MER):
+        rows = c["rows"]; lab = c["model"].split("/")[-1].replace("Qwen2.5-", "Qwen2.5 ")
+        xb = [max(r["dloss_bottom"], floor) for r in rows]; yt = [max(r["dloss_top"], floor) for r in rows]
+        ax[0].scatter(xb, yt, s=30, color=cols[k % 3], edgecolors=SURF, linewidths=0.9, zorder=3, label=lab)
+        ax[1].scatter([r["sharedE"] for r in rows], yt, s=30, color=cols[k % 3], edgecolors=SURF, linewidths=0.9, zorder=3, label=lab)
+    lim = [floor, 0.5]
+    ax[0].plot(lim, lim, color=GRID, lw=1.2, zorder=1); ax[0].set_xscale("log"); ax[0].set_yscale("log"); ax[0].set_xlim(lim); ax[0].set_ylim(lim)
+    ax[0].set_xlabel("loss increase, bottom-cosine pair merged (nats/token)"); ax[0].set_ylabel("loss increase, top-cosine pair merged")
+    ax[0].text(0.03, 0.97, "below the diagonal: the cosine\npicked the cheaper merge", color=INK2, fontsize=9.5, va="top", transform=ax[0].transAxes)
+    ax[0].legend(loc="lower right", fontsize=9.5)
+    sub0 = f"top cheaper than bottom in {100*np.mean([pm['frac_top_below_bottom'] for m, pm in MRS['per_model'].items()]):.0f}% of layers" if MRS else ""
+    style(ax[0], "Which pair to merge", sub0)
+    ax[1].set_yscale("log"); ax[1].set_ylim(lim); ax[1].set_xlim(0.3, 1.0)
+    ax[1].set_xlabel("shared-energy fraction of the layer"); ax[1].set_ylabel("loss increase, top-cosine pair merged")
+    sub1 = f"pooled Spearman {MRS['M']['M2']['spearman_pooled']:.2f} over {MRS['M']['M2']['n_layers']} layers" if MRS else ""
+    style(ax[1], "Does shared energy predict tolerance?", sub1)
+    fig.savefig(OUT + "fig10_head_merging.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
 # ============ Illustrations (conceptual, drawn at display size, 2x PNG) ============
 CARD, CARD_EDGE, SHADOW = "#f3f2ee", "#dedcd6", "#000000"
 plt.rcParams["axes.grid"] = False
