@@ -272,6 +272,12 @@ alignment-fraction law; and the toolkit that packages the nulls.
 
 - `paper.md` - the methods paper: what commutator-based analyses of
   attention measure, with the full null battery and a case study.
+- `manuscript.md` - the flagship draft that assembles every round, with a
+  preregistration ledger and a numbers ledger mapping each reported number
+  to its artifact; sections waiting on running rounds are marked.
+- `replicate.ipynb` - one-click replication on Colab or Kaggle: toolkit
+  demo, tests, synthetic battery regeneration, the anchor check, one
+  dynamics cell.
 - `experiments.py`, `results.json`, `figures/` - the synthetic battery
   behind paper.md Sections 3 to 4.6; `check_results.py` and
   `.github/workflows/regenerate.yml` verify it regenerates.
