@@ -302,7 +302,11 @@ registered reading applies: per-head sink mass and row sharpness fix a
 floor under the layer's shared energy that lies close to the measured
 value and orders layers correctly, but the residual above the floor is not
 a fixed fraction, so the shared energy is measured structure with a
-derived lower bound, not derived structure.
+derived lower bound, not derived structure. A post-hoc description of the
+residual: within every model it falls as the layer's sink mass rises
+(Spearman -0.84 pooled), and it is largest where the sink sits on a
+window-varying mid-sequence column (OLMo-2, median gap 0.31), which points
+to a sink-set version of the derivation as the next registered step.
 
 ### 4.6 What the deviation directions are not
 

@@ -504,3 +504,18 @@ registration of the draft.
 With Targets 1, 3, 4 and 5 reproduced or partially reproduced and Target
 2 logged, PREREGISTRATION4_DRAFT.md is ready to freeze on OSF; the
 batteries run after that.
+
+Post-hoc description of the derivation residual (labeled, computed after
+the scorecard from `derivation/*.json`): within every model the gap between
+measured and sink-derived shared energy falls as the layer's sink mass
+rises (Spearman -0.62 to -0.95 per model, -0.84 pooled over the 231
+high-sink layers; gap quartiles 0.035, 0.058, 0.099), so the floor is
+tight where the sink is strong and loose where it is weaker. Across
+models the median gap falls with mean sink mass (Spearman -0.81) and is
+largest in OLMo-2 (0.31), whose sink sits on a window-varying mid-sequence
+column that the ideal generator at the modal column misses; a sink-set
+version of the derivation is the natural repair to test. The pooled R^2
+is low mostly because the residual varies with sink mass within models
+and because two models (Phi-3-mini, Qwen2.5-3B) span a narrow measured
+range; where the range is wide the sink-only floor explains 0.87 to 0.99
+of the variance.
