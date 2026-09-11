@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it as below."
+title: "Hubs for Free: constrained surrogates for attention-structure findings"
+authors:
+  - family-names: Ojanen
+    given-names: Stefan
+repository-code: "https://github.com/StefanOjanen/hubs-for-free"
+url: "https://github.com/StefanOjanen/hubs-for-free"
+license: MIT
+version: 0.1.0.dev0
+date-released: "2026-09-11"
+keywords:
+  - attention
+  - interpretability
+  - null models
+  - surrogates
+  - attention sinks
