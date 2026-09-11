@@ -1,7 +1,8 @@
 import numpy as np
 from hubsfree import (generators, gnorms, random_causal_softmax, surrogate_plain,
                       surrogate_colfix, surrogate_altsink, surrogate_shift, coupling, rank1_corr,
-                      sink_column, sink_columns, surrogate_wrapped, run_battery, percentile_report)
+                      sink_column, sink_columns, surrogate_wrapped, run_battery, percentile_report,
+                      cos_to_sink, sink_set_generator, sink_generator, shared_mode)
 
 
 def _A(seed=0, n=14, T=26):
@@ -91,3 +92,21 @@ def test_battery_runs_on_causal_and_bidirectional_maps():
     rng = np.random.default_rng(32); lo = rng.normal(size=(4, 12, 12)); B = np.exp(lo); B /= B.sum(-1, keepdims=True)
     resb = run_battery(B, draws=4, seed=2)
     assert "sink_mass" not in resb and "wrapped" not in resb["rho"] and resb["rho"]["columns"] == [0, 11]
+
+
+def test_cos_to_sink_is_one_for_an_ideal_sink_ensemble_and_low_for_noise():
+    T, n = 40, 6
+    A = np.zeros((n, T, T))
+    for i in range(T):
+        if i > 0:
+            A[:, i, 0] = 1.0
+        else:
+            A[:, i, i] = 1.0
+    rng = np.random.default_rng(41)
+    A = 0.97 * A + 0.03 * random_causal_softmax(rng, n, T)          # near-ideal shared sink, still row-stochastic and causal
+    assert cos_to_sink(A, cols=[0]) > 0.99
+    B = random_causal_softmax(np.random.default_rng(42), n, T)
+    assert cos_to_sink(B, cols=[0]) < 0.6
+    S2 = sink_set_generator(T, [0])
+    assert np.allclose(S2, sink_generator(T, 0))
+    assert abs(np.sqrt((sink_set_generator(T, [0, 7]) ** 2).sum()) - 1.0) < 1e-12

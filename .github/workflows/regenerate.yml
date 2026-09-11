@@ -8,7 +8,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install -r requirements-ci.txt
+      - run: pip install -r requirements-ci.txt pytest
+      - run: pip install -e .
+      - run: python -m pytest -q tests
+      - run: hubsfree demo
       - run: cp results.json /tmp/results_baseline.json
       - run: python experiments.py > /tmp/experiments.log
       - run: python check_results.py results.json /tmp/results_baseline.json
