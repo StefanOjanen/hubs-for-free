@@ -50,3 +50,22 @@ weeks to respond before any preprint; responses are published alongside.
   of BERT's attention in layers 6 to 10 focuses on [SEP]", already covered
   by Target 1's model and data. Replacement pending from the alternates
   list; the choice is recorded here before any battery run.
+- Target 4 (Dewage et al. 2026): stated code URL rechecked 2026-09-11,
+  still 404. The MP recipe is fully specified in the paper (gamma =
+  max/min, sigma^2 = median(s^2)/(1 + gamma), lambda_plus =
+  sigma^2 (1 + sqrt(gamma))^2, outlier s^2 > lambda_plus) and is
+  reimplemented in `dewage2026/reproduce.py`; Table II gives per-projection
+  outlier fractions for Mistral-7B (Q 87.5, K 74.7, V 43.6, O 84.6 percent),
+  the reproduction target. Reproduction scheduled on the Mistral-7B weights.
+- Target 3 (CHAI 2024): no code released; the redundancy object (last
+  token's attention row per head over C4 contexts, Pearson correlation
+  across heads, K-means clusters with within-cluster correlation above
+  0.95, correlation increasing with depth) is reimplemented in
+  `chai/reproduce.py` (complete linkage at 0.95 and 0.90). Development run
+  on Qwen2.5-0.5B committed; reproduction scheduled on a 7B model.
+- Target 5 (Retrieval Heads 2024): retrieval score reimplemented in
+  `retrieval_heads/reproduce.py` at contexts 1K to 4K (paper: 1K to 50K,
+  about 600 instances, 3 to 6 percent of heads above 0.1). Development
+  smoke run on Qwen2.5-0.5B at 512 tokens retrieved the needle in 4 of 4
+  instances with 11.6 percent of heads above 0.1 (short contexts inflate the
+  fraction, as expected). Reproduction scheduled on a 7B model.
