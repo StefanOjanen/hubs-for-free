@@ -387,8 +387,11 @@ cross-head correlation is high at every layer (0.55 to 0.98) and layers 1
 to 6 carry one large cluster (up to 91 percent of heads at 0.95), but only
 4 of 32 layers have a majority cluster and correlation falls rather than
 rises with depth (Spearman -0.38), tracking the sink mass of the last row
-instead. Criteria frozen; the registered expectation is that the
-column-set surrogate matches both statistics.
+instead. On the paper's own OPT family (OPT-6.7B, same protocol) the split
+reverses: correlation rises with depth (0.34 to 0.70, Spearman 0.49) and no
+layer carries a majority cluster. Criteria frozen for both models; the
+registered expectation is that the column-set surrogate matches both
+statistics.
 
 Target 4, Dewage et al. (2026), singular values of the projection weights
 above the Marchenko-Pastur edge carry the learned structure. The recipe is

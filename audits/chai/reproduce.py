@@ -78,7 +78,12 @@ if __name__ == "__main__":
         return hook
 
 
-    handles = [model.model.layers[l].self_attn.register_forward_hook(make_hook(l)) for l in range(L)]
+    def attention_modules(model):
+        mods = [m for n, m in model.named_modules() if n.split(".")[-1] in ("self_attn", "self_attention", "attn", "attention") and any(c in type(m).__name__ for c in ("Attention",))]
+        assert len(mods) == model.config.num_hidden_layers, f"found {len(mods)} attention modules for {model.config.num_hidden_layers} layers"
+        return mods
+
+    handles = [m.register_forward_hook(make_hook(l)) for l, m in enumerate(attention_modules(model))]
     for k, ids in enumerate(wins):
         captured.clear()
         model(input_ids=ids.to(DEV))

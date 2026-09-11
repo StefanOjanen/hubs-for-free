@@ -109,7 +109,12 @@ correlation peaks at layers 1 to 6 and its Spearman with depth is
 mean correlation tracks the last row's mass on the sink token (0.71 at
 layer 1 with correlation 0.94; 0.25 at layer 13 with 0.71). The
 redundancy statement is reproduced; the depth statement is not, on this
-model and at this scale.
+model and at this scale. On `facebook/opt-6.7b`, the paper's own OPT family
+(same protocol), the split reverses: correlation rises with depth (0.34
+at layer 0 to 0.70 over the last quarter, Spearman 0.49) but no layer
+carries a majority cluster at 0.95 or 0.90 (largest 0.22 of heads), and the
+first-column mass of the last row is near zero until the final layers. The
+battery runs on both models; the statistics and nulls below apply to each.
 
 Statistic T_3: per layer, the mean off-diagonal Pearson correlation of the
 heads' last-token attention rows and the share of heads in the largest

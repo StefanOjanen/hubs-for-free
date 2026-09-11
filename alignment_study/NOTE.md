@@ -495,8 +495,11 @@ registration of the draft.
   T = 1024): high cross-head correlation of last-token attention rows
   everywhere and large 0.95-clusters in layers 1 to 6, but a majority
   cluster in only 4 of 32 layers and no increase with depth (Spearman -0.38);
-  the correlation tracks the last row's sink mass. Criteria frozen; the
-  column-set surrogate is expected to match both statistics.
+  the correlation tracks the last row's sink mass. On the paper's own OPT
+  family (`facebook/opt-6.7b`) the split reverses: the depth trend holds
+  (Spearman 0.49, 0.34 to 0.70) and no layer has a majority cluster (largest
+  0.22 of heads). Criteria frozen for both models; the column-set surrogate is
+  expected to match both statistics.
 - Target 5, Retrieval Heads 2024 (positive control): reproduced on
   Qwen2.5-7B at 1K and 2K contexts (20 instances): 4.2 percent of heads above
   0.1 (paper 3 to 6), needle retrieved every time. Criteria frozen.

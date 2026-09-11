@@ -92,3 +92,13 @@ weeks to respond before any preprint; responses are published alongside.
   frozen in PREREGISTRATION4_DRAFT.md. All five targets are now either
   reproduced (1, 4, 5), partially reproduced (3) or logged as not
   reproducible (2); the draft is ready to freeze on OSF.
+- Target 3 on the source's own family (2026-09-11, `chai/reproduce.py` on
+  `facebook/opt-6.7b`, 32 C4 documents at T = 1024): the paper's depth
+  statement is reproduced here (mean cross-head correlation of last-token
+  rows 0.34 at the first layer, 0.70 over the last quarter, Spearman with
+  depth 0.49), but the cluster statement is not: no layer has a majority
+  cluster at 0.95 or 0.90 (largest 0.95-cluster 0.22 of heads, at layer 29).
+  The last-token mass on the first column is near zero until the final
+  layers (0.52 at layer 31, where the correlation is highest). Mistral-7B
+  showed the opposite split (clusters yes, depth trend no); across the two
+  families the correlation follows the sink mass of the last row in both.

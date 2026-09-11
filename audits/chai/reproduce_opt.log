@@ -1,0 +1,69 @@
+[transformers] The following generation flags are not valid and may be ignored: ['output_attentions']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights:   0%|          | 0/516 [00:00<?, ?it/s]Loading weights:   0%|          | 2/516 [00:01<04:36,  1.86it/s]Loading weights:  14%|█▎        | 70/516 [00:01<00:05, 77.83it/s]Loading weights:  19%|█▉        | 99/516 [00:01<00:05, 73.97it/s]Loading weights:  23%|██▎       | 118/516 [00:02<00:08, 47.80it/s]Loading weights:  26%|██▌       | 134/516 [00:02<00:07, 48.83it/s]Loading weights:  29%|██▉       | 150/516 [00:03<00:11, 32.19it/s]Loading weights:  32%|███▏      | 166/516 [00:04<00:10, 32.08it/s]Loading weights:  35%|███▌      | 182/516 [00:05<00:12, 27.44it/s]Loading weights:  38%|███▊      | 198/516 [00:05<00:10, 30.89it/s]Loading weights:  41%|████▏     | 214/516 [00:06<00:11, 26.28it/s]Loading weights:  45%|████▍     | 230/516 [00:06<00:10, 27.52it/s]Loading weights:  48%|████▊     | 246/516 [00:07<00:10, 25.45it/s]Loading weights:  51%|█████     | 262/516 [00:07<00:09, 28.00it/s]Loading weights:  54%|█████▍    | 278/516 [00:08<00:09, 25.96it/s]Loading weights:  54%|█████▍    | 281/516 [00:08<00:09, 25.76it/s]Loading weights:  57%|█████▋    | 294/516 [00:09<00:08, 24.85it/s]Loading weights:  58%|█████▊    | 297/516 [00:09<00:08, 25.12it/s]Loading weights:  60%|██████    | 310/516 [00:10<00:09, 22.58it/s]Loading weights:  63%|██████▎   | 326/516 [00:10<00:06, 28.50it/s]Loading weights:  66%|██████▋   | 342/516 [00:11<00:06, 24.92it/s]Loading weights:  69%|██████▉   | 358/516 [00:11<00:05, 27.94it/s]Loading weights:  70%|███████   | 362/516 [00:11<00:05, 28.76it/s]Loading weights:  72%|███████▏  | 374/516 [00:12<00:05, 25.08it/s]Loading weights:  76%|███████▌  | 390/516 [00:12<00:04, 28.07it/s]Loading weights:  76%|███████▋  | 394/516 [00:12<00:04, 28.55it/s]Loading weights:  79%|███████▊  | 406/516 [00:13<00:04, 24.49it/s]Loading weights:  82%|████████▏ | 422/516 [00:14<00:03, 28.14it/s]Loading weights:  85%|████████▍ | 438/516 [00:14<00:03, 24.69it/s]Loading weights:  88%|████████▊ | 454/516 [00:15<00:02, 25.94it/s]Loading weights:  89%|████████▊ | 457/516 [00:15<00:02, 25.89it/s]Loading weights:  91%|█████████ | 470/516 [00:16<00:01, 23.00it/s]Loading weights:  94%|█████████▍| 486/516 [00:16<00:01, 26.55it/s]Loading weights:  95%|█████████▍| 489/516 [00:16<00:01, 26.49it/s]Loading weights:  97%|█████████▋| 502/516 [00:17<00:00, 26.10it/s]Loading weights: 100%|██████████| 516/516 [00:17<00:00, 29.88it/s]
+facebook/opt-6.7b DEVICE mps:Apple M1 Max (21.3 GB working set) DTYPE bfloat16 layers 32 heads 32 T 1024 samples 32
+sample 1 / 32
+sample 2 / 32
+sample 3 / 32
+sample 4 / 32
+sample 5 / 32
+sample 6 / 32
+sample 7 / 32
+sample 8 / 32
+sample 9 / 32
+sample 10 / 32
+sample 11 / 32
+sample 12 / 32
+sample 13 / 32
+sample 14 / 32
+sample 15 / 32
+sample 16 / 32
+sample 17 / 32
+sample 18 / 32
+sample 19 / 32
+sample 20 / 32
+sample 21 / 32
+sample 22 / 32
+sample 23 / 32
+sample 24 / 32
+sample 25 / 32
+sample 26 / 32
+sample 27 / 32
+sample 28 / 32
+sample 29 / 32
+sample 30 / 32
+sample 31 / 32
+sample 32 / 32
+  L 0 mean corr 0.337 sink(last row) 0.00 | 0.95: clusters 32 largest 0.03 in2+ 0.00 | 0.90: largest 0.06 in2+ 0.06
+  L 1 mean corr 0.547 sink(last row) 0.04 | 0.95: clusters 28 largest 0.12 in2+ 0.19 | 0.90: largest 0.19 in2+ 0.38
+  L 2 mean corr 0.598 sink(last row) 0.02 | 0.95: clusters 29 largest 0.06 in2+ 0.19 | 0.90: largest 0.09 in2+ 0.44
+  L 3 mean corr 0.570 sink(last row) 0.03 | 0.95: clusters 31 largest 0.06 in2+ 0.06 | 0.90: largest 0.06 in2+ 0.44
+  L 4 mean corr 0.578 sink(last row) 0.05 | 0.95: clusters 29 largest 0.06 in2+ 0.19 | 0.90: largest 0.12 in2+ 0.53
+  L 5 mean corr 0.532 sink(last row) 0.05 | 0.95: clusters 28 largest 0.12 in2+ 0.19 | 0.90: largest 0.19 in2+ 0.44
+  L 6 mean corr 0.516 sink(last row) 0.05 | 0.95: clusters 27 largest 0.19 in2+ 0.19 | 0.90: largest 0.19 in2+ 0.34
+  L 7 mean corr 0.539 sink(last row) 0.02 | 0.95: clusters 31 largest 0.06 in2+ 0.06 | 0.90: largest 0.12 in2+ 0.41
+  L 8 mean corr 0.576 sink(last row) 0.01 | 0.95: clusters 32 largest 0.03 in2+ 0.00 | 0.90: largest 0.06 in2+ 0.12
+  L 9 mean corr 0.614 sink(last row) 0.01 | 0.95: clusters 32 largest 0.03 in2+ 0.00 | 0.90: largest 0.06 in2+ 0.25
+  L10 mean corr 0.624 sink(last row) 0.01 | 0.95: clusters 32 largest 0.03 in2+ 0.00 | 0.90: largest 0.06 in2+ 0.06
+  L11 mean corr 0.614 sink(last row) 0.01 | 0.95: clusters 32 largest 0.03 in2+ 0.00 | 0.90: largest 0.06 in2+ 0.06
+  L12 mean corr 0.600 sink(last row) 0.02 | 0.95: clusters 32 largest 0.03 in2+ 0.00 | 0.90: largest 0.06 in2+ 0.12
+  L13 mean corr 0.648 sink(last row) 0.02 | 0.95: clusters 32 largest 0.03 in2+ 0.00 | 0.90: largest 0.06 in2+ 0.06
+  L14 mean corr 0.582 sink(last row) 0.02 | 0.95: clusters 30 largest 0.09 in2+ 0.09 | 0.90: largest 0.16 in2+ 0.16
+  L15 mean corr 0.587 sink(last row) 0.03 | 0.95: clusters 32 largest 0.03 in2+ 0.00 | 0.90: largest 0.06 in2+ 0.06
+  L16 mean corr 0.640 sink(last row) 0.02 | 0.95: clusters 32 largest 0.03 in2+ 0.00 | 0.90: largest 0.03 in2+ 0.00
+  L17 mean corr 0.619 sink(last row) 0.02 | 0.95: clusters 32 largest 0.03 in2+ 0.00 | 0.90: largest 0.06 in2+ 0.06
+  L18 mean corr 0.546 sink(last row) 0.06 | 0.95: clusters 31 largest 0.06 in2+ 0.06 | 0.90: largest 0.06 in2+ 0.19
+  L19 mean corr 0.543 sink(last row) 0.05 | 0.95: clusters 32 largest 0.03 in2+ 0.00 | 0.90: largest 0.06 in2+ 0.06
+  L20 mean corr 0.508 sink(last row) 0.08 | 0.95: clusters 32 largest 0.03 in2+ 0.00 | 0.90: largest 0.03 in2+ 0.00
+  L21 mean corr 0.595 sink(last row) 0.08 | 0.95: clusters 32 largest 0.03 in2+ 0.00 | 0.90: largest 0.03 in2+ 0.00
+  L22 mean corr 0.524 sink(last row) 0.10 | 0.95: clusters 32 largest 0.03 in2+ 0.00 | 0.90: largest 0.03 in2+ 0.00
+  L23 mean corr 0.527 sink(last row) 0.10 | 0.95: clusters 32 largest 0.03 in2+ 0.00 | 0.90: largest 0.03 in2+ 0.00
+  L24 mean corr 0.533 sink(last row) 0.15 | 0.95: clusters 32 largest 0.03 in2+ 0.00 | 0.90: largest 0.06 in2+ 0.06
+  L25 mean corr 0.640 sink(last row) 0.25 | 0.95: clusters 30 largest 0.09 in2+ 0.09 | 0.90: largest 0.12 in2+ 0.28
+  L26 mean corr 0.624 sink(last row) 0.29 | 0.95: clusters 29 largest 0.09 in2+ 0.16 | 0.90: largest 0.12 in2+ 0.25
+  L27 mean corr 0.663 sink(last row) 0.32 | 0.95: clusters 28 largest 0.09 in2+ 0.22 | 0.90: largest 0.16 in2+ 0.31
+  L28 mean corr 0.733 sink(last row) 0.37 | 0.95: clusters 27 largest 0.09 in2+ 0.25 | 0.90: largest 0.28 in2+ 0.53
+  L29 mean corr 0.766 sink(last row) 0.46 | 0.95: clusters 24 largest 0.22 in2+ 0.31 | 0.90: largest 0.31 in2+ 0.53
+  L30 mean corr 0.831 sink(last row) 0.52 | 0.95: clusters 23 largest 0.16 in2+ 0.38 | 0.90: largest 0.41 in2+ 0.69
+  L31 mean corr 0.784 sink(last row) 0.52 | 0.95: clusters 23 largest 0.22 in2+ 0.34 | 0.90: largest 0.50 in2+ 0.56
+SUMMARY {"depth_spearman_mean_corr": 0.49, "layers_with_largest_cluster_majority_t95": 0, "layers_with_largest_cluster_majority_t90": 0, "mean_corr_first_layer": 0.3373, "mean_corr_last_quarter": 0.6969}
+CHAI_DONE audits/chai/opt-6.7b
