@@ -567,3 +567,45 @@ the success of the sink-column surrogate are three views of that one
 fact. This is the construction to register as the generative model of
 T4.3, with the prediction that it reproduces r1 and z per layer on the
 twelve other models.
+
+## Sink-profile round (2026-09-11, preregistration 9, the generative model)
+
+Twelve models, 310 layers; frozen and pushed (6e6b253, 14:32 UTC) before
+execution, run 14:32 to 15:33 UTC on the M1 Max. Each head rebuilt from its
+real sink column alone plus a random skew remainder of the remaining norm
+with zero entries in that column and row; the dense rebuild (a_h S plus a
+random remainder orthogonal to S) alongside. Scorecard
+(`eval_sinkprofile.py` -> `sinkprofile_results.json`):
+
+- P1 PASS 11 of 12: Spearman between real and rebuilt per-layer z is 0.85
+  to 0.99 in eleven models (dense rebuild -0.66 to +0.82) and 0.31 in
+  TinyLlama.
+- P2 PASS 11 of 12: median absolute error of the rebuilt z is 0.5 to 1.5
+  z-units in ten models and 4.5 in OLMo-2 (dense 15 to 22); TinyLlama's
+  2.2 passes the error clause while failing the ordering clause.
+- P3 PASS 11 of 12 (secondary): Spearman for r1 is 0.80 to 0.99; TinyLlama
+  0.56.
+- P4 PASS: pooled over 310 layers, Spearman(real z, rebuilt z) = 0.95
+  (dense 0.13).
+- Reported: the sink column holds a median 0.63 (OLMo-2) to 0.96
+  (Mistral) of each head's generator energy at high-sink layers.
+
+Post hoc, labeled (`posthoc_sinkprofile.py`): over the 231 high-sink layers
+the rebuilt z matches the real one at Spearman 0.98 with a median error of
+0.75 z-units; over the 79 low-sink layers 0.78 and 1.8. TinyLlama's failure
+is confined to its fourteen low-sink layers (sink mass 0.03 to 0.29), where
+the real z is -3 to -12 without a sink to explain it while the rebuild
+gives -0.5 to -2; at its seven high-sink layers the rebuild follows the
+real values (layers 4 to 8: -3.0, -9.1, -12.1, -5.3, -0.6 real against
+-9.5, -10.9, -12.8, -7.2, -1.1). OLMo-2's larger error comes from its
+window-varying sink column, as in every round.
+
+Reading: at the resolution of these statistics a layer's heads are their
+sink-column profiles plus noise. The shared operator (rounds 1 to 6), the
+commutator cancellation, the sink-column surrogate's success, the derived
+floor under the shared energy (round 8) and the deviation structure that
+the toy constructions missed are one fact seen five ways: everything the
+interaction statistics measure about a trained layer is in the column of
+the sink token, head by head. Where a layer has no sink (TinyLlama's late
+layers), the statistics measure something else, and that is the stated
+boundary.

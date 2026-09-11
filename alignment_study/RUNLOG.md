@@ -113,3 +113,6 @@ Sink-profile round (PREREGISTRATION9.md, frozen and pushed as 6e6b253 at
 (`sinkprofile_round.py`, log `sinkprofile_round.log`, results per model in
 `sinkprofile/`); all twelve models' weights were cached from the earlier
 rounds of the day.
+Sink-profile round completed 15:33 UTC (61 minutes for twelve models; the
+32-head models took 8 to 12 minutes each, the statistics being CPU-bound
+numpy over 21 coupling computations per layer and window).

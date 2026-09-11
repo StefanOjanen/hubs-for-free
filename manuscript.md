@@ -70,7 +70,7 @@ heads of a layer are, to first order, multiples of one operator plus a
 residual, the operator is the sink, its contribution cancels in every
 commutator, and one number per layer, the shared-energy fraction, predicts
 the layer's interaction geometry across models, scales and training time.
-The last two parts were established under six preregistrations whose
+The last two parts were established under eight preregistrations whose
 thresholds were frozen and publicly timestamped before the runs, and whose
 failures are reported as failures.
 
@@ -311,7 +311,7 @@ post-hoc run of that version halves OLMo-2's gap and raises the pooled
 R^2 to 0.75, still short of the gate, with the residual's dependence on
 sink mass unchanged.
 
-### 4.6 What the deviation directions are not
+### 4.6 What the deviations are: sink profiles
 
 Rebuilding each layer's heads from their real coefficients on the shared
 operator plus random skew remainders of the right norm reproduces the r1
@@ -337,11 +337,19 @@ surrogate destroys. A rebuild that keeps each head's real sink column and
 replaces everything else by random skew entries of the remaining norm
 recovers the z profile the other constructions missed (Spearman 0.95 with
 the real per-layer z, median error 1.1 z-units, against -0.32 and 18.7 for
-the dense rebuild) while keeping the r1 profile (Spearman 0.86). At the
-resolution of these statistics a layer's heads are their sink-column
-profiles plus noise; the shared operator, the deviations that set z, and
-the success of the sink-column surrogate are three views of one fact. The
-construction is the generative model to register for the other models.
+the dense rebuild) while keeping the r1 profile (Spearman 0.86). Registered as
+preregistration 9 and run on the twelve other models (310 layers), the
+construction reproduces the per-layer z at Spearman 0.85 to 0.99 in eleven
+models with median errors of 0.5 to 1.5 z-units (4.5 in OLMo-2), against
+-0.66 to +0.82 and 15 to 22 for the dense rebuild, and pooled Spearman 0.95
+over all layers; r1 follows at 0.80 to 0.99. TinyLlama fails the ordering
+clause (0.31) at its fourteen low-sink layers, where the real z is -3 to
+-12 without a sink, while its seven high-sink layers are reproduced. At
+the resolution of these statistics a layer's heads are their sink-column
+profiles plus noise: the shared operator, the commutator cancellation, the
+sink-column surrogate's success, the derived floor under the shared energy
+and the deviation structure are one fact seen five ways, and a layer
+without a sink is the stated boundary.
 
 ## 5. Audits of published findings
 
@@ -470,6 +478,7 @@ command.
 | 6 | 3d5b337, pushed before execution | S1' to S4 with repaired instruments, thirteen models | 4 of 4 in 11 of 11 |
 | 7 | 6b8f8ea, pushed before execution | M1 to M3, head merging | M1, M2 fail; secondary clauses fail; costs reported |
 | 8 | b9b8ef0, pushed before execution | G1 to G4, derived shared energy | G1 (gate) fails at R^2 0.55; G2 to G4 pass |
+| 9 | 6e6b253, pushed before execution | P1 to P4, sink-profile generative model | P1 to P4 pass (11 of 12 models; TinyLlama's low-sink layers the exception) |
 | 4 (draft) | criteria for Targets 1, 3, 4, 5 frozen by commit | audits | Target 2 not reproducible; batteries pending public registration |
 
 ## Appendix B. Numbers ledger
@@ -491,7 +500,8 @@ command.
 | random-init shared energy 0.88 to 0.96, cosine 0.27; uniform operator cosine 1.00 | alignment_study/dynamics_dev_calibration.json, kmode_dev_calibration.json |
 | D0 to D5, 0.935, -0.736, 25 of 26, 14 crossings | alignment_study/dynamics_results.json, posthoc_dynamics.json |
 | derived shared energy, G1 to G4 | alignment_study/derivation_results.json, derivation/ |
-| deviation rebuilds | alignment_study/toy_structured_dev.json |
+| deviation rebuilds | alignment_study/toy_structured_dev.json, toy_sparse_dev.json, toy_sinkprofile_dev.json |
+| sink-profile round, P1 to P4 | alignment_study/sinkprofile_results.json, sinkprofile/, posthoc_sinkprofile.json |
 | merge round, M1 to M3, costs | alignment_study/merge_results.json, merge/ |
 | merge calibration | alignment_study/merge_dev_calibration.json |
 | Target 1 base result | audits/clark2019/base_result.json |

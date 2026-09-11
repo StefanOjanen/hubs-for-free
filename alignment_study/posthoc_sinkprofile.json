@@ -1,0 +1,28 @@
+{
+ "note": "post hoc, not registered",
+ "n_models": 12,
+ "high_sink": {
+  "n_layers": 231,
+  "spearman_z_profile": 0.977,
+  "spearman_z_dense": 0.723,
+  "mae_z_profile": 0.75,
+  "mae_z_dense": 21.29,
+  "median_profile_share": 0.894
+ },
+ "low_sink": {
+  "n_layers": 79,
+  "spearman_z_profile": 0.775,
+  "spearman_z_dense": -0.357,
+  "mae_z_profile": 1.81,
+  "mae_z_dense": 5.06,
+  "median_profile_share": 0.331
+ },
+ "all": {
+  "n_layers": 310,
+  "spearman_z_profile": 0.949,
+  "spearman_z_dense": 0.13,
+  "mae_z_profile": 0.83,
+  "mae_z_dense": 19.4,
+  "median_profile_share": 0.847
+ }
+}

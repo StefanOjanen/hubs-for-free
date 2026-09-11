@@ -1,0 +1,200 @@
+{
+ "n_models": 12,
+ "complete": true,
+ "per_model": {
+  "mistralai/Mistral-7B-v0.1": {
+   "n_layers": 32,
+   "spearman_z_profile": 0.994,
+   "spearman_z_dense": 0.821,
+   "mae_z_profile": 0.55,
+   "mae_z_dense": 19.1,
+   "spearman_r1_profile": 0.995,
+   "spearman_r1_dense": 0.978,
+   "mae_r1_profile": 0.021,
+   "median_profile_share_high_sink": 0.956,
+   "P1_pass": true,
+   "P2_pass": true,
+   "P3_pass": true
+  },
+  "allenai/OLMo-2-1124-7B": {
+   "n_layers": 32,
+   "spearman_z_profile": 0.856,
+   "spearman_z_dense": 0.741,
+   "mae_z_profile": 4.46,
+   "mae_z_dense": 15.05,
+   "spearman_r1_profile": 0.897,
+   "spearman_r1_dense": 0.938,
+   "mae_r1_profile": 0.244,
+   "median_profile_share_high_sink": 0.634,
+   "P1_pass": true,
+   "P2_pass": false,
+   "P3_pass": true
+  },
+  "microsoft/Phi-3-mini-4k-instruct": {
+   "n_layers": 32,
+   "spearman_z_profile": 0.988,
+   "spearman_z_dense": 0.542,
+   "mae_z_profile": 0.49,
+   "mae_z_dense": 21.43,
+   "spearman_r1_profile": 0.919,
+   "spearman_r1_dense": 0.907,
+   "mae_r1_profile": 0.032,
+   "median_profile_share_high_sink": 0.949,
+   "P1_pass": true,
+   "P2_pass": true,
+   "P3_pass": true
+  },
+  "Qwen/Qwen2.5-1.5B-Instruct": {
+   "n_layers": 28,
+   "spearman_z_profile": 0.967,
+   "spearman_z_dense": -0.355,
+   "mae_z_profile": 1.03,
+   "mae_z_dense": 20.3,
+   "spearman_r1_profile": 0.804,
+   "spearman_r1_dense": 0.784,
+   "mae_r1_profile": 0.036,
+   "median_profile_share_high_sink": 0.84,
+   "P1_pass": true,
+   "P2_pass": true,
+   "P3_pass": true
+  },
+  "Qwen/Qwen2.5-1.5B": {
+   "n_layers": 28,
+   "spearman_z_profile": 0.975,
+   "spearman_z_dense": -0.398,
+   "mae_z_profile": 1.1,
+   "mae_z_dense": 20.88,
+   "spearman_r1_profile": 0.807,
+   "spearman_r1_dense": 0.777,
+   "mae_r1_profile": 0.027,
+   "median_profile_share_high_sink": 0.845,
+   "P1_pass": true,
+   "P2_pass": true,
+   "P3_pass": true
+  },
+  "Qwen/Qwen2.5-3B": {
+   "n_layers": 36,
+   "spearman_z_profile": 0.972,
+   "spearman_z_dense": -0.075,
+   "mae_z_profile": 1.01,
+   "mae_z_dense": 19.78,
+   "spearman_r1_profile": 0.845,
+   "spearman_r1_dense": 0.767,
+   "mae_r1_profile": 0.042,
+   "median_profile_share_high_sink": 0.867,
+   "P1_pass": true,
+   "P2_pass": true,
+   "P3_pass": true
+  },
+  "Qwen/Qwen2.5-7B": {
+   "n_layers": 28,
+   "spearman_z_profile": 0.978,
+   "spearman_z_dense": -0.28,
+   "mae_z_profile": 0.97,
+   "mae_z_dense": 21.52,
+   "spearman_r1_profile": 0.822,
+   "spearman_r1_dense": 0.664,
+   "mae_r1_profile": 0.04,
+   "median_profile_share_high_sink": 0.882,
+   "P1_pass": true,
+   "P2_pass": true,
+   "P3_pass": true
+  },
+  "TinyLlama/TinyLlama_v1.1": {
+   "n_layers": 22,
+   "spearman_z_profile": 0.313,
+   "spearman_z_dense": 0.29,
+   "mae_z_profile": 2.19,
+   "mae_z_dense": 3.69,
+   "spearman_r1_profile": 0.563,
+   "spearman_r1_dense": 0.737,
+   "mae_r1_profile": 0.182,
+   "median_profile_share_high_sink": 0.933,
+   "P1_pass": false,
+   "P2_pass": true,
+   "P3_pass": false
+  },
+  "gpt2-medium": {
+   "n_layers": 24,
+   "spearman_z_profile": 0.854,
+   "spearman_z_dense": 0.244,
+   "mae_z_profile": 0.74,
+   "mae_z_dense": 20.73,
+   "spearman_r1_profile": 0.876,
+   "spearman_r1_dense": 0.741,
+   "mae_r1_profile": 0.033,
+   "median_profile_share_high_sink": 0.915,
+   "P1_pass": true,
+   "P2_pass": true,
+   "P3_pass": true
+  },
+  "gpt2": {
+   "n_layers": 12,
+   "spearman_z_profile": 0.909,
+   "spearman_z_dense": -0.664,
+   "mae_z_profile": 0.69,
+   "mae_z_dense": 17.63,
+   "spearman_r1_profile": 0.881,
+   "spearman_r1_dense": 0.678,
+   "mae_r1_profile": 0.034,
+   "median_profile_share_high_sink": 0.893,
+   "P1_pass": true,
+   "P2_pass": true,
+   "P3_pass": true
+  },
+  "EleutherAI/pythia-160m": {
+   "n_layers": 12,
+   "spearman_z_profile": 0.944,
+   "spearman_z_dense": -0.441,
+   "mae_z_profile": 1.46,
+   "mae_z_dense": 22.09,
+   "spearman_r1_profile": 0.958,
+   "spearman_r1_dense": 0.622,
+   "mae_r1_profile": 0.051,
+   "median_profile_share_high_sink": 0.719,
+   "P1_pass": true,
+   "P2_pass": true,
+   "P3_pass": true
+  },
+  "EleutherAI/pythia-410m": {
+   "n_layers": 24,
+   "spearman_z_profile": 0.978,
+   "spearman_z_dense": -0.148,
+   "mae_z_profile": 0.68,
+   "mae_z_dense": 21.58,
+   "spearman_r1_profile": 0.934,
+   "spearman_r1_dense": 0.921,
+   "mae_r1_profile": 0.042,
+   "median_profile_share_high_sink": 0.926,
+   "P1_pass": true,
+   "P2_pass": true,
+   "P3_pass": true
+  }
+ },
+ "P": {
+  "P1": {
+   "passes": 11,
+   "n": 12,
+   "pass": true,
+   "secondary": false
+  },
+  "P2": {
+   "passes": 11,
+   "n": 12,
+   "pass": true,
+   "secondary": false
+  },
+  "P3": {
+   "passes": 11,
+   "n": 12,
+   "pass": true,
+   "secondary": true
+  },
+  "P4": {
+   "pooled_spearman_z_profile": 0.949,
+   "pooled_spearman_z_dense": 0.13,
+   "n_layers": 310,
+   "pass": true
+  }
+ }
+}

@@ -82,11 +82,14 @@ trained attention behave as they do: a surrogate that preserves each
 row's sharpness, self-mass, and one number per row, the sink-column
 entry, reproduces the real coupling statistics layer by layer, to three
 decimals at the deepest layers of Mistral-7B. At this resolution the
-statistics contain nothing else: rebuilding each head from its real sink
-column alone, with random entries everywhere else, reproduces the
-development model's per-layer coupling statistics (Spearman 0.95 with the
-real z profile, against -0.32 when the sink column is replaced by a shared
-average), so a layer's heads are their sink-column profiles plus noise. Where the sink wanders between columns
+statistics contain nothing else. A preregistered generative test makes
+the point directly: rebuilding each head from its real sink column alone,
+with random entries everywhere else, reproduces the per-layer coupling
+statistics of eleven of twelve models (Spearman 0.85 to 0.99 with the real
+z profile, pooled 0.95 over 310 layers, against 0.13 when the sink column
+is replaced by a shared average). A layer's heads are their sink-column
+profiles plus noise; the one exception, TinyLlama's late layers, has no
+sink to be a profile of. Where the sink wanders between columns
 from one input to the next (OLMo-2), a set of at most three columns does
 the same job: the model that failed the one-column test at 19 percent of
 layers passes the column-set test at 79.
@@ -254,9 +257,9 @@ Each instrument below exists because a finding above required it.
 
 ## Evidence standard
 
-Seven preregistrations with numeric thresholds and falsification clauses
+Eight preregistrations with numeric thresholds and falsification clauses
 were frozen in git before their runs (`alignment_study/PREREGISTRATION.md`
-and `PREREGISTRATION2.md` to `PREREGISTRATION8.md`; the second committed
+and `PREREGISTRATION2.md` to `PREREGISTRATION9.md`; the second committed
 before the held-out models were downloaded, the third and all later ones
 pushed publicly before execution, evaluation scripts committed before
 results existed). Registered predictions that failed are
@@ -270,9 +273,9 @@ derivation gate (G1). Out of sample, 7 of 8 registered clauses passed in the
 sub-2B round, 3 of 4 in the 3B-to-7B round, 5 of 5 primary clauses in the
 training-dynamics round, 4 of 4 in 11 of 11 models in the
 fixed-instrument rerun, where the earlier failures on TinyLlama, OLMo-2
-and the 32-head models resolved without moving a threshold, and 0 of 2
+and the 32-head models resolved without moving a threshold, 0 of 2
 primary clauses in the head-merging round, whose negative result is
-reported in full above. Development
+reported in full above, and 4 of 4 in the sink-profile round. Development
 calibration that shaped a preregistration is committed and labeled as
 such. A blind reimplementation from the written specification
 reproduced the anchor values to four decimals; surrogate invariants hold
