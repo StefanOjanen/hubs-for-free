@@ -224,10 +224,16 @@ Each instrument below exists because a finding above required it.
   (Clark et al. 2019), the attention-pattern taxonomy (Kovaleva et al.
   2019), cross-head redundancy as used for KV compression (CHAI, 2024),
   spectral outliers in projection weights (2026), and retrieval heads as
-  the positive control the nulls must not remove. The first base result
-  is reproduced and its criteria are frozen in
-  `audits/PREREGISTRATION4_DRAFT.md`; results follow with the original
-  authors' responses.
+  the positive control the nulls must not remove. Four base results are
+  reproduced or partially reproduced and their criteria frozen in
+  `audits/PREREGISTRATION4_DRAFT.md` (the layer clustering; the spectral
+  outliers, whose counts match the source to 0.3 percent; the retrieval
+  heads, 4.2 percent of heads against the source's 3 to 6; the redundancy
+  clusters in part, with the source's depth trend not reproduced); the
+  attention-pattern taxonomy could not be reproduced because its classifier
+  and annotations were never released. The batteries run after public
+  registration of the draft; results follow with the original authors'
+  responses.
 - **Deriving the operator rather than measuring it: a floor, not a
   formula.** A preregistered derivation writes each head's energy along
   the ideal sink direction from its own sink mass and row sharpness, with

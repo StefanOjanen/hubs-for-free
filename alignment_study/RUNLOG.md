@@ -99,3 +99,11 @@ on Mistral-7B, retrieval-heads reproduction on Qwen2.5-7B) started at
 Derivation round completed 13:29 UTC (GPU part: Qwen2.5-3B and Phi-3-mini
 in float32, Mistral-7B, Qwen2.5-7B and OLMo-2-7B in bfloat16). CHAI
 reproduction on Mistral-7B started 13:29 UTC.
+Audit reproductions on the GPU (2026-09-11): CHAI at 64 documents of 2,048
+tokens ran at about a minute per document and was stopped after five;
+rerun at 32 documents of 1,024 tokens, 13:42 to 13:45 UTC. Retrieval heads
+at 1K, 2K and 4K contexts with nine depths ran at over a minute per 2K
+instance and was stopped; rerun at 1K and 2K with five depths (20
+instances), 13:45 to 14:02 UTC. Both reductions relative to the sources
+are recorded in PREREGISTRATION4_DRAFT.md. All work of the day ran on the
+M1 Max; no cloud compute was used.

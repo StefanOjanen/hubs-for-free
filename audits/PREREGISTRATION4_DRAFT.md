@@ -164,6 +164,32 @@ by less than 50 percent (row norms do not carry the structure); (d') gives
 an untrained baseline of outliers that is reported and subtracted in the
 discussion, not in the labels.
 
-### Target 5: Retrieval Heads (2024), positive control
-Base result R_5: [retrieval scores per head on a needle task]. Statistic
-T_5: [fill]. Nulls: (a), (b), (c).
+### Target 5: Retrieval Heads 2024, positive control (criteria frozen 2026-09-11, before any battery run)
+Base result R_5, reproduced 2026-09-11 (`audits/retrieval_heads/reproduce.py`,
+Qwen2.5-7B as the open model, needle-in-a-haystack at contexts of 1,024 and
+2,048 tokens, five depths, two WikiText fillers, 20 instances against the
+paper's about 600 at 1K to 50K; a first attempt including 4,096-token
+contexts ran at over a minute per instance and was stopped): the needle
+was retrieved in 20 of 20 instances; 4.2 percent of the 784 heads
+(33 heads) have a retrieval score above 0.1, inside the paper's 3 to 6
+percent; 0.6 percent score above 0.5; the strongest heads are L22H3 0.56, L22H4 0.56, L14H0 0.56, L23H11 0.55, L14H6 0.54.
+Reproduced.
+
+Statistic T_5: the per-head retrieval score (share of needle tokens a head
+copies with its argmax attention at the matching position) and the set of
+heads above 0.1.
+
+Nulls: this statistic is defined on the attention rows of generated
+tokens, so the surrogates act on those rows: (a) random causal softmax rows
+matched in length; (b) per-row marginal-matched permutation of the real
+rows (the argmax lands on a random position); (c) column-set-preserving
+permutation (the sink set fixed); (d) config-initialized Qwen2.5-7B
+architecture on the same instances. 200 draws where random.
+
+Registered expectation E3 (the control the battery must not remove): the
+retrieval-head set survives (a), (b), (c) and (d) at the 99th percentile
+with the score shrinking by less than 20 percent under every null; if any
+null removes it, the battery's thresholds are revised before any other
+outcome is reported. A positive control that copies specific context
+tokens cannot be produced by a surrogate that permutes where a row looks,
+which is the point of including it.

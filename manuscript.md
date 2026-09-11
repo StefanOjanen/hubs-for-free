@@ -377,9 +377,11 @@ permutation, and config-initialized weights of the same architecture.
 Target 5, Retrieval Heads (2024), the positive control: 3 to 6 percent of
 heads copy from the context during needle retrieval (retrieval score above
 0.1) and masking them breaks retrieval. A compact reimplementation of the
-score at contexts of 1K to 4K tokens: PENDING. The battery must not remove
-this structure; if it does, its thresholds are revised before any other
-outcome is reported.
+score on Qwen2.5-7B at contexts of 1,024 and 2,048 tokens (20 instances)
+retrieved the needle every time and put 4.2 percent of heads above 0.1,
+with the strongest in layers 14, 22 and 23. Reproduced; criteria frozen.
+The battery must not remove this structure; if it does, its thresholds are
+revised before any other outcome is reported.
 
 ## 6. A practical test that failed: which heads can be merged
 
@@ -420,8 +422,10 @@ deviation directions carry structure the shared-operator description does
 not capture (Section 4.6). The commutator pipeline is one instrument among
 many the audits address; it is the one whose failure started this work.
 The dynamics result rests on one model family. The derivation gate and the practical test both failed as
-registered; each is reported in full. The audits are
-registered but their batteries wait for public registration.
+registered; each is reported in full. The audit
+criteria are frozen for four targets but their batteries wait for public
+registration; the reproductions of Targets 3 and 5 ran at reduced scale
+(fewer documents, shorter contexts) than the sources.
 
 ## 8. Recommendations
 
@@ -446,7 +450,7 @@ command.
 | 6 | 3d5b337, pushed before execution | S1' to S4 with repaired instruments, thirteen models | 4 of 4 in 11 of 11 |
 | 7 | 6b8f8ea, pushed before execution | M1 to M3, head merging | M1, M2 fail; secondary clauses fail; costs reported |
 | 8 | b9b8ef0, pushed before execution | G1 to G4, derived shared energy | G1 (gate) fails at R^2 0.55; G2 to G4 pass |
-| 4 (draft) | criteria for Target 1 frozen by commit | audits | batteries pending public registration |
+| 4 (draft) | criteria for Targets 1, 3, 4, 5 frozen by commit | audits | Target 2 not reproducible; batteries pending public registration |
 
 ## Appendix B. Numbers ledger
 
@@ -471,4 +475,7 @@ command.
 | merge round, M1 to M3, costs | alignment_study/merge_results.json, merge/ |
 | merge calibration | alignment_study/merge_dev_calibration.json |
 | Target 1 base result | audits/clark2019/base_result.json |
+| Target 3 partial reproduction | audits/chai/Mistral-7B-v0.1_base_result.json |
+| Target 4 reproduction | audits/dewage2026/Mistral-7B-v0.1_base_result.json |
+| Target 5 reproduction | audits/retrieval_heads/Qwen2.5-7B_base_result.json |
 | MPS fidelity | alignment_study/platform_fidelity.json |

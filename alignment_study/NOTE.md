@@ -497,3 +497,10 @@ registration of the draft.
   cluster in only 4 of 32 layers and no increase with depth (Spearman -0.38);
   the correlation tracks the last row's sink mass. Criteria frozen; the
   column-set surrogate is expected to match both statistics.
+- Target 5, Retrieval Heads 2024 (positive control): reproduced on
+  Qwen2.5-7B at 1K and 2K contexts (20 instances): 4.2 percent of heads above
+  0.1 (paper 3 to 6), needle retrieved every time. Criteria frozen.
+
+With Targets 1, 3, 4 and 5 reproduced or partially reproduced and Target
+2 logged, PREREGISTRATION4_DRAFT.md is ready to freeze on OSF; the
+batteries run after that.

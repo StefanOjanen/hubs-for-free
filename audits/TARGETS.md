@@ -84,3 +84,11 @@ weeks to respond before any preprint; responses are published alongside.
   correlation with depth is not reproduced (Spearman with depth -0.38); the
   correlation follows the last row's sink mass. Criteria frozen in
   PREREGISTRATION4_DRAFT.md.
+- Target 5 reproduction (2026-09-11, `retrieval_heads/reproduce.py` on
+  Qwen2.5-7B, 20 needle instances at 1K and 2K tokens; a 4K attempt ran at
+  over a minute per instance and was stopped): reproduced. 4.2 percent of
+  heads above retrieval score 0.1 (paper 3 to 6 percent), needle retrieved
+  in every instance, strongest heads in layers 14, 22 and 23. Criteria
+  frozen in PREREGISTRATION4_DRAFT.md. All five targets are now either
+  reproduced (1, 4, 5), partially reproduced (3) or logged as not
+  reproducible (2); the draft is ready to freeze on OSF.
