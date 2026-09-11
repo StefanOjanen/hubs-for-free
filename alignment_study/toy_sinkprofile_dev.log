@@ -1,0 +1,36 @@
+[transformers] The following generation flags are not valid and may be ignored: ['output_attentions']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 2920.88it/s]
+WIN 0
+WIN 1
+WIN 2
+WIN 3
+WIN 4
+WIN 5
+WIN 6
+WIN 7
+  L 0 profile share 0.10 | r1 real +0.88 dense +0.99 profile +1.00 | z real   -1.4 dense   -2.2 profile   -0.9
+  L 1 profile share 0.17 | r1 real +0.57 dense +0.98 profile +0.99 | z real   -2.0 dense   -3.1 profile   -1.3
+  L 2 profile share 0.18 | r1 real +0.79 dense +0.96 profile +0.99 | z real   -3.8 dense   -4.9 profile   -1.5
+  L 3 profile share 0.85 | r1 real +0.69 dense +0.67 profile +0.71 | z real   10.4 dense  -12.6 profile   10.1
+  L 4 profile share 0.80 | r1 real +0.86 dense +0.86 profile +0.89 | z real   12.5 dense   -9.2 profile    9.8
+  L 5 profile share 0.84 | r1 real +0.67 dense +0.62 profile +0.74 | z real   14.2 dense  -10.6 profile   10.4
+  L 6 profile share 0.78 | r1 real +0.68 dense +0.45 profile +0.74 | z real    4.8 dense  -10.0 profile    4.5
+  L 7 profile share 0.86 | r1 real +0.46 dense +0.44 profile +0.49 | z real   11.1 dense  -14.3 profile   10.5
+  L 8 profile share 0.55 | r1 real +0.55 dense +0.96 profile +0.86 | z real    5.8 dense   -6.6 profile    4.0
+  L 9 profile share 0.90 | r1 real +0.21 dense +0.28 profile +0.23 | z real    9.4 dense  -13.3 profile    9.2
+  L10 profile share 0.79 | r1 real +0.84 dense +0.79 profile +0.87 | z real    7.9 dense  -10.6 profile    5.9
+  L11 profile share 0.90 | r1 real -0.20 dense -0.31 profile -0.13 | z real    4.9 dense  -14.7 profile    3.4
+  L12 profile share 0.74 | r1 real +0.83 dense +0.82 profile +0.87 | z real    5.0 dense   -7.9 profile    4.1
+  L13 profile share 0.86 | r1 real +0.64 dense +0.45 profile +0.66 | z real    6.7 dense  -12.3 profile    5.7
+  L14 profile share 0.80 | r1 real +0.89 dense +0.92 profile +0.90 | z real    8.1 dense   -8.8 profile    5.7
+  L15 profile share 0.78 | r1 real +0.43 dense +0.62 profile +0.55 | z real    5.2 dense   -9.9 profile    3.9
+  L16 profile share 0.94 | r1 real -0.27 dense -0.34 profile -0.28 | z real   -0.9 dense  -21.1 profile   -1.0
+  L17 profile share 0.90 | r1 real +0.13 dense +0.12 profile +0.21 | z real    9.9 dense  -13.8 profile    8.4
+  L18 profile share 0.88 | r1 real +0.57 dense +0.40 profile +0.59 | z real    7.9 dense  -14.5 profile    7.5
+  L19 profile share 0.76 | r1 real +0.78 dense +0.77 profile +0.81 | z real   11.1 dense  -10.3 profile   10.5
+  L20 profile share 0.88 | r1 real -0.02 dense -0.21 profile +0.11 | z real   12.2 dense  -14.0 profile    7.2
+  L21 profile share 0.97 | r1 real -0.58 dense -0.46 profile -0.62 | z real   -5.7 dense  -19.9 profile   -7.4
+  L22 profile share 0.34 | r1 real +0.83 dense +0.82 profile +0.94 | z real   -2.4 dense   -8.1 profile   -2.8
+  L23 profile share 0.28 | r1 real +0.69 dense +0.69 profile +0.97 | z real   -1.6 dense   -7.8 profile   -2.8
+SUMMARY {"dense": {"spearman_r1": 0.813, "spearman_z": -0.321, "median_abs_err_z": 18.72, "median_abs_err_r1": 0.066}, "profile": {"spearman_r1": 0.856, "spearman_z": 0.946, "median_abs_err_z": 1.07, "median_abs_err_r1": 0.049}}
+SINKPROFILE_DONE

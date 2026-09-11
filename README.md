@@ -82,7 +82,11 @@ trained attention behave as they do: a surrogate that preserves each
 row's sharpness, self-mass, and one number per row, the sink-column
 entry, reproduces the real coupling statistics layer by layer, to three
 decimals at the deepest layers of Mistral-7B. At this resolution the
-statistics contain nothing else. Where the sink wanders between columns
+statistics contain nothing else: rebuilding each head from its real sink
+column alone, with random entries everywhere else, reproduces the
+development model's per-layer coupling statistics (Spearman 0.95 with the
+real z profile, against -0.32 when the sink column is replaced by a shared
+average), so a layer's heads are their sink-column profiles plus noise. Where the sink wanders between columns
 from one input to the next (OLMo-2), a set of at most three columns does
 the same job: the model that failed the one-column test at 19 percent of
 layers passes the column-set test at 79.

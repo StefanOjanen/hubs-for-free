@@ -550,3 +550,20 @@ former reproduces z and the latter does not. T4.3 closes at this
 resolution: the structured deviation is the per-head sink profile, and a
 rebuild that keeps each head's real sink column and randomizes the rest is
 the construction to register.
+Fourth construction (`toy_sinkprofile_dev.py` -> `toy_sinkprofile_dev.json`):
+keep each head's real sink column (its entries in column c and the skew
+mirror, shared part included) and rebuild everything else as a random skew
+matrix with zero entries in that column and row, scaled to the remaining
+norm. This recovers the z profile that the dense, structured and sparse
+rebuilds missed: Spearman with the real per-layer z 0.95 (dense -0.32),
+median absolute error 1.1 z-units (dense 18.7), with the r1 profile kept
+(Spearman 0.86, error 0.05). At high-sink layers the sink column holds 0.85
+to 0.97 of each head's generator energy, at the low-sink first layers 0.10
+to 0.28, and the rebuild is accurate in both regimes (layer 3: z 10.4 real,
+10.1 rebuilt; layer 16: -0.9 and -1.0; layer 0: -1.4 and -0.9). Reading: at
+the resolution of these statistics a layer's heads are their sink-column
+profiles plus noise; the shared operator, the deviations that set z, and
+the success of the sink-column surrogate are three views of that one
+fact. This is the construction to register as the generative model of
+T4.3, with the prediction that it reproduces r1 and z per layer on the
+twelve other models.

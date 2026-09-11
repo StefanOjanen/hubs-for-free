@@ -333,9 +333,15 @@ high-sink layers lies in the sink column itself, against 3 percent for a
 random deviation: the dominant deviation is the head's own sink-column
 profile, the way its mass over rows departs from the shared shape. That
 is what the column-preserving surrogate keeps and the marginal-matched
-surrogate destroys, which accounts for the difference in what they
-reproduce; a rebuild that keeps each head's real sink column and
-randomizes the rest is the construction to register next.
+surrogate destroys. A rebuild that keeps each head's real sink column and
+replaces everything else by random skew entries of the remaining norm
+recovers the z profile the other constructions missed (Spearman 0.95 with
+the real per-layer z, median error 1.1 z-units, against -0.32 and 18.7 for
+the dense rebuild) while keeping the r1 profile (Spearman 0.86). At the
+resolution of these statistics a layer's heads are their sink-column
+profiles plus noise; the shared operator, the deviations that set z, and
+the success of the sink-column surrogate are three views of one fact. The
+construction is the generative model to register for the other models.
 
 ## 5. Audits of published findings
 
