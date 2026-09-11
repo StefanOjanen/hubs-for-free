@@ -43,6 +43,19 @@ measured fidelity against the CPU float32 protocol is in
 alignment_study/platform_fidelity.json and RUNLOG.md. Every model run
 writes results per model as it completes.
 
+Rounds and their artifacts (all preregistered before execution, evaluation
+scripts committed before results): 1 (gram_theorem.json,
+robustness_addendum.json), 2 (heldout_round.json), 3
+(scale_round_results.json, scale_partial/), 5 dynamics (dynamics/,
+dynamics_results.json), 6 rerun (rerun/, rerun_results.json), 7
+head-merging (merge/, merge_results.json; both primary clauses failed), 8
+derivation (derivation/, derivation_results.json; gate failed at R^2
+0.55, sink-set post hoc 0.75). Audit base results: audits/clark2019/,
+audits/chai/, audits/dewage2026/, audits/retrieval_heads/; criteria in
+audits/PREREGISTRATION4_DRAFT.md, batteries gated on public registration.
+Registered failures are reported as failures in NOTE.md, README.md and
+manuscript.md; never reframe them.
+
 ## Style
 
 Direct, measured, no em-dashes, no hype. Claims sized to evidence. The paper
