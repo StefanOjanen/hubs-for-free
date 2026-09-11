@@ -26,7 +26,7 @@ Repository = "https://github.com/StefanOjanen/hubs-for-free"
 Documentation = "https://github.com/StefanOjanen/hubs-for-free/blob/main/docs/toolkit.md"
 
 [project.optional-dependencies]
-models = ["torch>=2.1", "transformers>=4.45", "datasets>=2.19"]
+models = ["torch>=2.1", "transformers>=4.45", "datasets>=2.19", "sentencepiece>=0.2", "protobuf>=4"]
 plots = ["matplotlib>=3.8"]
 test = ["pytest>=8"]
 
