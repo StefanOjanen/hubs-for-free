@@ -519,3 +519,13 @@ is low mostly because the residual varies with sink mass within models
 and because two models (Phi-3-mini, Qwen2.5-3B) span a narrow measured
 range; where the range is wide the sink-only floor explains 0.87 to 0.99
 of the variance.
+Sink-set version (`derivation_sinkset_posthoc.py` ->
+`derivation_sinkset_posthoc.json`, labeled post hoc): building the ideal
+generator on the layer's sink set instead of the modal column halves
+OLMo-2's median gap (0.31 to 0.17; all 16 of its high-sink layers have a
+set of two or more columns), leaves every single-column model unchanged,
+and raises the pooled high-sink R^2 from 0.55 to 0.75 (Spearman 0.78 to
+0.83) with the pooled median gap unchanged at 0.058. The registered gate
+was set on the single-column derivation and stays failed; the sink-set
+derivation is the version to register next, with the residual's dependence
+on sink mass as its stated limit.

@@ -306,7 +306,10 @@ derived lower bound, not derived structure. A post-hoc description of the
 residual: within every model it falls as the layer's sink mass rises
 (Spearman -0.84 pooled), and it is largest where the sink sits on a
 window-varying mid-sequence column (OLMo-2, median gap 0.31), which points
-to a sink-set version of the derivation as the next registered step.
+to a sink-set version of the derivation as the next registered step; a
+post-hoc run of that version halves OLMo-2's gap and raises the pooled
+R^2 to 0.75, still short of the gate, with the residual's dependence on
+sink mass unchanged.
 
 ### 4.6 What the deviation directions are not
 
