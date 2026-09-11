@@ -131,3 +131,17 @@ at 16:40 UTC before any of Falcon-7B, BLOOM-7b1 or Qwen3-8B was downloaded;
 OPT-6.7B was downloading for the CHAI reproduction at that time). Runs
 follow the audit reproductions on the GPU; per-model results in
 `rerun_pr10/` and `sinkprofile_pr10/`.
+
+Llama-2-7B-80K (2026-09-11, 17:55 to 19:50 UTC). Two failed attempts before
+the recorded run: (1) with the checkpoint's saved rope configuration
+("dynamic", factor 10) the model generated degenerate text beyond a few
+hundred tokens under every precision and attention implementation tried;
+loading with linear position interpolation, factor 10, restored fluent
+generation at 900 and 2,000 tokens (`--rope=linear:10`, deviation recorded
+in the script header). (2) The generate-with-attentions path exhausted the
+GPU's memory at 2,048 tokens on this 32-KV-head model (36 GB requested);
+the reproduction and battery scripts now decode step by step and keep only
+each head's argmax position (reproduction) or the rows of needle-token steps
+(battery), which reproduces the earlier Qwen2.5-0.5B numbers exactly. The
+orchestrator was paused (SIGSTOP) during this run so the PR10 rounds would
+not share the GPU, and resumed after it.

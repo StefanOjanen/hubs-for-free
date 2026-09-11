@@ -39,6 +39,29 @@ torch.set_grad_enabled(False)
 import reproduce as R   # NEEDLE, QUESTION, MAX_NEW, haystacks, build (module-level run is guarded)
 
 
+def decode_keeping_needle_rows(model, x, max_new, eos_id, needle_token_ids):
+    """Greedy decoding without generate(): the prompt minus its last token is
+    prefilled without attention outputs, then each step returns attention
+    over the cache for its single input token; the (L, H, T) rows of a step
+    are kept only when the token that step emits is a needle token. Memory:
+    the KV cache plus a few needle-step row blocks. step_rows[i] belongs to
+    the pass that emitted gen[i], the alignment of generate(output_attentions)."""
+    pre = model(input_ids=x[:, :-1], use_cache=True); past = pre.past_key_values; del pre
+    inp = x[:, -1:]; gen, step_rows = [], {}
+    for i in range(max_new):
+        step = model(input_ids=inp, past_key_values=past, use_cache=True, output_attentions=True)
+        past = step.past_key_values
+        next_tok = step.logits[0, -1].argmax().item()
+        if next_tok in needle_token_ids:
+            step_rows[i] = [a[0, :, -1, :].float().cpu().numpy().astype(np.float64) for a in step.attentions]
+        del step
+        gen.append(next_tok)
+        if next_tok == eos_id:
+            break
+        inp = torch.tensor([[next_tok]], device=x.device)
+    return gen, step_rows
+
+
 def hits_for_rows(rows, positions, rng, draws):
     """rows: (H, T) attention of one generated needle token; positions: needle
     positions matching the token. Returns per-head hit indicators for the real
@@ -68,15 +91,15 @@ def run_needles(model, tok, rng, with_nulls):
                 for j, t in enumerate(needle_ids):
                     at.setdefault(t, []).append(pos + j)
                 x = torch.tensor([prompt], device=DEV)
-                out = model.generate(x, max_new_tokens=R.MAX_NEW, do_sample=False, output_attentions=True, return_dict_in_generate=True, pad_token_id=tok.eos_token_id)
-                gen = out.sequences[0, x.shape[1]:].tolist(); k = len(needle_ids)
+                gen, step_rows = decode_keeping_needle_rows(model, x, R.MAX_NEW, tok.eos_token_id, set(at))
+                k = len(needle_ids)
                 copied = np.zeros((L, H)); cop_null = {kk: np.zeros((DRAWS, L, H)) for kk in nulls}
                 seen = {}
                 for step, tid in enumerate(gen):
-                    if tid not in at:
+                    if tid not in at or step not in step_rows:
                         continue
                     for l in range(L):
-                        rows = out.attentions[step][l][0, :, -1, :].float().cpu().numpy().astype(np.float64)
+                        rows = step_rows[step][l]
                         real, a, b, c = hits_for_rows(rows, at[tid], rng, DRAWS if with_nulls else 1)
                         key = (l, tid)
                         if key in seen:               # count each needle token once per head, as the reproduction does
