@@ -102,3 +102,8 @@ weeks to respond before any preprint; responses are published alongside.
   layers (0.52 at layer 31, where the correlation is highest). Mistral-7B
   showed the opposite split (clusters yes, depth trend no); across the two
   families the correlation follows the sink mass of the last row in both.
+- Target 5 on the source's own model (2026-09-11,
+  `retrieval_heads/reproduce.py` on `mistralai/Mistral-7B-Instruct-v0.2`, one
+  of the paper's models, same reduced protocol of 20 instances at 1K and
+  2K): reproduced. 3.4 percent of 1024 heads above 0.1 (paper 3 to 6),
+  needle retrieved in 20 of 20, strongest heads L12H7 0.61, L18H0 0.60, L18H2 0.60.

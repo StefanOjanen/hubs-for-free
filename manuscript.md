@@ -410,7 +410,9 @@ heads copy from the context during needle retrieval (retrieval score above
 0.1) and masking them breaks retrieval. A compact reimplementation of the
 score on Qwen2.5-7B at contexts of 1,024 and 2,048 tokens (20 instances)
 retrieved the needle every time and put 4.2 percent of heads above 0.1,
-with the strongest in layers 14, 22 and 23. Reproduced; criteria frozen.
+with the strongest in layers 14, 22 and 23; on the paper's own
+Mistral-7B-Instruct-v0.2 the same protocol gives 3.4 percent, again with
+every needle retrieved. Reproduced; criteria frozen.
 The battery must not remove this structure; if it does, its thresholds are
 revised before any other outcome is reported.
 
