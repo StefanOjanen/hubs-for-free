@@ -41,30 +41,31 @@ def shards(name):
     return sorted(glob.glob(os.path.join(d, "*.safetensors")))
 
 
-t0 = time.time()
-from safetensors import safe_open
-rows = []
-for f in shards(NAME):
-    with safe_open(f, framework="pt") as sf:
-        for key in sf.keys():
-            if ".self_attn." in key and key.endswith(".weight") and any(p in key for p in ("q_proj", "k_proj", "v_proj", "o_proj")):
-                layer = int(key.split(".layers.")[1].split(".")[0]); ptype = key.split(".self_attn.")[1].split(".")[0]
-                W = sf.get_tensor(key).float().numpy()
-                r = {"layer": layer, "type": ptype, **mp_outliers(W)}
-                rows.append(r)
-                print(f"  L{layer:2d} {ptype:6s} {r['shape']} outliers {r['outliers']:4d}/{r['n_sv']} = {100*r['frac']:5.1f}%  energy in outliers {r['energy_frac_outliers']:.3f}  ({time.time()-t0:.0f}s)", flush=True)
-rows.sort(key=lambda r: (r["layer"], r["type"]))
-summary = {}
-for ptype in ("q_proj", "k_proj", "v_proj", "o_proj"):
-    rs = [r for r in rows if r["type"] == ptype]
-    summary[ptype] = {"mean_outliers": round(float(np.mean([r["outliers"] for r in rs])), 1), "mean_frac_pct": round(100 * float(np.mean([r["frac"] for r in rs])), 1),
-                      "paper_frac_pct": PAPER.get(NAME, {}).get(ptype), "n_layers": len(rs),
-                      "depth_spearman_energy_frac": None}
-    if len(rs) > 3:
-        from scipy.stats import spearmanr
-        summary[ptype]["depth_spearman_energy_frac"] = round(float(spearmanr([r["layer"] for r in rs], [r["energy_frac_outliers"] for r in rs])[0]), 3)
-    if summary[ptype]["paper_frac_pct"]:
-        summary[ptype]["rel_err_vs_paper"] = round(abs(summary[ptype]["mean_frac_pct"] - summary[ptype]["paper_frac_pct"]) / summary[ptype]["paper_frac_pct"], 3)
-json.dump({"model": NAME, "recipe": "gamma=max/min, sigma2=median(s^2)/(1+gamma), lambda_plus=sigma2(1+sqrt(gamma))^2, outlier: s^2>lambda_plus",
-           "rows": rows, "summary": summary, "runtime_s": round(time.time() - t0, 1)}, open(PREFIX + "_base_result.json", "w"), indent=1)
-print("SUMMARY", json.dumps(summary)); print("DEWAGE_DONE", PREFIX)
+if __name__ == "__main__":
+    t0 = time.time()
+    from safetensors import safe_open
+    rows = []
+    for f in shards(NAME):
+        with safe_open(f, framework="pt") as sf:
+            for key in sf.keys():
+                if ".self_attn." in key and key.endswith(".weight") and any(p in key for p in ("q_proj", "k_proj", "v_proj", "o_proj")):
+                    layer = int(key.split(".layers.")[1].split(".")[0]); ptype = key.split(".self_attn.")[1].split(".")[0]
+                    W = sf.get_tensor(key).float().numpy()
+                    r = {"layer": layer, "type": ptype, **mp_outliers(W)}
+                    rows.append(r)
+                    print(f"  L{layer:2d} {ptype:6s} {r['shape']} outliers {r['outliers']:4d}/{r['n_sv']} = {100*r['frac']:5.1f}%  energy in outliers {r['energy_frac_outliers']:.3f}  ({time.time()-t0:.0f}s)", flush=True)
+    rows.sort(key=lambda r: (r["layer"], r["type"]))
+    summary = {}
+    for ptype in ("q_proj", "k_proj", "v_proj", "o_proj"):
+        rs = [r for r in rows if r["type"] == ptype]
+        summary[ptype] = {"mean_outliers": round(float(np.mean([r["outliers"] for r in rs])), 1), "mean_frac_pct": round(100 * float(np.mean([r["frac"] for r in rs])), 1),
+                          "paper_frac_pct": PAPER.get(NAME, {}).get(ptype), "n_layers": len(rs),
+                          "depth_spearman_energy_frac": None}
+        if len(rs) > 3:
+            from scipy.stats import spearmanr
+            summary[ptype]["depth_spearman_energy_frac"] = round(float(spearmanr([r["layer"] for r in rs], [r["energy_frac_outliers"] for r in rs])[0]), 3)
+        if summary[ptype]["paper_frac_pct"]:
+            summary[ptype]["rel_err_vs_paper"] = round(abs(summary[ptype]["mean_frac_pct"] - summary[ptype]["paper_frac_pct"]) / summary[ptype]["paper_frac_pct"], 3)
+    json.dump({"model": NAME, "recipe": "gamma=max/min, sigma2=median(s^2)/(1+gamma), lambda_plus=sigma2(1+sqrt(gamma))^2, outlier: s^2>lambda_plus",
+               "rows": rows, "summary": summary, "runtime_s": round(time.time() - t0, 1)}, open(PREFIX + "_base_result.json", "w"), indent=1)
+    print("SUMMARY", json.dumps(summary)); print("DEWAGE_DONE", PREFIX)

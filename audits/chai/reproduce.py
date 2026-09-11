@@ -57,57 +57,58 @@ def cluster_stats(R, thresh):
             "frac_in_clusters_of_2plus": sum(s for s in sizes if s >= 2) / n}
 
 
-tok = AutoTokenizer.from_pretrained(NAME)
-dt = pick_dtype(NAME, DEV, "auto")
-model = AutoModelForCausalLM.from_pretrained(NAME, output_attentions=True, attn_implementation="eager", dtype=getattr(torch, dt)).eval().to(DEV)
-L, n = model.config.num_hidden_layers, model.config.num_attention_heads
-print(NAME, "DEVICE", device_label(DEV), "DTYPE", dt, f"layers {L} heads {n} T {T} samples {NSAMP}", flush=True)
-wins = c4_windows(tok, NSAMP, T)
-SAVE_ROWS = "--save-rows" in sys.argv
-acc = np.zeros((L, n, n)); sink_last = np.zeros((L, NSAMP)); rows_store = np.zeros((L, NSAMP, n, T), dtype=np.float32) if SAVE_ROWS else None
-captured = {}
+if __name__ == "__main__":
+    tok = AutoTokenizer.from_pretrained(NAME)
+    dt = pick_dtype(NAME, DEV, "auto")
+    model = AutoModelForCausalLM.from_pretrained(NAME, output_attentions=True, attn_implementation="eager", dtype=getattr(torch, dt)).eval().to(DEV)
+    L, n = model.config.num_hidden_layers, model.config.num_attention_heads
+    print(NAME, "DEVICE", device_label(DEV), "DTYPE", dt, f"layers {L} heads {n} T {T} samples {NSAMP}", flush=True)
+    wins = c4_windows(tok, NSAMP, T)
+    SAVE_ROWS = "--save-rows" in sys.argv
+    acc = np.zeros((L, n, n)); sink_last = np.zeros((L, NSAMP)); rows_store = np.zeros((L, NSAMP, n, T), dtype=np.float32) if SAVE_ROWS else None
+    captured = {}
 
 
-def make_hook(l):
-    def hook(module, args, output):
-        # eager attention modules return (attn_output, attn_weights); keep only the last query row
-        w = output[1]
-        if w is not None:
-            captured[l] = w[0, :, -1, :].detach().float().cpu().numpy().astype(np.float64)
-    return hook
+    def make_hook(l):
+        def hook(module, args, output):
+            # eager attention modules return (attn_output, attn_weights); keep only the last query row
+            w = output[1]
+            if w is not None:
+                captured[l] = w[0, :, -1, :].detach().float().cpu().numpy().astype(np.float64)
+        return hook
 
 
-handles = [model.model.layers[l].self_attn.register_forward_hook(make_hook(l)) for l in range(L)]
-for k, ids in enumerate(wins):
-    captured.clear()
-    model(input_ids=ids.to(DEV))
+    handles = [model.model.layers[l].self_attn.register_forward_hook(make_hook(l)) for l in range(L)]
+    for k, ids in enumerate(wins):
+        captured.clear()
+        model(input_ids=ids.to(DEV))
+        for l in range(L):
+            row = captured[l]                                           # (n, T): last token's attention over the context
+            acc[l] += np.corrcoef(row); sink_last[l, k] = row[:, 0].mean()
+            if SAVE_ROWS:
+                rows_store[l, k] = row
+        print("sample", k + 1, "/", NSAMP, flush=True)
+    for h in handles:
+        h.remove()
+    del model; release_memory(DEV)
+    R = acc / NSAMP
+    np.save(PREFIX + "_corr.npy", R)
+    if SAVE_ROWS:
+        np.save(PREFIX + "_lastrows.npy", rows_store)
+    rows = []
     for l in range(L):
-        row = captured[l]                                           # (n, T): last token's attention over the context
-        acc[l] += np.corrcoef(row); sink_last[l, k] = row[:, 0].mean()
-        if SAVE_ROWS:
-            rows_store[l, k] = row
-    print("sample", k + 1, "/", NSAMP, flush=True)
-for h in handles:
-    h.remove()
-del model; release_memory(DEV)
-R = acc / NSAMP
-np.save(PREFIX + "_corr.npy", R)
-if SAVE_ROWS:
-    np.save(PREFIX + "_lastrows.npy", rows_store)
-rows = []
-for l in range(L):
-    off = R[l][~np.eye(n, dtype=bool)]
-    r = {"layer": l, "mean_offdiag_corr": round(float(off.mean()), 4), "median_offdiag_corr": round(float(np.median(off)), 4),
-         "sink_mass_last_row": round(float(sink_last[l].mean()), 4)}
-    for th in (0.95, 0.90):
-        cs = cluster_stats(R[l], th)
-        r[f"t{int(th*100)}_n_clusters"] = cs["n_clusters"]; r[f"t{int(th*100)}_largest_frac"] = round(cs["largest_frac"], 3)
-        r[f"t{int(th*100)}_frac_in_2plus"] = round(cs["frac_in_clusters_of_2plus"], 3); r[f"t{int(th*100)}_sizes"] = cs["sizes"]
-    rows.append(r)
-    print(f"  L{l:2d} mean corr {r['mean_offdiag_corr']:.3f} sink(last row) {r['sink_mass_last_row']:.2f} | 0.95: clusters {r['t95_n_clusters']:2d} largest {r['t95_largest_frac']:.2f} in2+ {r['t95_frac_in_2plus']:.2f} | 0.90: largest {r['t90_largest_frac']:.2f} in2+ {r['t90_frac_in_2plus']:.2f}", flush=True)
-summary = {"depth_spearman_mean_corr": round(float(spearmanr(range(L), [r["mean_offdiag_corr"] for r in rows])[0]), 3),
-           "layers_with_largest_cluster_majority_t95": int(sum(r["t95_largest_frac"] > 0.5 for r in rows)),
-           "layers_with_largest_cluster_majority_t90": int(sum(r["t90_largest_frac"] > 0.5 for r in rows)),
-           "mean_corr_first_layer": rows[0]["mean_offdiag_corr"], "mean_corr_last_quarter": round(float(np.mean([r["mean_offdiag_corr"] for r in rows[-(L // 4):]])), 4)}
-json.dump({"model": NAME, "n_samples": NSAMP, "T": T, "dtype": dt, "rows": rows, "summary": summary}, open(PREFIX + "_base_result.json", "w"), indent=1)
-print("SUMMARY", json.dumps(summary)); print("CHAI_DONE", PREFIX)
+        off = R[l][~np.eye(n, dtype=bool)]
+        r = {"layer": l, "mean_offdiag_corr": round(float(off.mean()), 4), "median_offdiag_corr": round(float(np.median(off)), 4),
+             "sink_mass_last_row": round(float(sink_last[l].mean()), 4)}
+        for th in (0.95, 0.90):
+            cs = cluster_stats(R[l], th)
+            r[f"t{int(th*100)}_n_clusters"] = cs["n_clusters"]; r[f"t{int(th*100)}_largest_frac"] = round(cs["largest_frac"], 3)
+            r[f"t{int(th*100)}_frac_in_2plus"] = round(cs["frac_in_clusters_of_2plus"], 3); r[f"t{int(th*100)}_sizes"] = cs["sizes"]
+        rows.append(r)
+        print(f"  L{l:2d} mean corr {r['mean_offdiag_corr']:.3f} sink(last row) {r['sink_mass_last_row']:.2f} | 0.95: clusters {r['t95_n_clusters']:2d} largest {r['t95_largest_frac']:.2f} in2+ {r['t95_frac_in_2plus']:.2f} | 0.90: largest {r['t90_largest_frac']:.2f} in2+ {r['t90_frac_in_2plus']:.2f}", flush=True)
+    summary = {"depth_spearman_mean_corr": round(float(spearmanr(range(L), [r["mean_offdiag_corr"] for r in rows])[0]), 3),
+               "layers_with_largest_cluster_majority_t95": int(sum(r["t95_largest_frac"] > 0.5 for r in rows)),
+               "layers_with_largest_cluster_majority_t90": int(sum(r["t90_largest_frac"] > 0.5 for r in rows)),
+               "mean_corr_first_layer": rows[0]["mean_offdiag_corr"], "mean_corr_last_quarter": round(float(np.mean([r["mean_offdiag_corr"] for r in rows[-(L // 4):]])), 4)}
+    json.dump({"model": NAME, "n_samples": NSAMP, "T": T, "dtype": dt, "rows": rows, "summary": summary}, open(PREFIX + "_base_result.json", "w"), indent=1)
+    print("SUMMARY", json.dumps(summary)); print("CHAI_DONE", PREFIX)
