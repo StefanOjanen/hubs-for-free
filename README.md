@@ -68,6 +68,10 @@ fixed, reproduces this at every high-sink layer of every model.
 
 <p align="center"><em>230 high-sink layers across eleven models: the shared component is the sink operator in every one.</em></p>
 
+<p align="center"><img src="figures/readme/fig11_depth_profiles.png" alt="Small multiples of shared-energy fraction and sink mass against relative depth for thirteen models" width="880"></p>
+
+<p align="center"><em>Thirteen models, one shape: the shared-energy fraction rises with the sink mass and stays high wherever the sink does.</em></p>
+
 **The shared operator cancels out of every interaction statistic.**
 Writing each head as G_h = a_h S + E_h, the shared-times-shared term
 vanishes identically in every commutator,

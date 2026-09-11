@@ -291,6 +291,34 @@ if MER:
     style(ax[1], "Does shared energy predict tolerance?", sub1)
     fig.savefig(OUT + "fig10_head_merging.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
+
+# ============ Figure 11: shared energy and sink mass across depth, thirteen models (rerun) ============
+RR2 = {json.load(open(f))["model"]: json.load(open(f)) for f in sorted(glob.glob("alignment_study/rerun/*.json"))}
+if RR2:
+    order11 = ["gpt2", "gpt2-medium", "EleutherAI/pythia-160m", "EleutherAI/pythia-410m", "TinyLlama/TinyLlama_v1.1", "Qwen/Qwen2.5-0.5B", "Qwen/Qwen2.5-1.5B",
+               "Qwen/Qwen2.5-1.5B-Instruct", "Qwen/Qwen2.5-3B", "microsoft/Phi-3-mini-4k-instruct", "mistralai/Mistral-7B-v0.1", "Qwen/Qwen2.5-7B", "allenai/OLMo-2-1124-7B"]
+    names11 = {"gpt2": "GPT-2 124M", "gpt2-medium": "GPT-2 355M", "EleutherAI/pythia-160m": "Pythia 160M", "EleutherAI/pythia-410m": "Pythia 410M", "TinyLlama/TinyLlama_v1.1": "TinyLlama 1.1B",
+               "Qwen/Qwen2.5-0.5B": "Qwen2.5 0.5B", "Qwen/Qwen2.5-1.5B": "Qwen2.5 1.5B", "Qwen/Qwen2.5-1.5B-Instruct": "Qwen2.5 1.5B Instruct", "Qwen/Qwen2.5-3B": "Qwen2.5 3B",
+               "microsoft/Phi-3-mini-4k-instruct": "Phi-3 mini 3.8B", "mistralai/Mistral-7B-v0.1": "Mistral 7B", "Qwen/Qwen2.5-7B": "Qwen2.5 7B", "allenai/OLMo-2-1124-7B": "OLMo-2 7B"}
+    order11 = [m for m in order11 if m in RR2]
+    fig, axes = plt.subplots(3, 5, figsize=(8.8, 5.6), sharex=True, sharey=True, gridspec_kw={"wspace": 0.12, "hspace": 0.5, "top": 0.86, "bottom": 0.1, "left": 0.07, "right": 0.99})
+    axes = axes.ravel()
+    for k, m in enumerate(order11):
+        ax = axes[k]; rows = RR2[m]["protocol_A"]["rows"]; L = len(rows); x = [(l + 0.5) / L for l in range(L)]
+        ax.fill_between(x, 0, [r["smass"] for r in rows], color=SEQ[1], alpha=0.55, lw=0, label="sink mass")
+        ax.plot(x, [r["sharedE"] for r in rows], color=S1, lw=2.0, label="shared energy")
+        ax.axhline(0.4, color=GRID, lw=0.8)
+        ax.set_title(names11[m], fontsize=10, loc="left", pad=3); ax.set_ylim(0, 1); ax.set_xlim(0, 1); ax.tick_params(length=0, labelsize=9)
+        ax.set_xticks([0, 0.5, 1]); ax.set_xticklabels(["0", "depth", "1"]); ax.set_yticks([0, 0.5, 1])
+        for sp in ("left", "bottom"): ax.spines[sp].set_color(GRID)
+    for k in range(len(order11), len(axes)):
+        axes[k].axis("off")
+    hs, ls = axes[0].get_legend_handles_labels()
+    fig.legend(hs, ls, loc="center", ncol=1, frameon=False, bbox_to_anchor=(0.8, 0.2), fontsize=11)
+    fig.text(0.02, 0.965, "One shared operator, thirteen models", fontsize=15, color=INK, va="top")
+    fig.text(0.02, 0.91, "Shared-energy fraction and sink mass by relative depth, 48 windows per model at T = 64; the line at 0.4 is the high-sink threshold", fontsize=10.5, color=INK2, va="top")
+    fig.savefig(OUT + "fig11_depth_profiles.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
 # ============ Illustrations (conceptual, drawn at display size, 2x PNG) ============
 CARD, CARD_EDGE, SHADOW = "#f3f2ee", "#dedcd6", "#000000"
 plt.rcParams["axes.grid"] = False

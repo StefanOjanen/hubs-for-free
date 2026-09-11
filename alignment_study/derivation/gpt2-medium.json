@@ -1,0 +1,287 @@
+{
+ "model": "gpt2-medium",
+ "protocol": {
+  "n_windows": 12,
+  "stride": 40,
+  "seq": 64,
+  "device": "cpu"
+ },
+ "rows": [
+  {
+   "layer": 0,
+   "smass": 0.1073,
+   "measured": 0.7204,
+   "derived_ideal": 0.1463,
+   "derived_col": 0.3267,
+   "derived_dict": 0.6941,
+   "per_head_spearman_ideal": 0.575
+  },
+  {
+   "layer": 1,
+   "smass": 0.1856,
+   "measured": 0.7343,
+   "derived_ideal": 0.3209,
+   "derived_col": 0.5509,
+   "derived_dict": 0.7482,
+   "per_head_spearman_ideal": 0.696
+  },
+  {
+   "layer": 2,
+   "smass": 0.1506,
+   "measured": 0.5925,
+   "derived_ideal": 0.2102,
+   "derived_col": 0.3773,
+   "derived_dict": 0.5208,
+   "per_head_spearman_ideal": -0.226
+  },
+  {
+   "layer": 3,
+   "smass": 0.1594,
+   "measured": 0.6166,
+   "derived_ideal": 0.1918,
+   "derived_col": 0.3343,
+   "derived_dict": 0.4176,
+   "per_head_spearman_ideal": -0.168
+  },
+  {
+   "layer": 4,
+   "smass": 0.3954,
+   "measured": 0.673,
+   "derived_ideal": 0.5223,
+   "derived_col": 0.671,
+   "derived_dict": 0.5958,
+   "per_head_spearman_ideal": 0.915
+  },
+  {
+   "layer": 5,
+   "smass": 0.4735,
+   "measured": 0.7186,
+   "derived_ideal": 0.6297,
+   "derived_col": 0.7547,
+   "derived_dict": 0.6802,
+   "per_head_spearman_ideal": 0.968
+  },
+  {
+   "layer": 6,
+   "smass": 0.6842,
+   "measured": 0.8464,
+   "derived_ideal": 0.8184,
+   "derived_col": 0.8882,
+   "derived_dict": 0.8359,
+   "per_head_spearman_ideal": 0.969
+  },
+  {
+   "layer": 7,
+   "smass": 0.6418,
+   "measured": 0.8527,
+   "derived_ideal": 0.8038,
+   "derived_col": 0.8997,
+   "derived_dict": 0.8299,
+   "per_head_spearman_ideal": 0.959
+  },
+  {
+   "layer": 8,
+   "smass": 0.5724,
+   "measured": 0.8122,
+   "derived_ideal": 0.7515,
+   "derived_col": 0.8603,
+   "derived_dict": 0.7934,
+   "per_head_spearman_ideal": 0.963
+  },
+  {
+   "layer": 9,
+   "smass": 0.6972,
+   "measured": 0.874,
+   "derived_ideal": 0.8389,
+   "derived_col": 0.9241,
+   "derived_dict": 0.8592,
+   "per_head_spearman_ideal": 0.966
+  },
+  {
+   "layer": 10,
+   "smass": 0.6063,
+   "measured": 0.8133,
+   "derived_ideal": 0.7491,
+   "derived_col": 0.8671,
+   "derived_dict": 0.7881,
+   "per_head_spearman_ideal": 0.938
+  },
+  {
+   "layer": 11,
+   "smass": 0.6041,
+   "measured": 0.8263,
+   "derived_ideal": 0.7671,
+   "derived_col": 0.8798,
+   "derived_dict": 0.8076,
+   "per_head_spearman_ideal": 0.937
+  },
+  {
+   "layer": 12,
+   "smass": 0.6316,
+   "measured": 0.8543,
+   "derived_ideal": 0.795,
+   "derived_col": 0.9119,
+   "derived_dict": 0.8308,
+   "per_head_spearman_ideal": 0.947
+  },
+  {
+   "layer": 13,
+   "smass": 0.5871,
+   "measured": 0.7942,
+   "derived_ideal": 0.7323,
+   "derived_col": 0.8566,
+   "derived_dict": 0.774,
+   "per_head_spearman_ideal": 0.949
+  },
+  {
+   "layer": 14,
+   "smass": 0.6831,
+   "measured": 0.8598,
+   "derived_ideal": 0.8209,
+   "derived_col": 0.9204,
+   "derived_dict": 0.844,
+   "per_head_spearman_ideal": 0.96
+  },
+  {
+   "layer": 15,
+   "smass": 0.6013,
+   "measured": 0.8359,
+   "derived_ideal": 0.7662,
+   "derived_col": 0.9003,
+   "derived_dict": 0.7976,
+   "per_head_spearman_ideal": 0.932
+  },
+  {
+   "layer": 16,
+   "smass": 0.7045,
+   "measured": 0.8654,
+   "derived_ideal": 0.8357,
+   "derived_col": 0.9193,
+   "derived_dict": 0.8536,
+   "per_head_spearman_ideal": 0.965
+  },
+  {
+   "layer": 17,
+   "smass": 0.6729,
+   "measured": 0.8644,
+   "derived_ideal": 0.8259,
+   "derived_col": 0.9198,
+   "derived_dict": 0.8493,
+   "per_head_spearman_ideal": 0.95
+  },
+  {
+   "layer": 18,
+   "smass": 0.7258,
+   "measured": 0.8686,
+   "derived_ideal": 0.8416,
+   "derived_col": 0.9214,
+   "derived_dict": 0.8615,
+   "per_head_spearman_ideal": 0.922
+  },
+  {
+   "layer": 19,
+   "smass": 0.7312,
+   "measured": 0.9211,
+   "derived_ideal": 0.8779,
+   "derived_col": 0.9617,
+   "derived_dict": 0.8901,
+   "per_head_spearman_ideal": 0.866
+  },
+  {
+   "layer": 20,
+   "smass": 0.7021,
+   "measured": 0.896,
+   "derived_ideal": 0.8444,
+   "derived_col": 0.9384,
+   "derived_dict": 0.8666,
+   "per_head_spearman_ideal": 0.909
+  },
+  {
+   "layer": 21,
+   "smass": 0.75,
+   "measured": 0.918,
+   "derived_ideal": 0.8865,
+   "derived_col": 0.9599,
+   "derived_dict": 0.8981,
+   "per_head_spearman_ideal": 0.881
+  },
+  {
+   "layer": 22,
+   "smass": 0.6337,
+   "measured": 0.9128,
+   "derived_ideal": 0.828,
+   "derived_col": 0.9441,
+   "derived_dict": 0.8551,
+   "per_head_spearman_ideal": 0.838
+  },
+  {
+   "layer": 23,
+   "smass": 0.4229,
+   "measured": 0.7283,
+   "derived_ideal": 0.6111,
+   "derived_col": 0.7665,
+   "derived_dict": 0.7296,
+   "per_head_spearman_ideal": 0.932
+  }
+ ],
+ "summary_all_layers": {
+  "n_layers": 24,
+  "derived_ideal": {
+   "pearson_r2_linear": 0.799,
+   "r2_identity": -3.665,
+   "spearman": 0.966,
+   "median_abs_err": 0.06,
+   "median_signed_err": 0.06,
+   "slope": 0.358,
+   "intercept": 0.564
+  },
+  "derived_col": {
+   "pearson_r2_linear": 0.794,
+   "r2_identity": -0.842,
+   "spearman": 0.977,
+   "median_abs_err": 0.0531,
+   "median_signed_err": -0.0447,
+   "slope": 0.411,
+   "intercept": 0.479
+  },
+  "derived_dict": {
+   "pearson_r2_linear": 0.916,
+   "r2_identity": 0.675,
+   "spearman": 0.988,
+   "median_abs_err": 0.0215,
+   "median_signed_err": 0.0215,
+   "slope": 0.74,
+   "intercept": 0.234
+  }
+ },
+ "summary_high_sink": {
+  "n_layers": 19,
+  "derived_ideal": {
+   "pearson_r2_linear": 0.941,
+   "r2_identity": -0.204,
+   "spearman": 0.967,
+   "median_abs_err": 0.0516,
+   "median_signed_err": 0.0516,
+   "slope": 0.734,
+   "intercept": 0.265
+  },
+  "derived_col": {
+   "pearson_r2_linear": 0.972,
+   "r2_identity": 0.149,
+   "spearman": 0.988,
+   "median_abs_err": 0.0501,
+   "median_signed_err": -0.0501,
+   "slope": 0.977,
+   "intercept": -0.028
+  },
+  "derived_dict": {
+   "pearson_r2_linear": 0.944,
+   "r2_identity": 0.778,
+   "spearman": 0.977,
+   "median_abs_err": 0.0199,
+   "median_signed_err": 0.0199,
+   "slope": 0.997,
+   "intercept": 0.024
+  }
+ }
+}
