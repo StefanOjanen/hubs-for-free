@@ -304,9 +304,14 @@ depth profile (Spearman 0.81) but not the per-pair z profile (Spearman
 -0.38); adding the previous-token and uniform operators as further
 structured directions does not change this (Spearman -0.35 and -0.34),
 because those operators carry at most 0.1 percent of the energy at
-high-sink layers. Real deviation directions produce larger commutators
-than random directions of the same norm. The structure that sets z is
-head-specific and remains open.
+high-sink layers. A direct comparison shows what the rebuilds miss: real
+deviations commute with the shared operator about three times more
+strongly than random deviations of the same norm (normalized commutator
+0.51 to 0.57 against 0.18 at high-sink layers) and are 9 to 25 times more
+concentrated, while no single head-specific column carries them. The
+structure that sets z is the concentration of the deviations, a
+consequence of peaked attention rows; whether a sparse random deviation
+with matched concentration recovers z is a development test in progress.
 
 ## 5. Audits of published findings
 
