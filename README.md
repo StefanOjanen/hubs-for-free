@@ -94,6 +94,10 @@ from one input to the next (OLMo-2), a set of at most three columns does
 the same job: the model that failed the one-column test at 19 percent of
 layers passes the column-set test at 79.
 
+<p align="center"><img src="figures/readme/fig12_sink_profile_model.png" alt="Two scatter plots of real against rebuilt per-pair z for 310 layers of twelve models: rebuilding heads from the shared operator plus random deviations scatters, rebuilding each head from its own sink column plus a random rest lies on the diagonal" width="880"></p>
+
+<p align="center"><em>Twelve models, 310 layers: rebuild the heads from a shared operator and the coupling statistic is lost; rebuild each from its own sink column and it is recovered.</em></p>
+
 <p align="center"><img src="figures/readme/illus3_two_mechanisms.png" alt="Diagram showing that norm heterogeneity in random matrices and a shared column in trained models produce the same hub and eigengap" width="880"></p>
 
 <p align="center"><em>The same signature from two mechanisms; only constrained surrogates tell them apart.</em></p>
