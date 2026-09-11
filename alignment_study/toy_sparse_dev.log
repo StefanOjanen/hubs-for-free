@@ -1,0 +1,36 @@
+[transformers] The following generation flags are not valid and may be ignored: ['output_attentions']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:02<11:09,  2.32s/it]Loading weights:  84%|████████▍ | 243/290 [00:02<00:00, 134.01it/s]Loading weights: 100%|██████████| 290/290 [00:02<00:00, 100.33it/s]
+WIN 0
+WIN 1
+WIN 2
+WIN 3
+WIN 4
+WIN 5
+WIN 6
+WIN 7
+  L 0 support 0.039 | r1 real +0.88 dense +0.99 sparse +0.99 | z real   -1.6 dense   -2.2 sparse   -2.2
+  L 1 support 0.042 | r1 real +0.57 dense +0.98 sparse +0.97 | z real   -1.7 dense   -2.9 sparse   -3.0
+  L 2 support 0.029 | r1 real +0.79 dense +0.97 sparse +0.95 | z real   -3.8 dense   -4.6 sparse   -4.7
+  L 3 support 0.022 | r1 real +0.69 dense +0.66 sparse +0.55 | z real   10.2 dense  -12.7 sparse  -12.5
+  L 4 support 0.029 | r1 real +0.86 dense +0.85 sparse +0.81 | z real   12.1 dense   -9.1 sparse   -9.3
+  L 5 support 0.026 | r1 real +0.67 dense +0.63 sparse +0.53 | z real   13.4 dense  -11.2 sparse  -11.1
+  L 6 support 0.033 | r1 real +0.68 dense +0.44 sparse +0.43 | z real    4.5 dense   -9.8 sparse  -10.1
+  L 7 support 0.022 | r1 real +0.46 dense +0.45 sparse +0.38 | z real   11.5 dense  -14.2 sparse  -15.0
+  L 8 support 0.041 | r1 real +0.55 dense +0.96 sparse +0.95 | z real    4.8 dense   -6.1 sparse   -6.7
+  L 9 support 0.024 | r1 real +0.21 dense +0.26 sparse +0.21 | z real   10.8 dense  -13.8 sparse  -14.4
+  L10 support 0.036 | r1 real +0.84 dense +0.80 sparse +0.79 | z real    8.3 dense   -9.9 sparse  -10.5
+  L11 support 0.023 | r1 real -0.20 dense -0.35 sparse -0.25 | z real    5.8 dense  -14.3 sparse  -14.5
+  L12 support 0.039 | r1 real +0.83 dense +0.83 sparse +0.80 | z real    5.0 dense   -8.1 sparse   -8.6
+  L13 support 0.025 | r1 real +0.64 dense +0.47 sparse +0.38 | z real    7.1 dense  -11.7 sparse  -13.3
+  L14 support 0.031 | r1 real +0.89 dense +0.93 sparse +0.87 | z real    8.0 dense   -9.1 sparse   -9.4
+  L15 support 0.033 | r1 real +0.43 dense +0.61 sparse +0.58 | z real    4.8 dense   -9.7 sparse  -10.3
+  L16 support 0.013 | r1 real -0.27 dense -0.35 sparse -0.22 | z real   -0.9 dense  -21.2 sparse  -21.8
+  L17 support 0.025 | r1 real +0.13 dense +0.12 sparse +0.13 | z real   10.8 dense  -13.6 sparse  -14.9
+  L18 support 0.022 | r1 real +0.57 dense +0.42 sparse +0.37 | z real    7.9 dense  -15.1 sparse  -15.4
+  L19 support 0.028 | r1 real +0.78 dense +0.75 sparse +0.73 | z real   11.4 dense  -10.3 sparse  -10.9
+  L20 support 0.026 | r1 real -0.02 dense -0.21 sparse -0.13 | z real   11.4 dense  -13.3 sparse  -13.7
+  L21 support 0.023 | r1 real -0.58 dense -0.44 sparse -0.37 | z real   -5.9 dense  -20.3 sparse  -20.8
+  L22 support 0.035 | r1 real +0.83 dense +0.82 sparse +0.78 | z real   -2.5 dense   -7.8 sparse   -8.1
+  L23 support 0.030 | r1 real +0.69 dense +0.69 sparse +0.68 | z real   -1.5 dense   -7.9 sparse   -8.2
+SUMMARY {"dense": {"spearman_r1": 0.807, "spearman_z": -0.369, "median_abs_err_z": 18.5, "median_abs_err_r1": 0.064}, "sparse": {"spearman_r1": 0.792, "spearman_z": -0.38, "median_abs_err_z": 19.54, "median_abs_err_r1": 0.1}}
+SPARSE_DONE

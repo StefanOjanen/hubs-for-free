@@ -309,9 +309,11 @@ deviations commute with the shared operator about three times more
 strongly than random deviations of the same norm (normalized commutator
 0.51 to 0.57 against 0.18 at high-sink layers) and are 9 to 25 times more
 concentrated, while no single head-specific column carries them. The
-structure that sets z is the concentration of the deviations, a
-consequence of peaked attention rows; whether a sparse random deviation
-with matched concentration recovers z is a development test in progress.
+deviations are concentrated, but a sparse random deviation with matched
+concentration on a random causal support does not recover z either
+(Spearman -0.38): the threefold larger commutator comes from where the
+entries sit relative to the sink geometry, not from how many there are.
+The description of the deviations that sets z remains open.
 
 ## 5. Audits of published findings
 

@@ -382,3 +382,12 @@ percent against 2 for random). Reading: the structure that random rebuilds
 miss is the concentration of the deviations, a consequence of peaked
 attention rows, not a further low-dimensional operator. The next toy for
 T4.3 is a sparse deviation with matched concentration.
+Third construction (`toy_sparse_dev.py` -> `toy_sparse_dev.json`): a sparse
+random deviation on a random causal support whose concentration matches the
+real deviation's (support fraction 1 to 4 percent of causal entries) does no
+better than the dense one (Spearman with real z -0.38, median absolute error
+19.5 z-units; r1 profile still reproduced at 0.79). Matched concentration on
+a random support does not raise the commutator with S, so the real
+deviations' threefold larger [S, E_h] comes from where their entries sit
+relative to the sink geometry, not from how many there are. T4.3 remains
+open with that constraint recorded.
