@@ -534,3 +534,19 @@ and raises the pooled high-sink R^2 from 0.55 to 0.75 (Spearman 0.78 to
 was set on the single-column derivation and stays failed; the sink-set
 derivation is the version to register next, with the residual's dependence
 on sink mass as its stated limit.
+Where the deviation energy sits (`deviation_column_dev.py` ->
+`deviation_column_dev.json`, labeled development): at the development
+model's high-sink layers a median 54 percent of each head's deviation
+energy E_h = G_h - a_h S lies in the sink column itself (its entries and
+their skew mirrors), against 3 percent for a random skew matrix of the
+same norm; the previous-token band holds 11 percent (2 to 15 percent at
+high-sink layers, 19 to 35 percent at the first three layers, where the
+sink is absent). The dominant deviation is therefore each head's own
+sink-column profile, the way its mass over rows departs from the shared
+profile shape. That is what commutes strongly with S, since both live in
+the same column, and it is exactly what the sink-column surrogate
+preserves and the marginal-matched surrogate destroys, which is why the
+former reproduces z and the latter does not. T4.3 closes at this
+resolution: the structured deviation is the per-head sink profile, and a
+rebuild that keeps each head's real sink column and randomizes the rest is
+the construction to register.

@@ -2,7 +2,7 @@ import numpy as np
 from hubsfree import (generators, gnorms, random_causal_softmax, surrogate_plain,
                       surrogate_colfix, surrogate_altsink, surrogate_shift, coupling, rank1_corr,
                       sink_column, sink_columns, surrogate_wrapped, run_battery, percentile_report,
-                      cos_to_sink, sink_set_generator, sink_generator, shared_mode)
+                      cos_to_sink, sink_set_generator, sink_generator, shared_mode, derived_shared_energy)
 
 
 def _A(seed=0, n=14, T=26):
@@ -110,3 +110,11 @@ def test_cos_to_sink_is_one_for_an_ideal_sink_ensemble_and_low_for_noise():
     S2 = sink_set_generator(T, [0])
     assert np.allclose(S2, sink_generator(T, 0))
     assert abs(np.sqrt((sink_set_generator(T, [0, 7]) ** 2).sum()) - 1.0) < 1e-12
+
+
+def test_derived_shared_energy_is_a_floor_under_the_measured_value():
+    A = random_causal_softmax(np.random.default_rng(51), 10, 48, sink_frac=1.0, sink_bias=3.0)
+    floor, per_head = derived_shared_energy(A, cols=[0])
+    measured = shared_mode(generators(A))[3]
+    assert 0.0 < floor <= measured + 1e-9
+    assert per_head.shape == (10,) and np.all(per_head >= 0) and np.all(per_head <= 1 + 1e-9)

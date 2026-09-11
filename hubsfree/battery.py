@@ -4,8 +4,8 @@ import numpy as np
 
 from .nulls import (is_causal, random_causal_softmax, surrogate_altsink, surrogate_colfix,
                     surrogate_plain, surrogate_shift, surrogate_wrapped)
-from .stats import (coupling, cos_to_sink, eigengap, generators, gnorms, rank1_corr, rho,
-                    shared_mode, sink_column, sink_columns)
+from .stats import (coupling, cos_to_sink, derived_shared_energy, eigengap, generators, gnorms,
+                    rank1_corr, rho, shared_mode, sink_column, sink_columns)
 
 
 def _sink_mass(A):
@@ -25,6 +25,7 @@ BUILTIN_STATS = {
 CAUSAL_STATS = {
     "sink_mass": _sink_mass,
     "cos_to_sink": lambda A: cos_to_sink(A),
+    "sink_floor_of_shared_energy": lambda A: derived_shared_energy(A)[0],
 }
 DEFAULT_NULLS = ("random", "plain", "colfix", "wrapped")
 

@@ -17,7 +17,7 @@ container, not the model. See paper.md in the source repository.
 """
 from .stats import (generators, gnorms, coupling, rank1_corr, eigengap, rho,
                     shared_mode, sink_column, sink_columns, column_masses, sink_generator,
-                    sink_set_generator, cos_to_sink, two_sigma_flags, ward_sizes)
+                    sink_set_generator, cos_to_sink, derived_shared_energy, two_sigma_flags, ward_sizes)
 from .nulls import (random_causal_softmax, surrogate_plain, surrogate_colfix,
                     surrogate_altsink, surrogate_shift, surrogate_wrapped, is_causal)
 from .battery import run_battery, percentile_report
@@ -27,5 +27,5 @@ __all__ = ["generators", "gnorms", "coupling", "rank1_corr", "eigengap", "rho",
            "shared_mode", "sink_column", "sink_columns", "column_masses", "sink_generator", "two_sigma_flags",
            "ward_sizes", "random_causal_softmax", "surrogate_plain",
            "surrogate_colfix", "surrogate_altsink", "surrogate_shift", "surrogate_wrapped",
-           "sink_set_generator", "cos_to_sink", "run_battery",
+           "sink_set_generator", "cos_to_sink", "derived_shared_energy", "run_battery",
            "percentile_report"]

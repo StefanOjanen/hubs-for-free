@@ -328,7 +328,14 @@ deviations are concentrated, but a sparse random deviation with matched
 concentration on a random causal support does not recover z either
 (Spearman -0.38): the threefold larger commutator comes from where the
 entries sit relative to the sink geometry, not from how many there are.
-The description of the deviations that sets z remains open.
+Measured directly, a median 54 percent of each head's deviation energy at
+high-sink layers lies in the sink column itself, against 3 percent for a
+random deviation: the dominant deviation is the head's own sink-column
+profile, the way its mass over rows departs from the shared shape. That
+is what the column-preserving surrogate keeps and the marginal-matched
+surrogate destroys, which accounts for the difference in what they
+reproduce; a rebuild that keeps each head's real sink column and
+randomizes the rest is the construction to register next.
 
 ## 5. Audits of published findings
 

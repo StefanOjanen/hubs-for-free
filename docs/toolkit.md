@@ -62,8 +62,10 @@ dissociation control needs the causal width: at 32 heads use windows of
 products), `eigengap` (lambda_1 / |lambda_2| of the coupling matrix), `rho`
 (top eigenvalue share of the cosine Gram of the generators), `shared_energy`
 (mean over heads of the energy on the layer's shared operator),
-`max_gnorm_share`, and for causal maps `sink_mass` and `cos_to_sink` (cosine
-of the shared operator to the ideal sink-set operator). Any function
+`max_gnorm_share`, and for causal maps `sink_mass`, `cos_to_sink` (cosine
+of the shared operator to the ideal sink-set operator) and
+`sink_floor_of_shared_energy` (the part of the shared energy that each
+head's own sink profile accounts for; `derived_shared_energy` in the API). Any function
 `f(A) -> float` can be added through `stats=`.
 
 ## Reading the report

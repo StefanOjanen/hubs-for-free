@@ -125,6 +125,22 @@ def cos_to_sink(A, cols=None, min_rows=16):
     return float(abs((S * sink_set_generator(T, cols)).sum()))
 
 
+def derived_shared_energy(A, cols=None, min_rows=16):
+    """Per-head floor under the shared-energy fraction from each head's own
+    sink profile and sharpness, with no cross-head information: the energy of
+    G_h along the ideal sink-set operator divided by ||G_h||^2, averaged over
+    heads (preregistration 8 of the source repository). Returns
+    (layer_value, per_head_values). The measured shared energy
+    (shared_mode(G)[3]) is at or above this value; the gap is what the sink
+    does not explain."""
+    n, T, _ = A.shape
+    cols = sink_columns(A, min_rows=min_rows) if cols is None else list(cols)
+    G = generators(A)
+    V = G.reshape(n, -1)
+    e = (V @ sink_set_generator(T, cols).ravel()) ** 2 / (V ** 2).sum(1)
+    return float(e.mean()), e
+
+
 def two_sigma_flags(x):
     """Indices deviating from the mean by more than two sample standard
     deviations (the 'special head' rule whose base rate the battery audits)."""
