@@ -328,8 +328,8 @@ if SP:
     zr = [r["z_real"] for c in SP for r in c["rows"]]; zp = [r["z_profile"] for c in SP for r in c["rows"]]; zd = [r["z_dense"] for c in SP for r in c["rows"]]
     hs = [r["smass"] > 0.4 for c in SP for r in c["rows"]]
     lo, hi = min(zr + zp + zd) - 2, max(zr + zp + zd) + 2
-    for a_, xs, title, sub in ((ax[0], zd, "Shared operator plus random deviations", f"pooled Spearman {SPR['P']['P4']['pooled_spearman_z_dense']:.2f}" if SPR else ""),
-                                (ax[1], zp, "Each head's own sink column plus random rest", f"pooled Spearman {SPR['P']['P4']['pooled_spearman_z_profile']:.2f}, {SPR['P']['P1']['passes']} of 12 models" if SPR else "")):
+    for a_, xs, title, sub in ((ax[0], zd, "Shared operator, random rest", f"pooled Spearman {SPR['P']['P4']['pooled_spearman_z_dense']:.2f}" if SPR else ""),
+                                (ax[1], zp, "Own sink column, random rest", f"pooled Spearman {SPR['P']['P4']['pooled_spearman_z_profile']:.2f}, {SPR['P']['P1']['passes']} of 12 models" if SPR else "")):
         a_.plot([lo, hi], [lo, hi], color=GRID, lw=1.2, zorder=1)
         a_.scatter([x for x, h in zip(xs, hs) if not h], [y for y, h in zip(zr, hs) if not h], s=20, color=SEQ[1], edgecolors=SURF, linewidths=0.8, zorder=2, label="low-sink layers")
         a_.scatter([x for x, h in zip(xs, hs) if h], [y for y, h in zip(zr, hs) if h], s=26, color=S1, edgecolors=SURF, linewidths=0.9, zorder=3, label="high-sink layers")
