@@ -70,7 +70,7 @@ heads of a layer are, to first order, multiples of one operator plus a
 residual, the operator is the sink, its contribution cancels in every
 commutator, and one number per layer, the shared-energy fraction, predicts
 the layer's interaction geometry across models, scales and training time.
-The last two parts were established under eight preregistrations whose
+The last two parts were established under nine preregistrations whose
 thresholds were frozen and publicly timestamped before the runs, and whose
 failures are reported as failures.
 
@@ -351,6 +351,29 @@ sink-column surrogate's success, the derived floor under the shared energy
 and the deviation structure are one fact seen five ways, and a layer
 without a sink is the stated boundary.
 
+### 4.7 Other attention designs
+
+The first thirteen models all use rotary or learned positions with
+multi-head or grouped-query attention. Preregistration 10, frozen before
+download, ran the protocols of preregistrations 6 and 9 on four open
+models with designs outside that set: Falcon-7B (multi-query attention, one
+key and value head for 71 query heads), BLOOM-7b1 (ALiBi position bias),
+OPT-6.7B (learned absolute positions, plain multi-head attention) and
+Qwen3-8B. All four form a first-token sink (19 to 29 high-sink layers). The
+shared component is the ideal sink operator at 100 percent of high-sink
+layers in every model (cosine 0.91 to 1.00); the column set suffices at 76
+to 100 percent of layers; the wrapped-target control dissociates at 100
+percent with r1 restored at 96 to 100 percent; the law holds at Spearman
+-0.84 over 96 layers; and the sink-profile rebuild reproduces the per-layer
+z at Spearman 0.90 to 0.98 per model, 0.97 pooled over 130 layers, with
+median errors of 0.6 to 1.1 z-units. BLOOM's shared energy is the lowest
+measured (0.57 to 0.69) at an unchanged sink cosine, so ALiBi yields a
+weaker but equally sink-shaped operator; Falcon's shared key and value set
+gives the strongest sink profiles (0.96 of generator energy). The
+statements of Sections 4.2 to 4.5 therefore concern softmax attention with
+a sink token, across ten families, three position schemes and three
+attention layouts.
+
 ## 5. Audits of published findings
 
 Procedure (preregistered per target before any battery run): reproduce the
@@ -446,9 +469,9 @@ granularity it has no tolerance consequence (Figure 10).
 
 ## 7. Limitations
 
-Results cover thirteen models up to 7B parameters in six families, English
-text and code, windows up to 256 tokens for the statistics and 512 for
-perplexity. Where the sink sits on a mid-sequence, window-varying column
+Results cover seventeen models up to 8B parameters in ten families, three
+position schemes and three attention layouts, English text and code,
+windows up to 256 tokens for the statistics and 512 for perplexity. Where the sink sits on a mid-sequence, window-varying column
 (OLMo-2, late Qwen2.5-3B layers), the sink-operator identification weakens
 (cosine 0.61 to 0.82 with one column) and the column set repairs most but
 not all of it (four of OLMo-2's 19 high-sink layers keep a sufficiency
@@ -487,6 +510,7 @@ command.
 | 7 | 6b8f8ea, pushed before execution | M1 to M3, head merging | M1, M2 fail; secondary clauses fail; costs reported |
 | 8 | b9b8ef0, pushed before execution | G1 to G4, derived shared energy | G1 (gate) fails at R^2 0.55; G2 to G4 pass |
 | 9 | 6e6b253, pushed before execution | P1 to P4, sink-profile generative model | P1 to P4 pass (11 of 12 models; TinyLlama's low-sink layers the exception) |
+| 10 | de18d52, pushed before download | N1 to N5 on Falcon-7B, BLOOM-7b1, OPT-6.7B, Qwen3-8B | N1 to N5 pass, 4 of 4 models |
 | 4 (draft) | criteria for Targets 1, 3, 4, 5 frozen by commit | audits | Target 2 not reproducible; batteries pending public registration |
 
 ## Appendix B. Numbers ledger
@@ -510,6 +534,7 @@ command.
 | derived shared energy, G1 to G4 | alignment_study/derivation_results.json, derivation/ |
 | deviation rebuilds | alignment_study/toy_structured_dev.json, toy_sparse_dev.json, toy_sinkprofile_dev.json |
 | sink-profile round, P1 to P4 | alignment_study/sinkprofile_results.json, sinkprofile/, posthoc_sinkprofile.json |
+| new designs, N1 to N5 | alignment_study/rerun_pr10_results.json, rerun_pr10/, sinkprofile_pr10_results.json, sinkprofile_pr10/ |
 | merge round, M1 to M3, costs | alignment_study/merge_results.json, merge/ |
 | merge calibration | alignment_study/merge_dev_calibration.json |
 | Target 1 base result | audits/clark2019/base_result.json |

@@ -11,3 +11,4 @@ llama-2-80k retrieval (linear:10, step decoder) start 18:45:11 UTC
 llama-2-80k retrieval done 19:17:04 UTC
 orchestrator resumed 19:17:04 UTC
 downloaded bigscience/bloom-7b1 19:17:12
+downloaded Qwen/Qwen3-8B 19:37:53

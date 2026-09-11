@@ -301,7 +301,7 @@ if RR2:
     names11 = {"gpt2": "GPT-2 124M", "gpt2-medium": "GPT-2 355M", "EleutherAI/pythia-160m": "Pythia 160M", "EleutherAI/pythia-410m": "Pythia 410M", "TinyLlama/TinyLlama_v1.1": "TinyLlama 1.1B",
                "Qwen/Qwen2.5-0.5B": "Qwen2.5 0.5B", "Qwen/Qwen2.5-1.5B": "Qwen2.5 1.5B", "Qwen/Qwen2.5-1.5B-Instruct": "Qwen2.5 1.5B Instruct", "Qwen/Qwen2.5-3B": "Qwen2.5 3B",
                "microsoft/Phi-3-mini-4k-instruct": "Phi-3 mini 3.8B", "mistralai/Mistral-7B-v0.1": "Mistral 7B", "Qwen/Qwen2.5-7B": "Qwen2.5 7B", "allenai/OLMo-2-1124-7B": "OLMo-2 7B",
-               "facebook/opt-6.7b": "OPT 6.7B (learned pos.)", "bigscience/bloom-7b1": "BLOOM 7.1B (ALiBi)", "tiiuae/falcon-7b": "Falcon 7B (multi-query)", "Qwen/Qwen3-8B": "Qwen3 8B"}
+               "facebook/opt-6.7b": "OPT 6.7B", "bigscience/bloom-7b1": "BLOOM 7.1B", "tiiuae/falcon-7b": "Falcon 7B", "Qwen/Qwen3-8B": "Qwen3 8B"}
     order11 = [m for m in order11 if m in RR2]
     nrow = 4 if len(order11) > 15 else 3
     fig, axes = plt.subplots(nrow, 5, figsize=(8.8, 1.85 * nrow + 0.6), sharex=True, sharey=True, gridspec_kw={"wspace": 0.12, "hspace": 0.5, "top": 0.88 if nrow == 4 else 0.86, "bottom": 0.08, "left": 0.07, "right": 0.99})
@@ -319,7 +319,7 @@ if RR2:
     hs, ls = axes[0].get_legend_handles_labels()
     fig.legend(hs, ls, loc="center", ncol=1, frameon=False, bbox_to_anchor=(0.8, 0.14 if nrow == 4 else 0.2), fontsize=11)
     fig.text(0.02, 0.975, f"One shared operator, {len(order11)} models", fontsize=15, color=INK, va="top")
-    fig.text(0.02, 0.93, "Shared-energy fraction and sink mass by relative depth, 48 windows per model at T = 64; the line at 0.4 is the high-sink threshold", fontsize=10.5, color=INK2, va="top")
+    fig.text(0.02, 0.93, "Shared-energy fraction and sink mass by relative depth, 48 windows per model at T = 64; line at 0.4: high-sink threshold. Last four: learned positions, ALiBi, multi-query, Qwen3", fontsize=10, color=INK2, va="top")
     fig.savefig(OUT + "fig11_depth_profiles.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
 

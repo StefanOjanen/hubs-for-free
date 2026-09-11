@@ -145,3 +145,7 @@ each head's argmax position (reproduction) or the rows of needle-token steps
 (battery), which reproduces the earlier Qwen2.5-0.5B numbers exactly. The
 orchestrator was paused (SIGSTOP) during this run so the PR10 rounds would
 not share the GPU, and resumed after it.
+Preregistration 10 rounds completed 22:29 UTC on 2026-09-11 (rerun protocol
+19:38 to 21:04, sink-profile protocol 21:04 to 22:29; Falcon's 71 heads set
+the pace at 51 minutes for the sink-profile cell). The orchestrator's log is
+`alignment_study/audit_pipeline2.log` and `pr10_pipeline.log`.

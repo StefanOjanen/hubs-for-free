@@ -7,10 +7,11 @@ a coordinator head, a spectral gap, and a symbolic law. Run it on a trained
 language model and it finds the same things, for a different reason: the
 attention heads of a layer are, to first order, one shared operator, and
 that operator is the attention sink. This repository follows that thread
-from a null result to a one-parameter law that holds from 0.1B to 7B
-parameters across six architecture families and along the training of two
-models, and turns the instruments built along the way into a toolkit that
-anyone analyzing attention can run.
+from a null result to a one-parameter law that holds from 0.1B to 8B
+parameters across ten architecture families, three position schemes and
+three attention layouts, and along the training of two models, and turns
+the instruments built along the way into a toolkit that anyone analyzing
+attention can run.
 
 ## How the findings connect
 
@@ -70,7 +71,7 @@ fixed, reproduces this at every high-sink layer of every model.
 
 <p align="center"><img src="figures/readme/fig11_depth_profiles.png" alt="Small multiples of shared-energy fraction and sink mass against relative depth for thirteen models" width="880"></p>
 
-<p align="center"><em>Thirteen models, one shape: the shared-energy fraction rises with the sink mass and stays high wherever the sink does.</em></p>
+<p align="center"><em>Seventeen models, one shape: the shared-energy fraction rises with the sink mass and stays high wherever the sink does. The last four add learned positions, ALiBi, multi-query attention and a new generation.</em></p>
 
 **The shared operator cancels out of every interaction statistic.**
 Writing each head as G_h = a_h S + E_h, the shared-times-shared term
@@ -89,14 +90,24 @@ statistics of eleven of twelve models (Spearman 0.85 to 0.99 with the real
 z profile, pooled 0.95 over 310 layers, against 0.13 when the sink column
 is replaced by a shared average). A layer's heads are their sink-column
 profiles plus noise; the one exception, TinyLlama's late layers, has no
-sink to be a profile of. Where the sink wanders between columns
+sink to be a profile of. A further preregistered round asked whether any
+of this depends on the attention design shared by the first thirteen
+models, which all use rotary or learned positions with multi-head or
+grouped-query attention. On Falcon-7B (multi-query attention, one key and
+value head for 71 query heads), BLOOM-7b1 (ALiBi position bias), OPT-6.7B
+(learned absolute positions) and Qwen3-8B, every clause held: the shared
+operator is the sink at 100 percent of high-sink layers in all four, the
+dissociation holds at 100 percent, the law reaches Spearman -0.84, and the
+sink-profile rebuild reproduces the coupling statistics at Spearman 0.90 to
+0.98 per model and 0.97 pooled. The statement is about softmax attention
+with a sink token, not about one family's design. Where the sink wanders between columns
 from one input to the next (OLMo-2), a set of at most three columns does
 the same job: the model that failed the one-column test at 19 percent of
 layers passes the column-set test at 79.
 
 <p align="center"><img src="figures/readme/fig12_sink_profile_model.png" alt="Two scatter plots of real against rebuilt per-pair z for 310 layers of twelve models: rebuilding heads from the shared operator plus random deviations scatters, rebuilding each head from its own sink column plus a random rest lies on the diagonal" width="880"></p>
 
-<p align="center"><em>Twelve models, 310 layers: rebuild the heads from a shared operator and the coupling statistic is lost; rebuild each from its own sink column and it is recovered.</em></p>
+<p align="center"><em>Sixteen models, 440 layers: rebuild the heads from a shared operator and the coupling statistic is lost; rebuild each from its own sink column and it is recovered, on multi-query, ALiBi and learned-position designs as well.</em></p>
 
 <p align="center"><img src="figures/readme/illus3_two_mechanisms.png" alt="Diagram showing that norm heterogeneity in random matrices and a shared column in trained models produce the same hub and eigengap" width="880"></p>
 
@@ -261,9 +272,9 @@ Each instrument below exists because a finding above required it.
 
 ## Evidence standard
 
-Eight preregistrations with numeric thresholds and falsification clauses
+Nine preregistrations with numeric thresholds and falsification clauses
 were frozen in git before their runs (`alignment_study/PREREGISTRATION.md`
-and `PREREGISTRATION2.md` to `PREREGISTRATION9.md`; the second committed
+and `PREREGISTRATION2.md` to `PREREGISTRATION10.md`; the second committed
 before the held-out models were downloaded, the third and all later ones
 pushed publicly before execution, evaluation scripts committed before
 results existed). Registered predictions that failed are
@@ -279,7 +290,8 @@ training-dynamics round, 4 of 4 in 11 of 11 models in the
 fixed-instrument rerun, where the earlier failures on TinyLlama, OLMo-2
 and the 32-head models resolved without moving a threshold, 0 of 2
 primary clauses in the head-merging round, whose negative result is
-reported in full above, and 4 of 4 in the sink-profile round. Development
+reported in full above, 4 of 4 in the sink-profile round, and 5 of 5 on
+the four new attention designs. Development
 calibration that shaped a preregistration is committed and labeled as
 such. A blind reimplementation from the written specification
 reproduced the anchor values to four decimals; surrogate invariants hold
@@ -361,9 +373,9 @@ against the CPU protocol are in `hubsfree/adapters.py` and the run log.
 
 ## Scope and open items
 
-Results cover thirteen models up to 7B parameters, English text and code,
-contexts up to 256 tokens, and training dynamics for two models of one
-family. Where the sink sits on a mid-sequence,
+Results cover seventeen models up to 8B parameters in ten families, English
+text and code, contexts up to 256 tokens, and training dynamics for two
+models of one family. Where the sink sits on a mid-sequence,
 window-varying column (OLMo-2, late Qwen2.5-3B layers) the sink-operator
 identification weakens and one-column surrogates lose their grip, which
 a set of up to three columns repairs in most layers but not all. In

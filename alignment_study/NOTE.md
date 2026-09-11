@@ -617,3 +617,46 @@ interaction statistics measure about a trained layer is in the column of
 the sink token, head by head. Where a layer has no sink (TinyLlama's late
 layers), the statistics measure something else, and that is the stated
 boundary.
+
+## New attention designs (2026-09-11 to 12, preregistration 10)
+
+Four open models with attention designs absent from the thirteen measured
+before: Falcon-7B (multi-query attention, one key/value head for 71 query
+heads), BLOOM-7b1 (ALiBi position bias, no rotary), OPT-6.7B (learned
+absolute positions, plain multi-head attention) and Qwen3-8B (the newest
+Qwen generation). Frozen and pushed (de18d52, 16:40 UTC) before Falcon,
+BLOOM or Qwen3 was downloaded; run 19:38 to 22:29 UTC under the exact
+protocols of preregistrations 6 and 9 (`rerun_pr10/`, `sinkprofile_pr10/`;
+Falcon's 71 heads took 51 minutes in the sink-profile protocol alone).
+Scorecard (`rerun_pr10_results.json`, `sinkprofile_pr10_results.json`):
+
+- All four form a first-token sink: 28 (Falcon), 19 (BLOOM), 29 (OPT) and
+  29 (Qwen3) high-sink layers in protocol A, the modal sink column being
+  column 0 at every one of them.
+- N1 PASS 4 of 4: S1' at 100 percent of high-sink layers in every model;
+  cosine of the shared component to the ideal sink operator 0.98 to 1.00
+  (Falcon), 0.94 to 0.99 (BLOOM), 0.93 to 1.00 (OPT), 0.91 to 1.00 (Qwen3).
+- N2 PASS 4 of 4: S2' at 82, 100, 76 and 97 percent of high-sink layers.
+- N3 PASS 4 of 4: S3' at 100 percent of high-sink layers of protocol B in
+  every model, r1 restored at 96 to 100 percent; BLOOM keeps only 6
+  high-sink layers at T = 256 (its sink weakens with length), all passing.
+- N4 PASS: Spearman(shared energy, r1) = -0.84 [-0.88, -0.78] over the 96
+  high-sink layers with cv(gn) >= 0.1 (-0.87 over all 105).
+- N5 PASS 4 of 4: the sink-profile rebuild reproduces the per-layer z at
+  Spearman 0.90 (OPT), 0.98 (BLOOM), 0.98 (Falcon) and 0.96 (Qwen3) with
+  median errors of 0.6 to 1.1 z-units (dense rebuild -0.81 to +0.79 and 17
+  to 21), pooled 0.97 over 130 layers; the sink column holds 0.75 (BLOOM) to
+  0.96 (Falcon) of each head's generator energy at high-sink layers. The
+  secondary r1 clause holds in 3 of 4 (BLOOM 0.48).
+
+Textures: BLOOM's shared energy is the lowest of any model measured (0.57
+to 0.69 at high-sink layers) while its sink cosine is as high as the rest,
+so ALiBi gives a weaker but equally sink-shaped shared operator; Falcon's
+multi-query design, where every head shares one key/value set, has the
+strongest sink profiles (0.96 of energy) and the cleanest rebuild (error
+0.56). Reading: the shared sink operator, the column-set sufficiency, the
+dissociation and the alignment-fraction law now hold across rotary,
+learned-position and ALiBi positions and across multi-head, grouped-query
+and multi-query attention, seventeen models in ten families, and the
+generative statement of preregistration 9 holds in fifteen of sixteen
+models tested (TinyLlama's low-sink layers remaining the one exception).
