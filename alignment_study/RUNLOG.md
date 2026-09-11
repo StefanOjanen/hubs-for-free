@@ -96,3 +96,6 @@ pair sweep, Qwen2.5-3B 74 minutes, Qwen2.5-7B 154 minutes (bfloat16). The
 GPU pipeline (derivation for the five remaining models, CHAI reproduction
 on Mistral-7B, retrieval-heads reproduction on Qwen2.5-7B) started at
 13:25 UTC.
+Derivation round completed 13:29 UTC (GPU part: Qwen2.5-3B and Phi-3-mini
+in float32, Mistral-7B, Qwen2.5-7B and OLMo-2-7B in bfloat16). CHAI
+reproduction on Mistral-7B started 13:29 UTC.

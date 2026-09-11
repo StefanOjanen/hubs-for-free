@@ -26,9 +26,10 @@ three preregistered rounds (Spearman -0.76, -0.76, -0.70), along the
 training of two models (Spearman -0.74 over 152 checkpoint-layer cells),
 and its regime flip sits where a synthetic ensemble of noise plus one
 shared column placed it in advance. Training replaces one shared operator
-with another: untrained layers share the uniform causal operator, the sink
-operator takes over within one checkpoint of sink formation, and the shared
-energy at high-sink layers follows from per-head sink profiles alone. We
+with another: untrained layers share the uniform causal operator and the
+sink operator takes over within one checkpoint of sink formation. Per-head
+sink profiles fix a floor under the shared energy that orders layers
+correctly but leaves a residual the sink does not explain. We
 release the nulls as a toolkit and apply them to published findings under
 preregistered criteria, reporting each outcome as registered.
 
@@ -287,14 +288,21 @@ operator maximizes the joint energy, the derived value should sit at or
 below the measured one. The eighth preregistration set the gate at a linear
 R^2 of 0.8 over pooled high-sink layers.
 
-PENDING (7 of 12 models complete at the time of writing): over 101
-high-sink layers of gpt2, gpt2-medium, Pythia-160m, Pythia-410m, TinyLlama,
-Qwen2.5-1.5B base and Instruct, the derived value explains 92 percent of
-the variance in measured shared energy (bootstrap interval 0.87 to 0.95),
-orders all 150 layers at Spearman 0.88, and sits below the measured value
-at every high-sink layer. A two-operator predictor that adds the uniform
-causal operator narrows the all-layer median error to 0.046. The remaining
-five models run under the same frozen file.
+Outcome over the twelve non-development models (310 layers, 231
+high-sink): the gate fails. The sink-only derived value explains 55 percent
+of the variance in measured shared energy across high-sink layers (linear
+R^2 0.55, bootstrap 0.42 to 0.69), against the registered 0.8; it orders
+all 310 layers at Spearman 0.86 (G2, pass), sits at or below the measured
+value at every high-sink layer with a median gap of 0.058 (G3, pass), and
+the two-operator predictor improves the all-layer identity fit in 12 of 12
+models with a pooled median error of 0.039 (G4, pass). The pooled fit is
+low because models sit on different offset lines (intercepts 0.14 to
+0.74); within seven of the twelve models R^2 exceeds 0.86 (Figure 9). The
+registered reading applies: per-head sink mass and row sharpness fix a
+floor under the layer's shared energy that lies close to the measured
+value and orders layers correctly, but the residual above the floor is not
+a fixed fraction, so the shared energy is measured structure with a
+derived lower bound, not derived structure.
 
 ### 4.6 What the deviation directions are not
 
@@ -402,8 +410,8 @@ control needs a causal width of roughly eight tokens per head. The
 deviation directions carry structure the shared-operator description does
 not capture (Section 4.6). The commutator pipeline is one instrument among
 many the audits address; it is the one whose failure started this work.
-The dynamics result rests on one model family. The derivation gate is pending at the time of writing; the
-practical test failed as registered. The audits are
+The dynamics result rests on one model family. The derivation gate and the practical test both failed as
+registered; each is reported in full. The audits are
 registered but their batteries wait for public registration.
 
 ## 8. Recommendations
@@ -428,7 +436,7 @@ command.
 | 5 | 68b65f9, pushed before download | D0 to D5, Pythia checkpoints | D0 to D3, D5 pass; D4 (secondary) fails |
 | 6 | 3d5b337, pushed before execution | S1' to S4 with repaired instruments, thirteen models | 4 of 4 in 11 of 11 |
 | 7 | 6b8f8ea, pushed before execution | M1 to M3, head merging | M1, M2 fail; secondary clauses fail; costs reported |
-| 8 | b9b8ef0, pushed before execution | G1 to G4, derived shared energy | PENDING (7 of 12 models: on course) |
+| 8 | b9b8ef0, pushed before execution | G1 to G4, derived shared energy | G1 (gate) fails at R^2 0.55; G2 to G4 pass |
 | 4 (draft) | criteria for Target 1 frozen by commit | audits | batteries pending public registration |
 
 ## Appendix B. Numbers ledger
@@ -449,7 +457,7 @@ command.
 | dev anchor Spearman 0.99 | alignment_study/rerun/Qwen2.5-0.5B.json against tier1_robust.json |
 | random-init shared energy 0.88 to 0.96, cosine 0.27; uniform operator cosine 1.00 | alignment_study/dynamics_dev_calibration.json, kmode_dev_calibration.json |
 | D0 to D5, 0.935, -0.736, 25 of 26, 14 crossings | alignment_study/dynamics_results.json, posthoc_dynamics.json |
-| derived shared energy (interim) | alignment_study/derivation_results.json, derivation/ |
+| derived shared energy, G1 to G4 | alignment_study/derivation_results.json, derivation/ |
 | deviation rebuilds | alignment_study/toy_structured_dev.json |
 | merge round, M1 to M3, costs | alignment_study/merge_results.json, merge/ |
 | merge calibration | alignment_study/merge_dev_calibration.json |

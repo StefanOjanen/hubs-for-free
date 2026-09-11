@@ -228,11 +228,19 @@ Each instrument below exists because a finding above required it.
   is reproduced and its criteria are frozen in
   `audits/PREREGISTRATION4_DRAFT.md`; results follow with the original
   authors' responses.
-- **Deriving the operator rather than measuring it.** The shared energy
-  tracks sink mass closely enough (Spearman 0.80 across depth, and the
-  shared mode locks onto the sink within one checkpoint of its formation
-  during training) that a closed form may exist; deriving the shared
-  energy from the per-head sink profile is the next registered step.
+- **Deriving the operator rather than measuring it: a floor, not a
+  formula.** A preregistered derivation writes each head's energy along
+  the ideal sink direction from its own sink mass and row sharpness, with
+  no cross-head information, and predicts the layer's shared energy from
+  the mean. Across 310 layers of twelve models it orders the layers at
+  Spearman 0.86 and sits below the measured value at every high-sink
+  layer, within 0.06 at the median, but it explains 55 percent of the
+  variance across models rather than the registered 80. The shared energy
+  is measured structure with a derived lower bound.
+
+<p align="center"><img src="figures/readme/fig9_derived_shared_energy.png" alt="Scatter of measured shared-energy fraction against the value derived from per-head sink profiles, twelve models, with and without the uniform causal operator" width="880"></p>
+
+<p align="center"><em>The derived floor tracks the measured shared energy but does not reach it; adding the untrained network's operator closes part of the gap at low-sink layers.</em></p>
 
 ## Evidence standard
 
@@ -247,7 +255,8 @@ prediction (A1), the first dissociation control (A7, design flaw
 documented and replaced), the sharp regime-edge threshold (H4b),
 one-column sufficiency on TinyLlama (H2) and OLMo-2 (S2), the
 dissociation control at 32 heads (S3), early sink formation on
-Pythia-160m (D4), and both merge-tolerance predictions (M1, M2). Out of sample, 7 of 8 registered clauses passed in the
+Pythia-160m (D4), both merge-tolerance predictions (M1, M2), and the
+derivation gate (G1). Out of sample, 7 of 8 registered clauses passed in the
 sub-2B round, 3 of 4 in the 3B-to-7B round, 5 of 5 primary clauses in the
 training-dynamics round, 4 of 4 in 11 of 11 models in the
 fixed-instrument rerun, where the earlier failures on TinyLlama, OLMo-2

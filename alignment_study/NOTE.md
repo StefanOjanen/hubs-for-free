@@ -435,3 +435,40 @@ is a measurement, not yet a tool, stands as the result. Development
 calibration on Qwen2.5-0.5B (top cheaper than bottom in 23 of 24 layers,
 Spearman -0.32) did not transfer to the registered models; that gap is
 itself the finding of the round.
+
+## Derivation round (2026-09-11, preregistration 8, gate G3)
+
+Twelve models, 310 layers (231 high-sink), 12 windows at T = 64; seven
+models on the CPU from 08:26 UTC, the five larger ones on the GPU from
+13:25 UTC after the merge round, all under the file frozen at b9b8ef0
+(08:24 UTC). Scorecard (`eval_derivation.py` -> `derivation_results.json`):
+
+- G1 FAIL (the gate): pooled over the 231 high-sink layers, the sink-only
+  derived value explains 55 percent of the variance in measured shared
+  energy (linear R^2 0.55, bootstrap 0.42 to 0.69), against the registered
+  0.8. The interim value on the first seven models was 0.92; adding
+  Phi-3-mini (per-model R^2 0.14), Qwen2.5-3B (0.34), OLMo-2 (0.87) and
+  Qwen2.5-7B (0.93) lowered the pooled fit because the models sit on
+  different offset lines: per-model intercepts run from 0.14 to 0.74, and
+  in Phi-3 and Qwen2.5-3B the measured range across high-sink layers is
+  narrow (0.71 to 0.97) relative to the gap. Per model, R^2 is above 0.86 in
+  seven of twelve (gpt2 0.98, gpt2-medium 0.94, Pythia-160m 0.94,
+  Pythia-410m 0.99, Mistral 0.93, Qwen2.5-7B 0.93, OLMo-2 0.87).
+- G2 PASS: over all 310 layers the derived value orders the layers by
+  shared energy at Spearman 0.86.
+- G3 PASS (secondary): the derived value sits at or below the measured one
+  in 100 percent of high-sink layers (median gap 0.058), as the optimality
+  argument requires.
+- G4 PASS (secondary): adding the uniform causal operator improves the
+  identity R^2 over all layers in 12 of 12 models and lowers the pooled
+  median absolute error to 0.039; at low-sink layers the sink-only value
+  (median 0.20) is far below the measured (0.66) and the two-operator value
+  (0.50) closes about 60 percent of that gap.
+
+Reading, per the registered clause: the framing stays "measured structure
+with a derived lower bound". Each head's sink mass and row sharpness fix a
+floor under the layer's shared energy that lies within 0.06 of the measured
+value at the median high-sink layer and orders layers correctly across
+models, but the residual above the floor is not a fixed fraction and is not
+explained by the uniform operator either; the deviation structure recorded
+in the toy sections is the same open item seen from the other side.
