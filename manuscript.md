@@ -357,13 +357,16 @@ complete-linkage clusters at 0.95). Reproduction on an open 7B model:
 PENDING.
 
 Target 4, Dewage et al. (2026), singular values of the projection weights
-above the Marchenko-Pastur edge carry the learned structure; the paper
-reports for Mistral-7B that 87.5, 74.7, 43.6 and 84.6 percent of the
-singular values of Q, K, V and O are outliers. The recipe is fully
-specified and reimplemented; the stated code URL was unreachable on two
-dates. Reproduction: PENDING. Nulls for the battery: Gaussian weights of
+above the Marchenko-Pastur edge carry the learned structure. The recipe is
+fully specified and was reimplemented, the stated code URL being
+unreachable on two dates. On Mistral-7B the mean outlier counts per matrix
+(Q 1511, K 341, V 212, O 1450) match the paper's Table II to within 0.3
+percent, and the paper's percentage column (87.5, 74.7, 43.6, 84.6) is
+reproduced as the outliers' share of spectral energy (89.3, 75.7, 43.0,
+84.4) rather than as the share of singular values (21 to 37 percent).
+Reproduced; criteria frozen. Nulls for the battery: Gaussian weights of
 matched shape and norm, row-norm-matched random weights, within-matrix
-permutation.
+permutation, and config-initialized weights of the same architecture.
 
 Target 5, Retrieval Heads (2024), the positive control: 3 to 6 percent of
 heads copy from the context during needle retrieval (retrieval score above

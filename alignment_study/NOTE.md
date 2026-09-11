@@ -472,3 +472,22 @@ value at the median high-sink layer and orders layers correctly across
 models, but the residual above the floor is not a fixed fraction and is not
 explained by the uniform operator either; the deviation structure recorded
 in the toy sections is the same open item seen from the other side.
+
+## Audit program status (2026-09-11)
+
+Base results reproduced and criteria frozen (`audits/PREREGISTRATION4_DRAFT.md`);
+no battery has run, since the plan gates the first battery on public
+registration of the draft.
+
+- Target 1, Clark et al. 2019: reproduced 2026-09-06 (same-layer JS 0.253
+  against 0.380 across layers; nearest neighbor in the same layer for 38.9
+  percent of heads, chance 7.7). Criteria frozen.
+- Target 2, Kovaleva et al. 2019: not reproducible in stated form
+  (classifier and annotations unreleased); logged in TARGETS.md.
+- Target 4, Dewage et al. 2026: reproduced on Mistral-7B-v0.1 from the
+  paper's recipe (their code URL unreachable on two dates). Outlier counts
+  per matrix match Table II to within 0.3 percent (Q 1511, K 341, V 212,
+  O 1450); the paper's percentages are the outliers' share of spectral
+  energy (Q 89.3, K 75.7, V 43.0, O 84.4 here against 87.5, 74.7, 43.6,
+  84.6), not the share of singular values (21 to 37 percent). Criteria
+  frozen with four nulls including config-initialized weights.
