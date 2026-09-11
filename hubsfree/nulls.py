@@ -106,3 +106,32 @@ def surrogate_shift(A, rng, draws=1):
             for i in range(2, T):
                 S[d, h, i, :i] = np.roll(A[h, i, :i], int(offs[h]) % i)
     return S
+
+
+def surrogate_wrapped(A, rng, draws=1):
+    """Wrapped-target dissociation control (causal maps; the primary control
+    of preregistration 6). Per draw, a random permutation of 1..n assigns each
+    head a target column t_h. In every row i >= 2 the row's maximum causal
+    entry is swapped into the target, wrapped to 1 + (t_h - 1) mod (i - 1)
+    when t_h >= i so that every row of every head is treated alike, and the
+    other causal off-diagonal entries are permuted. Each head stays exactly
+    as concentrated as before, but heads no longer share a column. Row sums,
+    row IPR, the diagonal and every generator norm are preserved exactly.
+    Toy validation and the reason it replaces surrogate_altsink at large head
+    counts: alignment_study/control_redesign_toy2.py and NOTE.md."""
+    if not is_causal(A):
+        raise NotImplementedError("surrogate_wrapped is defined for causal attention maps")
+    n, T, _ = A.shape
+    S = np.repeat(A[None], draws, 0)
+    for d in range(draws):
+        targets = rng.permutation(n) + 1
+        for h in range(n):
+            t = int(targets[h])
+            for i in range(2, T):
+                tt = t if t < i else 1 + (t - 1) % (i - 1)
+                row = S[d, h, i, :i]
+                j = int(row.argmax())
+                row[j], row[tt] = row[tt], row[j]
+                rest = np.array([c for c in range(i) if c != tt])
+                row[rest] = row[rest][rng.permutation(len(rest))]
+    return S

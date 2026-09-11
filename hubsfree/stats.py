@@ -107,6 +107,24 @@ def sink_generator(T, c):
     return G / np.sqrt((G ** 2).sum())
 
 
+def sink_set_generator(T, cols):
+    """Unit-norm sum of the ideal sink generators at the given columns; equals
+    sink_generator(T, c) when cols has one column."""
+    G = sum(sink_generator(T, c) for c in cols)
+    return G / np.sqrt((G ** 2).sum())
+
+
+def cos_to_sink(A, cols=None, min_rows=16):
+    """|cosine| between the layer's shared operator (top principal component
+    of the stacked generators) and the sink-set operator at cols (default:
+    sink_columns(A)). Causal maps only."""
+    n, T, _ = A.shape
+    cols = sink_columns(A, min_rows=min_rows) if cols is None else list(cols)
+    S = shared_mode(generators(A))[0]
+    S = S / np.sqrt((S ** 2).sum())
+    return float(abs((S * sink_set_generator(T, cols)).sum()))
+
+
 def two_sigma_flags(x):
     """Indices deviating from the mean by more than two sample standard
     deviations (the 'special head' rule whose base rate the battery audits)."""

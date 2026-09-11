@@ -1,7 +1,7 @@
 import numpy as np
 from hubsfree import (generators, gnorms, random_causal_softmax, surrogate_plain,
                       surrogate_colfix, surrogate_altsink, surrogate_shift, coupling, rank1_corr,
-                      sink_column, sink_columns)
+                      sink_column, sink_columns, surrogate_wrapped, run_battery, percentile_report)
 
 
 def _A(seed=0, n=14, T=26):
@@ -65,3 +65,29 @@ def test_sink_columns_finds_two_shared_columns_and_one_alone():
     assert sink_columns(A, thresh=0.10) == [0, 20]
     B = random_causal_softmax(np.random.default_rng(12), n, T, sink_frac=1.0, sink_bias=4.0)
     assert sink_columns(B, thresh=0.10) == [0]
+
+
+def test_wrapped_control_keeps_rows_and_moves_every_maximum():
+    n, T = 6, 40
+    A = random_causal_softmax(np.random.default_rng(21), n, T, sink_frac=1.0, sink_bias=4.0)
+    S = surrogate_wrapped(A, np.random.default_rng(22), 1)[0]
+    assert np.abs(np.sort(A, -1) - np.sort(S, -1)).max() < 1e-12
+    assert np.abs(gnorms(generators(A)) - gnorms(generators(S))).max() < 1e-12
+    targets = set()
+    for h in range(n):
+        cols = {int(S[h, i, :i].argmax()) for i in range(n + 1, T)}   # rows where no wrapping occurs
+        assert len(cols) == 1
+        targets |= cols
+    assert targets == set(range(1, n + 1))
+
+
+def test_battery_runs_on_causal_and_bidirectional_maps():
+    A = random_causal_softmax(np.random.default_rng(31), 8, 32, sink_frac=1.0, sink_bias=3.0)
+    res = run_battery(A, draws=6, seed=1)
+    assert set(res) >= {"rank1_corr", "shared_energy", "sink_mass", "cos_to_sink"}
+    assert set(res["rho"]) >= {"real", "random", "plain", "colfix", "wrapped", "columns"}
+    rows = percentile_report(res, quiet=True)
+    assert all(0.0 <= r["percentile"] <= 100.0 for r in rows)
+    rng = np.random.default_rng(32); lo = rng.normal(size=(4, 12, 12)); B = np.exp(lo); B /= B.sum(-1, keepdims=True)
+    resb = run_battery(B, draws=4, seed=2)
+    assert "sink_mass" not in resb and "wrapped" not in resb["rho"] and resb["rho"]["columns"] == [0, 11]

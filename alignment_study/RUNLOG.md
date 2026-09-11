@@ -71,3 +71,9 @@ under the same frozen file (`rerun_round.py --purge-large`, log
 OLMo-2-7B completed at 23:25 UTC (52 min, bfloat16, 19 high-sink layers);
 its cache was purged. All thirteen models are in `rerun/`; scorecard in
 `rerun_results.json` and NOTE.md.
+
+Head-merging round (PREREGISTRATION7.md, frozen and pushed as 6b8f8ea at
+2026-09-11 08:19 UTC). Launched 08:21 UTC on the M1 Max with
+`merge_round.py --purge-large` (log `merge_round.log`; per-model results in
+`merge/`). Qwen2.5-1.5B from cache; 3B and 7B re-downloaded since the
+rerun purged them.
