@@ -491,3 +491,9 @@ registration of the draft.
   energy (Q 89.3, K 75.7, V 43.0, O 84.4 here against 87.5, 74.7, 43.6,
   84.6), not the share of singular values (21 to 37 percent). Criteria
   frozen with four nulls including config-initialized weights.
+- Target 3, CHAI 2024: partially reproduced on Mistral-7B (32 C4 documents,
+  T = 1024): high cross-head correlation of last-token attention rows
+  everywhere and large 0.95-clusters in layers 1 to 6, but a majority
+  cluster in only 4 of 32 layers and no increase with depth (Spearman -0.38);
+  the correlation tracks the last row's sink mass. Criteria frozen; the
+  column-set surrogate is expected to match both statistics.

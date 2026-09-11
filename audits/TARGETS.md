@@ -76,3 +76,11 @@ weeks to respond before any preprint; responses are published alongside.
   spectral energy (reproduced within 2.1 percent), not the share of
   singular values (21 to 37 percent here). Reproduced; criteria frozen in
   PREREGISTRATION4_DRAFT.md.
+- Target 3 reproduction (2026-09-11, `chai/reproduce.py` on Mistral-7B-v0.1,
+  32 C4 documents at T = 1024; a first attempt at T = 2048 ran at about a
+  minute per document and was stopped): partially reproduced. High
+  cross-head correlation and large 0.95-clusters in layers 1 to 6; a
+  majority cluster in only 4 of 32 layers; the paper's increase of
+  correlation with depth is not reproduced (Spearman with depth -0.38); the
+  correlation follows the last row's sink mass. Criteria frozen in
+  PREREGISTRATION4_DRAFT.md.

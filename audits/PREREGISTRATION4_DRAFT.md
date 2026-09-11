@@ -87,10 +87,46 @@ battery is run on this target. E4 is retained only if a replacement target
 carries a shared-column prevalence statement with a numeric base result;
 otherwise E4 is dropped before freezing and the drop is recorded here.
 
-### Target 3: CHAI (2024)
-Base result R_3: [attention-map correlation clustering; fraction of heads
-mergeable at the paper's threshold on Llama-7B or the largest open
-substitute that fits the available GPU]. Statistic T_3: [fill].
+### Target 3: CHAI 2024 (criteria frozen 2026-09-11, before any battery run)
+Base result R_3, attempted 2026-09-11 (`audits/chai/reproduce.py`,
+Mistral-7B-v0.1 as the open substitute for LLaMa-7B, 32 C4 validation
+documents at T = 1024 against the paper's 1024 samples at 2048; the object
+reimplemented from the paper since no code exists: each head's attention
+row for the last token, Pearson correlation across heads averaged over
+documents, complete-linkage clusters at 0.95 and 0.90). Partially
+reproduced. Cross-head correlation is high everywhere (mean off-diagonal
+0.55 to 0.98) and the paper's "one or two large clusters with within-cluster
+correlation above 0.95" holds in the early layers (layers 1 to 6: mean
+correlation 0.93 to 0.98, largest 0.95-cluster 0.22 to 0.91 of heads),
+but a majority cluster at 0.95 exists in only 4 of 32 layers (7 at 0.90), and the
+paper's "correlation increases in later layers" is not reproduced: mean
+correlation peaks at layers 1 to 6 and its Spearman with depth is
+-0.38 (first layer 0.55, last quarter 0.76). Across layers the
+mean correlation tracks the last row's mass on the sink token (0.71 at
+layer 1 with correlation 0.94; 0.25 at layer 13 with 0.71). The
+redundancy statement is reproduced; the depth statement is not, on this
+model and at this scale.
+
+Statistic T_3: per layer, the mean off-diagonal Pearson correlation of the
+heads' last-token attention rows and the share of heads in the largest
+complete-linkage cluster at 0.95 (secondary: at 0.90).
+
+Nulls, 100 draws each on the same documents: (a) random causal softmax
+maps matched in n and T; (b) per-row marginal-matched surrogates of the
+full maps (the last row's entries permuted across positions); (c)
+column-set-preserving surrogates (the sink set fixed, the rest permuted);
+(d) config-initialized Mistral-7B architecture, five seeds.
+
+Effect size and shrinkage: real statistic versus null median; shrinkage =
+(null median minus random median) / (real minus random median).
+
+Registered expectation (an instance of E1): the correlation and the
+cluster share are matched by the column-set surrogate (c) at 2/3 or more
+of layers (the sink entry dominates a Pearson correlation between
+attention rows), survive (a) and (d) at the 95th percentile, and shrink by
+more than 50 percent against (b). Reading if it holds: the redundancy CHAI
+exploits is the shared sink column, which is why clustering by it costs
+little accuracy and why it is strongest where the sink is.
 
 ### Target 4: Dewage et al. 2026 (criteria frozen 2026-09-11, before any battery run)
 Base result R_4, reproduced 2026-09-11 (`audits/dewage2026/reproduce.py`,

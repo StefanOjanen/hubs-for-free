@@ -351,10 +351,16 @@ the checkpoints were released. Logged and replaced.
 Target 3, CHAI (2024), heads within a layer are redundant in which tokens
 they attend to during decoding, with one or two large clusters per layer
 at within-cluster correlation above 0.95 and correlation increasing with
-depth. The object is reimplemented from the paper (the last token's
-attention row per head over C4 contexts, Pearson correlation across heads,
-complete-linkage clusters at 0.95). Reproduction on an open 7B model:
-PENDING.
+depth. The object was reimplemented from the paper (the last token's
+attention row per head over C4 documents, Pearson correlation across
+heads, complete-linkage clusters at 0.95) and run on Mistral-7B as the
+open substitute, at 32 documents of 1,024 tokens. Partially reproduced:
+cross-head correlation is high at every layer (0.55 to 0.98) and layers 1
+to 6 carry one large cluster (up to 91 percent of heads at 0.95), but only
+4 of 32 layers have a majority cluster and correlation falls rather than
+rises with depth (Spearman -0.38), tracking the sink mass of the last row
+instead. Criteria frozen; the registered expectation is that the
+column-set surrogate matches both statistics.
 
 Target 4, Dewage et al. (2026), singular values of the projection weights
 above the Marchenko-Pastur edge carry the learned structure. The recipe is

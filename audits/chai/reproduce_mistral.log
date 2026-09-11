@@ -1,0 +1,69 @@
+[transformers] The following generation flags are not valid and may be ignored: ['output_attentions']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 4655.02it/s]
+mistralai/Mistral-7B-v0.1 DEVICE mps:Apple M1 Max (21.3 GB working set) DTYPE bfloat16 layers 32 heads 32 T 1024 samples 32
+sample 1 / 32
+sample 2 / 32
+sample 3 / 32
+sample 4 / 32
+sample 5 / 32
+sample 6 / 32
+sample 7 / 32
+sample 8 / 32
+sample 9 / 32
+sample 10 / 32
+sample 11 / 32
+sample 12 / 32
+sample 13 / 32
+sample 14 / 32
+sample 15 / 32
+sample 16 / 32
+sample 17 / 32
+sample 18 / 32
+sample 19 / 32
+sample 20 / 32
+sample 21 / 32
+sample 22 / 32
+sample 23 / 32
+sample 24 / 32
+sample 25 / 32
+sample 26 / 32
+sample 27 / 32
+sample 28 / 32
+sample 29 / 32
+sample 30 / 32
+sample 31 / 32
+sample 32 / 32
+  L 0 mean corr 0.546 sink(last row) 0.26 | 0.95: clusters 18 largest 0.41 in2+ 0.53 | 0.90: largest 0.56 in2+ 0.56
+  L 1 mean corr 0.942 sink(last row) 0.71 | 0.95: clusters 11 largest 0.56 in2+ 0.78 | 0.90: largest 0.75 in2+ 0.91
+  L 2 mean corr 0.981 sink(last row) 0.59 | 0.95: clusters  3 largest 0.91 in2+ 0.97 | 0.90: largest 1.00 in2+ 1.00
+  L 3 mean corr 0.971 sink(last row) 0.53 | 0.95: clusters  6 largest 0.81 in2+ 0.88 | 0.90: largest 1.00 in2+ 1.00
+  L 4 mean corr 0.962 sink(last row) 0.52 | 0.95: clusters  7 largest 0.75 in2+ 0.84 | 0.90: largest 0.84 in2+ 0.97
+  L 5 mean corr 0.933 sink(last row) 0.47 | 0.95: clusters 16 largest 0.38 in2+ 0.66 | 0.90: largest 0.72 in2+ 0.94
+  L 6 mean corr 0.930 sink(last row) 0.47 | 0.95: clusters 18 largest 0.22 in2+ 0.62 | 0.90: largest 0.62 in2+ 0.94
+  L 7 mean corr 0.858 sink(last row) 0.42 | 0.95: clusters 24 largest 0.12 in2+ 0.41 | 0.90: largest 0.31 in2+ 0.78
+  L 8 mean corr 0.847 sink(last row) 0.39 | 0.95: clusters 30 largest 0.06 in2+ 0.12 | 0.90: largest 0.12 in2+ 0.69
+  L 9 mean corr 0.797 sink(last row) 0.35 | 0.95: clusters 29 largest 0.09 in2+ 0.16 | 0.90: largest 0.19 in2+ 0.53
+  L10 mean corr 0.769 sink(last row) 0.32 | 0.95: clusters 31 largest 0.06 in2+ 0.06 | 0.90: largest 0.12 in2+ 0.28
+  L11 mean corr 0.731 sink(last row) 0.31 | 0.95: clusters 31 largest 0.06 in2+ 0.06 | 0.90: largest 0.16 in2+ 0.34
+  L12 mean corr 0.712 sink(last row) 0.32 | 0.95: clusters 30 largest 0.06 in2+ 0.12 | 0.90: largest 0.12 in2+ 0.19
+  L13 mean corr 0.713 sink(last row) 0.25 | 0.95: clusters 32 largest 0.03 in2+ 0.00 | 0.90: largest 0.06 in2+ 0.12
+  L14 mean corr 0.649 sink(last row) 0.25 | 0.95: clusters 32 largest 0.03 in2+ 0.00 | 0.90: largest 0.06 in2+ 0.12
+  L15 mean corr 0.661 sink(last row) 0.29 | 0.95: clusters 32 largest 0.03 in2+ 0.00 | 0.90: largest 0.06 in2+ 0.12
+  L16 mean corr 0.678 sink(last row) 0.29 | 0.95: clusters 32 largest 0.03 in2+ 0.00 | 0.90: largest 0.06 in2+ 0.06
+  L17 mean corr 0.689 sink(last row) 0.32 | 0.95: clusters 32 largest 0.03 in2+ 0.00 | 0.90: largest 0.03 in2+ 0.00
+  L18 mean corr 0.639 sink(last row) 0.34 | 0.95: clusters 31 largest 0.06 in2+ 0.06 | 0.90: largest 0.12 in2+ 0.19
+  L19 mean corr 0.701 sink(last row) 0.38 | 0.95: clusters 31 largest 0.06 in2+ 0.06 | 0.90: largest 0.06 in2+ 0.06
+  L20 mean corr 0.761 sink(last row) 0.41 | 0.95: clusters 30 largest 0.09 in2+ 0.09 | 0.90: largest 0.16 in2+ 0.28
+  L21 mean corr 0.778 sink(last row) 0.45 | 0.95: clusters 32 largest 0.03 in2+ 0.00 | 0.90: largest 0.06 in2+ 0.25
+  L22 mean corr 0.823 sink(last row) 0.48 | 0.95: clusters 27 largest 0.16 in2+ 0.22 | 0.90: largest 0.19 in2+ 0.44
+  L23 mean corr 0.802 sink(last row) 0.48 | 0.95: clusters 31 largest 0.06 in2+ 0.06 | 0.90: largest 0.12 in2+ 0.44
+  L24 mean corr 0.829 sink(last row) 0.48 | 0.95: clusters 26 largest 0.12 in2+ 0.25 | 0.90: largest 0.19 in2+ 0.53
+  L25 mean corr 0.852 sink(last row) 0.52 | 0.95: clusters 26 largest 0.16 in2+ 0.28 | 0.90: largest 0.31 in2+ 0.56
+  L26 mean corr 0.831 sink(last row) 0.48 | 0.95: clusters 27 largest 0.12 in2+ 0.25 | 0.90: largest 0.28 in2+ 0.50
+  L27 mean corr 0.821 sink(last row) 0.49 | 0.95: clusters 30 largest 0.09 in2+ 0.09 | 0.90: largest 0.19 in2+ 0.38
+  L28 mean corr 0.727 sink(last row) 0.39 | 0.95: clusters 29 largest 0.12 in2+ 0.12 | 0.90: largest 0.22 in2+ 0.34
+  L29 mean corr 0.720 sink(last row) 0.44 | 0.95: clusters 27 largest 0.12 in2+ 0.22 | 0.90: largest 0.16 in2+ 0.34
+  L30 mean corr 0.693 sink(last row) 0.37 | 0.95: clusters 30 largest 0.09 in2+ 0.09 | 0.90: largest 0.22 in2+ 0.28
+  L31 mean corr 0.600 sink(last row) 0.31 | 0.95: clusters 32 largest 0.03 in2+ 0.00 | 0.90: largest 0.06 in2+ 0.12
+SUMMARY {"depth_spearman_mean_corr": -0.378, "layers_with_largest_cluster_majority_t95": 4, "layers_with_largest_cluster_majority_t90": 7, "mean_corr_first_layer": 0.5463, "mean_corr_last_quarter": 0.7589}
+CHAI_DONE audits/chai/Mistral-7B-v0.1
