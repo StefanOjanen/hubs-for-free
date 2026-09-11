@@ -503,11 +503,12 @@ registration of the draft.
 
 With Targets 1, 3, 4 and 5 reproduced or partially reproduced and Target
 2 logged, PREREGISTRATION4_DRAFT.md is ready to freeze on OSF; the
-batteries run after that. The battery scripts for Targets 1, 3 and 4
+batteries run after that. The battery scripts for Targets 1, 3, 4 and 5
 (`audits/*/battery.py`) are committed ahead of any result, each verified
-only by a dry run on random maps or matrices that writes outside the
-repository; Target 5's battery needs the generated-token attention rows
-saved, which the reproduction script does not yet do.
+only by a dry run that writes outside the repository (random maps or
+matrices for 1, 3 and 4; the development model at 256 tokens for 5, whose
+battery is computed online during generation so no attention rows are
+stored).
 
 Post-hoc description of the derivation residual (labeled, computed after
 the scorecard from `derivation/*.json`): within every model the gap between

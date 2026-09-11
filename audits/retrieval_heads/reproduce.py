@@ -58,58 +58,59 @@ def build(tok, hay, ctx, depth):
     return full + q_ids, pos, needle_ids
 
 
-tok = AutoTokenizer.from_pretrained(NAME)
-dt = pick_dtype(NAME, DEV, "auto")
-model = AutoModelForCausalLM.from_pretrained(NAME, attn_implementation="eager", dtype=getattr(torch, dt)).eval().to(DEV)
-L, H = model.config.num_hidden_layers, model.config.num_attention_heads
-print(NAME, "DEVICE", device_label(DEV), "DTYPE", dt, f"layers {L} heads {H} contexts {CTX} depths {NDEPTH}", flush=True)
-score_sum = np.zeros((L, H)); n_inst = 0; correct = 0; t0 = time.time()
-per_instance = []
-depths = np.linspace(0.05, 0.95, NDEPTH)
-for ctx in CTX:
-    hays = haystacks(tok, ctx)
-    for hi, hay in enumerate(hays):
-        for depth in depths:
-            prompt, pos, needle_ids = build(tok, hay, ctx, float(depth))
-            needle_span = set(range(pos, pos + len(needle_ids)))
-            needle_tok_at = {}                                             # token id -> positions in the needle
-            for j, t in enumerate(needle_ids):
-                needle_tok_at.setdefault(t, []).append(pos + j)
-            x = torch.tensor([prompt], device=DEV)
-            out = model.generate(x, max_new_tokens=MAX_NEW, do_sample=False, output_attentions=True, return_dict_in_generate=True, pad_token_id=tok.eos_token_id)
-            gen = out.sequences[0, x.shape[1]:].tolist()
-            text = tok.decode(gen)
-            hit = np.zeros((L, H)); k_needle = len(needle_ids)
-            copied = [[set() for _ in range(H)] for _ in range(L)]
-            for step, tok_id in enumerate(gen):
-                if tok_id not in needle_tok_at:
-                    continue
-                att = out.attentions[step]                                 # tuple over layers of (1, H, q, T)
+if __name__ == "__main__":
+    tok = AutoTokenizer.from_pretrained(NAME)
+    dt = pick_dtype(NAME, DEV, "auto")
+    model = AutoModelForCausalLM.from_pretrained(NAME, attn_implementation="eager", dtype=getattr(torch, dt)).eval().to(DEV)
+    L, H = model.config.num_hidden_layers, model.config.num_attention_heads
+    print(NAME, "DEVICE", device_label(DEV), "DTYPE", dt, f"layers {L} heads {H} contexts {CTX} depths {NDEPTH}", flush=True)
+    score_sum = np.zeros((L, H)); n_inst = 0; correct = 0; t0 = time.time()
+    per_instance = []
+    depths = np.linspace(0.05, 0.95, NDEPTH)
+    for ctx in CTX:
+        hays = haystacks(tok, ctx)
+        for hi, hay in enumerate(hays):
+            for depth in depths:
+                prompt, pos, needle_ids = build(tok, hay, ctx, float(depth))
+                needle_span = set(range(pos, pos + len(needle_ids)))
+                needle_tok_at = {}                                             # token id -> positions in the needle
+                for j, t in enumerate(needle_ids):
+                    needle_tok_at.setdefault(t, []).append(pos + j)
+                x = torch.tensor([prompt], device=DEV)
+                out = model.generate(x, max_new_tokens=MAX_NEW, do_sample=False, output_attentions=True, return_dict_in_generate=True, pad_token_id=tok.eos_token_id)
+                gen = out.sequences[0, x.shape[1]:].tolist()
+                text = tok.decode(gen)
+                hit = np.zeros((L, H)); k_needle = len(needle_ids)
+                copied = [[set() for _ in range(H)] for _ in range(L)]
+                for step, tok_id in enumerate(gen):
+                    if tok_id not in needle_tok_at:
+                        continue
+                    att = out.attentions[step]                                 # tuple over layers of (1, H, q, T)
+                    for l in range(L):
+                        a = att[l][0, :, -1, :]                                # (H, T_cur)
+                        am = a.argmax(-1).tolist()
+                        for h in range(H):
+                            if am[h] in needle_tok_at[tok_id]:
+                                copied[l][h].add(am[h])
                 for l in range(L):
-                    a = att[l][0, :, -1, :]                                # (H, T_cur)
-                    am = a.argmax(-1).tolist()
                     for h in range(H):
-                        if am[h] in needle_tok_at[tok_id]:
-                            copied[l][h].add(am[h])
-            for l in range(L):
-                for h in range(H):
-                    hit[l, h] = len(copied[l][h]) / k_needle
-            score_sum += hit; n_inst += 1
-            ok = "dolores park" in text.lower() or "sandwich" in text.lower()
-            correct += int(ok)
-            per_instance.append({"ctx": ctx, "haystack": hi, "depth": round(float(depth), 2), "answer": text.strip()[:80], "retrieved": ok,
-                                 "max_head_score": round(float(hit.max()), 3), "n_heads_above_0.1": int((hit > 0.1).sum())})
-            print(f"  ctx {ctx} hay {hi} depth {depth:.2f}: retrieved={ok} max head score {hit.max():.2f} heads>0.1 {(hit > 0.1).sum():3d} | {text.strip()[:60]!r} ({time.time()-t0:.0f}s)", flush=True)
-            del out
-del model; release_memory(DEV)
-score = score_sum / max(n_inst, 1)
-np.save(PREFIX + "_scores.npy", score)
-flat = score.ravel()
-summary = {"n_instances": n_inst, "retrieval_accuracy": round(correct / max(n_inst, 1), 3),
-           "frac_heads_above_0.1": round(float((flat > 0.1).mean()), 4), "frac_heads_above_0.5": round(float((flat > 0.5).mean()), 4),
-           "n_heads_above_0.1": int((flat > 0.1).sum()), "n_heads": int(flat.size), "max_score": round(float(flat.max()), 3),
-           "top_heads": [{"layer": int(i // H), "head": int(i % H), "score": round(float(flat[i]), 3)} for i in np.argsort(flat)[::-1][:10]],
-           "paper": "3 to 6 percent of heads above 0.1 (Wu et al. 2024, contexts 1K to 50K, about 600 instances)"}
-json.dump({"model": NAME, "dtype": dt, "contexts": CTX, "n_depths": NDEPTH, "needle": NEEDLE, "max_new_tokens": MAX_NEW,
-           "per_instance": per_instance, "summary": summary}, open(PREFIX + "_base_result.json", "w"), indent=1)
-print("SUMMARY", json.dumps(summary)); print("RETRIEVAL_DONE", PREFIX)
+                        hit[l, h] = len(copied[l][h]) / k_needle
+                score_sum += hit; n_inst += 1
+                ok = "dolores park" in text.lower() or "sandwich" in text.lower()
+                correct += int(ok)
+                per_instance.append({"ctx": ctx, "haystack": hi, "depth": round(float(depth), 2), "answer": text.strip()[:80], "retrieved": ok,
+                                     "max_head_score": round(float(hit.max()), 3), "n_heads_above_0.1": int((hit > 0.1).sum())})
+                print(f"  ctx {ctx} hay {hi} depth {depth:.2f}: retrieved={ok} max head score {hit.max():.2f} heads>0.1 {(hit > 0.1).sum():3d} | {text.strip()[:60]!r} ({time.time()-t0:.0f}s)", flush=True)
+                del out
+    del model; release_memory(DEV)
+    score = score_sum / max(n_inst, 1)
+    np.save(PREFIX + "_scores.npy", score)
+    flat = score.ravel()
+    summary = {"n_instances": n_inst, "retrieval_accuracy": round(correct / max(n_inst, 1), 3),
+               "frac_heads_above_0.1": round(float((flat > 0.1).mean()), 4), "frac_heads_above_0.5": round(float((flat > 0.5).mean()), 4),
+               "n_heads_above_0.1": int((flat > 0.1).sum()), "n_heads": int(flat.size), "max_score": round(float(flat.max()), 3),
+               "top_heads": [{"layer": int(i // H), "head": int(i % H), "score": round(float(flat[i]), 3)} for i in np.argsort(flat)[::-1][:10]],
+               "paper": "3 to 6 percent of heads above 0.1 (Wu et al. 2024, contexts 1K to 50K, about 600 instances)"}
+    json.dump({"model": NAME, "dtype": dt, "contexts": CTX, "n_depths": NDEPTH, "needle": NEEDLE, "max_new_tokens": MAX_NEW,
+               "per_instance": per_instance, "summary": summary}, open(PREFIX + "_base_result.json", "w"), indent=1)
+    print("SUMMARY", json.dumps(summary)); print("RETRIEVAL_DONE", PREFIX)
