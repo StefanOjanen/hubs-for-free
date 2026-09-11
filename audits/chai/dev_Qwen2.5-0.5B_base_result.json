@@ -1,0 +1,639 @@
+{
+ "model": "Qwen/Qwen2.5-0.5B",
+ "n_samples": 8,
+ "T": 512,
+ "dtype": "float32",
+ "rows": [
+  {
+   "layer": 0,
+   "mean_offdiag_corr": 0.174,
+   "median_offdiag_corr": 0.0837,
+   "sink_mass_last_row": 0.0004,
+   "t95_n_clusters": 14,
+   "t95_largest_frac": 0.071,
+   "t95_frac_in_2plus": 0.0,
+   "t95_sizes": [
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "t90_n_clusters": 14,
+   "t90_largest_frac": 0.071,
+   "t90_frac_in_2plus": 0.0,
+   "t90_sizes": [
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "layer": 1,
+   "mean_offdiag_corr": 0.3976,
+   "median_offdiag_corr": 0.3756,
+   "sink_mass_last_row": 0.0012,
+   "t95_n_clusters": 14,
+   "t95_largest_frac": 0.071,
+   "t95_frac_in_2plus": 0.0,
+   "t95_sizes": [
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "t90_n_clusters": 13,
+   "t90_largest_frac": 0.143,
+   "t90_frac_in_2plus": 0.143,
+   "t90_sizes": [
+    2,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "layer": 2,
+   "mean_offdiag_corr": 0.4858,
+   "median_offdiag_corr": 0.5174,
+   "sink_mass_last_row": 0.0008,
+   "t95_n_clusters": 14,
+   "t95_largest_frac": 0.071,
+   "t95_frac_in_2plus": 0.0,
+   "t95_sizes": [
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "t90_n_clusters": 14,
+   "t90_largest_frac": 0.071,
+   "t90_frac_in_2plus": 0.0,
+   "t90_sizes": [
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "layer": 3,
+   "mean_offdiag_corr": 0.6164,
+   "median_offdiag_corr": 0.6447,
+   "sink_mass_last_row": 0.4492,
+   "t95_n_clusters": 13,
+   "t95_largest_frac": 0.143,
+   "t95_frac_in_2plus": 0.143,
+   "t95_sizes": [
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "t90_n_clusters": 12,
+   "t90_largest_frac": 0.214,
+   "t90_frac_in_2plus": 0.214,
+   "t90_sizes": [
+    3,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "layer": 4,
+   "mean_offdiag_corr": 0.5754,
+   "median_offdiag_corr": 0.5754,
+   "sink_mass_last_row": 0.3075,
+   "t95_n_clusters": 14,
+   "t95_largest_frac": 0.071,
+   "t95_frac_in_2plus": 0.0,
+   "t95_sizes": [
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "t90_n_clusters": 12,
+   "t90_largest_frac": 0.143,
+   "t90_frac_in_2plus": 0.286,
+   "t90_sizes": [
+    2,
+    2,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "layer": 5,
+   "mean_offdiag_corr": 0.7079,
+   "median_offdiag_corr": 0.7795,
+   "sink_mass_last_row": 0.4455,
+   "t95_n_clusters": 13,
+   "t95_largest_frac": 0.143,
+   "t95_frac_in_2plus": 0.143,
+   "t95_sizes": [
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "t90_n_clusters": 10,
+   "t90_largest_frac": 0.286,
+   "t90_frac_in_2plus": 0.429,
+   "t90_sizes": [
+    4,
+    2,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "layer": 6,
+   "mean_offdiag_corr": 0.616,
+   "median_offdiag_corr": 0.6314,
+   "sink_mass_last_row": 0.2721,
+   "t95_n_clusters": 14,
+   "t95_largest_frac": 0.071,
+   "t95_frac_in_2plus": 0.0,
+   "t95_sizes": [
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "t90_n_clusters": 13,
+   "t90_largest_frac": 0.143,
+   "t90_frac_in_2plus": 0.143,
+   "t90_sizes": [
+    2,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "layer": 7,
+   "mean_offdiag_corr": 0.7028,
+   "median_offdiag_corr": 0.7118,
+   "sink_mass_last_row": 0.5448,
+   "t95_n_clusters": 13,
+   "t95_largest_frac": 0.143,
+   "t95_frac_in_2plus": 0.143,
+   "t95_sizes": [
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "t90_n_clusters": 10,
+   "t90_largest_frac": 0.214,
+   "t90_frac_in_2plus": 0.429,
+   "t90_sizes": [
+    3,
+    3,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "layer": 8,
+   "mean_offdiag_corr": 0.4436,
+   "median_offdiag_corr": 0.4546,
+   "sink_mass_last_row": 0.1892,
+   "t95_n_clusters": 14,
+   "t95_largest_frac": 0.071,
+   "t95_frac_in_2plus": 0.0,
+   "t95_sizes": [
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "t90_n_clusters": 14,
+   "t90_largest_frac": 0.071,
+   "t90_frac_in_2plus": 0.0,
+   "t90_sizes": [
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "layer": 9,
+   "mean_offdiag_corr": 0.7203,
+   "median_offdiag_corr": 0.7459,
+   "sink_mass_last_row": 0.5863,
+   "t95_n_clusters": 12,
+   "t95_largest_frac": 0.214,
+   "t95_frac_in_2plus": 0.214,
+   "t95_sizes": [
+    3,
+    1,
+    1,
+    1,
+    1
+   ],
+   "t90_n_clusters": 11,
+   "t90_largest_frac": 0.214,
+   "t90_frac_in_2plus": 0.357,
+   "t90_sizes": [
+    3,
+    2,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "layer": 10,
+   "mean_offdiag_corr": 0.563,
+   "median_offdiag_corr": 0.5841,
+   "sink_mass_last_row": 0.2557,
+   "t95_n_clusters": 13,
+   "t95_largest_frac": 0.143,
+   "t95_frac_in_2plus": 0.143,
+   "t95_sizes": [
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "t90_n_clusters": 12,
+   "t90_largest_frac": 0.214,
+   "t90_frac_in_2plus": 0.214,
+   "t90_sizes": [
+    3,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "layer": 11,
+   "mean_offdiag_corr": 0.6892,
+   "median_offdiag_corr": 0.6287,
+   "sink_mass_last_row": 0.5357,
+   "t95_n_clusters": 10,
+   "t95_largest_frac": 0.357,
+   "t95_frac_in_2plus": 0.357,
+   "t95_sizes": [
+    5,
+    1,
+    1,
+    1,
+    1
+   ],
+   "t90_n_clusters": 9,
+   "t90_largest_frac": 0.429,
+   "t90_frac_in_2plus": 0.429,
+   "t90_sizes": [
+    6,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "layer": 12,
+   "mean_offdiag_corr": 0.539,
+   "median_offdiag_corr": 0.5409,
+   "sink_mass_last_row": 0.1975,
+   "t95_n_clusters": 13,
+   "t95_largest_frac": 0.143,
+   "t95_frac_in_2plus": 0.143,
+   "t95_sizes": [
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "t90_n_clusters": 13,
+   "t90_largest_frac": 0.143,
+   "t90_frac_in_2plus": 0.143,
+   "t90_sizes": [
+    2,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "layer": 13,
+   "mean_offdiag_corr": 0.5833,
+   "median_offdiag_corr": 0.6371,
+   "sink_mass_last_row": 0.389,
+   "t95_n_clusters": 11,
+   "t95_largest_frac": 0.286,
+   "t95_frac_in_2plus": 0.286,
+   "t95_sizes": [
+    4,
+    1,
+    1,
+    1,
+    1
+   ],
+   "t90_n_clusters": 9,
+   "t90_largest_frac": 0.357,
+   "t90_frac_in_2plus": 0.5,
+   "t90_sizes": [
+    5,
+    2,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "layer": 14,
+   "mean_offdiag_corr": 0.4864,
+   "median_offdiag_corr": 0.513,
+   "sink_mass_last_row": 0.2192,
+   "t95_n_clusters": 13,
+   "t95_largest_frac": 0.143,
+   "t95_frac_in_2plus": 0.143,
+   "t95_sizes": [
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "t90_n_clusters": 13,
+   "t90_largest_frac": 0.143,
+   "t90_frac_in_2plus": 0.143,
+   "t90_sizes": [
+    2,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "layer": 15,
+   "mean_offdiag_corr": 0.52,
+   "median_offdiag_corr": 0.5412,
+   "sink_mass_last_row": 0.2207,
+   "t95_n_clusters": 14,
+   "t95_largest_frac": 0.071,
+   "t95_frac_in_2plus": 0.0,
+   "t95_sizes": [
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "t90_n_clusters": 14,
+   "t90_largest_frac": 0.071,
+   "t90_frac_in_2plus": 0.0,
+   "t90_sizes": [
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "layer": 16,
+   "mean_offdiag_corr": 0.9135,
+   "median_offdiag_corr": 0.913,
+   "sink_mass_last_row": 0.6856,
+   "t95_n_clusters": 8,
+   "t95_largest_frac": 0.429,
+   "t95_frac_in_2plus": 0.571,
+   "t95_sizes": [
+    6,
+    2,
+    1,
+    1,
+    1
+   ],
+   "t90_n_clusters": 5,
+   "t90_largest_frac": 0.571,
+   "t90_frac_in_2plus": 0.857,
+   "t90_sizes": [
+    8,
+    2,
+    2,
+    1,
+    1
+   ]
+  },
+  {
+   "layer": 17,
+   "mean_offdiag_corr": 0.6387,
+   "median_offdiag_corr": 0.581,
+   "sink_mass_last_row": 0.4116,
+   "t95_n_clusters": 12,
+   "t95_largest_frac": 0.214,
+   "t95_frac_in_2plus": 0.214,
+   "t95_sizes": [
+    3,
+    1,
+    1,
+    1,
+    1
+   ],
+   "t90_n_clusters": 11,
+   "t90_largest_frac": 0.286,
+   "t90_frac_in_2plus": 0.286,
+   "t90_sizes": [
+    4,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "layer": 18,
+   "mean_offdiag_corr": 0.6936,
+   "median_offdiag_corr": 0.7206,
+   "sink_mass_last_row": 0.4249,
+   "t95_n_clusters": 13,
+   "t95_largest_frac": 0.143,
+   "t95_frac_in_2plus": 0.143,
+   "t95_sizes": [
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "t90_n_clusters": 12,
+   "t90_largest_frac": 0.143,
+   "t90_frac_in_2plus": 0.286,
+   "t90_sizes": [
+    2,
+    2,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "layer": 19,
+   "mean_offdiag_corr": 0.5494,
+   "median_offdiag_corr": 0.5643,
+   "sink_mass_last_row": 0.3222,
+   "t95_n_clusters": 14,
+   "t95_largest_frac": 0.071,
+   "t95_frac_in_2plus": 0.0,
+   "t95_sizes": [
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "t90_n_clusters": 14,
+   "t90_largest_frac": 0.071,
+   "t90_frac_in_2plus": 0.0,
+   "t90_sizes": [
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "layer": 20,
+   "mean_offdiag_corr": 0.688,
+   "median_offdiag_corr": 0.7017,
+   "sink_mass_last_row": 0.3998,
+   "t95_n_clusters": 12,
+   "t95_largest_frac": 0.214,
+   "t95_frac_in_2plus": 0.214,
+   "t95_sizes": [
+    3,
+    1,
+    1,
+    1,
+    1
+   ],
+   "t90_n_clusters": 11,
+   "t90_largest_frac": 0.286,
+   "t90_frac_in_2plus": 0.286,
+   "t90_sizes": [
+    4,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "layer": 21,
+   "mean_offdiag_corr": 0.7733,
+   "median_offdiag_corr": 0.8948,
+   "sink_mass_last_row": 0.4667,
+   "t95_n_clusters": 9,
+   "t95_largest_frac": 0.214,
+   "t95_frac_in_2plus": 0.571,
+   "t95_sizes": [
+    3,
+    3,
+    2,
+    1,
+    1
+   ],
+   "t90_n_clusters": 6,
+   "t90_largest_frac": 0.643,
+   "t90_frac_in_2plus": 0.643,
+   "t90_sizes": [
+    9,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "layer": 22,
+   "mean_offdiag_corr": 0.3833,
+   "median_offdiag_corr": 0.3682,
+   "sink_mass_last_row": 0.0034,
+   "t95_n_clusters": 14,
+   "t95_largest_frac": 0.071,
+   "t95_frac_in_2plus": 0.0,
+   "t95_sizes": [
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "t90_n_clusters": 14,
+   "t90_largest_frac": 0.071,
+   "t90_frac_in_2plus": 0.0,
+   "t90_sizes": [
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "layer": 23,
+   "mean_offdiag_corr": 0.3233,
+   "median_offdiag_corr": 0.3366,
+   "sink_mass_last_row": 0.0025,
+   "t95_n_clusters": 13,
+   "t95_largest_frac": 0.143,
+   "t95_frac_in_2plus": 0.143,
+   "t95_sizes": [
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "t90_n_clusters": 13,
+   "t90_largest_frac": 0.143,
+   "t90_frac_in_2plus": 0.143,
+   "t90_sizes": [
+    2,
+    1,
+    1,
+    1,
+    1
+   ]
+  }
+ ],
+ "summary": {
+  "depth_spearman_mean_corr": 0.132,
+  "layers_with_largest_cluster_majority_t95": 0,
+  "layers_with_largest_cluster_majority_t90": 2,
+  "mean_corr_first_layer": 0.174,
+  "mean_corr_last_quarter": 0.5685
+ }
+}

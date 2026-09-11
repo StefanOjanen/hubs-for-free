@@ -346,3 +346,25 @@ Reading: the three registered failures of the earlier instruments (S2 on
 TinyLlama and OLMo-2, S3 at 32 heads) resolve under the fixed instruments
 without moving any threshold, and S1 to S4 hold in 11 of 11
 out-of-calibration models under one protocol.
+
+## Structured deviation toy (2026-09-11, development for T4.3, labeled)
+
+`toy_structured_dev.py` -> `toy_structured_dev.json`, development model, 8
+windows, T = 64, 6 rebuilds per window. Each layer's heads were rebuilt
+from their real coefficients on the shared operator S alone (the generic
+construction of the hardening round), on S plus the previous-token
+operator, and on S plus the previous-token and uniform operators, with a
+random skew remainder of the right norm in each case; z was measured
+against the real layer's plain-surrogate reference. Result: none of the
+three recovers the z profile (Spearman with the real per-layer z: -0.38,
+-0.35, -0.34; median absolute error 16 to 19 z-units) although all three
+reproduce the r1 profile (Spearman 0.76 to 0.81). At high-sink layers the
+rebuilt z is far more negative than the real one (layer 16: -21 against
+-0.1; layer 21: -21 against -6), so real deviation directions produce
+larger commutators than random directions of the same norm, and the two
+dictionary operators carry too little energy there (previous-token 0.1
+percent, uniform 0.1 percent at layers 16 and 21) to matter. Reading: the
+deviation structure that sets z is head-specific and is not the recency or
+uniform mode; a per-head dictionary (each head's own secondary column or
+band) is the next candidate. T4.3 stays open; the r1 profile remains
+predicted by (S, a_h, e_h) alone.

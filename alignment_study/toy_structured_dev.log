@@ -1,0 +1,36 @@
+[transformers] The following generation flags are not valid and may be ignored: ['output_attentions']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:00<02:23,  2.01it/s]Loading weights:  80%|███████▉  | 231/290 [00:00<00:00, 501.80it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 424.44it/s]
+WIN 0
+WIN 1
+WIN 2
+WIN 3
+WIN 4
+WIN 5
+WIN 6
+WIN 7
+  L 0 energy S/R/U [0.394, 0.132, 0.048] | r1 real +0.88 gen +0.99 rec +0.98 recU +0.98 | z real   -1.5 gen   -2.1 rec   -2.6 recU   -3.2
+  L 1 energy S/R/U [0.577, 0.07, 0.054] | r1 real +0.57 gen +0.98 rec +0.97 recU +0.95 | z real   -2.1 gen   -3.0 rec   -3.4 recU   -3.8
+  L 2 energy S/R/U [0.555, 0.058, 0.015] | r1 real +0.79 gen +0.96 rec +0.96 recU +0.96 | z real   -3.8 gen   -4.7 rec   -5.0 recU   -4.7
+  L 3 energy S/R/U [0.835, 0.019, 0.008] | r1 real +0.69 gen +0.66 rec +0.66 recU +0.33 | z real   10.1 gen  -12.2 rec  -12.8 recU  -11.8
+  L 4 energy S/R/U [0.803, 0.017, 0.017] | r1 real +0.86 gen +0.85 rec +0.84 recU +0.60 | z real   12.7 gen   -9.5 rec   -9.9 recU   -8.2
+  L 5 energy S/R/U [0.826, 0.005, 0.01] | r1 real +0.67 gen +0.61 rec +0.62 recU +0.41 | z real   14.4 gen  -11.4 rec  -11.8 recU  -10.1
+  L 6 energy S/R/U [0.796, 0.044, 0.013] | r1 real +0.68 gen +0.45 rec +0.54 recU +0.14 | z real    4.4 gen   -9.5 rec  -10.3 recU   -8.8
+  L 7 energy S/R/U [0.831, 0.01, 0.003] | r1 real +0.46 gen +0.44 rec +0.44 recU +0.37 | z real   10.2 gen  -13.1 rec  -13.1 recU  -12.8
+  L 8 energy S/R/U [0.6, 0.168, 0.006] | r1 real +0.55 gen +0.96 rec +0.96 recU +0.94 | z real    5.1 gen   -6.4 rec   -7.6 recU   -6.8
+  L 9 energy S/R/U [0.883, 0.004, 0.006] | r1 real +0.21 gen +0.30 rec +0.33 recU +0.18 | z real   10.2 gen  -13.9 rec  -13.9 recU  -12.5
+  L10 energy S/R/U [0.811, 0.042, 0.013] | r1 real +0.84 gen +0.80 rec +0.84 recU +0.75 | z real    7.8 gen  -10.0 rec  -11.0 recU   -8.5
+  L11 energy S/R/U [0.925, 0.001, 0.01] | r1 real -0.20 gen -0.33 rec -0.32 recU -0.45 | z real    6.0 gen  -14.7 rec  -14.8 recU  -10.2
+  L12 energy S/R/U [0.782, 0.032, 0.015] | r1 real +0.83 gen +0.82 rec +0.85 recU +0.83 | z real    5.6 gen   -8.3 rec   -9.0 recU   -7.3
+  L13 energy S/R/U [0.87, 0.011, 0.009] | r1 real +0.64 gen +0.47 rec +0.48 recU +0.34 | z real    7.2 gen  -12.7 rec  -12.6 recU  -11.0
+  L14 energy S/R/U [0.807, 0.009, 0.009] | r1 real +0.89 gen +0.92 rec +0.93 recU +0.88 | z real    8.1 gen   -8.9 rec   -9.4 recU   -8.0
+  L15 energy S/R/U [0.776, 0.104, 0.008] | r1 real +0.43 gen +0.62 rec +0.62 recU +0.58 | z real    5.0 gen  -10.0 rec  -11.1 recU  -10.6
+  L16 energy S/R/U [0.929, 0.001, 0.001] | r1 real -0.27 gen -0.28 rec -0.38 recU -0.37 | z real   -0.1 gen  -21.3 rec  -21.4 recU  -20.8
+  L17 energy S/R/U [0.871, 0.003, 0.005] | r1 real +0.13 gen +0.15 rec +0.13 recU -0.05 | z real   10.5 gen  -14.3 rec  -14.3 recU  -13.2
+  L18 energy S/R/U [0.876, 0.011, 0.002] | r1 real +0.57 gen +0.39 rec +0.38 recU +0.29 | z real    8.1 gen  -15.2 rec  -15.5 recU  -15.0
+  L19 energy S/R/U [0.777, 0.033, 0.004] | r1 real +0.78 gen +0.76 rec +0.78 recU +0.74 | z real   11.1 gen  -10.2 rec  -10.9 recU   -9.8
+  L20 energy S/R/U [0.883, 0.003, 0.007] | r1 real -0.02 gen -0.20 rec -0.20 recU -0.19 | z real   12.3 gen  -14.1 rec  -14.2 recU  -12.9
+  L21 energy S/R/U [0.958, 0.0, 0.001] | r1 real -0.58 gen -0.49 rec -0.42 recU -0.47 | z real   -6.1 gen  -20.6 rec  -20.6 recU  -20.1
+  L22 energy S/R/U [0.82, 0.008, 0.002] | r1 real +0.83 gen +0.82 rec +0.84 recU +0.81 | z real   -2.8 gen   -8.1 rec   -8.3 recU   -8.0
+  L23 energy S/R/U [0.825, 0.01, 0.003] | r1 real +0.69 gen +0.69 rec +0.70 recU +0.70 | z real   -1.5 gen   -8.1 rec   -8.3 recU   -7.9
+SUMMARY {"generic": {"spearman_r1": 0.806, "spearman_z": -0.376, "median_abs_err_r1": 0.071, "median_abs_err_z": 18.85}, "recency": {"spearman_r1": 0.805, "spearman_z": -0.35, "median_abs_err_r1": 0.105, "median_abs_err_z": 19.31}, "recency+uniform": {"spearman_r1": 0.762, "spearman_z": -0.344, "median_abs_err_r1": 0.158, "median_abs_err_z": 16.22}}
+STRUCTURED_DONE
