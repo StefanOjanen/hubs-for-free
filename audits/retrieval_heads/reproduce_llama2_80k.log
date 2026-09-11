@@ -1,0 +1,25 @@
+rope override: {'rope_type': 'linear', 'factor': 10.0, 'rope_theta': 10000.0}
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 4518.44it/s]
+yaofu/llama-2-7b-80k DEVICE mps:Apple M1 Max (21.3 GB working set) DTYPE bfloat16 layers 32 heads 32 contexts [1024, 2048] depths 5
+  ctx 1024 hay 0 depth 0.05: retrieved=False max head score 0.00 heads>0.1   0 | 'to go to the beach.\n\n\nQuestion: What is the best thing to do' (17s)
+  ctx 1024 hay 0 depth 0.27: retrieved=False max head score 0.04 heads>0.1   0 | 'to go to the beach.\n\n\nQuestion: What is the best thing to do' (203s)
+  ctx 1024 hay 0 depth 0.50: retrieved=True max head score 0.58 heads>0.1  14 | 'to eat a sandwich and sit in Dolores Park on a sunny day.\n\n\n' (415s)
+  ctx 1024 hay 0 depth 0.72: retrieved=True max head score 0.58 heads>0.1  18 | 'eat a sandwich and sit in Dolores Park on a sunny day.\n\n\nQue' (606s)
+  ctx 1024 hay 0 depth 0.95: retrieved=True max head score 0.62 heads>0.1  21 | 'eat a sandwich and sit in Dolores Park on a sunny day.\n\n\n\nA:' (800s)
+  ctx 1024 hay 1 depth 0.05: retrieved=False max head score 0.04 heads>0.1   0 | 'to go to the beach.\n\n\nQuestion: What is the best thing to do' (1006s)
+  ctx 1024 hay 1 depth 0.27: retrieved=False max head score 0.04 heads>0.1   0 | 'to go to the beach.\n\n\nQuestion: What is the best thing to do' (1197s)
+  ctx 1024 hay 1 depth 0.50: retrieved=False max head score 0.04 heads>0.1   0 | 'to go to the beach.\n\n\nQuestion: What is the best thing to do' (1315s)
+  ctx 1024 hay 1 depth 0.72: retrieved=True max head score 0.35 heads>0.1  10 | 'to eat a sandwich and sit in Dolores Park.\n\n\nQuestion: What ' (1510s)
+  ctx 1024 hay 1 depth 0.95: retrieved=True max head score 0.50 heads>0.1  18 | 'eat a sandwich and sit in Dolores Park on a sunny hills and ' (1703s)
+  ctx 2048 hay 0 depth 0.05: retrieved=False max head score 0.04 heads>0.1   0 | 'to go to the beach.\n\n\nQuestion: What is the best thing to do' (1744s)
+  ctx 2048 hay 0 depth 0.27: retrieved=False max head score 0.04 heads>0.1   0 | 'to go to the beach.\n\n\nQuestion: What is the best thing to do' (1754s)
+  ctx 2048 hay 0 depth 0.50: retrieved=True max head score 0.62 heads>0.1  13 | 'to eat a sandwich and sit in Dolores Park on a sunny day.\n\n\n' (1782s)
+  ctx 2048 hay 0 depth 0.72: retrieved=True max head score 0.62 heads>0.1  19 | 'to eat a sandwich and sit in Dolores Park on a sunny day.\n\n\n' (1793s)
+  ctx 2048 hay 0 depth 0.95: retrieved=True max head score 0.62 heads>0.1  22 | 'eat a sandwich and sit in Dolores Park on a sunny day.\n\n\n<s>' (1826s)
+  ctx 2048 hay 1 depth 0.05: retrieved=False max head score 0.04 heads>0.1   0 | 'to go to the beach.\n\n\nQuestion: What is the best thing to do' (1837s)
+  ctx 2048 hay 1 depth 0.27: retrieved=False max head score 0.00 heads>0.1   0 | 'to go to the beach.\n\n\nQuestion: What is the best thing to do' (1847s)
+  ctx 2048 hay 1 depth 0.50: retrieved=False max head score 0.04 heads>0.1   0 | 'to go to the beach.\n\n\nQuestion: What is the best thing to do' (1858s)
+  ctx 2048 hay 1 depth 0.72: retrieved=True max head score 0.62 heads>0.1  12 | 'to eat a sandwich and sit in Dolores Park on a sunny day.\n\n\n' (1868s)
+  ctx 2048 hay 1 depth 0.95: retrieved=True max head score 0.62 heads>0.1  19 | 'eat a sandwich and sit in Dolores Park on a sunny day. " , a' (1879s)
+SUMMARY {"n_instances": 20, "retrieval_accuracy": 0.5, "frac_heads_above_0.1": 0.0068, "frac_heads_above_0.5": 0.0, "n_heads_above_0.1": 7, "n_heads": 1024, "max_score": 0.283, "top_heads": [{"layer": 11, "head": 15, "score": 0.283}, {"layer": 16, "head": 19, "score": 0.281}, {"layer": 6, "head": 9, "score": 0.219}, {"layer": 17, "head": 22, "score": 0.171}, {"layer": 21, "head": 30, "score": 0.154}, {"layer": 19, "head": 15, "score": 0.154}, {"layer": 8, "head": 26, "score": 0.133}, {"layer": 7, "head": 4, "score": 0.094}, {"layer": 21, "head": 1, "score": 0.087}, {"layer": 24, "head": 29, "score": 0.075}], "paper": "3 to 6 percent of heads above 0.1 (Wu et al. 2024, contexts 1K to 50K, about 600 instances)"}
+RETRIEVAL_DONE audits/retrieval_heads/llama-2-7b-80k

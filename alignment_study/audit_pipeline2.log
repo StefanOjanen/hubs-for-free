@@ -1,0 +1,13 @@
+orchestrator start 16:48:30 UTC
+mistral-instruct downloaded 17:09:53
+opt downloaded 17:26:57
+chai opt done 17:30:41
+retrieval mistral-instruct done 17:54:41
+retrieval llama-2-80k done 18:09:13
+starting llama-2-80k retrieval with linear:10 at 18:17 UTC
+downloaded tiiuae/falcon-7b 18:33:02
+retrieval llama-2-80k (linear:10) done 18:37:08
+llama-2-80k retrieval (linear:10, step decoder) start 18:45:11 UTC
+llama-2-80k retrieval done 19:17:04 UTC
+orchestrator resumed 19:17:04 UTC
+downloaded bigscience/bloom-7b1 19:17:12

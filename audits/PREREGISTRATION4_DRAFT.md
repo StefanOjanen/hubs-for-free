@@ -184,8 +184,12 @@ was retrieved in 20 of 20 instances; 4.2 percent of the 784 heads
 percent; 0.6 percent score above 0.5; the strongest heads are L22H3 0.56, L22H4 0.56, L14H0 0.56, L23H11 0.55, L14H6 0.54.
 Reproduced. On `mistralai/Mistral-7B-Instruct-v0.2`, one of the paper's own
 models, the same protocol gives 3.4 percent of 1024 heads above 0.1 with the
-needle retrieved in every instance (strongest heads L12H7 0.61, L18H0 0.60, L18H2 0.60); the battery
-runs on both models.
+needle retrieved in every instance (strongest heads L12H7 0.61, L18H0 0.60, L18H2 0.60). On the
+paper's primary model `yaofu/llama-2-7b-80k` the same protocol (with the
+loading deviation in RUNLOG.md) retrieves the needle in only 10 of 20
+instances and puts 0.7 percent of heads above 0.1, so the base result is not
+reproduced there and that model is excluded from the battery; the battery
+runs on Qwen2.5-7B and Mistral-7B-Instruct-v0.2.
 
 Statistic T_5: the per-head retrieval score (share of needle tokens a head
 copies with its argmax attention at the matching position) and the set of

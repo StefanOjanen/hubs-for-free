@@ -412,7 +412,10 @@ score on Qwen2.5-7B at contexts of 1,024 and 2,048 tokens (20 instances)
 retrieved the needle every time and put 4.2 percent of heads above 0.1,
 with the strongest in layers 14, 22 and 23; on the paper's own
 Mistral-7B-Instruct-v0.2 the same protocol gives 3.4 percent, again with
-every needle retrieved. Reproduced; criteria frozen.
+every needle retrieved. On the paper's primary Llama-2-7B-80K our haystack
+and prompt retrieve only half of the needles and 0.7 percent of heads
+score above 0.1, so that model is excluded rather than counted either way.
+Reproduced on two of three models; criteria frozen.
 The battery must not remove this structure; if it does, its thresholds are
 revised before any other outcome is reported.
 

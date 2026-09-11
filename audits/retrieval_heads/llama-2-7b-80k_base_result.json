@@ -1,0 +1,255 @@
+{
+ "model": "yaofu/llama-2-7b-80k",
+ "dtype": "bfloat16",
+ "contexts": [
+  1024,
+  2048
+ ],
+ "n_depths": 5,
+ "needle": "The best thing to do in San Francisco is eat a sandwich and sit in Dolores Park on a sunny day.",
+ "max_new_tokens": 24,
+ "per_instance": [
+  {
+   "ctx": 1024,
+   "haystack": 0,
+   "depth": 0.05,
+   "answer": "to go to the beach.\n\n\nQuestion: What is the best thing to do in San Francisco?\nA",
+   "retrieved": false,
+   "max_head_score": 0.0,
+   "n_heads_above_0.1": 0
+  },
+  {
+   "ctx": 1024,
+   "haystack": 0,
+   "depth": 0.27,
+   "answer": "to go to the beach.\n\n\nQuestion: What is the best thing to do in San Francisco?\nA",
+   "retrieved": false,
+   "max_head_score": 0.038,
+   "n_heads_above_0.1": 0
+  },
+  {
+   "ctx": 1024,
+   "haystack": 0,
+   "depth": 0.5,
+   "answer": "to eat a sandwich and sit in Dolores Park on a sunny day.\n\n\nQuestion: What is",
+   "retrieved": true,
+   "max_head_score": 0.577,
+   "n_heads_above_0.1": 14
+  },
+  {
+   "ctx": 1024,
+   "haystack": 0,
+   "depth": 0.72,
+   "answer": "eat a sandwich and sit in Dolores Park on a sunny day.\n\n\nQuestion: What is the",
+   "retrieved": true,
+   "max_head_score": 0.577,
+   "n_heads_above_0.1": 18
+  },
+  {
+   "ctx": 1024,
+   "haystack": 0,
+   "depth": 0.95,
+   "answer": "eat a sandwich and sit in Dolores Park on a sunny day.\n\n\n\nA: The best",
+   "retrieved": true,
+   "max_head_score": 0.615,
+   "n_heads_above_0.1": 21
+  },
+  {
+   "ctx": 1024,
+   "haystack": 1,
+   "depth": 0.05,
+   "answer": "to go to the beach.\n\n\nQuestion: What is the best thing to do in San Francisco?\nA",
+   "retrieved": false,
+   "max_head_score": 0.038,
+   "n_heads_above_0.1": 0
+  },
+  {
+   "ctx": 1024,
+   "haystack": 1,
+   "depth": 0.27,
+   "answer": "to go to the beach.\n\n\nQuestion: What is the best thing to do in San Francisco?\nA",
+   "retrieved": false,
+   "max_head_score": 0.038,
+   "n_heads_above_0.1": 0
+  },
+  {
+   "ctx": 1024,
+   "haystack": 1,
+   "depth": 0.5,
+   "answer": "to go to the beach.\n\n\nQuestion: What is the best thing to do in San Francisco?\nA",
+   "retrieved": false,
+   "max_head_score": 0.038,
+   "n_heads_above_0.1": 0
+  },
+  {
+   "ctx": 1024,
+   "haystack": 1,
+   "depth": 0.72,
+   "answer": "to eat a sandwich and sit in Dolores Park.\n\n\nQuestion: What is the best thing to",
+   "retrieved": true,
+   "max_head_score": 0.346,
+   "n_heads_above_0.1": 10
+  },
+  {
+   "ctx": 1024,
+   "haystack": 1,
+   "depth": 0.95,
+   "answer": "eat a sandwich and sit in Dolores Park on a sunny hills and the bottoms of the w",
+   "retrieved": true,
+   "max_head_score": 0.5,
+   "n_heads_above_0.1": 18
+  },
+  {
+   "ctx": 2048,
+   "haystack": 0,
+   "depth": 0.05,
+   "answer": "to go to the beach.\n\n\nQuestion: What is the best thing to do in San Francisco?\nA",
+   "retrieved": false,
+   "max_head_score": 0.038,
+   "n_heads_above_0.1": 0
+  },
+  {
+   "ctx": 2048,
+   "haystack": 0,
+   "depth": 0.27,
+   "answer": "to go to the beach.\n\n\nQuestion: What is the best thing to do in San Francisco?\nA",
+   "retrieved": false,
+   "max_head_score": 0.038,
+   "n_heads_above_0.1": 0
+  },
+  {
+   "ctx": 2048,
+   "haystack": 0,
+   "depth": 0.5,
+   "answer": "to eat a sandwich and sit in Dolores Park on a sunny day.\n\n\nQuestion: What is",
+   "retrieved": true,
+   "max_head_score": 0.615,
+   "n_heads_above_0.1": 13
+  },
+  {
+   "ctx": 2048,
+   "haystack": 0,
+   "depth": 0.72,
+   "answer": "to eat a sandwich and sit in Dolores Park on a sunny day.\n\n\nQuestion: What is",
+   "retrieved": true,
+   "max_head_score": 0.615,
+   "n_heads_above_0.1": 19
+  },
+  {
+   "ctx": 2048,
+   "haystack": 0,
+   "depth": 0.95,
+   "answer": "eat a sandwich and sit in Dolores Park on a sunny day.\n\n\n<s> Q: What is",
+   "retrieved": true,
+   "max_head_score": 0.615,
+   "n_heads_above_0.1": 22
+  },
+  {
+   "ctx": 2048,
+   "haystack": 1,
+   "depth": 0.05,
+   "answer": "to go to the beach.\n\n\nQuestion: What is the best thing to do in San Francisco?\nA",
+   "retrieved": false,
+   "max_head_score": 0.038,
+   "n_heads_above_0.1": 0
+  },
+  {
+   "ctx": 2048,
+   "haystack": 1,
+   "depth": 0.27,
+   "answer": "to go to the beach.\n\n\nQuestion: What is the best thing to do in San Francisco?\nA",
+   "retrieved": false,
+   "max_head_score": 0.0,
+   "n_heads_above_0.1": 0
+  },
+  {
+   "ctx": 2048,
+   "haystack": 1,
+   "depth": 0.5,
+   "answer": "to go to the beach.\n\n\nQuestion: What is the best thing to do in San Francisco?\nA",
+   "retrieved": false,
+   "max_head_score": 0.038,
+   "n_heads_above_0.1": 0
+  },
+  {
+   "ctx": 2048,
+   "haystack": 1,
+   "depth": 0.72,
+   "answer": "to eat a sandwich and sit in Dolores Park on a sunny day.\n\n\nQuestion: What is",
+   "retrieved": true,
+   "max_head_score": 0.615,
+   "n_heads_above_0.1": 12
+  },
+  {
+   "ctx": 2048,
+   "haystack": 1,
+   "depth": 0.95,
+   "answer": "eat a sandwich and sit in Dolores Park on a sunny day. \" , a line from the penul",
+   "retrieved": true,
+   "max_head_score": 0.615,
+   "n_heads_above_0.1": 19
+  }
+ ],
+ "summary": {
+  "n_instances": 20,
+  "retrieval_accuracy": 0.5,
+  "frac_heads_above_0.1": 0.0068,
+  "frac_heads_above_0.5": 0.0,
+  "n_heads_above_0.1": 7,
+  "n_heads": 1024,
+  "max_score": 0.283,
+  "top_heads": [
+   {
+    "layer": 11,
+    "head": 15,
+    "score": 0.283
+   },
+   {
+    "layer": 16,
+    "head": 19,
+    "score": 0.281
+   },
+   {
+    "layer": 6,
+    "head": 9,
+    "score": 0.219
+   },
+   {
+    "layer": 17,
+    "head": 22,
+    "score": 0.171
+   },
+   {
+    "layer": 21,
+    "head": 30,
+    "score": 0.154
+   },
+   {
+    "layer": 19,
+    "head": 15,
+    "score": 0.154
+   },
+   {
+    "layer": 8,
+    "head": 26,
+    "score": 0.133
+   },
+   {
+    "layer": 7,
+    "head": 4,
+    "score": 0.094
+   },
+   {
+    "layer": 21,
+    "head": 1,
+    "score": 0.087
+   },
+   {
+    "layer": 24,
+    "head": 29,
+    "score": 0.075
+   }
+  ],
+  "paper": "3 to 6 percent of heads above 0.1 (Wu et al. 2024, contexts 1K to 50K, about 600 instances)"
+ }
+}

@@ -503,8 +503,11 @@ registration of the draft.
 - Target 5, Retrieval Heads 2024 (positive control): reproduced on
   Qwen2.5-7B at 1K and 2K contexts (20 instances): 4.2 percent of heads above
   0.1 (paper 3 to 6), needle retrieved every time; on the paper's own
-  Mistral-7B-Instruct-v0.2, 3.4 percent and again every needle retrieved.
-  Criteria frozen for both.
+  Mistral-7B-Instruct-v0.2, 3.4 percent and again every needle retrieved;
+  on the paper's primary Llama-2-7B-80K our setup retrieves only 10 of 20
+  needles and finds 0.7 percent of heads above 0.1 (haystack, prompt and a
+  loading deviation are the suspects), so that model is excluded from the
+  battery. Criteria frozen for the two reproduced models.
 
 With Targets 1, 3, 4 and 5 reproduced or partially reproduced and Target
 2 logged, PREREGISTRATION4_DRAFT.md is ready to freeze on OSF; the

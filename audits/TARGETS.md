@@ -107,3 +107,16 @@ weeks to respond before any preprint; responses are published alongside.
   of the paper's models, same reduced protocol of 20 instances at 1K and
   2K): reproduced. 3.4 percent of 1024 heads above 0.1 (paper 3 to 6),
   needle retrieved in 20 of 20, strongest heads L12H7 0.61, L18H0 0.60, L18H2 0.60.
+- Target 5 on the source's primary model (2026-09-11,
+  `retrieval_heads/reproduce.py` on `yaofu/llama-2-7b-80k`, 20 instances at
+  1K and 2K, loaded with linear position interpolation factor 10 after the
+  checkpoint's saved rope configuration produced degenerate text; RUNLOG):
+  not reproduced under this setup. The needle was retrieved in 10 of 20
+  instances (by context {1024: '5/10', 2048: '5/10'}), 0.7 percent of heads score above 0.1 (7 of
+  1024) and the strongest head reaches 0.28, against the paper's 3 to 6
+  percent and its near-perfect retrieval at these lengths. The likely
+  causes are the substituted haystack (WikiText paragraphs rather than the
+  paper's essays), the base model's sensitivity to the prompt, and the
+  loading deviation; the two other models of the paper reproduce its
+  figures. Recorded as a boundary of the reproduction, not as evidence
+  against the source.
