@@ -77,3 +77,10 @@ Head-merging round (PREREGISTRATION7.md, frozen and pushed as 6b8f8ea at
 `merge_round.py --purge-large` (log `merge_round.log`; per-model results in
 `merge/`). Qwen2.5-1.5B from cache; 3B and 7B re-downloaded since the
 rerun purged them.
+
+Derivation round (PREREGISTRATION8.md, frozen and pushed as b9b8ef0 at
+2026-09-11 08:24 UTC). Launched 08:26 UTC on the CPU (the GPU is running
+the merge round) for the seven models cached locally: gpt2, gpt2-medium,
+Pythia-160m, Pythia-410m, TinyLlama, Qwen2.5-1.5B base and Instruct. The
+five larger models run under the same frozen file once their weights are
+downloaded again (the merge round purges them after use); dates below.

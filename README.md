@@ -161,13 +161,16 @@ Each instrument below exists because a finding above required it.
 - **The `hubsfree` toolkit.** Because the standard signatures appear on
   noise, every statistic computed on attention maps (clusters, hubs,
   eigengaps, special heads, similarity or interaction matrices, importance
-  scores) now has a null to be measured against. The toolkit runs four
+  scores) now has a null to be measured against. The toolkit runs the
   families in one command: random causal or bidirectional softmax matched
-  in heads and length, per-row marginal-matched surrogates,
-  sink-column-preserving surrogates, and an untrained model of the same
-  architecture. The report gives the real statistic's percentile in each
-  null and how much of the effect each null reproduces. `hubsfree demo`
-  shows the random-matrix coordinator in under a second.
+  in heads and length, per-row marginal-matched surrogates, surrogates
+  preserving the sink column set, and two dissociation controls that keep
+  every head as concentrated as it was while removing the shared column.
+  The report gives the real statistic's percentile in each null and the
+  fraction of the effect each null already reproduces. `hubsfree extract`
+  saves a layer's maps from any Hugging Face model, `hubsfree audit` runs
+  the battery on them, `hubsfree demo` shows the random-matrix coordinator
+  in under a second; the guide is `docs/toolkit.md`.
 - **Sink-aware head comparison.** Because one column carries most of the
   inter-head signal, any pipeline that ranks, clusters, merges, or prunes
   heads from attention maps (attention-based importance, attention
@@ -278,8 +281,10 @@ alignment-fraction law; and the toolkit that packages the nulls.
   preregistrations, all scripts and result JSONs (per-checkpoint dynamics
   results in `dynamics/`, per-model rerun results in `rerun/`), the run
   log, and the study note with scorecards (`NOTE.md`).
-- `hubsfree/`, `tests/`, `pyproject.toml` - the toolkit (v0.1.0.dev0):
-  statistics, null families, battery report, CLI.
+- `hubsfree/`, `tests/`, `pyproject.toml`, `docs/toolkit.md`, `examples/` -
+  the toolkit (v0.1.0.dev0): statistics, null families including the
+  dissociation controls, battery report, CLI, guide and two runnable
+  examples.
 - `audits/` - audit targets, the preregistration-4 draft, per-target
   reproductions (`clark2019/`).
 - `run_qwen_protocol.py`, `qwen_results.json` - the six-prediction
