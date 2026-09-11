@@ -1,0 +1,231 @@
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+[transformers] The following generation flags are not valid and may be ignored: ['output_attentions']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights:   0%|          | 0/516 [00:00<?, ?it/s]Loading weights:   0%|          | 2/516 [00:00<02:14,  3.82it/s]Loading weights:  10%|█         | 54/516 [00:01<00:08, 55.80it/s]Loading weights:  14%|█▎        | 70/516 [00:01<00:07, 58.02it/s]Loading weights:  17%|█▋        | 86/516 [00:01<00:10, 42.27it/s]Loading weights:  20%|█▉        | 102/516 [00:02<00:08, 47.87it/s]Loading weights:  23%|██▎       | 118/516 [00:02<00:08, 49.00it/s]Loading weights:  26%|██▌       | 134/516 [00:02<00:07, 51.71it/s]Loading weights:  29%|██▉       | 150/516 [00:03<00:07, 48.21it/s]Loading weights:  32%|███▏      | 166/516 [00:03<00:06, 55.60it/s]Loading weights:  35%|███▌      | 182/516 [00:03<00:08, 40.74it/s]Loading weights:  38%|███▊      | 198/516 [00:04<00:07, 44.48it/s]Loading weights:  41%|████▏     | 214/516 [00:05<00:09, 32.40it/s]Loading weights:  45%|████▍     | 230/516 [00:05<00:08, 33.97it/s]Loading weights:  48%|████▊     | 246/516 [00:06<00:10, 26.30it/s]Loading weights:  51%|█████     | 262/516 [00:06<00:08, 28.63it/s]Loading weights:  54%|█████▍    | 278/516 [00:07<00:09, 25.48it/s]Loading weights:  57%|█████▋    | 294/516 [00:08<00:07, 27.79it/s]Loading weights:  60%|██████    | 310/516 [00:08<00:07, 25.92it/s]Loading weights:  63%|██████▎   | 326/516 [00:09<00:07, 26.93it/s]Loading weights:  66%|██████▋   | 342/516 [00:09<00:06, 27.04it/s]Loading weights:  67%|██████▋   | 345/516 [00:10<00:06, 27.02it/s]Loading weights:  69%|██████▉   | 358/516 [00:10<00:04, 31.74it/s]Loading weights:  72%|███████▏  | 374/516 [00:10<00:04, 31.10it/s]Loading weights:  76%|███████▌  | 390/516 [00:11<00:03, 33.69it/s]Loading weights:  79%|███████▊  | 406/516 [00:11<00:03, 33.39it/s]Loading weights:  82%|████████▏ | 422/516 [00:12<00:03, 30.38it/s]Loading weights:  85%|████████▍ | 438/516 [00:12<00:02, 29.47it/s]Loading weights:  88%|████████▊ | 454/516 [00:13<00:02, 28.46it/s]Loading weights:  91%|█████████ | 470/516 [00:14<00:01, 28.16it/s]Loading weights:  94%|█████████▍| 486/516 [00:14<00:01, 27.47it/s]Loading weights:  97%|█████████▋| 502/516 [00:15<00:00, 30.90it/s]Loading weights: 100%|██████████| 516/516 [00:15<00:00, 34.09it/s]
+facebook/opt-6.7b DEVICE mps DTYPE bfloat16 layers 32 heads 32
+    window 1/48 T=64
+    window 2/48 T=64
+    window 3/48 T=64
+    window 4/48 T=64
+    window 5/48 T=64
+    window 6/48 T=64
+    window 7/48 T=64
+    window 8/48 T=64
+    window 9/48 T=64
+    window 10/48 T=64
+    window 11/48 T=64
+    window 12/48 T=64
+    window 13/48 T=64
+    window 14/48 T=64
+    window 15/48 T=64
+    window 16/48 T=64
+    window 17/48 T=64
+    window 18/48 T=64
+    window 19/48 T=64
+    window 20/48 T=64
+    window 21/48 T=64
+    window 22/48 T=64
+    window 23/48 T=64
+    window 24/48 T=64
+    window 25/48 T=64
+    window 26/48 T=64
+    window 27/48 T=64
+    window 28/48 T=64
+    window 29/48 T=64
+    window 30/48 T=64
+    window 31/48 T=64
+    window 32/48 T=64
+    window 33/48 T=64
+    window 34/48 T=64
+    window 35/48 T=64
+    window 36/48 T=64
+    window 37/48 T=64
+    window 38/48 T=64
+    window 39/48 T=64
+    window 40/48 T=64
+    window 41/48 T=64
+    window 42/48 T=64
+    window 43/48 T=64
+    window 44/48 T=64
+    window 45/48 T=64
+    window 46/48 T=64
+    window 47/48 T=64
+    window 48/48 T=64
+    window 1/6 T=256
+    window 2/6 T=256
+    window 3/6 T=256
+    window 4/6 T=256
+    window 5/6 T=256
+    window 6/6 T=256
+MODEL_DONE opt-6.7b layers=32 high_sink=29 dtype=bfloat16 863.1s
+Loading weights:   0%|          | 0/365 [00:00<?, ?it/s]Loading weights:   1%|          | 4/365 [00:00<00:17, 20.84it/s]Loading weights:   4%|▍         | 16/365 [00:00<00:08, 39.78it/s]Loading weights:   8%|▊         | 28/365 [00:00<00:07, 46.47it/s]Loading weights:   9%|▉         | 33/365 [00:00<00:07, 42.01it/s]Loading weights:  12%|█▏        | 42/365 [00:00<00:07, 44.62it/s]Loading weights:  13%|█▎        | 48/365 [00:01<00:07, 43.07it/s]Loading weights:  15%|█▍        | 53/365 [00:01<00:07, 44.39it/s]Loading weights:  16%|█▋        | 60/365 [00:01<00:07, 40.91it/s]Loading weights:  21%|██        | 76/365 [00:01<00:05, 52.06it/s]Loading weights:  24%|██▍       | 88/365 [00:01<00:05, 50.52it/s]Loading weights:  28%|██▊       | 102/365 [00:02<00:04, 54.09it/s]Loading weights:  31%|███       | 114/365 [00:02<00:03, 64.04it/s]Loading weights:  34%|███▍      | 124/365 [00:02<00:04, 59.78it/s]Loading weights:  37%|███▋      | 136/365 [00:02<00:03, 63.65it/s]Loading weights:  41%|████      | 148/365 [00:02<00:03, 71.22it/s]Loading weights:  44%|████▍     | 160/365 [00:02<00:03, 65.34it/s]Loading weights:  47%|████▋     | 172/365 [00:03<00:03, 62.67it/s]Loading weights:  50%|█████     | 184/365 [00:03<00:02, 60.83it/s]Loading weights:  54%|█████▎    | 196/365 [00:03<00:02, 60.53it/s]Loading weights:  57%|█████▋    | 208/365 [00:03<00:02, 63.25it/s]Loading weights:  60%|██████    | 220/365 [00:03<00:02, 60.63it/s]Loading weights:  62%|██████▏   | 227/365 [00:04<00:02, 53.35it/s]Loading weights:  67%|██████▋   | 244/365 [00:04<00:01, 66.01it/s]Loading weights:  70%|███████   | 256/365 [00:04<00:02, 48.43it/s]Loading weights:  73%|███████▎  | 268/365 [00:05<00:02, 44.93it/s]Loading weights:  75%|███████▌  | 274/365 [00:05<00:02, 36.81it/s]Loading weights:  77%|███████▋  | 280/365 [00:05<00:03, 26.29it/s]Loading weights:  78%|███████▊  | 284/365 [00:06<00:04, 20.15it/s]Loading weights:  79%|███████▉  | 288/365 [00:06<00:03, 19.68it/s]Loading weights:  80%|████████  | 292/365 [00:06<00:04, 15.32it/s]Loading weights:  81%|████████  | 294/365 [00:07<00:05, 13.73it/s]Loading weights:  83%|████████▎ | 304/365 [00:07<00:03, 17.37it/s]Loading weights:  84%|████████▍ | 306/365 [00:07<00:03, 15.62it/s]Loading weights:  87%|████████▋ | 316/365 [00:08<00:02, 19.77it/s]Loading weights:  89%|████████▉ | 324/365 [00:08<00:01, 26.54it/s]Loading weights:  90%|████████▉ | 328/365 [00:08<00:02, 17.44it/s]Loading weights:  91%|█████████ | 331/365 [00:08<00:01, 18.40it/s]Loading weights:  93%|█████████▎| 340/365 [00:09<00:00, 26.18it/s]Loading weights:  94%|█████████▍| 344/365 [00:09<00:00, 21.94it/s]Loading weights:  96%|█████████▋| 352/365 [00:09<00:00, 27.18it/s]Loading weights:  99%|█████████▊| 360/365 [00:09<00:00, 32.49it/s]Loading weights: 100%|█████████▉| 364/365 [00:13<00:00,  5.16it/s]Loading weights: 100%|██████████| 365/365 [00:13<00:00, 27.76it/s]
+bigscience/bloom-7b1 DEVICE mps DTYPE bfloat16 layers 30 heads 32
+    window 1/48 T=64
+    window 2/48 T=64
+    window 3/48 T=64
+    window 4/48 T=64
+    window 5/48 T=64
+    window 6/48 T=64
+    window 7/48 T=64
+    window 8/48 T=64
+    window 9/48 T=64
+    window 10/48 T=64
+    window 11/48 T=64
+    window 12/48 T=64
+    window 13/48 T=64
+    window 14/48 T=64
+    window 15/48 T=64
+    window 16/48 T=64
+    window 17/48 T=64
+    window 18/48 T=64
+    window 19/48 T=64
+    window 20/48 T=64
+    window 21/48 T=64
+    window 22/48 T=64
+    window 23/48 T=64
+    window 24/48 T=64
+    window 25/48 T=64
+    window 26/48 T=64
+    window 27/48 T=64
+    window 28/48 T=64
+    window 29/48 T=64
+    window 30/48 T=64
+    window 31/48 T=64
+    window 32/48 T=64
+    window 33/48 T=64
+    window 34/48 T=64
+    window 35/48 T=64
+    window 36/48 T=64
+    window 37/48 T=64
+    window 38/48 T=64
+    window 39/48 T=64
+    window 40/48 T=64
+    window 41/48 T=64
+    window 42/48 T=64
+    window 43/48 T=64
+    window 44/48 T=64
+    window 45/48 T=64
+    window 46/48 T=64
+    window 47/48 T=64
+    window 48/48 T=64
+    window 1/6 T=256
+    window 2/6 T=256
+    window 3/6 T=256
+    window 4/6 T=256
+    window 5/6 T=256
+    window 6/6 T=256
+MODEL_DONE bloom-7b1 layers=30 high_sink=19 dtype=bfloat16 803.4s
+Loading weights:   0%|          | 0/399 [00:00<?, ?it/s]Loading weights: 100%|██████████| 399/399 [00:00<00:00, 4543.60it/s]
+Qwen/Qwen3-8B DEVICE mps DTYPE bfloat16 layers 36 heads 32
+    window 1/48 T=64
+    window 2/48 T=64
+    window 3/48 T=64
+    window 4/48 T=64
+    window 5/48 T=64
+    window 6/48 T=64
+    window 7/48 T=64
+    window 8/48 T=64
+    window 9/48 T=64
+    window 10/48 T=64
+    window 11/48 T=64
+    window 12/48 T=64
+    window 13/48 T=64
+    window 14/48 T=64
+    window 15/48 T=64
+    window 16/48 T=64
+    window 17/48 T=64
+    window 18/48 T=64
+    window 19/48 T=64
+    window 20/48 T=64
+    window 21/48 T=64
+    window 22/48 T=64
+    window 23/48 T=64
+    window 24/48 T=64
+    window 25/48 T=64
+    window 26/48 T=64
+    window 27/48 T=64
+    window 28/48 T=64
+    window 29/48 T=64
+    window 30/48 T=64
+    window 31/48 T=64
+    window 32/48 T=64
+    window 33/48 T=64
+    window 34/48 T=64
+    window 35/48 T=64
+    window 36/48 T=64
+    window 37/48 T=64
+    window 38/48 T=64
+    window 39/48 T=64
+    window 40/48 T=64
+    window 41/48 T=64
+    window 42/48 T=64
+    window 43/48 T=64
+    window 44/48 T=64
+    window 45/48 T=64
+    window 46/48 T=64
+    window 47/48 T=64
+    window 48/48 T=64
+    window 1/6 T=256
+    window 2/6 T=256
+    window 3/6 T=256
+    window 4/6 T=256
+    window 5/6 T=256
+    window 6/6 T=256
+MODEL_DONE Qwen3-8B layers=36 high_sink=29 dtype=bfloat16 921.0s
+Loading weights:   0%|          | 0/196 [00:00<?, ?it/s]Loading weights: 100%|██████████| 196/196 [00:00<00:00, 4209.96it/s]
+tiiuae/falcon-7b DEVICE mps DTYPE bfloat16 layers 32 heads 71
+    window 1/48 T=64
+    window 2/48 T=64
+    window 3/48 T=64
+    window 4/48 T=64
+    window 5/48 T=64
+    window 6/48 T=64
+    window 7/48 T=64
+    window 8/48 T=64
+    window 9/48 T=64
+    window 10/48 T=64
+    window 11/48 T=64
+    window 12/48 T=64
+    window 13/48 T=64
+    window 14/48 T=64
+    window 15/48 T=64
+    window 16/48 T=64
+    window 17/48 T=64
+    window 18/48 T=64
+    window 19/48 T=64
+    window 20/48 T=64
+    window 21/48 T=64
+    window 22/48 T=64
+    window 23/48 T=64
+    window 24/48 T=64
+    window 25/48 T=64
+    window 26/48 T=64
+    window 27/48 T=64
+    window 28/48 T=64
+    window 29/48 T=64
+    window 30/48 T=64
+    window 31/48 T=64
+    window 32/48 T=64
+    window 33/48 T=64
+    window 34/48 T=64
+    window 35/48 T=64
+    window 36/48 T=64
+    window 37/48 T=64
+    window 38/48 T=64
+    window 39/48 T=64
+    window 40/48 T=64
+    window 41/48 T=64
+    window 42/48 T=64
+    window 43/48 T=64
+    window 44/48 T=64
+    window 45/48 T=64
+    window 46/48 T=64
+    window 47/48 T=64
+    window 48/48 T=64
+    window 1/6 T=256
+    window 2/6 T=256
+    window 3/6 T=256
+    window 4/6 T=256
+    window 5/6 T=256
+    window 6/6 T=256
+MODEL_DONE falcon-7b layers=32 high_sink=28 dtype=bfloat16 2601.1s
+RERUN_DONE

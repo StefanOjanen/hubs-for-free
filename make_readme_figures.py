@@ -293,15 +293,18 @@ if MER:
 
 
 # ============ Figure 11: shared energy and sink mass across depth, thirteen models (rerun) ============
-RR2 = {json.load(open(f))["model"]: json.load(open(f)) for f in sorted(glob.glob("alignment_study/rerun/*.json"))}
+RR2 = {json.load(open(f))["model"]: json.load(open(f)) for f in sorted(glob.glob("alignment_study/rerun/*.json")) + sorted(glob.glob("alignment_study/rerun_pr10/*.json"))}
 if RR2:
     order11 = ["gpt2", "gpt2-medium", "EleutherAI/pythia-160m", "EleutherAI/pythia-410m", "TinyLlama/TinyLlama_v1.1", "Qwen/Qwen2.5-0.5B", "Qwen/Qwen2.5-1.5B",
-               "Qwen/Qwen2.5-1.5B-Instruct", "Qwen/Qwen2.5-3B", "microsoft/Phi-3-mini-4k-instruct", "mistralai/Mistral-7B-v0.1", "Qwen/Qwen2.5-7B", "allenai/OLMo-2-1124-7B"]
+               "Qwen/Qwen2.5-1.5B-Instruct", "Qwen/Qwen2.5-3B", "microsoft/Phi-3-mini-4k-instruct", "mistralai/Mistral-7B-v0.1", "Qwen/Qwen2.5-7B", "allenai/OLMo-2-1124-7B",
+               "facebook/opt-6.7b", "bigscience/bloom-7b1", "tiiuae/falcon-7b", "Qwen/Qwen3-8B"]
     names11 = {"gpt2": "GPT-2 124M", "gpt2-medium": "GPT-2 355M", "EleutherAI/pythia-160m": "Pythia 160M", "EleutherAI/pythia-410m": "Pythia 410M", "TinyLlama/TinyLlama_v1.1": "TinyLlama 1.1B",
                "Qwen/Qwen2.5-0.5B": "Qwen2.5 0.5B", "Qwen/Qwen2.5-1.5B": "Qwen2.5 1.5B", "Qwen/Qwen2.5-1.5B-Instruct": "Qwen2.5 1.5B Instruct", "Qwen/Qwen2.5-3B": "Qwen2.5 3B",
-               "microsoft/Phi-3-mini-4k-instruct": "Phi-3 mini 3.8B", "mistralai/Mistral-7B-v0.1": "Mistral 7B", "Qwen/Qwen2.5-7B": "Qwen2.5 7B", "allenai/OLMo-2-1124-7B": "OLMo-2 7B"}
+               "microsoft/Phi-3-mini-4k-instruct": "Phi-3 mini 3.8B", "mistralai/Mistral-7B-v0.1": "Mistral 7B", "Qwen/Qwen2.5-7B": "Qwen2.5 7B", "allenai/OLMo-2-1124-7B": "OLMo-2 7B",
+               "facebook/opt-6.7b": "OPT 6.7B (learned pos.)", "bigscience/bloom-7b1": "BLOOM 7.1B (ALiBi)", "tiiuae/falcon-7b": "Falcon 7B (multi-query)", "Qwen/Qwen3-8B": "Qwen3 8B"}
     order11 = [m for m in order11 if m in RR2]
-    fig, axes = plt.subplots(3, 5, figsize=(8.8, 5.6), sharex=True, sharey=True, gridspec_kw={"wspace": 0.12, "hspace": 0.5, "top": 0.86, "bottom": 0.1, "left": 0.07, "right": 0.99})
+    nrow = 4 if len(order11) > 15 else 3
+    fig, axes = plt.subplots(nrow, 5, figsize=(8.8, 1.85 * nrow + 0.6), sharex=True, sharey=True, gridspec_kw={"wspace": 0.12, "hspace": 0.5, "top": 0.88 if nrow == 4 else 0.86, "bottom": 0.08, "left": 0.07, "right": 0.99})
     axes = axes.ravel()
     for k, m in enumerate(order11):
         ax = axes[k]; rows = RR2[m]["protocol_A"]["rows"]; L = len(rows); x = [(l + 0.5) / L for l in range(L)]
@@ -314,22 +317,24 @@ if RR2:
     for k in range(len(order11), len(axes)):
         axes[k].axis("off")
     hs, ls = axes[0].get_legend_handles_labels()
-    fig.legend(hs, ls, loc="center", ncol=1, frameon=False, bbox_to_anchor=(0.8, 0.2), fontsize=11)
-    fig.text(0.02, 0.965, "One shared operator, thirteen models", fontsize=15, color=INK, va="top")
-    fig.text(0.02, 0.91, "Shared-energy fraction and sink mass by relative depth, 48 windows per model at T = 64; the line at 0.4 is the high-sink threshold", fontsize=10.5, color=INK2, va="top")
+    fig.legend(hs, ls, loc="center", ncol=1, frameon=False, bbox_to_anchor=(0.8, 0.14 if nrow == 4 else 0.2), fontsize=11)
+    fig.text(0.02, 0.975, f"One shared operator, {len(order11)} models", fontsize=15, color=INK, va="top")
+    fig.text(0.02, 0.93, "Shared-energy fraction and sink mass by relative depth, 48 windows per model at T = 64; the line at 0.4 is the high-sink threshold", fontsize=10.5, color=INK2, va="top")
     fig.savefig(OUT + "fig11_depth_profiles.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
 
 # ============ Figure 12: the sink-profile generative model (preregistration 9) ============
-SP = [json.load(open(f)) for f in sorted(glob.glob("alignment_study/sinkprofile/*.json"))]
+SP = [json.load(open(f)) for f in sorted(glob.glob("alignment_study/sinkprofile/*.json")) + sorted(glob.glob("alignment_study/sinkprofile_pr10/*.json"))]
 if SP:
     SPR = json.load(open("alignment_study/sinkprofile_results.json")) if glob.glob("alignment_study/sinkprofile_results.json") else None
+    SPR10 = json.load(open("alignment_study/sinkprofile_pr10_results.json")) if glob.glob("alignment_study/sinkprofile_pr10_results.json") else None
     fig, ax = plt.subplots(1, 2, figsize=(8.8, 4.7), gridspec_kw={"wspace": 0.3, "top": 0.86, "bottom": 0.16}, sharey=True)
     zr = [r["z_real"] for c in SP for r in c["rows"]]; zp = [r["z_profile"] for c in SP for r in c["rows"]]; zd = [r["z_dense"] for c in SP for r in c["rows"]]
     hs = [r["smass"] > 0.4 for c in SP for r in c["rows"]]
     lo, hi = min(zr + zp + zd) - 2, max(zr + zp + zd) + 2
-    for a_, xs, title, sub in ((ax[0], zd, "Shared operator, random rest", f"pooled Spearman {SPR['P']['P4']['pooled_spearman_z_dense']:.2f}" if SPR else ""),
-                                (ax[1], zp, "Own sink column, random rest", f"pooled Spearman {SPR['P']['P4']['pooled_spearman_z_profile']:.2f}, {SPR['P']['P1']['passes']} of 12 models" if SPR else "")):
+    from scipy.stats import spearmanr as _sp12
+    for a_, xs, title, sub in ((ax[0], zd, "Shared operator, random rest", f"pooled Spearman {_sp12(zd, zr)[0]:.2f} over {len(zr)} layers"),
+                                (ax[1], zp, "Own sink column, random rest", (f"pooled Spearman {SPR['P']['P4']['pooled_spearman_z_profile']:.2f}, {SPR['P']['P1']['passes']} of 12 models" + (f" plus {SPR10['P']['P1']['passes']} of {SPR10['P']['P1']['n']} new designs" if SPR10 else "")) if SPR else "")):
         a_.plot([lo, hi], [lo, hi], color=GRID, lw=1.2, zorder=1)
         a_.scatter([x for x, h in zip(xs, hs) if not h], [y for y, h in zip(zr, hs) if not h], s=20, color=SEQ[1], edgecolors=SURF, linewidths=0.8, zorder=2, label="low-sink layers")
         a_.scatter([x for x, h in zip(xs, hs) if h], [y for y, h in zip(zr, hs) if h], s=26, color=S1, edgecolors=SURF, linewidths=0.9, zorder=3, label="high-sink layers")

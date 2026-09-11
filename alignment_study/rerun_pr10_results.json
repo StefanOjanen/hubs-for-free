@@ -1,0 +1,154 @@
+{
+ "n_models": 4,
+ "per_model": {
+  "Qwen/Qwen3-8B": {
+   "n_layers": 36,
+   "n_high_sink_A": 29,
+   "n_high_sink_B": 27,
+   "testable": true,
+   "layers_with_k_above_1": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "S1_frac": 1.0,
+   "S2_frac": 0.966,
+   "S2_secondary_R_r1_frac": 1.0,
+   "S2_max_R_z": 0.406,
+   "S3_frac": 1.0,
+   "S3_secondary_r1_restore_frac": 1.0,
+   "S3_shift_frac": 1.0,
+   "S3_shift_r1_restore_frac": 1.0,
+   "S3_alt2_frac": 1.0,
+   "S3_alt2_r1_restore_frac": 1.0,
+   "S3_testable": true,
+   "S1_pass": true,
+   "S2_pass": true,
+   "S3_pass": true,
+   "calibration_model": false
+  },
+  "bigscience/bloom-7b1": {
+   "n_layers": 30,
+   "n_high_sink_A": 19,
+   "n_high_sink_B": 6,
+   "testable": true,
+   "layers_with_k_above_1": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    25,
+    26,
+    27,
+    28,
+    29
+   ],
+   "S1_frac": 1.0,
+   "S2_frac": 1.0,
+   "S2_secondary_R_r1_frac": 1.0,
+   "S2_max_R_z": 0.131,
+   "S3_frac": 1.0,
+   "S3_secondary_r1_restore_frac": 1.0,
+   "S3_shift_frac": 1.0,
+   "S3_shift_r1_restore_frac": 0.833,
+   "S3_alt2_frac": 1.0,
+   "S3_alt2_r1_restore_frac": 1.0,
+   "S3_testable": true,
+   "S1_pass": true,
+   "S2_pass": true,
+   "S3_pass": true,
+   "calibration_model": false
+  },
+  "tiiuae/falcon-7b": {
+   "n_layers": 32,
+   "n_high_sink_A": 28,
+   "n_high_sink_B": 28,
+   "testable": true,
+   "layers_with_k_above_1": [
+    1,
+    2,
+    3
+   ],
+   "S1_frac": 1.0,
+   "S2_frac": 0.821,
+   "S2_secondary_R_r1_frac": 1.0,
+   "S2_max_R_z": 1.044,
+   "S3_frac": 1.0,
+   "S3_secondary_r1_restore_frac": 0.964,
+   "S3_shift_frac": 1.0,
+   "S3_shift_r1_restore_frac": 0.964,
+   "S3_alt2_frac": 1.0,
+   "S3_alt2_r1_restore_frac": 0.964,
+   "S3_testable": true,
+   "S1_pass": true,
+   "S2_pass": true,
+   "S3_pass": true,
+   "calibration_model": false
+  },
+  "facebook/opt-6.7b": {
+   "n_layers": 32,
+   "n_high_sink_A": 29,
+   "n_high_sink_B": 23,
+   "testable": true,
+   "layers_with_k_above_1": [
+    1,
+    2,
+    3
+   ],
+   "S1_frac": 1.0,
+   "S2_frac": 0.759,
+   "S2_secondary_R_r1_frac": 1.0,
+   "S2_max_R_z": 2.28,
+   "S3_frac": 1.0,
+   "S3_secondary_r1_restore_frac": 1.0,
+   "S3_shift_frac": 1.0,
+   "S3_shift_r1_restore_frac": 1.0,
+   "S3_alt2_frac": 1.0,
+   "S3_alt2_r1_restore_frac": 1.0,
+   "S3_testable": true,
+   "S1_pass": true,
+   "S2_pass": true,
+   "S3_pass": true,
+   "calibration_model": false
+  }
+ },
+ "S": {
+  "S1": {
+   "passes": 4,
+   "testable": 4,
+   "pass": true
+  },
+  "S2": {
+   "passes": 4,
+   "testable": 4,
+   "pass": true
+  },
+  "S3": {
+   "passes": 4,
+   "testable": 4,
+   "pass": true
+  },
+  "S4": {
+   "spearman": -0.837,
+   "ci95": [
+    -0.876,
+    -0.778
+   ],
+   "n_layers": 96,
+   "n_excluded_ill_conditioned": 9,
+   "pass": true
+  },
+  "S4_unflagged_all_layers": {
+   "spearman": -0.869,
+   "n_layers": 105
+  }
+ }
+}
