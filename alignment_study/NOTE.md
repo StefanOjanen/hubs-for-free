@@ -391,3 +391,47 @@ a random support does not raise the commutator with S, so the real
 deviations' threefold larger [S, E_h] comes from where their entries sit
 relative to the sink geometry, not from how many there are. T4.3 remains
 open with that constraint recorded.
+
+## Head-merging round (2026-09-11, preregistration 7, local MPS)
+
+The practical test (plan T5.1). Qwen2.5-1.5B, 3B and 7B; per layer, the
+two query heads of a KV group with the highest generator cosine merged
+(query and output slices averaged) against the bottom-cosine pair and a
+random within-group pair; cost = change in mean next-token NLL over 16,384
+held-out WikiText-103 test tokens; predictor = the layer's shared energy
+from the rerun. Frozen and pushed (6b8f8ea, 08:19 UTC) before execution;
+run 08:21 to 13:25 UTC (`merge_round.log`; the 1.5B run was relaunched
+without cache purging after its model completed, RUNLOG.md). Scorecard
+(`eval_merge.py` -> `merge_results.json`, 92 layers):
+
+- M1 FAIL (1 of 3 models): the top-cosine merge is cheaper than the
+  bottom-cosine merge in 75 percent of layers (1.5B), 64 percent (3B) and
+  54 percent (7B); the registered 2/3 holds in one model.
+- M1b FAIL (secondary, 2 of 3): cheaper than the random pair in 71, 47 and
+  64 percent of layers.
+- M2 FAIL: pooled Spearman(shared energy, top-merge cost) = +0.13
+  [-0.10, +0.32]; per model -0.00, +0.18, +0.20. M2b (depth partialled):
+  -0.01. Shared energy does not predict a layer's merge tolerance.
+- M3 FAIL (secondary, 1.5B, 180 pairs in six layers): Spearman(pair
+  cosine, cost) = -0.28 pooled, -0.21 to -0.54 per layer; the direction is
+  right and the effect small.
+- Reported without threshold: the median top-merge cost is 0.0008 nats per
+  token in the 1.5B (bootstrap 0.0005 to 0.0011), 0.0007 in the 3B and
+  0.0013 in the 7B, and the top merge costs under 0.002 nats (about 0.2
+  percent perplexity) in 82, 92 and 71 percent of layers. Median costs of
+  the random and bottom pairs are of the same order (0.0006 to 0.0021). The
+  one expensive merge in 92 layers is a random pair at layer 0 of the 1.5B
+  (0.23 nats); layer 0 of the 1.5B is also the only layer where the top
+  merge costs above 0.01.
+- Weight restoration verified after every merge (baseline recomputed
+  exactly).
+
+Reading: within a KV group, merging one pair of heads costs little at almost
+every layer of these models, and neither the attention-map cosine nor the
+layer's shared energy says which pair or which layer. The shared-operator
+description is about attention geometry; it carries no tolerance
+consequence at this granularity, and the README's caution that the fraction
+is a measurement, not yet a tool, stands as the result. Development
+calibration on Qwen2.5-0.5B (top cheaper than bottom in 23 of 24 layers,
+Spearman -0.32) did not transfer to the registered models; that gap is
+itself the finding of the round.

@@ -1,0 +1,122 @@
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:   0%|          | 1/338 [00:01<06:43,  1.20s/it]Loading weights:  51%|█████     | 171/338 [00:01<00:01, 161.23it/s]Loading weights:  64%|██████▍   | 217/338 [00:01<00:00, 145.70it/s]Loading weights:  73%|███████▎  | 247/338 [00:02<00:01, 87.65it/s] Loading weights:  79%|███████▉  | 267/338 [00:02<00:00, 83.20it/s]Loading weights:  83%|████████▎ | 282/338 [00:03<00:00, 82.22it/s]Loading weights:  87%|████████▋ | 295/338 [00:03<00:00, 81.76it/s]Loading weights:  93%|█████████▎| 315/338 [00:03<00:00, 79.33it/s]Loading weights:  97%|█████████▋| 328/338 [00:03<00:00, 85.10it/s]Loading weights: 100%|██████████| 338/338 [00:03<00:00, 90.78it/s]
+Qwen/Qwen2.5-1.5B DEVICE mps DTYPE float32 layers 28 heads 12 kv 2 head_dim 128
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (298938 > 131072). Running this sequence through the model will result in indexing errors
+baseline NLL 2.4165 over 16384 tokens (32s)
+  L 0 sE 0.32 | top (7, 8) cos 0.527 dloss +0.0334 | random (8, 10) dloss +0.2331 | bottom (6, 10) cos 0.002 dloss +0.0006 | 63s
+  L 1 sE 0.50 | top (2, 3) cos 0.691 dloss -0.0000 | random (6, 11) dloss +0.0015 | bottom (8, 10) cos 0.224 dloss +0.0017 | 94s
+  L 2 sE 0.81 | top (2, 5) cos 0.865 dloss -0.0001 | random (6, 7) dloss +0.0015 | bottom (8, 11) cos 0.626 dloss +0.0022 | 126s
+  L 3 sE 0.78 | top (6, 9) cos 0.911 dloss +0.0010 | random (1, 5) dloss +0.0039 | bottom (10, 11) cos 0.572 dloss -0.0011 | 160s
+  L 4 sE 0.84 | top (8, 10) cos 0.849 dloss +0.0033 | random (2, 3) dloss -0.0026 | bottom (1, 2) cos 0.599 dloss +0.0064 | 207s
+  L 5 sE 0.84 | top (3, 5) cos 0.948 dloss -0.0006 | random (0, 2) dloss -0.0014 | bottom (8, 11) cos 0.567 dloss +0.0112 | 256s
+  L 6 sE 0.80 | top (7, 9) cos 0.944 dloss +0.0023 | random (0, 3) dloss +0.0022 | bottom (0, 2) cos 0.421 dloss +0.0002 | 304s
+  L 7 sE 0.68 | top (6, 11) cos 0.895 dloss +0.0008 | random (0, 1) dloss +0.0010 | bottom (8, 11) cos 0.241 dloss +0.0042 | 355s
+  L 8 sE 0.79 | top (1, 4) cos 0.897 dloss +0.0009 | random (1, 2) dloss +0.0025 | bottom (2, 3) cos 0.383 dloss +0.0063 | 417s
+  L 9 sE 0.81 | top (6, 8) cos 0.960 dloss -0.0002 | random (8, 9) dloss +0.0079 | bottom (7, 11) cos 0.567 dloss +0.0085 | 468s
+  L10 sE 0.82 | top (0, 3) cos 0.935 dloss -0.0004 | random (6, 11) dloss -0.0001 | bottom (7, 10) cos 0.595 dloss +0.0002 | 522s
+  L11 sE 0.73 | top (0, 3) cos 0.895 dloss +0.0006 | random (9, 10) dloss +0.0000 | bottom (2, 3) cos 0.325 dloss +0.0047 | 571s
+  L12 sE 0.83 | top (1, 3) cos 0.941 dloss +0.0014 | random (6, 7) dloss +0.0024 | bottom (7, 11) cos 0.452 dloss +0.0015 | 620s
+  L13 sE 0.70 | top (1, 5) cos 0.806 dloss +0.0023 | random (6, 10) dloss +0.0008 | bottom (1, 4) cos 0.166 dloss +0.0073 | 667s
+  L14 sE 0.87 | top (2, 4) cos 0.964 dloss +0.0010 | random (10, 11) dloss +0.0003 | bottom (6, 8) cos 0.573 dloss +0.0012 | 713s
+  L15 sE 0.73 | top (8, 10) cos 0.900 dloss +0.0008 | random (7, 9) dloss +0.0091 | bottom (7, 9) cos 0.113 dloss +0.0091 | 761s
+  L16 sE 0.82 | top (1, 3) cos 0.904 dloss +0.0013 | random (6, 10) dloss +0.0017 | bottom (8, 9) cos 0.396 dloss -0.0008 | 808s
+  L17 sE 0.82 | top (6, 10) cos 0.959 dloss -0.0005 | random (6, 8) dloss +0.0045 | bottom (2, 4) cos 0.504 dloss -0.0008 | 857s
+  L18 sE 0.73 | top (1, 3) cos 0.904 dloss +0.0008 | random (6, 8) dloss +0.0097 | bottom (6, 8) cos 0.233 dloss +0.0097 | 904s
+  L19 sE 0.81 | top (0, 5) cos 0.947 dloss +0.0003 | random (9, 11) dloss +0.0018 | bottom (10, 11) cos 0.468 dloss +0.0006 | 950s
+  L20 sE 0.81 | top (1, 4) cos 0.888 dloss +0.0009 | random (1, 5) dloss +0.0018 | bottom (8, 9) cos 0.499 dloss +0.0012 | 997s
+  L21 sE 0.80 | top (6, 11) cos 0.960 dloss +0.0017 | random (8, 9) dloss +0.0018 | bottom (3, 5) cos 0.385 dloss +0.0028 | 1049s
+  L22 sE 0.81 | top (10, 11) cos 0.935 dloss +0.0003 | random (7, 8) dloss +0.0043 | bottom (2, 4) cos 0.601 dloss +0.0019 | 1095s
+  L23 sE 0.89 | top (1, 2) cos 0.949 dloss +0.0007 | random (0, 1) dloss +0.0011 | bottom (8, 9) cos 0.662 dloss +0.0141 | 1142s
+  L24 sE 0.84 | top (6, 11) cos 0.992 dloss +0.0008 | random (2, 5) dloss +0.0004 | bottom (0, 4) cos 0.617 dloss +0.0007 | 1189s
+  L25 sE 0.88 | top (6, 9) cos 0.970 dloss +0.0020 | random (8, 10) dloss +0.0054 | bottom (3, 4) cos 0.731 dloss +0.0095 | 1238s
+  L26 sE 0.97 | top (1, 2) cos 0.987 dloss +0.0039 | random (6, 8) dloss +0.0028 | bottom (10, 11) cos 0.865 dloss +0.0013 | 1285s
+  L27 sE 0.89 | top (6, 8) cos 0.921 dloss +0.0005 | random (0, 2) dloss +0.0038 | bottom (10, 11) cos 0.556 dloss +0.0041 | 1333s
+  sweep layer 3: 30 pairs done (1841s)
+  sweep layer 8: 30 pairs done (2522s)
+  sweep layer 13: 30 pairs done (3196s)
+  sweep layer 18: 30 pairs done (3700s)
+  sweep layer 23: 30 pairs done (4166s)
+  sweep layer 27: 30 pairs done (4628s)
+MODEL_DONE Qwen2.5-1.5B layers=28 dtype=float32 4644.0s
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]/opt/homebrew/Cellar/python@3.12/3.12.4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+relaunch without purge at 09:37:26 UTC
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+SKIP (exists) alignment_study/merge/Qwen2.5-1.5B.json
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]Fetching 2 files:  50%|█████     | 1/2 [04:47<04:47, 287.75s/it]Fetching 2 files: 100%|██████████| 2/2 [06:45<00:00, 188.04s/it]Fetching 2 files: 100%|██████████| 2/2 [06:45<00:00, 202.99s/it]
+Loading weights:   0%|          | 0/434 [00:00<?, ?it/s]Loading weights:   0%|          | 1/434 [00:00<02:31,  2.86it/s]Loading weights:  28%|██▊       | 123/434 [00:00<00:01, 177.99it/s]Loading weights:  32%|███▏      | 140/434 [00:01<00:02, 112.46it/s]Loading weights:  35%|███▍      | 151/434 [00:01<00:03, 81.09it/s] Loading weights:  37%|███▋      | 159/434 [00:01<00:03, 72.08it/s]Loading weights:  39%|███▉      | 171/434 [00:02<00:04, 56.71it/s]Loading weights:  42%|████▏     | 183/434 [00:02<00:04, 56.63it/s]Loading weights:  44%|████▎     | 189/434 [00:02<00:04, 49.93it/s]Loading weights:  45%|████▍     | 195/434 [00:02<00:05, 45.78it/s]Loading weights:  46%|████▌     | 200/434 [00:02<00:05, 42.17it/s]Loading weights:  48%|████▊     | 207/434 [00:03<00:05, 44.35it/s]Loading weights:  50%|█████     | 219/434 [00:03<00:04, 45.98it/s]Loading weights:  53%|█████▎    | 231/434 [00:03<00:03, 53.95it/s]Loading weights:  55%|█████▍    | 237/434 [00:03<00:03, 52.91it/s]Loading weights:  56%|█████▌    | 243/434 [00:04<00:08, 21.28it/s]Loading weights:  59%|█████▉    | 255/434 [00:04<00:05, 30.49it/s]Loading weights:  62%|██████▏   | 267/434 [00:04<00:04, 37.41it/s]Loading weights:  64%|██████▍   | 279/434 [00:05<00:03, 40.45it/s]Loading weights:  67%|██████▋   | 291/434 [00:05<00:02, 47.87it/s]Loading weights:  70%|██████▉   | 303/434 [00:05<00:02, 50.68it/s]Loading weights:  71%|███████▏  | 310/434 [00:05<00:02, 48.28it/s]Loading weights:  73%|███████▎  | 316/434 [00:05<00:03, 35.70it/s]Loading weights:  75%|███████▌  | 327/434 [00:06<00:03, 32.10it/s]Loading weights:  78%|███████▊  | 339/434 [00:06<00:02, 33.34it/s]Loading weights:  79%|███████▉  | 343/434 [00:06<00:02, 31.65it/s]Loading weights:  81%|████████  | 351/434 [00:07<00:02, 34.50it/s]Loading weights:  82%|████████▏ | 355/434 [00:07<00:02, 30.63it/s]Loading weights:  84%|████████▎ | 363/434 [00:07<00:02, 33.33it/s]Loading weights:  85%|████████▍ | 367/434 [00:07<00:02, 32.32it/s]Loading weights:  86%|████████▋ | 375/434 [00:07<00:02, 26.10it/s]Loading weights:  89%|████████▉ | 387/434 [00:08<00:01, 31.80it/s]Loading weights:  92%|█████████▏| 399/434 [00:08<00:00, 40.27it/s]Loading weights:  93%|█████████▎| 404/434 [00:08<00:00, 35.15it/s]Loading weights:  95%|█████████▍| 411/434 [00:08<00:00, 32.67it/s]Loading weights:  96%|█████████▌| 415/434 [00:08<00:00, 33.36it/s]Loading weights:  97%|█████████▋| 423/434 [00:09<00:00, 26.91it/s]Loading weights: 100%|██████████| 434/434 [00:09<00:00, 46.17it/s]
+Qwen/Qwen2.5-3B DEVICE mps DTYPE float32 layers 36 heads 16 kv 2 head_dim 128
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (298938 > 131072). Running this sequence through the model will result in indexing errors
+baseline NLL 2.2849 over 16384 tokens (490s)
+  L 0 sE 0.42 | top (0, 7) cos 0.673 dloss +0.0026 | random (11, 13) dloss +0.0044 | bottom (12, 15) cos 0.044 dloss +0.0093 | 598s
+  L 1 sE 0.53 | top (5, 7) cos 0.607 dloss +0.0012 | random (9, 10) dloss +0.0016 | bottom (1, 3) cos 0.108 dloss +0.0029 | 714s
+  L 2 sE 0.59 | top (2, 6) cos 0.832 dloss -0.0035 | random (8, 9) dloss -0.0006 | bottom (1, 5) cos 0.228 dloss +0.0006 | 819s
+  L 3 sE 0.91 | top (2, 4) cos 0.945 dloss +0.0019 | random (2, 5) dloss +0.0019 | bottom (13, 14) cos 0.765 dloss +0.0017 | 928s
+  L 4 sE 0.85 | top (2, 6) cos 0.934 dloss +0.0012 | random (2, 7) dloss -0.0003 | bottom (1, 4) cos 0.678 dloss +0.0004 | 1063s
+  L 5 sE 0.92 | top (10, 11) cos 1.000 dloss +0.0000 | random (0, 3) dloss +0.0005 | bottom (0, 7) cos 0.642 dloss +0.0009 | 1172s
+  L 6 sE 0.87 | top (2, 6) cos 0.952 dloss +0.0060 | random (0, 5) dloss +0.0025 | bottom (0, 1) cos 0.630 dloss +0.0009 | 1268s
+  L 7 sE 0.91 | top (12, 15) cos 0.937 dloss +0.0003 | random (0, 1) dloss -0.0008 | bottom (4, 7) cos 0.732 dloss +0.0002 | 1364s
+  L 8 sE 0.89 | top (9, 10) cos 0.965 dloss +0.0015 | random (1, 4) dloss +0.0006 | bottom (0, 2) cos 0.743 dloss +0.0013 | 1475s
+  L 9 sE 0.86 | top (2, 3) cos 0.912 dloss +0.0010 | random (10, 15) dloss -0.0001 | bottom (5, 6) cos 0.696 dloss +0.0010 | 1570s
+  L10 sE 0.87 | top (0, 5) cos 0.940 dloss +0.0009 | random (9, 11) dloss -0.0001 | bottom (8, 11) cos 0.589 dloss +0.0004 | 1665s
+  L11 sE 0.84 | top (2, 3) cos 0.935 dloss +0.0002 | random (12, 14) dloss +0.0039 | bottom (5, 6) cos 0.660 dloss -0.0000 | 1769s
+  L12 sE 0.80 | top (4, 7) cos 0.915 dloss +0.0005 | random (8, 9) dloss +0.0002 | bottom (8, 10) cos 0.165 dloss +0.0024 | 1877s
+  L13 sE 0.83 | top (3, 4) cos 0.943 dloss +0.0009 | random (8, 14) dloss +0.0034 | bottom (13, 14) cos 0.676 dloss +0.0004 | 1976s
+  L14 sE 0.73 | top (12, 15) cos 0.868 dloss +0.0020 | random (13, 15) dloss +0.0002 | bottom (4, 5) cos 0.463 dloss -0.0007 | 2083s
+  L15 sE 0.80 | top (4, 7) cos 0.943 dloss -0.0001 | random (9, 15) dloss +0.0012 | bottom (1, 4) cos 0.510 dloss +0.0011 | 2199s
+  L16 sE 0.78 | top (5, 6) cos 0.820 dloss +0.0007 | random (9, 10) dloss +0.0025 | bottom (10, 15) cos 0.495 dloss +0.0013 | 2306s
+  L17 sE 0.84 | top (9, 14) cos 0.975 dloss +0.0003 | random (8, 11) dloss -0.0011 | bottom (4, 6) cos 0.352 dloss +0.0016 | 2422s
+  L18 sE 0.75 | top (9, 14) cos 0.841 dloss +0.0006 | random (8, 12) dloss +0.0017 | bottom (1, 2) cos 0.490 dloss +0.0010 | 2517s
+  L19 sE 0.77 | top (10, 14) cos 0.907 dloss +0.0013 | random (12, 15) dloss +0.0003 | bottom (11, 13) cos 0.082 dloss +0.0042 | 2614s
+  L20 sE 0.90 | top (4, 5) cos 0.965 dloss +0.0004 | random (2, 5) dloss -0.0005 | bottom (12, 13) cos 0.717 dloss -0.0012 | 2716s
+  L21 sE 0.84 | top (2, 7) cos 0.937 dloss +0.0005 | random (10, 15) dloss +0.0003 | bottom (8, 11) cos 0.532 dloss +0.0001 | 2820s
+  L22 sE 0.84 | top (12, 14) cos 0.936 dloss +0.0006 | random (9, 12) dloss +0.0005 | bottom (0, 3) cos 0.637 dloss +0.0007 | 2955s
+  L23 sE 0.76 | top (4, 6) cos 0.890 dloss +0.0007 | random (0, 1) dloss +0.0014 | bottom (12, 15) cos 0.204 dloss -0.0031 | 3064s
+  L24 sE 0.72 | top (3, 4) cos 0.878 dloss -0.0001 | random (4, 5) dloss +0.0001 | bottom (0, 5) cos 0.423 dloss +0.0013 | 3177s
+  L25 sE 0.89 | top (4, 6) cos 0.956 dloss +0.0011 | random (11, 14) dloss +0.0002 | bottom (8, 12) cos 0.466 dloss +0.0015 | 3273s
+  L26 sE 0.84 | top (5, 7) cos 0.904 dloss +0.0004 | random (8, 12) dloss +0.0003 | bottom (0, 7) cos 0.550 dloss +0.0017 | 3377s
+  L27 sE 0.71 | top (3, 7) cos 0.931 dloss +0.0008 | random (0, 2) dloss +0.0008 | bottom (8, 12) cos 0.004 dloss +0.0043 | 3487s
+  L28 sE 0.78 | top (10, 13) cos 0.904 dloss +0.0004 | random (10, 12) dloss +0.0003 | bottom (2, 3) cos 0.589 dloss +0.0016 | 3585s
+  L29 sE 0.86 | top (3, 4) cos 0.937 dloss +0.0008 | random (9, 15) dloss +0.0008 | bottom (12, 15) cos 0.726 dloss +0.0010 | 3705s
+  L30 sE 0.84 | top (12, 15) cos 0.962 dloss +0.0010 | random (11, 13) dloss +0.0034 | bottom (1, 3) cos 0.580 dloss -0.0001 | 3812s
+  L31 sE 0.74 | top (0, 6) cos 0.922 dloss +0.0001 | random (1, 4) dloss +0.0014 | bottom (8, 9) cos 0.211 dloss +0.0059 | 3931s
+  L32 sE 0.90 | top (2, 6) cos 0.966 dloss +0.0007 | random (0, 6) dloss +0.0009 | bottom (9, 15) cos 0.578 dloss +0.0192 | 4047s
+  L33 sE 0.98 | top (10, 14) cos 0.983 dloss +0.0012 | random (11, 14) dloss +0.0018 | bottom (12, 13) cos 0.904 dloss +0.0103 | 4179s
+  L34 sE 0.65 | top (8, 10) cos 0.774 dloss -0.0001 | random (0, 2) dloss +0.0006 | bottom (0, 2) cos 0.255 dloss +0.0006 | 4280s
+  L35 sE 0.68 | top (4, 7) cos 0.874 dloss +0.0006 | random (8, 11) dloss +0.0008 | bottom (9, 12) cos 0.150 dloss +0.0015 | 4408s
+MODEL_DONE Qwen2.5-3B layers=36 dtype=float32 4440.9s
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files:  25%|██▌       | 1/4 [12:52<38:36, 772.21s/it]Fetching 4 files:  50%|█████     | 2/4 [12:53<10:36, 318.46s/it]Fetching 4 files:  75%|███████▌  | 3/4 [13:10<03:00, 180.86s/it]Fetching 4 files: 100%|██████████| 4/4 [16:19<00:00, 184.30s/it]Fetching 4 files: 100%|██████████| 4/4 [16:19<00:00, 244.93s/it]
+Loading weights:   0%|          | 0/339 [00:00<?, ?it/s]Loading weights: 100%|██████████| 339/339 [00:00<00:00, 8197.90it/s]
+Qwen/Qwen2.5-7B DEVICE mps DTYPE bfloat16 layers 28 heads 28 kv 4 head_dim 128
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (298938 > 131072). Running this sequence through the model will result in indexing errors
+baseline NLL 2.2462 over 16384 tokens (1147s)
+  L 0 sE 0.48 | top (25, 27) cos 0.972 dloss +0.0023 | random (22, 25) dloss +0.0123 | bottom (15, 19) cos 0.061 dloss +0.0109 | 1446s
+  L 1 sE 0.49 | top (2, 6) cos 0.882 dloss +0.0012 | random (16, 17) dloss +0.0015 | bottom (2, 3) cos 0.170 dloss +0.0016 | 1744s
+  L 2 sE 0.64 | top (14, 18) cos 0.754 dloss +0.0005 | random (14, 15) dloss -0.0011 | bottom (22, 27) cos 0.234 dloss +0.0048 | 2028s
+  L 3 sE 0.54 | top (16, 18) cos 0.777 dloss -0.0026 | random (7, 9) dloss +0.0014 | bottom (8, 10) cos 0.088 dloss +0.0026 | 2309s
+  L 4 sE 0.89 | top (7, 13) cos 1.000 dloss +0.0011 | random (7, 12) dloss +0.0013 | bottom (4, 6) cos 0.739 dloss -0.0000 | 2595s
+  L 5 sE 0.93 | top (5, 6) cos 0.986 dloss +0.0016 | random (0, 4) dloss +0.0019 | bottom (8, 12) cos 0.785 dloss +0.0023 | 2882s
+  L 6 sE 0.82 | top (0, 3) cos 0.944 dloss +0.0014 | random (1, 2) dloss +0.0025 | bottom (15, 19) cos 0.497 dloss +0.0014 | 3180s
+  L 7 sE 0.84 | top (15, 19) cos 0.962 dloss +0.0027 | random (0, 2) dloss +0.0029 | bottom (4, 6) cos 0.582 dloss +0.0004 | 3460s
+  L 8 sE 0.85 | top (23, 27) cos 0.975 dloss +0.0027 | random (2, 6) dloss +0.0015 | bottom (0, 1) cos 0.563 dloss +0.0007 | 3752s
+  L 9 sE 0.81 | top (17, 19) cos 0.930 dloss +0.0034 | random (21, 27) dloss +0.0042 | bottom (22, 25) cos 0.320 dloss +0.0016 | 4058s
+  L10 sE 0.82 | top (0, 2) cos 0.932 dloss +0.0022 | random (16, 18) dloss +0.0010 | bottom (1, 6) cos 0.494 dloss +0.0024 | 4345s
+  L11 sE 0.83 | top (8, 12) cos 0.954 dloss +0.0038 | random (23, 26) dloss +0.0008 | bottom (25, 26) cos 0.630 dloss +0.0016 | 4631s
+  L12 sE 0.84 | top (10, 11) cos 0.921 dloss +0.0019 | random (14, 15) dloss +0.0023 | bottom (2, 5) cos 0.492 dloss +0.0001 | 4939s
+  L13 sE 0.77 | top (0, 5) cos 0.867 dloss +0.0012 | random (15, 18) dloss +0.0023 | bottom (7, 13) cos 0.175 dloss +0.0045 | 5222s
+  L14 sE 0.82 | top (4, 5) cos 0.995 dloss +0.0009 | random (25, 26) dloss +0.0042 | bottom (25, 27) cos 0.391 dloss +0.0044 | 5491s
+  L15 sE 0.77 | top (15, 18) cos 0.965 dloss +0.0019 | random (18, 20) dloss +0.0020 | bottom (26, 27) cos 0.294 dloss -0.0012 | 5771s
+  L16 sE 0.83 | top (10, 11) cos 0.976 dloss +0.0026 | random (16, 17) dloss +0.0008 | bottom (21, 27) cos 0.491 dloss +0.0001 | 6061s
+  L17 sE 0.82 | top (14, 18) cos 0.974 dloss +0.0013 | random (14, 18) dloss +0.0013 | bottom (0, 2) cos 0.438 dloss -0.0018 | 6348s
+  L18 sE 0.79 | top (3, 4) cos 0.912 dloss +0.0009 | random (14, 20) dloss +0.0004 | bottom (7, 10) cos 0.033 dloss +0.0030 | 6630s
+  L19 sE 0.69 | top (15, 18) cos 0.939 dloss +0.0017 | random (24, 25) dloss +0.0012 | bottom (0, 3) cos 0.009 dloss +0.0031 | 6895s
+  L20 sE 0.82 | top (11, 12) cos 0.953 dloss +0.0020 | random (7, 10) dloss +0.0022 | bottom (1, 3) cos 0.565 dloss -0.0001 | 7179s
+  L21 sE 0.76 | top (7, 13) cos 0.930 dloss +0.0010 | random (21, 27) dloss +0.0017 | bottom (14, 15) cos 0.248 dloss +0.0033 | 7467s
+  L22 sE 0.86 | top (4, 5) cos 0.951 dloss +0.0009 | random (16, 20) dloss +0.0004 | bottom (18, 20) cos 0.512 dloss +0.0007 | 7753s
+  L23 sE 0.82 | top (18, 19) cos 0.948 dloss +0.0010 | random (0, 1) dloss +0.0011 | bottom (22, 27) cos 0.540 dloss +0.0006 | 8041s
+  L24 sE 0.84 | top (21, 26) cos 0.972 dloss +0.0009 | random (9, 11) dloss +0.0014 | bottom (15, 18) cos 0.664 dloss +0.0011 | 8314s
+  L25 sE 0.84 | top (10, 11) cos 0.979 dloss +0.0000 | random (22, 26) dloss +0.0005 | bottom (4, 6) cos 0.477 dloss +0.0007 | 8599s
+  L26 sE 0.86 | top (17, 19) cos 0.980 dloss +0.0013 | random (14, 19) dloss +0.0001 | bottom (22, 27) cos 0.439 dloss +0.0047 | 8898s
+  L27 sE 0.73 | top (1, 5) cos 0.956 dloss +0.0007 | random (0, 3) dloss +0.0009 | bottom (9, 12) cos 0.165 dloss +0.0007 | 9156s
+MODEL_DONE Qwen2.5-7B layers=28 dtype=bfloat16 9241.2s
+MERGE_ROUND_DONE

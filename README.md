@@ -204,13 +204,20 @@ Each instrument below exists because a finding above required it.
 
 ## Where the work goes next
 
-- **A redundancy diagnostic for inference.** The shared-energy fraction is
-  one number per layer, computable from a dozen inputs, that says how much
-  of the heads' operator content is one shared component. The natural
-  next question is whether it predicts which layers tolerate head merging
-  or KV-cache compression. That test is preregistered in the v2 program
-  and will be reported whichever way it comes out; until then the fraction
-  is a measurement, not yet a tool.
+- **A redundancy diagnostic for inference: tested, and it is not one.**
+  The shared-energy fraction is one number per layer that says how much of
+  the heads' operator content is one shared component. A preregistered
+  test asked whether it predicts which layers tolerate head merging, and
+  whether the generator cosine picks the pair to merge, on Qwen2.5-1.5B, 3B
+  and 7B. Both predictions failed as registered: merging any pair of heads
+  within a KV group costs a median 0.0007 to 0.0013 nats per token at
+  almost every layer, and neither the cosine nor the shared energy says
+  which pair or which layer. The fraction is a measurement of attention
+  geometry, not a tolerance tool, and the repository says so.
+<p align="center"><img src="figures/readme/fig10_head_merging.png" alt="Two-panel chart: loss increase from merging the top-cosine pair against the bottom-cosine pair per layer, and against the layer's shared energy, for three Qwen2.5 models" width="880"></p>
+
+<p align="center"><em>The failed practical test: merges are cheap almost everywhere, and neither the pair cosine nor the shared energy predicts the cost.</em></p>
+
 - **Turning the nulls on published findings.** The audit program
   (`audits/TARGETS.md`) asks whether well-known findings about attention
   heads survive the same nulls: the layer clustering of BERT's heads
@@ -229,22 +236,24 @@ Each instrument below exists because a finding above required it.
 
 ## Evidence standard
 
-Five preregistrations with numeric thresholds and falsification clauses
-were frozen in git before their runs (`alignment_study/PREREGISTRATION.md`,
-`PREREGISTRATION2.md`, `PREREGISTRATION3.md`, `PREREGISTRATION5.md`,
-`PREREGISTRATION6.md`; the second committed before the held-out models
-were downloaded, the third, fifth and sixth pushed publicly before
-execution, evaluation scripts committed before results existed). Registered predictions that failed are
+Seven preregistrations with numeric thresholds and falsification clauses
+were frozen in git before their runs (`alignment_study/PREREGISTRATION.md`
+and `PREREGISTRATION2.md` to `PREREGISTRATION8.md`; the second committed
+before the held-out models were downloaded, the third and all later ones
+pushed publicly before execution, evaluation scripts committed before
+results existed). Registered predictions that failed are
 reported as failures, not reinterpreted: the universal-breakdown
 prediction (A1), the first dissociation control (A7, design flaw
 documented and replaced), the sharp regime-edge threshold (H4b),
 one-column sufficiency on TinyLlama (H2) and OLMo-2 (S2), the
-dissociation control at 32 heads (S3), and early sink formation on
-Pythia-160m (D4). Out of sample, 7 of 8 registered clauses passed in the
+dissociation control at 32 heads (S3), early sink formation on
+Pythia-160m (D4), and both merge-tolerance predictions (M1, M2). Out of sample, 7 of 8 registered clauses passed in the
 sub-2B round, 3 of 4 in the 3B-to-7B round, 5 of 5 primary clauses in the
-training-dynamics round, and 4 of 4 in 11 of 11 models in the
+training-dynamics round, 4 of 4 in 11 of 11 models in the
 fixed-instrument rerun, where the earlier failures on TinyLlama, OLMo-2
-and the 32-head models resolved without moving a threshold. Development
+and the 32-head models resolved without moving a threshold, and 0 of 2
+primary clauses in the head-merging round, whose negative result is
+reported in full above. Development
 calibration that shaped a preregistration is committed and labeled as
 such. A blind reimplementation from the written specification
 reproduced the anchor values to four decimals; surrogate invariants hold

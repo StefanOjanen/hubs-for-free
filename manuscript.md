@@ -364,20 +364,30 @@ score at contexts of 1K to 4K tokens: PENDING. The battery must not remove
 this structure; if it does, its thresholds are revised before any other
 outcome is reported.
 
-## 6. A practical consequence: which heads can be merged
+## 6. A practical test that failed: which heads can be merged
 
-PENDING (preregistration 7, running). Design: for each layer of
-Qwen2.5-1.5B, 3B and 7B, merge the two query heads in a KV group with the
-highest generator cosine (average their query and output slices) and
-measure the change in next-token loss on 16,384 held-out tokens, against
-the bottom-cosine pair and a random pair. Development calibration on
-Qwen2.5-0.5B: the top-cosine merge cost a median 0.0013 nats per token
-against 0.0087 for the bottom pair, was cheaper than the bottom merge in 23
-of 24 layers, and correlated with the layer's shared energy at Spearman
--0.32 (-0.45 with depth partialled out). Registered: M1, top cheaper than
-bottom in at least 2/3 of layers in 3 of 3 models; M2, pooled
-Spearman(shared energy, top-merge cost) at or below -0.3 with an interval
-excluding zero. Either outcome is reported.
+Preregistration 7 asked whether the shared-operator description has a
+tolerance consequence. For each layer of Qwen2.5-1.5B, 3B and 7B, the two
+query heads of a KV group with the highest generator cosine were merged
+(query and output slices averaged) and the change in next-token loss on
+16,384 held-out tokens measured, against the bottom-cosine pair and a
+random pair; the layer's shared energy from the rerun was the predictor.
+Development calibration on Qwen2.5-0.5B had the top merge cheaper than the
+bottom merge in 23 of 24 layers and a Spearman of -0.32 between shared
+energy and cost. Registered on the three models: M1, top cheaper than
+bottom in at least 2/3 of layers in 3 of 3 models, fails (75, 64 and 54
+percent of layers; 1 of 3); M2, pooled Spearman(shared energy, top-merge
+cost) at or below -0.3 with an interval excluding zero, fails (+0.13,
+interval -0.10 to +0.32; per model -0.00, +0.18, +0.20); the secondary
+clauses fail as well (pair-level Spearman -0.28 over 180 pairs, in the
+predicted direction). What the round establishes instead: merging one pair
+of heads within a KV group costs a median 0.0007 to 0.0013 nats per token,
+under 0.002 nats in 71 to 92 percent of layers, and neither the
+attention-map cosine nor the layer's shared energy says which pair or
+which layer. One random-pair merge at layer 0 of the 1.5B cost 0.23 nats;
+no other merge in 92 layers cost above 0.04. The shared-operator
+description is a statement about attention geometry, and at this
+granularity it has no tolerance consequence (Figure 10).
 
 ## 7. Limitations
 
@@ -392,8 +402,8 @@ control needs a causal width of roughly eight tokens per head. The
 deviation directions carry structure the shared-operator description does
 not capture (Section 4.6). The commutator pipeline is one instrument among
 many the audits address; it is the one whose failure started this work.
-The dynamics result rests on one model family. The derivation gate and the
-practical test are pending at the time of writing. The audits are
+The dynamics result rests on one model family. The derivation gate is pending at the time of writing; the
+practical test failed as registered. The audits are
 registered but their batteries wait for public registration.
 
 ## 8. Recommendations
@@ -417,7 +427,7 @@ command.
 | 3 | 9dd433a, pushed before execution | S1 to S4 on five 3B to 7B models | S1, S2, S4 pass; S3 fails (causal width) |
 | 5 | 68b65f9, pushed before download | D0 to D5, Pythia checkpoints | D0 to D3, D5 pass; D4 (secondary) fails |
 | 6 | 3d5b337, pushed before execution | S1' to S4 with repaired instruments, thirteen models | 4 of 4 in 11 of 11 |
-| 7 | 6b8f8ea, pushed before execution | M1 to M3, head merging | PENDING |
+| 7 | 6b8f8ea, pushed before execution | M1 to M3, head merging | M1, M2 fail; secondary clauses fail; costs reported |
 | 8 | b9b8ef0, pushed before execution | G1 to G4, derived shared energy | PENDING (7 of 12 models: on course) |
 | 4 (draft) | criteria for Target 1 frozen by commit | audits | batteries pending public registration |
 
@@ -441,6 +451,7 @@ command.
 | D0 to D5, 0.935, -0.736, 25 of 26, 14 crossings | alignment_study/dynamics_results.json, posthoc_dynamics.json |
 | derived shared energy (interim) | alignment_study/derivation_results.json, derivation/ |
 | deviation rebuilds | alignment_study/toy_structured_dev.json |
+| merge round, M1 to M3, costs | alignment_study/merge_results.json, merge/ |
 | merge calibration | alignment_study/merge_dev_calibration.json |
 | Target 1 base result | audits/clark2019/base_result.json |
 | MPS fidelity | alignment_study/platform_fidelity.json |

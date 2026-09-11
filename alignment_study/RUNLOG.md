@@ -91,3 +91,8 @@ Mistral-7B-v0.1 weights on the CPU while the GPU ran the merge round
 matrices). CHAI (Target 3) and retrieval heads (Target 5) reproductions
 queued on the GPU behind the merge round (`alignment_study/mps_pipeline.log`
 records their start and end times).
+Merge round completed 13:25 UTC: Qwen2.5-1.5B 77 minutes including its
+pair sweep, Qwen2.5-3B 74 minutes, Qwen2.5-7B 154 minutes (bfloat16). The
+GPU pipeline (derivation for the five remaining models, CHAI reproduction
+on Mistral-7B, retrieval-heads reproduction on Qwen2.5-7B) started at
+13:25 UTC.

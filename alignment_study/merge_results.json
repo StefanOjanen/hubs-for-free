@@ -1,0 +1,131 @@
+{
+ "n_models": 3,
+ "complete": true,
+ "per_model": {
+  "Qwen/Qwen2.5-1.5B": {
+   "n_layers": 28,
+   "baseline_nll": 2.416543,
+   "restore_check_abs_diff": 0.0,
+   "frac_top_below_bottom": 0.75,
+   "frac_top_below_random": 0.714,
+   "spearman_sharedE_dloss_top": -0.001,
+   "spearman_sharedE_dloss_top_depth_partialled": -0.372,
+   "median_dloss": {
+    "top": 0.00081,
+    "random": 0.00179,
+    "bottom": 0.00208
+   },
+   "frac_top_cost_below_0.002": 0.821,
+   "median_top_cos": 0.928,
+   "median_dloss_top_ci95": [
+    0.00054,
+    0.00108
+   ],
+   "M1_pass": true,
+   "M1b_pass": true,
+   "M2_direction_negative": true,
+   "M3_pair_sweep": {
+    "n_pairs": 180,
+    "spearman_pooled": -0.284,
+    "spearman_per_layer": {
+     "3": -0.215,
+     "8": -0.38,
+     "13": -0.54,
+     "18": -0.427,
+     "23": -0.294,
+     "27": -0.439
+    },
+    "pass": false
+   }
+  },
+  "Qwen/Qwen2.5-3B": {
+   "n_layers": 36,
+   "baseline_nll": 2.284867,
+   "restore_check_abs_diff": 0.0,
+   "frac_top_below_bottom": 0.639,
+   "frac_top_below_random": 0.472,
+   "spearman_sharedE_dloss_top": 0.18,
+   "spearman_sharedE_dloss_top_depth_partialled": 0.142,
+   "median_dloss": {
+    "top": 0.00068,
+    "random": 0.0006,
+    "bottom": 0.00106
+   },
+   "frac_top_cost_below_0.002": 0.917,
+   "median_top_cos": 0.934,
+   "median_dloss_top_ci95": [
+    0.00049,
+    0.00091
+   ],
+   "M1_pass": false,
+   "M1b_pass": false,
+   "M2_direction_negative": false
+  },
+  "Qwen/Qwen2.5-7B": {
+   "n_layers": 28,
+   "baseline_nll": 2.246162,
+   "restore_check_abs_diff": 0.0,
+   "frac_top_below_bottom": 0.536,
+   "frac_top_below_random": 0.643,
+   "spearman_sharedE_dloss_top": 0.197,
+   "spearman_sharedE_dloss_top_depth_partialled": 0.473,
+   "median_dloss": {
+    "top": 0.00128,
+    "random": 0.00137,
+    "bottom": 0.00148
+   },
+   "frac_top_cost_below_0.002": 0.714,
+   "median_top_cos": 0.953,
+   "median_dloss_top_ci95": [
+    0.00033,
+    0.00257
+   ],
+   "M1_pass": false,
+   "M1b_pass": true,
+   "M2_direction_negative": false
+  }
+ },
+ "M": {
+  "M1": {
+   "passes": 1,
+   "n": 3,
+   "pass": false
+  },
+  "M1b": {
+   "passes": 2,
+   "n": 3,
+   "pass": false,
+   "secondary": true
+  },
+  "M2": {
+   "spearman_pooled": 0.125,
+   "ci95": [
+    -0.096,
+    0.323
+   ],
+   "n_layers": 92,
+   "per_model_negative": 1,
+   "n": 3,
+   "pass": false
+  },
+  "M2b": {
+   "spearman_pooled_depth_partialled": -0.007,
+   "secondary": true,
+   "pass": false
+  },
+  "M3": {
+   "n_pairs": 180,
+   "spearman_pooled": -0.284,
+   "spearman_per_layer": {
+    "3": -0.215,
+    "8": -0.38,
+    "13": -0.54,
+    "18": -0.427,
+    "23": -0.294,
+    "27": -0.439
+   },
+   "pass": false,
+   "secondary": true
+  }
+ }
+}
