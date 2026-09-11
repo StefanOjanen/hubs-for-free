@@ -116,3 +116,18 @@ rounds of the day.
 Sink-profile round completed 15:33 UTC (61 minutes for twelve models; the
 32-head models took 8 to 12 minutes each, the statistics being CPU-bound
 numpy over 21 coupling computations per layer and window).
+
+Audit reproductions on the sources' own models (2026-09-11, from 16:40 UTC):
+after the Llama-2 gate turned out to be avoidable, Target 5 reruns on
+`yaofu/llama-2-7b-80k` (the retrieval-heads paper's primary model) and
+`mistralai/Mistral-7B-Instruct-v0.2` (another of its models), and Target 3
+reruns on `facebook/opt-6.7b` (the CHAI paper's OPT family); same reduced
+protocols as the earlier reproductions. Caches of OLMo-2-7B, Phi-3-mini and
+Qwen2.5-3B were removed to make room (all their runs are complete and
+committed).
+
+New-architecture round (PREREGISTRATION10.md, frozen and pushed as de18d52
+at 16:40 UTC before any of Falcon-7B, BLOOM-7b1 or Qwen3-8B was downloaded;
+OPT-6.7B was downloading for the CHAI reproduction at that time). Runs
+follow the audit reproductions on the GPU; per-model results in
+`rerun_pr10/` and `sinkprofile_pr10/`.
