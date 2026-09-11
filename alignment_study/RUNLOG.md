@@ -107,3 +107,9 @@ instance and was stopped; rerun at 1K and 2K with five depths (20
 instances), 13:45 to 14:02 UTC. Both reductions relative to the sources
 are recorded in PREREGISTRATION4_DRAFT.md. All work of the day ran on the
 M1 Max; no cloud compute was used.
+
+Sink-profile round (PREREGISTRATION9.md, frozen and pushed as 6e6b253 at
+2026-09-11 14:32 UTC). Launched 14:32 UTC on the M1 Max
+(`sinkprofile_round.py`, log `sinkprofile_round.log`, results per model in
+`sinkprofile/`); all twelve models' weights were cached from the earlier
+rounds of the day.
