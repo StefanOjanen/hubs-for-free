@@ -1,9 +1,10 @@
 # Preregistration 4 (DRAFT, not yet frozen): audits of published claims
 
-Status: draft. Per-target statistics are filled in only after the base
-result is reproduced (T2.1) and before any surrogate is run (T2.2). The
-file is frozen by commit, pushed, and registered on OSF before the first
-battery run; this header changes to FROZEN at that point.
+Status: draft, complete for Targets 1, 3, 4 and 5 as of 2026-09-11 (Target
+2 logged as not reproducible). Per-target statistics were filled in only
+after each base result was reproduced (T2.1) and before any surrogate was
+run (T2.2). The file is frozen by commit, pushed, and registered on OSF
+before the first battery run; this header changes to FROZEN at that point.
 
 ## Common procedure
 
@@ -35,8 +36,11 @@ battery run; this header changes to FROZEN at that point.
   survives with shrinkage between 20 and 70 percent.
 - E3: the positive control (retrieval heads) survives every null with
   shrinkage under 20 percent.
-- E4: the vertical-pattern prevalence claim is reproduced by
-  column-preserving surrogates (labeled matched or shrinks).
+- E4: dropped on 2026-09-11 before freezing. It concerned Target 2
+  (Kovaleva et al. 2019), whose pattern proportions are not reproducible
+  (classifier and annotations unreleased); no replacement target carries a
+  shared-column prevalence statement with a numeric base result. Recorded
+  here so the drop is visible in the frozen document.
 - E5: MP spectral outliers survive the MP null (by construction) and at
   least half of them are matched by norm-matched random weights.
 
