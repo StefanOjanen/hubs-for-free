@@ -6,7 +6,9 @@ import json
 import numpy as np
 from scipy.stats import spearmanr
 
-D = "alignment_study/sinkprofile"
+import sys
+D = sys.argv[1] if len(sys.argv) > 1 else "alignment_study/sinkprofile"
+OUTFILE = "alignment_study/sinkprofile_results.json" if D.rstrip("/") == "alignment_study/sinkprofile" else D.rstrip("/") + "_results.json"
 MODELS = ["gpt2", "gpt2-medium", "EleutherAI/pythia-160m", "EleutherAI/pythia-410m", "TinyLlama/TinyLlama_v1.1",
           "Qwen/Qwen2.5-1.5B", "Qwen/Qwen2.5-1.5B-Instruct", "Qwen/Qwen2.5-3B", "microsoft/Phi-3-mini-4k-instruct",
           "mistralai/Mistral-7B-v0.1", "Qwen/Qwen2.5-7B", "allenai/OLMo-2-1124-7B"]
@@ -23,7 +25,7 @@ for f in sorted(glob.glob(f"{D}/*.json")):
         models[c["model"]] = c
 if not models:
     raise SystemExit("no results yet")
-res = {"n_models": len(models), "complete": all(m in models for m in MODELS), "per_model": {}, "P": {}}
+res = {"n_models": len(models), "complete": all(m in models for m in MODELS) if D.rstrip("/") == "alignment_study/sinkprofile" else None, "per_model": {}, "P": {}}
 pz_r, pz_p, pz_d = [], [], []
 for name, c in models.items():
     rows = c["rows"]
@@ -42,7 +44,7 @@ for k in ("P1", "P2", "P3"):
     passes = sum(pm[f"{k}_pass"] for pm in res["per_model"].values())
     res["P"][k] = {"passes": passes, "n": n, "pass": passes >= (2 / 3) * n, "secondary": k == "P3"}
 res["P"]["P4"] = {"pooled_spearman_z_profile": round(sp(pz_r, pz_p), 3), "pooled_spearman_z_dense": round(sp(pz_r, pz_d), 3), "n_layers": len(pz_r), "pass": sp(pz_r, pz_p) >= 0.8}
-json.dump(res, open("alignment_study/sinkprofile_results.json", "w"), indent=1)
+json.dump(res, open(OUTFILE, "w"), indent=1)
 print("models:", n, "complete:", res["complete"])
 for k, v in res["P"].items():
     print(k, json.dumps(v))

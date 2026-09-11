@@ -37,9 +37,14 @@ OUT = "alignment_study/rerun"
 SMOKE = "--smoke" in sys.argv
 PURGE_LARGE = "--purge-large" in sys.argv      # remove the HF cache of models >= 3B params after their run (disk)
 EXCLUDE = set()
+ONLY = None
 for _a in sys.argv:
     if _a.startswith("--exclude="):
         EXCLUDE |= set(x for x in _a.split("=", 1)[1].split(",") if x)
+    if _a.startswith("--only="):          # run these model ids instead of MODELS (preregistration 10 uses this)
+        ONLY = [x for x in _a.split("=", 1)[1].split(",") if x]
+    if _a.startswith("--out="):           # results directory (default alignment_study/rerun)
+        OUT = _a.split("=", 1)[1]
 torch.set_grad_enabled(False)
 
 
@@ -210,7 +215,7 @@ if __name__ == "__main__":
     out_dir = "alignment_study/rerun_smoke" if SMOKE else OUT
     os.makedirs(out_dir, exist_ok=True)
     print("DEVICE", device_label(DEV), flush=True)
-    for name in (["Qwen/Qwen2.5-0.5B"] if SMOKE else MODELS):
+    for name in (["Qwen/Qwen2.5-0.5B"] if SMOKE else (ONLY or MODELS)):
         short = name.split("/")[-1]
         path = f"{out_dir}/{short}.json"
         if name in EXCLUDE:

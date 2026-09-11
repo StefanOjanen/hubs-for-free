@@ -28,6 +28,12 @@ MODELS = ["gpt2", "gpt2-medium", "EleutherAI/pythia-160m", "EleutherAI/pythia-41
           "mistralai/Mistral-7B-v0.1", "Qwen/Qwen2.5-7B", "allenai/OLMo-2-1124-7B"]
 NWIN, STRIDE, SEQ, REPS, KPLAIN = 12, 40, 64, 6, 8
 OUT = "alignment_study/sinkprofile"
+ONLY = None
+for _a in sys.argv:
+    if _a.startswith("--only="):
+        ONLY = [x for x in _a.split("=", 1)[1].split(",") if x]
+    if _a.startswith("--out="):
+        OUT = _a.split("=", 1)[1]
 torch.set_grad_enabled(False)
 
 
@@ -86,7 +92,7 @@ def run_model(name):
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     print("DEVICE", device_label(DEV), flush=True)
-    for name in MODELS:
+    for name in (ONLY or MODELS):
         short = name.split("/")[-1]; path = f"{OUT}/{short}.json"
         if os.path.exists(path):
             print("SKIP (exists)", path, flush=True); continue
