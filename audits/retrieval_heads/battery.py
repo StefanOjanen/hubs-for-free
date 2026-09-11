@@ -111,7 +111,6 @@ def run_needles(model, tok, rng, with_nulls):
                 score += copied / k; n_inst += 1
                 for kk in nulls:
                     nulls[kk] += cop_null[kk] / k
-                del out
                 print(f"  ctx {ctx} depth {depth:.2f} done ({time.time()-t0:.0f}s)", flush=True)
     return score / max(n_inst, 1), {kk: v / max(n_inst, 1) for kk, v in nulls.items()}, n_inst
 
