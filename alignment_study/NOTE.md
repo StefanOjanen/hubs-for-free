@@ -368,3 +368,17 @@ deviation structure that sets z is head-specific and is not the recency or
 uniform mode; a per-head dictionary (each head's own secondary column or
 band) is the next candidate. T4.3 stays open; the r1 profile remains
 predicted by (S, a_h, e_h) alone.
+
+Follow-up diagnostic (`deviation_structure_dev.py` ->
+`deviation_structure_dev.json`, labeled development): comparing each head's
+real deviation E_h = G_h - a_h S with random skew matrices of the same norm
+orthogonal to S, the real deviations commute with the shared operator about
+three times more strongly at high-sink layers (normalized ||[S, E_h]|| 0.51
+to 0.57 against 0.18 for random, ratio 2.9 to 3.2; at the low-sink first
+three layers the ratio is 0.9 to 1.0) and are far more concentrated (inverse
+participation ratio 9 to 25 times the random value), while no single
+head-specific column carries them (top non-sink column share 5 to 11
+percent against 2 for random). Reading: the structure that random rebuilds
+miss is the concentration of the deviations, a consequence of peaked
+attention rows, not a further low-dimensional operator. The next toy for
+T4.3 is a sparse deviation with matched concentration.

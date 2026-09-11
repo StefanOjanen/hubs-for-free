@@ -1,0 +1,352 @@
+{
+ "model": "Qwen/Qwen2.5-0.5B",
+ "protocol": {
+  "n_windows": 8,
+  "seq": 64,
+  "reps": 3
+ },
+ "rows": [
+  {
+   "layer": 0,
+   "smass": 0.051,
+   "real": {
+    "commutator": 0.1626,
+    "ipr": 24.4469,
+    "col_share": 0.064
+   },
+   "random": {
+    "commutator": 0.1759,
+    "ipr": 2.9883,
+    "col_share": 0.023
+   }
+  },
+  {
+   "layer": 1,
+   "smass": 0.077,
+   "real": {
+    "commutator": 0.1669,
+    "ipr": 22.9443,
+    "col_share": 0.077
+   },
+   "random": {
+    "commutator": 0.1759,
+    "ipr": 2.9954,
+    "col_share": 0.023
+   }
+  },
+  {
+   "layer": 2,
+   "smass": 0.117,
+   "real": {
+    "commutator": 0.183,
+    "ipr": 34.6605,
+    "col_share": 0.061
+   },
+   "random": {
+    "commutator": 0.1762,
+    "ipr": 2.9861,
+    "col_share": 0.023
+   }
+  },
+  {
+   "layer": 3,
+   "smass": 0.604,
+   "real": {
+    "commutator": 0.5064,
+    "ipr": 44.3824,
+    "col_share": 0.059
+   },
+   "random": {
+    "commutator": 0.1751,
+    "ipr": 2.9922,
+    "col_share": 0.023
+   }
+  },
+  {
+   "layer": 4,
+   "smass": 0.43,
+   "real": {
+    "commutator": 0.513,
+    "ipr": 33.0963,
+    "col_share": 0.051
+   },
+   "random": {
+    "commutator": 0.1766,
+    "ipr": 3.0038,
+    "col_share": 0.023
+   }
+  },
+  {
+   "layer": 5,
+   "smass": 0.508,
+   "real": {
+    "commutator": 0.5497,
+    "ipr": 40.7274,
+    "col_share": 0.063
+   },
+   "random": {
+    "commutator": 0.1776,
+    "ipr": 2.9859,
+    "col_share": 0.023
+   }
+  },
+  {
+   "layer": 6,
+   "smass": 0.437,
+   "real": {
+    "commutator": 0.5114,
+    "ipr": 30.0113,
+    "col_share": 0.049
+   },
+   "random": {
+    "commutator": 0.1764,
+    "ipr": 2.994,
+    "col_share": 0.023
+   }
+  },
+  {
+   "layer": 7,
+   "smass": 0.61,
+   "real": {
+    "commutator": 0.4939,
+    "ipr": 42.5649,
+    "col_share": 0.063
+   },
+   "random": {
+    "commutator": 0.1775,
+    "ipr": 2.9905,
+    "col_share": 0.023
+   }
+  },
+  {
+   "layer": 8,
+   "smass": 0.293,
+   "real": {
+    "commutator": 0.3284,
+    "ipr": 23.7133,
+    "col_share": 0.057
+   },
+   "random": {
+    "commutator": 0.1773,
+    "ipr": 2.9908,
+    "col_share": 0.023
+   }
+  },
+  {
+   "layer": 9,
+   "smass": 0.68,
+   "real": {
+    "commutator": 0.5511,
+    "ipr": 39.6211,
+    "col_share": 0.055
+   },
+   "random": {
+    "commutator": 0.177,
+    "ipr": 2.9983,
+    "col_share": 0.023
+   }
+  },
+  {
+   "layer": 10,
+   "smass": 0.427,
+   "real": {
+    "commutator": 0.5131,
+    "ipr": 27.2746,
+    "col_share": 0.052
+   },
+   "random": {
+    "commutator": 0.1777,
+    "ipr": 2.9918,
+    "col_share": 0.023
+   }
+  },
+  {
+   "layer": 11,
+   "smass": 0.721,
+   "real": {
+    "commutator": 0.5718,
+    "ipr": 38.3025,
+    "col_share": 0.069
+   },
+   "random": {
+    "commutator": 0.1773,
+    "ipr": 2.978,
+    "col_share": 0.023
+   }
+  },
+  {
+   "layer": 12,
+   "smass": 0.376,
+   "real": {
+    "commutator": 0.4783,
+    "ipr": 25.1631,
+    "col_share": 0.06
+   },
+   "random": {
+    "commutator": 0.1762,
+    "ipr": 2.9827,
+    "col_share": 0.023
+   }
+  },
+  {
+   "layer": 13,
+   "smass": 0.568,
+   "real": {
+    "commutator": 0.5634,
+    "ipr": 38.9449,
+    "col_share": 0.054
+   },
+   "random": {
+    "commutator": 0.1774,
+    "ipr": 3.0019,
+    "col_share": 0.023
+   }
+  },
+  {
+   "layer": 14,
+   "smass": 0.377,
+   "real": {
+    "commutator": 0.5262,
+    "ipr": 30.9996,
+    "col_share": 0.054
+   },
+   "random": {
+    "commutator": 0.1777,
+    "ipr": 2.9789,
+    "col_share": 0.023
+   }
+  },
+  {
+   "layer": 15,
+   "smass": 0.465,
+   "real": {
+    "commutator": 0.4993,
+    "ipr": 27.8085,
+    "col_share": 0.05
+   },
+   "random": {
+    "commutator": 0.1768,
+    "ipr": 2.9861,
+    "col_share": 0.023
+   }
+  },
+  {
+   "layer": 16,
+   "smass": 0.82,
+   "real": {
+    "commutator": 0.544,
+    "ipr": 75.7738,
+    "col_share": 0.087
+   },
+   "random": {
+    "commutator": 0.1775,
+    "ipr": 2.9891,
+    "col_share": 0.023
+   }
+  },
+  {
+   "layer": 17,
+   "smass": 0.655,
+   "real": {
+    "commutator": 0.55,
+    "ipr": 36.8596,
+    "col_share": 0.071
+   },
+   "random": {
+    "commutator": 0.1773,
+    "ipr": 3.0027,
+    "col_share": 0.023
+   }
+  },
+  {
+   "layer": 18,
+   "smass": 0.621,
+   "real": {
+    "commutator": 0.5345,
+    "ipr": 44.0977,
+    "col_share": 0.064
+   },
+   "random": {
+    "commutator": 0.1762,
+    "ipr": 2.9927,
+    "col_share": 0.023
+   }
+  },
+  {
+   "layer": 19,
+   "smass": 0.479,
+   "real": {
+    "commutator": 0.4753,
+    "ipr": 36.1018,
+    "col_share": 0.052
+   },
+   "random": {
+    "commutator": 0.1768,
+    "ipr": 2.9925,
+    "col_share": 0.023
+   }
+  },
+  {
+   "layer": 20,
+   "smass": 0.632,
+   "real": {
+    "commutator": 0.5767,
+    "ipr": 37.1558,
+    "col_share": 0.071
+   },
+   "random": {
+    "commutator": 0.1762,
+    "ipr": 2.9927,
+    "col_share": 0.023
+   }
+  },
+  {
+   "layer": 21,
+   "smass": 0.739,
+   "real": {
+    "commutator": 0.5645,
+    "ipr": 48.5328,
+    "col_share": 0.085
+   },
+   "random": {
+    "commutator": 0.1772,
+    "ipr": 2.9976,
+    "col_share": 0.023
+   }
+  },
+  {
+   "layer": 22,
+   "smass": 0.19,
+   "real": {
+    "commutator": 0.3357,
+    "ipr": 27.236,
+    "col_share": 0.111
+   },
+   "random": {
+    "commutator": 0.1769,
+    "ipr": 2.9928,
+    "col_share": 0.023
+   }
+  },
+  {
+   "layer": 23,
+   "smass": 0.152,
+   "real": {
+    "commutator": 0.3456,
+    "ipr": 28.259,
+    "col_share": 0.102
+   },
+   "random": {
+    "commutator": 0.1765,
+    "ipr": 3.0036,
+    "col_share": 0.023
+   }
+  }
+ ],
+ "summary": {
+  "median_commutator_ratio_real_over_random": 2.896,
+  "median_ipr_ratio": 11.8,
+  "median_col_share_real": 0.062,
+  "median_col_share_random": 0.023
+ }
+}
