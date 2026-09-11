@@ -1,0 +1,31 @@
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:01<08:01,  1.67s/it]Loading weights: 100%|██████████| 290/290 [00:01<00:00, 173.18it/s]
+Qwen/Qwen2.5-0.5B DEVICE mps DTYPE float32 layers 24 heads 14 kv 2 head_dim 64
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (298938 > 131072). Running this sequence through the model will result in indexing errors
+baseline NLL 2.8016 nats/token over 12288 tokens (17s)
+  L 0 sE 0.35 | top (11, 13) cos 0.858 dloss +0.0440 | random (9, 13) cos 0.554 dloss +0.0019 | bottom (1, 5) cos 0.010 dloss +0.0209
+  L 1 sE 0.48 | top (0, 4) cos 0.702 dloss -0.0006 | random (7, 13) cos 0.619 dloss -0.0004 | bottom (9, 12) cos 0.164 dloss +0.0041
+  L 2 sE 0.53 | top (9, 12) cos 0.724 dloss +0.0043 | random (7, 8) cos 0.497 dloss +0.0036 | bottom (0, 2) cos 0.032 dloss +0.0108
+  L 3 sE 0.80 | top (4, 5) cos 0.920 dloss +0.0028 | random (2, 3) cos 0.878 dloss +0.0041 | bottom (0, 1) cos 0.329 dloss +0.0085
+  L 4 sE 0.76 | top (8, 9) cos 0.925 dloss +0.0011 | random (2, 4) cos 0.713 dloss +0.0038 | bottom (8, 13) cos 0.432 dloss +0.0038
+  L 5 sE 0.78 | top (2, 6) cos 0.929 dloss +0.0017 | random (0, 2) cos 0.917 dloss +0.0029 | bottom (8, 13) cos 0.446 dloss +0.0048
+  L 6 sE 0.78 | top (9, 11) cos 0.928 dloss +0.0050 | random (0, 4) cos 0.279 dloss +0.0165 | bottom (4, 5) cos 0.257 dloss +0.0110
+  L 7 sE 0.82 | top (8, 13) cos 0.938 dloss +0.0020 | random (0, 1) cos 0.455 dloss +0.0029 | bottom (0, 1) cos 0.455 dloss +0.0029
+  L 8 sE 0.60 | top (12, 13) cos 0.814 dloss +0.0007 | random (1, 3) cos 0.146 dloss -0.0001 | bottom (7, 9) cos 0.081 dloss +0.0214
+  L 9 sE 0.84 | top (7, 9) cos 0.997 dloss +0.0000 | random (9, 12) cos 0.948 dloss +0.0056 | bottom (0, 4) cos 0.497 dloss +0.0047
+  L10 sE 0.78 | top (0, 1) cos 0.920 dloss +0.0020 | random (8, 9) cos 0.730 dloss +0.0011 | bottom (2, 5) cos 0.476 dloss +0.0042
+  L11 sE 0.86 | top (7, 13) cos 1.000 dloss -0.0000 | random (10, 13) cos 0.935 dloss +0.0016 | bottom (0, 1) cos 0.592 dloss +0.0243
+  L12 sE 0.76 | top (3, 4) cos 0.963 dloss +0.0009 | random (7, 8) cos 0.585 dloss +0.0017 | bottom (8, 11) cos 0.396 dloss +0.0043
+  L13 sE 0.82 | top (7, 12) cos 0.942 dloss +0.0017 | random (7, 12) cos 0.942 dloss +0.0017 | bottom (2, 4) cos 0.261 dloss +0.0058
+  L14 sE 0.79 | top (8, 9) cos 0.879 dloss +0.0015 | random (11, 13) cos 0.556 dloss +0.0042 | bottom (7, 10) cos 0.483 dloss +0.0158
+  L15 sE 0.77 | top (7, 8) cos 0.882 dloss +0.0018 | random (8, 12) cos 0.812 dloss +0.0018 | bottom (2, 6) cos 0.191 dloss +0.0161
+  L16 sE 0.95 | top (1, 4) cos 0.953 dloss +0.0006 | random (7, 13) cos 0.917 dloss +0.0027 | bottom (10, 12) cos 0.765 dloss +0.0118
+  L17 sE 0.84 | top (7, 12) cos 0.967 dloss +0.0007 | random (7, 9) cos 0.883 dloss +0.0013 | bottom (1, 3) cos 0.569 dloss +0.0062
+  L18 sE 0.85 | top (0, 5) cos 0.950 dloss +0.0000 | random (7, 10) cos 0.782 dloss +0.0008 | bottom (11, 13) cos 0.580 dloss +0.0010
+  L19 sE 0.74 | top (2, 6) cos 0.938 dloss +0.0020 | random (11, 12) cos 0.365 dloss +0.0012 | bottom (7, 11) cos 0.337 dloss +0.0047
+  L20 sE 0.85 | top (8, 10) cos 0.970 dloss +0.0010 | random (2, 3) cos 0.532 dloss +0.0073 | bottom (3, 6) cos 0.462 dloss +0.0102
+  L21 sE 0.92 | top (10, 13) cos 0.989 dloss +0.0005 | random (9, 12) cos 0.590 dloss +0.0106 | bottom (7, 9) cos 0.547 dloss +0.0120
+  L22 sE 0.86 | top (1, 2) cos 0.870 dloss +0.0030 | random (8, 10) cos 0.845 dloss +0.0023 | bottom (11, 12) cos 0.355 dloss +0.0252
+  L23 sE 0.76 | top (7, 13) cos 0.874 dloss +0.0009 | random (0, 1) cos 0.064 dloss +0.0095 | bottom (1, 5) cos 0.045 dloss +0.0088
+SUMMARY {"baseline_nll": 2.80161, "restore_check_abs_diff": 0.0, "spearman_sharedE_dloss_top": -0.324, "spearman_sharedE_dloss_top_depth_partialled": -0.445, "spearman_layer_dloss_top": -0.267, "spearman_sharedE_dloss_random": 0.217, "frac_top_below_random": 0.708, "frac_top_below_bottom": 0.958, "median_dloss": {"top": 0.00129, "random": 0.00252, "bottom": 0.00865}, "runtime_s": 203.1}
+MERGE_DONE alignment_study/merge_dev_calibration.json

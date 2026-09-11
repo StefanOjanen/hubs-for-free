@@ -30,3 +30,23 @@ PREREGISTRATION4.md before the corresponding battery run.
 
 Integrity: every audit note goes to the original authors with at least four
 weeks to respond before any preprint; responses are published alongside.
+
+## Reproduction log
+
+- Target 2 (Kovaleva et al. 2019), attempted 2026-09-11. The pattern
+  proportions (heterogeneous 32 to 61 percent by task; vertical 30 percent
+  of the annotated sample) come from a CNN trained on about 400 manually
+  annotated maps of fine-tuned GLUE models. The repository
+  (text-machine-lab/dark-secrets-of-BERT, checked at its current head)
+  contains the visualization and [SEP]/[CLS] analysis notebook only: no
+  annotations, no classifier weights, no fine-tuned checkpoints. The
+  taxonomy proportions are therefore not reproducible under the two-day
+  rule and Target 2 is labeled not reproducible in its stated form. The
+  notebook's quantitative statistics (per-head mean attention to [CLS],
+  per-head maximum attention to [SEP], pre-trained against fine-tuned) are
+  reproducible for the pre-trained model but the paper reports them only as
+  heat maps, so no numeric reproduction criterion exists; the closest
+  quantitative statement of the same fact is Clark et al. 2019's "over half
+  of BERT's attention in layers 6 to 10 focuses on [SEP]", already covered
+  by Target 1's model and data. Replacement pending from the alternates
+  list; the choice is recorded here before any battery run.

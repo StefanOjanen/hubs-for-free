@@ -80,9 +80,12 @@ Registered expectation (an instance of E2): survives against (a) and (d)
 marginals and their separator columns, but a substantial part of the
 reported layer clustering is the shared vertical pattern.
 
-### Target 2: Kovaleva et al. 2019
-Base result R_2: [fraction of heads classified as vertical per layer].
-Statistic T_2: [fill]. Nulls: (a), (b), (c).
+### Target 2: Kovaleva et al. 2019 (not reproducible in stated form, 2026-09-11)
+The five-class proportions rest on an unreleased classifier and unreleased
+annotations of fine-tuned models (TARGETS.md, reproduction log). No
+battery is run on this target. E4 is retained only if a replacement target
+carries a shared-column prevalence statement with a numeric base result;
+otherwise E4 is dropped before freezing and the drop is recorded here.
 
 ### Target 3: CHAI (2024)
 Base result R_3: [attention-map correlation clustering; fraction of heads

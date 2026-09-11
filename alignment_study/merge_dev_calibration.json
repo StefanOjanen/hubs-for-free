@@ -1,0 +1,629 @@
+{
+ "model": "Qwen/Qwen2.5-0.5B",
+ "dtype": "float32",
+ "device": "mps",
+ "n_sel": 16,
+ "t_sel": 256,
+ "n_eval": 24,
+ "t_eval": 512,
+ "eval_tokens": 12288,
+ "predictor": "sharedE from alignment_study/rerun (protocol A)",
+ "rows": [
+  {
+   "layer": 0,
+   "sharedE": 0.349,
+   "smass": 0.047,
+   "r1_real": 0.8814,
+   "top_pair": [
+    11,
+    13
+   ],
+   "top_cos": 0.8577,
+   "bottom_pair": [
+    1,
+    5
+   ],
+   "bottom_cos": 0.0098,
+   "random_pair": [
+    9,
+    13
+   ],
+   "random_cos": 0.5538,
+   "median_within_cos": 0.1653,
+   "dloss_top": 0.044,
+   "dloss_random": 0.00188,
+   "dloss_bottom": 0.02095
+  },
+  {
+   "layer": 1,
+   "sharedE": 0.4792,
+   "smass": 0.0721,
+   "r1_real": 0.6475,
+   "top_pair": [
+    0,
+    4
+   ],
+   "top_cos": 0.7022,
+   "bottom_pair": [
+    9,
+    12
+   ],
+   "bottom_cos": 0.1641,
+   "random_pair": [
+    7,
+    13
+   ],
+   "random_cos": 0.6189,
+   "median_within_cos": 0.4323,
+   "dloss_top": -0.00061,
+   "dloss_random": -0.00036,
+   "dloss_bottom": 0.00414
+  },
+  {
+   "layer": 2,
+   "sharedE": 0.5308,
+   "smass": 0.1125,
+   "r1_real": 0.7662,
+   "top_pair": [
+    9,
+    12
+   ],
+   "top_cos": 0.7235,
+   "bottom_pair": [
+    0,
+    2
+   ],
+   "bottom_cos": 0.0324,
+   "random_pair": [
+    7,
+    8
+   ],
+   "random_cos": 0.4975,
+   "median_within_cos": 0.4818,
+   "dloss_top": 0.00428,
+   "dloss_random": 0.00361,
+   "dloss_bottom": 0.0108
+  },
+  {
+   "layer": 3,
+   "sharedE": 0.8,
+   "smass": 0.6129,
+   "r1_real": 0.6408,
+   "top_pair": [
+    4,
+    5
+   ],
+   "top_cos": 0.9196,
+   "bottom_pair": [
+    0,
+    1
+   ],
+   "bottom_cos": 0.3292,
+   "random_pair": [
+    2,
+    3
+   ],
+   "random_cos": 0.8784,
+   "median_within_cos": 0.7763,
+   "dloss_top": 0.00284,
+   "dloss_random": 0.00414,
+   "dloss_bottom": 0.00852
+  },
+  {
+   "layer": 4,
+   "sharedE": 0.7551,
+   "smass": 0.4327,
+   "r1_real": 0.8704,
+   "top_pair": [
+    8,
+    9
+   ],
+   "top_cos": 0.9253,
+   "bottom_pair": [
+    8,
+    13
+   ],
+   "bottom_cos": 0.4323,
+   "random_pair": [
+    2,
+    4
+   ],
+   "random_cos": 0.7131,
+   "median_within_cos": 0.6961,
+   "dloss_top": 0.00109,
+   "dloss_random": 0.00378,
+   "dloss_bottom": 0.00376
+  },
+  {
+   "layer": 5,
+   "sharedE": 0.7826,
+   "smass": 0.5153,
+   "r1_real": 0.634,
+   "top_pair": [
+    2,
+    6
+   ],
+   "top_cos": 0.9293,
+   "bottom_pair": [
+    8,
+    13
+   ],
+   "bottom_cos": 0.4458,
+   "random_pair": [
+    0,
+    2
+   ],
+   "random_cos": 0.9167,
+   "median_within_cos": 0.756,
+   "dloss_top": 0.00168,
+   "dloss_random": 0.00293,
+   "dloss_bottom": 0.00479
+  },
+  {
+   "layer": 6,
+   "sharedE": 0.775,
+   "smass": 0.4356,
+   "r1_real": 0.6626,
+   "top_pair": [
+    9,
+    11
+   ],
+   "top_cos": 0.9278,
+   "bottom_pair": [
+    4,
+    5
+   ],
+   "bottom_cos": 0.2569,
+   "random_pair": [
+    0,
+    4
+   ],
+   "random_cos": 0.2788,
+   "median_within_cos": 0.7643,
+   "dloss_top": 0.00498,
+   "dloss_random": 0.01652,
+   "dloss_bottom": 0.01096
+  },
+  {
+   "layer": 7,
+   "sharedE": 0.8171,
+   "smass": 0.617,
+   "r1_real": 0.5067,
+   "top_pair": [
+    8,
+    13
+   ],
+   "top_cos": 0.9375,
+   "bottom_pair": [
+    0,
+    1
+   ],
+   "bottom_cos": 0.4554,
+   "random_pair": [
+    0,
+    1
+   ],
+   "random_cos": 0.4554,
+   "median_within_cos": 0.7865,
+   "dloss_top": 0.00204,
+   "dloss_random": 0.00286,
+   "dloss_bottom": 0.00286
+  },
+  {
+   "layer": 8,
+   "sharedE": 0.5955,
+   "smass": 0.2974,
+   "r1_real": 0.5822,
+   "top_pair": [
+    12,
+    13
+   ],
+   "top_cos": 0.8141,
+   "bottom_pair": [
+    7,
+    9
+   ],
+   "bottom_cos": 0.0808,
+   "random_pair": [
+    1,
+    3
+   ],
+   "random_cos": 0.1463,
+   "median_within_cos": 0.491,
+   "dloss_top": 0.00067,
+   "dloss_random": -6e-05,
+   "dloss_bottom": 0.02136
+  },
+  {
+   "layer": 9,
+   "sharedE": 0.8438,
+   "smass": 0.6951,
+   "r1_real": 0.1665,
+   "top_pair": [
+    7,
+    9
+   ],
+   "top_cos": 0.9974,
+   "bottom_pair": [
+    0,
+    4
+   ],
+   "bottom_cos": 0.4974,
+   "random_pair": [
+    9,
+    12
+   ],
+   "random_cos": 0.9478,
+   "median_within_cos": 0.8342,
+   "dloss_top": 4e-05,
+   "dloss_random": 0.00558,
+   "dloss_bottom": 0.00467
+  },
+  {
+   "layer": 10,
+   "sharedE": 0.7801,
+   "smass": 0.4132,
+   "r1_real": 0.8331,
+   "top_pair": [
+    0,
+    1
+   ],
+   "top_cos": 0.9204,
+   "bottom_pair": [
+    2,
+    5
+   ],
+   "bottom_cos": 0.4761,
+   "random_pair": [
+    8,
+    9
+   ],
+   "random_cos": 0.73,
+   "median_within_cos": 0.6843,
+   "dloss_top": 0.00203,
+   "dloss_random": 0.00112,
+   "dloss_bottom": 0.00417
+  },
+  {
+   "layer": 11,
+   "sharedE": 0.8609,
+   "smass": 0.7263,
+   "r1_real": -0.1157,
+   "top_pair": [
+    7,
+    13
+   ],
+   "top_cos": 1.0,
+   "bottom_pair": [
+    0,
+    1
+   ],
+   "bottom_cos": 0.5918,
+   "random_pair": [
+    10,
+    13
+   ],
+   "random_cos": 0.9346,
+   "median_within_cos": 0.8543,
+   "dloss_top": -0.0,
+   "dloss_random": 0.00159,
+   "dloss_bottom": 0.02433
+  },
+  {
+   "layer": 12,
+   "sharedE": 0.7578,
+   "smass": 0.3696,
+   "r1_real": 0.8397,
+   "top_pair": [
+    3,
+    4
+   ],
+   "top_cos": 0.9629,
+   "bottom_pair": [
+    8,
+    11
+   ],
+   "bottom_cos": 0.3959,
+   "random_pair": [
+    7,
+    8
+   ],
+   "random_cos": 0.585,
+   "median_within_cos": 0.6867,
+   "dloss_top": 0.00086,
+   "dloss_random": 0.00168,
+   "dloss_bottom": 0.00435
+  },
+  {
+   "layer": 13,
+   "sharedE": 0.8165,
+   "smass": 0.6012,
+   "r1_real": 0.5214,
+   "top_pair": [
+    7,
+    12
+   ],
+   "top_cos": 0.9415,
+   "bottom_pair": [
+    2,
+    4
+   ],
+   "bottom_cos": 0.2614,
+   "random_pair": [
+    7,
+    12
+   ],
+   "random_cos": 0.9415,
+   "median_within_cos": 0.8227,
+   "dloss_top": 0.0017,
+   "dloss_random": 0.0017,
+   "dloss_bottom": 0.00577
+  },
+  {
+   "layer": 14,
+   "sharedE": 0.7871,
+   "smass": 0.3751,
+   "r1_real": 0.8888,
+   "top_pair": [
+    8,
+    9
+   ],
+   "top_cos": 0.8794,
+   "bottom_pair": [
+    7,
+    10
+   ],
+   "bottom_cos": 0.4835,
+   "random_pair": [
+    11,
+    13
+   ],
+   "random_cos": 0.5565,
+   "median_within_cos": 0.7119,
+   "dloss_top": 0.00149,
+   "dloss_random": 0.0042,
+   "dloss_bottom": 0.01583
+  },
+  {
+   "layer": 15,
+   "sharedE": 0.7714,
+   "smass": 0.4505,
+   "r1_real": 0.4445,
+   "top_pair": [
+    7,
+    8
+   ],
+   "top_cos": 0.8816,
+   "bottom_pair": [
+    2,
+    6
+   ],
+   "bottom_cos": 0.1907,
+   "random_pair": [
+    8,
+    12
+   ],
+   "random_cos": 0.8123,
+   "median_within_cos": 0.7255,
+   "dloss_top": 0.00177,
+   "dloss_random": 0.00182,
+   "dloss_bottom": 0.0161
+  },
+  {
+   "layer": 16,
+   "sharedE": 0.947,
+   "smass": 0.865,
+   "r1_real": -0.4955,
+   "top_pair": [
+    1,
+    4
+   ],
+   "top_cos": 0.9526,
+   "bottom_pair": [
+    10,
+    12
+   ],
+   "bottom_cos": 0.7648,
+   "random_pair": [
+    7,
+    13
+   ],
+   "random_cos": 0.9173,
+   "median_within_cos": 0.8999,
+   "dloss_top": 0.0006,
+   "dloss_random": 0.00275,
+   "dloss_bottom": 0.01175
+  },
+  {
+   "layer": 17,
+   "sharedE": 0.8406,
+   "smass": 0.6625,
+   "r1_real": 0.0549,
+   "top_pair": [
+    7,
+    12
+   ],
+   "top_cos": 0.9665,
+   "bottom_pair": [
+    1,
+    3
+   ],
+   "bottom_cos": 0.5689,
+   "random_pair": [
+    7,
+    9
+   ],
+   "random_cos": 0.8831,
+   "median_within_cos": 0.7887,
+   "dloss_top": 0.00073,
+   "dloss_random": 0.00131,
+   "dloss_bottom": 0.0062
+  },
+  {
+   "layer": 18,
+   "sharedE": 0.8524,
+   "smass": 0.6196,
+   "r1_real": 0.4865,
+   "top_pair": [
+    0,
+    5
+   ],
+   "top_cos": 0.9504,
+   "bottom_pair": [
+    11,
+    13
+   ],
+   "bottom_cos": 0.5796,
+   "random_pair": [
+    7,
+    10
+   ],
+   "random_cos": 0.7819,
+   "median_within_cos": 0.7992,
+   "dloss_top": 4e-05,
+   "dloss_random": 0.00079,
+   "dloss_bottom": 0.00097
+  },
+  {
+   "layer": 19,
+   "sharedE": 0.7372,
+   "smass": 0.4865,
+   "r1_real": 0.7789,
+   "top_pair": [
+    2,
+    6
+   ],
+   "top_cos": 0.9376,
+   "bottom_pair": [
+    7,
+    11
+   ],
+   "bottom_cos": 0.3365,
+   "random_pair": [
+    11,
+    12
+   ],
+   "random_cos": 0.365,
+   "median_within_cos": 0.658,
+   "dloss_top": 0.00201,
+   "dloss_random": 0.00123,
+   "dloss_bottom": 0.00471
+  },
+  {
+   "layer": 20,
+   "sharedE": 0.8502,
+   "smass": 0.6585,
+   "r1_real": -0.1286,
+   "top_pair": [
+    8,
+    10
+   ],
+   "top_cos": 0.9702,
+   "bottom_pair": [
+    3,
+    6
+   ],
+   "bottom_cos": 0.4624,
+   "random_pair": [
+    2,
+    3
+   ],
+   "random_cos": 0.532,
+   "median_within_cos": 0.8281,
+   "dloss_top": 0.00098,
+   "dloss_random": 0.00733,
+   "dloss_bottom": 0.01016
+  },
+  {
+   "layer": 21,
+   "sharedE": 0.92,
+   "smass": 0.7625,
+   "r1_real": -0.5706,
+   "top_pair": [
+    10,
+    13
+   ],
+   "top_cos": 0.9887,
+   "bottom_pair": [
+    7,
+    9
+   ],
+   "bottom_cos": 0.5474,
+   "random_pair": [
+    9,
+    12
+   ],
+   "random_cos": 0.5895,
+   "median_within_cos": 0.9436,
+   "dloss_top": 0.00051,
+   "dloss_random": 0.01064,
+   "dloss_bottom": 0.01199
+  },
+  {
+   "layer": 22,
+   "sharedE": 0.8614,
+   "smass": 0.2074,
+   "r1_real": 0.7805,
+   "top_pair": [
+    1,
+    2
+   ],
+   "top_cos": 0.8703,
+   "bottom_pair": [
+    11,
+    12
+   ],
+   "bottom_cos": 0.3551,
+   "random_pair": [
+    8,
+    10
+   ],
+   "random_cos": 0.8447,
+   "median_within_cos": 0.7465,
+   "dloss_top": 0.00303,
+   "dloss_random": 0.0023,
+   "dloss_bottom": 0.02519
+  },
+  {
+   "layer": 23,
+   "sharedE": 0.7575,
+   "smass": 0.1668,
+   "r1_real": 0.6532,
+   "top_pair": [
+    7,
+    13
+   ],
+   "top_cos": 0.8735,
+   "bottom_pair": [
+    1,
+    5
+   ],
+   "bottom_cos": 0.0447,
+   "random_pair": [
+    0,
+    1
+   ],
+   "random_cos": 0.0638,
+   "median_within_cos": 0.8062,
+   "dloss_top": 0.00091,
+   "dloss_random": 0.00954,
+   "dloss_bottom": 0.00879
+  }
+ ],
+ "summary": {
+  "baseline_nll": 2.80161,
+  "restore_check_abs_diff": 0.0,
+  "spearman_sharedE_dloss_top": -0.324,
+  "spearman_sharedE_dloss_top_depth_partialled": -0.445,
+  "spearman_layer_dloss_top": -0.267,
+  "spearman_sharedE_dloss_random": 0.217,
+  "frac_top_below_random": 0.708,
+  "frac_top_below_bottom": 0.958,
+  "median_dloss": {
+   "top": 0.00129,
+   "random": 0.00252,
+   "bottom": 0.00865
+  },
+  "runtime_s": 203.1
+ }
+}
