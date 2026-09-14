@@ -1,7 +1,7 @@
 # Target 5 (Retrieval Heads 2024), step T2.3: the null battery for the frozen
 # statistic, computed online during the needle test so no attention rows
 # need storing. COMMITTED BEFORE ANY RESULT EXISTS; not to be run for real
-# until audits/PREREGISTRATION4_DRAFT.md is publicly registered. `--dry-run`
+# until audits/PREREGISTRATION4.md is publicly registered. `--dry-run`
 # uses the development model (Qwen2.5-0.5B, not the registered audit model)
 # at 256 tokens with two instances and writes to /tmp.
 #
@@ -22,6 +22,12 @@ import time
 import numpy as np
 import torch
 
+# Registration guard (2026-09-15): a real run requires --registered=<OSF URL>
+# so that the battery cannot start by accident before the frozen criteria are
+# publicly registered. Dry runs never touch real data or write under audits/.
+if "--dry-run" not in sys.argv and not any(a.startswith("--registered=") for a in sys.argv):
+    sys.exit("refusing to run the battery on real data without --registered=<OSF registration URL>; use --dry-run to exercise the code")
+
 sys.path.insert(0, ".")
 sys.path.insert(0, "audits/retrieval_heads")
 from hubsfree.adapters import pick_device, pick_dtype, release_memory
@@ -32,7 +38,7 @@ NAME = "Qwen/Qwen2.5-0.5B" if DRY else "Qwen/Qwen2.5-7B"
 CTX = [256] if DRY else [1024, 2048]
 NDEPTH = 1 if DRY else 5
 DRAWS = int(next((a.split("=")[1] for a in sys.argv if a.startswith("--draws=")), 3 if DRY else 200))
-N_INIT = 1 if DRY else 5
+N_INIT = 1 if DRY else 3   # amendment 3 of the frozen file
 OUT = "/tmp/retrieval_battery_dryrun.json" if DRY else "audits/retrieval_heads/battery_result.json"
 DEV = pick_device(os.environ.get("HUBSFREE_DEVICE", "auto"))
 torch.set_grad_enabled(False)

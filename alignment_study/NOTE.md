@@ -475,7 +475,7 @@ in the toy sections is the same open item seen from the other side.
 
 ## Audit program status (2026-09-11)
 
-Base results reproduced and criteria frozen (`audits/PREREGISTRATION4_DRAFT.md`);
+Base results reproduced and criteria frozen (`audits/PREREGISTRATION4.md`);
 no battery has run, since the plan gates the first battery on public
 registration of the draft.
 
@@ -510,7 +510,7 @@ registration of the draft.
   battery. Criteria frozen for the two reproduced models.
 
 With Targets 1, 3, 4 and 5 reproduced or partially reproduced and Target
-2 logged, PREREGISTRATION4_DRAFT.md is ready to freeze on OSF; the
+2 logged, PREREGISTRATION4.md is ready to freeze on OSF; the
 batteries run after that. The battery scripts for Targets 1, 3, 4 and 5
 (`audits/*/battery.py`) are committed ahead of any result, each verified
 only by a dry run that writes outside the repository (random maps or

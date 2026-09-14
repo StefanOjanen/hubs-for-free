@@ -105,7 +105,7 @@ rerun at 32 documents of 1,024 tokens, 13:42 to 13:45 UTC. Retrieval heads
 at 1K, 2K and 4K contexts with nine depths ran at over a minute per 2K
 instance and was stopped; rerun at 1K and 2K with five depths (20
 instances), 13:45 to 14:02 UTC. Both reductions relative to the sources
-are recorded in PREREGISTRATION4_DRAFT.md. All work of the day ran on the
+are recorded in PREREGISTRATION4.md. All work of the day ran on the
 M1 Max; no cloud compute was used.
 
 Sink-profile round (PREREGISTRATION9.md, frozen and pushed as 6e6b253 at
@@ -149,3 +149,20 @@ Preregistration 10 rounds completed 22:29 UTC on 2026-09-11 (rerun protocol
 19:38 to 21:04, sink-profile protocol 21:04 to 22:29; Falcon's 71 heads set
 the pace at 51 minutes for the sink-profile cell). The orchestrator's log is
 `alignment_study/audit_pipeline2.log` and `pr10_pipeline.log`.
+
+Preregistration 4 freeze (2026-09-15). Amendments 1 to 5 (draw counts for
+the weight-level nulls, last-row surrogates for the last-token statistic,
+three untrained initializations for Target 5, the initializer-based
+untrained null for Target 4, and the inclusion rule for Llama-2-7B-80K) were
+written into the file and the battery scripts before the freeze; the
+Gram-eigenvalue recipe was checked equal in outlier count and energy share
+to the SVD recipe on three random matrices and four Mistral-7B projection
+matrices. Incident, recorded for completeness: while verifying the scripts,
+a command intended to print the retrieval battery's help text started the
+script without --dry-run at about 09:20 UTC; it was killed about four
+minutes later while loading the model and the first instances, before
+writing any output, and no result was seen. Every battery script now
+refuses to run on real data without an explicit --registered=<OSF URL>
+flag. The file was renamed from PREREGISTRATION4_DRAFT.md to
+PREREGISTRATION4.md at the freeze; the freeze commit hash and the OSF
+registration URL are recorded below when they exist.

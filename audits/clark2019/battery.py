@@ -1,13 +1,13 @@
 # Target 1 (Clark et al. 2019), step T2.3: the null battery for the frozen
 # statistic. COMMITTED BEFORE ANY RESULT EXISTS; it must not be run for real
-# until audits/PREREGISTRATION4_DRAFT.md is frozen and publicly registered
+# until audits/PREREGISTRATION4.md is frozen and publicly registered
 # (plan WS2). `--dry-run` exercises the code path on random maps with tiny
 # draw counts and writes nothing under audits/.
 #
 # Statistic T_1: D = mean JS(different layer) - mean JS(same layer) over all
 # 144 x 144 head pairs, averaged over inputs and query positions; secondary:
 # the fraction of heads whose nearest neighbor is in their own layer.
-# Nulls (PREREGISTRATION4_DRAFT.md, Target 1): (a) random bidirectional
+# Nulls (PREREGISTRATION4.md, Target 1): (a) random bidirectional
 # softmax maps, 144 heads with the 12 x 12 layer labels, 100 ensembles;
 # (b) 100 per-row marginal-matched draws of the real maps, per window;
 # (c) 100 column-preserving draws keeping columns 0 ([CLS]) and T - 1
@@ -21,6 +21,12 @@ import os
 import sys
 import time
 import numpy as np
+
+# Registration guard (2026-09-15): a real run requires --registered=<OSF URL>
+# so that the battery cannot start by accident before the frozen criteria are
+# publicly registered. Dry runs never touch real data or write under audits/.
+if "--dry-run" not in sys.argv and not any(a.startswith("--registered=") for a in sys.argv):
+    sys.exit("refusing to run the battery on real data without --registered=<OSF registration URL>; use --dry-run to exercise the code")
 
 sys.path.insert(0, ".")
 from hubsfree.nulls import random_causal_softmax, surrogate_colfix, surrogate_plain

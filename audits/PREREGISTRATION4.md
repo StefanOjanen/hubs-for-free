@@ -1,10 +1,33 @@
 # Preregistration 4 (DRAFT, not yet frozen): audits of published claims
 
-Status: draft, complete for Targets 1, 3, 4 and 5 as of 2026-09-11 (Target
-2 logged as not reproducible). Per-target statistics were filled in only
+Status: FROZEN 2026-09-15. Complete for Targets 1, 3, 4 and 5 (Target 2
+logged as not reproducible). Per-target statistics were filled in only
 after each base result was reproduced (T2.1) and before any surrogate was
-run (T2.2). The file is frozen by commit, pushed, and registered on OSF
-before the first battery run; this header changes to FROZEN at that point.
+run (T2.2). No battery has been run on real data before this freeze; the
+battery scripts (`audits/*/battery.py`) were verified only by dry runs on
+random data that write outside the repository. Frozen by commit and pushed
+to the public repository, then registered on OSF; both timestamps are
+recorded in `alignment_study/RUNLOG.md`. Text below this header is not
+edited after the freeze; corrections, if any, appear as dated addenda in
+`audits/PREREGISTRATION4_ADDENDA.md`.
+
+Amendments made on 2026-09-15 before the freeze, each with its reason:
+(1) weight-level random nulls (Target 4) use 20 draws per family instead
+of 200, because Marchenko-Pastur outlier counts on random matrices of these
+sizes vary by well under one percent between draws, and spectra are
+computed as eigenvalues of the Gram matrix, which equal the squared singular
+values; (2) for Target 3 the statistic depends only on each head's last
+attention row, so the marginal-matched and column-set surrogates act on
+that row, which is identical in distribution to permuting the full map;
+(3) the untrained-model null for Target 5 uses 3 initializations instead of
+5, because each requires a full generation pass on a 7B model; (4) the
+untrained-weight null for Target 4 is realized from the initializer: the
+Hugging Face implementations of these architectures initialize every
+projection entry i.i.d. Gaussian with standard deviation
+`initializer_range` (0.02 for Mistral-7B), so (d') is the Gaussian null at
+that standard deviation rather than an instantiated model; (5) an
+inclusion rule for the Retrieval Heads paper's primary model is fixed below
+(Target 5).
 
 ## Common procedure
 
@@ -12,12 +35,15 @@ before the first battery run; this header changes to FROZEN at that point.
   its own stated variability or 10 percent relative error; otherwise the
   target is labeled not reproducible and replaced by the next alternate
   in TARGETS.md, with the attempt reported.
-- Nulls, 200 draws each: (a) random causal softmax matched in n and T;
-  (b) per-row marginal-matched surrogates; (c) column-preserving
-  surrogates keeping the per-window top-k shared columns; (d) untrained
-  same-architecture model where available. For weight-level claims:
-  (a') Gaussian weights with matched shape and Frobenius norm, (b')
-  row-norm-matched random weights, (c') within-matrix permutation.
+- Nulls, 200 draws each for map-level surrogates: (a) random causal
+  softmax matched in n and T; (b) per-row marginal-matched surrogates; (c)
+  column-preserving surrogates keeping the per-window top-k shared columns;
+  (d) untrained same-architecture model where available (five
+  initializations for BERT-base and the Target 3 model, three for the
+  Target 5 model). For weight-level claims, 20 draws each: (a') Gaussian
+  weights with matched shape and Frobenius norm, (b') row-norm-matched
+  random weights, (c') within-matrix permutation, (d') Gaussian weights at
+  the architecture's initializer standard deviation.
 - Outcome labels: survives (real statistic beyond the 95th percentile of
   every null and effect-size shrinkage under 50 percent); shrinks
   (survives at least one null, shrinkage above 50 percent against
@@ -121,10 +147,14 @@ heads' last-token attention rows and the share of heads in the largest
 complete-linkage cluster at 0.95 (secondary: at 0.90).
 
 Nulls, 200 draws each on the same documents: (a) random causal softmax
-maps matched in n and T; (b) per-row marginal-matched surrogates of the
-full maps (the last row's entries permuted across positions); (c)
-column-set-preserving surrogates (the sink set fixed, the rest permuted);
-(d) config-initialized Mistral-7B architecture, five seeds.
+last rows matched in n and T (Gaussian logits with lognormal per-head
+temperature, as in the random family of the toolkit); (b) per-row
+marginal-matched surrogates, acting on each head's last row with the
+diagonal entry fixed, identical in distribution to permuting the full map
+since the statistic reads only that row; (c) column-set-preserving
+surrogates on the same row (the layer's sink set, computed from the full
+map, and the diagonal fixed, the rest permuted); (d) config-initialized
+architecture of the audited model, five seeds, in bfloat16.
 
 Effect size and shrinkage: real statistic versus null median; shrinkage =
 (null median minus random median) / (real minus random median).
@@ -153,14 +183,15 @@ Reproduction criterion (10 percent relative error) met on both.
 Statistic T_4: per matrix, the number of MP outliers and their energy
 share; per model, the mean over layers for each projection type.
 
-Nulls, 200 draws each where random: (a') Gaussian weights of the same shape
-and Frobenius norm (the MP null itself; expected near zero outliers);
-(b') row-norm-matched random weights: each row a random Gaussian direction
+Nulls, 20 draws each: (a') Gaussian weights of the same shape and Frobenius
+norm (the MP null itself; expected near zero outliers); (b')
+row-norm-matched random weights: each row a random Gaussian direction
 scaled to the real row's norm; (c') within-matrix permutation of the real
 entries (keeps the entry distribution, destroys row and column structure);
-(d') the same matrices of an untrained model of the same architecture
-(config-initialized weights, five seeds), which fixes the initialization's
-own outlier count.
+(d') Gaussian weights at the initializer standard deviation (0.02 for
+Mistral-7B), which is what config initialization produces for these
+projections and fixes the initialization's own outlier count. Spectra via
+the eigenvalues of W W^T (or W^T W), equal to the squared singular values.
 
 Effect size and shrinkage: the outlier count and energy share of the real
 matrix versus the null median; shrinkage = (null median) / real.
@@ -188,8 +219,14 @@ needle retrieved in every instance (strongest heads L12H7 0.61, L18H0 0.60, L18H
 paper's primary model `yaofu/llama-2-7b-80k` the same protocol (with the
 loading deviation in RUNLOG.md) retrieves the needle in only 10 of 20
 instances and puts 0.7 percent of heads above 0.1, so the base result is not
-reproduced there and that model is excluded from the battery; the battery
-runs on Qwen2.5-7B and Mistral-7B-Instruct-v0.2.
+reproduced there under our WikiText haystack and prompt. Inclusion rule,
+fixed here: the reproduction is repeated with the source repository's own
+haystack, needle, question and prompt template (nightdessert/Retrieval_Head)
+at 1K and 2K on 20 instances; Llama-2-7B-80K joins the battery if the
+needle is retrieved in at least 18 of 20 instances and the fraction of
+heads above 0.1 lies between 2 and 8 percent, and stays excluded otherwise;
+the outcome is recorded in RUNLOG.md before any battery runs. The battery
+runs on Qwen2.5-7B and Mistral-7B-Instruct-v0.2 in either case.
 
 Statistic T_5: the per-head retrieval score (share of needle tokens a head
 copies with its argmax attention at the matching position) and the set of
@@ -200,7 +237,8 @@ tokens, so the surrogates act on those rows: (a) random causal softmax rows
 matched in length; (b) per-row marginal-matched permutation of the real
 rows (the argmax lands on a random position); (c) column-set-preserving
 permutation (the sink set fixed); (d) config-initialized Qwen2.5-7B
-architecture on the same instances. 200 draws where random.
+architecture on the same instances, three initializations. 200 draws where
+random.
 
 Registered expectation E3 (the control the battery must not remove): the
 retrieval-head set survives (a), (b), (c) and (d) at the 99th percentile

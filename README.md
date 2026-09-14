@@ -248,7 +248,7 @@ Each instrument below exists because a finding above required it.
   spectral outliers in projection weights (2026), and retrieval heads as
   the positive control the nulls must not remove. Four base results are
   reproduced or partially reproduced and their criteria frozen in
-  `audits/PREREGISTRATION4_DRAFT.md` (the layer clustering; the spectral
+  `audits/PREREGISTRATION4.md` (the layer clustering; the spectral
   outliers, whose counts match the source to 0.3 percent; the retrieval
   heads, 4.2 percent of heads against the source's 3 to 6; the redundancy
   clusters in part, with the source's depth trend not reproduced); the

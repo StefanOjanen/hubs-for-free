@@ -78,7 +78,7 @@ produces. Near 1 means the null carries the effect; near 0 means the
 effect lies beyond what the null keeps; negative values mean the null moves
 the statistic the other way. The audit outcome labels used in this
 repository (survives, shrinks, matched) are defined in
-`audits/PREREGISTRATION4_DRAFT.md` in terms of these two numbers.
+`audits/PREREGISTRATION4.md` in terms of these two numbers.
 
 ## Base rates and matched-noise floors
 
