@@ -159,10 +159,16 @@ Gram-eigenvalue recipe was checked equal in outlier count and energy share
 to the SVD recipe on three random matrices and four Mistral-7B projection
 matrices. Incident, recorded for completeness: while verifying the scripts,
 a command intended to print the retrieval battery's help text started the
-script without --dry-run at about 09:20 UTC; it was killed about four
+script without --dry-run at about 23:20 UTC on 2026-09-14; it was killed about four
 minutes later while loading the model and the first instances, before
 writing any output, and no result was seen. Every battery script now
 refuses to run on real data without an explicit --registered=<OSF URL>
 flag. The file was renamed from PREREGISTRATION4_DRAFT.md to
 PREREGISTRATION4.md at the freeze; the freeze commit hash and the OSF
 registration URL are recorded below when they exist.
+
+Freeze commit: ee4e267, pushed 2026-09-14 23:24 UTC (the freeze date in the
+file, 2026-09-15, is the author's local date, UTC+2). SHA-256 of
+audits/PREREGISTRATION4.md at that commit:
+f078f7e43ea166f4f3877084bb424b547b064fdb3107c775b6ca07d2ee702b70. OSF
+registration URL: pending (added below when the registration exists).
