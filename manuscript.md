@@ -74,6 +74,83 @@ The last two parts were established under nine preregistrations whose
 thresholds were frozen and publicly timestamped before the runs, and whose
 failures are reported as failures.
 
+### 1.1 Related work and the lineage of the nulls
+
+Attention as an object of study. Clark et al. (2019) and Kovaleva et al.
+(2019) established the descriptive program this paper audits: heads
+cluster by the distance between their maps, heads in one layer resemble
+one another, and a few pattern types recur, with a "vertical" pattern on
+separator tokens the most common. Michel et al. (2019) and Voita et al.
+(2019) showed that most heads can be pruned, which turned head similarity
+into an engineering question (CHAI, 2024, clusters heads by the correlation
+of their attention rows to share keys and values). Abnar and Zuidema (2020)
+propagated attention through depth (rollout), and Kobayashi et al. (2020)
+showed that attention weights alone misstate a head's effect because the
+value vectors carry norm structure; the debate on whether attention weights
+explain anything (Jain and Wallace, 2019; Wiegreffe and Pinter, 2019)
+concerns explanation, whereas this paper concerns structure that is
+claimed to exist in the weights themselves.
+
+Sinks and registers. The shared column at the center of our results is the
+attention sink: Xiao et al. (2024) kept the first tokens in the cache
+because removing them breaks streaming generation; Darcet et al. (2024)
+showed that vision transformers store global information in high-norm
+"register" tokens and that adding explicit registers removes them;
+Bondarenko et al. (2023) traced quantization outliers to heads that attend
+to a fixed token in order to do nothing; Sun et al. (2024) described the
+massive activations that make such a token attractive; Gu et al. (2025)
+and Barbero et al. (2025) studied when the sink emerges in training and
+why the first token is a natural place for it. Our contribution to this
+literature is not the sink itself but a measurement: what share of the
+second-order statistics that other analyses report is the sink, and what
+is left when it is removed while every head keeps its concentration.
+
+Null models. The battery is assembled from three older traditions. From
+network science come constrained randomizations: Maslov and Sneppen (2002)
+rewired protein networks while preserving every node's degree, the
+configuration model (Newman, 2003) samples graphs with a fixed degree
+sequence, and both exist because degree heterogeneity alone produces hubs,
+clustering and spectral gaps. Our per-row marginal-matched surrogate is
+the row-stochastic analogue: row sums, row sharpness and self-mass are
+fixed, and Proposition 3 states what that alone implies for the coupling
+matrix. From nonlinear time series come surrogate data tests (Theiler et
+al., 1992; Schreiber and Schmitz, 2000), which fix a chosen set of
+statistics exactly and treat every other statistic as the test; the
+column-set-preserving surrogate fixes one more statistic, the mass on the
+shared columns, in this spirit. From neuroscience comes the tensor maximum
+entropy null of Elsayed and Cunningham (2017), which showed that structure
+reported in population recordings (low-dimensional dynamics, condition
+tuning) is an expected byproduct of the marginal covariances along each
+tensor mode; the question asked here of attention, whether the reported
+structure is a byproduct of simpler constraints, is the same question. The
+untrained-architecture null follows Adebayo et al. (2018). At the weight
+level, the Marchenko and Pastur (1967) law is the null that Target 4 uses
+by construction, and Martin and Mahoney (2021) showed that trained weight
+matrices have heavy-tailed spectra whose "outliers" are a signature of
+training rather than of any one direction, which is why the battery adds
+entry-permuted and norm-matched nulls next to the Gaussian one.
+
+| Null in this work | What it preserves | Lineage |
+|---|---|---|
+| random causal softmax (Gaussian logits, lognormal per-head temperature) | row-stochasticity, causal support, the sharpness distribution | random-graph baseline; randomized models of Adebayo et al. (2018) |
+| per-row marginal-matched permutation | row sums, row sharpness, self-mass, the diagonal | degree-preserving rewiring (Maslov and Sneppen, 2002); configuration model (Newman, 2003); constrained surrogates (Theiler et al., 1992) |
+| column-set-preserving permutation | the above plus the mass on the shared sink columns | surrogates that fix several statistics (Schreiber and Schmitz, 2000); tensor maximum entropy (Elsayed and Cunningham, 2017) |
+| dissociation controls (wrapped target, matched-geometry shift) | each head's concentration and row geometry, with the shared column moved | interventions on sink and register tokens (Xiao et al., 2024; Darcet et al., 2024) |
+| untrained same-architecture model | architecture, initialization, inputs | Adebayo et al. (2018) |
+| weight-level: Gaussian norm-matched, row-norm-matched, permuted entries, initializer scale | shape and norm; row norms; the entry distribution; the initialization | Marchenko and Pastur (1967); Martin and Mahoney (2021) |
+
+References for this subsection: Abnar and Zuidema, ACL 2020; Adebayo et
+al., NeurIPS 2018; Barbero et al., arXiv 2025; Bondarenko, Nagel and
+Blankevoort, NeurIPS 2023; CHAI, Agarwal et al., 2024; Clark et al., ACL
+BlackboxNLP 2019; Darcet et al., ICLR 2024; Elsayed and Cunningham, Nature
+Neuroscience 2017; Gu et al., ICLR 2025; Jain and Wallace, NAACL 2019;
+Kobayashi et al., EMNLP 2020; Kovaleva et al., EMNLP 2019; Marchenko and
+Pastur, Mathematics of the USSR-Sbornik 1967; Martin and Mahoney, JMLR
+2021; Maslov and Sneppen, Science 2002; Michel, Levy and Neubig, NeurIPS
+2019; Newman, SIAM Review 2003; Schreiber and Schmitz, Physica D 2000; Sun
+et al., 2024; Theiler et al., Physica D 1992; Voita et al., ACL 2019;
+Wiegreffe and Pinter, EMNLP 2019; Xiao et al., ICLR 2024.
+
 ## 2. The container: three propositions and two cancellations
 
 Notation. A layer has n heads with causal row-stochastic maps A_h in
