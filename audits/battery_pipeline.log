@@ -1,0 +1,20 @@
+pipeline start 2026-09-15T00:03:00Z head 3289070
+cpu pids clark 80980 dewage 80982
+power_watch: battery 24% discharging, batteries paused 13:04:17Z
+power_watch: on AC power, batteries resumed 14:42:02Z
+retrieval exit 0 14:44:00Z
+dewage exit 143 14:49:08Z
+dewage parallel start 14:49:10Z head c3a80b4
+clark exit 137 14:52:50Z
+clark relaunched 15:03:42Z
+dewage workers resumed (chai rss 458224 kB) 15:04:38Z
+dewage workers paused for CHAI memory headroom 15:05:20Z
+dewage workers resumed (chai rss 463680 kB) 15:05:21Z
+dewage workers paused (SIGSTOP) until CHAI releases its models 15:05:59Z
+correction: the SIGSTOP pauses above did not take effect on the worker processes (they kept running); all six workers ran throughout 15:09:29Z
+chai exit 0 16:42:05Z
+pipeline end 2026-09-15T16:42:05Z
+power_watch: exit 16:42:16Z
+pipeline2 start 2026-09-15T16:43:35Z head 6f77a73
+renamed Qwen retrieval result to battery_result_Qwen2.5-7B.json 16:43:35Z
+llama inclusion test start 16:43:35Z

@@ -251,3 +251,19 @@ Clark restart (2026-09-15, 15:05 UTC). The Target 1 battery was killed by
 the system (exit 137, memory) at 14:52 UTC while generating the surrogate
 draws; fixed to draw-by-draw generation (addendum 7) and relaunched from
 the beginning; the killed run's log is kept as battery_killed.log.
+
+Batteries completed so far (2026-09-15). Retrieval on Qwen2.5-7B (finished
+14:44 UTC): 4.2 percent of heads above 0.1, every null at the 100th
+percentile, top-10 shrinkage 0.011 or less; E3 holds on this model. CHAI on
+Mistral-7B-v0.1 (finished 16:42 UTC, 7,080 s): real cross-head correlation
+0.60 to 0.99 across layers; the sink-set surrogate (c) reproduces 0.90 to
+0.98 of the correlation excess over the random null but the real value sits
+above every one of its 200 draws in all 32 layers, so the registered
+"matched" clause (percentile between 5 and 95 in two thirds of the layers)
+fails 0 of 32; the marginal-matched surrogate (b) reproduces about zero, so
+the clause "reproduces more than half" fails 0 of 32 under the reading of
+addendum 4; (a) and (d) survived in 32 of 32. Per-layer label: shrinks in
+32 of 32. The registered expectation for this model fails as written; the
+numbers are in audits/RESULTS.md. Pipeline 2 started 16:43 UTC with the
+Llama-2-7B-80K inclusion test on the MPS; Clark (relaunched 15:05) and the
+six Dewage workers continue on the CPU.

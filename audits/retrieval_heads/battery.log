@@ -1,0 +1,130 @@
+Loading weights:   0%|          | 0/339 [00:00<?, ?it/s]Loading weights: 100%|██████████| 339/339 [00:00<00:00, 4308.81it/s]
+  ctx 1024 depth 0.05 done (135s)
+  ctx 1024 depth 0.27 done (33783s)
+  ctx 1024 depth 0.50 done (33949s)
+  ctx 1024 depth 0.72 done (34048s)
+  ctx 1024 depth 0.95 done (34143s)
+  ctx 1024 depth 0.05 done (34240s)
+  ctx 1024 depth 0.27 done (34336s)
+  ctx 1024 depth 0.50 done (34426s)
+  ctx 1024 depth 0.72 done (34521s)
+  ctx 1024 depth 0.95 done (34610s)
+  ctx 2048 depth 0.05 done (34781s)
+  ctx 2048 depth 0.27 done (34949s)
+  ctx 2048 depth 0.50 done (35120s)
+  ctx 2048 depth 0.72 done (35290s)
+  ctx 2048 depth 0.95 done (35467s)
+  ctx 2048 depth 0.05 done (35639s)
+  ctx 2048 depth 0.27 done (35818s)
+  ctx 2048 depth 0.50 done (35999s)
+  ctx 2048 depth 0.72 done (36170s)
+  ctx 2048 depth 0.95 done (36341s)
+  ctx 1024 depth 0.05 done (36496s)
+  ctx 1024 depth 0.27 done (36502s)
+  ctx 1024 depth 0.50 done (36508s)
+  ctx 1024 depth 0.72 done (36515s)
+  ctx 1024 depth 0.95 done (36521s)
+  ctx 1024 depth 0.05 done (36527s)
+  ctx 1024 depth 0.27 done (36533s)
+  ctx 1024 depth 0.50 done (36539s)
+  ctx 1024 depth 0.72 done (36545s)
+  ctx 1024 depth 0.95 done (36551s)
+  ctx 2048 depth 0.05 done (36566s)
+  ctx 2048 depth 0.27 done (36576s)
+  ctx 2048 depth 0.50 done (36590s)
+  ctx 2048 depth 0.72 done (36602s)
+  ctx 2048 depth 0.95 done (36615s)
+  ctx 2048 depth 0.05 done (36628s)
+  ctx 2048 depth 0.27 done (36640s)
+  ctx 2048 depth 0.50 done (36651s)
+  ctx 2048 depth 0.72 done (36661s)
+  ctx 2048 depth 0.95 done (36672s)
+  ctx 1024 depth 0.05 done (38650s)
+  ctx 1024 depth 0.27 done (38660s)
+  ctx 1024 depth 0.50 done (38666s)
+  ctx 1024 depth 0.72 done (39019s)
+  ctx 1024 depth 0.95 done (39031s)
+  ctx 1024 depth 0.05 done (39937s)
+  ctx 1024 depth 0.27 done (39943s)
+  ctx 1024 depth 0.50 done (39949s)
+  ctx 1024 depth 0.72 done (39956s)
+  ctx 1024 depth 0.95 done (40862s)
+  ctx 2048 depth 0.05 done (40877s)
+  ctx 2048 depth 0.27 done (41799s)
+  ctx 2048 depth 0.50 done (41810s)
+  ctx 2048 depth 0.72 done (42722s)
+  ctx 2048 depth 0.95 done (42735s)
+  ctx 2048 depth 0.05 done (43638s)
+  ctx 2048 depth 0.27 done (43703s)
+  ctx 2048 depth 0.50 done (43718s)
+  ctx 2048 depth 0.72 done (44629s)
+  ctx 2048 depth 0.95 done (44644s)
+  ctx 1024 depth 0.05 done (46786s)
+  ctx 1024 depth 0.27 done (46792s)
+  ctx 1024 depth 0.50 done (46798s)
+  ctx 1024 depth 0.72 done (46804s)
+  ctx 1024 depth 0.95 done (46810s)
+  ctx 1024 depth 0.05 done (46817s)
+  ctx 1024 depth 0.27 done (46823s)
+  ctx 1024 depth 0.50 done (46829s)
+  ctx 1024 depth 0.72 done (46835s)
+  ctx 1024 depth 0.95 done (46842s)
+  ctx 2048 depth 0.05 done (46857s)
+  ctx 2048 depth 0.27 done (46871s)
+  ctx 2048 depth 0.50 done (52775s)
+  ctx 2048 depth 0.72 done (52785s)
+  ctx 2048 depth 0.95 done (52796s)
+  ctx 2048 depth 0.05 done (52808s)
+  ctx 2048 depth 0.27 done (52823s)
+  ctx 2048 depth 0.50 done (52834s)
+  ctx 2048 depth 0.72 done (52845s)
+  ctx 2048 depth 0.95 done (52855s)
+{
+ "target": "Retrieval Heads 2024",
+ "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/ee4e267/audits/PREREGISTRATION4.md",
+ "model": "Qwen/Qwen2.5-7B",
+ "contexts": [
+  1024,
+  2048
+ ],
+ "instances": 20,
+ "draws": 200,
+ "dry_run": false,
+ "real": {
+  "frac_heads_above_0.1": 0.042091836734693876,
+  "mean_top10_score": 0.4310869565217391,
+  "max_score": 0.5239130434782608
+ },
+ "nulls": {
+  "a_random": {
+   "frac_above_0.1_median": 0.0,
+   "frac_percentile_of_real": 100.0,
+   "top10_median": 0.004565217391304348,
+   "top10_percentile_of_real": 100.0,
+   "top10_shrinkage": 0.010590015128593042
+  },
+  "b_marginal": {
+   "frac_above_0.1_median": 0.0,
+   "frac_percentile_of_real": 100.0,
+   "top10_median": 0.004565217391304348,
+   "top10_percentile_of_real": 100.0,
+   "top10_shrinkage": 0.010590015128593042
+  },
+  "c_colset": {
+   "frac_above_0.1_median": 0.0,
+   "frac_percentile_of_real": 100.0,
+   "top10_median": 0.003260869565217391,
+   "top10_percentile_of_real": 100.0,
+   "top10_shrinkage": 0.007564296520423601
+  },
+  "d_untrained": {
+   "frac_above_0.1_median": 0.0,
+   "top10_median": 0.0,
+   "top10_shrinkage": 0.0,
+   "n": 3
+  }
+ },
+ "registered_expectation": "survives (a), (b), (c), (d) at the 99th percentile with the score shrinking by less than 20 percent under every null",
+ "runtime_s": 52856.8
+}
+BATTERY_DONE audits/retrieval_heads/battery_result.json
