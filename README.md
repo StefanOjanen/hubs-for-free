@@ -138,7 +138,7 @@ rises from 78 to 271 across all 32 layers.
 transfers.** The layer's shared-energy fraction predicts its coupling
 statistic at Spearman -0.76 across the high-sink layers of five held-out
 models at or below 1.5B, and again at -0.76 in a separately preregistered
-3B-to-7B round of 130 layers, and at -0.70 (interval -0.76 to -0.62)
+3B-to-7B round of 130 layers, and at -0.70 (model-clustered interval -0.78 to -0.57)
 over 182 layers when all thirteen models were rerun under one protocol
 with the ill-conditioned layers excluded. A fully synthetic toy ensemble,
 built from nothing but noise plus one shared column, places the regime
@@ -295,7 +295,8 @@ the four new attention designs. Development
 calibration that shaped a preregistration is committed and labeled as
 such. A blind reimplementation from the written specification
 reproduced the anchor values to four decimals; surrogate invariants hold
-to 1e-15; per-layer bootstrap confidence intervals are reported;
+to 1e-15; confidence intervals resample models, then layers within a model
+(`alignment_study/clustered_stats.py`);
 adversarial review objections (statistic ill-conditioning, GQA confound,
 circularity risks) were tested and are answered in
 `alignment_study/NOTE.md`. The synthetic battery regenerates from

@@ -445,8 +445,8 @@ models on the CPU from 08:26 UTC, the five larger ones on the GPU from
 
 - G1 FAIL (the gate): pooled over the 231 high-sink layers, the sink-only
   derived value explains 55 percent of the variance in measured shared
-  energy (linear R^2 0.55, bootstrap 0.42 to 0.69), against the registered
-  0.8. The interim value on the first seven models was 0.92; adding
+  energy (linear R^2 0.55, per-layer bootstrap 0.42 to 0.69, model-clustered
+  0.24 to 0.93), against the registered 0.8. The interim value on the first seven models was 0.92; adding
   Phi-3-mini (per-model R^2 0.14), Qwen2.5-3B (0.34), OLMo-2 (0.87) and
   Qwen2.5-7B (0.93) lowered the pooled fit because the models sit on
   different offset lines: per-model intercepts run from 0.14 to 0.74, and

@@ -1,0 +1,914 @@
+{
+ "B": 2000,
+ "seed": 0,
+ "method": "two-stage cluster bootstrap (models, then layers) with per-layer bootstrap and random-effects average for comparison",
+ "stats": {
+  "PR2_H4_law": {
+   "statistic": "Spearman",
+   "pooled": -0.761,
+   "n_layers": 84,
+   "n_clusters": 5,
+   "ci95_cluster_bootstrap": [
+    -0.868,
+    -0.565
+   ],
+   "cluster_draws_undefined": 0,
+   "ci95_layer_bootstrap": [
+    -0.836,
+    -0.642
+   ],
+   "random_effects": {
+    "spearman": -0.71,
+    "ci95": [
+     -0.844,
+     -0.493
+    ],
+    "tau": 0.277,
+    "k": 5,
+    "heterogeneity_Q": 8.11
+   },
+   "per_cluster": {
+    "gpt2-medium": {
+     "n": 19,
+     "spearman": -0.891
+    },
+    "EleutherAI/pythia-410m": {
+     "n": 18,
+     "spearman": -0.612
+    },
+    "TinyLlama/TinyLlama_v1.1": {
+     "n": 7,
+     "spearman": -0.857
+    },
+    "Qwen/Qwen2.5-1.5B": {
+     "n": 20,
+     "spearman": -0.543
+    },
+    "Qwen/Qwen2.5-1.5B-Instruct": {
+     "n": 20,
+     "spearman": -0.564
+    }
+   },
+   "note": ""
+  },
+  "PR3_S4_law": {
+   "statistic": "Spearman",
+   "pooled": -0.761,
+   "n_layers": 130,
+   "n_clusters": 5,
+   "ci95_cluster_bootstrap": [
+    -0.838,
+    -0.619
+   ],
+   "cluster_draws_undefined": 0,
+   "ci95_layer_bootstrap": [
+    -0.824,
+    -0.675
+   ],
+   "random_effects": {
+    "spearman": -0.706,
+    "ci95": [
+     -0.786,
+     -0.602
+    ],
+    "tau": 0.0,
+    "k": 5,
+    "heterogeneity_Q": 2.72
+   },
+   "per_cluster": {
+    "Qwen/Qwen2.5-3B": {
+     "n": 29,
+     "spearman": -0.778
+    },
+    "Qwen/Qwen2.5-7B": {
+     "n": 24,
+     "spearman": -0.53
+    },
+    "mistralai/Mistral-7B-v0.1": {
+     "n": 32,
+     "spearman": -0.72
+    },
+    "microsoft/Phi-3-mini-4k-instruct": {
+     "n": 29,
+     "spearman": -0.691
+    },
+    "allenai/OLMo-2-1124-7B": {
+     "n": 16,
+     "spearman": -0.768
+    }
+   },
+   "note": ""
+  },
+  "PR6_S4_law": {
+   "statistic": "Spearman",
+   "pooled": -0.696,
+   "n_layers": 182,
+   "n_clusters": 11,
+   "ci95_cluster_bootstrap": [
+    -0.776,
+    -0.568
+   ],
+   "cluster_draws_undefined": 0,
+   "ci95_layer_bootstrap": [
+    -0.754,
+    -0.624
+   ],
+   "random_effects": {
+    "spearman": -0.671,
+    "ci95": [
+     -0.759,
+     -0.56
+    ],
+    "tau": 0.128,
+    "k": 11,
+    "heterogeneity_Q": 12.17
+   },
+   "per_cluster": {
+    "mistralai/Mistral-7B-v0.1": {
+     "n": 25,
+     "spearman": -0.469
+    },
+    "allenai/OLMo-2-1124-7B": {
+     "n": 17,
+     "spearman": -0.909
+    },
+    "microsoft/Phi-3-mini-4k-instruct": {
+     "n": 19,
+     "spearman": -0.716
+    },
+    "Qwen/Qwen2.5-1.5B-Instruct": {
+     "n": 20,
+     "spearman": -0.591
+    },
+    "Qwen/Qwen2.5-1.5B": {
+     "n": 20,
+     "spearman": -0.54
+    },
+    "Qwen/Qwen2.5-7B": {
+     "n": 24,
+     "spearman": -0.618
+    },
+    "TinyLlama/TinyLlama_v1.1": {
+     "n": 6,
+     "spearman": -0.6
+    },
+    "gpt2-medium": {
+     "n": 18,
+     "spearman": -0.783
+    },
+    "gpt2": {
+     "n": 9,
+     "spearman": -0.683
+    },
+    "EleutherAI/pythia-160m": {
+     "n": 6,
+     "spearman": -0.829
+    },
+    "EleutherAI/pythia-410m": {
+     "n": 18,
+     "spearman": -0.571
+    }
+   },
+   "note": ""
+  },
+  "PR10_N4_law": {
+   "statistic": "Spearman",
+   "pooled": -0.837,
+   "n_layers": 96,
+   "n_clusters": 4,
+   "ci95_cluster_bootstrap": [
+    -0.921,
+    -0.369
+   ],
+   "cluster_draws_undefined": 0,
+   "ci95_layer_bootstrap": [
+    -0.877,
+    -0.777
+   ],
+   "random_effects": {
+    "spearman": -0.687,
+    "ci95": [
+     -0.853,
+     -0.394
+    ],
+    "tau": 0.374,
+    "k": 4,
+    "heterogeneity_Q": 11.73
+   },
+   "per_cluster": {
+    "Qwen/Qwen3-8B": {
+     "n": 26,
+     "spearman": -0.837
+    },
+    "bigscience/bloom-7b1": {
+     "n": 19,
+     "spearman": -0.374
+    },
+    "tiiuae/falcon-7b": {
+     "n": 22,
+     "spearman": -0.84
+    },
+    "facebook/opt-6.7b": {
+     "n": 29,
+     "spearman": -0.482
+    }
+   },
+   "note": ""
+  },
+  "PR6_PR10_law_pooled": {
+   "statistic": "Spearman",
+   "pooled": -0.75,
+   "n_layers": 278,
+   "n_clusters": 15,
+   "ci95_cluster_bootstrap": [
+    -0.819,
+    -0.61
+   ],
+   "cluster_draws_undefined": 0,
+   "ci95_layer_bootstrap": [
+    -0.785,
+    -0.707
+   ],
+   "random_effects": {
+    "spearman": -0.68,
+    "ci95": [
+     -0.763,
+     -0.576
+    ],
+    "tau": 0.216,
+    "k": 15,
+    "heterogeneity_Q": 23.98
+   },
+   "per_cluster": {
+    "mistralai/Mistral-7B-v0.1": {
+     "n": 25,
+     "spearman": -0.469
+    },
+    "allenai/OLMo-2-1124-7B": {
+     "n": 17,
+     "spearman": -0.909
+    },
+    "microsoft/Phi-3-mini-4k-instruct": {
+     "n": 19,
+     "spearman": -0.716
+    },
+    "Qwen/Qwen2.5-1.5B-Instruct": {
+     "n": 20,
+     "spearman": -0.591
+    },
+    "Qwen/Qwen2.5-1.5B": {
+     "n": 20,
+     "spearman": -0.54
+    },
+    "Qwen/Qwen2.5-7B": {
+     "n": 24,
+     "spearman": -0.618
+    },
+    "TinyLlama/TinyLlama_v1.1": {
+     "n": 6,
+     "spearman": -0.6
+    },
+    "gpt2-medium": {
+     "n": 18,
+     "spearman": -0.783
+    },
+    "gpt2": {
+     "n": 9,
+     "spearman": -0.683
+    },
+    "EleutherAI/pythia-160m": {
+     "n": 6,
+     "spearman": -0.829
+    },
+    "EleutherAI/pythia-410m": {
+     "n": 18,
+     "spearman": -0.571
+    },
+    "Qwen/Qwen3-8B": {
+     "n": 26,
+     "spearman": -0.837
+    },
+    "bigscience/bloom-7b1": {
+     "n": 19,
+     "spearman": -0.374
+    },
+    "tiiuae/falcon-7b": {
+     "n": 22,
+     "spearman": -0.84
+    },
+    "facebook/opt-6.7b": {
+     "n": 29,
+     "spearman": -0.482
+    }
+   },
+   "note": "not a registered clause; the two rounds pooled for reference"
+  },
+  "PR5_D1_sink_vs_cos": {
+   "statistic": "Spearman",
+   "pooled": 0.935,
+   "n_layers": 360,
+   "n_clusters": 20,
+   "ci95_cluster_bootstrap": [
+    0.85,
+    0.971
+   ],
+   "cluster_draws_undefined": 0,
+   "ci95_layer_bootstrap": [
+    0.908,
+    0.956
+   ],
+   "random_effects": {
+    "spearman": 0.893,
+    "ci95": [
+     0.835,
+     0.931
+    ],
+    "tau": 0.451,
+    "k": 20,
+    "heterogeneity_Q": 76.39
+   },
+   "per_cluster": {
+    "EleutherAI/pythia-160m@0": {
+     "n": 12,
+     "spearman": 0.749
+    },
+    "EleutherAI/pythia-160m@1000": {
+     "n": 12,
+     "spearman": 0.76
+    },
+    "EleutherAI/pythia-160m@143000": {
+     "n": 12,
+     "spearman": 0.951
+    },
+    "EleutherAI/pythia-160m@16000": {
+     "n": 12,
+     "spearman": 0.865
+    },
+    "EleutherAI/pythia-160m@2000": {
+     "n": 12,
+     "spearman": 0.86
+    },
+    "EleutherAI/pythia-160m@32000": {
+     "n": 12,
+     "spearman": 0.86
+    },
+    "EleutherAI/pythia-160m@4000": {
+     "n": 12,
+     "spearman": 0.86
+    },
+    "EleutherAI/pythia-160m@512": {
+     "n": 12,
+     "spearman": 0.343
+    },
+    "EleutherAI/pythia-160m@64000": {
+     "n": 12,
+     "spearman": 0.902
+    },
+    "EleutherAI/pythia-160m@8000": {
+     "n": 12,
+     "spearman": 0.811
+    },
+    "EleutherAI/pythia-410m@0": {
+     "n": 24,
+     "spearman": 0.57
+    },
+    "EleutherAI/pythia-410m@1000": {
+     "n": 24,
+     "spearman": 0.957
+    },
+    "EleutherAI/pythia-410m@143000": {
+     "n": 24,
+     "spearman": 0.935
+    },
+    "EleutherAI/pythia-410m@16000": {
+     "n": 24,
+     "spearman": 0.927
+    },
+    "EleutherAI/pythia-410m@2000": {
+     "n": 24,
+     "spearman": 0.967
+    },
+    "EleutherAI/pythia-410m@32000": {
+     "n": 24,
+     "spearman": 0.923
+    },
+    "EleutherAI/pythia-410m@4000": {
+     "n": 24,
+     "spearman": 0.97
+    },
+    "EleutherAI/pythia-410m@512": {
+     "n": 24,
+     "spearman": 0.614
+    },
+    "EleutherAI/pythia-410m@64000": {
+     "n": 24,
+     "spearman": 0.944
+    },
+    "EleutherAI/pythia-410m@8000": {
+     "n": 24,
+     "spearman": 0.971
+    }
+   },
+   "note": "clusters are checkpoints (model x step)"
+  },
+  "PR5_D2_law": {
+   "statistic": "Spearman",
+   "pooled": -0.736,
+   "n_layers": 152,
+   "n_clusters": 12,
+   "ci95_cluster_bootstrap": [
+    -0.81,
+    -0.584
+   ],
+   "cluster_draws_undefined": 0,
+   "ci95_layer_bootstrap": [
+    -0.8,
+    -0.656
+   ],
+   "random_effects": {
+    "spearman": -0.599,
+    "ci95": [
+     -0.729,
+     -0.427
+    ],
+    "tau": 0.245,
+    "k": 12,
+    "heterogeneity_Q": 17.27
+   },
+   "per_cluster": {
+    "EleutherAI/pythia-160m@143000": {
+     "n": 8,
+     "spearman": -0.5
+    },
+    "EleutherAI/pythia-160m@16000": {
+     "n": 7,
+     "spearman": 0.321
+    },
+    "EleutherAI/pythia-160m@32000": {
+     "n": 8,
+     "spearman": -0.262
+    },
+    "EleutherAI/pythia-160m@64000": {
+     "n": 8,
+     "spearman": -0.429
+    },
+    "EleutherAI/pythia-160m@8000": {
+     "n": 7,
+     "spearman": 0.429
+    },
+    "EleutherAI/pythia-410m@143000": {
+     "n": 18,
+     "spearman": -0.612
+    },
+    "EleutherAI/pythia-410m@16000": {
+     "n": 16,
+     "spearman": -0.729
+    },
+    "EleutherAI/pythia-410m@2000": {
+     "n": 13,
+     "spearman": -0.467
+    },
+    "EleutherAI/pythia-410m@32000": {
+     "n": 18,
+     "spearman": -0.804
+    },
+    "EleutherAI/pythia-410m@4000": {
+     "n": 15,
+     "spearman": -0.768
+    },
+    "EleutherAI/pythia-410m@64000": {
+     "n": 18,
+     "spearman": -0.759
+    },
+    "EleutherAI/pythia-410m@8000": {
+     "n": 16,
+     "spearman": -0.712
+    }
+   },
+   "note": "clusters are checkpoints with at least two high-sink layers"
+  },
+  "PR9_P4_profile": {
+   "statistic": "Spearman",
+   "pooled": 0.949,
+   "n_layers": 310,
+   "n_clusters": 12,
+   "ci95_cluster_bootstrap": [
+    0.877,
+    0.984
+   ],
+   "cluster_draws_undefined": 0,
+   "ci95_layer_bootstrap": [
+    0.928,
+    0.964
+   ],
+   "random_effects": {
+    "spearman": 0.955,
+    "ci95": [
+     0.903,
+     0.979
+    ],
+    "tau": 0.659,
+    "k": 12,
+    "heterogeneity_Q": 119.02
+   },
+   "per_cluster": {
+    "mistralai/Mistral-7B-v0.1": {
+     "n": 32,
+     "spearman": 0.994
+    },
+    "allenai/OLMo-2-1124-7B": {
+     "n": 32,
+     "spearman": 0.856
+    },
+    "microsoft/Phi-3-mini-4k-instruct": {
+     "n": 32,
+     "spearman": 0.988
+    },
+    "Qwen/Qwen2.5-1.5B-Instruct": {
+     "n": 28,
+     "spearman": 0.967
+    },
+    "Qwen/Qwen2.5-1.5B": {
+     "n": 28,
+     "spearman": 0.975
+    },
+    "Qwen/Qwen2.5-3B": {
+     "n": 36,
+     "spearman": 0.972
+    },
+    "Qwen/Qwen2.5-7B": {
+     "n": 28,
+     "spearman": 0.978
+    },
+    "TinyLlama/TinyLlama_v1.1": {
+     "n": 22,
+     "spearman": 0.313
+    },
+    "gpt2-medium": {
+     "n": 24,
+     "spearman": 0.854
+    },
+    "gpt2": {
+     "n": 12,
+     "spearman": 0.909
+    },
+    "EleutherAI/pythia-160m": {
+     "n": 12,
+     "spearman": 0.944
+    },
+    "EleutherAI/pythia-410m": {
+     "n": 24,
+     "spearman": 0.978
+    }
+   },
+   "note": ""
+  },
+  "PR9_P4_profile_dense_control": {
+   "statistic": "Spearman",
+   "pooled": 0.13,
+   "n_layers": 310,
+   "n_clusters": 12,
+   "ci95_cluster_bootstrap": [
+    -0.166,
+    0.417
+   ],
+   "cluster_draws_undefined": 0,
+   "ci95_layer_bootstrap": [
+    -0.005,
+    0.262
+   ],
+   "random_effects": {
+    "spearman": 0.079,
+    "ci95": [
+     -0.257,
+     0.399
+    ],
+    "tau": 0.562,
+    "k": 12,
+    "heterogeneity_Q": 89.72
+   },
+   "per_cluster": {
+    "mistralai/Mistral-7B-v0.1": {
+     "n": 32,
+     "spearman": 0.821
+    },
+    "allenai/OLMo-2-1124-7B": {
+     "n": 32,
+     "spearman": 0.741
+    },
+    "microsoft/Phi-3-mini-4k-instruct": {
+     "n": 32,
+     "spearman": 0.542
+    },
+    "Qwen/Qwen2.5-1.5B-Instruct": {
+     "n": 28,
+     "spearman": -0.355
+    },
+    "Qwen/Qwen2.5-1.5B": {
+     "n": 28,
+     "spearman": -0.398
+    },
+    "Qwen/Qwen2.5-3B": {
+     "n": 36,
+     "spearman": -0.075
+    },
+    "Qwen/Qwen2.5-7B": {
+     "n": 28,
+     "spearman": -0.28
+    },
+    "TinyLlama/TinyLlama_v1.1": {
+     "n": 22,
+     "spearman": 0.29
+    },
+    "gpt2-medium": {
+     "n": 24,
+     "spearman": 0.244
+    },
+    "gpt2": {
+     "n": 12,
+     "spearman": -0.664
+    },
+    "EleutherAI/pythia-160m": {
+     "n": 12,
+     "spearman": -0.441
+    },
+    "EleutherAI/pythia-410m": {
+     "n": 24,
+     "spearman": -0.148
+    }
+   },
+   "note": ""
+  },
+  "PR10_P4_profile": {
+   "statistic": "Spearman",
+   "pooled": 0.973,
+   "n_layers": 130,
+   "n_clusters": 4,
+   "ci95_cluster_bootstrap": [
+    0.911,
+    0.989
+   ],
+   "cluster_draws_undefined": 0,
+   "ci95_layer_bootstrap": [
+    0.95,
+    0.986
+   ],
+   "random_effects": {
+    "spearman": 0.967,
+    "ci95": [
+     0.93,
+     0.984
+    ],
+    "tau": 0.343,
+    "k": 4,
+    "heterogeneity_Q": 13.38
+   },
+   "per_cluster": {
+    "Qwen/Qwen3-8B": {
+     "n": 36,
+     "spearman": 0.965
+    },
+    "bigscience/bloom-7b1": {
+     "n": 30,
+     "spearman": 0.981
+    },
+    "tiiuae/falcon-7b": {
+     "n": 32,
+     "spearman": 0.981
+    },
+    "facebook/opt-6.7b": {
+     "n": 32,
+     "spearman": 0.903
+    }
+   },
+   "note": ""
+  },
+  "PR10_P4_profile_dense_control": {
+   "statistic": "Spearman",
+   "pooled": 0.465,
+   "n_layers": 130,
+   "n_clusters": 4,
+   "ci95_cluster_bootstrap": [
+    -0.285,
+    0.774
+   ],
+   "cluster_draws_undefined": 0,
+   "ci95_layer_bootstrap": [
+    0.289,
+    0.627
+   ],
+   "random_effects": {
+    "spearman": 0.123,
+    "ci95": [
+     -0.636,
+     0.761
+    ],
+    "tau": 0.873,
+    "k": 4,
+    "heterogeneity_Q": 70.36
+   },
+   "per_cluster": {
+    "Qwen/Qwen3-8B": {
+     "n": 36,
+     "spearman": 0.366
+    },
+    "bigscience/bloom-7b1": {
+     "n": 30,
+     "spearman": -0.812
+    },
+    "tiiuae/falcon-7b": {
+     "n": 32,
+     "spearman": 0.786
+    },
+    "facebook/opt-6.7b": {
+     "n": 32,
+     "spearman": 0.177
+    }
+   },
+   "note": ""
+  },
+  "PR8_G1_gate_R2": {
+   "statistic": "R2 linear",
+   "pooled": 0.551,
+   "n_layers": 231,
+   "n_clusters": 12,
+   "ci95_cluster_bootstrap": [
+    0.241,
+    0.929
+   ],
+   "cluster_draws_undefined": 0,
+   "ci95_layer_bootstrap": [
+    0.42,
+    0.687
+   ],
+   "random_effects": null,
+   "per_cluster": {
+    "mistralai/Mistral-7B-v0.1": {
+     "n": 32,
+     "r2_linear": 0.929
+    },
+    "allenai/OLMo-2-1124-7B": {
+     "n": 16,
+     "r2_linear": 0.867
+    },
+    "microsoft/Phi-3-mini-4k-instruct": {
+     "n": 29,
+     "r2_linear": 0.142
+    },
+    "Qwen/Qwen2.5-1.5B-Instruct": {
+     "n": 20,
+     "r2_linear": 0.766
+    },
+    "Qwen/Qwen2.5-1.5B": {
+     "n": 20,
+     "r2_linear": 0.761
+    },
+    "Qwen/Qwen2.5-3B": {
+     "n": 29,
+     "r2_linear": 0.344
+    },
+    "Qwen/Qwen2.5-7B": {
+     "n": 24,
+     "r2_linear": 0.925
+    },
+    "TinyLlama/TinyLlama_v1.1": {
+     "n": 7,
+     "r2_linear": 0.518
+    },
+    "gpt2-medium": {
+     "n": 19,
+     "r2_linear": 0.941
+    },
+    "gpt2": {
+     "n": 9,
+     "r2_linear": 0.983
+    },
+    "EleutherAI/pythia-160m": {
+     "n": 8,
+     "r2_linear": 0.94
+    },
+    "EleutherAI/pythia-410m": {
+     "n": 18,
+     "r2_linear": 0.99
+    }
+   },
+   "note": "models with at least two high-sink layers"
+  },
+  "PR8_G2_all_layers": {
+   "statistic": "Spearman",
+   "pooled": 0.859,
+   "n_layers": 310,
+   "n_clusters": 12,
+   "ci95_cluster_bootstrap": [
+    0.76,
+    0.951
+   ],
+   "cluster_draws_undefined": 0,
+   "ci95_layer_bootstrap": [
+    0.809,
+    0.903
+   ],
+   "random_effects": {
+    "spearman": 0.912,
+    "ci95": [
+     0.833,
+     0.954
+    ],
+    "tau": 0.557,
+    "k": 12,
+    "heterogeneity_Q": 88.33
+   },
+   "per_cluster": {
+    "mistralai/Mistral-7B-v0.1": {
+     "n": 32,
+     "spearman": 0.974
+    },
+    "allenai/OLMo-2-1124-7B": {
+     "n": 32,
+     "spearman": 0.975
+    },
+    "microsoft/Phi-3-mini-4k-instruct": {
+     "n": 32,
+     "spearman": 0.6
+    },
+    "Qwen/Qwen2.5-1.5B-Instruct": {
+     "n": 28,
+     "spearman": 0.75
+    },
+    "Qwen/Qwen2.5-1.5B": {
+     "n": 28,
+     "spearman": 0.751
+    },
+    "Qwen/Qwen2.5-3B": {
+     "n": 36,
+     "spearman": 0.838
+    },
+    "Qwen/Qwen2.5-7B": {
+     "n": 28,
+     "spearman": 0.952
+    },
+    "TinyLlama/TinyLlama_v1.1": {
+     "n": 22,
+     "spearman": 0.704
+    },
+    "gpt2-medium": {
+     "n": 24,
+     "spearman": 0.966
+    },
+    "gpt2": {
+     "n": 12,
+     "spearman": 0.972
+    },
+    "EleutherAI/pythia-160m": {
+     "n": 12,
+     "spearman": 0.881
+    },
+    "EleutherAI/pythia-410m": {
+     "n": 24,
+     "spearman": 0.968
+    }
+   },
+   "note": ""
+  },
+  "PR7_M2_sharedE_vs_merge_cost": {
+   "statistic": "Spearman",
+   "pooled": 0.125,
+   "n_layers": 92,
+   "n_clusters": 3,
+   "ci95_cluster_bootstrap": [
+    -0.099,
+    0.348
+   ],
+   "cluster_draws_undefined": 0,
+   "ci95_layer_bootstrap": [
+    -0.096,
+    0.323
+   ],
+   "random_effects": {
+    "spearman": 0.131,
+    "ci95": [
+     -0.083,
+     0.334
+    ],
+    "tau": 0.0,
+    "k": 3,
+    "heterogeneity_Q": 0.63
+   },
+   "per_cluster": {
+    "Qwen/Qwen2.5-1.5B": {
+     "n": 28,
+     "spearman": -0.001
+    },
+    "Qwen/Qwen2.5-3B": {
+     "n": 36,
+     "spearman": 0.18
+    },
+    "Qwen/Qwen2.5-7B": {
+     "n": 28,
+     "spearman": 0.197
+    }
+   },
+   "note": ""
+  }
+ }
+}

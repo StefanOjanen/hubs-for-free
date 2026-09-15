@@ -234,3 +234,15 @@ a newline, per-step top-1 scoring, ROUGE-1 recall above 50 as the success
 test) and applies the frozen rule; committed before its run and queued on the
 MPS after the CHAI battery, ahead of the second-model batteries. Dry run on
 Qwen2.5-0.5B retrieved 2 of 2 instances.
+
+Clustered inference (2026-09-15). alignment_study/clustered_stats.py
+recomputes every pooled correlation of the manuscript from the per-model
+result files with a two-stage bootstrap (models resampled, then layers
+within a model; checkpoints for the dynamics round; 2,000 draws, seed 0)
+and a random-effects average; clustered_stats.json keeps the per-layer
+intervals beside the clustered ones. The intervals quoted in manuscript.md,
+README.md and NOTE.md were replaced by the clustered ones (S4' -0.78 to
+-0.57 instead of -0.76 to -0.62; G1 R^2 0.24 to 0.93 instead of 0.42 to
+0.69; M2 -0.10 to +0.35 instead of -0.10 to +0.32). Every law statement
+keeps a negative upper bound; the PR10 law on four models widens to -0.92
+to -0.37.

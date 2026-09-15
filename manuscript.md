@@ -181,6 +181,13 @@ ideal sink-set operator.
 Report. For each statistic and null: the percentile of the real value in
 the null distribution, and the fraction of the real effect, measured from
 the random-softmax baseline, that the constrained null already reproduces.
+
+Uncertainty. Layers of one model are not independent draws. Every interval
+quoted for a pooled correlation is a two-stage bootstrap that resamples
+models and then layers within a model (2,000 draws;
+`alignment_study/clustered_stats.py`); the per-layer intervals of the round
+evaluations are kept in the JSON files for comparison, and a random-effects
+average of the per-model correlations is reported beside each pooled value.
 The toolkit `hubsfree` implements the families, the statistics and the
 report with a three-command interface (extract a layer's maps from any
 Hugging Face model, audit them, demo the random-matrix coordinator), tests
@@ -241,7 +248,8 @@ percent with one column and TinyLlama at 71 percent; S3' 11 of 11 at 100
 percent of high-sink layers at T = 256, the shared mode falling to a median
 0.07 to 0.09 of its real value and the median per-pair z rising from 78 to
 271 in Mistral-7B across all 32 layers (Figure 8); S4 at Spearman -0.70
-(bootstrap interval -0.76 to -0.62) over the 182 layers with cv(gn) >= 0.1
+(model-clustered bootstrap interval -0.78 to -0.57; per-layer -0.76 to
+-0.62) over the 182 layers with cv(gn) >= 0.1
 and -0.75 over all 207. The development model's 48-window values agree with
 its 12-window values from the first round layer by layer (Spearman 0.99),
 and its broken-layer set is identical. The three earlier failures resolved
@@ -291,7 +299,8 @@ R^2 of 0.8 over pooled high-sink layers.
 Outcome over the twelve non-development models (310 layers, 231
 high-sink): the gate fails. The sink-only derived value explains 55 percent
 of the variance in measured shared energy across high-sink layers (linear
-R^2 0.55, bootstrap 0.42 to 0.69), against the registered 0.8; it orders
+R^2 0.55, model-clustered bootstrap 0.24 to 0.93; per-layer 0.42 to 0.69),
+against the registered 0.8; it orders
 all 310 layers at Spearman 0.86 (G2, pass), sits at or below the measured
 value at every high-sink layer with a median gap of 0.058 (G3, pass), and
 the two-operator predictor improves the all-layer identity fit in 12 of 12
@@ -457,7 +466,7 @@ energy and cost. Registered on the three models: M1, top cheaper than
 bottom in at least 2/3 of layers in 3 of 3 models, fails (75, 64 and 54
 percent of layers; 1 of 3); M2, pooled Spearman(shared energy, top-merge
 cost) at or below -0.3 with an interval excluding zero, fails (+0.13,
-interval -0.10 to +0.32; per model -0.00, +0.18, +0.20); the secondary
+model-clustered interval -0.10 to +0.35; per model -0.00, +0.18, +0.20); the secondary
 clauses fail as well (pair-level Spearman -0.28 over 180 pairs, in the
 predicted direction). What the round establishes instead: merging one pair
 of heads within a KV group costs a median 0.0007 to 0.0013 nats per token,
@@ -483,8 +492,9 @@ not capture (Section 4.6). The commutator pipeline is one instrument among
 many the audits address; it is the one whose failure started this work.
 The dynamics result rests on one model family. The derivation gate and the practical test both failed as
 registered; each is reported in full. The audit
-criteria are frozen for four targets but their batteries wait for public
-registration; the reproductions of Targets 3 and 5 ran at reduced scale
+criteria are frozen for four targets by public commit and their batteries
+run against that freeze (Section 5 reports each as it completes); the
+reproductions of Targets 3 and 5 ran at reduced scale
 (fewer documents, shorter contexts) than the sources.
 
 ## 8. Recommendations
@@ -528,7 +538,7 @@ command.
 | 230 layers, cosine 0.71 to 1.00, 91 percent above 0.87 | alignment_study/heldout_round.json, scale_partial/, gram_theorem.json (README ranges) |
 | toy regime flip 0.85 to 0.93; crossing 0.785 | alignment_study/tier2_toy.json, posthoc_dynamics.json |
 | controls on the toy | alignment_study/control_redesign_toy.json, control_redesign_toy2.json |
-| S1' to S4, -0.70 [-0.76, -0.62], Mistral z 78 to 271 | alignment_study/rerun_results.json, rerun/ |
+| S1' to S4, -0.70 [-0.78, -0.57 clustered; -0.76, -0.62 per layer], Mistral z 78 to 271 | alignment_study/rerun_results.json, rerun/, clustered_stats.json |
 | dev anchor Spearman 0.99 | alignment_study/rerun/Qwen2.5-0.5B.json against tier1_robust.json |
 | random-init shared energy 0.88 to 0.96, cosine 0.27; uniform operator cosine 1.00 | alignment_study/dynamics_dev_calibration.json, kmode_dev_calibration.json |
 | D0 to D5, 0.935, -0.736, 25 of 26, 14 crossings | alignment_study/dynamics_results.json, posthoc_dynamics.json |
