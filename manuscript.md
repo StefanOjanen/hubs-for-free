@@ -391,7 +391,8 @@ neighbor is in its own layer for 38.9 percent of heads (chance 7.7). The
 statistic (the contrast) and the four null families are frozen; the
 registered expectation is survival against random and untrained nulls and
 shrinkage between 20 and 70 percent against marginal-matched and
-separator-column-preserving surrogates. Battery: PENDING registration.
+separator-column-preserving surrogates. Battery: PENDING (criteria frozen
+at commit ee4e267; run in progress).
 
 Target 2, Kovaleva et al. (2019), five attention-pattern types with the
 vertical pattern dominant. Not reproducible in its stated form: the

@@ -91,7 +91,10 @@ weeks to respond before any preprint; responses are published alongside.
   in every instance, strongest heads in layers 14, 22 and 23. Criteria
   frozen in PREREGISTRATION4.md. All five targets are now either
   reproduced (1, 4, 5), partially reproduced (3) or logged as not
-  reproducible (2); the draft is ready to freeze on OSF.
+  reproducible (2). Frozen by public commit `ee4e267` (pushed 2026-09-14
+  23:24 UTC); the OSF registration was deferred by the author on
+  2026-09-15, so the batteries run against the freeze permalink (see
+  `PREREGISTRATION4_ADDENDA.md`, addendum 2).
 - Target 3 on the source's own family (2026-09-11, `chai/reproduce.py` on
   `facebook/opt-6.7b`, 32 C4 documents at T = 1024): the paper's depth
   statement is reproduced here (mean cross-head correlation of last-token

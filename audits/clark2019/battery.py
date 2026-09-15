@@ -22,11 +22,15 @@ import sys
 import time
 import numpy as np
 
-# Registration guard (2026-09-15): a real run requires --registered=<OSF URL>
-# so that the battery cannot start by accident before the frozen criteria are
-# publicly registered. Dry runs never touch real data or write under audits/.
-if "--dry-run" not in sys.argv and not any(a.startswith("--registered=") for a in sys.argv):
-    sys.exit("refusing to run the battery on real data without --registered=<OSF registration URL>; use --dry-run to exercise the code")
+# Registration guard (2026-09-15): a real run requires --registered=<URL>,
+# the public record of the frozen criteria (the OSF registration, or the
+# permalink of audits/PREREGISTRATION4.md at the public freeze commit), so
+# that the battery cannot start by accident before the criteria are public.
+# The value is written into the result file. Dry runs never touch real data
+# or write under audits/.
+REGISTERED = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--registered=")), None)
+if "--dry-run" not in sys.argv and not REGISTERED:
+    sys.exit("refusing to run the battery on real data without --registered=<URL of the public registration or freeze permalink>; use --dry-run to exercise the code")
 
 sys.path.insert(0, ".")
 from hubsfree.nulls import random_causal_softmax, surrogate_colfix, surrogate_plain
@@ -100,7 +104,7 @@ for k in range(DRAWS):
 # (d) untrained
 null_d = [stats(np.mean([js_matrix(A) for A in ws], 0), layer) for ws in untrained]
 
-res = {"target": "Clark et al. 2019", "model": NAME, "n_windows": NWIN, "T": T, "draws": DRAWS, "dry_run": DRY, "real": real, "nulls": {}}
+res = {"target": "Clark et al. 2019", "registered": REGISTERED, "model": NAME, "n_windows": NWIN, "T": T, "draws": DRAWS, "dry_run": DRY, "real": real, "nulls": {}}
 for fam, vals in (("a_random", null_a), ("b_marginal", null_b), ("c_colfix", null_c), ("d_untrained", null_d)):
     Ds = [v["D"] for v in vals]; med = float(np.median(Ds))
     res["nulls"][fam] = {"D_median": med, "D_p5_p95": [float(np.percentile(Ds, 5)), float(np.percentile(Ds, 95))],

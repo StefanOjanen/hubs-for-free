@@ -22,11 +22,15 @@ import time
 import numpy as np
 import torch
 
-# Registration guard (2026-09-15): a real run requires --registered=<OSF URL>
-# so that the battery cannot start by accident before the frozen criteria are
-# publicly registered. Dry runs never touch real data or write under audits/.
-if "--dry-run" not in sys.argv and not any(a.startswith("--registered=") for a in sys.argv):
-    sys.exit("refusing to run the battery on real data without --registered=<OSF registration URL>; use --dry-run to exercise the code")
+# Registration guard (2026-09-15): a real run requires --registered=<URL>,
+# the public record of the frozen criteria (the OSF registration, or the
+# permalink of audits/PREREGISTRATION4.md at the public freeze commit), so
+# that the battery cannot start by accident before the criteria are public.
+# The value is written into the result file. Dry runs never touch real data
+# or write under audits/.
+REGISTERED = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--registered=")), None)
+if "--dry-run" not in sys.argv and not REGISTERED:
+    sys.exit("refusing to run the battery on real data without --registered=<URL of the public registration or freeze permalink>; use --dry-run to exercise the code")
 
 sys.path.insert(0, ".")
 sys.path.insert(0, "audits/retrieval_heads")
@@ -131,11 +135,11 @@ del model; release_memory(DEV)
 cfg = AutoConfig.from_pretrained(NAME); unt = []
 for seed in range(N_INIT):
     torch.manual_seed(seed)
-    um = AutoModelForCausalLM.from_config(cfg, attn_implementation="eager").eval().to(DEV)
+    um = AutoModelForCausalLM.from_config(cfg, attn_implementation="eager", dtype=getattr(torch, dt)).eval().to(DEV)   # same dtype as the real model (a 7B in float32 exceeds the 32 GB working set)
     s_u, _, _ = run_needles(um, tok, rng, False); unt.append(s_u); del um; release_memory(DEV)
 
 flat = score.ravel(); real_frac = float((flat > 0.1).mean()); real_top = float(np.sort(flat)[::-1][:10].mean())
-res = {"target": "Retrieval Heads 2024", "model": NAME, "contexts": CTX, "instances": n_inst, "draws": DRAWS, "dry_run": DRY,
+res = {"target": "Retrieval Heads 2024", "registered": REGISTERED, "model": NAME, "contexts": CTX, "instances": n_inst, "draws": DRAWS, "dry_run": DRY,
        "real": {"frac_heads_above_0.1": real_frac, "mean_top10_score": real_top, "max_score": float(flat.max())}, "nulls": {}}
 for kk, name in (("a", "a_random"), ("b", "b_marginal"), ("c", "c_colset")):
     fr = np.array([(nulls[kk][d].ravel() > 0.1).mean() for d in range(DRAWS)]); tp = np.array([np.sort(nulls[kk][d].ravel())[::-1][:10].mean() for d in range(DRAWS)])

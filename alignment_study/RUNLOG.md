@@ -172,3 +172,18 @@ file, 2026-09-15, is the author's local date, UTC+2). SHA-256 of
 audits/PREREGISTRATION4.md at that commit:
 f078f7e43ea166f4f3877084bb424b547b064fdb3107c775b6ca07d2ee702b70. OSF
 registration URL: pending (added below when the registration exists).
+
+Registration decision (2026-09-15). The author deferred the OSF
+registration ("not needed yet"); an OSF draft with the same summary and a
+copy of the frozen file was prepared and left unregistered. The registration
+of record for preregistration 4 is the public freeze commit ee4e267
+(permalink
+https://github.com/StefanOjanen/hubs-for-free/blob/ee4e267/audits/PREREGISTRATION4.md),
+the discipline of preregistrations 1 to 3 and 5 to 10. Before any battery
+started: the four battery scripts' guard now takes this permalink as
+--registered=<URL> and writes it into the result file; the retrieval
+battery's untrained Qwen2.5-7B is instantiated in the trained model's dtype
+(bfloat16) instead of the script's implicit float32, which does not fit the
+32 GB working set (PREREGISTRATION4_ADDENDA.md, addenda 1 to 3); all four
+dry runs passed after the edits. Launch times, order and outcomes are
+logged below.

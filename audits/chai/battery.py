@@ -21,11 +21,15 @@ import sys
 import time
 import numpy as np
 
-# Registration guard (2026-09-15): a real run requires --registered=<OSF URL>
-# so that the battery cannot start by accident before the frozen criteria are
-# publicly registered. Dry runs never touch real data or write under audits/.
-if "--dry-run" not in sys.argv and not any(a.startswith("--registered=") for a in sys.argv):
-    sys.exit("refusing to run the battery on real data without --registered=<OSF registration URL>; use --dry-run to exercise the code")
+# Registration guard (2026-09-15): a real run requires --registered=<URL>,
+# the public record of the frozen criteria (the OSF registration, or the
+# permalink of audits/PREREGISTRATION4.md at the public freeze commit), so
+# that the battery cannot start by accident before the criteria are public.
+# The value is written into the result file. Dry runs never touch real data
+# or write under audits/.
+REGISTERED = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--registered=")), None)
+if "--dry-run" not in sys.argv and not REGISTERED:
+    sys.exit("refusing to run the battery on real data without --registered=<URL of the public registration or freeze permalink>; use --dry-run to exercise the code")
 
 sys.path.insert(0, ".")
 sys.path.insert(0, "audits/chai")
@@ -112,7 +116,7 @@ def data():
 
 t0 = time.time()
 real, cols, unt, L, n, Tq = data()
-res = {"target": "CHAI 2024", "model": NAME, "T": Tq, "samples": NSAMP, "draws": DRAWS, "dry_run": DRY, "layers": []}
+res = {"target": "CHAI 2024", "registered": REGISTERED, "model": NAME, "T": Tq, "samples": NSAMP, "draws": DRAWS, "dry_run": DRY, "layers": []}
 KEYS = ("mean_corr", "largest95", "largest90")
 for l in range(L):
     docs = [real[k][l] for k in range(NSAMP)]; keeps = [cols[k][l] for k in range(NSAMP)]

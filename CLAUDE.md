@@ -58,8 +58,11 @@ Qwen3-8B). Audit base results: audits/clark2019/, audits/chai/ (Mistral-7B
 and OPT-6.7B), audits/dewage2026/ (Mistral-7B), audits/retrieval_heads/
 (Qwen2.5-7B, Mistral-7B-Instruct-v0.2 reproduced; Llama-2-7B-80K not
 reproduced under our haystack and excluded); criteria in
-audits/PREREGISTRATION4.md, battery scripts committed with dry runs
-only, batteries gated on public registration.
+audits/PREREGISTRATION4.md, frozen at commit ee4e267 and not edited since
+(dated corrections go to audits/PREREGISTRATION4_ADDENDA.md; the OSF
+registration was deferred by the author, the freeze permalink is the
+registration of record); the batteries run with
+--registered=<freeze permalink> and write audits/*/battery_result.json.
 Registered failures are reported as failures in NOTE.md, README.md and
 manuscript.md; never reframe them.
 

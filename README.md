@@ -253,9 +253,9 @@ Each instrument below exists because a finding above required it.
   heads, 4.2 percent of heads against the source's 3 to 6; the redundancy
   clusters in part, with the source's depth trend not reproduced); the
   attention-pattern taxonomy could not be reproduced because its classifier
-  and annotations were never released. The batteries run after public
-  registration of the draft; results follow with the original authors'
-  responses.
+  and annotations were never released. The criteria were frozen by public
+  commit before any battery ran (`ee4e267`, 2026-09-14); the battery
+  results follow with the original authors' responses.
 - **Deriving the operator rather than measuring it: a floor, not a
   formula.** A preregistered derivation writes each head's energy along
   the ideal sink direction from its own sink mass and row sharpness, with
@@ -342,7 +342,7 @@ alignment-fraction law; and the toolkit that packages the nulls.
   the toolkit (v0.1.0.dev0): statistics, null families including the
   dissociation controls, battery report, CLI, guide and two runnable
   examples.
-- `audits/` - audit targets, the preregistration-4 draft, per-target
+- `audits/` - audit targets, the frozen preregistration 4 and its addenda, per-target
   reproductions (`clark2019/`).
 - `run_qwen_protocol.py`, `qwen_results.json` - the six-prediction
   protocol on Qwen2.5-0.5B.

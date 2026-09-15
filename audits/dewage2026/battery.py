@@ -21,11 +21,15 @@ import sys
 import time
 import numpy as np
 
-# Registration guard (2026-09-15): a real run requires --registered=<OSF URL>
-# so that the battery cannot start by accident before the frozen criteria are
-# publicly registered. Dry runs never touch real data or write under audits/.
-if "--dry-run" not in sys.argv and not any(a.startswith("--registered=") for a in sys.argv):
-    sys.exit("refusing to run the battery on real data without --registered=<OSF registration URL>; use --dry-run to exercise the code")
+# Registration guard (2026-09-15): a real run requires --registered=<URL>,
+# the public record of the frozen criteria (the OSF registration, or the
+# permalink of audits/PREREGISTRATION4.md at the public freeze commit), so
+# that the battery cannot start by accident before the criteria are public.
+# The value is written into the result file. Dry runs never touch real data
+# or write under audits/.
+REGISTERED = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--registered=")), None)
+if "--dry-run" not in sys.argv and not REGISTERED:
+    sys.exit("refusing to run the battery on real data without --registered=<URL of the public registration or freeze permalink>; use --dry-run to exercise the code")
 
 sys.path.insert(0, ".")
 sys.path.insert(0, "audits/dewage2026")
@@ -121,7 +125,7 @@ unt = {}
 for seed, l, t, W in untrained_matrices():
     unt.setdefault((l, t), []).append(mp_outliers(W))
 
-res = {"target": "Dewage et al. 2026", "model": NAME, "layers": NLAY, "draws": DRAWS, "init_std": init_std(), "dry_run": DRY, "types": {}}
+res = {"target": "Dewage et al. 2026", "registered": REGISTERED, "model": NAME, "layers": NLAY, "draws": DRAWS, "init_std": init_std(), "dry_run": DRY, "types": {}}
 for t in TYPES:
     rs = [r for r in rows if r["type"] == t]
     real_c = float(np.mean([r["real"]["outliers"] for r in rs])); real_e = float(np.mean([r["real"]["energy_frac_outliers"] for r in rs]))
