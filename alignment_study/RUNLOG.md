@@ -225,3 +225,12 @@ battery had finished 6 of 128 matrices in about two hours of awake time
 stopped and relaunched as six single-threaded workers with aggregation
 (addendum 6). Worker logs: audits/dewage2026/battery_part*of6.log;
 aggregation log: battery_aggregate.log.
+
+Llama-2-7B-80K inclusion test (2026-09-15): audits/retrieval_heads/inclusion_test.py
+reimplements the source repository's protocol (nightdessert/Retrieval_Head at
+commit 3ac171a: its haystack parts and needles, sentence-boundary insertion
+with the 200-token buffer, the non-chat prompt, 50-step decoding stopping at
+a newline, per-step top-1 scoring, ROUGE-1 recall above 50 as the success
+test) and applies the frozen rule; committed before its run and queued on the
+MPS after the CHAI battery, ahead of the second-model batteries. Dry run on
+Qwen2.5-0.5B retrieved 2 of 2 instances.

@@ -14,7 +14,8 @@
 # from the prompt's own attention: here the modal column of the row block,
 # the first token); (d) a config-initialized model of the same architecture
 # run on the same instances. Draws per random family: 200 (dry run: 3).
-#   python audits/retrieval_heads/battery.py [--dry-run] [--draws=N] [--model=NAME]
+#   python audits/retrieval_heads/battery.py [--dry-run] [--draws=N] [--model=NAME] [--rope=linear:10]
+# --rope overrides the checkpoint's rope parameters as in reproduce.py (needed for yaofu/llama-2-7b-80k).
 # The frozen file runs this battery on Qwen/Qwen2.5-7B (default) and
 # mistralai/Mistral-7B-Instruct-v0.2; the result file is named after the model.
 import json
@@ -42,6 +43,7 @@ from transformers import AutoConfig, AutoTokenizer, AutoModelForCausalLM
 DRY = "--dry-run" in sys.argv
 NAME = "Qwen/Qwen2.5-0.5B" if DRY else next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--model=")), "Qwen/Qwen2.5-7B")
 SHORT = NAME.split("/")[-1]
+ROPE = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--rope=")), None)
 CTX = [256] if DRY else [1024, 2048]
 NDEPTH = 1 if DRY else 5
 DRAWS = int(next((a.split("=")[1] for a in sys.argv if a.startswith("--draws=")), 3 if DRY else 200))
@@ -132,17 +134,27 @@ t0 = time.time()
 rng = np.random.default_rng(0)
 tok = AutoTokenizer.from_pretrained(NAME)
 dt = pick_dtype(NAME, DEV, "auto")
-model = AutoModelForCausalLM.from_pretrained(NAME, attn_implementation="eager", dtype=getattr(torch, dt)).eval().to(DEV)
+
+
+def load_config():
+    cfg = AutoConfig.from_pretrained(NAME)
+    if ROPE:
+        rtype, factor = ROPE.split(":"); theta = (cfg.rope_parameters or {}).get("rope_theta", 10000.0)
+        cfg.rope_parameters = {"rope_type": rtype, "factor": float(factor), "rope_theta": theta}
+    return cfg
+
+
+model = AutoModelForCausalLM.from_pretrained(NAME, config=load_config(), attn_implementation="eager", dtype=getattr(torch, dt)).eval().to(DEV)
 score, nulls, n_inst = run_needles(model, tok, rng, True)
 del model; release_memory(DEV)
-cfg = AutoConfig.from_pretrained(NAME); unt = []
+cfg = load_config(); unt = []
 for seed in range(N_INIT):
     torch.manual_seed(seed)
     um = AutoModelForCausalLM.from_config(cfg, attn_implementation="eager", dtype=getattr(torch, dt)).eval().to(DEV)   # same dtype as the real model (a 7B in float32 exceeds the 32 GB working set)
     s_u, _, _ = run_needles(um, tok, rng, False); unt.append(s_u); del um; release_memory(DEV)
 
 flat = score.ravel(); real_frac = float((flat > 0.1).mean()); real_top = float(np.sort(flat)[::-1][:10].mean())
-res = {"target": "Retrieval Heads 2024", "registered": REGISTERED, "model": NAME, "contexts": CTX, "instances": n_inst, "draws": DRAWS, "dry_run": DRY,
+res = {"target": "Retrieval Heads 2024", "registered": REGISTERED, "model": NAME, "rope": ROPE, "contexts": CTX, "instances": n_inst, "draws": DRAWS, "dry_run": DRY,
        "real": {"frac_heads_above_0.1": real_frac, "mean_top10_score": real_top, "max_score": float(flat.max())}, "nulls": {}}
 for kk, name in (("a", "a_random"), ("b", "b_marginal"), ("c", "c_colset")):
     fr = np.array([(nulls[kk][d].ravel() > 0.1).mean() for d in range(DRAWS)]); tp = np.array([np.sort(nulls[kk][d].ravel())[::-1][:10].mean() for d in range(DRAWS)])
