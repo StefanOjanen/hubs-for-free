@@ -465,9 +465,14 @@ attention layouts.
 Procedure (preregistered per target before any battery run): reproduce the
 base result with the authors' code or a fully specified reimplementation;
 register the statistic, the nulls and the survival criterion; run the
-battery with 200 draws per family; label the outcome survives, shrinks,
+battery with the frozen draw counts (200 per map-level family, 100 for
+Target 1, 20 per weight-level family); label the outcome survives, shrinks,
 matched or not reproducible; send the note to the authors with four weeks
-to respond.
+to respond. The criteria were frozen by public commit (`ee4e267`) before
+any battery ran; the evaluation script and the readings it applies were
+committed before any result existed; every outcome below is reported as
+the frozen wording decides it, with the effect sizes beside the verdict
+(`audits/RESULTS.md`, regenerated from the result files).
 
 Target 1, Clark et al. (2019), heads cluster by Jensen-Shannon distance
 and heads in the same layer are similar. Base result reproduced on
@@ -477,8 +482,18 @@ neighbor is in its own layer for 38.9 percent of heads (chance 7.7). The
 statistic (the contrast) and the four null families are frozen; the
 registered expectation is survival against random and untrained nulls and
 shrinkage between 20 and 70 percent against marginal-matched and
-separator-column-preserving surrogates. Battery: PENDING (criteria frozen
-at commit ee4e267; run in progress).
+separator-column-preserving surrogates. Battery (100 draws, 38 windows):
+the contrast D = 0.127 survives random maps and five untrained BERTs, both
+of which give D of order 1e-5. The per-row marginal-matched surrogate
+reproduces 9.5 percent of D, below the registered band, so the registered
+expectation fails on that clause; the separator-column surrogate, which
+keeps the [CLS] and [SEP] columns and permutes the rest of every row,
+reproduces 60 percent of D and 35 of the 40 percentage points of
+same-layer nearest neighbors, inside the band. Label: shrinks. The layer
+clustering of BERT's heads is not a marginals effect, as the registered
+guess had it; it is three fifths the shared vertical pattern on the
+separators and two fifths same-layer similarity that the separator columns
+do not carry.
 
 Target 2, Kovaleva et al. (2019), five attention-pattern types with the
 vertical pattern dominant. Not reproducible in its stated form: the
@@ -501,7 +516,21 @@ instead. On the paper's own OPT family (OPT-6.7B, same protocol) the split
 reverses: correlation rises with depth (0.34 to 0.70, Spearman 0.49) and no
 layer carries a majority cluster. Criteria frozen for both models; the
 registered expectation is that the column-set surrogate matches both
-statistics.
+statistics. Battery on Mistral-7B (200 draws): the registered expectation
+fails as written, in an instructive way. The sink-set surrogate, which
+keeps only the layer's sink columns and each head's diagonal entry,
+reproduces 90 to 99.8 percent of the cross-head correlation excess over
+the random null in every layer (median 96 percent), so the redundancy
+CHAI exploits is, to within a few percent, the shared sink column. But the
+real correlation lies above all 200 draws in all 32 layers, so the frozen
+"matched" criterion (percentile between 5 and 95) is met in none; the
+marginal-matched surrogate, which permutes the sink column away,
+reproduces 0 to 6.5 percent of the excess; random rows and five untrained
+models sit below the real value everywhere. Label: shrinks in 32 of 32
+layers. The registered wording asked for statistical indistinguishability
+from the sink-only surrogate, a stricter question than the effect size it
+was meant to settle; the effect size answers it. Battery on OPT-6.7B:
+PENDING (running).
 
 Target 4, Dewage et al. (2026), singular values of the projection weights
 above the Marchenko-Pastur edge carry the learned structure. The recipe is
@@ -513,7 +542,8 @@ reproduced as the outliers' share of spectral energy (89.3, 75.7, 43.0,
 84.4) rather than as the share of singular values (21 to 37 percent).
 Reproduced; criteria frozen. Nulls for the battery: Gaussian weights of
 matched shape and norm, row-norm-matched random weights, within-matrix
-permutation, and config-initialized weights of the same architecture.
+permutation, and Gaussian weights at the initializer scale. Battery:
+PENDING (running as six parallel workers).
 
 Target 5, Retrieval Heads (2024), the positive control: 3 to 6 percent of
 heads copy from the context during needle retrieval (retrieval score above
@@ -524,10 +554,32 @@ with the strongest in layers 14, 22 and 23; on the paper's own
 Mistral-7B-Instruct-v0.2 the same protocol gives 3.4 percent, again with
 every needle retrieved. On the paper's primary Llama-2-7B-80K our haystack
 and prompt retrieve only half of the needles and 0.7 percent of heads
-score above 0.1, so that model is excluded rather than counted either way.
-Reproduced on two of three models; criteria frozen.
-The battery must not remove this structure; if it does, its thresholds are
-revised before any other outcome is reported.
+score above 0.1. The frozen inclusion rule repeated the test with the
+source repository's own haystack, needles, insertion rule, prompt and
+success criterion: the needle is then retrieved in 20 of 20 instances, so
+the earlier failure was our haystack and prompt, but 1.3 percent of heads
+score above 0.1 at 1K and 2K tokens on 20 instances, below the rule's 2
+percent floor, and the model stays excluded as the rule was written.
+Reproduced on two of three models; criteria frozen. The battery must not
+remove this structure; if it does, its thresholds are revised before any
+other outcome is reported. Battery (200 draws, 20 instances per model): on
+Qwen2.5-7B and on Mistral-7B-Instruct-v0.2, random rows, marginal-matched
+rows and sink-column-preserving rows put the fraction of heads above 0.1
+and the top-10 score at the 100th percentile of 200 draws and reproduce
+0.7 to 1.1 percent of the top-10 score; the three untrained
+initializations score zero. E3 holds on both models: the surrogates that
+absorb the layer clustering of Target 1 and the redundancy of Target 3 do
+not touch a head set that copies specific context tokens, which is what a
+permutation of where a row looks cannot produce.
+
+Registered expectations so far: E3 holds (both control models); E2 fails
+as written (the marginal-matched clause of Target 1, the effect being the
+separator columns instead); E1 pending the OPT-6.7B battery of Target 3 (on
+Mistral-7B the sink-set surrogate reproduces the redundancy to within a
+few percent without matching it within null variability); E5 pending the
+Target 4 battery; E4 dropped before the freeze. The falsification clause
+(every audited claim survives with shrinkage under 20 percent) is not
+triggered by Targets 1 and 3.
 
 ## 6. A practical test that failed: which heads can be merged
 
