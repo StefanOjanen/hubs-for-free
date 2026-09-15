@@ -62,7 +62,12 @@ audits/PREREGISTRATION4.md, frozen at commit ee4e267 and not edited since
 (dated corrections go to audits/PREREGISTRATION4_ADDENDA.md; the OSF
 registration was deferred by the author, the freeze permalink is the
 registration of record); the batteries run with
---registered=<freeze permalink> and write audits/*/battery_result.json.
+--registered=<freeze permalink> and write audits/*/battery_result*.json
+(per model for Targets 3 and 5); audits/eval_batteries.py (committed
+before any result) regenerates audits/RESULTS.md and battery_results.json;
+audits/retrieval_heads/inclusion_test.py applied the frozen rule to
+Llama-2-7B-80K (excluded). alignment_study/clustered_stats.py gives the
+model-clustered intervals quoted in the manuscript.
 Registered failures are reported as failures in NOTE.md, README.md and
 manuscript.md; never reframe them.
 
