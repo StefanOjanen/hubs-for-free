@@ -14,7 +14,9 @@
 # layer's sink set (from the full map at extraction) and the diagonal fixed,
 # the rest permuted; (d) config-initialized architecture, five seeds, in
 # bfloat16, same documents. 200 draws per random family (dry run: 3).
-#   python audits/chai/battery.py [--dry-run] [--draws=N] [--samples=N]
+#   python audits/chai/battery.py [--dry-run] [--draws=N] [--samples=N] [--model=NAME]
+# The frozen file runs this battery on both mistralai/Mistral-7B-v0.1 (default)
+# and facebook/opt-6.7b; the result file is named after the model.
 import json
 import os
 import sys
@@ -36,12 +38,13 @@ sys.path.insert(0, "audits/chai")
 from reproduce import cluster_stats
 from hubsfree.stats import sink_columns
 
-NAME, T = "mistralai/Mistral-7B-v0.1", 1024
 DRY = "--dry-run" in sys.argv
+NAME = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--model=")), "mistralai/Mistral-7B-v0.1"); T = 1024
+SHORT = NAME.split("/")[-1]
 DRAWS = int(next((a.split("=")[1] for a in sys.argv if a.startswith("--draws=")), 3 if DRY else 200))
 NSAMP = int(next((a.split("=")[1] for a in sys.argv if a.startswith("--samples=")), 2 if DRY else 32))
 N_INIT = 1 if DRY else 5
-OUT = "/tmp/chai_battery_dryrun.json" if DRY else "audits/chai/battery_result.json"
+OUT = "/tmp/chai_battery_dryrun.json" if DRY else f"audits/chai/battery_result_{SHORT}.json"
 rng = np.random.default_rng(0)
 
 
@@ -130,7 +133,12 @@ for l in range(L):
     base = float(np.median([d["mean_corr"] for d in fam["a_random"]]))
     nulls = {}
     for name, dr in fam.items():
-        ent = {k: {"median": float(np.median([d[k] for d in dr])), "percentile_of_real": float((np.array([d[k] for d in dr]) < st_real[k]).mean() * 100)} for k in KEYS}
+        ent = {}
+        for k in KEYS:   # percentile_mid is the mid-rank percentile (ties count half), for the cluster share which ties often
+            vals = np.array([d[k] for d in dr])
+            ent[k] = {"median": float(np.median(vals)), "percentile_of_real": float((vals < st_real[k]).mean() * 100),
+                      "percentile_mid": float(((vals < st_real[k]).mean() + 0.5 * (vals == st_real[k]).mean()) * 100),
+                      "p5": float(np.percentile(vals, 5)), "p95": float(np.percentile(vals, 95))}
         ent["reproduced_mean_corr"] = (ent["mean_corr"]["median"] - base) / (st_real["mean_corr"] - base) if abs(st_real["mean_corr"] - base) > 1e-9 else None
         nulls[name] = ent
     res["layers"].append({"layer": l, "sink_sets": sorted({str(kp) for kp in keeps}), "real": st_real, "nulls": nulls})

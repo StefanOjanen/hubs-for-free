@@ -187,3 +187,22 @@ battery's untrained Qwen2.5-7B is instantiated in the trained model's dtype
 32 GB working set (PREREGISTRATION4_ADDENDA.md, addenda 1 to 3); all four
 dry runs passed after the edits. Launch times, order and outcomes are
 logged below.
+
+Battery launch (2026-09-15 00:03 UTC, head 3289070). Clark (bert-base,
+CPU float32) and Dewage (numpy, 6 Accelerate threads) run concurrently with
+the MPS queue: retrieval on Qwen2.5-7B (bfloat16), then CHAI on
+Mistral-7B-v0.1 (bfloat16); two 7B models do not fit the 32 GB working set
+together. Logs: audits/battery_pipeline.log and audits/*/battery.log.
+Queued after the pipeline: CHAI on OPT-6.7B and retrieval on
+Mistral-7B-Instruct-v0.2 (the frozen file names both models for Targets 3
+and 5; the scripts gained --model= before those runs, addendum 5). The
+evaluation script audits/eval_batteries.py and addenda 4 and 5 were
+committed while the first batteries ran and before any result file
+existed. Deviation: the frozen inclusion rule for Llama-2-7B-80K (Target 5)
+says its outcome is recorded here before any battery runs; the batteries
+above started before that test ran. The test's thresholds are fixed in the
+frozen file (needle in at least 18 of 20 instances, 2 to 8 percent of heads
+above 0.1, with the source repository's own haystack and prompt) and its
+outcome does not depend on the other batteries; it runs when the MPS queue
+is free and its result is recorded here before a Llama battery, if any,
+runs.

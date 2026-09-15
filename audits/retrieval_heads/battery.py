@@ -14,7 +14,9 @@
 # from the prompt's own attention: here the modal column of the row block,
 # the first token); (d) a config-initialized model of the same architecture
 # run on the same instances. Draws per random family: 200 (dry run: 3).
-#   python audits/retrieval_heads/battery.py [--dry-run] [--draws=N]
+#   python audits/retrieval_heads/battery.py [--dry-run] [--draws=N] [--model=NAME]
+# The frozen file runs this battery on Qwen/Qwen2.5-7B (default) and
+# mistralai/Mistral-7B-Instruct-v0.2; the result file is named after the model.
 import json
 import os
 import sys
@@ -38,12 +40,13 @@ from hubsfree.adapters import pick_device, pick_dtype, release_memory
 from transformers import AutoConfig, AutoTokenizer, AutoModelForCausalLM
 
 DRY = "--dry-run" in sys.argv
-NAME = "Qwen/Qwen2.5-0.5B" if DRY else "Qwen/Qwen2.5-7B"
+NAME = "Qwen/Qwen2.5-0.5B" if DRY else next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--model=")), "Qwen/Qwen2.5-7B")
+SHORT = NAME.split("/")[-1]
 CTX = [256] if DRY else [1024, 2048]
 NDEPTH = 1 if DRY else 5
 DRAWS = int(next((a.split("=")[1] for a in sys.argv if a.startswith("--draws=")), 3 if DRY else 200))
 N_INIT = 1 if DRY else 3   # amendment 3 of the frozen file
-OUT = "/tmp/retrieval_battery_dryrun.json" if DRY else "audits/retrieval_heads/battery_result.json"
+OUT = "/tmp/retrieval_battery_dryrun.json" if DRY else f"audits/retrieval_heads/battery_result_{SHORT}.json"
 DEV = pick_device(os.environ.get("HUBSFREE_DEVICE", "auto"))
 torch.set_grad_enabled(False)
 import reproduce as R   # NEEDLE, QUESTION, MAX_NEW, haystacks, build (module-level run is guarded)
@@ -147,7 +150,8 @@ for kk, name in (("a", "a_random"), ("b", "b_marginal"), ("c", "c_colset")):
                           "top10_median": float(np.median(tp)), "top10_percentile_of_real": float((tp < real_top).mean() * 100),
                           "top10_shrinkage": float(np.median(tp) / real_top) if real_top else None}
 fu = [float((s.ravel() > 0.1).mean()) for s in unt]; tu = [float(np.sort(s.ravel())[::-1][:10].mean()) for s in unt]
-res["nulls"]["d_untrained"] = {"frac_above_0.1_median": float(np.median(fu)), "top10_median": float(np.median(tu)), "top10_shrinkage": float(np.median(tu) / real_top) if real_top else None, "n": N_INIT}
+res["nulls"]["d_untrained"] = {"frac_above_0.1_median": float(np.median(fu)), "top10_median": float(np.median(tu)), "top10_shrinkage": float(np.median(tu) / real_top) if real_top else None, "n": N_INIT,
+                               "frac_values": fu, "top10_values": tu}
 res["registered_expectation"] = "survives (a), (b), (c), (d) at the 99th percentile with the score shrinking by less than 20 percent under every null"
 res["runtime_s"] = round(time.time() - t0, 1)
 json.dump(res, open(OUT, "w"), indent=1)

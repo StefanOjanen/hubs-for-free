@@ -36,3 +36,36 @@ set). The committed script had omitted the dtype argument, which would have
 requested float32 (about 30 GB of weights) and failed on this machine. The
 frozen text fixes no precision for the untrained model, and the base result
 of Target 5 was reproduced in bfloat16 as well. Changed before the run.
+
+## Addendum 4 (2026-09-15): readings fixed by the evaluation script
+
+`audits/eval_batteries.py`, committed before any battery result exists,
+fixes four readings of the frozen text that the text leaves open. (i)
+"Shrinkage" is the share of the real effect a null reproduces, the frozen
+file's own definition (null median over real; for Target 3 the excess over
+the random-null median), so "shrinks by X percent" and "shrinkage under X
+percent" both refer to that share; the raw shares are printed so a reader
+who prefers the other reading of Target 3's clause on the marginal-matched
+surrogate ("shrink by more than 50 percent against (b)") can apply it. (ii)
+A clause the file states per layer (Target 3) holds for a model when it
+holds in at least two thirds of the layers, the fraction the file names for
+the column-set clause. (iii) A "matched" statistic lies between the 5th and
+95th percentile of the null; for the cluster share, which ties, the
+mid-rank percentile is used. (iv) With five or three untrained
+initializations, a 95th or 99th percentile clause holds only if the real
+statistic exceeds every initialization. Committed before the batteries of
+Targets 1, 3 and 4 finished and before the Target 3 battery started.
+
+## Addendum 5 (2026-09-15): model flags and reporting fields
+
+The frozen file runs the Target 3 battery on Mistral-7B-v0.1 and
+OPT-6.7B and the Target 5 battery on Qwen2.5-7B and
+Mistral-7B-Instruct-v0.2; the committed scripts had the first model of each
+pair hard-coded. They now take `--model=` and name the result file after the
+model. The Target 3 battery additionally records the 5th and 95th
+percentiles and the mid-rank percentile of every null statistic, and the
+Target 5 battery records the per-initialization values of the untrained
+null instead of medians alone. No statistic, null or threshold changed. The
+Qwen2.5-7B run of Target 5 started before this addendum under the old
+output name and is renamed to the per-model name when it finishes (noted in
+RUNLOG.md).
