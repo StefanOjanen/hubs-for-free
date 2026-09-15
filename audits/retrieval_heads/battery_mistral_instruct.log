@@ -1,8 +1,141 @@
-Traceback (most recent call last):
-  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/audits/retrieval_heads/battery.py", line 54, in <module>
-    import reproduce as R   # NEEDLE, QUESTION, MAX_NEW, haystacks, build (module-level run is guarded)
-    ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/audits/retrieval_heads/reproduce.py", line 25, in <module>
-    CTX = [int(x) for x in (sys.argv[2] if len(sys.argv) > 2 else "512").split(",")]
-           ^^^^^^
-ValueError: invalid literal for int() with base 10: '--model=mistralai/Mistral-7B-Instruct-v0.2'
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 3108.11it/s]
+  ctx 1024 depth 0.05 done (186s)
+  ctx 1024 depth 0.27 done (331s)
+  ctx 1024 depth 0.50 done (478s)
+  ctx 1024 depth 0.72 done (623s)
+  ctx 1024 depth 0.95 done (772s)
+  ctx 1024 depth 0.05 done (920s)
+  ctx 1024 depth 0.27 done (1100s)
+  ctx 1024 depth 0.50 done (1258s)
+  ctx 1024 depth 0.72 done (1415s)
+  ctx 1024 depth 0.95 done (1561s)
+  ctx 2048 depth 0.05 done (1823s)
+  ctx 2048 depth 0.27 done (2109s)
+  ctx 2048 depth 0.50 done (2394s)
+  ctx 2048 depth 0.72 done (2678s)
+  ctx 2048 depth 0.95 done (2946s)
+  ctx 2048 depth 0.05 done (3219s)
+  ctx 2048 depth 0.27 done (3525s)
+  ctx 2048 depth 0.50 done (3823s)
+  ctx 2048 depth 0.72 done (4166s)
+  ctx 2048 depth 0.95 done (4487s)
+  ctx 1024 depth 0.05 done (4677s)
+  ctx 1024 depth 0.27 done (4684s)
+  ctx 1024 depth 0.50 done (4691s)
+  ctx 1024 depth 0.72 done (4703s)
+  ctx 1024 depth 0.95 done (4722s)
+  ctx 1024 depth 0.05 done (4729s)
+  ctx 1024 depth 0.27 done (4770s)
+  ctx 1024 depth 0.50 done (4777s)
+  ctx 1024 depth 0.72 done (4784s)
+  ctx 1024 depth 0.95 done (4791s)
+  ctx 2048 depth 0.05 done (4811s)
+  ctx 2048 depth 0.27 done (4823s)
+  ctx 2048 depth 0.50 done (4835s)
+  ctx 2048 depth 0.72 done (4846s)
+  ctx 2048 depth 0.95 done (4858s)
+  ctx 2048 depth 0.05 done (4870s)
+  ctx 2048 depth 0.27 done (4882s)
+  ctx 2048 depth 0.50 done (4894s)
+  ctx 2048 depth 0.72 done (4905s)
+  ctx 2048 depth 0.95 done (4917s)
+  ctx 1024 depth 0.05 done (5101s)
+  ctx 1024 depth 0.27 done (5109s)
+  ctx 1024 depth 0.50 done (5116s)
+  ctx 1024 depth 0.72 done (5123s)
+  ctx 1024 depth 0.95 done (5151s)
+  ctx 1024 depth 0.05 done (5158s)
+  ctx 1024 depth 0.27 done (5165s)
+  ctx 1024 depth 0.50 done (5172s)
+  ctx 1024 depth 0.72 done (5200s)
+  ctx 1024 depth 0.95 done (5207s)
+  ctx 2048 depth 0.05 done (5226s)
+  ctx 2048 depth 0.27 done (5238s)
+  ctx 2048 depth 0.50 done (5258s)
+  ctx 2048 depth 0.72 done (5279s)
+  ctx 2048 depth 0.95 done (5291s)
+  ctx 2048 depth 0.05 done (5305s)
+  ctx 2048 depth 0.27 done (5320s)
+  ctx 2048 depth 0.50 done (5335s)
+  ctx 2048 depth 0.72 done (5351s)
+  ctx 2048 depth 0.95 done (5367s)
+  ctx 1024 depth 0.05 done (5553s)
+  ctx 1024 depth 0.27 done (5561s)
+  ctx 1024 depth 0.50 done (5568s)
+  ctx 1024 depth 0.72 done (5593s)
+  ctx 1024 depth 0.95 done (5601s)
+  ctx 1024 depth 0.05 done (5608s)
+  ctx 1024 depth 0.27 done (5616s)
+  ctx 1024 depth 0.50 done (5624s)
+  ctx 1024 depth 0.72 done (5631s)
+  ctx 1024 depth 0.95 done (5651s)
+  ctx 2048 depth 0.05 done (5671s)
+  ctx 2048 depth 0.27 done (5685s)
+  ctx 2048 depth 0.50 done (5700s)
+  ctx 2048 depth 0.72 done (5714s)
+  ctx 2048 depth 0.95 done (5729s)
+  ctx 2048 depth 0.05 done (5744s)
+  ctx 2048 depth 0.27 done (5760s)
+  ctx 2048 depth 0.50 done (5776s)
+  ctx 2048 depth 0.72 done (5797s)
+  ctx 2048 depth 0.95 done (5812s)
+{
+ "target": "Retrieval Heads 2024",
+ "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/ee4e267/audits/PREREGISTRATION4.md",
+ "model": "mistralai/Mistral-7B-Instruct-v0.2",
+ "rope": null,
+ "contexts": [
+  1024,
+  2048
+ ],
+ "instances": 20,
+ "draws": 200,
+ "dry_run": false,
+ "real": {
+  "frac_heads_above_0.1": 0.0341796875,
+  "mean_top10_score": 0.42040000000000016,
+  "max_score": 0.5680000000000003
+ },
+ "nulls": {
+  "a_random": {
+   "frac_above_0.1_median": 0.0,
+   "frac_percentile_of_real": 100.0,
+   "top10_median": 0.004400000000000001,
+   "top10_percentile_of_real": 100.0,
+   "top10_shrinkage": 0.010466222645099903
+  },
+  "b_marginal": {
+   "frac_above_0.1_median": 0.0,
+   "frac_percentile_of_real": 100.0,
+   "top10_median": 0.004400000000000001,
+   "top10_percentile_of_real": 100.0,
+   "top10_shrinkage": 0.010466222645099903
+  },
+  "c_colset": {
+   "frac_above_0.1_median": 0.0,
+   "frac_percentile_of_real": 100.0,
+   "top10_median": 0.0030000000000000005,
+   "top10_percentile_of_real": 100.0,
+   "top10_shrinkage": 0.007136060894386297
+  },
+  "d_untrained": {
+   "frac_above_0.1_median": 0.0,
+   "top10_median": 0.0,
+   "top10_shrinkage": 0.0,
+   "n": 3,
+   "frac_values": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "top10_values": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "registered_expectation": "survives (a), (b), (c), (d) at the 99th percentile with the score shrinking by less than 20 percent under every null",
+ "runtime_s": 5813.2
+}
+BATTERY_DONE audits/retrieval_heads/battery_result_Mistral-7B-Instruct-v0.2.json

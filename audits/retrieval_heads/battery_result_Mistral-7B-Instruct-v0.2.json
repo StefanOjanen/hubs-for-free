@@ -1,0 +1,59 @@
+{
+ "target": "Retrieval Heads 2024",
+ "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/ee4e267/audits/PREREGISTRATION4.md",
+ "model": "mistralai/Mistral-7B-Instruct-v0.2",
+ "rope": null,
+ "contexts": [
+  1024,
+  2048
+ ],
+ "instances": 20,
+ "draws": 200,
+ "dry_run": false,
+ "real": {
+  "frac_heads_above_0.1": 0.0341796875,
+  "mean_top10_score": 0.42040000000000016,
+  "max_score": 0.5680000000000003
+ },
+ "nulls": {
+  "a_random": {
+   "frac_above_0.1_median": 0.0,
+   "frac_percentile_of_real": 100.0,
+   "top10_median": 0.004400000000000001,
+   "top10_percentile_of_real": 100.0,
+   "top10_shrinkage": 0.010466222645099903
+  },
+  "b_marginal": {
+   "frac_above_0.1_median": 0.0,
+   "frac_percentile_of_real": 100.0,
+   "top10_median": 0.004400000000000001,
+   "top10_percentile_of_real": 100.0,
+   "top10_shrinkage": 0.010466222645099903
+  },
+  "c_colset": {
+   "frac_above_0.1_median": 0.0,
+   "frac_percentile_of_real": 100.0,
+   "top10_median": 0.0030000000000000005,
+   "top10_percentile_of_real": 100.0,
+   "top10_shrinkage": 0.007136060894386297
+  },
+  "d_untrained": {
+   "frac_above_0.1_median": 0.0,
+   "top10_median": 0.0,
+   "top10_shrinkage": 0.0,
+   "n": 3,
+   "frac_values": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "top10_values": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "registered_expectation": "survives (a), (b), (c), (d) at the 99th percentile with the score shrinking by less than 20 percent under every null",
+ "runtime_s": 5813.2
+}

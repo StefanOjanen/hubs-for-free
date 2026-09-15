@@ -1,9 +1,60 @@
 {
- "generated_utc": "2026-09-15T17:01:24Z",
+ "generated_utc": "2026-09-15T21:07:34Z",
  "dry_run": false,
  "criteria": "audits/PREREGISTRATION4.md at commit ee4e267 (addenda in audits/PREREGISTRATION4_ADDENDA.md)",
  "targets": {
-  "clark": {},
+  "clark": {
+   "audits/clark2019/battery_result.json": {
+    "target": "Clark et al. 2019",
+    "model": "bert-base-uncased",
+    "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/ee4e267/audits/PREREGISTRATION4.md",
+    "windows": 38,
+    "draws": 100,
+    "real": {
+     "D": 0.12652363291030233,
+     "nn_same_layer": 0.3958333333333333
+    },
+    "percentile_of_real": {
+     "a_random": 100.0,
+     "b_marginal": 100.0,
+     "c_colfix": 100.0,
+     "d_untrained": 100.0
+    },
+    "shrinkage": {
+     "b_marginal": 0.09472864487990611,
+     "c_colfix": 0.6023727279652952
+    },
+    "shrinkage_all": {
+     "a_random": 3.4967463598049305e-05,
+     "b_marginal": 0.09472864487990611,
+     "c_colfix": 0.6023727279652952,
+     "d_untrained": 4.888364061445634e-06
+    },
+    "null_D_median": {
+     "a_random": 4.4242105280839494e-06,
+     "b_marginal": 0.01198541229087563,
+     "c_colfix": 0.07621438590825841,
+     "d_untrained": 6.18493580042262e-07
+    },
+    "null_nn_median": {
+     "a_random": 0.0763888888888889,
+     "b_marginal": 0.08333333333333333,
+     "c_colfix": 0.3472222222222222,
+     "d_untrained": 0.05555555555555555
+    },
+    "label": "shrinks",
+    "battery_label": "shrinks",
+    "clauses": {
+     "survives (a) random maps: percentile above 95": true,
+     "survives (d) untrained BERT: real above all five initializations": true,
+     "(b) marginal-matched: percentile above 95 and shrinkage in [0.2, 0.7]": false,
+     "(c) separator columns kept: percentile above 95 and shrinkage in [0.2, 0.7]": true
+    },
+    "expectation_holds": false,
+    "all_shrinkage_under_0.2": false,
+    "runtime_s": 21744.6
+   }
+  },
   "chai": {
    "audits/chai/battery_result_Mistral-7B-v0.1.json": {
     "target": "CHAI 2024",
@@ -1441,6 +1492,69 @@
   },
   "dewage": {},
   "retrieval": {
+   "audits/retrieval_heads/battery_result_Mistral-7B-Instruct-v0.2.json": {
+    "target": "Retrieval Heads 2024",
+    "model": "mistralai/Mistral-7B-Instruct-v0.2",
+    "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/ee4e267/audits/PREREGISTRATION4.md",
+    "contexts": [
+     1024,
+     2048
+    ],
+    "instances": 20,
+    "draws": 200,
+    "real": {
+     "frac_heads_above_0.1": 0.0341796875,
+     "mean_top10_score": 0.42040000000000016,
+     "max_score": 0.5680000000000003
+    },
+    "nulls": {
+     "a_random": {
+      "frac_above_0.1_median": 0.0,
+      "frac_percentile_of_real": 100.0,
+      "top10_median": 0.004400000000000001,
+      "top10_percentile_of_real": 100.0,
+      "top10_shrinkage": 0.010466222645099903
+     },
+     "b_marginal": {
+      "frac_above_0.1_median": 0.0,
+      "frac_percentile_of_real": 100.0,
+      "top10_median": 0.004400000000000001,
+      "top10_percentile_of_real": 100.0,
+      "top10_shrinkage": 0.010466222645099903
+     },
+     "c_colset": {
+      "frac_above_0.1_median": 0.0,
+      "frac_percentile_of_real": 100.0,
+      "top10_median": 0.0030000000000000005,
+      "top10_percentile_of_real": 100.0,
+      "top10_shrinkage": 0.007136060894386297
+     },
+     "d_untrained": {
+      "frac_above_0.1_median": 0.0,
+      "top10_median": 0.0,
+      "top10_shrinkage": 0.0,
+      "n": 3,
+      "frac_values": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "top10_values": [
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "clauses": {
+     "survives a_random: both percentiles above 99, top-10 shrinkage under 0.2": true,
+     "survives b_marginal: both percentiles above 99, top-10 shrinkage under 0.2": true,
+     "survives c_colset: both percentiles above 99, top-10 shrinkage under 0.2": true,
+     "survives d_untrained: real above all 3 initializations, top-10 shrinkage under 0.2": true
+    },
+    "expectation_holds": true,
+    "runtime_s": 5813.2
+   },
    "audits/retrieval_heads/battery_result_Qwen2.5-7B.json": {
     "target": "Retrieval Heads 2024",
     "model": "Qwen/Qwen2.5-7B",
@@ -1498,7 +1612,7 @@
  },
  "expectations": {
   "E3": true,
-  "E2": null,
+  "E2": false,
   "E1": false,
   "E5": null,
   "E4": "dropped before the freeze (Target 2 not reproducible)"

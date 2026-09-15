@@ -71,6 +71,7 @@ def eval_clark(r):
     n, real = r["nulls"], r["real"]
     pct = {f: n[f]["percentile_of_real"] for f in ("a_random", "b_marginal", "c_colfix", "d_untrained")}
     shr = {f: n[f]["shrinkage"] for f in ("b_marginal", "c_colfix")}
+    shr_all = {f: n[f]["shrinkage"] for f in n}   # reported for every family; the clauses use (b) and (c)
     clauses = {
         "survives (a) random maps: percentile above 95": pct["a_random"] > 95,
         "survives (d) untrained BERT: real above all five initializations": pct["d_untrained"] > 95,
@@ -78,7 +79,7 @@ def eval_clark(r):
         "(c) separator columns kept: percentile above 95 and shrinkage in [0.2, 0.7]": pct["c_colfix"] > 95 and 0.2 <= shr["c_colfix"] <= 0.7,
     }
     return {"target": r["target"], "model": r["model"], "registered": r.get("registered"), "windows": r["n_windows"], "draws": r["draws"],
-            "real": real, "percentile_of_real": pct, "shrinkage": shr,
+            "real": real, "percentile_of_real": pct, "shrinkage": shr, "shrinkage_all": shr_all,
             "null_D_median": {f: n[f]["D_median"] for f in n}, "null_nn_median": {f: n[f]["nn_median"] for f in n},
             "label": label_common(list(pct.values()), max(shr.values())), "battery_label": r.get("outcome"),
             "clauses": clauses, "expectation_holds": all(clauses.values()),
@@ -252,7 +253,7 @@ for p, v in T["clark"].items():
     L.append(f"Real contrast D = {v['real']['D']:.4f}; nearest neighbor in own layer {v['real']['nn_same_layer']*100:.1f} percent.\n")
     L.append("| Null | D median | percentile of real | shrinkage | nearest-neighbor median |\n|---|---|---|---|---|")
     for fam in ("a_random", "b_marginal", "c_colfix", "d_untrained"):
-        L.append(f"| {fam} | {v['null_D_median'][fam]:.4f} | {v['percentile_of_real'][fam]:.1f} | {f3(v['shrinkage'].get(fam))} | {v['null_nn_median'][fam]*100:.1f} percent |")
+        L.append(f"| {fam} | {v['null_D_median'][fam]:.4f} | {v['percentile_of_real'][fam]:.1f} | {f3(v['shrinkage_all'][fam])} | {v['null_nn_median'][fam]*100:.1f} percent |")
     L.append("")
     for c, ok in v["clauses"].items():
         L.append(f"- {c}: {'withheld' if hold else ('holds' if ok else 'FAILS')}")

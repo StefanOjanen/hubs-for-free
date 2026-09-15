@@ -1,0 +1,62 @@
+{
+ "target": "Clark et al. 2019",
+ "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/ee4e267/audits/PREREGISTRATION4.md",
+ "model": "bert-base-uncased",
+ "n_windows": 38,
+ "T": 64,
+ "draws": 100,
+ "dry_run": false,
+ "real": {
+  "D": 0.12652363291030233,
+  "nn_same_layer": 0.3958333333333333
+ },
+ "nulls": {
+  "a_random": {
+   "D_median": 4.4242105280839494e-06,
+   "D_p5_p95": [
+    -0.00015646227855171946,
+    0.00015599225037142558
+   ],
+   "percentile_of_real": 100.0,
+   "shrinkage": 3.4967463598049305e-05,
+   "nn_median": 0.0763888888888889,
+   "n": 100
+  },
+  "b_marginal": {
+   "D_median": 0.01198541229087563,
+   "D_p5_p95": [
+    0.011931374043018634,
+    0.012038611946760525
+   ],
+   "percentile_of_real": 100.0,
+   "shrinkage": 0.09472864487990611,
+   "nn_median": 0.08333333333333333,
+   "n": 100
+  },
+  "c_colfix": {
+   "D_median": 0.07621438590825841,
+   "D_p5_p95": [
+    0.07617562386011197,
+    0.07625073182468035
+   ],
+   "percentile_of_real": 100.0,
+   "shrinkage": 0.6023727279652952,
+   "nn_median": 0.3472222222222222,
+   "n": 100
+  },
+  "d_untrained": {
+   "D_median": 6.18493580042262e-07,
+   "D_p5_p95": [
+    -7.29500144218756e-06,
+    9.433265825901926e-06
+   ],
+   "percentile_of_real": 100.0,
+   "shrinkage": 4.888364061445634e-06,
+   "nn_median": 0.05555555555555555,
+   "n": 5
+  }
+ },
+ "outcome": "shrinks",
+ "registered_expectation": "survives (a) and (d); against (b) and (c) shrinkage between 0.2 and 0.7",
+ "runtime_s": 21744.6
+}

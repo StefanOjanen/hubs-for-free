@@ -281,3 +281,21 @@ cache was removed afterwards at the author's request. The second-model
 batteries (retrieval on Mistral-7B-Instruct-v0.2, CHAI on OPT-6.7B) exited
 at startup at 17:01 UTC on an argument-parsing clash (addendum 8) and are
 relaunched after the fix.
+
+Batteries completed (2026-09-15, continued). Retrieval on
+Mistral-7B-Instruct-v0.2 (pipeline 3, finished 18:41 UTC, 5,813 s): 3.4
+percent of heads above 0.1, mean top-10 score 0.42; every null at the 100th
+percentile, top-10 shrinkage 0.007 to 0.011, untrained initializations
+zero; E3 holds on both control models, so no verdict is withheld. The power
+watcher paused pipeline 3 from 19:12 to 19:55 UTC (battery at 25 percent,
+resumed on AC power). Clark (relaunched run, finished 21:06 UTC, 21,745 s
+under CPU contention with the six Dewage workers): D 0.1265, nearest
+neighbor in own layer 39.6 percent; random maps and the five untrained
+models give D of order 1e-5 (percentile 100, shrinkage 0); the
+marginal-matched surrogate reproduces 0.095 of D (percentile 100), the
+separator-column surrogate 0.602 (percentile 100; nearest-neighbor fraction
+34.7 percent against the real 39.6). Label: shrinks. The registered
+expectation (shrinkage between 0.2 and 0.7 against both surrogates) fails
+on the marginal-matched clause: the layer clustering is not a marginals
+effect, it is 60 percent the shared separator columns and 40 percent
+something the separator columns do not carry.

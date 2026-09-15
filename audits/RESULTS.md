@@ -1,13 +1,13 @@
 # Audit batteries: results against preregistration 4
 
-Generated 2026-09-15T17:01:24Z by `audits/eval_batteries.py` from the battery result files; regenerate with `python audits/eval_batteries.py`. Criteria: `audits/PREREGISTRATION4.md`, frozen at commit `ee4e267` and not edited since; readings fixed before any result in `audits/PREREGISTRATION4_ADDENDA.md`. Each result file records the registration reference it ran under (`registered`). Shrinkage is the share of the real effect a null reproduces (null median over real).
+Generated 2026-09-15T21:07:34Z by `audits/eval_batteries.py` from the battery result files; regenerate with `python audits/eval_batteries.py`. Criteria: `audits/PREREGISTRATION4.md`, frozen at commit `ee4e267` and not edited since; readings fixed before any result in `audits/PREREGISTRATION4_ADDENDA.md`. Each result file records the registration reference it ran under (`registered`). Shrinkage is the share of the real effect a null reproduces (null median over real).
 
 ## Registered expectations
 
 | Expectation | Verdict |
 |---|---|
 | E1: at least one hub, eigengap or special-head style claim is matched by surrogates (Target 3, column-set clause) | FAILS |
-| E2: a distribution-level similarity or redundancy claim survives with shrinkage between 20 and 70 percent (Target 1) | pending |
+| E2: a distribution-level similarity or redundancy claim survives with shrinkage between 20 and 70 percent (Target 1) | FAILS |
 | E3: the positive control survives every null with shrinkage under 20 percent (Target 5) | holds |
 | E4 | dropped before the freeze (Target 2 not reproducible) |
 | E5: MP outliers survive the MP null and at least half are matched by random weights (Target 4, per-target clauses) | pending |
@@ -15,6 +15,24 @@ Generated 2026-09-15T17:01:24Z by `audits/eval_batteries.py` from the battery re
 Falsification clause (all audited claims survive with shrinkage under 20 percent, which would reject the container-geometry thesis for the audited set): pending
 
 ## Target 5, Retrieval Heads (positive control, E3)
+
+`audits/retrieval_heads/battery_result_Mistral-7B-Instruct-v0.2.json`: mistralai/Mistral-7B-Instruct-v0.2, contexts [1024, 2048], 20 instances, 200 draws; registered under https://github.com/StefanOjanen/hubs-for-free/blob/ee4e267/audits/PREREGISTRATION4.md.
+
+Real: 3.4 percent of heads above 0.1, mean top-10 score 0.420, max 0.568.
+
+| Null | heads above 0.1, median | percentile of real | top-10 median | percentile of real | top-10 shrinkage |
+|---|---|---|---|---|---|
+| a_random | 0.00 percent | 100.0 | 0.0044 | 100.0 | 0.010 |
+| b_marginal | 0.00 percent | 100.0 | 0.0044 | 100.0 | 0.010 |
+| c_colset | 0.00 percent | 100.0 | 0.0030 | 100.0 | 0.007 |
+| d_untrained (n=3) | 0.00 percent | see clause | 0.0000 | see clause | 0.000 |
+
+- survives a_random: both percentiles above 99, top-10 shrinkage under 0.2: holds
+- survives b_marginal: both percentiles above 99, top-10 shrinkage under 0.2: holds
+- survives c_colset: both percentiles above 99, top-10 shrinkage under 0.2: holds
+- survives d_untrained: real above all 3 initializations, top-10 shrinkage under 0.2: holds
+
+E3 on this model: holds.
 
 `audits/retrieval_heads/battery_result_Qwen2.5-7B.json`: Qwen/Qwen2.5-7B, contexts [1024, 2048], 20 instances, 200 draws; registered under https://github.com/StefanOjanen/hubs-for-free/blob/ee4e267/audits/PREREGISTRATION4.md.
 
@@ -36,7 +54,23 @@ E3 on this model: holds.
 
 ## Target 1, Clark et al. 2019 (E2)
 
-pending
+`audits/clark2019/battery_result.json`: bert-base-uncased, 38 windows, 100 draws; registered under https://github.com/StefanOjanen/hubs-for-free/blob/ee4e267/audits/PREREGISTRATION4.md.
+
+Real contrast D = 0.1265; nearest neighbor in own layer 39.6 percent.
+
+| Null | D median | percentile of real | shrinkage | nearest-neighbor median |
+|---|---|---|---|---|
+| a_random | 0.0000 | 100.0 | 0.000 | 7.6 percent |
+| b_marginal | 0.0120 | 100.0 | 0.095 | 8.3 percent |
+| c_colfix | 0.0762 | 100.0 | 0.602 | 34.7 percent |
+| d_untrained | 0.0000 | 100.0 | 0.000 | 5.6 percent |
+
+- survives (a) random maps: percentile above 95: holds
+- survives (d) untrained BERT: real above all five initializations: holds
+- (b) marginal-matched: percentile above 95 and shrinkage in [0.2, 0.7]: FAILS
+- (c) separator columns kept: percentile above 95 and shrinkage in [0.2, 0.7]: holds
+
+Common label: shrinks (battery's own label shrinks). Registered expectation: FAILS.
 
 ## Target 3, CHAI 2024 (E1)
 

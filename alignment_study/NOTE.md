@@ -703,3 +703,17 @@ result files; this section records the outcomes as they complete.
   wording asked for, exact statistical indistinguishability from the
   sink-only surrogate, is stricter than the effect-size question it was
   meant to settle.
+- Target 5, Mistral-7B-Instruct-v0.2 (second control model): 3.4 percent
+  of heads above 0.1, every null at the 100th percentile, shrinkage 0.007
+  to 0.011, untrained zero. E3 holds on both models.
+- Target 1, BERT-base (Clark et al. 2019): the layer clustering D = 0.127
+  survives random maps and untrained BERT (both give D of order 1e-5). The
+  per-row marginal-matched surrogate reproduces 9.5 percent of D, below
+  the registered 20 to 70 percent band, so the registered expectation fails
+  on that clause; the separator-column surrogate ([CLS] and [SEP] columns
+  kept) reproduces 60 percent of D and 35 of the 40 percentage points of
+  same-layer nearest neighbors, inside the band. Label: shrinks. Reading:
+  the clustering is not a marginals artifact (the registered guess of 20 to
+  70 percent from marginals alone was wrong), it is mostly the shared
+  vertical pattern on the separators, with a 40 percent residual that is
+  real same-layer similarity beyond the separator columns.
