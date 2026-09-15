@@ -69,3 +69,17 @@ null instead of medians alone. No statistic, null or threshold changed. The
 Qwen2.5-7B run of Target 5 started before this addendum under the old
 output name and is renamed to the per-model name when it finishes (noted in
 RUNLOG.md).
+
+## Addendum 6 (2026-09-15): Target 4 battery in parallel worker processes
+
+At the measured 26 seconds per 4096 x 4096 Gram eigenvalue solve under the
+concurrent load, the single-process battery (generator seed 0) would have
+needed more than a day for the 64 square matrices. It was stopped after
+the six matrices of layers 0 and 1 (their log lines are kept in
+`audits/dewage2026/battery.log` and were seen before the stop) and
+restarted as six single-threaded workers over interleaved layers: worker i
+takes the layers with l mod 6 = i and seeds its generator with 1000 + i;
+`--aggregate` combines the per-matrix rows with the same aggregation code
+as the single-process form. Statistic, null families, draw counts and
+thresholds are unchanged; only the random draws differ from what seed 0
+would have produced.

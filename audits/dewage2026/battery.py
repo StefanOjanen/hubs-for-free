@@ -14,6 +14,12 @@
 # over layers: percentile of the real count and energy share in each null
 # and shrinkage = null median / real.
 #   python audits/dewage2026/battery.py [--dry-run] [--draws=N] [--layers=N]
+# Parallel form (addendum 6): worker i of n handles the layers with
+# l % n == i and writes its rows to battery_rows_part{i}of{n}.json with its
+# own seed 1000 + i; `--aggregate` then combines the part files with the
+# same aggregation code as the single-process form.
+#   python audits/dewage2026/battery.py --registered=URL --part=i:n
+#   python audits/dewage2026/battery.py --registered=URL --aggregate
 import glob
 import json
 import os
@@ -59,7 +65,14 @@ NLAY = int(next((a.split("=")[1] for a in sys.argv if a.startswith("--layers="))
 N_INIT = 1 if DRY else 5   # draws of the initializer null per matrix
 OUT = "/tmp/dewage2026_battery_dryrun.json" if DRY else "audits/dewage2026/battery_result.json"
 TYPES = ("q_proj", "k_proj", "v_proj", "o_proj")
-rng = np.random.default_rng(0)
+PART = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--part=")), None)
+AGG = "--aggregate" in sys.argv
+PI, PN = (map(int, PART.split(":")) if PART else (0, 1))
+PI, PN = int(PI), int(PN)
+SEED = 1000 + PI if PART else 0
+rng = np.random.default_rng(SEED)
+PART_GLOB = ("/tmp/dewage2026_battery_rows_part*of*.json" if DRY else "audits/dewage2026/battery_rows_part*of*.json")
+ROWS_OUT = PART_GLOB.replace("*of*", f"{PI}of{PN}") if PART else None
 
 
 def gaussian_matched(W):
@@ -78,6 +91,8 @@ def permuted(W):
 def real_matrices():
     if DRY:
         for l in range(NLAY):
+            if PART and l % PN != PI:
+                continue
             for t in TYPES:
                 shape = (64, 256) if t in ("k_proj", "v_proj") else (256, 256)
                 # planted structure: a few large directions plus heavy-tailed noise
@@ -92,7 +107,7 @@ def real_matrices():
             for key in sf.keys():
                 if ".self_attn." in key and key.endswith(".weight") and any(p in key for p in TYPES):
                     l = int(key.split(".layers.")[1].split(".")[0]); t = key.split(".self_attn.")[1].split(".")[0]
-                    if l < NLAY:
+                    if l < NLAY and not (PART and l % PN != PI):
                         yield l, t, sf.get_tensor(key).float().numpy()
 
 
@@ -114,18 +129,34 @@ def untrained_matrices():
 
 
 t0 = time.time()
-rows = []
-for l, t, W in real_matrices():
-    r = {"layer": l, "type": t, "real": mp_outliers(W)}
-    for fam, f in (("a_gaussian", gaussian_matched), ("b_rownorm", row_norm_matched), ("c_permuted", permuted)):
-        r[fam] = [mp_outliers(f(W)) for _ in range(DRAWS)]
-    rows.append(r)
-    print(f"  L{l:2d} {t:6s} real outliers {r['real']['outliers']:4d} energy {r['real']['energy_frac_outliers']:.3f} | medians: gaussian {np.median([x['outliers'] for x in r['a_gaussian']]):.0f}, rownorm {np.median([x['outliers'] for x in r['b_rownorm']]):.0f}, permuted {np.median([x['outliers'] for x in r['c_permuted']]):.0f} ({time.time()-t0:.0f}s)", flush=True)
-unt = {}
-for seed, l, t, W in untrained_matrices():
-    unt.setdefault((l, t), []).append(mp_outliers(W))
+if AGG:
+    parts = sorted(glob.glob(PART_GLOB))
+    rows, unt = [], {}
+    for pth in parts:
+        d = json.load(open(pth)); rows += d["rows"]
+        for k, v in d["unt"].items():
+            l, t = k.split(":"); unt[(int(l), t)] = v
+    assert len(rows) == 4 * NLAY and len(unt) == 4 * NLAY, (len(rows), len(unt), parts)
+    rows.sort(key=lambda r: (r["layer"], r["type"]))
+    print(f"aggregating {len(parts)} part files, {len(rows)} matrices", flush=True)
+else:
+    rows = []
+    for l, t, W in real_matrices():
+        r = {"layer": l, "type": t, "real": mp_outliers(W)}
+        for fam, f in (("a_gaussian", gaussian_matched), ("b_rownorm", row_norm_matched), ("c_permuted", permuted)):
+            r[fam] = [mp_outliers(f(W)) for _ in range(DRAWS)]
+        rows.append(r)
+        print(f"  L{l:2d} {t:6s} real outliers {r['real']['outliers']:4d} energy {r['real']['energy_frac_outliers']:.3f} | medians: gaussian {np.median([x['outliers'] for x in r['a_gaussian']]):.0f}, rownorm {np.median([x['outliers'] for x in r['b_rownorm']]):.0f}, permuted {np.median([x['outliers'] for x in r['c_permuted']]):.0f} ({time.time()-t0:.0f}s)", flush=True)
+    unt = {}
+    for seed, l, t, W in untrained_matrices():
+        unt.setdefault((l, t), []).append(mp_outliers(W))
+    if PART:
+        json.dump({"part": PART, "seed": SEED, "registered": REGISTERED, "rows": rows, "unt": {f"{l}:{t}": v for (l, t), v in unt.items()},
+                   "runtime_s": round(time.time() - t0, 1)}, open(ROWS_OUT, "w"))
+        print("PART_DONE", ROWS_OUT, f"({time.time()-t0:.0f}s)"); sys.exit(0)
 
-res = {"target": "Dewage et al. 2026", "registered": REGISTERED, "model": NAME, "layers": NLAY, "draws": DRAWS, "init_std": init_std(), "dry_run": DRY, "types": {}}
+res = {"target": "Dewage et al. 2026", "registered": REGISTERED, "model": NAME, "layers": NLAY, "draws": DRAWS, "init_std": init_std(), "dry_run": DRY, "types": {},
+       "parallel_parts": (sorted(glob.glob(PART_GLOB)) if AGG else None), "seed": (None if AGG else SEED)}
 for t in TYPES:
     rs = [r for r in rows if r["type"] == t]
     real_c = float(np.mean([r["real"]["outliers"] for r in rs])); real_e = float(np.mean([r["real"]["energy_frac_outliers"] for r in rs]))

@@ -206,3 +206,22 @@ above 0.1, with the source repository's own haystack and prompt) and its
 outcome does not depend on the other batteries; it runs when the MPS queue
 is free and its result is recorded here before a Llama battery, if any,
 runs.
+
+Sleep incident (2026-09-15). The machine was on battery and entered Low
+Power Sleep at 00:06 UTC, three minutes after the launch, and woke at 09:25
+UTC when the lid was opened; the batteries paused with it, so the runtimes
+recorded in the result files include about nine hours and twenty minutes
+of sleep. From 09:34 UTC a caffeinate assertion holds the machine awake
+while the pipeline shell exists and a watcher pauses the batteries
+(SIGSTOP) below 25 percent battery charge and resumes them on AC power.
+Power pause (2026-09-15): the watcher paused the batteries at 13:04 UTC at
+24 percent charge and resumed them at 14:42 UTC when the charger was
+connected; the retrieval battery on Qwen2.5-7B finished at 14:44 UTC
+(runtime_s in its result file includes the sleep and the pause).
+
+Dewage restart (2026-09-15, about 14:55 UTC). The single-process Target 4
+battery had finished 6 of 128 matrices in about two hours of awake time
+(26 s per 4096 x 4096 eigenvalue solve under load, measured); it was
+stopped and relaunched as six single-threaded workers with aggregation
+(addendum 6). Worker logs: audits/dewage2026/battery_part*of6.log;
+aggregation log: battery_aggregate.log.
