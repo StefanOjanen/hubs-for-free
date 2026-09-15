@@ -18,3 +18,12 @@ power_watch: exit 16:42:16Z
 pipeline2 start 2026-09-15T16:43:35Z head 6f77a73
 renamed Qwen retrieval result to battery_result_Qwen2.5-7B.json 16:43:35Z
 llama inclusion test start 16:43:35Z
+llama inclusion test exit 0 17:01:13Z
+llama excluded by the frozen rule (or the test failed) 17:01:13Z
+llama-2-7b-80k cache removed 17:01:14Z
+llama step exit 0 17:01:14Z
+retrieval mistral-instruct exit 1 17:01:20Z
+chai opt exit 1 17:01:24Z
+eval exit 0 17:01:24Z
+pipeline2 end 2026-09-15T17:01:24Z
+power_watch: exit 17:01:39Z

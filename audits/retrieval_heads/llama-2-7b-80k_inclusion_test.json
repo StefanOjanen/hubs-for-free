@@ -1,0 +1,362 @@
+{
+ "model": "yaofu/llama-2-7b-80k",
+ "rope": "linear:10",
+ "dtype": "bfloat16",
+ "source_repo": "nightdessert/Retrieval_Head",
+ "source_commit": "3ac171a6f71ce7ef1cda57d4215c390fb6ab51f2",
+ "contexts": [
+  1024,
+  2048
+ ],
+ "depths_percent": [
+  10,
+  30,
+  50,
+  70,
+  90
+ ],
+ "needles": 2,
+ "instances": 20,
+ "retrieved": 20,
+ "frac_heads_above_0.1": 0.0127,
+ "frac_heads_above_0.1_all_instances": 0.0127,
+ "n_heads": 1024,
+ "top_heads": [
+  {
+   "layer": 11,
+   "head": 15,
+   "score": 0.634
+  },
+  {
+   "layer": 16,
+   "head": 19,
+   "score": 0.603
+  },
+  {
+   "layer": 6,
+   "head": 9,
+   "score": 0.53
+  },
+  {
+   "layer": 8,
+   "head": 26,
+   "score": 0.454
+  },
+  {
+   "layer": 7,
+   "head": 12,
+   "score": 0.411
+  },
+  {
+   "layer": 7,
+   "head": 4,
+   "score": 0.31
+  },
+  {
+   "layer": 17,
+   "head": 22,
+   "score": 0.306
+  },
+  {
+   "layer": 19,
+   "head": 15,
+   "score": 0.275
+  },
+  {
+   "layer": 21,
+   "head": 30,
+   "score": 0.248
+  },
+  {
+   "layer": 24,
+   "head": 29,
+   "score": 0.169
+  }
+ ],
+ "rule": "included if retrieved in at least 18 of 20 instances and 2 to 8 percent of heads above 0.1 (PREREGISTRATION4.md, Target 5)",
+ "included": false,
+ "dry_run": false,
+ "per_instance": [
+  {
+   "needle": 0,
+   "ctx": 1024,
+   "depth_percent": 10,
+   "prompt_tokens": 849,
+   "needle_span": [
+    0,
+    38
+   ],
+   "retrieved": true,
+   "rouge1_recall": 90.0,
+   "response": "A new report from the WMO shows that records were once broken, and some cases smashed, for greenhous",
+   "max_head_score": 0.789
+  },
+  {
+   "needle": 0,
+   "ctx": 1024,
+   "depth_percent": 30,
+   "prompt_tokens": 849,
+   "needle_span": [
+    218,
+    256
+   ],
+   "retrieved": true,
+   "rouge1_recall": 95.0,
+   "response": "A new report from WMO shows that records were once broken, and in some cases smashed, for greenhouse",
+   "max_head_score": 0.632
+  },
+  {
+   "needle": 0,
+   "ctx": 1024,
+   "depth_percent": 50,
+   "prompt_tokens": 849,
+   "needle_span": [
+    287,
+    325
+   ],
+   "retrieved": true,
+   "rouge1_recall": 100.0,
+   "response": "A new report from WMO shows that records were once again broken, and in some cases smashed, for gree",
+   "max_head_score": 0.632
+  },
+  {
+   "needle": 0,
+   "ctx": 1024,
+   "depth_percent": 70,
+   "prompt_tokens": 849,
+   "needle_span": [
+    494,
+    532
+   ],
+   "retrieved": true,
+   "rouge1_recall": 95.0,
+   "response": "A new report from WMO shows that records were once broken, and in some cases smashed, for greenhouse",
+   "max_head_score": 0.632
+  },
+  {
+   "needle": 0,
+   "ctx": 1024,
+   "depth_percent": 90,
+   "prompt_tokens": 849,
+   "needle_span": [
+    673,
+    711
+   ],
+   "retrieved": true,
+   "rouge1_recall": 95.0,
+   "response": "The new report from WMO shows that records were once broken, and in some cases smashed, for greenhou",
+   "max_head_score": 0.579
+  },
+  {
+   "needle": 0,
+   "ctx": 2048,
+   "depth_percent": 10,
+   "prompt_tokens": 1873,
+   "needle_span": [
+    0,
+    38
+   ],
+   "retrieved": true,
+   "rouge1_recall": 90.0,
+   "response": "A new report from the WMO shows that records were once broken, and some cases smashed, for greenhous",
+   "max_head_score": 0.816
+  },
+  {
+   "needle": 0,
+   "ctx": 2048,
+   "depth_percent": 30,
+   "prompt_tokens": 1873,
+   "needle_span": [
+    494,
+    532
+   ],
+   "retrieved": true,
+   "rouge1_recall": 90.0,
+   "response": "A new report from WMO shows that records were once broken, and in some cases smashed, for greenhouse",
+   "max_head_score": 0.579
+  },
+  {
+   "needle": 0,
+   "ctx": 2048,
+   "depth_percent": 50,
+   "prompt_tokens": 1873,
+   "needle_span": [
+    756,
+    794
+   ],
+   "retrieved": true,
+   "rouge1_recall": 90.0,
+   "response": "The new report from WMO shows that records were once broken, and in some cases smashed, for greenhou",
+   "max_head_score": 0.579
+  },
+  {
+   "needle": 0,
+   "ctx": 2048,
+   "depth_percent": 70,
+   "prompt_tokens": 1873,
+   "needle_span": [
+    1100,
+    1138
+   ],
+   "retrieved": true,
+   "rouge1_recall": 90.0,
+   "response": "A new report from WMO shows that records were once broken, and in some cases smashed, for greenhouse",
+   "max_head_score": 0.579
+  },
+  {
+   "needle": 0,
+   "ctx": 2048,
+   "depth_percent": 90,
+   "prompt_tokens": 1873,
+   "needle_span": [
+    1623,
+    1661
+   ],
+   "retrieved": true,
+   "rouge1_recall": 95.0,
+   "response": "The new report from WMO shows that records were once broken, and in some cases smashed, for greenhou",
+   "max_head_score": 0.579
+  },
+  {
+   "needle": 1,
+   "ctx": 1024,
+   "depth_percent": 10,
+   "prompt_tokens": 851,
+   "needle_span": [
+    0,
+    32
+   ],
+   "retrieved": true,
+   "rouge1_recall": 100.0,
+   "response": "The best thing to do in Beijing is to take a walk in Chaoyang Park and have a cup of Espresso in the",
+   "max_head_score": 0.875
+  },
+  {
+   "needle": 1,
+   "ctx": 1024,
+   "depth_percent": 30,
+   "prompt_tokens": 851,
+   "needle_span": [
+    209,
+    241
+   ],
+   "retrieved": true,
+   "rouge1_recall": 93.3,
+   "response": "The best thing to do in Beijing is to take a walk in Chao Park and have a cup of Espresso in the eve",
+   "max_head_score": 0.625
+  },
+  {
+   "needle": 1,
+   "ctx": 1024,
+   "depth_percent": 50,
+   "prompt_tokens": 851,
+   "needle_span": [
+    361,
+    393
+   ],
+   "retrieved": true,
+   "rouge1_recall": 93.3,
+   "response": "The best thing to do in Beijing is to take a walk in Chao Park and have a cup of Espresso in the eve",
+   "max_head_score": 0.562
+  },
+  {
+   "needle": 1,
+   "ctx": 1024,
+   "depth_percent": 70,
+   "prompt_tokens": 851,
+   "needle_span": [
+    493,
+    525
+   ],
+   "retrieved": true,
+   "rouge1_recall": 100.0,
+   "response": "The best thing to do in Beijing is to take a walk in Chaoyang Park and have a cup of Espresso in the",
+   "max_head_score": 0.719
+  },
+  {
+   "needle": 1,
+   "ctx": 1024,
+   "depth_percent": 90,
+   "prompt_tokens": 851,
+   "needle_span": [
+    698,
+    730
+   ],
+   "retrieved": true,
+   "rouge1_recall": 93.3,
+   "response": "The best thing to do in Beijing is to take a walk in Chao Park and have a cup of Espresso in the eve",
+   "max_head_score": 0.719
+  },
+  {
+   "needle": 1,
+   "ctx": 2048,
+   "depth_percent": 10,
+   "prompt_tokens": 1875,
+   "needle_span": [
+    143,
+    175
+   ],
+   "retrieved": true,
+   "rouge1_recall": 93.3,
+   "response": "I have heard that the best thing to do in Beijing is to take a walk in Chao Park and have a cup of E",
+   "max_head_score": 0.594
+  },
+  {
+   "needle": 1,
+   "ctx": 2048,
+   "depth_percent": 30,
+   "prompt_tokens": 1875,
+   "needle_span": [
+    493,
+    525
+   ],
+   "retrieved": true,
+   "rouge1_recall": 93.3,
+   "response": "The best thing to do in Beijing is to take a walk in Chao Park and have a cup of Espresso in the eve",
+   "max_head_score": 0.594
+  },
+  {
+   "needle": 1,
+   "ctx": 2048,
+   "depth_percent": 50,
+   "prompt_tokens": 1875,
+   "needle_span": [
+    844,
+    876
+   ],
+   "retrieved": true,
+   "rouge1_recall": 93.3,
+   "response": "The best thing to do in Beijing is to take a walk in Chao Park and have a cup of Espresso in the eve",
+   "max_head_score": 0.656
+  },
+  {
+   "needle": 1,
+   "ctx": 2048,
+   "depth_percent": 70,
+   "prompt_tokens": 1875,
+   "needle_span": [
+    1257,
+    1289
+   ],
+   "retrieved": true,
+   "rouge1_recall": 93.3,
+   "response": "The best thing to do in Beijing is to take a walk in Chao Park and have a cup of Espresso in the eve",
+   "max_head_score": 0.625
+  },
+  {
+   "needle": 1,
+   "ctx": 2048,
+   "depth_percent": 90,
+   "prompt_tokens": 1875,
+   "needle_span": [
+    1598,
+    1630
+   ],
+   "retrieved": true,
+   "rouge1_recall": 93.3,
+   "response": "The best thing to do in Beijing is to take a walk in Chao Park and have a cup of Espresso in the eve",
+   "max_head_score": 0.625
+  }
+ ],
+ "runtime_s": 1051.1
+}

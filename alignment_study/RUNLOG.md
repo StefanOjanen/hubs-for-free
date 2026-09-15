@@ -267,3 +267,17 @@ addendum 4; (a) and (d) survived in 32 of 32. Per-layer label: shrinks in
 numbers are in audits/RESULTS.md. Pipeline 2 started 16:43 UTC with the
 Llama-2-7B-80K inclusion test on the MPS; Clark (relaunched 15:05) and the
 six Dewage workers continue on the CPU.
+
+Llama-2-7B-80K inclusion test (2026-09-15, 16:43 to 17:01 UTC, 1,051 s,
+bfloat16, linear rope factor 10). With the source repository's haystack
+parts, needles, sentence-boundary insertion, non-chat prompt and ROUGE
+success test, the needle was retrieved in 20 of 20 instances (recall 90 to
+100), so the earlier failure under our WikiText haystack and prompt was a
+haystack and prompt effect. The fraction of heads above 0.1 is 1.27 percent
+(13 of 1,024; strongest L11H15 0.63, L16H19 0.60), below the 2 percent floor
+of the frozen rule, so the model stays excluded from the battery; result
+in audits/retrieval_heads/llama-2-7b-80k_inclusion_test.json. The model
+cache was removed afterwards at the author's request. The second-model
+batteries (retrieval on Mistral-7B-Instruct-v0.2, CHAI on OPT-6.7B) exited
+at startup at 17:01 UTC on an argument-parsing clash (addendum 8) and are
+relaunched after the fix.

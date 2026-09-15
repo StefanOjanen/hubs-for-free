@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/audits/retrieval_heads/battery.py", line 54, in <module>
+    import reproduce as R   # NEEDLE, QUESTION, MAX_NEW, haystacks, build (module-level run is guarded)
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/audits/retrieval_heads/reproduce.py", line 25, in <module>
+    CTX = [int(x) for x in (sys.argv[2] if len(sys.argv) > 2 else "512").split(",")]
+           ^^^^^^
+ValueError: invalid literal for int() with base 10: '--model=mistralai/Mistral-7B-Instruct-v0.2'

@@ -95,3 +95,14 @@ draw of every window at a time and scores it; the null families, draw
 counts and statistic are unchanged, the random draws differ from what the
 one-shot generation would have produced. The battery restarts from the
 beginning.
+
+## Addendum 8 (2026-09-15): the model flag and the reproduction modules
+
+The `--model=` flag of addendum 5 was read as a positional argument by the
+reproduction modules (`audits/chai/reproduce.py`,
+`audits/retrieval_heads/reproduce.py`), which the batteries import for
+their helpers and which parse `sys.argv` at import time; the second-model
+runs of Targets 3 and 5 therefore exited at startup on 2026-09-15 at 17:01
+UTC before loading any model. The battery scripts now hide their flags
+from those modules during the import. No statistic, null or threshold
+changed and no real data was processed by the failed starts.

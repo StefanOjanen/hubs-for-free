@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/audits/chai/battery.py", line 38, in <module>
+    from reproduce import cluster_stats
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/audits/chai/reproduce.py", line 28, in <module>
+    NSAMP = int(sys.argv[2]) if len(sys.argv) > 2 else 8
+            ^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '--model=facebook/opt-6.7b'

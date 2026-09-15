@@ -35,7 +35,9 @@ if "--dry-run" not in sys.argv and not REGISTERED:
 
 sys.path.insert(0, ".")
 sys.path.insert(0, "audits/chai")
+_argv = sys.argv; sys.argv = [_argv[0]]        # reproduce.py parses positional arguments at import (addendum 8)
 from reproduce import cluster_stats
+sys.argv = _argv
 from hubsfree.stats import sink_columns
 
 DRY = "--dry-run" in sys.argv

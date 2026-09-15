@@ -51,7 +51,9 @@ N_INIT = 1 if DRY else 3   # amendment 3 of the frozen file
 OUT = "/tmp/retrieval_battery_dryrun.json" if DRY else f"audits/retrieval_heads/battery_result_{SHORT}.json"
 DEV = pick_device(os.environ.get("HUBSFREE_DEVICE", "auto"))
 torch.set_grad_enabled(False)
+_argv = sys.argv; sys.argv = [_argv[0]]        # reproduce.py parses positional arguments at import (addendum 8)
 import reproduce as R   # NEEDLE, QUESTION, MAX_NEW, haystacks, build (module-level run is guarded)
+sys.argv = _argv
 
 
 def decode_keeping_needle_rows(model, x, max_new, eos_id, needle_token_ids):
