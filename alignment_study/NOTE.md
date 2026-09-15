@@ -660,3 +660,46 @@ learned-position and ALiBi positions and across multi-head, grouped-query
 and multi-query attention, seventeen models in ten families, and the
 generative statement of preregistration 9 holds in fifteen of sixteen
 models tested (TinyLlama's low-sink layers remaining the one exception).
+
+## Audit batteries (preregistration 4, registration of record: commit ee4e267)
+
+Running from 2026-09-15 under `--registered=<freeze permalink>`; the
+evaluation script `audits/eval_batteries.py` and the readings of the frozen
+text it applies (`PREREGISTRATION4_ADDENDA.md`, addendum 4) were committed
+before any result existed. `audits/RESULTS.md` is regenerated from the
+result files; this section records the outcomes as they complete.
+
+- Target 5, Qwen2.5-7B (positive control, E3): 4.2 percent of heads above
+  0.1, mean top-10 score 0.43. Random rows, marginal-matched rows and
+  sink-column-preserving rows put the real values at the 100th percentile
+  of 200 draws and reproduce 0.008 to 0.011 of the top-10 score; the three
+  untrained initializations score zero. E3 holds on this model: the
+  battery does not remove a head set that copies specific context tokens.
+- Target 5, Llama-2-7B-80K inclusion test: with the source repository's
+  haystack, needles, insertion rule, prompt and success test the needle is
+  retrieved in 20 of 20 instances (our WikiText haystack had given 10 of
+  20), but 1.27 percent of heads score above 0.1 against the frozen 2 to 8
+  percent band, so the model stays excluded by the rule as written. The
+  band was set from the paper's 3 to 6 percent at 1K to 50K tokens on about
+  600 instances; at 1K and 2K on 20 instances the fraction is lower.
+- Target 3, Mistral-7B-v0.1: the registered expectation fails as written,
+  in an instructive way. The sink-set surrogate (c), which keeps only the
+  layer's sink columns and the diagonal of each head's last row and
+  permutes the rest, reproduces 0.90 to 0.998 of the cross-head correlation
+  excess over the random null in every layer (median 0.96), so the
+  redundancy CHAI exploits is, to within a few percent, the shared sink
+  column. But the real correlation sits above every one of the 200 draws
+  in all 32 layers, so the frozen "matched" criterion (percentile between 5
+  and 95 in two thirds of the layers) is met in 0 of 32; with 200 draws over
+  32 documents the null distribution is far narrower than a residual of 2
+  to 10 percent. The marginal-matched surrogate (b), which permutes the
+  sink column away, reproduces about zero of the excess (0.000 to 0.065),
+  so the clause "reproduces more than half" (addendum 4 reading) fails 0 of
+  32; under the other reading of that clause (the statistic falls by more
+  than half) it would hold 32 of 32. Random rows (a) and the five
+  untrained models (d) are below the real value in every layer. Per-layer
+  common label: shrinks (the null reproduces more than half) in 32 of 32.
+  Reading: the redundancy is real and it is the sink; what the registered
+  wording asked for, exact statistical indistinguishability from the
+  sink-only surrogate, is stricter than the effect-size question it was
+  meant to settle.
