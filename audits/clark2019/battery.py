@@ -93,12 +93,12 @@ print("real", json.dumps(real), f"({time.time()-t0:.0f}s)", flush=True)
 null_a = [stats(np.mean([js_matrix(random_causal_softmax(rng, n, T, causal=False)) for _ in range(NWIN)], 0), layer) for _ in range(DRAWS)]
 print("null (a) done", f"({time.time()-t0:.0f}s)", flush=True)
 # (b) marginal-matched and (c) column-preserving, per window, draw k uses the k-th surrogate of every window
+# One draw of every window at a time (addendum 7): materializing all draws
+# of all windows at once needs about 36 GB and was killed by the system.
 null_b, null_c = [], []
-sur_b = [surrogate_plain(A, rng, DRAWS, causal=False) for A in windows]
-sur_c = [surrogate_colfix(A, rng, cols=(0, T - 1), draws=DRAWS, causal=False) for A in windows]
 for k in range(DRAWS):
-    null_b.append(stats(np.mean([js_matrix(S[k]) for S in sur_b], 0), layer))
-    null_c.append(stats(np.mean([js_matrix(S[k]) for S in sur_c], 0), layer))
+    null_b.append(stats(np.mean([js_matrix(surrogate_plain(A, rng, 1, causal=False)[0]) for A in windows], 0), layer))
+    null_c.append(stats(np.mean([js_matrix(surrogate_colfix(A, rng, cols=(0, T - 1), draws=1, causal=False)[0]) for A in windows], 0), layer))
     if k % 10 == 0:
         print("draw", k, f"({time.time()-t0:.0f}s)", flush=True)
 # (d) untrained

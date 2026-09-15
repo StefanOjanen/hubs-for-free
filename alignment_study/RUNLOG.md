@@ -246,3 +246,8 @@ README.md and NOTE.md were replaced by the clustered ones (S4' -0.78 to
 0.69; M2 -0.10 to +0.35 instead of -0.10 to +0.32). Every law statement
 keeps a negative upper bound; the PR10 law on four models widens to -0.92
 to -0.37.
+
+Clark restart (2026-09-15, 15:05 UTC). The Target 1 battery was killed by
+the system (exit 137, memory) at 14:52 UTC while generating the surrogate
+draws; fixed to draw-by-draw generation (addendum 7) and relaunched from
+the beginning; the killed run's log is kept as battery_killed.log.

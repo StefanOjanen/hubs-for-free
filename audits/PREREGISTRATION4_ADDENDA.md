@@ -83,3 +83,15 @@ takes the layers with l mod 6 = i and seeds its generator with 1000 + i;
 as the single-process form. Statistic, null families, draw counts and
 thresholds are unchanged; only the random draws differ from what seed 0
 would have produced.
+
+## Addendum 7 (2026-09-15): memory of the Target 1 battery
+
+The committed Target 1 script generated all 100 draws of both surrogate
+families for all 38 windows before scoring them, about 36 GB of maps; the
+system killed the process (exit 137) about five and a half hours into the
+run, after the real statistic and the random null had been computed and
+printed (D 0.1265, the reproduction's value). The script now generates one
+draw of every window at a time and scores it; the null families, draw
+counts and statistic are unchanged, the random draws differ from what the
+one-shot generation would have produced. The battery restarts from the
+beginning.
