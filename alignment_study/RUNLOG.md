@@ -299,3 +299,15 @@ expectation (shrinkage between 0.2 and 0.7 against both surrogates) fails
 on the marginal-matched clause: the layer clustering is not a marginals
 effect, it is 60 percent the shared separator columns and 40 percent
 something the separator columns do not carry.
+
+CHAI on OPT-6.7B (2026-09-15, finished 21:14 UTC, 9,143 s). Real cross-head
+correlation 0.34 to 0.83 (against 0.55 to 0.99 on Mistral-7B); the sink-set
+surrogate reproduces a median 0.68 of the correlation excess (0.03 to 0.92,
+rising with depth as the sink forms) and the marginal-matched surrogate a
+median 0.011; the real value lies above all 200 draws of every family in
+all 32 layers, so the registered "matched" clause fails 0 of 32 as on
+Mistral. Majority label: shrinks. With both models in, E1 fails as
+written and E2 fails on the marginal clause of Target 1; E3 holds on both
+control models; E5 waits for the Target 4 battery, whose six workers
+finished their real matrices on 2026-09-16 and are drawing the initializer
+null (parts 3, 4 and 5 exited 11:11 to 11:12 UTC).

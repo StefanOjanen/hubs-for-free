@@ -1,7 +1,35 @@
-Traceback (most recent call last):
-  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/audits/chai/battery.py", line 38, in <module>
-    from reproduce import cluster_stats
-  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/audits/chai/reproduce.py", line 28, in <module>
-    NSAMP = int(sys.argv[2]) if len(sys.argv) > 2 else 8
-            ^^^^^^^^^^^^^^^^
-ValueError: invalid literal for int() with base 10: '--model=facebook/opt-6.7b'
+Loading weights:   0%|          | 0/516 [00:00<?, ?it/s]Loading weights:   0%|          | 2/516 [00:00<04:01,  2.12it/s]Loading weights:  10%|█         | 54/516 [00:01<00:08, 55.34it/s]Loading weights:  14%|█▎        | 70/516 [00:01<00:07, 63.38it/s]Loading weights:  17%|█▋        | 86/516 [00:01<00:07, 59.19it/s]Loading weights:  20%|█▉        | 102/516 [00:01<00:06, 68.24it/s]Loading weights:  23%|██▎       | 118/516 [00:02<00:06, 59.84it/s]Loading weights:  26%|██▌       | 134/516 [00:02<00:05, 64.37it/s]Loading weights:  29%|██▉       | 150/516 [00:02<00:06, 60.08it/s]Loading weights:  32%|███▏      | 166/516 [00:03<00:05, 59.45it/s]Loading weights:  35%|███▌      | 182/516 [00:03<00:05, 59.00it/s]Loading weights:  38%|███▊      | 198/516 [00:03<00:05, 61.84it/s]Loading weights:  41%|████▏     | 214/516 [00:03<00:04, 61.53it/s]Loading weights:  45%|████▍     | 230/516 [00:04<00:04, 60.12it/s]Loading weights:  48%|████▊     | 246/516 [00:04<00:04, 61.60it/s]Loading weights:  51%|█████     | 262/516 [00:04<00:04, 59.27it/s]Loading weights:  54%|█████▍    | 278/516 [00:04<00:04, 51.99it/s]Loading weights:  57%|█████▋    | 294/516 [00:05<00:04, 54.50it/s]Loading weights:  60%|██████    | 310/516 [00:05<00:04, 48.72it/s]Loading weights:  63%|██████▎   | 326/516 [00:08<00:11, 16.60it/s]Loading weights:  66%|██████▋   | 342/516 [00:09<00:10, 15.91it/s]Loading weights:  69%|██████▉   | 358/516 [00:09<00:09, 17.08it/s]Loading weights:  72%|███████▏  | 374/516 [00:10<00:07, 19.58it/s]Loading weights:  76%|███████▌  | 390/516 [00:11<00:06, 19.37it/s]Loading weights:  79%|███████▊  | 406/516 [00:12<00:05, 20.26it/s]Loading weights:  82%|████████▏ | 422/516 [00:12<00:04, 19.87it/s]Loading weights:  85%|████████▍ | 438/516 [00:13<00:03, 20.30it/s]Loading weights:  85%|████████▌ | 441/516 [00:13<00:03, 20.73it/s]Loading weights:  88%|████████▊ | 454/516 [00:14<00:03, 20.01it/s]Loading weights:  91%|█████████ | 470/516 [00:15<00:02, 20.58it/s]Loading weights:  92%|█████████▏| 473/516 [00:15<00:02, 20.11it/s]Loading weights:  94%|█████████▍| 486/516 [00:16<00:01, 19.06it/s]Loading weights:  95%|█████████▍| 488/516 [00:16<00:01, 18.58it/s]Loading weights:  97%|█████████▋| 502/516 [00:16<00:00, 21.50it/s]Loading weights: 100%|██████████| 516/516 [00:16<00:00, 30.67it/s]
+  L 0 real corr 0.337 largest95 0.05 | colset median 0.009 reproduced 0.028007454251934696 | marginal median 0.006 | untrained median 0.000 (7289s)
+  L 1 real corr 0.548 largest95 0.13 | colset median 0.095 reproduced 0.17261991968501406 | marginal median 0.002 | untrained median 0.001 (7349s)
+  L 2 real corr 0.598 largest95 0.08 | colset median 0.049 reproduced 0.08126773812135778 | marginal median 0.002 | untrained median 0.001 (7408s)
+  L 3 real corr 0.570 largest95 0.08 | colset median 0.067 reproduced 0.11748362681518042 | marginal median 0.003 | untrained median 0.001 (7468s)
+  L 4 real corr 0.578 largest95 0.09 | colset median 0.125 reproduced 0.2159420874824215 | marginal median 0.003 | untrained median 0.001 (7528s)
+  L 5 real corr 0.532 largest95 0.13 | colset median 0.181 reproduced 0.3401027418159271 | marginal median 0.008 | untrained median 0.003 (7587s)
+  L 6 real corr 0.516 largest95 0.17 | colset median 0.221 reproduced 0.42765643369766687 | marginal median 0.009 | untrained median 0.002 (7647s)
+  L 7 real corr 0.539 largest95 0.13 | colset median 0.212 reproduced 0.394341396792511 | marginal median 0.013 | untrained median 0.001 (7707s)
+  L 8 real corr 0.576 largest95 0.13 | colset median 0.282 reproduced 0.4889570984253029 | marginal median 0.017 | untrained median 0.002 (7766s)
+  L 9 real corr 0.614 largest95 0.13 | colset median 0.339 reproduced 0.5523481143936574 | marginal median 0.014 | untrained median 0.003 (7827s)
+  L10 real corr 0.624 largest95 0.17 | colset median 0.372 reproduced 0.5962293815363044 | marginal median 0.012 | untrained median 0.003 (7886s)
+  L11 real corr 0.614 largest95 0.17 | colset median 0.392 reproduced 0.6384186959989347 | marginal median 0.008 | untrained median 0.001 (7947s)
+  L12 real corr 0.600 largest95 0.13 | colset median 0.395 reproduced 0.6591966415198455 | marginal median 0.009 | untrained median 0.000 (8007s)
+  L13 real corr 0.648 largest95 0.17 | colset median 0.438 reproduced 0.6757459550269131 | marginal median 0.009 | untrained median 0.002 (8068s)
+  L14 real corr 0.582 largest95 0.19 | colset median 0.395 reproduced 0.6789531317276364 | marginal median 0.011 | untrained median 0.003 (8128s)
+  L15 real corr 0.587 largest95 0.19 | colset median 0.409 reproduced 0.6973034651128949 | marginal median 0.009 | untrained median 0.005 (8189s)
+  L16 real corr 0.640 largest95 0.21 | colset median 0.459 reproduced 0.7172721528167649 | marginal median 0.005 | untrained median 0.003 (8250s)
+  L17 real corr 0.619 largest95 0.18 | colset median 0.454 reproduced 0.7333204851145585 | marginal median 0.008 | untrained median 0.002 (8310s)
+  L18 real corr 0.546 largest95 0.19 | colset median 0.384 reproduced 0.7028812852514268 | marginal median 0.006 | untrained median 0.003 (8371s)
+  L19 real corr 0.543 largest95 0.18 | colset median 0.367 reproduced 0.6769283389231981 | marginal median 0.008 | untrained median 0.001 (8431s)
+  L20 real corr 0.508 largest95 0.16 | colset median 0.335 reproduced 0.6589850173490446 | marginal median 0.008 | untrained median 0.002 (8492s)
+  L21 real corr 0.595 largest95 0.21 | colset median 0.423 reproduced 0.7097194146683502 | marginal median 0.005 | untrained median 0.003 (8553s)
+  L22 real corr 0.524 largest95 0.19 | colset median 0.375 reproduced 0.7143182045052621 | marginal median 0.004 | untrained median 0.001 (8615s)
+  L23 real corr 0.527 largest95 0.19 | colset median 0.376 reproduced 0.7131781337972285 | marginal median 0.006 | untrained median 0.001 (8674s)
+  L24 real corr 0.533 largest95 0.21 | colset median 0.411 reproduced 0.7709736570916844 | marginal median 0.003 | untrained median 0.007 (8732s)
+  L25 real corr 0.640 largest95 0.28 | colset median 0.554 reproduced 0.8654151038319909 | marginal median 0.000 | untrained median 0.003 (8790s)
+  L26 real corr 0.624 largest95 0.31 | colset median 0.551 reproduced 0.8833054257926335 | marginal median 0.001 | untrained median 0.001 (8849s)
+  L27 real corr 0.663 largest95 0.34 | colset median 0.584 reproduced 0.8806362304005471 | marginal median 0.001 | untrained median 0.002 (8908s)
+  L28 real corr 0.733 largest95 0.40 | colset median 0.660 reproduced 0.8998259861826706 | marginal median 0.001 | untrained median 0.004 (8966s)
+  L29 real corr 0.766 largest95 0.48 | colset median 0.700 reproduced 0.9133078678532223 | marginal median 0.001 | untrained median 0.002 (9026s)
+  L30 real corr 0.831 largest95 0.49 | colset median 0.764 reproduced 0.9185682793017985 | marginal median 0.000 | untrained median 0.003 (9085s)
+  L31 real corr 0.784 largest95 0.54 | colset median 0.723 reproduced 0.9210733794479963 | marginal median 0.000 | untrained median 0.001 (9143s)
+{"layers_where_colset_matches_corr": 0, "layers_where_real_above_marginal_p95": 32, "n_layers": 32}
+BATTERY_DONE audits/chai/battery_result_opt-6.7b.json

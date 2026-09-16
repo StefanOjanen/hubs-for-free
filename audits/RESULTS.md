@@ -1,6 +1,6 @@
 # Audit batteries: results against preregistration 4
 
-Generated 2026-09-15T21:07:34Z by `audits/eval_batteries.py` from the battery result files; regenerate with `python audits/eval_batteries.py`. Criteria: `audits/PREREGISTRATION4.md`, frozen at commit `ee4e267` and not edited since; readings fixed before any result in `audits/PREREGISTRATION4_ADDENDA.md`. Each result file records the registration reference it ran under (`registered`). Shrinkage is the share of the real effect a null reproduces (null median over real).
+Generated 2026-09-16T11:21:13Z by `audits/eval_batteries.py` from the battery result files; regenerate with `python audits/eval_batteries.py`. Criteria: `audits/PREREGISTRATION4.md`, frozen at commit `ee4e267` and not edited since; readings fixed before any result in `audits/PREREGISTRATION4_ADDENDA.md`. Each result file records the registration reference it ran under (`registered`). Shrinkage is the share of the real effect a null reproduces (null median over real).
 
 ## Registered expectations
 
@@ -12,7 +12,7 @@ Generated 2026-09-15T21:07:34Z by `audits/eval_batteries.py` from the battery re
 | E4 | dropped before the freeze (Target 2 not reproducible) |
 | E5: MP outliers survive the MP null and at least half are matched by random weights (Target 4, per-target clauses) | pending |
 
-Falsification clause (all audited claims survive with shrinkage under 20 percent, which would reject the container-geometry thesis for the audited set): pending
+Falsification clause (all audited claims survive with shrinkage under 20 percent, which would reject the container-geometry thesis for the audited set): not triggered
 
 ## Target 5, Retrieval Heads (positive control, E3)
 
@@ -112,6 +112,52 @@ Mean real cross-head correlation over layers 0.779. Layers where: the sink-set s
 | 29 | 0.720 | 0.37 | 0.000 | 0.010 | 0.694 | 0.000 | 0.013 | 0.964 | 100.0 | shrinks |
 | 30 | 0.693 | 0.39 | 0.000 | 0.018 | 0.667 | 0.000 | 0.026 | 0.963 | 100.0 | shrinks |
 | 31 | 0.600 | 0.33 | -0.000 | 0.039 | 0.539 | 0.000 | 0.065 | 0.899 | 100.0 | shrinks |
+
+- (c) sink set kept matches correlation and cluster share in at least 22 of 32 layers: FAILS
+- correlation survives (a) random rows (percentile above 95) in at least 22 of 32 layers: holds
+- correlation survives (d) untrained model (above all five initializations) in at least 22 of 32 layers: holds
+- (b) marginal-matched reproduces more than half of the correlation excess in at least 22 of 32 layers: FAILS
+
+Majority label: shrinks. Registered expectation on this model: FAILS.
+
+`audits/chai/battery_result_opt-6.7b.json`: facebook/opt-6.7b, 32 documents at T = 1024, 200 draws; registered under https://github.com/StefanOjanen/hubs-for-free/blob/ee4e267/audits/PREREGISTRATION4.md.
+
+Mean real cross-head correlation over layers 0.598. Layers where: the sink-set surrogate (c) matches correlation and cluster share 0 of 32 (correlation alone 0); correlation survives (a) 32; survives (d) 32; (b) reproduces more than half 0; both surrogates reproduce under 0.2 4. Per-layer labels: {'survives': 9, 'shrinks': 23, 'matched': 0}.
+
+| layer | real corr | real largest 0.95-cluster | a median | b median | c median | d median | b reproduced | c reproduced | c percentile (corr) | label |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 0 | 0.337 | 0.05 | -0.000 | 0.006 | 0.009 | 0.000 | 0.018 | 0.028 | 100.0 | survives |
+| 1 | 0.548 | 0.13 | 0.000 | 0.002 | 0.095 | 0.001 | 0.004 | 0.173 | 100.0 | survives |
+| 2 | 0.598 | 0.08 | 0.000 | 0.002 | 0.049 | 0.001 | 0.004 | 0.081 | 100.0 | survives |
+| 3 | 0.570 | 0.08 | 0.000 | 0.003 | 0.067 | 0.001 | 0.006 | 0.117 | 100.0 | survives |
+| 4 | 0.578 | 0.09 | 0.000 | 0.003 | 0.125 | 0.001 | 0.006 | 0.216 | 100.0 | survives |
+| 5 | 0.532 | 0.13 | 0.000 | 0.008 | 0.181 | 0.003 | 0.015 | 0.340 | 100.0 | survives |
+| 6 | 0.516 | 0.17 | 0.000 | 0.009 | 0.221 | 0.002 | 0.017 | 0.428 | 100.0 | survives |
+| 7 | 0.539 | 0.13 | 0.000 | 0.013 | 0.212 | 0.001 | 0.023 | 0.394 | 100.0 | survives |
+| 8 | 0.576 | 0.13 | 0.000 | 0.017 | 0.282 | 0.002 | 0.029 | 0.489 | 100.0 | survives |
+| 9 | 0.614 | 0.13 | 0.000 | 0.014 | 0.339 | 0.003 | 0.023 | 0.552 | 100.0 | shrinks |
+| 10 | 0.624 | 0.17 | -0.000 | 0.012 | 0.372 | 0.003 | 0.019 | 0.596 | 100.0 | shrinks |
+| 11 | 0.614 | 0.17 | -0.000 | 0.008 | 0.392 | 0.001 | 0.013 | 0.638 | 100.0 | shrinks |
+| 12 | 0.600 | 0.13 | 0.000 | 0.009 | 0.395 | 0.000 | 0.015 | 0.659 | 100.0 | shrinks |
+| 13 | 0.648 | 0.17 | 0.000 | 0.009 | 0.438 | 0.002 | 0.013 | 0.676 | 100.0 | shrinks |
+| 14 | 0.582 | 0.19 | -0.000 | 0.011 | 0.395 | 0.003 | 0.018 | 0.679 | 100.0 | shrinks |
+| 15 | 0.587 | 0.19 | 0.000 | 0.009 | 0.409 | 0.005 | 0.015 | 0.697 | 100.0 | shrinks |
+| 16 | 0.640 | 0.21 | 0.000 | 0.005 | 0.459 | 0.003 | 0.008 | 0.717 | 100.0 | shrinks |
+| 17 | 0.619 | 0.18 | -0.000 | 0.008 | 0.454 | 0.002 | 0.013 | 0.733 | 100.0 | shrinks |
+| 18 | 0.546 | 0.19 | -0.000 | 0.006 | 0.384 | 0.003 | 0.011 | 0.703 | 100.0 | shrinks |
+| 19 | 0.543 | 0.18 | 0.000 | 0.008 | 0.367 | 0.001 | 0.015 | 0.677 | 100.0 | shrinks |
+| 20 | 0.508 | 0.16 | 0.000 | 0.008 | 0.335 | 0.002 | 0.015 | 0.659 | 100.0 | shrinks |
+| 21 | 0.595 | 0.21 | -0.000 | 0.005 | 0.423 | 0.003 | 0.008 | 0.710 | 100.0 | shrinks |
+| 22 | 0.524 | 0.19 | 0.000 | 0.004 | 0.375 | 0.001 | 0.008 | 0.714 | 100.0 | shrinks |
+| 23 | 0.527 | 0.19 | 0.000 | 0.006 | 0.376 | 0.001 | 0.012 | 0.713 | 100.0 | shrinks |
+| 24 | 0.533 | 0.21 | 0.000 | 0.003 | 0.411 | 0.007 | 0.006 | 0.771 | 100.0 | shrinks |
+| 25 | 0.640 | 0.28 | 0.000 | 0.000 | 0.554 | 0.003 | 0.001 | 0.865 | 100.0 | shrinks |
+| 26 | 0.624 | 0.31 | 0.000 | 0.001 | 0.551 | 0.001 | 0.001 | 0.883 | 100.0 | shrinks |
+| 27 | 0.663 | 0.34 | 0.000 | 0.001 | 0.584 | 0.002 | 0.001 | 0.881 | 100.0 | shrinks |
+| 28 | 0.733 | 0.40 | 0.000 | 0.001 | 0.660 | 0.004 | 0.001 | 0.900 | 100.0 | shrinks |
+| 29 | 0.766 | 0.48 | -0.000 | 0.001 | 0.700 | 0.002 | 0.001 | 0.913 | 100.0 | shrinks |
+| 30 | 0.831 | 0.49 | 0.000 | 0.000 | 0.764 | 0.003 | 0.000 | 0.919 | 100.0 | shrinks |
+| 31 | 0.784 | 0.54 | 0.000 | 0.000 | 0.723 | 0.001 | 0.000 | 0.921 | 100.0 | shrinks |
 
 - (c) sink set kept matches correlation and cluster share in at least 22 of 32 layers: FAILS
 - correlation survives (a) random rows (percentile above 95) in at least 22 of 32 layers: holds
