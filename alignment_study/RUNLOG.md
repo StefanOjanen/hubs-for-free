@@ -329,3 +329,13 @@ Label: shrinks in all four types. The whole battery of preregistration 4 is
 now complete: E1, E2 and E5 fail as written, E3 holds on both control
 models, E4 was dropped before the freeze, and the falsification clause is
 not triggered.
+
+Post hoc for Target 4 (2026-09-16, labeled, not registered):
+audits/dewage2026/posthoc_edge.py compares the recipe's edge with two
+oracle-free calibrations (scale matched to the Marchenko-Pastur median and
+to its mean) on four layers. Both calibrations put a Gaussian matrix at
+exactly zero outliers, against the recipe's 1289 of 4096; the real counts
+fall from 1583 to 828 and 182 (Q), 354 to 276 and 105 (K), 240 to 121 and
+67 (V), 1463 to 513 and 202 (O). Author letters for the four targets are
+drafted in private/letters/ (not committed; the repository holds no
+correspondence).
