@@ -294,6 +294,30 @@ for p, v in T["dewage"].items():
              "the per-target clause is evaluated and the (b') count shrinkage is in the table.\n")
 
 L.append("## Target 2, Kovaleva et al. 2019\n\nNot reproducible in its stated form (classifier and annotations unreleased); no battery, E4 dropped before the freeze.\n")
+
+# Post-hoc sections, rendered from their own result files so that this report
+# stays regenerable in one command. They change no label above.
+ph = "audits/dewage2026/posthoc_edge.json"
+if not DRY and os.path.exists(ph):
+    d = json.load(open(ph)); bt = d["by_type"]
+    L.append("\n## Post hoc, not registered: where the Gaussian null's outliers come from\n")
+    L.append(f"`audits/dewage2026/posthoc_edge.py`, written after the Target 4 battery and changing none of its labels; layers {', '.join(str(x) for x in d['layers'])} of {d['model']}. "
+             "The registered Gaussian null (a') has no learned structure, yet the source recipe counts a median 1288 of its 4096 squared singular values as Marchenko-Pastur outliers in the square "
+             "projections and 138 of 1024 in K and V. The reason is the recipe's noise scale. It sets sigma^2 = median(s^2) / (1 + gamma) and lambda_+ = sigma^2 (1 + sqrt(gamma))^2, but for an m x n "
+             "matrix with i.i.d. entries of variance v (m <= n) the eigenvalues of W W^T are v n times a Marchenko-Pastur law of ratio c = m / n, whose edge is v n (1 + sqrt(c))^2. The recipe's formula "
+             "reproduces that edge only if median(s^2) = v (m + n), whereas the actual median is v n times the median of the law. The edge is therefore placed inside the bulk and part of the bulk is counted.\n")
+    L.append("Three edges applied to the same spectra (median-fit rescales the bulk by matching the MP median, robust to real outliers; mean-fit matches the MP mean, which real outliers inflate, so it "
+             "undercounts; neither needs to know v; oracle uses the known entry variance and exists only for the synthetic matrices):\n")
+    L.append("| type | singular values | real, recipe | real, median-fit | real, mean-fit | Gaussian, recipe | Gaussian, median-fit | Gaussian, oracle |\n|---|---|---|---|---|---|---|---|")
+    for t, v in bt.items():
+        L.append(f"| {t} | {v['n_sv']} | {v['real_recipe_mean']:.0f} | {v['real_mp_median_fit_mean']:.0f} | {v['real_mp_mean_fit_mean']:.0f} | {v['gauss_recipe']} | {v['gauss_mp_median_fit']} | {v['gauss_oracle']} |")
+    q, o = bt.get("q_proj", {}), bt.get("o_proj", {})
+    L.append("\nBoth calibrated edges put a pure Gaussian matrix at exactly zero outliers, which is what the Marchenko-Pastur law requires and what the recipe fails to deliver. On the real weights the "
+             "count depends on how the scale is estimated, by a factor of 2 to 5 between the two calibrated estimators and up to 9 against the recipe, so the reported counts (Q 1511, K 341, V 212, O 1450, "
+             "reproduced here to 0.3 percent) are a property of one estimator rather than of the weights. The outliers' share of spectral energy is more stable but also falls: "
+             f"{q.get('real_energy_recipe', float('nan')):.2f} to {q.get('real_energy_mp_median_fit', float('nan')):.2f} for Q and {o.get('real_energy_recipe', float('nan')):.2f} to "
+             f"{o.get('real_energy_mp_median_fit', float('nan')):.2f} for O under the median-fit edge. What survives is that trained weights do carry spectral structure a Gaussian does not have: under "
+             "either calibrated edge the real matrices have hundreds of outliers and the Gaussian has none.\n")
 open(OUT_MD, "w").write("\n".join(L) + "\n")
 print(json.dumps({"expectations": E, "falsification": res["falsification_all_survive_under_0.2"], "withheld": res["verdicts_withheld"],
                   "files": {k: list(v) for k, v in T.items()}}, indent=1))

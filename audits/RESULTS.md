@@ -1,6 +1,6 @@
 # Audit batteries: results against preregistration 4
 
-Generated 2026-09-16T12:06:11Z by `audits/eval_batteries.py` from the battery result files; regenerate with `python audits/eval_batteries.py`. Criteria: `audits/PREREGISTRATION4.md`, frozen at commit `ee4e267` and not edited since; readings fixed before any result in `audits/PREREGISTRATION4_ADDENDA.md`. Each result file records the registration reference it ran under (`registered`). Shrinkage is the share of the real effect a null reproduces (null median over real).
+Generated 2026-09-16T12:17:45Z by `audits/eval_batteries.py` from the battery result files; regenerate with `python audits/eval_batteries.py`. Criteria: `audits/PREREGISTRATION4.md`, frozen at commit `ee4e267` and not edited since; readings fixed before any result in `audits/PREREGISTRATION4_ADDENDA.md`. Each result file records the registration reference it ran under (`registered`). Shrinkage is the share of the real effect a null reproduces (null median over real).
 
 ## Registered expectations
 
@@ -199,39 +199,16 @@ Not reproducible in its stated form (classifier and annotations unreleased); no 
 
 ## Post hoc, not registered: where the Gaussian null's outliers come from
 
-`audits/dewage2026/posthoc_edge.py`, written after the Target 4 battery and
-changing none of its labels. The registered Gaussian null (a') has no
-learned structure, yet the source recipe counts a median 1288 of its 4096
-squared singular values as Marchenko-Pastur outliers in the square
-projections and 138 of 1024 in K and V. The reason is the recipe's noise
-scale. It sets sigma^2 = median(s^2) / (1 + gamma) and lambda_+ = sigma^2
-(1 + sqrt(gamma))^2, but for an m x n matrix with i.i.d. entries of
-variance v (m <= n) the eigenvalues of W W^T are v n times a
-Marchenko-Pastur law of ratio c = m / n, whose edge is v n (1 + sqrt(c))^2.
-The recipe's formula reproduces that edge only if median(s^2) = v (m + n),
-whereas the actual median is v n times the median of the law. The edge is
-therefore placed inside the bulk and part of the bulk is counted.
+`audits/dewage2026/posthoc_edge.py`, written after the Target 4 battery and changing none of its labels; layers 0, 8, 16, 24 of mistralai/Mistral-7B-v0.1. The registered Gaussian null (a') has no learned structure, yet the source recipe counts a median 1288 of its 4096 squared singular values as Marchenko-Pastur outliers in the square projections and 138 of 1024 in K and V. The reason is the recipe's noise scale. It sets sigma^2 = median(s^2) / (1 + gamma) and lambda_+ = sigma^2 (1 + sqrt(gamma))^2, but for an m x n matrix with i.i.d. entries of variance v (m <= n) the eigenvalues of W W^T are v n times a Marchenko-Pastur law of ratio c = m / n, whose edge is v n (1 + sqrt(c))^2. The recipe's formula reproduces that edge only if median(s^2) = v (m + n), whereas the actual median is v n times the median of the law. The edge is therefore placed inside the bulk and part of the bulk is counted.
 
-Three edges applied to the same spectra (four layers, 0, 8, 16 and 24;
-"median-fit" rescales the bulk by matching the MP median, robust to real
-outliers; "mean-fit" matches the MP mean, which real outliers inflate, so
-it undercounts; both need no oracle):
+Three edges applied to the same spectra (median-fit rescales the bulk by matching the MP median, robust to real outliers; mean-fit matches the MP mean, which real outliers inflate, so it undercounts; neither needs to know v; oracle uses the known entry variance and exists only for the synthetic matrices):
 
 | type | singular values | real, recipe | real, median-fit | real, mean-fit | Gaussian, recipe | Gaussian, median-fit | Gaussian, oracle |
 |---|---|---|---|---|---|---|---|
 | q_proj | 4096 | 1583 | 828 | 182 | 1289 | 0 | 0 |
-| k_proj | 1024 | 354 | 276 | 105 | 137 | 0 | 0 |
+| k_proj | 1024 | 354 | 276 | 104 | 137 | 0 | 0 |
 | v_proj | 1024 | 240 | 121 | 67 | 138 | 0 | 0 |
-| o_proj | 4096 | 1463 | 513 | 202 | 1290 | 0 | 0 |
+| o_proj | 4096 | 1462 | 513 | 202 | 1290 | 0 | 0 |
 
-Both calibrated edges put a pure Gaussian matrix at exactly zero outliers,
-which is what the Marchenko-Pastur law requires and what the recipe fails
-to deliver. On the real weights the count depends on how the scale is
-estimated, by a factor of 2 to 9 between the two calibrated estimators and
-up to 9 against the recipe, so the reported counts (Q 1511, K 341, V 212,
-O 1450, reproduced here to 0.3 percent) are an artifact of one estimator
-rather than a property of the weights. The outliers' share of spectral
-energy is more stable but also falls: 0.91 to 0.71 for Q, 0.86 to 0.53 for
-O under the median-fit edge. What survives is that trained weights do carry
-spectral structure a Gaussian does not have: under either calibrated edge
-the real matrices have hundreds of outliers and the Gaussian has none.
+Both calibrated edges put a pure Gaussian matrix at exactly zero outliers, which is what the Marchenko-Pastur law requires and what the recipe fails to deliver. On the real weights the count depends on how the scale is estimated, by a factor of 2 to 5 between the two calibrated estimators and up to 9 against the recipe, so the reported counts (Q 1511, K 341, V 212, O 1450, reproduced here to 0.3 percent) are a property of one estimator rather than of the weights. The outliers' share of spectral energy is more stable but also falls: 0.91 to 0.71 for Q and 0.86 to 0.53 for O under the median-fit edge. What survives is that trained weights do carry spectral structure a Gaussian does not have: under either calibrated edge the real matrices have hundreds of outliers and the Gaussian has none.
+
