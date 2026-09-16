@@ -268,6 +268,9 @@ Each instrument below exists because a finding above required it.
   of 2 to 9. Retrieval heads, the positive control, sit above every draw of
   every null on two models with about one percent of their score
   reproduced. Notes go to the original authors with four weeks to respond.
+
+<p align="center"><img src="figures/readme/fig13_audit_batteries.png" alt="Horizontal bar chart of the share of each published finding that a constrained null reproduces: 60 percent of BERT head clustering from the separator columns, 96 and 68 percent of cross-head redundancy from the sink columns, 85 to 89 percent of the spectral outlier count from a shape and norm matched Gaussian, and 1 percent of the retrieval-head score, the positive control" width="880"></p>
+<p align="center"><em>Each bar is the share of a published effect that a null reproduces while keeping the constraint named beneath it. The control at the bottom is what the nulls must not reproduce, and do not.</em></p>
 - **Deriving the operator rather than measuring it: a floor, not a
   formula.** A preregistered derivation writes each head's energy along
   the ideal sink direction from its own sink mass and row sharpness, with

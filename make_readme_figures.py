@@ -481,4 +481,55 @@ for y0 in (3.85, 1.65):
     ax.add_patch(FancyArrowPatch((3.95, y0), (5.25, 2.75), arrowstyle="-|>", mutation_scale=22, color=MUTED, lw=2.4, connectionstyle="arc3,rad=0.0", zorder=3))
 ax.text(4.4, 0.2, "Bare statistics cannot tell the two apart.\nMarginal-matched surrogates reproduce the first; only a sink-column surrogate reproduces the second.", ha="center", va="center", fontsize=10.5, color=INK2, linespacing=1.4)
 fig.savefig(OUT + "illus3_two_mechanisms.png", dpi=200); plt.close(fig)
+
+# ============ Figure 13: what the nulls reproduce of four published findings ============
+# Reads the battery result files (audits/*/battery_result*.json). One bar per
+# finding: the share of the real effect, measured from the random-softmax or
+# Gaussian baseline, that the strongest constrained null reproduces.
+plt.rcParams["axes.grid"] = True
+BR = "audits/battery_results.json"
+if glob.glob(BR):
+    B = json.load(open(BR))["targets"]
+    NICE = {"mistralai/Mistral-7B-v0.1": "Mistral-7B", "facebook/opt-6.7b": "OPT-6.7B",
+            "Qwen/Qwen2.5-7B": "Qwen2.5-7B", "mistralai/Mistral-7B-Instruct-v0.2": "Mistral-7B-Instruct"}
+    bars = []                                    # (label, sublabel, reproduced share, color, note)
+    ck = list(B.get("clark", {}).values())
+    if ck:
+        v = ck[0]
+        bars.append(("Head clustering\nBERT-base", "separator columns kept", v["shrinkage"]["c_colfix"], S2, f"marginals alone {v['shrinkage']['b_marginal']:.0%}"))
+    for path, v in B.get("chai", {}).items():
+        short = NICE.get(v["model"], v["model"].split("/")[-1])
+        rep = [l["c_reproduced"] for l in v["layers"] if l["c_reproduced"] is not None]
+        bars.append((f"Cross-head redundancy\n{short}", "sink columns kept", float(np.median(rep)), S2,
+                     f"marginals alone {np.median([l['b_reproduced'] for l in v['layers'] if l['b_reproduced'] is not None]):.0%}"))
+    dw = list(B.get("dewage", {}).values())
+    if dw:
+        v = dw[0]; worst = max(v["types"].items(), key=lambda kv: kv[1]["outliers_shrinkage"]["a_gaussian"])
+        for t in ("q_proj", "o_proj", "k_proj"):
+            if t in v["types"]:
+                e = v["types"][t]
+                bars.append((f"Spectral outliers\nMistral-7B {t[0].upper()}", "Gaussian, shape and norm matched",
+                             e["outliers_shrinkage"]["a_gaussian"], S2, f"row norms give {e['energy_shrinkage']['b_rownorm']:.0%} of the energy"))
+    for path, v in B.get("retrieval", {}).items():
+        short = NICE.get(v["model"], v["model"].split("/")[-1])
+        worst = max(v["nulls"][f]["top10_shrinkage"] or 0 for f in ("a_random", "b_marginal", "c_colset"))
+        bars.append((f"Retrieval heads\n{short}", "strongest of four nulls", worst, S3, "the control: nulls must not reproduce it"))
+    if bars:
+        fig, ax = plt.subplots(figsize=(10.2, 0.62 * len(bars) + 2.1),
+                               gridspec_kw={"left": 0.30, "right": 0.97, "top": 0.80, "bottom": 0.13})
+        y = np.arange(len(bars))[::-1]
+        ax.barh(y, [b[2] for b in bars], height=0.62, color=[b[3] for b in bars], zorder=3)
+        for yy, b in zip(y, bars):
+            ax.text(min(b[2], 1.0) + 0.015, yy + 0.13, f"{b[2]:.0%}", va="center", fontsize=11.5, color=INK, zorder=4)
+            ax.text(min(b[2], 1.0) + 0.015, yy - 0.22, b[4], va="center", fontsize=9, color=INK2, zorder=4)
+        ax.set_yticks(y); ax.set_yticklabels([b[0] for b in bars], fontsize=10.5)
+        ax.set_xlim(0, 1.62); ax.set_xticks([0, 0.25, 0.5, 0.75, 1.0]); ax.set_xticklabels(["0", "25%", "50%", "75%", "100%"])
+        ax.set_xlabel("share of the reported effect a constrained null already reproduces")
+        ax.axvline(1.0, color=GRID, lw=1.4, zorder=2)
+        style(ax)
+        fig.text(0.02, 0.965, "What the nulls reproduce of four published findings", fontsize=15, color=INK, va="top")
+        fig.text(0.02, 0.905, "Criteria frozen at commit ee4e267 before any battery ran; sublabels give the null that reproduces the most. Green: the positive control.",
+                 fontsize=10, color=INK2, va="top")
+        fig.savefig(OUT + "fig13_audit_batteries.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
 print("FIGURES_DONE", sorted(glob.glob(OUT + "*")))
