@@ -198,6 +198,8 @@ audited = [v["all_shrinkage_under_0.2"] for v in clark + chai + dew]
 res["expectations"] = E
 res["falsification_all_survive_under_0.2"] = None if (not audited or len(clark + chai + dew) < 3) else all(audited)
 res["verdicts_withheld"] = E["E3"] is False
+POSTHOC = {"edge_calibration": "audits/dewage2026/posthoc_edge.json"}
+res["posthoc"] = {k: v for k, v in POSTHOC.items() if os.path.exists(v)} or None
 json.dump(res, open(OUT_JSON, "w"), indent=1)
 
 # ---------------------------------------------------------------- report
