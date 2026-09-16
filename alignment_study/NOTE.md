@@ -717,3 +717,23 @@ result files; this section records the outcomes as they complete.
   70 percent from marginals alone was wrong), it is mostly the shared
   vertical pattern on the separators, with a 40 percent residual that is
   real same-layer similarity beyond the separator columns.
+- Target 4, Mistral-7B (Dewage et al. 2026): the registered expectation
+  fails in all four projection types (0 of 4 pass all three clauses). The
+  real outlier counts lie above all 20 draws of every null, but Gaussian
+  weights matched in shape and Frobenius norm already produce 85 to 89
+  percent of the reported count for the square projections (Q and O), 65
+  percent for V and 40 percent for K; within-matrix permutation matches the
+  Gaussian null to three digits, so the entry distribution is not the
+  mechanism; row-norm-matched weights reproduce 71 to 88 percent of the
+  energy share, against the registered "less than 50 percent". Label:
+  shrinks in all four types.
+- Post hoc (not registered, audits/dewage2026/posthoc_edge.py): the reason
+  the Gaussian null produces outliers at all is that the recipe's noise
+  scale, sigma^2 = median(s^2)/(1+gamma), places the bulk edge inside the
+  bulk. With the scale fitted to the Marchenko-Pastur median or mean
+  instead, a Gaussian matrix has exactly zero outliers and the real
+  matrices keep hundreds, but the counts fall by a factor of 2 to 9 and
+  differ that much between the two calibrated estimators, so the published
+  counts are a property of the estimator rather than of the weights. The
+  qualitative claim, that trained attention weights carry spectral
+  structure a matched Gaussian does not, survives every calibration.

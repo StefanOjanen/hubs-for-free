@@ -3155,5 +3155,8 @@
   "E4": "dropped before the freeze (Target 2 not reproducible)"
  },
  "falsification_all_survive_under_0.2": false,
- "verdicts_withheld": false
+ "verdicts_withheld": false,
+ "posthoc": {
+  "edge_calibration": "audits/dewage2026/posthoc_edge.json"
+ }
 }
