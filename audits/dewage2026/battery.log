@@ -1,0 +1,10 @@
+Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files: 100%|██████████| 9/9 [00:00<00:00, 3418.03it/s]
+  L 0 k_proj real outliers  411 energy 0.998 | medians: gaussian 137, rownorm 302, permuted 143 (18s)
+  L 0 o_proj real outliers 1533 energy 0.937 | medians: gaussian 1288, rownorm 1300, permuted 1288 (34818s)
+  L 0 q_proj real outliers 1887 energy 1.000 | medians: gaussian 1288, rownorm 1475, permuted 1292 (36093s)
+  L 0 v_proj real outliers  389 energy 0.844 | medians: gaussian 138, rownorm 316, permuted 138 (36108s)
+  L 1 k_proj real outliers  439 energy 0.987 | medians: gaussian 138, rownorm 310, permuted 140 (36124s)
+  L 1 o_proj real outliers 1472 energy 0.852 | medians: gaussian 1288, rownorm 1293, permuted 1288 (46978s)
+  L 1 q_proj real outliers 1789 energy 0.998 | medians: gaussian 1287, rownorm 1429, permuted 1288 (53097s)
+  L 1 v_proj real outliers  273 energy 0.563 | medians: gaussian 138, rownorm 175, permuted 138 (53114s)
+  L10 k_proj real outliers  356 energy 0.793 | medians: gaussian 138, rownorm 275, permuted 138 (53131s)

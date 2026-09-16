@@ -1,0 +1,166 @@
+{
+ "target": "Dewage et al. 2026",
+ "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/ee4e267/audits/PREREGISTRATION4.md",
+ "model": "mistralai/Mistral-7B-v0.1",
+ "layers": 32,
+ "draws": 20,
+ "init_std": 0.02,
+ "dry_run": false,
+ "types": {
+  "q_proj": {
+   "real_mean_outliers": 1510.8125,
+   "real_mean_energy_share": 0.8927953022437768,
+   "nulls": {
+    "a_gaussian": {
+     "outliers_median": 1287.71875,
+     "outliers_percentile_of_real": 100.0,
+     "outliers_shrinkage": 0.8523352500723949,
+     "energy_median": 0.7165946399943819,
+     "energy_percentile_of_real": 100.0,
+     "energy_shrinkage": 0.8026415889436619
+    },
+    "b_rownorm": {
+     "outliers_median": 1379.234375,
+     "outliers_percentile_of_real": 100.0,
+     "outliers_shrinkage": 0.9129090307367724,
+     "energy_median": 0.7835954551648576,
+     "energy_percentile_of_real": 100.0,
+     "energy_shrinkage": 0.8776876997398197
+    },
+    "c_permuted": {
+     "outliers_median": 1288.015625,
+     "outliers_percentile_of_real": 100.0,
+     "outliers_shrinkage": 0.8525317502999215,
+     "energy_median": 0.7167948012444008,
+     "energy_percentile_of_real": 100.0,
+     "energy_shrinkage": 0.8028657850718403
+    },
+    "d_untrained": {
+     "outliers_median": 1287.8125,
+     "outliers_shrinkage": 0.8523973027758243,
+     "energy_median": 0.7166199559832194,
+     "n": 5
+    }
+   }
+  },
+  "k_proj": {
+   "real_mean_outliers": 340.625,
+   "real_mean_energy_share": 0.7569346698314199,
+   "nulls": {
+    "a_gaussian": {
+     "outliers_median": 137.65625,
+     "outliers_percentile_of_real": 100.0,
+     "outliers_shrinkage": 0.4041284403669725,
+     "energy_median": 0.25329461744110976,
+     "energy_percentile_of_real": 100.0,
+     "energy_shrinkage": 0.3346320726695239
+    },
+    "b_rownorm": {
+     "outliers_median": 263.296875,
+     "outliers_percentile_of_real": 100.0,
+     "outliers_shrinkage": 0.7729816513761468,
+     "energy_median": 0.5375772462516311,
+     "energy_percentile_of_real": 100.0,
+     "energy_shrinkage": 0.7102029642417583
+    },
+    "c_permuted": {
+     "outliers_median": 138.21875,
+     "outliers_percentile_of_real": 100.0,
+     "outliers_shrinkage": 0.4057798165137615,
+     "energy_median": 0.2544190045865582,
+     "energy_percentile_of_real": 100.0,
+     "energy_shrinkage": 0.3361175207408863
+    },
+    "d_untrained": {
+     "outliers_median": 137.5,
+     "outliers_shrinkage": 0.4036697247706422,
+     "energy_median": 0.2530576638409491,
+     "n": 5
+    }
+   }
+  },
+  "v_proj": {
+   "real_mean_outliers": 211.5,
+   "real_mean_energy_share": 0.4300498467605285,
+   "nulls": {
+    "a_gaussian": {
+     "outliers_median": 137.734375,
+     "outliers_percentile_of_real": 100.0,
+     "outliers_shrinkage": 0.6512263593380615,
+     "energy_median": 0.2533732417618599,
+     "energy_percentile_of_real": 100.0,
+     "energy_shrinkage": 0.5891717987355771
+    },
+    "b_rownorm": {
+     "outliers_median": 179.4375,
+     "outliers_percentile_of_real": 100.0,
+     "outliers_shrinkage": 0.848404255319149,
+     "energy_median": 0.3426700702891421,
+     "energy_percentile_of_real": 100.0,
+     "energy_shrinkage": 0.7968147712884933
+    },
+    "c_permuted": {
+     "outliers_median": 137.765625,
+     "outliers_percentile_of_real": 100.0,
+     "outliers_shrinkage": 0.6513741134751773,
+     "energy_median": 0.2535132380415186,
+     "energy_percentile_of_real": 100.0,
+     "energy_shrinkage": 0.5894973337420729
+    },
+    "d_untrained": {
+     "outliers_median": 137.6875,
+     "outliers_shrinkage": 0.6510047281323877,
+     "energy_median": 0.2533541430557239,
+     "n": 5
+    }
+   }
+  },
+  "o_proj": {
+   "real_mean_outliers": 1449.6875,
+   "real_mean_energy_share": 0.8441277498013452,
+   "nulls": {
+    "a_gaussian": {
+     "outliers_median": 1287.59375,
+     "outliers_percentile_of_real": 100.0,
+     "outliers_shrinkage": 0.8881871092907955,
+     "energy_median": 0.7165524822409909,
+     "energy_percentile_of_real": 100.0,
+     "energy_shrinkage": 0.8488673455050169
+    },
+    "b_rownorm": {
+     "outliers_median": 1294.21875,
+     "outliers_percentile_of_real": 100.0,
+     "outliers_shrinkage": 0.8927570597111446,
+     "energy_median": 0.723008985897827,
+     "energy_percentile_of_real": 100.0,
+     "energy_shrinkage": 0.8565160736250859
+    },
+    "c_permuted": {
+     "outliers_median": 1287.984375,
+     "outliers_percentile_of_real": 100.0,
+     "outliers_shrinkage": 0.8884565639146368,
+     "energy_median": 0.7167965456606173,
+     "energy_percentile_of_real": 100.0,
+     "energy_shrinkage": 0.8491564764092951
+    },
+    "d_untrained": {
+     "outliers_median": 1287.65625,
+     "outliers_shrinkage": 0.8882302220306101,
+     "energy_median": 0.7165563579810571,
+     "n": 5
+    }
+   }
+  }
+ },
+ "parallel_parts": [
+  "audits/dewage2026/battery_rows_part0of6.json",
+  "audits/dewage2026/battery_rows_part1of6.json",
+  "audits/dewage2026/battery_rows_part2of6.json",
+  "audits/dewage2026/battery_rows_part3of6.json",
+  "audits/dewage2026/battery_rows_part4of6.json",
+  "audits/dewage2026/battery_rows_part5of6.json"
+ ],
+ "seed": null,
+ "registered_expectation": "survives (a') at the 99th percentile in every type; against (c') at least half of the outlier count is matched; against (b') the energy share shrinks by less than 50 percent; (d') reported as the initialization baseline",
+ "runtime_s": 2.9
+}

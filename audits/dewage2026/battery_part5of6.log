@@ -1,0 +1,23 @@
+Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files: 100%|██████████| 9/9 [00:00<00:00, 2207.40it/s]
+  L11 k_proj real outliers  364 energy 0.824 | medians: gaussian 138, rownorm 291, permuted 139 (26s)
+  L11 o_proj real outliers 1497 energy 0.876 | medians: gaussian 1288, rownorm 1301, permuted 1288 (2823s)
+  L11 q_proj real outliers 1533 energy 0.920 | medians: gaussian 1288, rownorm 1404, permuted 1288 (5670s)
+  L11 v_proj real outliers  277 energy 0.582 | medians: gaussian 137, rownorm 200, permuted 138 (5692s)
+  L17 k_proj real outliers  335 energy 0.735 | medians: gaussian 138, rownorm 245, permuted 138 (5714s)
+  L17 o_proj real outliers 1475 energy 0.863 | medians: gaussian 1288, rownorm 1290, permuted 1288 (8501s)
+  L17 q_proj real outliers 1503 energy 0.899 | medians: gaussian 1287, rownorm 1381, permuted 1288 (11239s)
+  L17 v_proj real outliers  219 energy 0.429 | medians: gaussian 138, rownorm 188, permuted 138 (11261s)
+  L 5 k_proj real outliers  330 energy 0.734 | medians: gaussian 138, rownorm 262, permuted 138 (11284s)
+  L 5 o_proj real outliers 1408 energy 0.812 | medians: gaussian 1287, rownorm 1292, permuted 1287 (14202s)
+  L 5 q_proj real outliers 1526 energy 0.904 | medians: gaussian 1288, rownorm 1378, permuted 1288 (16947s)
+  L 5 v_proj real outliers  163 energy 0.318 | medians: gaussian 137, rownorm 153, permuted 138 (16967s)
+  L23 k_proj real outliers  307 energy 0.653 | medians: gaussian 138, rownorm 227, permuted 138 (16988s)
+  L23 o_proj real outliers 1390 energy 0.800 | medians: gaussian 1288, rownorm 1289, permuted 1288 (20804s)
+  L23 q_proj real outliers 1420 energy 0.834 | medians: gaussian 1288, rownorm 1330, permuted 1287 (23633s)
+  L23 v_proj real outliers  191 energy 0.373 | medians: gaussian 138, rownorm 166, permuted 138 (23654s)
+  L29 k_proj real outliers  304 energy 0.675 | medians: gaussian 137, rownorm 220, permuted 138 (23675s)
+  L29 o_proj real outliers 1452 energy 0.842 | medians: gaussian 1287, rownorm 1291, permuted 1288 (26349s)
+  L29 q_proj real outliers 1457 energy 0.855 | medians: gaussian 1288, rownorm 1353, permuted 1288 (29011s)
+  L29 v_proj real outliers  200 energy 0.382 | medians: gaussian 138, rownorm 226, permuted 138 (29032s)
+Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files: 100%|██████████| 9/9 [00:00<00:00, 2122.50it/s]
+PART_DONE audits/dewage2026/battery_rows_part5of6.json (73309s)

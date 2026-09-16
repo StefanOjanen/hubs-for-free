@@ -1,0 +1,53 @@
+aggregating 6 part files, 128 matrices
+{
+ "q_proj": {
+  "real_mean_outliers": 1510.8125,
+  "real_mean_energy_share": 0.8927953022437768,
+  "nulls": {
+   "a_gaussian": {
+    "outliers_median": 1287.71875,
+    "outliers_percentile_of_real": 100.0,
+    "outliers_shrinkage": 0.8523352500723949,
+    "energy_median": 0.7165946399943819,
+    "energy_percentile_of_real": 100.0,
+    "energy_shrinkage": 0.8026415889436619
+   },
+   "b_rownorm": {
+    "outliers_median": 1379.234375,
+    "outliers_percentile_of_real": 100.0,
+    "outliers_shrinkage": 0.9129090307367724,
+    "energy_median": 0.7835954551648576,
+    "energy_percentile_of_real": 100.0,
+    "energy_shrinkage": 0.8776876997398197
+   },
+   "c_permuted": {
+    "outliers_median": 1288.015625,
+    "outliers_percentile_of_real": 100.0,
+    "outliers_shrinkage": 0.8525317502999215,
+    "energy_median": 0.7167948012444008,
+    "energy_percentile_of_real": 100.0,
+    "energy_shrinkage": 0.8028657850718403
+   },
+   "d_untrained": {
+    "outliers_median": 1287.8125,
+    "outliers_shrinkage": 0.8523973027758243,
+    "energy_median": 0.7166199559832194,
+    "n": 5
+   }
+  }
+ },
+ "k_proj": {
+  "real_mean_outliers": 340.625,
+  "real_mean_energy_share": 0.7569346698314199,
+  "nulls": {
+   "a_gaussian": {
+    "outliers_median": 137.65625,
+    "outliers_percentile_of_real": 100.0,
+    "outliers_shrinkage": 0.4041284403669725,
+    "energy_median": 0.25329461744110976,
+    "energy_percentile_of_real": 100.0,
+    "energy_shrinkage": 0.3346320726695239
+   },
+   "b_rownorm": {
+    "outli
+BATTERY_DONE audits/dewage2026/battery_result.json

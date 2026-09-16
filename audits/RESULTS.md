@@ -1,6 +1,6 @@
 # Audit batteries: results against preregistration 4
 
-Generated 2026-09-16T11:21:13Z by `audits/eval_batteries.py` from the battery result files; regenerate with `python audits/eval_batteries.py`. Criteria: `audits/PREREGISTRATION4.md`, frozen at commit `ee4e267` and not edited since; readings fixed before any result in `audits/PREREGISTRATION4_ADDENDA.md`. Each result file records the registration reference it ran under (`registered`). Shrinkage is the share of the real effect a null reproduces (null median over real).
+Generated 2026-09-16T12:06:11Z by `audits/eval_batteries.py` from the battery result files; regenerate with `python audits/eval_batteries.py`. Criteria: `audits/PREREGISTRATION4.md`, frozen at commit `ee4e267` and not edited since; readings fixed before any result in `audits/PREREGISTRATION4_ADDENDA.md`. Each result file records the registration reference it ran under (`registered`). Shrinkage is the share of the real effect a null reproduces (null median over real).
 
 ## Registered expectations
 
@@ -10,7 +10,7 @@ Generated 2026-09-16T11:21:13Z by `audits/eval_batteries.py` from the battery re
 | E2: a distribution-level similarity or redundancy claim survives with shrinkage between 20 and 70 percent (Target 1) | FAILS |
 | E3: the positive control survives every null with shrinkage under 20 percent (Target 5) | holds |
 | E4 | dropped before the freeze (Target 2 not reproducible) |
-| E5: MP outliers survive the MP null and at least half are matched by random weights (Target 4, per-target clauses) | pending |
+| E5: MP outliers survive the MP null and at least half are matched by random weights (Target 4, per-target clauses) | FAILS |
 
 Falsification clause (all audited claims survive with shrinkage under 20 percent, which would reject the container-geometry thesis for the audited set): not triggered
 
@@ -168,7 +168,29 @@ Majority label: shrinks. Registered expectation on this model: FAILS.
 
 ## Target 4, Dewage et al. 2026 (E5)
 
-pending
+`audits/dewage2026/battery_result.json`: mistralai/Mistral-7B-v0.1, 32 layers, 20 draws per random family, initializer std 0.02; registered under https://github.com/StefanOjanen/hubs-for-free/blob/ee4e267/audits/PREREGISTRATION4.md.
+
+| type | real outliers | real energy share | a' median | a' pct | b' median | b' count shrinkage | b' energy shrinkage | c' median | c' count shrinkage | d' baseline | label |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| q_proj | 1510.8 | 0.893 | 1287.7 | 100 | 1379.2 | 0.913 | 0.878 | 1288.0 | 0.853 | 1287.8 | shrinks |
+| k_proj | 340.6 | 0.757 | 137.7 | 100 | 263.3 | 0.773 | 0.710 | 138.2 | 0.406 | 137.5 | shrinks |
+| v_proj | 211.5 | 0.430 | 137.7 | 100 | 179.4 | 0.848 | 0.797 | 137.8 | 0.651 | 137.7 | shrinks |
+| o_proj | 1449.7 | 0.844 | 1287.6 | 100 | 1294.2 | 0.893 | 0.857 | 1288.0 | 0.888 | 1287.7 | shrinks |
+
+- q_proj: survives (a') Gaussian norm-matched: percentile above 99 (above all 20 draws): holds
+- q_proj: (c') permuted entries match at least half of the outlier count: holds
+- q_proj: (b') row-norm-matched reproduces less than half of the energy share: FAILS
+- k_proj: survives (a') Gaussian norm-matched: percentile above 99 (above all 20 draws): holds
+- k_proj: (c') permuted entries match at least half of the outlier count: FAILS
+- k_proj: (b') row-norm-matched reproduces less than half of the energy share: FAILS
+- v_proj: survives (a') Gaussian norm-matched: percentile above 99 (above all 20 draws): holds
+- v_proj: (c') permuted entries match at least half of the outlier count: holds
+- v_proj: (b') row-norm-matched reproduces less than half of the energy share: FAILS
+- o_proj: survives (a') Gaussian norm-matched: percentile above 99 (above all 20 draws): holds
+- o_proj: (c') permuted entries match at least half of the outlier count: holds
+- o_proj: (b') row-norm-matched reproduces less than half of the energy share: FAILS
+
+Types passing all three clauses: 0 of 4. Registered expectation (all types): FAILS. The expectation list's E5 names norm-matched random weights for the half-matched clause; the per-target section names the permuted null (c'); the per-target clause is evaluated and the (b') count shrinkage is in the table.
 
 ## Target 2, Kovaleva et al. 2019
 

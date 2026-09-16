@@ -311,3 +311,21 @@ written and E2 fails on the marginal clause of Target 1; E3 holds on both
 control models; E5 waits for the Target 4 battery, whose six workers
 finished their real matrices on 2026-09-16 and are drawing the initializer
 null (parts 3, 4 and 5 exited 11:11 to 11:12 UTC).
+
+Target 4 battery (2026-09-16, six workers, last exit 12:04 UTC, aggregate
+of 128 matrices). All four projection types: the real outlier count lies
+above all 20 Gaussian norm-matched draws (percentile 100), so the first
+clause holds everywhere; but the Gaussian null itself produces a median
+1288 of 4096 outliers for the square types and 138 of 1024 for K and V, so
+it reproduces 85 to 89 percent of the reported count for Q and O, 65
+percent for V and 40 percent for K. The within-matrix permutation matches
+the Gaussian null to three digits (the entry distribution is not the
+mechanism), so the clause "at least half the count is matched by (c')"
+holds for Q, V and O and fails for K. Row-norm-matched weights reproduce 71
+to 88 percent of the energy share, so the clause written as "the energy
+share shrinks by less than 50 percent against (b')" fails in all four
+types. Types passing all three clauses: 0 of 4; E5 fails as written.
+Label: shrinks in all four types. The whole battery of preregistration 4 is
+now complete: E1, E2 and E5 fail as written, E3 holds on both control
+models, E4 was dropped before the freeze, and the falsification clause is
+not triggered.

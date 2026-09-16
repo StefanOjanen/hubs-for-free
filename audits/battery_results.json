@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-09-16T11:21:13Z",
+ "generated_utc": "2026-09-16T12:06:11Z",
  "dry_run": false,
  "criteria": "audits/PREREGISTRATION4.md at commit ee4e267 (addenda in audits/PREREGISTRATION4_ADDENDA.md)",
  "targets": {
@@ -2844,7 +2844,190 @@
     "runtime_s": 9142.7
    }
   },
-  "dewage": {},
+  "dewage": {
+   "audits/dewage2026/battery_result.json": {
+    "target": "Dewage et al. 2026",
+    "model": "mistralai/Mistral-7B-v0.1",
+    "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/ee4e267/audits/PREREGISTRATION4.md",
+    "layers": 32,
+    "draws": 20,
+    "init_std": 0.02,
+    "types": {
+     "q_proj": {
+      "real_mean_outliers": 1510.8125,
+      "real_mean_energy_share": 0.8927953022437768,
+      "outliers_median": {
+       "a_gaussian": 1287.71875,
+       "b_rownorm": 1379.234375,
+       "c_permuted": 1288.015625,
+       "d_untrained": 1287.8125
+      },
+      "energy_median": {
+       "a_gaussian": 0.7165946399943819,
+       "b_rownorm": 0.7835954551648576,
+       "c_permuted": 0.7167948012444008,
+       "d_untrained": 0.7166199559832194
+      },
+      "outliers_percentile_of_real": {
+       "a_gaussian": 100.0,
+       "b_rownorm": 100.0,
+       "c_permuted": 100.0
+      },
+      "outliers_shrinkage": {
+       "a_gaussian": 0.8523352500723949,
+       "b_rownorm": 0.9129090307367724,
+       "c_permuted": 0.8525317502999215
+      },
+      "energy_shrinkage": {
+       "a_gaussian": 0.8026415889436619,
+       "b_rownorm": 0.8776876997398197,
+       "c_permuted": 0.8028657850718403
+      },
+      "untrained_baseline_outliers": 1287.8125,
+      "untrained_baseline_energy": 0.7166199559832194,
+      "b_rownorm_matches_half_of_count": true,
+      "label": "shrinks",
+      "clauses": {
+       "survives (a') Gaussian norm-matched: percentile above 99 (above all 20 draws)": true,
+       "(c') permuted entries match at least half of the outlier count": true,
+       "(b') row-norm-matched reproduces less than half of the energy share": false
+      },
+      "all_clauses": false,
+      "max_shrinkage_bc": 0.9129090307367724
+     },
+     "k_proj": {
+      "real_mean_outliers": 340.625,
+      "real_mean_energy_share": 0.7569346698314199,
+      "outliers_median": {
+       "a_gaussian": 137.65625,
+       "b_rownorm": 263.296875,
+       "c_permuted": 138.21875,
+       "d_untrained": 137.5
+      },
+      "energy_median": {
+       "a_gaussian": 0.25329461744110976,
+       "b_rownorm": 0.5375772462516311,
+       "c_permuted": 0.2544190045865582,
+       "d_untrained": 0.2530576638409491
+      },
+      "outliers_percentile_of_real": {
+       "a_gaussian": 100.0,
+       "b_rownorm": 100.0,
+       "c_permuted": 100.0
+      },
+      "outliers_shrinkage": {
+       "a_gaussian": 0.4041284403669725,
+       "b_rownorm": 0.7729816513761468,
+       "c_permuted": 0.4057798165137615
+      },
+      "energy_shrinkage": {
+       "a_gaussian": 0.3346320726695239,
+       "b_rownorm": 0.7102029642417583,
+       "c_permuted": 0.3361175207408863
+      },
+      "untrained_baseline_outliers": 137.5,
+      "untrained_baseline_energy": 0.2530576638409491,
+      "b_rownorm_matches_half_of_count": true,
+      "label": "shrinks",
+      "clauses": {
+       "survives (a') Gaussian norm-matched: percentile above 99 (above all 20 draws)": true,
+       "(c') permuted entries match at least half of the outlier count": false,
+       "(b') row-norm-matched reproduces less than half of the energy share": false
+      },
+      "all_clauses": false,
+      "max_shrinkage_bc": 0.7729816513761468
+     },
+     "v_proj": {
+      "real_mean_outliers": 211.5,
+      "real_mean_energy_share": 0.4300498467605285,
+      "outliers_median": {
+       "a_gaussian": 137.734375,
+       "b_rownorm": 179.4375,
+       "c_permuted": 137.765625,
+       "d_untrained": 137.6875
+      },
+      "energy_median": {
+       "a_gaussian": 0.2533732417618599,
+       "b_rownorm": 0.3426700702891421,
+       "c_permuted": 0.2535132380415186,
+       "d_untrained": 0.2533541430557239
+      },
+      "outliers_percentile_of_real": {
+       "a_gaussian": 100.0,
+       "b_rownorm": 100.0,
+       "c_permuted": 100.0
+      },
+      "outliers_shrinkage": {
+       "a_gaussian": 0.6512263593380615,
+       "b_rownorm": 0.848404255319149,
+       "c_permuted": 0.6513741134751773
+      },
+      "energy_shrinkage": {
+       "a_gaussian": 0.5891717987355771,
+       "b_rownorm": 0.7968147712884933,
+       "c_permuted": 0.5894973337420729
+      },
+      "untrained_baseline_outliers": 137.6875,
+      "untrained_baseline_energy": 0.2533541430557239,
+      "b_rownorm_matches_half_of_count": true,
+      "label": "shrinks",
+      "clauses": {
+       "survives (a') Gaussian norm-matched: percentile above 99 (above all 20 draws)": true,
+       "(c') permuted entries match at least half of the outlier count": true,
+       "(b') row-norm-matched reproduces less than half of the energy share": false
+      },
+      "all_clauses": false,
+      "max_shrinkage_bc": 0.848404255319149
+     },
+     "o_proj": {
+      "real_mean_outliers": 1449.6875,
+      "real_mean_energy_share": 0.8441277498013452,
+      "outliers_median": {
+       "a_gaussian": 1287.59375,
+       "b_rownorm": 1294.21875,
+       "c_permuted": 1287.984375,
+       "d_untrained": 1287.65625
+      },
+      "energy_median": {
+       "a_gaussian": 0.7165524822409909,
+       "b_rownorm": 0.723008985897827,
+       "c_permuted": 0.7167965456606173,
+       "d_untrained": 0.7165563579810571
+      },
+      "outliers_percentile_of_real": {
+       "a_gaussian": 100.0,
+       "b_rownorm": 100.0,
+       "c_permuted": 100.0
+      },
+      "outliers_shrinkage": {
+       "a_gaussian": 0.8881871092907955,
+       "b_rownorm": 0.8927570597111446,
+       "c_permuted": 0.8884565639146368
+      },
+      "energy_shrinkage": {
+       "a_gaussian": 0.8488673455050169,
+       "b_rownorm": 0.8565160736250859,
+       "c_permuted": 0.8491564764092951
+      },
+      "untrained_baseline_outliers": 1287.65625,
+      "untrained_baseline_energy": 0.7165563579810571,
+      "b_rownorm_matches_half_of_count": true,
+      "label": "shrinks",
+      "clauses": {
+       "survives (a') Gaussian norm-matched: percentile above 99 (above all 20 draws)": true,
+       "(c') permuted entries match at least half of the outlier count": true,
+       "(b') row-norm-matched reproduces less than half of the energy share": false
+      },
+      "all_clauses": false,
+      "max_shrinkage_bc": 0.8927570597111446
+     }
+    },
+    "expectation_holds": false,
+    "types_passing": 0,
+    "all_shrinkage_under_0.2": false,
+    "runtime_s": 2.9
+   }
+  },
   "retrieval": {
    "audits/retrieval_heads/battery_result_Mistral-7B-Instruct-v0.2.json": {
     "target": "Retrieval Heads 2024",
@@ -2968,7 +3151,7 @@
   "E3": true,
   "E2": false,
   "E1": false,
-  "E5": null,
+  "E5": false,
   "E4": "dropped before the freeze (Target 2 not reproducible)"
  },
  "falsification_all_survive_under_0.2": false,
