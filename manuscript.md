@@ -30,8 +30,17 @@ with another: untrained layers share the uniform causal operator and the
 sink operator takes over within one checkpoint of sink formation. Per-head
 sink profiles fix a floor under the shared energy that orders layers
 correctly but leaves a residual the sink does not explain. We
-release the nulls as a toolkit and apply them to published findings under
-preregistered criteria, reporting each outcome as registered.
+release the nulls as a toolkit and apply them to four published findings
+under criteria frozen before any battery ran. Three of the four shrink: the
+layer clustering of BERT's heads is three fifths the shared separator
+columns, the cross-head redundancy that drives a KV-compression method is
+the shared sink column to within a few percent, and 85 percent of the
+Marchenko-Pastur "outliers" reported for attention projection weights are
+produced by a Gaussian matrix of the same shape and norm. Retrieval heads,
+included as the positive control, are untouched by every null. Each
+registered expectation that failed is reported as a failure, including
+three that failed by demanding statistical indistinguishability where the
+question was an effect size.
 
 ## 1. Introduction
 

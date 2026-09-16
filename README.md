@@ -254,8 +254,20 @@ Each instrument below exists because a finding above required it.
   clusters in part, with the source's depth trend not reproduced); the
   attention-pattern taxonomy could not be reproduced because its classifier
   and annotations were never released. The criteria were frozen by public
-  commit before any battery ran (`ee4e267`, 2026-09-14); the battery
-  results follow with the original authors' responses.
+  commit before any battery ran (`ee4e267`, 2026-09-14), the evaluation
+  script was committed before any result existed, and all six batteries are
+  now complete (`audits/RESULTS.md`). Three findings shrink and the control
+  holds. BERT's layer clustering is three fifths the shared separator
+  columns and only a tenth the row marginals. The cross-head redundancy
+  behind a KV-compression method is the shared sink column, reproduced to
+  within a few percent on Mistral-7B and to a median 68 percent on the
+  source's own OPT-6.7B. A Gaussian matrix matched in shape and norm
+  produces 85 to 89 percent of the reported spectral outlier count, because
+  the recipe places its Marchenko-Pastur edge inside the bulk; with the
+  edge calibrated, a Gaussian has none and the real counts fall by a factor
+  of 2 to 9. Retrieval heads, the positive control, sit above every draw of
+  every null on two models with about one percent of their score
+  reproduced. Notes go to the original authors with four weeks to respond.
 - **Deriving the operator rather than measuring it: a floor, not a
   formula.** A preregistered derivation writes each head's energy along
   the ideal sink direction from its own sink mass and row sharpness, with
