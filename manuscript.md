@@ -542,8 +542,33 @@ reproduced as the outliers' share of spectral energy (89.3, 75.7, 43.0,
 84.4) rather than as the share of singular values (21 to 37 percent).
 Reproduced; criteria frozen. Nulls for the battery: Gaussian weights of
 matched shape and norm, row-norm-matched random weights, within-matrix
-permutation, and Gaussian weights at the initializer scale. Battery:
-PENDING (running as six parallel workers).
+permutation, and Gaussian weights at the initializer scale. Battery (20
+draws per family, 128 matrices): the registered expectation fails in all
+four projection types. The real counts do lie above all 20 draws of every
+null, but a Gaussian matrix matched only in shape and Frobenius norm
+already produces 85 to 89 percent of the reported count in the square
+projections, 65 percent in V and 40 percent in K; permuting the real
+entries within a matrix matches the Gaussian null to three digits, so the
+entry distribution is not the mechanism; row-norm-matched weights reproduce
+71 to 88 percent of the energy share, against the registered "less than 50
+percent". Label: shrinks in all four types.
+
+Why the Gaussian null has outliers at all is worth stating, and is post hoc
+rather than registered. The recipe estimates the noise scale as
+sigma^2 = median(s^2) / (1 + gamma) and sets the edge at
+sigma^2 (1 + sqrt(gamma))^2. For an m x n matrix with i.i.d. entries of
+variance v and m <= n, the eigenvalues of W W^T are v n times a
+Marchenko-Pastur law of ratio c = m / n with edge v n (1 + sqrt(c))^2; the
+recipe's formula agrees only if median(s^2) = v (m + n), while the actual
+median is v n times the median of the law. The edge therefore lands inside
+the bulk. Refitting the scale by matching the law's median or its mean,
+neither of which needs to know v, puts a Gaussian matrix at exactly zero
+outliers and leaves the real matrices with hundreds; the real counts then
+fall by a factor of 2 to 9 and differ by as much between the two
+calibrated estimators (Q 1583 by the recipe, 828 and 182 by the two fits).
+The qualitative claim survives every calibration: trained attention weights
+carry spectral structure a matched Gaussian does not. The published counts
+do not: they are a property of one estimator.
 
 Target 5, Retrieval Heads (2024), the positive control: 3 to 6 percent of
 heads copy from the context during needle retrieval (retrieval score above
@@ -572,14 +597,28 @@ absorb the layer clustering of Target 1 and the redundancy of Target 3 do
 not touch a head set that copies specific context tokens, which is what a
 permutation of where a row looks cannot produce.
 
-Registered expectations so far: E3 holds (both control models); E2 fails
-as written (the marginal-matched clause of Target 1, the effect being the
-separator columns instead); E1 pending the OPT-6.7B battery of Target 3 (on
-Mistral-7B the sink-set surrogate reproduces the redundancy to within a
-few percent without matching it within null variability); E5 pending the
-Target 4 battery; E4 dropped before the freeze. The falsification clause
-(every audited claim survives with shrinkage under 20 percent) is not
-triggered by Targets 1 and 3.
+Registered expectations, with every battery complete. E3 holds on both
+control models. E1, E2 and E5 fail as written, and all three fail the same
+way: the constrained null reproduces most of the reported effect, which is
+the paper's thesis, but not in the form the preregistered wording demanded.
+E1 asked for a statistic statistically indistinguishable from its
+sink-only surrogate and got one reproduced to within a few percent while
+still lying above every draw, because 200 draws over 32 documents resolve a
+residual of 2 to 10 percent. E2 asked for 20 to 70 percent of BERT's layer
+clustering from marginals and got 9.5 percent from marginals and 60 percent
+from the separator columns. E5 asked that row norms not carry the spectral
+structure and found that they carry 71 to 88 percent of it. E4 was dropped
+before the freeze. The falsification clause, which would have rejected the
+container-geometry thesis had every audited claim survived with shrinkage
+under 20 percent, is not triggered: no audited claim survives that way.
+
+The lesson for the next preregistration is about wording rather than
+outcome. Three of four expectations named a percentile band where the
+question was an effect size; a null that reproduces 96 percent of a
+statistic and is still distinguishable from it at 200 draws answers the
+scientific question and fails the registered one. Preregistration 11 will
+state survival clauses as effect sizes with intervals and use percentiles
+only for the direction of the comparison.
 
 ## 6. A practical test that failed: which heads can be merged
 
