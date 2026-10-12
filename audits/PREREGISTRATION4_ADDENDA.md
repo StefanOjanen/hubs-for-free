@@ -106,3 +106,16 @@ runs of Targets 3 and 5 therefore exited at startup on 2026-09-15 at 17:01
 UTC before loading any model. The battery scripts now hide their flags
 from those modules during the import. No statistic, null or threshold
 changed and no real data was processed by the failed starts.
+
+## Addendum 9 (2026-10-13): the [SEP] column of the Target 1 separator null
+
+The frozen text defines null (c) as keeping "the [CLS] column (0) and the
+[SEP] column (last token)". The committed battery kept columns 0 and 63 in
+every window, but 3 of the 38 windows are shorter than 64 tokens (47, 55 and
+57), so in those windows [SEP] was permuted and only [CLS] kept. Found in the
+verification of 2026-10-12 (a 30-draw check gave 63.8 percent reproduced
+instead of 60.2). The script now keeps the window's last token. The battery
+is rerun in full under the registered protocol (100 draws per family); the
+result of the first run is kept as `battery_result_v1_sep_bug.json` and its
+log as `battery_v1_sep_bug.log`. No threshold, statistic or other null
+changed.

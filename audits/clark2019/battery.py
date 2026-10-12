@@ -98,7 +98,7 @@ print("null (a) done", f"({time.time()-t0:.0f}s)", flush=True)
 null_b, null_c = [], []
 for k in range(DRAWS):
     null_b.append(stats(np.mean([js_matrix(surrogate_plain(A, rng, 1, causal=False)[0]) for A in windows], 0), layer))
-    null_c.append(stats(np.mean([js_matrix(surrogate_colfix(A, rng, cols=(0, T - 1), draws=1, causal=False)[0]) for A in windows], 0), layer))
+    null_c.append(stats(np.mean([js_matrix(surrogate_colfix(A, rng, cols=(0, A.shape[1] - 1), draws=1, causal=False)[0]) for A in windows], 0), layer))   # [SEP] is the window's last token (addendum 9)
     if k % 10 == 0:
         print("draw", k, f"({time.time()-t0:.0f}s)", flush=True)
 # (d) untrained
