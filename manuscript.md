@@ -37,7 +37,11 @@ columns, the cross-head redundancy that drives a KV-compression method is
 the shared sink column to within a few percent, and 85 percent of the
 Marchenko-Pastur "outliers" reported for attention projection weights are
 produced by a Gaussian matrix of the same shape and norm. Retrieval heads,
-included as the positive control, are untouched by every null. Each
+included as the positive control, are untouched by every null. Weighting
+attention by the vectors it moves halves the sink's account of head
+similarity, and a comparison that brings in values and output weights
+predicts the damage of merging two heads far better than any map statistic,
+though it did not choose reliably cheaper single merges. Each
 registered expectation that failed is reported as a failure, including
 three that failed by demanding statistical indistinguishability where the
 question was an effect size.
@@ -654,6 +658,59 @@ no other merge in 92 layers cost above 0.04. The shared-operator
 description is a statement about attention geometry, and at this
 granularity it has no tolerance consequence (Figure 10).
 
+### 6.1 The test repeated with function in the loop
+
+Every analysis up to this point compares attention maps with surrogate
+maps, so every result is a statement about map statistics. Preregistration
+11 asked what changes when attention is weighted by what it moves. It
+measured, on four models held out from development (Qwen2.5-1.5B,
+TinyLlama-1.1B, Mistral-7B, Qwen2.5-7B), the vectors each position
+contributes through a head, and it repeated the merge of round 7 on 1,152
+pairs in 27 layers with a cleaner outcome: the KL divergence of the merged
+model's next-token distribution from the unmerged one. Development on
+Qwen2.5-0.5B had contradicted the hypothesis that motivated the round, that
+removing the sink columns would make map similarity predict function; the
+preregistration records the change and registers that comparison as no
+gain. Every clause is an effect size with a model-clustered interval.
+
+The sink is small per position but not negligible in output. Its value
+vectors, carried through the head's output weights, are about a ninth the
+size of the other positions' (median 0.11, interval 0.06 to 0.14), and its
+share of value-weighted attention is 0.36 of its share of raw attention
+(interval 0.32 to 0.41; F1 passes). Its contribution to a head's output
+vector is nevertheless 0.47 of the output norm, because the contributions of
+the other positions partly cancel. Weighting attention by value norms halves
+how much of head similarity the sink column accounts for: the sink-kept null
+reproduces 0.51 less of it on weighted maps than on raw maps (interval 0.47
+to 0.56; F2 passes).
+
+Map similarity is a weak proxy for what heads do, and the sink is not the
+reason. Within a layer, the plain distance between two heads' maps predicts
+the damage of merging them at Spearman 0.38 and the generator cosine of
+round 7 at 0.30. Excluding the sink columns from the map distance changes
+nothing (difference -0.02, interval -0.06 to 0.01; F3c passes). Weighting the
+difference by the values raises the correlation to 0.51, and the
+first-order change of the layer output, which also brings in the output
+weights, to 0.65 (interval 0.52 to 0.78; F3d passes; its advantage over the
+map distance is 0.27, interval 0.14 to 0.43; F3a passes). The ordering, output
+perturbation first and value-weighted distance second, holds in each of the
+four models. The output perturbation approximates the merge's own effect, so
+its correlation is partly expected by construction; what the round measures
+is how much the map leaves out.
+
+Two registered clauses fail. The generator cosine is not reliably worse
+than the plain map distance (difference 0.07, interval -0.03 to 0.18, against
+a registered 0.10 with an interval above zero; F3b), so development's gap of
+0.27 did not hold out of sample. And the practical criterion is not
+established (F4): the merge chosen by output perturbation is not reliably
+cheaper than the one chosen by the generator cosine. The two choose the same
+pair in 10 of 27 layers; the former is cheaper in 11 and costlier in 6, a
+median cost ratio of 1.0. Its choices rank at the 8th percentile of a layer's
+merge costs against the 23rd for the generator cosine, with overlapping
+intervals. The change in next-token loss, the outcome of round 7, is a much
+noisier measure than the KL: every predictor's within-layer correlation with
+it falls to 0.08 to 0.26, in the same order.
+
 ## 7. Limitations
 
 Results cover seventeen models up to 8B parameters in ten families, three
@@ -668,7 +725,10 @@ deviation directions carry structure the shared-operator description does
 not capture (Section 4.6). The commutator pipeline is one instrument among
 many the audits address; it is the one whose failure started this work.
 The dynamics result rests on one model family. The derivation gate and the practical test both failed as
-registered; each is reported in full. The audit
+registered; each is reported in full. Except for Section 6.1, every
+statistic is computed on attention maps; that section shows the maps leave
+out most of what predicts a head's functional role, and its practical
+criterion did not beat the generator cosine at choosing single merges. The audit
 criteria are frozen for four targets by public commit and their batteries
 run against that freeze (Section 5 reports each as it completes); the
 reproductions of Targets 3 and 5 ran at reduced scale

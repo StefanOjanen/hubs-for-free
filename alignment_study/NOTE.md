@@ -737,3 +737,51 @@ result files; this section records the outcomes as they complete.
   counts are a property of the estimator rather than of the weights. The
   qualitative claim, that trained attention weights carry spectral
   structure a matched Gaussian does not, survives every calibration.
+
+## Functional round (2026-10-12, preregistration 11)
+
+Question: do the map-level findings matter for what heads do? Frozen at
+e45b49f before the run. Development on Qwen2.5-0.5B (labeled) contradicted
+the motivating hypothesis that removing the sink columns would make map
+similarity predict function, and the preregistration records the change.
+Four held-out models with grouped-query attention (Qwen2.5-1.5B,
+TinyLlama-1.1B, Mistral-7B, Qwen2.5-7B); 73 high-sink layers; 1,152 merges in
+27 layers; outcome KL over 4,096 (small models) or 2,048 (7B) evaluation
+tokens; weights restored exactly after every merge. Five of seven primary
+clauses pass.
+
+- Gate passes: the KL ranking of pairs is reliable (split-half 0.88;
+  Mistral-7B alone 0.69, with four evaluation windows).
+- F1 passes: the sink's value vectors, through the output weights, are 0.11
+  of the other positions' size; its share of value-weighted attention is
+  0.36 of its attention share (interval 0.32 to 0.41). Its contribution to
+  the head output is still 0.47 of the output norm, because the other
+  positions' contributions partly cancel. The sink is small per position,
+  not a no-op.
+- F2 passes: the sink-kept null's share of head similarity drops by 0.51
+  (0.47 to 0.56) from raw to value-weighted maps.
+- F3a passes: within a layer, the first-order output perturbation predicts
+  merge KL at Spearman 0.65 against 0.38 for the plain map distance
+  (difference 0.27, interval 0.14 to 0.43); the value-weighted distance
+  sits between (0.51). Output perturbation first and value-weighted distance
+  second in each of the four models.
+- F3b FAILS: the generator cosine (0.30) is not reliably worse than the
+  plain map distance (0.38): difference 0.07, interval -0.03 to 0.18,
+  against 0.10 with an interval above zero. Development's 0.27 did not
+  replicate.
+- F3c passes: excluding the sink columns from the map distance gains
+  nothing (-0.02, interval -0.06 to 0.01).
+- F3d passes: 0.65, interval 0.52 to 0.78.
+- F4 FAILS: the merge chosen by output perturbation is not reliably cheaper
+  than the generator-cosine choice; same pair in 10 of 27 layers, cheaper in
+  11, costlier in 6, median ratio 1.0. Its picks rank at the 8th percentile
+  of the layer's costs against the 23rd (secondary, overlapping intervals).
+- The change in NLL, round 7's outcome, is far noisier than the KL: every
+  predictor's within-layer correlation with it is 0.08 to 0.26, same order.
+
+Reading: the attention map is a weak proxy for what a head does, and the
+sink is not why; what the map leaves out is what attention moves. The
+output perturbation approximates the merge itself, so its correlation is
+partly expected; the measured quantity is how much the map misses. The
+practical claim, better single merges than the commutator criterion, is
+not established.

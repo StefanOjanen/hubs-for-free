@@ -54,7 +54,11 @@ derivation (derivation/, derivation_results.json; gate failed at R^2
 (sinkprofile/, sinkprofile_results.json; 11 of 12 models), 10 new attention
 designs (rerun_pr10/, sinkprofile_pr10/ and their _results.json; 4 of 4:
 Falcon-7B multi-query, BLOOM-7b1 ALiBi, OPT-6.7B learned positions,
-Qwen3-8B). Audit base results: audits/clark2019/, audits/chai/ (Mistral-7B
+Qwen3-8B), 11 functional round (functional/, functional_results.json,
+functional_dev_calibration.json; instruments in functional_common.py; 5 of
+7 clauses, F3b and F4 failed: maps predict merge damage weakly, a
+value-and-output comparison predicts it best, the sink is not the reason).
+Audit base results: audits/clark2019/, audits/chai/ (Mistral-7B
 and OPT-6.7B), audits/dewage2026/ (Mistral-7B), audits/retrieval_heads/
 (Qwen2.5-7B, Mistral-7B-Instruct-v0.2 reproduced; Llama-2-7B-80K not
 reproduced under our haystack and excluded); criteria in
