@@ -33,18 +33,19 @@ correctly but leaves a residual the sink does not explain. We
 release the nulls as a toolkit and apply them to four published findings
 under criteria frozen before any battery ran. Three of the four shrink: the
 layer clustering of BERT's heads is three fifths the shared separator
-columns, the cross-head redundancy that drives a KV-compression method is
-the shared sink column to within a few percent, and 85 percent of the
-Marchenko-Pastur "outliers" reported for attention projection weights are
-produced by a Gaussian matrix of the same shape and norm. Retrieval heads,
+columns, the cross-head redundancy behind a KV-compression method is
+mostly the shared sink column on Mistral-7B and about two thirds of it on
+OPT-6.7B, and 85 to 89 percent of the Marchenko-Pastur "outliers" reported
+for the square attention projections are produced by a Gaussian matrix of
+the same shape and norm. Retrieval heads,
 included as the positive control, are untouched by every null. Weighting
 attention by the vectors it moves halves the sink's account of head
 similarity, and a comparison that brings in values and output weights
 predicts the damage of merging two heads far better than any map statistic,
 though it did not choose reliably cheaper single merges. Each
-registered expectation that failed is reported as a failure, including
-three that failed by demanding statistical indistinguishability where the
-question was an effect size.
+registered expectation that failed is reported as a failure; one of them
+failed by demanding statistical indistinguishability where the question
+was an effect size.
 
 ## 1. Introduction
 
@@ -514,45 +515,55 @@ proportions rest on a classifier trained on about 400 manually annotated
 maps of fine-tuned models, and neither the annotations, the classifier nor
 the checkpoints were released. Logged and replaced.
 
-Target 3, CHAI (2024), heads within a layer are redundant in which tokens
-they attend to during decoding, with one or two large clusters per layer
-at within-cluster correlation above 0.95 and correlation increasing with
-depth. The object was reimplemented from the paper (the last token's
-attention row per head over C4 documents, Pearson correlation across
-heads, complete-linkage clusters at 0.95) and run on Mistral-7B as the
-open substitute, at 32 documents of 1,024 tokens. Partially reproduced:
-cross-head correlation is high at every layer (0.55 to 0.98) and layers 1
-to 6 carry one large cluster (up to 91 percent of heads at 0.95), but only
-4 of 32 layers have a majority cluster and correlation falls rather than
-rises with depth (Spearman -0.38), tracking the sink mass of the last row
-instead. On the paper's own OPT family (OPT-6.7B, same protocol) the split
-reverses: correlation rises with depth (0.34 to 0.70, Spearman 0.49) and no
-layer carries a majority cluster. Criteria frozen for both models; the
-registered expectation is that the column-set surrogate matches both
-statistics. Battery on Mistral-7B (200 draws): the registered expectation
-fails as written, in an instructive way. The sink-set surrogate, which
-keeps only the layer's sink columns and each head's diagonal entry,
-reproduces 90 to 99.8 percent of the cross-head correlation excess over
-the random null in every layer (median 96 percent), so the redundancy
-CHAI exploits is, to within a few percent, the shared sink column. But the
-real correlation lies above all 200 draws in all 32 layers, so the frozen
-"matched" criterion (percentile between 5 and 95) is met in none; the
-marginal-matched surrogate, which permutes the sink column away,
-reproduces 0 to 6.5 percent of the excess; random rows and five untrained
-models sit below the real value everywhere. Label: shrinks in 32 of 32
-layers. The registered wording asked for statistical indistinguishability
-from the sink-only surrogate, a stricter question than the effect size it
-was meant to settle; the effect size answers it. Battery on OPT-6.7B:
-PENDING (running).
+Target 3, CHAI (2024): heads within a layer attend to the same tokens
+during decoding, the redundancy its head-clustering method exploits, and
+the correlation between heads increases with depth. The paper does not
+define which attention rows it correlates. Its Figure 2 shows three
+clusters above 0.95 within-cluster correlation for one layer and one
+decoding step of LLaMA-7B, and its Figure 13 one or two large clusters for
+one layer. Its code, released after the paper and not linked from it,
+holds the merge patch and the clustering script but no code for the
+correlation figures. We reconstructed the statistic as the Pearson
+correlation of the last token's attention row across heads, averaged over
+C4 documents, with complete-linkage clusters at 0.95. That reading is ours,
+and the authors are asked about it. On Mistral-7B as the open substitute,
+at 32 documents of 1,024 tokens, cross-head correlation is high at every
+layer (0.55 to 0.98), layers 1 to 4 carry a majority cluster at 0.95 (up
+to 91 percent of heads), and correlation falls rather than rises with depth
+(Spearman -0.38), tracking the last row's sink mass (Spearman 0.85). On
+OPT-6.7B, from the OPT family the paper evaluates, correlation rises with
+depth (0.34 to 0.70, Spearman 0.49) and no layer carries a majority
+cluster. Criteria frozen for both models; the registered expectation is
+that the column-set surrogate matches both statistics.
 
-Target 4, Dewage et al. (2026), singular values of the projection weights
-above the Marchenko-Pastur edge carry the learned structure. The recipe is
-fully specified and was reimplemented, the stated code URL being
-unreachable on two dates. On Mistral-7B the mean outlier counts per matrix
-(Q 1511, K 341, V 212, O 1450) match the paper's Table II to within 0.3
-percent, and the paper's percentage column (87.5, 74.7, 43.6, 84.6) is
-reproduced as the outliers' share of spectral energy (89.3, 75.7, 43.0,
-84.4) rather than as the share of singular values (21 to 37 percent).
+Battery (200 draws). On Mistral-7B the registered expectation fails as
+written. The sink-set surrogate, which keeps only each row's sink columns
+and diagonal entry, reproduces a median 96 percent of the cross-head
+correlation excess over the random null, and at least 77 percent in every
+layer. But the real correlation lies above all 200 draws in every layer, so
+the frozen "matched" criterion (percentile between 5 and 95) is met in
+none. The marginal-matched surrogate, which permutes the sink column away,
+reproduces 0 to 6.5 percent; random rows and five untrained models sit
+below the real value everywhere. Label: shrinks in 32 of 32 layers. On
+OPT-6.7B the sink-set surrogate reproduces a median 68 percent (3 to 92
+percent), rising with depth (Spearman 0.97 with the layer index, 0.69 with
+the last row's sink mass) and falling short of the real cluster share in
+every layer; the marginal surrogate reproduces a median 1 percent, and the
+real value again lies above every draw. Label: shrinks in 32 of 32 layers.
+On Mistral-7B the redundancy is mostly the shared sink columns. On OPT-6.7B
+they account for about two thirds of it in the median layer and little in
+the early layers, where the last row puts almost no mass on the first token
+and something other than the sink drives the correlation.
+
+Target 4, Dewage et al. (2026): singular values of the attention projection
+weights above the Marchenko-Pastur edge encode the dominant component of the
+learned structure. The recipe is fully specified (their Equation 1) and was
+reimplemented while the stated code URL was unreachable; the repository has
+since become public, and its recipe is the same. On Mistral-7B the mean
+outlier counts per matrix (Q 1511, K 341, V 212, O 1450) match the paper's
+Table II to within 0.3 percent, and its energy ratios (87.5, 74.7, 43.6,
+84.6; their Equation 2) are reproduced within 0.2 to 1.8 points (89.3,
+75.7, 43.0, 84.4).
 Reproduced; criteria frozen. Nulls for the battery: Gaussian weights of
 matched shape and norm, row-norm-matched random weights, within-matrix
 permutation, and Gaussian weights at the initializer scale. Battery (20
@@ -574,31 +585,43 @@ variance v and m <= n, the eigenvalues of W W^T are v n times a
 Marchenko-Pastur law of ratio c = m / n with edge v n (1 + sqrt(c))^2; the
 recipe's formula agrees only if median(s^2) = v (m + n), while the actual
 median is v n times the median of the law. The edge therefore lands inside
-the bulk. Refitting the scale by matching the law's median or its mean,
-neither of which needs to know v, puts a Gaussian matrix at exactly zero
-outliers and leaves the real matrices with hundreds; the real counts then
-fall by a factor of 2 to 9 and differ by as much between the two
-calibrated estimators (Q 1583 by the recipe, 828 and 182 by the two fits).
-The qualitative claim survives every calibration: trained attention weights
-carry spectral structure a matched Gaussian does not. The published counts
-do not: they are a property of one estimator.
+the bulk, at a third of its true value for square matrices and three
+quarters for the K and V shape. The paper's own Section VII notes that the
+median-based estimate differs slightly from the exact Marchenko-Pastur
+median and lists random-matrix controls as future work; the nulls above are
+those controls. Refitting the scale by matching the law's median or its
+mean, neither of which needs to know v, puts a Gaussian matrix at zero
+outliers and leaves the real matrices with hundreds. The real counts then
+fall by a factor of 1.3 to 9, and the two calibrated estimators differ from
+each other by a factor of 1.8 to 4.6 (Q, four layers: 1583 by the recipe,
+828 and 182 by the two fits). The qualitative claim survives every
+calibration: trained attention weights carry spectral structure a matched
+Gaussian does not. The published counts mostly reflect the estimator: under
+the recipe a random matrix already reaches 85 to 89 percent of them in the
+square projections.
 
 Target 5, Retrieval Heads (2024), the positive control: 3 to 6 percent of
 heads copy from the context during needle retrieval (retrieval score above
-0.1) and masking them breaks retrieval. A compact reimplementation of the
-score on Qwen2.5-7B at contexts of 1,024 and 2,048 tokens (20 instances)
-retrieved the needle every time and put 4.2 percent of heads above 0.1,
-with the strongest in layers 14, 22 and 23; on the paper's own
-Mistral-7B-Instruct-v0.2 the same protocol gives 3.4 percent, again with
-every needle retrieved. On the paper's primary Llama-2-7B-80K our haystack
-and prompt retrieve only half of the needles and 0.7 percent of heads
-score above 0.1. The frozen inclusion rule repeated the test with the
+0.1) and masking them breaks retrieval (arXiv version 1). A compact
+reimplementation of the score on Qwen2.5-7B at contexts of 1,024 and 2,048
+tokens (20 instances) retrieved the needle every time and put 4.2 percent
+of heads above 0.1, with the strongest in layers 14, 22 and 23; on the
+paper's Mistral-7B-Instruct-v0.2 the same protocol gives 3.4 percent, again
+with every needle retrieved. Our prompt ends with the first half of the
+needle sentence and our score divides by the whole needle, so scores top
+out near 0.6 rather than 1 and the threshold of 0.1 is correspondingly
+stricter than the source's. On Llama-2-7B-80K, the paper's running example,
+our haystack and prompt retrieve only half of the needles and 0.7 percent
+of heads score above 0.1. The frozen inclusion rule repeated the test with the
 source repository's own haystack, needles, insertion rule, prompt and
 success criterion: the needle is then retrieved in 20 of 20 instances, so
 the earlier failure was our haystack and prompt, but 1.3 percent of heads
 score above 0.1 at 1K and 2K tokens on 20 instances, below the rule's 2
-percent floor, and the model stays excluded as the rule was written.
-Reproduced on two of three models; criteria frozen. The battery must not
+percent floor, and the model stays excluded as the rule was applied. That
+repeat scored heads against the whole needle span, whereas the source's
+code scores against the answer span, so the exclusion is provisional until
+the test is rerun with the answer span. Reproduced on Qwen2.5-7B and on the
+paper's Mistral-7B-Instruct-v0.2; criteria frozen. The battery must not
 remove this structure; if it does, its thresholds are revised before any
 other outcome is reported. Battery (200 draws, 20 instances per model): on
 Qwen2.5-7B and on Mistral-7B-Instruct-v0.2, random rows, marginal-matched
@@ -608,30 +631,36 @@ and the top-10 score at the 100th percentile of 200 draws and reproduce
 initializations score zero. E3 holds on both models: the surrogates that
 absorb the layer clustering of Target 1 and the redundancy of Target 3 do
 not touch a head set that copies specific context tokens, which is what a
-permutation of where a row looks cannot produce.
+permutation of where a row looks cannot produce. Because such a permutation
+destroys token copying almost by construction, the control shows that the
+battery can return "survives"; it does not calibrate the nulls for the
+distribution-level statistics of Targets 1 and 3. What supports those two
+results is the pattern across nulls: random and untrained maps reproduce
+nothing, row values alone reproduce 1 to 10 percent, and only the nulls
+that keep the shared columns reproduce most of the effect.
 
 Registered expectations, with every battery complete. E3 holds on both
-control models. E1, E2 and E5 fail as written, and all three fail the same
-way: the constrained null reproduces most of the reported effect, which is
-the paper's thesis, but not in the form the preregistered wording demanded.
-E1 asked for a statistic statistically indistinguishable from its
-sink-only surrogate and got one reproduced to within a few percent while
-still lying above every draw, because 200 draws over 32 documents resolve a
-residual of 2 to 10 percent. E2 asked for 20 to 70 percent of BERT's layer
-clustering from marginals and got 9.5 percent from marginals and 60 percent
-from the separator columns. E5 asked that row norms not carry the spectral
-structure and found that they carry 71 to 88 percent of it. E4 was dropped
-before the freeze. The falsification clause, which would have rejected the
-container-geometry thesis had every audited claim survived with shrinkage
-under 20 percent, is not triggered: no audited claim survives that way.
+control models. E1, E2 and E5 fail as written, for different reasons. E1
+(Target 3) failed on its wording on Mistral-7B, where the sink-only
+surrogate reproduces a median 96 percent of the correlation but stays
+distinguishable at 200 draws, with residuals of 0.2 to 23 percent across
+layers, and partly on substance on OPT-6.7B, where it reproduces about two
+thirds. E2 (Target 1) failed because the marginals reproduced less of
+BERT's layer clustering than predicted, 9.5 percent against 20 to 70: a
+miss in the direction against the container thesis, while the separator
+columns reproduced most of it, inside the band. E5 (Target 4) failed
+because row-norm-matched weights reproduced more of the energy share than
+predicted, 71 to 88 percent against under 50, and because in K the permuted
+null matched only 40 percent of the outlier count against the predicted
+half. E4 was dropped before the freeze. The falsification clause, which
+would have rejected the container-geometry thesis had every audited claim
+survived with shrinkage under 20 percent, is not triggered: no audited claim
+survives that way.
 
-The lesson for the next preregistration is about wording rather than
-outcome. Three of four expectations named a percentile band where the
-question was an effect size; a null that reproduces 96 percent of a
-statistic and is still distinguishable from it at 200 draws answers the
-scientific question and fails the registered one. Preregistration 11 will
-state survival clauses as effect sizes with intervals and use percentiles
-only for the direction of the comparison.
+Only one of these failures, E1 on Mistral-7B, came from asking for
+statistical indistinguishability where the question was an effect size.
+Preregistrations 11 and 12 state every clause as an effect size with an
+interval.
 
 ## 6. A practical test that failed: which heads can be merged
 

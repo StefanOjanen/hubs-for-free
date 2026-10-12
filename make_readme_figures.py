@@ -509,7 +509,7 @@ if glob.glob(BR):
             if t in v["types"]:
                 e = v["types"][t]
                 bars.append((f"Spectral outliers\nMistral-7B {t[0].upper()}", "Gaussian, shape and norm matched",
-                             e["outliers_shrinkage"]["a_gaussian"], S2, f"row norms give {e['energy_shrinkage']['b_rownorm']:.0%} of the energy"))
+                             e["outliers_shrinkage"]["a_gaussian"], S2, "share of the outlier count"))
     for path, v in B.get("retrieval", {}).items():
         short = NICE.get(v["model"], v["model"].split("/")[-1])
         worst = max(v["nulls"][f]["top10_shrinkage"] or 0 for f in ("a_random", "b_marginal", "c_colset"))
@@ -528,7 +528,7 @@ if glob.glob(BR):
         ax.axvline(1.0, color=GRID, lw=1.4, zorder=2)
         style(ax)
         fig.text(0.02, 0.965, "What the nulls reproduce of four published findings", fontsize=15, color=INK, va="top")
-        fig.text(0.02, 0.905, "Criteria frozen at commit ee4e267 before any battery ran; sublabels give the null that reproduces the most. Green: the positive control.",
+        fig.text(0.02, 0.905, "Criteria frozen at commit ee4e267 before any battery ran. Bars: the null that keeps the shared columns (BERT, CHAI), a shape and norm matched Gaussian (spectra). Green: the positive control.",
                  fontsize=10, color=INK2, va="top")
         fig.savefig(OUT + "fig13_audit_batteries.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 

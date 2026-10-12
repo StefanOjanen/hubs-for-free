@@ -493,7 +493,8 @@ registration of the draft.
   frozen with four nulls including config-initialized weights.
 - Target 3, CHAI 2024: partially reproduced on Mistral-7B (32 C4 documents,
   T = 1024): high cross-head correlation of last-token attention rows
-  everywhere and large 0.95-clusters in layers 1 to 6, but a majority
+  everywhere and large 0.95-clusters in layers 1 to 6 (majority clusters in
+  layers 1 to 4), but a majority
   cluster in only 4 of 32 layers and no increase with depth (Spearman -0.38);
   the correlation tracks the last row's sink mass. On the paper's own OPT
   family (`facebook/opt-6.7b`) the split reverses: the depth trend holds
@@ -685,14 +686,14 @@ result files; this section records the outcomes as they complete.
 - Target 3, Mistral-7B-v0.1: the registered expectation fails as written,
   in an instructive way. The sink-set surrogate (c), which keeps only the
   layer's sink columns and the diagonal of each head's last row and
-  permutes the rest, reproduces 0.90 to 0.998 of the cross-head correlation
-  excess over the random null in every layer (median 0.96), so the
-  redundancy CHAI exploits is, to within a few percent, the shared sink
+  permutes the rest, reproduces 0.77 to 0.998 of the cross-head correlation
+  excess over the random null (median 0.96; corrected 2026-10-12 from "0.90
+  to 0.998"), so on this model the redundancy is mostly the shared sink
   column. But the real correlation sits above every one of the 200 draws
   in all 32 layers, so the frozen "matched" criterion (percentile between 5
   and 95 in two thirds of the layers) is met in 0 of 32; with 200 draws over
-  32 documents the null distribution is far narrower than a residual of 2
-  to 10 percent. The marginal-matched surrogate (b), which permutes the
+  32 documents the null distribution is far narrower than residuals of 0.2
+  to 23 percent (median 4). The marginal-matched surrogate (b), which permutes the
   sink column away, reproduces about zero of the excess (0.000 to 0.065),
   so the clause "reproduces more than half" (addendum 4 reading) fails 0 of
   32; under the other reading of that clause (the statistic falls by more
@@ -731,10 +732,11 @@ result files; this section records the outcomes as they complete.
   the Gaussian null produces outliers at all is that the recipe's noise
   scale, sigma^2 = median(s^2)/(1+gamma), places the bulk edge inside the
   bulk. With the scale fitted to the Marchenko-Pastur median or mean
-  instead, a Gaussian matrix has exactly zero outliers and the real
-  matrices keep hundreds, but the counts fall by a factor of 2 to 9 and
-  differ that much between the two calibrated estimators, so the published
-  counts are a property of the estimator rather than of the weights. The
+  instead, a Gaussian matrix has zero outliers and the real matrices keep
+  hundreds, but the counts fall by a factor of 1.3 to 9 and the two
+  calibrated estimators differ by a factor of 1.8 to 4.6, so the published
+  counts mostly reflect the estimator (corrected 2026-10-12 from "2 to 9"
+  and "a property of the estimator rather than of the weights"). The
   qualitative claim, that trained attention weights carry spectral
   structure a matched Gaussian does not, survives every calibration.
 

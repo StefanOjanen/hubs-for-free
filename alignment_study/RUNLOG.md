@@ -376,3 +376,18 @@ runner with its fixed plan (standard_round.py) and the evaluation
 (eval_standard.py) are frozen in this commit before any confirmatory model
 runs. In parallel on the CPU: the full rerun of the Target 1 battery after
 addendum 9.
+
+Corrections from the verification of 2026-10-12 (private report), applied
+2026-10-13. Public text that overstated or misreported audit numbers is
+corrected in manuscript.md, README.md, NOTE.md and audits/TARGETS.md: the
+sink-set null on Mistral-7B reproduces 77 to 99.8 percent of the CHAI
+statistic (the earlier "90 to 99.8" and, in this log on 2026-09-15, "0.90
+to 0.98" were wrong); on OPT-6.7B a median 68 percent; the calibrated
+Marchenko-Pastur counts fall by a factor of 1.3 to 9 (not 2 to 9); the
+spectral paper's code is public, defines its percentages as energy
+ratios and claims a dominant, not exclusive, component; CHAI's code
+exists, unlinked from the paper, and its statistic is our reconstruction;
+the Retrieval Heads paper names no primary model; the expectations
+synthesis no longer says all three failures share one cause. The Target 1
+number follows the rerun after addendum 9. Earlier entries of this log are
+left as written.

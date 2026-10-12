@@ -278,15 +278,16 @@ Each instrument below exists because a finding above required it.
   now complete (`audits/RESULTS.md`). Three findings shrink and the control
   holds. BERT's layer clustering is three fifths the shared separator
   columns and only a tenth the row marginals. The cross-head redundancy
-  behind a KV-compression method is the shared sink column, reproduced to
-  within a few percent on Mistral-7B and to a median 68 percent on the
-  source's own OPT-6.7B. A Gaussian matrix matched in shape and norm
-  produces 85 to 89 percent of the reported spectral outlier count, because
-  the recipe places its Marchenko-Pastur edge inside the bulk; with the
-  edge calibrated, a Gaussian has none and the real counts fall by a factor
-  of 2 to 9. Retrieval heads, the positive control, sit above every draw of
-  every null on two models with about one percent of their score
-  reproduced. Notes go to the original authors with four weeks to respond.
+  behind a KV-compression method is mostly the shared sink column: the
+  sink-kept null reproduces a median 96 percent of it on Mistral-7B and 68
+  percent on OPT-6.7B, from the OPT family the source evaluates. A Gaussian
+  matrix matched in shape and norm produces 85 to 89 percent of the
+  reported spectral outlier count in the square projections, because the
+  recipe places its Marchenko-Pastur edge inside the bulk; with the edge
+  calibrated, a Gaussian has none and the real counts fall by a factor of
+  1.3 to 9. Retrieval heads, the positive control, sit above every draw of
+  the three randomization nulls on two models with about one percent of
+  their score reproduced. Notes go to the original authors with four weeks to respond.
 
 <p align="center"><img src="figures/readme/fig13_audit_batteries.png" alt="Horizontal bar chart of the share of each published finding that a constrained null reproduces: 60 percent of BERT head clustering from the separator columns, 96 and 68 percent of cross-head redundancy from the sink columns, 85 to 89 percent of the spectral outlier count from a shape and norm matched Gaussian, and 1 percent of the retrieval-head score, the positive control" width="880"></p>
 <p align="center"><em>Each bar is the share of a published effect that a null reproduces while keeping the constraint named beneath it. The control at the bottom is what the nulls must not reproduce, and do not.</em></p>

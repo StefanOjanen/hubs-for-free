@@ -119,3 +119,18 @@ is rerun in full under the registered protocol (100 draws per family); the
 result of the first run is kept as `battery_result_v1_sep_bug.json` and its
 log as `battery_v1_sep_bug.log`. No threshold, statistic or other null
 changed.
+
+## Addendum 10 (2026-10-13): two Target 5 corrections from the verification
+
+(1) The frozen text calls yaofu/llama-2-7b-80k "the paper's primary model".
+The Retrieval Heads paper names no primary model; Llama-2-7B-80K is its
+running example. The inclusion rule is unaffected. (2) The inclusion test
+(`audits/retrieval_heads/inclusion_test.py`) was meant to repeat the source
+repository's protocol. It did for the haystack, needles, insertion rule,
+prompt and success test, but it scored heads against the whole needle
+span, whereas the source code scores against the answer span
+(`real_needle`), adding 1/span per hit. The recorded outcome (1.27 percent
+of heads above 0.1, excluded) therefore stands only as the test was run.
+The test is to be rerun with the answer span before any statement that
+Llama-2-7B-80K fails the rule; until then the manuscript calls the
+exclusion provisional. No battery outcome depends on it.

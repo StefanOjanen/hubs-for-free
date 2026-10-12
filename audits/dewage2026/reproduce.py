@@ -2,7 +2,8 @@
 # base result only. Claim: singular values of the attention projection
 # weights above the Marchenko-Pastur upper edge ("spectral outliers") carry
 # the learned structure; Table II reports, per projection type, the average
-# number and fraction of outliers per matrix: Mistral-7B Q 87.5 percent,
+# number of outliers per matrix and their energy ratio (Equation 2; this
+# header called it a fraction until 2026-10-12): Mistral-7B Q 87.5 percent,
 # K 74.7, V 43.6, O 84.6 (LLaMA-2-7B: 87.8, 87.5, 79.0, 79.1). Their stated
 # code URL returned 404 on 2026-09-06 and again on 2026-09-11, so the recipe
 # is reimplemented from the paper: for a weight matrix W (m x n) with

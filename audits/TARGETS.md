@@ -6,10 +6,10 @@ classic and recent. Availability verified on 2026-09-06.
 
 | # | Target | Claim audited | Code | Fit | Effort |
 |---|---|---|---|---|---|
-| 1 | Clark et al. 2019, "What Does BERT Look At?" | Heads cluster by Jensen-Shannon distance between attention distributions; heads in the same layer are similar | Public, MIT (clarkkev/attention-analysis; TensorFlow-era, statistic simple to recompute) | Structural, attention maps | Low |
+| 1 | Clark et al. 2019, "What Does BERT Look At?" | Heads cluster by Jensen-Shannon divergence between attention distributions; heads in the same layer are similar | Public, MIT (clarkkev/attention-analysis; TensorFlow-era, statistic simple to recompute) | Structural, attention maps | Low |
 | 2 | Kovaleva et al. 2019, "Revealing the Dark Secrets of BERT" | Five attention-pattern types; the vertical (shared-column) pattern dominates | Public, Apache-2.0 (text-machine-lab/dark-secrets-of-BERT; notebook-based) | Structural, attention maps | Medium |
-| 3 | CHAI, arXiv:2403.08058 (2024) | High redundancy across heads in which tokens they attend to (attention-map correlation), OPT-66B, Llama-7B/33B | None published; method simple enough to reimplement from the paper | Structural, attention maps; practical (KV compression) | Medium |
-| 4 | Dewage et al., arXiv:2608.07921 (ICMLA 2026) | Marchenko-Pastur outliers in Q/K/V/O projection weights carry the learned structure (11 models) | Stated URL returns 404 and no matching repo exists under the author account as of 2026-09-06; MP fit reimplementable; contact authors | Structural, weight matrices (battery extended with weight-level nulls) | Medium |
+| 3 | CHAI, arXiv:2403.08058 (2024) | High redundancy across heads in which tokens they attend to (attention-map correlation), OPT-66B, Llama-7B/33B | None found on 2026-09-06; a repository (facebookresearch/chai, GPL-3.0, created 2024-05-09) exists but is not linked from the paper and holds the merge patch and clustering script only (checked 2026-10-12) | Structural, attention maps; practical (KV compression) | Medium |
+| 4 | Dewage et al., arXiv:2608.07921 (ICMLA 2026) | Marchenko-Pastur outliers in Q/K/V/O projection weights carry the learned structure (11 models) | Stated URL returned 404 on 2026-09-06 and 2026-09-11; public since about 2026-10-06 (MIT; same recipe, checked 2026-10-12) | Structural, weight matrices (battery extended with weight-level nulls) | Medium |
 | 5 | Retrieval Heads, arXiv:2404.15574 (2024) | Specific heads copy from context (retrieval score on attention maps); positive control the battery should not remove | Public (nightdessert/Retrieval_Head) | Functional detection statistic on attention maps | Medium |
 
 Alternates, in order: Linear Predictability of Attention Heads
@@ -55,7 +55,9 @@ weeks to respond before any preprint; responses are published alongside.
   max/min, sigma^2 = median(s^2)/(1 + gamma), lambda_plus =
   sigma^2 (1 + sqrt(gamma))^2, outlier s^2 > lambda_plus) and is
   reimplemented in `dewage2026/reproduce.py`; Table II gives per-projection
-  outlier fractions for Mistral-7B (Q 87.5, K 74.7, V 43.6, O 84.6 percent),
+  outlier counts and energy ratios for Mistral-7B (Q 87.5, K 74.7, V 43.6,
+  O 84.6 percent of spectral energy; this line called them outlier
+  fractions until the correction of 2026-10-12),
   the reproduction target. Reproduction scheduled on the Mistral-7B weights.
 - Target 3 (CHAI 2024): no code released; the redundancy object (last
   token's attention row per head over C4 contexts, Pearson correlation
@@ -79,7 +81,8 @@ weeks to respond before any preprint; responses are published alongside.
 - Target 3 reproduction (2026-09-11, `chai/reproduce.py` on Mistral-7B-v0.1,
   32 C4 documents at T = 1024; a first attempt at T = 2048 ran at about a
   minute per document and was stopped): partially reproduced. High
-  cross-head correlation and large 0.95-clusters in layers 1 to 6; a
+  cross-head correlation and large 0.95-clusters in layers 1 to 6 (majority
+  clusters in layers 1 to 4); a
   majority cluster in only 4 of 32 layers; the paper's increase of
   correlation with depth is not reproduced (Spearman with depth -0.38); the
   correlation follows the last row's sink mass. Criteria frozen in
@@ -104,7 +107,9 @@ weeks to respond before any preprint; responses are published alongside.
   The last-token mass on the first column is near zero until the final
   layers (0.52 at layer 31, where the correlation is highest). Mistral-7B
   showed the opposite split (clusters yes, depth trend no); across the two
-  families the correlation follows the sink mass of the last row in both.
+  families the correlation follows the sink mass of the last row
+  (Spearman 0.85 on Mistral-7B; on OPT-6.7B 0.22, Pearson 0.75, driven by
+  the final layers; corrected 2026-10-12).
 - Target 5 on the source's own model (2026-09-11,
   `retrieval_heads/reproduce.py` on `mistralai/Mistral-7B-Instruct-v0.2`, one
   of the paper's models, same reduced protocol of 20 instances at 1K and
