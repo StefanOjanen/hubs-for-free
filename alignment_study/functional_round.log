@@ -1,0 +1,47 @@
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:   0%|          | 1/338 [00:01<07:01,  1.25s/it]Loading weights:  51%|█████     | 171/338 [00:01<00:01, 165.02it/s]Loading weights:  69%|██████▉   | 234/338 [00:02<00:01, 94.47it/s] Loading weights:  80%|████████  | 271/338 [00:03<00:00, 90.13it/s]Loading weights:  88%|████████▊ | 297/338 [00:03<00:00, 83.46it/s]Loading weights:  93%|█████████▎| 316/338 [00:03<00:00, 83.93it/s]Loading weights:  98%|█████████▊| 332/338 [00:03<00:00, 90.06it/s]Loading weights: 100%|██████████| 338/338 [00:03<00:00, 88.08it/s]
+Qwen/Qwen2.5-1.5B DEVICE mps DTYPE float32 layers 28 heads 12 kv 2 hd 128 group 6
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (298938 > 131072). Running this sequence through the model will result in indexing errors
+selection measures done (342s)
+  layer 1: 30 merges (423s)
+  layer 5: 30 merges (500s)
+  layer 9: 30 merges (578s)
+  layer 13: 30 merges (655s)
+  layer 17: 30 merges (732s)
+  layer 21: 30 merges (809s)
+  layer 24: 30 merges (886s)
+  layer 27: 30 merges (963s)
+MODEL_DONE Qwen/Qwen2.5-1.5B 966.0s
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 66887.90it/s]
+TinyLlama/TinyLlama_v1.1 DEVICE mps DTYPE float32 layers 22 heads 32 kv 4 hd 64 group 8
+selection measures done (394s)
+  layer 1: 48 merges (478s)
+  layer 4: 48 merges (559s)
+  layer 7: 48 merges (641s)
+  layer 10: 48 merges (723s)
+  layer 13: 48 merges (806s)
+  layer 16: 48 merges (888s)
+  layer 19: 48 merges (971s)
+  layer 21: 48 merges (1053s)
+MODEL_DONE TinyLlama/TinyLlama_v1.1 1055.3s
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 4590.27it/s]
+mistralai/Mistral-7B-v0.1 DEVICE mps DTYPE bfloat16 layers 32 heads 32 kv 8 hd 128 group 4
+selection measures done (1025s)
+  layer 2: 48 merges (1445s)
+  layer 8: 48 merges (1917s)
+  layer 14: 48 merges (2685s)
+  layer 20: 48 merges (3302s)
+  layer 26: 48 merges (3924s)
+  layer 31: 48 merges (4483s)
+MODEL_DONE mistralai/Mistral-7B-v0.1 4498.3s
+Loading weights:   0%|          | 0/339 [00:00<?, ?it/s]Loading weights: 100%|██████████| 339/339 [00:00<00:00, 4554.81it/s]
+Qwen/Qwen2.5-7B DEVICE mps DTYPE bfloat16 layers 28 heads 28 kv 4 hd 128 group 7
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (298938 > 131072). Running this sequence through the model will result in indexing errors
+selection measures done (1103s)
+  layer 2: 48 merges (1470s)
+  layer 8: 48 merges (1816s)
+  layer 14: 48 merges (2171s)
+  layer 20: 48 merges (2498s)
+  layer 26: 48 merges (2844s)
+MODEL_DONE Qwen/Qwen2.5-7B 2852.4s
+FUNCTIONAL_ROUND_DONE

@@ -351,3 +351,19 @@ in this commit, before any confirmatory model is run. Development changed
 the hypothesis, as recorded in the preregistration: removing the sink
 columns did not improve the map comparison; the positive predictions
 concern the first-order output perturbation.
+
+Functional round results (2026-10-12, 19:00 to 21:37 UTC, head e45b49f).
+Qwen2.5-1.5B (966 s, float32, 8 layers x 30 pairs, 4,096 evaluation
+tokens), TinyLlama_v1.1 (1,055 s, float32, 8 x 48), Mistral-7B-v0.1
+(4,498 s, bfloat16, 6 x 48, 2,048 tokens), Qwen2.5-7B (2,852 s, bfloat16,
+5 x 48, 2,048 tokens): 1,152 merges in 27 layers, weights restored exactly
+after every merge (restore-check KL 0.0 in all four). The keep-awake held
+and no pause was needed (charger connected at 45 percent). Evaluation
+(eval_functional.py, unchanged since the freeze): gate passes (KL ranking
+reliability 0.88; Mistral-7B alone 0.69, with four evaluation windows);
+F1, F2, F3a, F3c and F3d pass; F3b fails (map distance minus generator
+cosine 0.07, interval -0.03 to 0.18, against 0.10 with an interval above
+zero); F4 fails (the output-perturbation pick and the generator-cosine
+pick coincide in 10 of 27 layers, the former is cheaper in 11 and costlier
+in 6; median cost ratio 1.0). Results in functional/, functional_results.json
+and eval_functional.log.

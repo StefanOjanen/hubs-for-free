@@ -1,0 +1,15 @@
+models: 4 complete: True
+reliability_gate {"value": 0.8789766407119021, "ci95": [0.6975683890577508, 0.9163515016685205], "n_layers": 27, "n_models": 4, "pass_": true}
+F1_sink_value_share_over_attention_share {"value": 0.3584633519654728, "ci95": [0.3245226745895827, 0.4075300470673869], "n_layers": 73, "n_models": 4, "pass_": true}
+F2_sinknull_share_drop_raw_to_valueweighted {"value": 0.505638434909417, "ci95": [0.4702584091254912, 0.5579451022887175], "n_layers": 73, "n_models": 4, "pass_": true}
+F3a_rho_out_pert_minus_tv_raw {"value": 0.26915990293434333, "ci95": [0.13725951100571163, 0.4346703148272003], "n_layers": 27, "n_models": 4, "pass_": true}
+F3b_rho_tv_raw_minus_gen_cos {"value": 0.07308300721498771, "ci95": [-0.030054005644811106, 0.17547955995001804], "n_layers": 27, "n_models": 4, "pass_": false}
+F3c_rho_tv_nosink_minus_tv_raw_no_gain {"value": -0.024640250154921977, "ci95": [-0.06226141909732412, 0.01238076506065539], "n_layers": 27, "n_models": 4, "pass_": true}
+F3d_rho_out_pert {"value": 0.6466344296931135, "ci95": [0.5230904737781638, 0.7822195406128839], "n_layers": 27, "n_models": 4, "pass_": true}
+F4_pick_kl_out_pert_over_gen_cos {"median_ratio": 1.0, "ci95": [0.7122368195727199, 1.0], "n_layers": 27, "n_models": 4, "pass_": false}
+primary_passes 5
+secondary {"rho_mean_by_predictor": {"gen_cos": {"value": 0.3043915195437826, "ci95": [0.16521125435121867, 0.4399697405557968], "n_layers": 27, "n_models": 4}, "tv_raw": {"value": 0.3774745267587702, "ci95": [0.23905074834031276, 0.5507942257780607], "n_layers": 27, "n_models": 4}, "tv_nosink": {"value": 0.35283427660384836, "ci95": [0.2173459442877984, 0.5124839376773559], "n_layers": 27, "n_models": 4}, 
+  Mistral-7B-v0.1          hs 31 | F1 ratio 0.34347649897014854 out 0.49643138796513325 | F2 drop 0.47658176128540825 | rel 0.69 | rho gen_cos +0.21 tv_raw +0.29 tv_nosink +0.32 val_dist +0.43 out_pert +0.57 sink_diff +0.13 | F4 0.85
+  Qwen2.5-1.5B             hs 15 | F1 ratio 0.4075300470673869 out 0.47089624377674105 | F2 drop 0.5187167810140598 | rel 0.92 | rho gen_cos +0.22 tv_raw +0.37 tv_nosink +0.35 val_dist +0.53 out_pert +0.79 sink_diff +0.21 | F4 1.00
+  Qwen2.5-7B               hs 20 | F1 ratio 0.38425877314751866 out 0.4187432396760591 | F2 drop 0.5202372496532274 | rel 0.82 | rho gen_cos +0.49 tv_raw +0.64 tv_nosink +0.57 val_dist +0.69 out_pert +0.73 sink_diff +0.48 | F4 1.00
+  TinyLlama_v1.1           hs  7 | F1 ratio 0.3064150494145771 out 0.4863347088787203 | F2 drop 0.564582062894906 | rel 0.90 | rho gen_cos +0.34 tv_raw +0.28 tv_nosink +0.25 val_dist +0.44 out_pert +0.51 sink_diff +0.22 | F4 0.87
