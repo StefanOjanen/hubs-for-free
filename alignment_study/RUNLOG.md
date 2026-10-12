@@ -339,3 +339,15 @@ fall from 1583 to 828 and 182 (Q), 354 to 276 and 105 (K), 240 to 121 and
 67 (V), 1463 to 513 and 202 (O). Author letters for the four targets are
 drafted in private/letters/ (not committed; the repository holds no
 correspondence).
+
+Functional round (PREREGISTRATION11.md, 2026-10-12). Development
+calibration on Qwen2.5-0.5B (labeled; functional_dev.py, 497 s,
+functional_dev_calibration.json and .log), then the dry run of the
+confirmatory script on the development model into a scratch directory to
+test the evaluation code (not kept). The preregistration, the instruments
+(functional_common.py), the runner with its fixed merge plan
+(functional_round.py) and the evaluation (eval_functional.py) are frozen
+in this commit, before any confirmatory model is run. Development changed
+the hypothesis, as recorded in the preregistration: removing the sink
+columns did not improve the map comparison; the positive predictions
+concern the first-order output perturbation.

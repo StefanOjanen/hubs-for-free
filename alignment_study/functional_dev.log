@@ -1,0 +1,125 @@
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:  96%|█████████▌| 277/290 [00:00<00:00, 2749.79it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 2800.17it/s]
+Qwen/Qwen2.5-0.5B DEVICE mps:Apple M1 Max (21.3 GB working set) DTYPE float32 layers 24 heads 14 kv 2 hd 64 group 7
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (298938 > 131072). Running this sequence through the model will result in indexing errors
+selection measures done (189s)
+  layer 1: 42 merges (229s)
+  layer 4: 42 merges (267s)
+  layer 7: 42 merges (305s)
+  layer 10: 42 merges (344s)
+  layer 13: 42 merges (382s)
+  layer 16: 42 merges (420s)
+  layer 19: 42 merges (458s)
+  layer 22: 42 merges (496s)
+{
+ "f1_high_sink": {
+  "n": 12,
+  "median_raw": 0.5417762554815428,
+  "median_val": 0.22271305165762179,
+  "median_val_over_raw": 0.4243786696450571,
+  "median_out": 0.4572687239975479,
+  "median_fnorm_sink_over_rest": 0.1578618069018668,
+  "median_f2_raw_reproduced": 0.9570660897078741,
+  "median_f2_val_reproduced": 0.47044078783426757
+ },
+ "f3_summary": {
+  "gen_cos": {
+   "mean_within_layer_rho_kl": 0.332043594522324,
+   "ci95": [
+    0.18908009885746702,
+    0.46247011992545173
+   ],
+   "mean_within_layer_rho_dnll": 0.31755935499554333,
+   "median_pick_kl_over_best": 2.7022519814519375,
+   "median_pick_rank_pct": 33.33333333333333
+  },
+  "tv_raw": {
+   "mean_within_layer_rho_kl": 0.6053399238311321,
+   "ci95": [
+    0.513957539907625,
+    0.7005378413418685
+   ],
+   "mean_within_layer_rho_dnll": 0.5837654971234097,
+   "median_pick_kl_over_best": 1.850374764834234,
+   "median_pick_rank_pct": 17.857142857142854
+  },
+  "tv_nosink": {
+   "mean_within_layer_rho_kl": 0.5867433757394053,
+   "ci95": [
+    0.5076371444777571,
+    0.6632768819382546
+   ],
+   "mean_within_layer_rho_dnll": 0.5543310914836723,
+   "median_pick_kl_over_best": 1.8202040288902106,
+   "median_pick_rank_pct": 15.476190476190474
+  },
+  "val_dist": {
+   "mean_within_layer_rho_kl": 0.6676525403127787,
+   "ci95": [
+    0.5793604651162791,
+    0.7525134713556438
+   ],
+   "mean_within_layer_rho_dnll": 0.6141722712908193,
+   "median_pick_kl_over_best": 1.850374764834234,
+   "median_pick_rank_pct": 15.476190476190474
+  },
+  "out_pert": {
+   "mean_within_layer_rho_kl": 0.8255813953488371,
+   "ci95": [
+    0.7330853455959809,
+    0.9065786808200306
+   ],
+   "mean_within_layer_rho_dnll": 0.6582327202009561,
+   "median_pick_kl_over_best": 1.0643299722241344,
+   "median_pick_rank_pct": 4.761904761904762
+  },
+  "sink_diff": {
+   "mean_within_layer_rho_kl": 0.22635929017097484,
+   "ci95": [
+    0.13873521189530832,
+    0.3108444412932501
+   ],
+   "mean_within_layer_rho_dnll": 0.21173324690057535,
+   "median_pick_kl_over_best": 3.646178215714393,
+   "median_pick_rank_pct": 48.80952380952381
+  }
+ },
+ "f3_differences": {
+  "tv_nosink_minus_tv_raw": {
+   "mean": -0.01859654809172679,
+   "ci95": [
+    -0.045256664775950146,
+    0.006754416173729788
+   ]
+  },
+  "val_dist_minus_tv_raw": {
+   "mean": 0.062312616481646536,
+   "ci95": [
+    -0.00785997893201526,
+    0.1584069362288305
+   ]
+  },
+  "tv_nosink_minus_gen_cos": {
+   "mean": 0.2546997812170813,
+   "ci95": [
+    0.0887331861275424,
+    0.4392219026010855
+   ]
+  },
+  "val_dist_minus_gen_cos": {
+   "mean": 0.3356089457904546,
+   "ci95": [
+    0.19615762498987124,
+    0.49915879993517537
+   ]
+  },
+  "out_pert_minus_val_dist": {
+   "mean": 0.15792885503605864,
+   "ci95": [
+    0.07171572400939953,
+    0.2532422413094562
+   ]
+  }
+ },
+ "restore_check_kl": 0.0
+}
+FUNCTIONAL_DEV_DONE alignment_study/functional_dev_calibration.json
