@@ -45,8 +45,12 @@ CTX = [int(x) for x in opt("contexts", "512" if DRY else "1024,2048").split(",")
 NDEPTH = int(opt("depths", "2" if DRY else "5"))
 NNEEDLE = int(opt("needles", "1" if DRY else "2"))
 BUFFER, MAX_NEW = 200, 50
+# --span=answer (addendum 10 of PREREGISTRATION4): score against the span of
+# the answer (`real_needle`) as the source's find_needle_idx does, instead of
+# the whole needle sentence (the default of the first run).
+SPAN = opt("span", "needle")
 SHORT = NAME.split("/")[-1]
-OUT = "/tmp/inclusion_test_dryrun.json" if DRY else f"audits/retrieval_heads/{SHORT}_inclusion_test.json"
+OUT = "/tmp/inclusion_test_dryrun.json" if DRY else f"audits/retrieval_heads/{SHORT}_inclusion_test{'_answerspan' if SPAN == 'answer' else ''}.json"
 DEV = pick_device(os.environ.get("HUBSFREE_DEVICE", "auto"))
 torch.set_grad_enabled(False)
 assert SRC and os.path.isdir(os.path.join(SRC, "haystack_for_detect")), "--source-dir must point at a clone of nightdessert/Retrieval_Head"
@@ -72,7 +76,7 @@ def period_tokens(tok):
     return {i for i in ids if tok.decode([i]).strip() == "."}
 
 
-def build(tok, context, needle, question, ctx, depth_percent, periods):
+def build(tok, context, needle, question, ctx, depth_percent, periods, real_needle=None):
     """The source's generate_context and prompt: trim, insert at a sentence end, decode, add the question."""
     toks = tok.encode(context, add_special_tokens=False)[:ctx]
     tn = tok.encode(needle, add_special_tokens=False)
@@ -89,8 +93,10 @@ def build(tok, context, needle, question, ctx, depth_percent, periods):
         new = new + tn + toks[ip:]
     text = tok.decode(new) + f"Based on the content of the book, Question: {question}\nAnswer:"
     ids = tok(text, return_tensors="pt")["input_ids"]
-    # the source's find_needle_idx: first window with more than 0.9 token-set overlap with the needle
-    pid = ids[0].tolist(); nset = set(tn); span = len(tn); start = -1
+    # the source's find_needle_idx: first window with more than 0.9 token-set overlap with the
+    # scored text (the answer span with --span=answer, as the source does; the whole needle otherwise)
+    target = tok(real_needle, add_special_tokens=False)["input_ids"] if (SPAN == "answer" and real_needle) else tn
+    pid = ids[0].tolist(); nset = set(target); span = len(target); start = -1
     for i in range(len(pid) - span + 1):
         if len(set(pid[i:i + span]) & nset) / len(nset) > 0.9:
             start = i; break
@@ -143,7 +149,7 @@ if __name__ == "__main__":
         context = haystack_text(k, max(CTX))
         for ctx in CTX:
             for dp in depths:
-                ids, start, end = build(tok, context, nd["needle"], nd["question"], ctx, dp, periods)
+                ids, start, end = build(tok, context, nd["needle"], nd["question"], ctx, dp, periods, nd["real_needle"])
                 gen, score = decode(model, tok, ids, start, end)
                 resp = tok.decode(gen, skip_special_tokens=True).strip()
                 recall = scorer.score(nd["real_needle"], resp)["rouge1"].recall * 100
@@ -156,7 +162,7 @@ if __name__ == "__main__":
     n = len(per); head = acc / max(n_ok, 1); flat = head.ravel()
     frac = float((flat > 0.1).mean()); frac_all = float(((all_acc / max(n, 1)).ravel() > 0.1).mean())
     included = (n_ok >= 18) and (0.02 <= frac <= 0.08) and n == 20
-    res = {"model": NAME, "rope": ROPE, "dtype": dt, "source_repo": "nightdessert/Retrieval_Head", "source_commit": SRC_COMMIT, "contexts": CTX,
+    res = {"model": NAME, "rope": ROPE, "span": SPAN, "dtype": dt, "source_repo": "nightdessert/Retrieval_Head", "source_commit": SRC_COMMIT, "contexts": CTX,
            "depths_percent": depths, "needles": NNEEDLE, "instances": n, "retrieved": int(n_ok),
            "frac_heads_above_0.1": round(frac, 4), "frac_heads_above_0.1_all_instances": round(frac_all, 4), "n_heads": int(flat.size),
            "top_heads": [{"layer": int(i // H), "head": int(i % H), "score": round(float(flat[i]), 3)} for i in np.argsort(flat)[::-1][:10]],

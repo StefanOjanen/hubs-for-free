@@ -391,3 +391,15 @@ the Retrieval Heads paper names no primary model; the expectations
 synthesis no longer says all three failures share one cause. The Target 1
 number follows the rerun after addendum 9. Earlier entries of this log are
 left as written.
+
+What-the-sink-does round (PREREGISTRATION13.md, 2026-10-13). The first
+development run of sink_round.py used a custom attention function without
+causal masking (a registered custom attention receives no mask in
+transformers 5); its equivalence check against eager attention flagged a
+maximum logit difference of 17.5, the run was discarded, causal masking
+was added inside the function, and the rerun matches eager attention
+exactly. The preregistration, sink_common.py, sink_round.py, eval_sink.py
+and the development outputs are frozen here, before the confirmatory run,
+which is queued after the standard-statistics round. Also committed before
+its run: inclusion_test.py --span=answer, the answer-span scoring of the
+source code (addendum 10), to be run on Llama-2-7B-80K after the sink round.

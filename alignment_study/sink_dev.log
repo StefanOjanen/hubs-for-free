@@ -1,0 +1,32 @@
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (298938 > 131072). Running this sequence through the model will result in indexing errors
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:00<02:36,  1.84it/s]Loading weights:  76%|███████▌  | 219/290 [00:00<00:00, 420.34it/s]Loading weights: 100%|██████████| 290/290 [00:01<00:00, 248.91it/s]
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:00<01:32,  3.12it/s]Loading weights:  84%|████████▍ | 243/290 [00:00<00:00, 740.43it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 639.16it/s]
+Qwen/Qwen2.5-0.5B DTYPE float32 layers 24; sinkint vs eager max abs logit difference 0.00e+00 (14s)
+  layer 0: zero 0.0066 mean 0.0065 renorm 0.0189 zero_rand 0.0001 (26s)
+  layer 1: zero 0.0088 mean 0.0086 renorm 0.0058 zero_rand 0.0002 (35s)
+  layer 2: zero 0.0054 mean 0.0054 renorm 0.0064 zero_rand 0.0001 (44s)
+  layer 3: zero 0.0049 mean 0.0007 renorm 0.2702 zero_rand 0.0000 (53s)
+  layer 4: zero 0.0044 mean 0.0009 renorm 0.0184 zero_rand 0.0000 (62s)
+  layer 5: zero 0.0068 mean 0.0006 renorm 0.0283 zero_rand 0.0000 (71s)
+  layer 6: zero 0.0027 mean 0.0006 renorm 0.0161 zero_rand 0.0001 (80s)
+  layer 7: zero 0.0036 mean 0.0005 renorm 0.0312 zero_rand 0.0000 (88s)
+  layer 8: zero 0.0014 mean 0.0006 renorm 0.0066 zero_rand 0.0002 (97s)
+  layer 9: zero 0.0055 mean 0.0006 renorm 0.2791 zero_rand 0.0000 (106s)
+  layer 10: zero 0.0046 mean 0.0010 renorm 0.0182 zero_rand 0.0001 (115s)
+  layer 11: zero 0.0039 mean 0.0009 renorm 0.8316 zero_rand 0.0000 (124s)
+  layer 12: zero 0.0010 mean 0.0003 renorm 0.0071 zero_rand 0.0000 (133s)
+  layer 13: zero 0.0023 mean 0.0005 renorm 0.0189 zero_rand 0.0000 (142s)
+  layer 14: zero 0.0014 mean 0.0006 renorm 0.0080 zero_rand 0.0000 (151s)
+  layer 15: zero 0.0009 mean 0.0003 renorm 0.0064 zero_rand 0.0000 (160s)
+  layer 16: zero 0.0003 mean 0.0000 renorm 0.0787 zero_rand 0.0000 (169s)
+  layer 17: zero 0.0269 mean 0.0031 renorm 0.0382 zero_rand 0.0000 (178s)
+  layer 18: zero 0.0007 mean 0.0001 renorm 0.0231 zero_rand 0.0000 (187s)
+  layer 19: zero 0.0006 mean 0.0002 renorm 0.0123 zero_rand 0.0001 (196s)
+  layer 20: zero 0.0445 mean 0.0034 renorm 0.0274 zero_rand 0.0001 (205s)
+  layer 21: zero 0.0413 mean 0.0024 renorm 0.0319 zero_rand 0.0000 (213s)
+  layer 22: zero 0.0002 mean 0.0002 renorm 0.0004 zero_rand 0.0000 (222s)
+  layer 23: zero 0.0002 mean 0.0001 renorm 0.0001 zero_rand 0.0000 (231s)
+  all layers: zero 0.2251 mean 0.0427 renorm 0.0106 zero_rand 0.0078 (241s)
+MODEL_DONE Qwen/Qwen2.5-0.5B 243.8s
+SINK_ROUND_DONE

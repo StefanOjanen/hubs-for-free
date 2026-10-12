@@ -1,0 +1,60 @@
+{
+ "thresholds": {
+  "K1_ratio": 5.0,
+  "K2_ratio": 0.5,
+  "K3_frac": 0.6666666666666666,
+  "K4_median": 0.5,
+  "K4_ci_high": 0.75,
+  "models_needed": 3
+ },
+ "per_model": {
+  "Qwen/Qwen2.5-0.5B": {
+   "equivalence_max_abs_logit": 0.0,
+   "restore_check_kl": 0.0,
+   "all_layers_kl": {
+    "zero": 0.22507392708212137,
+    "mean": 0.04267637338489294,
+    "renorm": 0.010605885268887505,
+    "zero_rand": 0.007846817748941248
+   },
+   "all_zero_over_rand": 28.68346561413256,
+   "all_mean_over_zero": 0.18961047127116534,
+   "all_renorm_over_zero": 0.0471217853013148,
+   "n_layers_tested": 24,
+   "n_high_sink": 16,
+   "frac_zero_above_rand": 1.0,
+   "median_mean_over_zero_high_sink": 0.13895155051690894,
+   "max_renorm_kl_single_layer": 0.8316245675086975
+  }
+ },
+ "K": {
+  "K1_all_layer_zero_over_random_token": {
+   "per_model": {
+    "Qwen/Qwen2.5-0.5B": 28.68346561413256
+   },
+   "pass_": false
+  },
+  "K2_all_layer_mean_over_zero": {
+   "per_model": {
+    "Qwen/Qwen2.5-0.5B": 0.18961047127116534
+   },
+   "pass_": false
+  },
+  "K3_zero_above_random_token_in_high_sink_layers": {
+   "per_model": {
+    "Qwen/Qwen2.5-0.5B": 1.0
+   },
+   "pass_": false
+  },
+  "K4_mean_over_zero_high_sink_layers": {
+   "median": 0.13895155051690894,
+   "ci95": [
+    0.11332990091283889,
+    0.22320539717714916
+   ],
+   "n_layers": 16,
+   "pass_": true
+  },
+  "primary_passes": 1
+ }
+}
