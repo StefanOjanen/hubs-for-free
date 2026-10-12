@@ -367,3 +367,12 @@ zero); F4 fails (the output-perturbation pick and the generator-cosine
 pick coincide in 10 of 27 layers, the former is cheaper in 11 and costlier
 in 6; median cost ratio 1.0). Results in functional/, functional_results.json
 and eval_functional.log.
+
+Standard-statistics round (PREREGISTRATION12.md, 2026-10-13). Development
+calibration on Qwen2.5-0.5B (labeled; standard_round.py --dev, 440 s,
+standard_dev/ and standard_dev_results.json). The preregistration, the
+instruments (standard_common.py, reusing round 11's frozen code), the
+runner with its fixed plan (standard_round.py) and the evaluation
+(eval_standard.py) are frozen in this commit before any confirmatory model
+runs. In parallel on the CPU: the full rerun of the Target 1 battery after
+addendum 9.

@@ -1,0 +1,33 @@
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:00<02:00,  2.39it/s]Loading weights:  93%|█████████▎| 269/290 [00:00<00:00, 681.39it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 548.87it/s]
+Qwen/Qwen2.5-0.5B DEVICE mps DTYPE float32 layers 24 heads 14 kv 2 hd 64 group 7 (3s)
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (298938 > 131072). Running this sequence through the model will result in indexing errors
+selection statistics done (112s)
+  multi-merge budget 1: out_pert 0.043 val_dist 0.074 tv_raw 0.074 gen_cos 0.095 js 0.067 cos_map 0.088 corr_last 0.111 corr_rows 0.094 | random median 0.188 (126s)
+  multi-merge budget 2: out_pert 0.127 val_dist 0.176 tv_raw 0.211 gen_cos 0.281 js 0.204 cos_map 0.203 corr_last 0.257 corr_rows 0.209 | random median 0.468 (138s)
+  ablation layer 0: 14 heads (150s)
+  ablation layer 1: 14 heads (163s)
+  ablation layer 2: 14 heads (176s)
+  ablation layer 3: 14 heads (188s)
+  ablation layer 4: 14 heads (201s)
+  ablation layer 5: 14 heads (213s)
+  ablation layer 6: 14 heads (226s)
+  ablation layer 7: 14 heads (238s)
+  ablation layer 8: 14 heads (251s)
+  ablation layer 9: 14 heads (264s)
+  ablation layer 10: 14 heads (276s)
+  ablation layer 11: 14 heads (289s)
+  ablation layer 12: 14 heads (301s)
+  ablation layer 13: 14 heads (314s)
+  ablation layer 14: 14 heads (326s)
+  ablation layer 15: 14 heads (339s)
+  ablation layer 16: 14 heads (351s)
+  ablation layer 17: 14 heads (364s)
+  ablation layer 18: 14 heads (376s)
+  ablation layer 19: 14 heads (389s)
+  ablation layer 20: 14 heads (402s)
+  ablation layer 21: 14 heads (414s)
+  ablation layer 22: 14 heads (427s)
+  ablation layer 23: 14 heads (439s)
+MODEL_DONE Qwen/Qwen2.5-0.5B 440.2s
+STANDARD_ROUND_DONE
