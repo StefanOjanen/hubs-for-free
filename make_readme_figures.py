@@ -532,4 +532,43 @@ if glob.glob(BR):
                  fontsize=10, color=INK2, va="top")
         fig.savefig(OUT + "fig13_audit_batteries.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
+
+# ============ Figure 14: what predicts the damage of merging two heads (preregistration 11) ============
+FR = "alignment_study/functional_results.json"
+if glob.glob(FR):
+    plt.rcParams["axes.grid"] = False
+    R14 = json.load(open(FR))
+    rho = R14["F"]["secondary"]["rho_mean_by_predictor"]
+    order = [("sink_diff", "Sink-mass difference", False), ("gen_cos", "Commutator object (generator cosine)", False),
+             ("tv_nosink", "Map distance, sink columns removed", False), ("tv_raw", "Map distance", False),
+             ("val_dist", "Map difference weighted by values", True), ("out_pert", "Output perturbation (values and output weights)", True)]
+    fig, ax = plt.subplots(figsize=(10.2, 5.1), gridspec_kw={"left": 0.36, "right": 0.91, "top": 0.72, "bottom": 0.13})
+    y = np.arange(len(order))
+    for yy, (k, label, func) in zip(y, order):
+        col = S1 if func else MUTED
+        lo, hi = rho[k]["ci95"]
+        ax.plot([lo, hi], [yy, yy], color=col, lw=2, solid_capstyle="round", zorder=2)
+        per = [pm["rho_mean"][k] for pm in R14["per_model"].values()]
+        ax.scatter(per, [yy] * len(per), s=26, facecolors=SURF, edgecolors=INK2, linewidths=1.0, zorder=3)
+        ax.scatter([rho[k]["value"]], [yy], s=95, color=col, edgecolors=SURF, linewidths=2, zorder=4)
+        ax.text(1.03, yy, f"{rho[k]['value']:.2f}", va="center", fontsize=11.5, color=INK, transform=ax.get_yaxis_transform(), clip_on=False)
+    ax.set_yticks(y); ax.set_yticklabels([o[1] for o in order], fontsize=10.5)
+    ax.set_xlim(0, 1.0); ax.set_xticks([0, 0.25, 0.5, 0.75, 1.0])
+    for xg in (0.25, 0.5, 0.75, 1.0):
+        ax.axvline(xg, color=GRID, lw=0.8, zorder=0)
+    ax.set_xlabel("within-layer Spearman with the merge damage (KL), mean over 27 layers")
+    style(ax)
+    from matplotlib.lines import Line2D
+    hl = [Line2D([], [], marker="o", ls="", ms=9, color=MUTED, mec=SURF), Line2D([], [], marker="o", ls="", ms=9, color=S1, mec=SURF),
+          Line2D([], [], marker="o", ls="", ms=5.5, mfc=SURF, mec=INK2)]
+    ax.legend(hl, ["attention map only", "brings in what attention moves", "each of the four models"], loc="lower left", bbox_to_anchor=(-0.02, 1.0),
+              ncol=3, fontsize=9.5, frameon=False, handletextpad=0.4, columnspacing=1.6)
+    ax.text(1.03, 1.0, "mean", transform=ax.transAxes, fontsize=9.5, color=INK2, va="bottom")
+    fig.text(0.02, 0.97, "What predicts the damage of merging two heads", fontsize=15, color=INK, va="top")
+    fig.text(0.02, 0.91, "Preregistration 11, four held-out models, 1,152 merges; lines are model-clustered 95% intervals. Removing the sink changes nothing;",
+             fontsize=10, color=INK2, va="top")
+    fig.text(0.02, 0.868, "bringing in values and output weights does. The output perturbation approximates the merge itself, so part of its lead is by construction.",
+             fontsize=10, color=INK2, va="top")
+    fig.savefig(OUT + "fig14_functional_round.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
 print("FIGURES_DONE", sorted(glob.glob(OUT + "*")))

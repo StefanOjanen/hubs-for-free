@@ -240,6 +240,25 @@ Each instrument below exists because a finding above required it.
 
 <p align="center"><em>The failed practical test: merges are cheap almost everywhere, and neither the pair cosine nor the shared energy predicts the cost.</em></p>
 
+- **The same test with function in the loop: the map is the weak link,
+  not the sink.** Every earlier result compares attention maps with
+  surrogate maps. A further preregistered round weighted attention by the
+  vectors it actually moves and repeated the merging test on four held-out
+  models, measuring how much each merge changes the model's predictions.
+  The sink is small per position: the vectors it passes on are about a
+  ninth the size of other positions'. It still supplies about half of each
+  head's output, because the other positions' contributions partly cancel.
+  Weighting by those vectors halves how much of head similarity the sink
+  accounts for. Removing the sink columns does not make map similarity
+  predict merge damage any better. Bringing in the values and output
+  weights does, from about 0.38 to 0.65 within a layer, with that ordering in
+  every model. Two registered predictions failed: the commutator object
+  was not reliably worse than the plain map, and the better predictor did
+  not choose reliably cheaper single merges.
+
+<p align="center"><img src="figures/readme/fig14_functional_round.png" alt="Dot and interval chart of six ways to compare two attention heads, by how well each predicts the damage of merging them: sink-mass difference 0.24, generator cosine 0.30, map distance without sink columns 0.35, map distance 0.38, value-weighted map difference 0.51, output perturbation 0.65" width="880"></p>
+<p align="center"><em>Comparisons that see only the attention map predict merge damage weakly, with or without the sink; comparisons that include what attention moves predict it best.</em></p>
+
 - **Turning the nulls on published findings.** The audit program
   (`audits/TARGETS.md`) asks whether well-known findings about attention
   heads survive the same nulls: the layer clustering of BERT's heads
@@ -287,9 +306,10 @@ Each instrument below exists because a finding above required it.
 
 ## Evidence standard
 
-Nine preregistrations with numeric thresholds and falsification clauses
+Ten preregistrations with numeric thresholds and falsification clauses
 were frozen in git before their runs (`alignment_study/PREREGISTRATION.md`
-and `PREREGISTRATION2.md` to `PREREGISTRATION10.md`; the second committed
+and `PREREGISTRATION2.md` to `PREREGISTRATION11.md`, the audits of
+`audits/PREREGISTRATION4.md` counted separately; the second committed
 before the held-out models were downloaded, the third and all later ones
 pushed publicly before execution, evaluation scripts committed before
 results existed). Registered predictions that failed are
@@ -298,15 +318,17 @@ prediction (A1), the first dissociation control (A7, design flaw
 documented and replaced), the sharp regime-edge threshold (H4b),
 one-column sufficiency on TinyLlama (H2) and OLMo-2 (S2), the
 dissociation control at 32 heads (S3), early sink formation on
-Pythia-160m (D4), both merge-tolerance predictions (M1, M2), and the
-derivation gate (G1). Out of sample, 7 of 8 registered clauses passed in the
+Pythia-160m (D4), both merge-tolerance predictions (M1, M2), the
+derivation gate (G1), and in the functional round the advantage of the
+plain map over the commutator object (F3b) and the practical merge
+criterion (F4). Out of sample, 7 of 8 registered clauses passed in the
 sub-2B round, 3 of 4 in the 3B-to-7B round, 5 of 5 primary clauses in the
 training-dynamics round, 4 of 4 in 11 of 11 models in the
 fixed-instrument rerun, where the earlier failures on TinyLlama, OLMo-2
 and the 32-head models resolved without moving a threshold, 0 of 2
 primary clauses in the head-merging round, whose negative result is
-reported in full above, 4 of 4 in the sink-profile round, and 5 of 5 on
-the four new attention designs. Development
+reported in full above, 4 of 4 in the sink-profile round, 5 of 5 on
+the four new attention designs, and 5 of 7 in the functional round. Development
 calibration that shaped a preregistration is committed and labeled as
 such. A blind reimplementation from the written specification
 reproduced the anchor values to four decimals; surrogate invariants hold
