@@ -449,8 +449,8 @@ Multi-head importance round (PREREGISTRATION15.md, 2026-10-13, 16:06:50 to
 Pythia-410m 564 s; restore checks 0 on both corpora. Evaluation
 (eval_importance_mha.py, unchanged since the freeze): 7 of 7 clauses pass
 (importance_mha_results.json, eval_importance_mha.log). The labeled
-development run of preregistration 16 shared the GPU for about seven minutes
-of this round; it reproduced the stored statistics of its two decoders
+development run of preregistration 16 shared the GPU for about five minutes
+of this round (16:16 to 16:22 UTC); it reproduced the stored statistics of its two decoders
 exactly while sharing.
 
 Correction (2026-10-13): Voita et al. (2019) define a head's confidence as
@@ -460,3 +460,17 @@ tokens, sink included, and called it their statistic. Found while writing up
 round 15. The registered results stand for the statistic as computed;
 preregistration 16, frozen at f5a9539 before its run, tests the definition as
 written. Public text is corrected with that round's results.
+
+Voita-definition round (PREREGISTRATION16.md, frozen at f5a9539,
+2026-10-13). The first attempt (16:28:07 to 16:34:27 UTC) stalled while
+downloading opus-mt-en-ru: the Hugging Face transfer client stopped at 67 MB.
+No statistic had been computed and no output written; it was stopped. The
+three translation models were then downloaded separately over plain HTTP
+(HF_HUB_DISABLE_XET=1, for the downloader only). Decoders ran 16:46:15 to
+16:50:16 UTC (seven models, 9 to 75 s each; recomputed all-token confidence
+and sink mass equal the stored values exactly), opus-mt-en-ru and
+opus-mt-en-fr 16:57:09 to 17:06:49 (251 s, 240 s), opus-mt-en-de 17:09:38
+to 17:13:38 (234 s) once its download finished; translation restore checks
+0. The run scripts ran at head 54d6def; voita_definition.py and eval_voita.py
+are unchanged since the freeze (empty git diff against f5a9539). Evaluation:
+5 of 6 clauses pass, V5 fails (voita_results.json, eval_voita.log).

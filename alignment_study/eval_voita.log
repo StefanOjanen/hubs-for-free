@@ -1,0 +1,43 @@
+V1 {"value": 0.31708876455237056, "ci95": [0.19475576608683598, 0.44199509540545673], "n_layers": 93, "n_models": 7, "pass_": true}
+V2 {"value": 0.5266586038237758, "ci95": [0.3641888826546151, 0.7131051074492957], "n_layers": 93, "n_models": 7, "pass_": true}
+V3 {"value": 0.1492640263061584, "ci95": [0.023724910430231352, 0.2804575133945888], "n_layers": 93, "n_models": 7, "pass_": true}
+V6 {"value": 0.3077910417794708, "ci95": [0.1898175832870442, 0.4231314574596631], "n_layers": 93, "n_models": 7, "pass_": true}
+V4 {"value": 0.5264550264550265, "ci95": [0.4074074074074075, 0.6309523809523812], "n_layers": 18, "n_models": 3, "pass_": true}
+V5 {"value": 0.04894179894179897, "ci95": [-0.021164021164021163, 0.130952380952381], "n_layers": 18, "n_models": 3, "pass_": false}
+primary_passes 5
+  D_wikitext_conf_voita        +0.317 [+0.195, +0.442] layers 93
+  D_wikitext_conf_all          -0.210 [-0.328, -0.102] layers 93
+  D_wikitext_conf_first        +0.256 [+0.079, +0.401] layers 93
+  D_wikitext_conf_renorm       +0.110 [-0.009, +0.219] layers 93
+  D_wikitext_sink_mass         -0.381 [-0.464, -0.310] layers 93
+  D_wikitext_out_norm          +0.625 [+0.491, +0.705] layers 93
+  D_wikitext_delta             +0.527 [+0.364, +0.713] layers 93
+  D_wikitext_partial           +0.149 [+0.024, +0.280] layers 93
+  D_wikitext_on_minus_voita    +0.308 [+0.190, +0.423] layers 93
+  D_c4_conf_voita              +0.351 [+0.223, +0.477] layers 60
+  D_c4_conf_all                -0.261 [-0.376, -0.105] layers 60
+  D_c4_conf_first              +0.333 [+0.193, +0.463] layers 60
+  D_c4_conf_renorm             +0.089 [-0.027, +0.184] layers 60
+  D_c4_sink_mass               -0.397 [-0.479, -0.267] layers 60
+  D_c4_out_norm                +0.691 [+0.614, +0.757] layers 60
+  D_c4_delta                   +0.611 [+0.416, +0.810] layers 60
+  D_c4_partial                 +0.128 [-0.000, +0.261] layers 60
+  D_c4_on_minus_voita          +0.340 [+0.252, +0.441] layers 60
+  T_conf_voita                 +0.526 [+0.407, +0.631] layers 18
+  T_conf_all                   +0.478 [+0.358, +0.579] layers 18
+  T_eos_mass                   -0.267 [-0.463, -0.082] layers 18
+  T_neg_entropy                +0.489 [+0.381, +0.591] layers 18
+  T_out_norm                   +0.726 [+0.618, +0.820] layers 18
+  T_delta                      +0.049 [-0.021, +0.131] layers 18
+  T_partial                    +0.447 [+0.263, +0.598] layers 18
+  T_on_minus_voita             +0.200 [+0.048, +0.355] layers 18
+  Mistral-7B-v0.1  wikitext: conf_voita +0.46 conf_all -0.60 conf_first +0.46 conf_renorm +0.05 sink_mass -0.62 out_norm +0.76 partial +0.15
+  Qwen2.5-1.5B     wikitext: conf_voita +0.35 conf_all -0.07 conf_first +0.35 conf_renorm +0.25 sink_mass -0.43 out_norm +0.60 partial +0.17
+  Qwen2.5-7B       wikitext: conf_voita +0.44 conf_all -0.19 conf_first +0.02 conf_renorm +0.17 sink_mass -0.41 out_norm +0.61 partial +0.17
+  TinyLlama_v1.1   wikitext: conf_voita +0.18 conf_all -0.11 conf_first -0.05 conf_renorm +0.04 sink_mass -0.35 out_norm +0.32 partial +0.13
+  gpt2-medium      wikitext: conf_voita +0.21 conf_all -0.22 conf_first +0.21 conf_renorm +0.05 sink_mass -0.36 out_norm +0.66 partial +0.00 | c4: conf_voita +0.24 conf_all -0.28 conf_first +0.24 conf_renorm +0.08 sink_mass -0.40 out_norm +0.65 partial +0.03
+  opus-mt-en-de    eos 0.25 conf_voita +0.54 conf_all +0.51 eos_mass -0.31 neg_entropy +0.51 out_norm +0.70 partial +0.43
+  opus-mt-en-fr    eos 0.22 conf_voita +0.54 conf_all +0.47 eos_mass -0.17 neg_entropy +0.45 out_norm +0.72 partial +0.54
+  opus-mt-en-ru    eos 0.19 conf_voita +0.50 conf_all +0.45 eos_mass -0.32 neg_entropy +0.51 out_norm +0.75 partial +0.37
+  pythia-160m      wikitext: conf_voita +0.19 conf_all -0.24 conf_first +0.08 conf_renorm -0.08 sink_mass -0.29 out_norm +0.66 partial +0.07 | c4: conf_voita +0.33 conf_all -0.15 conf_first +0.25 conf_renorm +0.03 sink_mass -0.28 out_norm +0.67 partial +0.12
+  pythia-410m      wikitext: conf_voita +0.49 conf_all -0.24 conf_first +0.48 conf_renorm +0.22 sink_mass -0.38 out_norm +0.71 partial +0.33 | c4: conf_voita +0.47 conf_all -0.30 conf_first +0.46 conf_renorm +0.13 sink_mass -0.45 out_norm +0.74 partial +0.23

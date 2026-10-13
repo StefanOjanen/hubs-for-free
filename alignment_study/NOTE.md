@@ -886,3 +886,39 @@ end-of-sentence token, the no-op token of their translation encoders (their
 footnote 2). The registered results stand for the statistic computed; the
 attribution was wrong. Preregistration 16 (frozen at f5a9539) tests their
 definition.
+
+## Voita et al.'s confidence as they define it (2026-10-13, preregistration 16)
+
+Frozen at f5a9539. Development on gpt2, Qwen2.5-0.5B and opus-mt-en-es
+labeled. Seven decoders with stored removal outcomes (rounds 12 and 15;
+recomputed all-token confidence and sink mass equal the stored values exactly
+in all seven) and the encoder heads of three OPUS-MT translation models,
+English to Russian, German and French (18 layers, 144 heads; restore checks
+0). 5 of 6 clauses pass:
+- V1: with the sink columns excluded as keys, confidence's within-layer
+  Spearman with removal damage is +0.32 (0.19 to 0.44), positive in all seven
+  models (0.18 to 0.49).
+- V2: that is 0.53 (0.36 to 0.71) above the all-token confidence (-0.21).
+- V3: partial Spearman given sink mass +0.15 (0.02 to 0.28).
+- V4: in the translation encoders, the EOS-excluded confidence is +0.53
+  (0.41 to 0.63), 0.50 to 0.54 per model.
+- V5 FAILS: in the translation encoders, excluding EOS adds 0.05 (-0.02 to
+  0.13) against the registered 0.1; the all-token version is already +0.48.
+  EOS takes 19 to 25 percent of encoder attention on average.
+- V6: in the decoders, output norm (+0.63) exceeds the sink-excluded
+  confidence by 0.31 (0.19 to 0.42).
+- Secondary: on C4 (round 15's models) +0.35 against -0.26 for the all-token
+  version. Excluding only the first token gives +0.26 (Qwen2.5-7B +0.02,
+  whose sink set often holds other columns). Dividing by the non-sink mass
+  leaves +0.11 (-0.01 to 0.22): most of what the definition carries is how
+  much attention a head puts on real tokens. Translation encoders: output
+  norm +0.73 (0.62 to 0.82), ahead of confidence by 0.20 (0.05 to 0.36);
+  negative entropy +0.49; EOS mass -0.27.
+
+Reading: Voita et al.'s statistic, as they define it, marks heads whose
+removal matters, in their setting and, with the sink left out, in decoder
+language models. Rounds 12, 14 and 15 computed it with the sink included,
+which turns it into a sink detector with the wrong sign. The token they
+excluded matters little in their translation encoders and decides the sign
+in decoders, where the sink takes far more attention. The norm of what a
+head writes predicts removal damage better in both settings.
