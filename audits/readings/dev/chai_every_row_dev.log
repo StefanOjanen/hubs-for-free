@@ -1,0 +1,58 @@
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:01<09:14,  1.92s/it]Loading weights: 100%|██████████| 290/290 [00:01<00:00, 150.48it/s]
+Qwen/Qwen2.5-0.5B DTYPE float32 layers 24 heads 14 documents 8 rows 64 draws 10 (14s)
+  document 1/8 (21s)
+  document 2/8 (26s)
+  document 3/8 (31s)
+  document 4/8 (36s)
+  document 5/8 (41s)
+  document 6/8 (46s)
+  document 7/8 (51s)
+  document 8/8 (56s)
+untrained 1/2 (69s)
+untrained 2/2 (82s)
+  L 0 every-row corr 0.150 (last row 0.168) | colset reproduced 0.27 | marginal 0.27 | untrained 0.00
+  L 1 every-row corr 0.367 (last row 0.448) | colset reproduced 0.20 | marginal 0.19 | untrained -0.00
+  L 2 every-row corr 0.499 (last row 0.481) | colset reproduced 0.21 | marginal 0.21 | untrained 0.00
+  L 3 every-row corr 0.620 (last row 0.580) | colset reproduced 0.91 | marginal 0.02 | untrained 0.00
+  L 4 every-row corr 0.559 (last row 0.529) | colset reproduced 0.87 | marginal 0.08 | untrained 0.00
+  L 5 every-row corr 0.626 (last row 0.624) | colset reproduced 0.94 | marginal 0.04 | untrained 0.01
+  L 6 every-row corr 0.640 (last row 0.641) | colset reproduced 0.84 | marginal 0.03 | untrained -0.00
+  L 7 every-row corr 0.725 (last row 0.678) | colset reproduced 0.93 | marginal 0.02 | untrained 0.00
+  L 8 every-row corr 0.469 (last row 0.462) | colset reproduced 0.54 | marginal 0.07 | untrained -0.00
+  L 9 every-row corr 0.702 (last row 0.672) | colset reproduced 0.95 | marginal 0.01 | untrained -0.00
+  L10 every-row corr 0.589 (last row 0.539) | colset reproduced 0.81 | marginal 0.06 | untrained -0.01
+  L11 every-row corr 0.731 (last row 0.643) | colset reproduced 0.94 | marginal 0.00 | untrained 0.00
+  L12 every-row corr 0.563 (last row 0.593) | colset reproduced 0.74 | marginal 0.07 | untrained 0.00
+  L13 every-row corr 0.568 (last row 0.487) | colset reproduced 0.91 | marginal 0.03 | untrained -0.00
+  L14 every-row corr 0.529 (last row 0.514) | colset reproduced 0.79 | marginal 0.13 | untrained -0.00
+  L15 every-row corr 0.575 (last row 0.520) | colset reproduced 0.76 | marginal 0.05 | untrained -0.00
+  L16 every-row corr 0.846 (last row 0.773) | colset reproduced 0.96 | marginal 0.00 | untrained -0.00
+  L17 every-row corr 0.760 (last row 0.812) | colset reproduced 0.96 | marginal 0.00 | untrained -0.00
+  L18 every-row corr 0.753 (last row 0.780) | colset reproduced 0.91 | marginal 0.03 | untrained -0.00
+  L19 every-row corr 0.610 (last row 0.612) | colset reproduced 0.83 | marginal 0.13 | untrained -0.00
+  L20 every-row corr 0.693 (last row 0.711) | colset reproduced 0.94 | marginal 0.01 | untrained -0.00
+  L21 every-row corr 0.787 (last row 0.704) | colset reproduced 0.98 | marginal 0.00 | untrained -0.00
+  L22 every-row corr 0.521 (last row 0.438) | colset reproduced 0.18 | marginal 0.03 | untrained -0.01
+  L23 every-row corr 0.413 (last row 0.342) | colset reproduced 0.23 | marginal 0.12 | untrained 0.01
+{
+ "b_marginal": {
+  "median": 0.035847310828863006,
+  "min": 0.0004039849075676756,
+  "max": 0.268443419473307
+ },
+ "c_colset": {
+  "median": 0.8588600860625055,
+  "min": 0.1796615357234466,
+  "max": 0.9782205636046839
+ },
+ "d_untrained": {
+  "median": -0.00035316003775722485,
+  "min": -0.009001965577257121,
+  "max": 0.013930930372919332
+ },
+ "depth_spearman_every_row": 0.3321739130434782,
+ "depth_spearman_last_row": 0.28782608695652173,
+ "layers_majority_95_every_row": 0,
+ "layers_majority_90_every_row": 1
+}
+CHAI_READING_DONE audits/readings/dev/chai_every_row_Qwen2.5-0.5B.json
