@@ -134,3 +134,13 @@ of heads above 0.1, excluded) therefore stands only as the test was run.
 The test is to be rerun with the answer span before any statement that
 Llama-2-7B-80K fails the rule; until then the manuscript calls the
 exclusion provisional. No battery outcome depends on it.
+
+## Addendum 11 (2026-10-13): the Llama-2-7B-80K inclusion test with the answer span
+
+The test of addendum 10 was rerun with the source code's answer-span scoring
+(`inclusion_test.py --span=answer`, otherwise unchanged): the needle is
+retrieved in 20 of 20 instances and 20 of the 1,024 heads (1.95 percent)
+score above 0.1, against 13 (1.27 percent) with the whole-needle span. The
+frozen rule requires 2 to 8 percent, so the model stays excluded as the rule
+is written; the margin is one head (21 heads would be 2.05 percent). The
+result is in `retrieval_heads/llama-2-7b-80k_inclusion_test_answerspan.json`.

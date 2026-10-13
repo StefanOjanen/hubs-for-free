@@ -623,8 +623,9 @@ the earlier failure was our haystack and prompt, but 1.3 percent of heads
 score above 0.1 at 1K and 2K tokens on 20 instances, below the rule's 2
 percent floor, and the model stays excluded as the rule was applied. That
 repeat scored heads against the whole needle span, whereas the source's
-code scores against the answer span, so the exclusion is provisional until
-the test is rerun with the answer span. Reproduced on Qwen2.5-7B and on the
+code scores against the answer span; rerun with the answer span, 20 of
+1,024 heads (1.95 percent) score above 0.1, still below the floor by one
+head, so the model stays excluded as the rule is written, by that margin. Reproduced on Qwen2.5-7B and on the
 paper's Mistral-7B-Instruct-v0.2; criteria frozen. The battery must not
 remove this structure; if it does, its thresholds are revised before any
 other outcome is reported. Battery (200 draws, 20 instances per model): on

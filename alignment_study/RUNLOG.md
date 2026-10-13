@@ -431,3 +431,7 @@ queued after the sink round did not run at first: its queue script passed an
 undefined variable as the source path and the test stopped at its own guard
 (log kept in the scratchpad); it was relaunched after this round with the
 absolute path.
+
+Llama-2-7B-80K answer-span inclusion test (2026-10-13, 01:20 to 01:31 UTC):
+20 of 20 retrieved, 20 of 1,024 heads above 0.1 (1.95 percent), below the 2
+percent floor by one head; excluded as the rule is written (addendum 11).

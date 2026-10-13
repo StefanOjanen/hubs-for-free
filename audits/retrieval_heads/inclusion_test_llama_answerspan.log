@@ -1,0 +1,26 @@
+rope override: {'rope_type': 'linear', 'factor': 10.0, 'rope_theta': 10000.0}
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 4093.05it/s]
+yaofu/llama-2-7b-80k DEVICE mps:Apple M1 Max (21.3 GB working set) DTYPE bfloat16 layers 32 heads 32 contexts [1024, 2048] depths 5 needles 2 source 3ac171a
+sentence-end tokens [869, 29889]
+  needle 0 ctx 1024 depth  10: retrieved=True recall  90.0 max head 0.79 | 'A new report from the WMO shows that records were once broke' (58s)
+  needle 0 ctx 1024 depth  30: retrieved=True recall  95.0 max head 0.90 | 'A new report from WMO shows that records were once broken, a' (200s)
+  needle 0 ctx 1024 depth  50: retrieved=True recall 100.0 max head 0.93 | 'A new report from WMO shows that records were once again bro' (356s)
+  needle 0 ctx 1024 depth  70: retrieved=True recall  95.0 max head 0.90 | 'A new report from WMO shows that records were once broken, a' (464s)
+  needle 0 ctx 1024 depth  90: retrieved=True recall  95.0 max head 0.86 | 'The new report from WMO shows that records were once broken,' (478s)
+  needle 0 ctx 2048 depth  10: retrieved=True recall  90.0 max head 0.83 | 'A new report from the WMO shows that records were once broke' (490s)
+  needle 0 ctx 2048 depth  30: retrieved=True recall  90.0 max head 0.86 | 'A new report from WMO shows that records were once broken, a' (502s)
+  needle 0 ctx 2048 depth  50: retrieved=True recall  90.0 max head 0.86 | 'The new report from WMO shows that records were once broken,' (516s)
+  needle 0 ctx 2048 depth  70: retrieved=True recall  90.0 max head 0.86 | 'A new report from WMO shows that records were once broken, a' (527s)
+  needle 0 ctx 2048 depth  90: retrieved=True recall  95.0 max head 0.86 | 'The new report from WMO shows that records were once broken,' (539s)
+  needle 1 ctx 1024 depth  10: retrieved=True recall 100.0 max head 0.90 | 'The best thing to do in Beijing is to take a walk in Chaoyan' (545s)
+  needle 1 ctx 1024 depth  30: retrieved=True recall  93.3 max head 0.90 | 'The best thing to do in Beijing is to take a walk in Chao Pa' (551s)
+  needle 1 ctx 1024 depth  50: retrieved=True recall  93.3 max head 0.90 | 'The best thing to do in Beijing is to take a walk in Chao Pa' (557s)
+  needle 1 ctx 1024 depth  70: retrieved=True recall 100.0 max head 0.95 | 'The best thing to do in Beijing is to take a walk in Chaoyan' (563s)
+  needle 1 ctx 1024 depth  90: retrieved=True recall  93.3 max head 0.90 | 'The best thing to do in Beijing is to take a walk in Chao Pa' (569s)
+  needle 1 ctx 2048 depth  10: retrieved=True recall  93.3 max head 0.90 | 'I have heard that the best thing to do in Beijing is to take' (580s)
+  needle 1 ctx 2048 depth  30: retrieved=True recall  93.3 max head 0.90 | 'The best thing to do in Beijing is to take a walk in Chao Pa' (593s)
+  needle 1 ctx 2048 depth  50: retrieved=True recall  93.3 max head 0.90 | 'The best thing to do in Beijing is to take a walk in Chao Pa' (604s)
+  needle 1 ctx 2048 depth  70: retrieved=True recall  93.3 max head 0.90 | 'The best thing to do in Beijing is to take a walk in Chao Pa' (614s)
+  needle 1 ctx 2048 depth  90: retrieved=True recall  93.3 max head 0.90 | 'The best thing to do in Beijing is to take a walk in Chao Pa' (625s)
+SUMMARY {"model": "yaofu/llama-2-7b-80k", "instances": 20, "retrieved": 20, "frac_heads_above_0.1": 0.0195, "included": false}
+INCLUSION_DONE audits/retrieval_heads/llama-2-7b-80k_inclusion_test_answerspan.json
