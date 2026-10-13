@@ -307,8 +307,8 @@ Each instrument below exists because a finding above required it.
   commit before any battery ran (`ee4e267`, 2026-09-14), the evaluation
   script was committed before any result existed, and all six batteries are
   now complete (`audits/RESULTS.md`). Three findings shrink and the control
-  holds. BERT's layer clustering is three fifths the shared separator
-  columns and only a tenth the row marginals. The cross-head redundancy
+  holds. A null that keeps only the shared separator columns reproduces two
+  thirds of BERT's layer clustering, and the row values alone a tenth. The cross-head redundancy
   behind a KV-compression method is mostly the shared sink column: the
   sink-kept null reproduces a median 96 percent of it on Mistral-7B and 68
   percent on OPT-6.7B, from the OPT family the source evaluates. A Gaussian

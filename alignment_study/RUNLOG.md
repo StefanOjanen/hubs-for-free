@@ -435,3 +435,11 @@ absolute path.
 Llama-2-7B-80K answer-span inclusion test (2026-10-13, 01:20 to 01:31 UTC):
 20 of 20 retrieved, 20 of 1,024 heads above 0.1 (1.95 percent), below the 2
 percent floor by one head; excluded as the rule is written (addendum 11).
+
+Target 1 battery rerun after addendum 9 (2026-10-12 22:23 to 2026-10-13
+01:31 UTC, 11,251 s at low priority beside the GPU rounds): separator-column
+null reproduces 0.638 of the contrast (0.602 before the fix) and 35.4
+percent same-layer nearest neighbors (34.7 before); marginal null 0.095;
+random and untrained nulls about zero. Label shrinks; the registered
+expectation still fails on the marginal clause. audits/RESULTS.md, Figure 13
+and the public text regenerated or updated.

@@ -712,8 +712,9 @@ result files; this section records the outcomes as they complete.
   per-row marginal-matched surrogate reproduces 9.5 percent of D, below
   the registered 20 to 70 percent band, so the registered expectation fails
   on that clause; the separator-column surrogate ([CLS] and [SEP] columns
-  kept) reproduces 60 percent of D and 35 of the 40 percentage points of
-  same-layer nearest neighbors, inside the band. Label: shrinks. Reading:
+  kept) reproduces 64 percent of D (60 before the [SEP] fix of addendum 9)
+  and puts 35.4 percent of nearest neighbors in the own layer against 39.6
+  real and 7.7 by chance, inside the band. Label: shrinks. Reading:
   the clustering is not a marginals artifact (the registered guess of 20 to
   70 percent from marginals alone was wrong), it is mostly the shared
   vertical pattern on the separators, with a 40 percent residual that is

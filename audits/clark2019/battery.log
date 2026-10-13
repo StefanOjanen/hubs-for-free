@@ -1,0 +1,89 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6614.36it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+real {"D": 0.12652363291030233, "nn_same_layer": 0.3958333333333333} (78s)
+null (a) done (3903s)
+draw 0 (3976s)
+draw 10 (4692s)
+draw 20 (5399s)
+draw 30 (6108s)
+draw 40 (6830s)
+draw 50 (7559s)
+draw 60 (8267s)
+draw 70 (8974s)
+draw 80 (9698s)
+draw 90 (10422s)
+{
+ "target": "Clark et al. 2019",
+ "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/ee4e267/audits/PREREGISTRATION4.md",
+ "model": "bert-base-uncased",
+ "n_windows": 38,
+ "T": 64,
+ "draws": 100,
+ "dry_run": false,
+ "real": {
+  "D": 0.12652363291030233,
+  "nn_same_layer": 0.3958333333333333
+ },
+ "outcome": "shrinks",
+ "registered_expectation": "survives (a) and (d); against (b) and (c) shrinkage between 0.2 and 0.7",
+ "runtime_s": 11251.1
+}
+{
+ "a_random": {
+  "D_median": 4.4242105280839494e-06,
+  "D_p5_p95": [
+   -0.00015646227855171946,
+   0.00015599225037142558
+  ],
+  "percentile_of_real": 100.0,
+  "shrinkage": 3.4967463598049305e-05,
+  "nn_median": 0.0763888888888889,
+  "n": 100
+ },
+ "b_marginal": {
+  "D_median": 0.011989757018075142,
+  "D_p5_p95": [
+   0.011921189632823792,
+   0.012053477994959483
+  ],
+  "percentile_of_real": 100.0,
+  "shrinkage": 0.09476298413415904,
+  "nn_median": 0.08333333333333333,
+  "n": 100
+ },
+ "c_colfix": {
+  "D_median": 0.08072248129335025,
+  "D_p5_p95": [
+   0.0806802284153855,
+   0.08075195805063173
+  ],
+  "percentile_of_real": 100.0,
+  "shrinkage": 0.6380031891004714,
+  "nn_median": 0.3541666666666667,
+  "n": 100
+ },
+ "d_untrained": {
+  "D_median": 6.18493580042262e-07,
+  "D_p5_p95": [
+   -7.29500144218756e-06,
+   9.433265825901926e-06
+  ],
+  "percentile_of_real": 100.0,
+  "shrinkage": 4.888364061445634e-06,
+  "nn_median": 0.05555555555555555,
+  "n": 5
+ }
+}
+BATTERY_DONE audits/clark2019/battery_result.json

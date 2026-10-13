@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-09-16T12:19:33Z",
+ "generated_utc": "2026-10-13T01:31:48Z",
  "dry_run": false,
  "criteria": "audits/PREREGISTRATION4.md at commit ee4e267 (addenda in audits/PREREGISTRATION4_ADDENDA.md)",
  "targets": {
@@ -21,25 +21,25 @@
      "d_untrained": 100.0
     },
     "shrinkage": {
-     "b_marginal": 0.09472864487990611,
-     "c_colfix": 0.6023727279652952
+     "b_marginal": 0.09476298413415904,
+     "c_colfix": 0.6380031891004714
     },
     "shrinkage_all": {
      "a_random": 3.4967463598049305e-05,
-     "b_marginal": 0.09472864487990611,
-     "c_colfix": 0.6023727279652952,
+     "b_marginal": 0.09476298413415904,
+     "c_colfix": 0.6380031891004714,
      "d_untrained": 4.888364061445634e-06
     },
     "null_D_median": {
      "a_random": 4.4242105280839494e-06,
-     "b_marginal": 0.01198541229087563,
-     "c_colfix": 0.07621438590825841,
+     "b_marginal": 0.011989757018075142,
+     "c_colfix": 0.08072248129335025,
      "d_untrained": 6.18493580042262e-07
     },
     "null_nn_median": {
      "a_random": 0.0763888888888889,
      "b_marginal": 0.08333333333333333,
-     "c_colfix": 0.3472222222222222,
+     "c_colfix": 0.3541666666666667,
      "d_untrained": 0.05555555555555555
     },
     "label": "shrinks",
@@ -52,7 +52,7 @@
     },
     "expectation_holds": false,
     "all_shrinkage_under_0.2": false,
-    "runtime_s": 21744.6
+    "runtime_s": 11251.1
    }
   },
   "chai": {

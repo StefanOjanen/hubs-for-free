@@ -1,6 +1,6 @@
 # Audit batteries: results against preregistration 4
 
-Generated 2026-09-16T12:19:33Z by `audits/eval_batteries.py` from the battery result files; regenerate with `python audits/eval_batteries.py`. Criteria: `audits/PREREGISTRATION4.md`, frozen at commit `ee4e267` and not edited since; readings fixed before any result in `audits/PREREGISTRATION4_ADDENDA.md`. Each result file records the registration reference it ran under (`registered`). Shrinkage is the share of the real effect a null reproduces (null median over real).
+Generated 2026-10-13T01:31:48Z by `audits/eval_batteries.py` from the battery result files; regenerate with `python audits/eval_batteries.py`. Criteria: `audits/PREREGISTRATION4.md`, frozen at commit `ee4e267` and not edited since; readings fixed before any result in `audits/PREREGISTRATION4_ADDENDA.md`. Each result file records the registration reference it ran under (`registered`). Shrinkage is the share of the real effect a null reproduces (null median over real).
 
 ## Registered expectations
 
@@ -62,7 +62,7 @@ Real contrast D = 0.1265; nearest neighbor in own layer 39.6 percent.
 |---|---|---|---|---|
 | a_random | 0.0000 | 100.0 | 0.000 | 7.6 percent |
 | b_marginal | 0.0120 | 100.0 | 0.095 | 8.3 percent |
-| c_colfix | 0.0762 | 100.0 | 0.602 | 34.7 percent |
+| c_colfix | 0.0807 | 100.0 | 0.638 | 35.4 percent |
 | d_untrained | 0.0000 | 100.0 | 0.000 | 5.6 percent |
 
 - survives (a) random maps: percentile above 95: holds

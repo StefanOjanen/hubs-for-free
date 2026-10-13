@@ -31,9 +31,9 @@ sink operator takes over within one checkpoint of sink formation. Per-head
 sink profiles fix a floor under the shared energy that orders layers
 correctly but leaves a residual the sink does not explain. We
 release the nulls as a toolkit and apply them to four published findings
-under criteria frozen before any battery ran. Three of the four shrink: the
-layer clustering of BERT's heads is three fifths the shared separator
-columns, the cross-head redundancy behind a KV-compression method is
+under criteria frozen before any battery ran. Three of the four shrink: a
+null that keeps only BERT's separator columns reproduces two thirds of the
+layer clustering of its heads, the cross-head redundancy behind a KV-compression method is
 mostly the shared sink column on Mistral-7B and about two thirds of it on
 OPT-6.7B, and 85 to 89 percent of the Marchenko-Pastur "outliers" reported
 for the square attention projections are produced by a Gaussian matrix of
@@ -492,26 +492,33 @@ committed before any result existed; every outcome below is reported as
 the frozen wording decides it, with the effect sizes beside the verdict
 (`audits/RESULTS.md`, regenerated from the result files).
 
-Target 1, Clark et al. (2019), heads cluster by Jensen-Shannon distance
-and heads in the same layer are similar. Base result reproduced on
-bert-base-uncased over 38 WikiText-103 windows: mean JS between heads in
-the same layer 0.253 against 0.380 for different layers; a head's nearest
-neighbor is in its own layer for 38.9 percent of heads (chance 7.7). The
+Target 1, Clark et al. (2019): heads cluster by Jensen-Shannon divergence
+between their attention distributions, and heads in the same layer are
+similar (their Section 6, Figure 6). Base result reproduced on
+bert-base-uncased over 38 WikiText-103 windows of up to 64 tokens (35 of
+them full length), each a single passage with one [SEP]; Clark et al. used
+about 1,000 two-paragraph Wikipedia segments of up to 128 tokens with two
+[SEP] tokens, apparently with the cased model. Mean divergence between
+heads in the same layer 0.253 against 0.380 for different layers; a head's
+nearest neighbor is in its own layer for 38.9 percent of heads (chance 7.7;
+39.6 percent when windows are weighted equally, as in the battery). The
 statistic (the contrast) and the four null families are frozen; the
 registered expectation is survival against random and untrained nulls and
 shrinkage between 20 and 70 percent against marginal-matched and
-separator-column-preserving surrogates. Battery (100 draws, 38 windows):
-the contrast D = 0.127 survives random maps and five untrained BERTs, both
-of which give D of order 1e-5. The per-row marginal-matched surrogate
-reproduces 9.5 percent of D, below the registered band, so the registered
-expectation fails on that clause; the separator-column surrogate, which
-keeps the [CLS] and [SEP] columns and permutes the rest of every row,
-reproduces 60 percent of D and 35 of the 40 percentage points of
-same-layer nearest neighbors, inside the band. Label: shrinks. The layer
-clustering of BERT's heads is not a marginals effect, as the registered
-guess had it; it is three fifths the shared vertical pattern on the
-separators and two fifths same-layer similarity that the separator columns
-do not carry.
+separator-column-preserving surrogates. Battery (100 draws, 38 windows;
+rerun after a bug left [SEP] unfixed in the three short windows, addendum
+9): the contrast D = 0.127 survives random maps and five untrained BERTs,
+both of which give D within 2e-4 of zero. The per-row marginal-matched
+surrogate reproduces 9.5 percent of D, below the registered band, so the
+registered expectation fails on that clause. The separator-column surrogate,
+which keeps each row's values and the [CLS] and [SEP] columns and permutes
+the rest, reproduces 64 percent of D, inside the band, and puts 35.4 percent
+of nearest neighbors in the own layer against 39.6 real and 7.7 by chance,
+87 percent of the excess over chance. Label: shrinks. The layer clustering
+of BERT's heads is not a marginals effect, as the registered guess had it:
+a null that keeps only each row's values and the separator columns
+reproduces about two thirds of it, and the remaining third is same-layer
+similarity the separator columns do not carry.
 
 Target 2, Kovaleva et al. (2019), five attention-pattern types with the
 vertical pattern dominant. Not reproducible in its stated form: the
