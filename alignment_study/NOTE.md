@@ -787,3 +787,39 @@ output perturbation approximates the merge itself, so its correlation is
 partly expected; the measured quantity is how much the map misses. The
 practical claim, better single merges than the commutator criterion, is
 not established.
+
+## Standard-statistics round (2026-10-13, preregistration 12)
+
+Frozen at fc6ae80 before the run; development on Qwen2.5-0.5B labeled. Same
+four held-out models as round 11. 8 of 8 primary clauses pass.
+
+- S1 passes: within a layer, the output perturbation predicts merge damage
+  at 0.65; Jensen-Shannon 0.43, map cosine 0.35, last-row correlation 0.29,
+  all-rows correlation 0.29; differences 0.22 to 0.36, intervals above zero.
+  (Pair outcomes are round 11's merges; the four statistics were computed
+  for the first time after this freeze.)
+- S2 passes: Voita confidence tracks sink mass within high-sink layers at
+  0.92 (0.86 to 0.97, 73 layers).
+- S3, S4 pass: against the KL of removing a head, within a layer, output
+  norm 0.53 (0.35 to 0.73), confidence -0.16 (-0.44 to -0.01), negative
+  entropy -0.09, sink mass -0.42. Across layers within a model output norm
+  is at chance (-0.08 to 0.24); confidence and sink mass stay negative.
+- S5 to S7 pass: one merged pair per KV group in every layer but the first
+  (54 to 248 pairs); pairs chosen by output perturbation cost 0.58 to 0.86 of
+  the generator-cosine choice (geometric mean 0.73) and 0.66 to 0.85 of the
+  CHAI-style choice (0.75), in every model; best of eight criteria in three
+  models, third in TinyLlama. At two pairs per group the advantage shrinks
+  to 0.99 (Mistral-7B) and 0.93 (TinyLlama), 0.52 and 0.66 in the Qwen models.
+
+Reading: the head-importance heuristic that reads attention weights measures
+the sink, and heads that use the sink more matter less when removed. The
+similarity statistics the field uses are weaker predictors of what merging
+two heads costs than a quantity that includes what attention moves, and the
+latter chooses cheaper merges when many pairs are merged at the smaller
+budget.
+
+Post hoc (alignment_study/posthoc/sharedE_vs_merge_kl.py, not registered):
+with round 11's KL outcome, a layer's shared energy against its median merge
+KL is -0.38 pooled over 27 layers but positive in Mistral-7B (-0.24, -0.55,
++0.49, -0.70 per model); round 7's M2 failure is not explained by outcome
+noise alone.

@@ -740,6 +740,49 @@ intervals. The change in next-token loss, the outcome of round 7, is a much
 noisier measure than the KL: every predictor's within-layer correlation with
 it falls to 0.08 to 0.26, in the same order.
 
+### 6.2 The field's statistics, tested against function
+
+Round 11's comparisons were ours. Preregistration 12 tested the ones in
+the literature on the same four held-out models. For pairs of heads it
+used the Jensen-Shannon divergence between attention rows (Clark et al.
+2019), the cosine of the flattened maps, and the correlation of attention
+rows in both readings of CHAI's statistic, the last row and every row. For
+single heads it used the confidence of Voita et al. (2019), the mean largest
+attention weight, which that work found to mark important heads, and row
+entropy, against the damage of removing the head. It also retested round
+11's failed practical clause where it matters for compression, with many
+pairs merged at once. All eight registered clauses pass. The pair-level
+merge outcomes are round 11's; the removal and multi-pair outcomes are new.
+
+Head similarity. Within a layer, the field's statistics predict merge
+damage at Spearman 0.29 for both readings of the CHAI statistic, 0.35 for
+map cosine and 0.43 for Jensen-Shannon divergence. The output perturbation
+reaches 0.65, ahead of each by 0.22 to 0.36, every interval above zero (S1).
+
+Head importance. Confidence is a sink detector: within a high-sink layer it
+tracks the head's sink mass at Spearman 0.92 (interval 0.86 to 0.97, 73
+layers; S2). Against the damage of removing a head it has the wrong sign
+(-0.16, interval -0.44 to -0.01), entropy is no better (-0.09), and sink mass
+itself is more strongly negative (-0.42): heads that attend to the sink more
+matter less. The norm of a head's output predicts the damage at 0.53
+(interval 0.35 to 0.73; S4), ahead of confidence by 0.69 and of entropy by
+0.62 (S3). The comparison holds within a layer only. Ranked across all
+layers of a model, output norm predicts removal damage at -0.08 to 0.24, no
+better than chance, because head output norms are not comparable between
+layers; confidence and sink mass stay negative across layers.
+
+Merging many pairs. With one pair merged per KV group in every layer but the
+first, 54 to 248 pairs per model, the pairs chosen by output perturbation
+cost 0.58 to 0.86 of the KL of the pairs chosen by the generator cosine
+(geometric mean 0.73; S5) and 0.66 to 0.85 of the pairs chosen by the
+CHAI-style last-row correlation (0.75; S6), in every model. Output
+perturbation is the best of eight criteria in three models and third in
+TinyLlama, where the all-rows correlation is best (S7). At two pairs per
+group its advantage over the generator cosine shrinks to 0.99 in Mistral-7B
+and 0.93 in TinyLlama and stays at 0.52 and 0.66 in the two Qwen models. The
+practical claim that failed for single merges in round 11 holds where
+merges accumulate, at the smaller budget.
+
 ## 7. Limitations
 
 Results cover seventeen models up to 8B parameters in ten families, three
