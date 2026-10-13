@@ -275,6 +275,9 @@ Each instrument below exists because a finding above required it.
   models; at twice that budget the advantage shrinks in two of them. All
   eight registered predictions held.
 
+<p align="center"><img src="figures/readme/fig15_standard_statistics.png" alt="Two dot plots. Left: within-layer correlation with the damage of removing a head, output norm +0.53, low entropy -0.09, Voita confidence -0.16, sink mass -0.42. Right: damage of merges chosen by eight criteria relative to random pairs, from output perturbation 0.47 to the commutator object 0.65" width="880"></p>
+<p align="center"><em>Attention-weight heuristics for head importance point the wrong way, and the similarity statistics in use choose costlier merges than a comparison that includes what attention moves.</em></p>
+
 - **Turning the nulls on published findings.** The audit program
   (`audits/TARGETS.md`) asks whether well-known findings about attention
   heads survive the same nulls: the layer clustering of BERT's heads

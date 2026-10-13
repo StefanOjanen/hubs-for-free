@@ -571,4 +571,55 @@ if glob.glob(FR):
              fontsize=10, color=INK2, va="top")
     fig.savefig(OUT + "fig14_functional_round.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
+
+# ============ Figure 15: the field's statistics against function (preregistration 12) ============
+SR = "alignment_study/standard_results.json"
+if glob.glob(SR):
+    plt.rcParams["axes.grid"] = False
+    R15 = json.load(open(SR))
+    fig, (axL, axR) = plt.subplots(1, 2, figsize=(13.2, 5.0), gridspec_kw={"left": 0.15, "right": 0.95, "top": 0.74, "bottom": 0.15, "wspace": 0.95})
+    # left: head statistics against the damage of removing the head
+    hb = R15["secondary"]["B_rho_by_head_statistic"]
+    rowsL = [("sink_mass", "Sink mass", False), ("conf", "Confidence (Voita et al.)", False), ("neg_entropy", "Low entropy", False), ("out_norm", "Output norm", True)]
+    for yy, (k, lab, func) in enumerate(rowsL):
+        col = S1 if func else MUTED; lo, hi = hb[k]["ci95"]
+        axL.plot([lo, hi], [yy, yy], color=col, lw=2, solid_capstyle="round", zorder=2)
+        per = [pm["B_rho_mean"][k] for pm in R15["per_model"].values()]
+        axL.scatter(per, [yy] * len(per), s=24, facecolors=SURF, edgecolors=INK2, linewidths=1.0, zorder=3)
+        axL.scatter([hb[k]["value"]], [yy], s=90, color=col, edgecolors=SURF, linewidths=2, zorder=4)
+        axL.text(1.04, yy, f"{hb[k]['value']:+.2f}", va="center", fontsize=11, color=INK, transform=axL.get_yaxis_transform(), clip_on=False)
+    axL.axvline(0, color=INK2, lw=0.8, zorder=1)
+    axL.set_yticks(range(len(rowsL))); axL.set_yticklabels([r[1] for r in rowsL], fontsize=10.5)
+    axL.set_xlim(-1, 1); axL.set_xticks([-1, -0.5, 0, 0.5, 1])
+    axL.set_xlabel("within-layer Spearman with the damage of removing a head")
+    style(axL, "Which heads matter")
+    # right: multi-pair merges, KL relative to random pairs
+    crit = [("gen_cos", "Commutator object", False), ("corr_last", "CHAI-style, last row", False), ("corr_rows", "CHAI-style, all rows", False),
+            ("cos_map", "Map cosine", False), ("js", "Jensen-Shannon (Clark et al.)", False), ("tv_raw", "Map distance", False),
+            ("val_dist", "Weighted by values", True), ("out_pert", "Output perturbation", True)]
+    relg = {k: float(np.exp(np.mean(np.log([pm["C"]["1"]["kl"][k] / pm["C"]["1"]["random_median"] for pm in R15["per_model"].values()])))) for k, _, _ in crit}
+    crit = sorted(crit, key=lambda c: -relg[c[0]])          # most damaging at the bottom, least at the top
+    for yy, (k, lab, func) in enumerate(crit):
+        col = S1 if func else MUTED
+        rel = [pm["C"]["1"]["kl"][k] / pm["C"]["1"]["random_median"] for pm in R15["per_model"].values()]
+        gm = relg[k]
+        axR.scatter(rel, [yy] * len(rel), s=24, facecolors=SURF, edgecolors=INK2, linewidths=1.0, zorder=3)
+        axR.scatter([gm], [yy], s=90, color=col, edgecolors=SURF, linewidths=2, zorder=4)
+        axR.text(1.04, yy, f"{gm:.2f}", va="center", fontsize=11, color=INK, transform=axR.get_yaxis_transform(), clip_on=False)
+    axR.set_yticks(range(len(crit))); axR.set_yticklabels([c[1] for c in crit], fontsize=10.5)
+    axR.set_xlim(0.2, 1.0); axR.set_xticks([0.25, 0.5, 0.75, 1.0])
+    for xg in (0.5, 0.75, 1.0):
+        axR.axvline(xg, color=GRID, lw=0.8, zorder=0)
+    axR.set_xlabel("damage of the chosen merges, relative to random pairs")
+    style(axR, "Which pairs to merge")
+    from matplotlib.lines import Line2D
+    hl = [Line2D([], [], marker="o", ls="", ms=9, color=MUTED, mec=SURF), Line2D([], [], marker="o", ls="", ms=9, color=S1, mec=SURF),
+          Line2D([], [], marker="o", ls="", ms=5.5, mfc=SURF, mec=INK2)]
+    fig.legend(hl, ["reads attention weights only", "includes what attention moves", "each of the four models"], loc="upper left", bbox_to_anchor=(0.012, 0.87),
+               ncol=3, fontsize=9.5, frameon=False, handletextpad=0.4, columnspacing=1.6)
+    fig.text(0.012, 0.975, "The field's attention statistics, tested against what heads do", fontsize=15, color=INK, va="top")
+    fig.text(0.012, 0.925, "Preregistration 12, four held-out models. Left: big dots are the pooled mean with model-clustered 95% intervals. Right: one merged pair per key-value group in every layer but the first; big dots are geometric means.",
+             fontsize=9.5, color=INK2, va="top")
+    fig.savefig(OUT + "fig15_standard_statistics.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
 print("FIGURES_DONE", sorted(glob.glob(OUT + "*")))
