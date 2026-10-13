@@ -57,8 +57,15 @@ Falcon-7B multi-query, BLOOM-7b1 ALiBi, OPT-6.7B learned positions,
 Qwen3-8B), 11 functional round (functional/, functional_results.json,
 functional_dev_calibration.json; instruments in functional_common.py; 5 of
 7 clauses, F3b and F4 failed: maps predict merge damage weakly, a
-value-and-output comparison predicts it best, the sink is not the reason).
-Audit base results: audits/clark2019/, audits/chai/ (Mistral-7B
+value-and-output comparison predicts it best, the sink is not the reason),
+12 standard statistics with function (standard/, standard_results.json;
+8 of 8: Voita confidence is a sink detector with the wrong sign against
+removal damage, output norm predicts it within layers only, output
+perturbation beats Clark JS and CHAI-style statistics and chooses cheaper
+multi-pair merges), 13 what the sink does (sink/, sink_results.json;
+custom "sinkint" attention in sink_common.py must apply its own causal mask),
+14 round 12's clauses at 1,024 tokens (standard_long/). Instruments:
+functional_common.py, standard_common.py. Audit base results: audits/clark2019/, audits/chai/ (Mistral-7B
 and OPT-6.7B), audits/dewage2026/ (Mistral-7B), audits/retrieval_heads/
 (Qwen2.5-7B, Mistral-7B-Instruct-v0.2 reproduced; Llama-2-7B-80K not
 reproduced under our haystack and excluded); criteria in
