@@ -1,0 +1,10 @@
+S2 {"value": 0.908328719179159, "ci95": [0.8458406177156179, 0.943108696655251], "n_layers": 33, "pass_": true}
+S3a {"value": 0.6607461087299797, "ci95": [0.14893356643356645, 1.1671077712609963], "n_layers": 10, "pass_": true}
+S3b {"value": 0.5793339724791338, "ci95": [0.034860139860139853, 1.1034090909090906], "n_layers": 10, "pass_": true}
+S4 {"value": 0.5033808933002482, "ci95": [0.21164335664335668, 0.7380984237536654], "n_layers": 10, "pass_": true}
+S5 {"per_model": {"Qwen/Qwen2.5-1.5B": 0.8251341419127054, "TinyLlama/TinyLlama_v1.1": 0.8241471403137398}, "geo_mean": 0.8246404934470462, "pass_": false}
+S6 {"per_model": {"Qwen/Qwen2.5-1.5B": 0.7464234219239986, "TinyLlama/TinyLlama_v1.1": 0.49992854008035237}, "geo_mean": 0.6108669017095668, "pass_": true}
+S7 {"per_model": {"Qwen/Qwen2.5-1.5B": 1, "TinyLlama/TinyLlama_v1.1": 1}, "pass_": true}
+primary_passes 6
+  Qwen2.5-1.5B           hs 12 | B conf +0.00 neg_entropy +0.15 sink_mass -0.26 out_norm +0.37 | C1 out/gen 0.83 out/corr_last 0.75 rank 1 best out_pert
+  TinyLlama_v1.1         hs 21 | B conf -0.32 neg_entropy -0.30 sink_mass -0.47 out_norm +0.64 | C1 out/gen 0.82 out/corr_last 0.50 rank 1 best out_pert

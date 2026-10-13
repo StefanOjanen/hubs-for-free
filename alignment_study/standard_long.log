@@ -1,0 +1,27 @@
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:   0%|          | 1/338 [00:00<05:28,  1.03it/s]Loading weights:  50%|████▉     | 168/338 [00:01<00:00, 214.36it/s]Loading weights:  79%|███████▉  | 267/338 [00:01<00:00, 208.32it/s]Loading weights:  98%|█████████▊| 330/338 [00:01<00:00, 209.16it/s]Loading weights: 100%|██████████| 338/338 [00:01<00:00, 181.29it/s]
+Qwen/Qwen2.5-1.5B DTYPE float32 layers 28 heads 12 group 6 T 1024 (4s)
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (262210 > 131072). Running this sequence through the model will result in indexing errors
+selection statistics done (763s)
+  multi-merge budget 1: out_pert 0.081 val_dist 0.082 tv_raw 0.086 gen_cos 0.098 js 0.084 cos_map 0.093 corr_last 0.108 corr_rows 0.088 | random median 0.193 (802s)
+  multi-merge budget 2: out_pert 0.216 val_dist 0.238 tv_raw 0.247 gen_cos 0.312 js 0.254 cos_map 0.261 corr_last 0.360 corr_rows 0.245 | random median 0.555 (837s)
+  ablation layer 3: 12 heads (869s)
+  ablation layer 9: 12 heads (900s)
+  ablation layer 15: 12 heads (931s)
+  ablation layer 21: 12 heads (962s)
+  ablation layer 27: 12 heads (994s)
+MODEL_DONE Qwen/Qwen2.5-1.5B 996.8s
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 33510.42it/s]
+TinyLlama/TinyLlama_v1.1 DTYPE float32 layers 22 heads 32 group 8 T 1024 (9s)
+/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/.venv/lib/python3.12/site-packages/numpy/lib/_function_base_impl.py:3036: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+selection statistics done (1007s)
+  multi-merge budget 1: out_pert 0.059 val_dist 0.063 tv_raw 0.072 gen_cos 0.071 js 0.068 cos_map 0.059 corr_last 0.117 corr_rows 0.062 | random median 0.130 (1035s)
+  multi-merge budget 2: out_pert 0.177 val_dist 0.197 tv_raw 0.248 gen_cos 0.215 js 0.258 cos_map 0.208 corr_last 0.287 corr_rows 0.182 | random median 0.390 (1060s)
+  ablation layer 3: 32 heads (1119s)
+  ablation layer 8: 32 heads (1178s)
+  ablation layer 13: 32 heads (1237s)
+  ablation layer 18: 32 heads (1295s)
+  ablation layer 21: 32 heads (1354s)
+MODEL_DONE TinyLlama/TinyLlama_v1.1 1356.5s
+STANDARD_LONG_DONE

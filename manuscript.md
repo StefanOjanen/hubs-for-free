@@ -787,6 +787,15 @@ and 0.93 in TinyLlama and stays at 0.52 and 0.66 in the two Qwen models. The
 practical claim that failed for single merges in round 11 holds where
 merges accumulate, at the smaller budget.
 
+At four times the context (preregistration 14: 1,024-token windows,
+Qwen2.5-1.5B and TinyLlama, same clauses and thresholds), six of the seven
+tested clauses hold. Confidence tracks sink mass at 0.91, output norm
+predicts removal damage at 0.50 and beats confidence and entropy by 0.66 and
+0.58, and output perturbation is the best of eight merge criteria in both
+models, at 0.75 and 0.50 of the damage of the CHAI-style choice. Against the
+generator cosine its merges cost 0.83 and 0.82, cheaper in both models but
+short of the registered geometric mean of 0.8, so that clause fails.
+
 ### 6.3 What the sink does
 
 Round 11 found the sink small per position but about half of each head's
@@ -816,7 +825,9 @@ report this without an explanation.
 
 Results cover seventeen models up to 8B parameters in ten families, three
 position schemes and three attention layouts, English text and code,
-windows up to 256 tokens for the statistics and 512 for perplexity. Where the sink sits on a mid-sequence, window-varying column
+windows up to 256 tokens for the statistics and 512 for perplexity; the
+functional comparisons of Section 6.2 were repeated at 1,024 tokens on two
+models (six of seven clauses hold). Where the sink sits on a mid-sequence, window-varying column
 (OLMo-2, late Qwen2.5-3B layers), the sink-operator identification weakens
 (cosine 0.61 to 0.82 with one column) and the column set repairs most but
 not all of it (four of OLMo-2's 19 high-sink layers keep a sufficiency

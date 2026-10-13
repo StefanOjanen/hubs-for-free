@@ -847,3 +847,15 @@ four. 4 of 4 primary clauses pass.
 
 Reading: the sink is not a no-op. Its contribution matters, and most of it is
 a constant bias per head rather than a position-dependent signal.
+
+## Round 12's clauses at 1,024 tokens (2026-10-13, preregistration 14)
+
+Frozen at 18901f6. Qwen2.5-1.5B and TinyLlama, selection and evaluation
+windows of 1,024 tokens, same clauses and thresholds. 6 of 7 pass: S2
+confidence tracks sink mass 0.91 (0.85 to 0.94); S3a, S3b output norm beats
+confidence and entropy by 0.66 and 0.58 (intervals above zero but wide with
+two models); S4 output norm 0.50 (0.21 to 0.74); S6 output perturbation
+against the CHAI-style choice 0.75 and 0.50; S7 output perturbation best of
+eight in both models. S5 FAILS narrowly: against the generator cosine 0.83 and
+0.82, both below 1, geometric mean 0.82 against the registered 0.8.
+Confidence against removal damage: -0.16 (-0.45 to 0.11), secondary.

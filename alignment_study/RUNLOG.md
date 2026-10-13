@@ -420,3 +420,14 @@ difference 0.0), restore checks 0. Evaluation unchanged since the freeze:
 4 of 4 primary clauses pass (sink_results.json, eval_sink.log). TinyLlama
 has no layer whose first-token mass exceeds 0.3, so K3 rests on the other
 three models; its sink is not concentrated on the first token.
+
+Long-context round results (PREREGISTRATION14.md, 2026-10-13, 00:41 to 01:20
+UTC, frozen at 18901f6): Qwen2.5-1.5B 997 s and TinyLlama 1,357 s at 1,024
+tokens, restore checks 0. Evaluation (eval_long.py, unchanged since the
+freeze): 6 of 7 clauses pass; S5 fails narrowly (merges chosen by output
+perturbation cost 0.83 and 0.82 of the generator-cosine choice, both below 1,
+geometric mean 0.82 against the registered 0.8). The Llama answer-span test
+queued after the sink round did not run at first: its queue script passed an
+undefined variable as the source path and the test stopped at its own guard
+(log kept in the scratchpad); it was relaunched after this round with the
+absolute path.

@@ -273,7 +273,9 @@ Each instrument below exists because a finding above required it.
   do, pairs chosen by output perturbation cause 0.58 to 0.86 of the damage
   of pairs chosen by the commutator or CHAI-style criteria, in all four
   models; at twice that budget the advantage shrinks in two of them. All
-  eight registered predictions held.
+  eight registered predictions held. Repeated at four times the context on
+  two models, six of seven held; the advantage over the commutator criterion
+  stayed in both models but missed its registered size.
 
 <p align="center"><img src="figures/readme/fig15_standard_statistics.png" alt="Two dot plots. Left: within-layer correlation with the damage of removing a head, output norm +0.53, low entropy -0.09, Voita confidence -0.16, sink mass -0.42. Right: damage of merges chosen by eight criteria relative to random pairs, from output perturbation 0.47 to the commutator object 0.65" width="880"></p>
 <p align="center"><em>Attention-weight heuristics for head importance point the wrong way, and the similarity statistics in use choose costlier merges than a comparison that includes what attention moves.</em></p>
@@ -336,9 +338,9 @@ Each instrument below exists because a finding above required it.
 
 ## Evidence standard
 
-Twelve preregistrations with numeric thresholds and falsification clauses
+Thirteen preregistrations with numeric thresholds and falsification clauses
 were frozen in git before their runs (`alignment_study/PREREGISTRATION.md`
-and `PREREGISTRATION2.md` to `PREREGISTRATION13.md`, the audits of
+and `PREREGISTRATION2.md` to `PREREGISTRATION14.md`, the audits of
 `audits/PREREGISTRATION4.md` counted separately; the second committed
 before the held-out models were downloaded, the third and all later ones
 pushed publicly before execution, evaluation scripts committed before
@@ -359,7 +361,8 @@ and the 32-head models resolved without moving a threshold, 0 of 2
 primary clauses in the head-merging round, whose negative result is
 reported in full above, 4 of 4 in the sink-profile round, 5 of 5 on
 the four new attention designs, 5 of 7 in the functional round, 8 of 8 in
-the standard-statistics round, and 4 of 4 in the sink-editing round. Development
+the standard-statistics round, 4 of 4 in the sink-editing round, and 6 of
+7 at 1,024 tokens. Development
 calibration that shaped a preregistration is committed and labeled as
 such. A blind reimplementation from the written specification
 reproduced the anchor values to four decimals; surrogate invariants hold
