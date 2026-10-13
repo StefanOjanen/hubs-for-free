@@ -278,6 +278,13 @@ Each instrument below exists because a finding above required it.
 <p align="center"><img src="figures/readme/fig15_standard_statistics.png" alt="Two dot plots. Left: within-layer correlation with the damage of removing a head, output norm +0.53, low entropy -0.09, Voita confidence -0.16, sink mass -0.42. Right: damage of merges chosen by eight criteria relative to random pairs, from output perturbation 0.47 to the commutator object 0.65" width="880"></p>
 <p align="center"><em>Attention-weight heuristics for head importance point the wrong way, and the similarity statistics in use choose costlier merges than a comparison that includes what attention moves.</em></p>
 
+- **What the sink does.** A fourth round edited the sink directly. Removing
+  its contribution from every head costs 28 to 68 times as much as removing
+  an ordinary token's, in all four models, so the sink is not the no-op the
+  literature describes. Replacing it with its average, a constant vector
+  per head, keeps only 13 to 43 percent of that damage: most of what the
+  sink does is act as a bias. All four registered predictions held.
+
 - **Turning the nulls on published findings.** The audit program
   (`audits/TARGETS.md`) asks whether well-known findings about attention
   heads survive the same nulls: the layer clustering of BERT's heads
@@ -326,9 +333,9 @@ Each instrument below exists because a finding above required it.
 
 ## Evidence standard
 
-Eleven preregistrations with numeric thresholds and falsification clauses
+Twelve preregistrations with numeric thresholds and falsification clauses
 were frozen in git before their runs (`alignment_study/PREREGISTRATION.md`
-and `PREREGISTRATION2.md` to `PREREGISTRATION12.md`, the audits of
+and `PREREGISTRATION2.md` to `PREREGISTRATION13.md`, the audits of
 `audits/PREREGISTRATION4.md` counted separately; the second committed
 before the held-out models were downloaded, the third and all later ones
 pushed publicly before execution, evaluation scripts committed before
@@ -348,8 +355,8 @@ fixed-instrument rerun, where the earlier failures on TinyLlama, OLMo-2
 and the 32-head models resolved without moving a threshold, 0 of 2
 primary clauses in the head-merging round, whose negative result is
 reported in full above, 4 of 4 in the sink-profile round, 5 of 5 on
-the four new attention designs, 5 of 7 in the functional round, and 8 of
-8 in the standard-statistics round. Development
+the four new attention designs, 5 of 7 in the functional round, 8 of 8 in
+the standard-statistics round, and 4 of 4 in the sink-editing round. Development
 calibration that shaped a preregistration is committed and labeled as
 such. A blind reimplementation from the written specification
 reproduced the anchor values to four decimals; surrogate invariants hold

@@ -823,3 +823,27 @@ with round 11's KL outcome, a layer's shared energy against its median merge
 KL is -0.38 pooled over 27 layers but positive in Mistral-7B (-0.24, -0.55,
 +0.49, -0.70 per model); round 7's M2 failure is not explained by outcome
 noise alone.
+
+## What the sink does (2026-10-13, preregistration 13)
+
+Frozen at 97d2837 before the run. Development on Qwen2.5-0.5B (labeled) after
+a masking bug in the custom attention was caught by the equivalence check.
+Same four models; the custom attention equals eager attention exactly in all
+four. 4 of 4 primary clauses pass.
+
+- K1: removing the first-token sink's contribution in all layers costs 28
+  (Mistral-7B) to 68 (Qwen2.5-1.5B) times removing an ordinary token's.
+- K2: replacing the sink weight by its mean over positions keeps 0.13 to
+  0.43 of that damage (0.43 in Mistral-7B, 0.13 to 0.19 elsewhere).
+- K3: removing the sink costs more than removing an ordinary token in every
+  high-sink layer of three models; TinyLlama has no layer with first-token
+  mass above 0.3 (its maximum is 0.16).
+- K4: median mean-over-zero ratio 0.21 (0.18 to 0.64) over 33 high-sink
+  layers.
+- Not registered: removing the sink everywhere costs 2.3 to 3.4 times the sum
+  of single-layer removals in the two fully tested models; forcing heads to
+  re-spread the sink's share is costly in some single layers (up to 0.54 in
+  TinyLlama) but mild in all layers at once (0.01 to 0.03), unexplained.
+
+Reading: the sink is not a no-op. Its contribution matters, and most of it is
+a constant bias per head rather than a position-dependent signal.

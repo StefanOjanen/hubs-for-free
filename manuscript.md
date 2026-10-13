@@ -41,8 +41,12 @@ the same shape and norm. Retrieval heads,
 included as the positive control, are untouched by every null. Weighting
 attention by the vectors it moves halves the sink's account of head
 similarity, and a comparison that brings in values and output weights
-predicts the damage of merging two heads far better than any map statistic,
-though it did not choose reliably cheaper single merges. Each
+predicts the damage of merging two heads far better than any map statistic
+and chooses cheaper merges when many pairs are merged. The head-importance
+heuristic that reads attention weights measures the sink and points the
+wrong way, and the sink itself is not a no-op: removing its contribution
+costs 28 to 68 times as much as removing an ordinary token's, mostly as a
+constant bias. Each
 registered expectation that failed is reported as a failure; one of them
 failed by demanding statistical indistinguishability where the question
 was an effect size.
@@ -782,6 +786,31 @@ group its advantage over the generator cosine shrinks to 0.99 in Mistral-7B
 and 0.93 in TinyLlama and stays at 0.52 and 0.66 in the two Qwen models. The
 practical claim that failed for single merges in round 11 holds where
 merges accumulate, at the smaller budget.
+
+### 6.3 What the sink does
+
+Round 11 found the sink small per position but about half of each head's
+output. The literature describes attention to the sink as heads choosing to
+do nothing. Preregistration 13 edited the first-token sink directly, after
+the softmax, with a custom attention function that reproduces eager
+attention exactly when no edit is active (checked on every model). Removing
+the sink's contribution from every head in every layer costs 28 to 68 times
+as much, in KL, as removing an ordinary token's (K1, all four models). In
+every high-sink layer, removing it costs more than removing an ordinary
+token (K3; three models, since TinyLlama has no layer whose first-token mass
+reaches 0.3). Replacing the sink's weight by its average over positions,
+which turns its contribution into a constant vector per head, keeps only
+0.13 to 0.43 of the damage in all layers at once (K2), and a median 0.21 in
+single high-sink layers (interval 0.18 to 0.64; K4). All four clauses pass.
+
+The sink is not a no-op: its contribution matters, and most of it acts as a
+constant bias rather than a signal that varies with position. The damage of
+removing it from every layer at once is 2.3 to 3.4 times the sum of
+removing it one layer at a time, in the two models where every layer was
+tested. Forcing heads to spread the sink's share over other tokens is
+costly in some single layers, up to 0.54 in TinyLlama, but applied to every
+layer at once it costs less than removing the sink term (0.01 to 0.03); we
+report this without an explanation.
 
 ## 7. Limitations
 
