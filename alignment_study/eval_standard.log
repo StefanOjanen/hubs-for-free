@@ -1,0 +1,16 @@
+models: 4 complete: True
+S1_out_pert_minus_field_statistics {"js": {"value": 0.2167988402796751, "ci95": [0.0939097163602672, 0.3817310091071906], "n_layers": 27, "n_models": 4}, "cos_map": {"value": 0.29948571144496366, "ci95": [0.1414302469368876, 0.5003198549102185], "n_layers": 27, "n_models": 4}, "corr_last": {"value": 0.3601510223866709, "ci95": [0.20645344840063687, 0.5408878303895341], "n_layers": 27, "n_mode
+S2_confidence_vs_sink_mass {"value": 0.923663317523695, "ci95": [0.8625450541337959, 0.9679079320486664], "n_layers": 73, "n_models": 4, "pass_": true}
+S3a_out_norm_minus_confidence {"value": 0.6893805919364621, "ci95": [0.44115595075547404, 1.1240181221536845], "n_layers": 33, "n_models": 4, "pass_": true}
+S3b_out_norm_minus_neg_entropy {"value": 0.6193996609862724, "ci95": [0.40073327961537075, 1.0322414284779995], "n_layers": 33, "n_models": 4, "pass_": true}
+S4_out_norm_rho {"value": 0.5265902703080375, "ci95": [0.35054432022834403, 0.7257944213758832], "n_layers": 33, "n_models": 4, "pass_": true}
+S5_multi_merge_out_over_gen_budget1 {"per_model": {"mistralai/Mistral-7B-v0.1": 0.7768054195592209, "Qwen/Qwen2.5-1.5B": 0.5846818815178801, "Qwen/Qwen2.5-7B": 0.742740094541429, "TinyLlama/TinyLlama_v1.1": 0.8625206789528399}, "geo_mean": 0.7344454875419408, "pass_": true}
+S6_multi_merge_out_over_corr_last_budget1 {"per_model": {"mistralai/Mistral-7B-v0.1": 0.8218324319117872, "Qwen/Qwen2.5-1.5B": 0.6620165416283722, "Qwen/Qwen2.5-7B": 0.6876119697191735, "TinyLlama/TinyLlama_v1.1": 0.8509197597253639}, "geo_mean": 0.7511402571139001, "pass_": true}
+S7_multi_merge_out_pert_rank_budget1 {"mistralai/Mistral-7B-v0.1": 1, "Qwen/Qwen2.5-1.5B": 1, "Qwen/Qwen2.5-7B": 1, "TinyLlama/TinyLlama_v1.1": 3, "pass_": true}
+primary_passes 8
+A rho: {'out_pert': 0.647, 'val_dist': 0.513, 'tv_raw': 0.377, 'gen_cos': 0.304, 'js': 0.43, 'cos_map': 0.347, 'corr_last': 0.286, 'corr_rows': 0.294}
+B rho: {'conf': -0.163, 'neg_entropy': -0.093, 'sink_mass': -0.424, 'out_norm': 0.527}
+  Mistral-7B-v0.1          conf~sink 0.973335067637877 | B conf -0.60 neg_entropy -0.52 sink_mass -0.62 out_norm +0.76 | C1 out/gen 0.78 out/corr_last 0.82 out/random 0.57 rank 1 best out_pert | C2 out/gen 0.99 rank 3
+  Qwen2.5-1.5B             conf~sink 0.9039627039627043 | B conf -0.07 neg_entropy +0.03 sink_mass -0.43 out_norm +0.60 | C1 out/gen 0.58 out/corr_last 0.66 out/random 0.33 rank 1 best out_pert | C2 out/gen 0.52 rank 1
+  Qwen2.5-7B               conf~sink 0.866584564860427 | B conf -0.19 neg_entropy -0.11 sink_mass -0.41 out_norm +0.61 | C1 out/gen 0.74 out/corr_last 0.69 out/random 0.48 rank 1 best out_pert | C2 out/gen 0.66 rank 1
+  TinyLlama_v1.1           conf~sink 0.9089861751152074 | B conf -0.11 neg_entropy -0.09 sink_mass -0.35 out_norm +0.32 | C1 out/gen 0.86 out/corr_last 0.85 out/random 0.56 rank 3 best corr_rows | C2 out/gen 0.93 rank 2

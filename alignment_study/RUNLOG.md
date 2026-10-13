@@ -403,3 +403,12 @@ and the development outputs are frozen here, before the confirmatory run,
 which is queued after the standard-statistics round. Also committed before
 its run: inclusion_test.py --span=answer, the answer-span scoring of the
 source code (addendum 10), to be run on Llama-2-7B-80K after the sink round.
+
+Standard-statistics round results (2026-10-13, 22:34 to 00:20 UTC, head
+fc6ae80). Qwen2.5-1.5B 993 s, TinyLlama 1,204 s, Mistral-7B 2,198 s,
+Qwen2.5-7B 1,919 s; weights restored exactly in all four. The battery fell
+to 23 percent at 23:03 UTC; the runner paused the process (state T) and
+resumed it on the charger at 23:08 UTC; the runner's exit code 145 reflects
+that stop, the program finished normally. Evaluation unchanged since the
+freeze: 8 of 8 primary clauses pass (standard_results.json,
+eval_standard.log).

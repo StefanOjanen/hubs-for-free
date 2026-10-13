@@ -1,0 +1,65 @@
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:   0%|          | 1/338 [00:02<16:00,  2.85s/it]Loading weights:  51%|█████     | 171/338 [00:03<00:02, 72.90it/s]Loading weights:  59%|█████▉    | 200/338 [00:03<00:01, 69.55it/s]Loading weights:  65%|██████▍   | 219/338 [00:04<00:01, 66.02it/s]Loading weights:  69%|██████▉   | 233/338 [00:04<00:01, 63.06it/s]Loading weights:  72%|███████▏  | 244/338 [00:04<00:01, 66.42it/s]Loading weights:  75%|███████▌  | 255/338 [00:04<00:01, 68.12it/s]Loading weights:  79%|███████▉  | 267/338 [00:04<00:01, 65.33it/s]Loading weights:  83%|████████▎ | 279/338 [00:04<00:00, 71.87it/s]Loading weights:  86%|████████▌ | 289/338 [00:05<00:00, 72.10it/s]Loading weights:  88%|████████▊ | 298/338 [00:05<00:00, 58.31it/s]Loading weights:  93%|█████████▎| 315/338 [00:05<00:00, 56.28it/s]Loading weights:  97%|█████████▋| 327/338 [00:05<00:00, 64.63it/s]Loading weights:  99%|█████████▉| 335/338 [00:05<00:00, 66.53it/s]Loading weights: 100%|██████████| 338/338 [00:05<00:00, 57.73it/s]
+Qwen/Qwen2.5-1.5B DEVICE mps DTYPE float32 layers 28 heads 12 kv 2 hd 128 group 6 (10s)
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (298938 > 131072). Running this sequence through the model will result in indexing errors
+selection statistics done (317s)
+  multi-merge budget 1: out_pert 0.068 val_dist 0.076 tv_raw 0.073 gen_cos 0.116 js 0.077 cos_map 0.092 corr_last 0.102 corr_rows 0.098 | random median 0.203 (378s)
+  multi-merge budget 2: out_pert 0.191 val_dist 0.223 tv_raw 0.231 gen_cos 0.364 js 0.263 cos_map 0.249 corr_last 0.271 corr_rows 0.265 | random median 0.552 (433s)
+  ablation layer 1: 12 heads (482s)
+  ablation layer 3: 12 heads (525s)
+  ablation layer 5: 12 heads (557s)
+  ablation layer 7: 12 heads (589s)
+  ablation layer 9: 12 heads (633s)
+  ablation layer 11: 12 heads (682s)
+  ablation layer 13: 12 heads (731s)
+  ablation layer 15: 12 heads (779s)
+  ablation layer 17: 12 heads (828s)
+  ablation layer 19: 12 heads (859s)
+  ablation layer 21: 12 heads (891s)
+  ablation layer 23: 12 heads (923s)
+  ablation layer 25: 12 heads (957s)
+  ablation layer 27: 12 heads (989s)
+MODEL_DONE Qwen/Qwen2.5-1.5B 992.5s
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 44429.78it/s]
+TinyLlama/TinyLlama_v1.1 DEVICE mps DTYPE float32 layers 22 heads 32 kv 4 hd 64 group 8 (12s)
+/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/.venv/lib/python3.12/site-packages/numpy/lib/_function_base_impl.py:3036: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+selection statistics done (267s)
+  multi-merge budget 1: out_pert 0.061 val_dist 0.059 tv_raw 0.067 gen_cos 0.070 js 0.072 cos_map 0.064 corr_last 0.071 corr_rows 0.058 | random median 0.109 (291s)
+  multi-merge budget 2: out_pert 0.154 val_dist 0.148 tv_raw 0.193 gen_cos 0.166 js 0.184 cos_map 0.154 corr_last 0.180 corr_rows 0.164 | random median 0.294 (314s)
+  ablation layer 1: 32 heads (367s)
+  ablation layer 3: 32 heads (420s)
+  ablation layer 5: 32 heads (473s)
+  ablation layer 7: 32 heads (527s)
+  ablation layer 9: 32 heads (580s)
+  ablation layer 11: 32 heads (633s)
+  ablation layer 13: 32 heads (686s)
+  ablation layer 15: 32 heads (740s)
+  ablation layer 17: 32 heads (1095s)
+  ablation layer 19: 32 heads (1148s)
+  ablation layer 21: 32 heads (1202s)
+MODEL_DONE TinyLlama/TinyLlama_v1.1 1203.5s
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 4978.96it/s]
+mistralai/Mistral-7B-v0.1 DEVICE mps DTYPE bfloat16 layers 32 heads 32 kv 8 hd 128 group 4 (36s)
+selection statistics done (899s)
+  multi-merge budget 1: out_pert 0.116 val_dist 0.141 tv_raw 0.156 gen_cos 0.149 js 0.148 cos_map 0.146 corr_last 0.141 corr_rows 0.149 | random median 0.203 (1010s)
+  multi-merge budget 2: out_pert 0.877 val_dist 0.820 tv_raw 0.872 gen_cos 0.890 js 0.935 cos_map 0.943 corr_last 0.910 corr_rows 0.905 | random median 1.068 (1139s)
+  ablation layer 2: 32 heads (1412s)
+  ablation layer 10: 32 heads (1663s)
+  ablation layer 18: 32 heads (1936s)
+  ablation layer 26: 32 heads (2189s)
+MODEL_DONE mistralai/Mistral-7B-v0.1 2197.8s
+Loading weights:   0%|          | 0/339 [00:00<?, ?it/s]Loading weights: 100%|██████████| 339/339 [00:00<00:00, 4430.80it/s]
+Qwen/Qwen2.5-7B DEVICE mps DTYPE bfloat16 layers 28 heads 28 kv 4 hd 128 group 7 (31s)
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (298938 > 131072). Running this sequence through the model will result in indexing errors
+/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/.venv/lib/python3.12/site-packages/numpy/lib/_function_base_impl.py:3037: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+selection statistics done (896s)
+  multi-merge budget 1: out_pert 0.061 val_dist 0.072 tv_raw 0.084 gen_cos 0.082 js 0.079 cos_map 0.084 corr_last 0.088 corr_rows 0.082 | random median 0.128 (1000s)
+  multi-merge budget 2: out_pert 0.162 val_dist 0.169 tv_raw 0.197 gen_cos 0.244 js 0.197 cos_map 0.234 corr_last 0.212 corr_rows 0.178 | random median 0.358 (1104s)
+  ablation layer 2: 28 heads (1305s)
+  ablation layer 9: 28 heads (1504s)
+  ablation layer 16: 28 heads (1706s)
+  ablation layer 23: 28 heads (1910s)
+MODEL_DONE Qwen/Qwen2.5-7B 1919.3s
+STANDARD_ROUND_DONE

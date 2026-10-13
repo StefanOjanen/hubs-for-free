@@ -1,0 +1,30 @@
+{
+ "label": "post hoc, not registered",
+ "per_model": {
+  "Qwen/Qwen2.5-1.5B": {
+   "n_layers": 8,
+   "rho_sharedE_median_kl": -0.2380952380952381,
+   "rho_sharedE_min_kl": -0.30952380952380953
+  },
+  "TinyLlama/TinyLlama_v1.1": {
+   "n_layers": 8,
+   "rho_sharedE_median_kl": -0.5476190476190477,
+   "rho_sharedE_min_kl": -0.11904761904761905
+  },
+  "mistralai/Mistral-7B-v0.1": {
+   "n_layers": 6,
+   "rho_sharedE_median_kl": 0.48571428571428577,
+   "rho_sharedE_min_kl": 0.6
+  },
+  "Qwen/Qwen2.5-7B": {
+   "n_layers": 5,
+   "rho_sharedE_median_kl": -0.7,
+   "rho_sharedE_min_kl": -0.7
+  }
+ },
+ "pooled": {
+  "n_layers": 27,
+  "rho_sharedE_median_kl": -0.3803418803418803,
+  "rho_sharedE_min_kl": -0.1349206349206349
+ }
+}
