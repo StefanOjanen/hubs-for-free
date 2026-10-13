@@ -1,0 +1,19 @@
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 5095.06it/s]
+gpt2 DTYPE float32 layers 12 heads 12 head_dim 64 (3s)
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (286177 > 1024). Running this sequence through the model will result in indexing errors
+selection statistics done (18s)
+  layer 0: 12 heads (26s)
+  layer 1: 12 heads (33s)
+  layer 2: 12 heads (40s)
+  layer 3: 12 heads (47s)
+  layer 4: 12 heads (54s)
+  layer 5: 12 heads (61s)
+  layer 6: 12 heads (68s)
+  layer 7: 12 heads (75s)
+  layer 8: 12 heads (81s)
+  layer 9: 12 heads (88s)
+  layer 10: 12 heads (95s)
+  layer 11: 12 heads (102s)
+MODEL_DONE gpt2 102.9s
+IMPORTANCE_MHA_DONE
