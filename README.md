@@ -285,6 +285,9 @@ Each instrument below exists because a finding above required it.
   per head, keeps only 13 to 43 percent of that damage: most of what the
   sink does is act as a bias. All four registered predictions held.
 
+<p align="center"><img src="figures/readme/fig16_sink_edits.png" alt="Dot plot for four models of the change in predictions when the first-token sink is edited in every layer: removing its contribution costs 28 to 68 times removing an ordinary token, and replacing it with its average recovers most of that" width="820"></p>
+<p align="center"><em>Removing the sink's contribution hurts far more than removing an ordinary token; replacing it with a constant recovers most of the damage.</em></p>
+
 - **Turning the nulls on published findings.** The audit program
   (`audits/TARGETS.md`) asks whether well-known findings about attention
   heads survive the same nulls: the layer clustering of BERT's heads

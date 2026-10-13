@@ -622,4 +622,34 @@ if glob.glob(SR):
              fontsize=9.5, color=INK2, va="top")
     fig.savefig(OUT + "fig15_standard_statistics.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
+
+# ============ Figure 16: what the sink does (preregistration 13) ============
+SK = sorted(glob.glob("alignment_study/sink/*.json"))
+if SK:
+    plt.rcParams["axes.grid"] = False
+    rows16 = [json.load(open(f)) for f in SK]
+    NICE16 = {"mistralai/Mistral-7B-v0.1": "Mistral-7B", "Qwen/Qwen2.5-1.5B": "Qwen2.5-1.5B", "Qwen/Qwen2.5-7B": "Qwen2.5-7B", "TinyLlama/TinyLlama_v1.1": "TinyLlama-1.1B"}
+    rows16 = sorted(rows16, key=lambda d: d["all_layers"]["zero"]["kl"] / d["all_layers"]["zero_rand"]["kl"])
+    fig, ax = plt.subplots(figsize=(9.6, 4.2), gridspec_kw={"left": 0.17, "right": 0.88, "top": 0.70, "bottom": 0.16})
+    for yy, d in enumerate(rows16):
+        a = d["all_layers"]; z, m, r = a["zero"]["kl"], a["mean"]["kl"], a["zero_rand"]["kl"]
+        ax.plot([r, z], [yy, yy], color=GRID, lw=2, zorder=1)
+        ax.scatter([r], [yy], s=80, color=MUTED, edgecolors=SURF, linewidths=2, zorder=3)
+        ax.scatter([m], [yy], s=80, color=S1, edgecolors=SURF, linewidths=2, zorder=3)
+        ax.scatter([z], [yy], s=95, color=S2, edgecolors=SURF, linewidths=2, zorder=4)
+        ax.text(1.02, yy, f"{z / r:.0f}x", va="center", fontsize=11.5, color=INK, transform=ax.get_yaxis_transform(), clip_on=False)
+    ax.set_xscale("log"); ax.set_xlim(0.0015, 1.0)
+    ax.set_yticks(range(len(rows16))); ax.set_yticklabels([NICE16.get(d["model"], d["model"]) for d in rows16], fontsize=10.5)
+    ax.set_xlabel("change in the model's predictions (KL), edit applied in every layer, log scale")
+    ax.text(1.02, len(rows16) - 0.45, "sink / token", transform=ax.get_yaxis_transform(), fontsize=9.5, color=INK2)
+    style(ax)
+    from matplotlib.lines import Line2D
+    hl = [Line2D([], [], marker="o", ls="", ms=9, color=S2, mec=SURF), Line2D([], [], marker="o", ls="", ms=9, color=S1, mec=SURF),
+          Line2D([], [], marker="o", ls="", ms=9, color=MUTED, mec=SURF)]
+    ax.legend(hl, ["sink contribution removed", "sink replaced by its average", "an ordinary token removed"], loc="lower left", bbox_to_anchor=(-0.02, 1.0),
+              ncol=3, fontsize=9.5, frameon=False, handletextpad=0.4, columnspacing=1.6)
+    fig.text(0.02, 0.97, "The sink is not a no-op, and mostly acts as a bias", fontsize=15, color=INK, va="top")
+    fig.text(0.02, 0.905, "Preregistration 13, four models; the first token's attention weight edited after the softmax in every head and layer.", fontsize=10, color=INK2, va="top")
+    fig.savefig(OUT + "fig16_sink_edits.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
 print("FIGURES_DONE", sorted(glob.glob(OUT + "*")))
