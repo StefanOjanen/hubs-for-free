@@ -1,0 +1,13 @@
+S2 {"value": 0.858446299689615, "ci95": [0.6394667832167833, 0.934805283224401], "n_layers": 44, "n_models": 3, "pass_": true}
+S3a_wikitext {"value": 0.9142376251199783, "ci95": [0.7866135292403674, 1.0483590943370353], "n_layers": 60, "n_models": 3, "pass_": true}
+S3b_wikitext {"value": 0.8631221719457013, "ci95": [0.7439295900178252, 0.9979368129827689], "n_layers": 60, "n_models": 3, "pass_": true}
+S4_wikitext {"value": 0.6789390511449335, "ci95": [0.6178499395824764, 0.7311944780097354], "n_layers": 60, "n_models": 3, "pass_": true}
+S3a_c4 {"value": 0.9516440422322775, "ci95": [0.7580057575186252, 1.1020434920471684], "n_layers": 60, "n_models": 3, "pass_": true}
+S3b_c4 {"value": 0.8860691759221171, "ci95": [0.720450453345674, 1.027704905388729], "n_layers": 60, "n_models": 3, "pass_": true}
+S4_c4 {"value": 0.6907352941176471, "ci95": [0.6143651218062981, 0.7568808617852735], "n_layers": 60, "n_models": 3, "pass_": true}
+primary_passes 7
+wikitext {'conf': -0.235, 'neg_entropy': -0.184, 'sink_mass': -0.357, 'out_norm': 0.679}
+c4 {'conf': -0.261, 'neg_entropy': -0.195, 'sink_mass': -0.397, 'out_norm': 0.691}
+  gpt2-medium      high-sink 18 | wikitext: conf -0.22 neg_entropy -0.19 sink_mass -0.36 out_norm +0.66 | c4: conf -0.28 neg_entropy -0.20 sink_mass -0.40 out_norm +0.65
+  pythia-160m      high-sink 8 | wikitext: conf -0.24 neg_entropy -0.24 sink_mass -0.29 out_norm +0.66 | c4: conf -0.15 neg_entropy -0.12 sink_mass -0.28 out_norm +0.67
+  pythia-410m      high-sink 18 | wikitext: conf -0.24 neg_entropy -0.15 sink_mass -0.38 out_norm +0.71 | c4: conf -0.30 neg_entropy -0.23 sink_mass -0.45 out_norm +0.74

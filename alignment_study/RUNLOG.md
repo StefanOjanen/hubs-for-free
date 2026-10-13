@@ -443,3 +443,20 @@ percent same-layer nearest neighbors (34.7 before); marginal null 0.095;
 random and untrained nulls about zero. Label shrinks; the registered
 expectation still fails on the marginal clause. audits/RESULTS.md, Figure 13
 and the public text regenerated or updated.
+
+Multi-head importance round (PREREGISTRATION15.md, 2026-10-13, 16:06:50 to
+16:27:51 UTC, head 46fd50c): gpt2-medium 591 s, Pythia-160m 100 s,
+Pythia-410m 564 s; restore checks 0 on both corpora. Evaluation
+(eval_importance_mha.py, unchanged since the freeze): 7 of 7 clauses pass
+(importance_mha_results.json, eval_importance_mha.log). The labeled
+development run of preregistration 16 shared the GPU for about seven minutes
+of this round; it reproduced the stored statistics of its two decoders
+exactly while sharing.
+
+Correction (2026-10-13): Voita et al. (2019) define a head's confidence as
+its average maximum attention weight excluding the end-of-sentence token
+(their footnote 2). Preregistrations 12, 14 and 15 computed it over all
+tokens, sink included, and called it their statistic. Found while writing up
+round 15. The registered results stand for the statistic as computed;
+preregistration 16, frozen at f5a9539 before its run, tests the definition as
+written. Public text is corrected with that round's results.

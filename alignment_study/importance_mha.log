@@ -1,0 +1,75 @@
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 7062.34it/s]
+gpt2-medium DTYPE float32 layers 24 heads 16 head_dim 64 (5s)
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (286177 > 1024). Running this sequence through the model will result in indexing errors
+selection statistics done (30s)
+  layer 0: 16 heads (55s)
+  layer 1: 16 heads (78s)
+  layer 2: 16 heads (102s)
+  layer 3: 16 heads (125s)
+  layer 4: 16 heads (148s)
+  layer 5: 16 heads (171s)
+  layer 6: 16 heads (195s)
+  layer 7: 16 heads (218s)
+  layer 8: 16 heads (241s)
+  layer 9: 16 heads (264s)
+  layer 10: 16 heads (288s)
+  layer 11: 16 heads (311s)
+  layer 12: 16 heads (334s)
+  layer 13: 16 heads (357s)
+  layer 14: 16 heads (380s)
+  layer 15: 16 heads (404s)
+  layer 16: 16 heads (427s)
+  layer 17: 16 heads (450s)
+  layer 18: 16 heads (473s)
+  layer 19: 16 heads (497s)
+  layer 20: 16 heads (520s)
+  layer 21: 16 heads (543s)
+  layer 22: 16 heads (566s)
+  layer 23: 16 heads (590s)
+MODEL_DONE gpt2-medium 591.3s
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights:   1%|          | 1/148 [00:00<00:23,  6.27it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 834.31it/s]
+EleutherAI/pythia-160m DTYPE float32 layers 12 heads 12 head_dim 64 (2s)
+selection statistics done (14s)
+  layer 0: 12 heads (22s)
+  layer 1: 12 heads (29s)
+  layer 2: 12 heads (35s)
+  layer 3: 12 heads (42s)
+  layer 4: 12 heads (49s)
+  layer 5: 12 heads (56s)
+  layer 6: 12 heads (63s)
+  layer 7: 12 heads (70s)
+  layer 8: 12 heads (77s)
+  layer 9: 12 heads (84s)
+  layer 10: 12 heads (91s)
+  layer 11: 12 heads (99s)
+MODEL_DONE EleutherAI/pythia-160m 99.5s
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights:   0%|          | 1/292 [00:00<01:06,  4.36it/s]Loading weights:  53%|█████▎    | 156/292 [00:00<00:00, 588.30it/s]Loading weights:  84%|████████▎ | 244/292 [00:00<00:00, 426.35it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 403.48it/s]
+EleutherAI/pythia-410m DTYPE float32 layers 24 heads 16 head_dim 64 (3s)
+selection statistics done (27s)
+  layer 0: 16 heads (54s)
+  layer 1: 16 heads (80s)
+  layer 2: 16 heads (105s)
+  layer 3: 16 heads (130s)
+  layer 4: 16 heads (155s)
+  layer 5: 16 heads (179s)
+  layer 6: 16 heads (202s)
+  layer 7: 16 heads (223s)
+  layer 8: 16 heads (244s)
+  layer 9: 16 heads (265s)
+  layer 10: 16 heads (287s)
+  layer 11: 16 heads (308s)
+  layer 12: 16 heads (329s)
+  layer 13: 16 heads (350s)
+  layer 14: 16 heads (372s)
+  layer 15: 16 heads (393s)
+  layer 16: 16 heads (414s)
+  layer 17: 16 heads (435s)
+  layer 18: 16 heads (456s)
+  layer 19: 16 heads (478s)
+  layer 20: 16 heads (499s)
+  layer 21: 16 heads (520s)
+  layer 22: 16 heads (541s)
+  layer 23: 16 heads (563s)
+MODEL_DONE EleutherAI/pythia-410m 564.1s
+IMPORTANCE_MHA_DONE

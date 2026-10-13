@@ -860,3 +860,29 @@ against the CHAI-style choice 0.75 and 0.50; S7 output perturbation best of
 eight in both models. S5 FAILS narrowly: against the generator cosine 0.83 and
 0.82, both below 1, geometric mean 0.82 against the registered 0.8.
 Confidence against removal damage: -0.16 (-0.45 to 0.11), secondary.
+
+## Round 12's head-importance clauses on multi-head decoders and C4 (2026-10-13, preregistration 15)
+
+Frozen at 46fd50c. gpt2-medium, Pythia-160m and Pythia-410m, every head of
+every layer removed one at a time; damage measured on WikiText-103 and on C4.
+Development on gpt2 labeled. 7 of 7 clauses pass:
+- S2: confidence tracks sink mass within high-sink layers at 0.86 (0.64 to
+  0.93, 44 layers).
+- S3a, S3b: output norm's within-layer Spearman with removal damage exceeds
+  confidence's by 0.91 (WikiText) and 0.95 (C4) and negative entropy's by
+  0.86 and 0.89, every interval above zero.
+- S4: output norm 0.68 (0.62 to 0.73) on WikiText and 0.69 (0.61 to 0.76) on
+  C4; per model 0.66 to 0.74.
+- Secondary: confidence -0.24 and -0.26, negative entropy -0.18 and -0.20,
+  sink mass -0.36 and -0.40 (WikiText, C4). Across all layers of a model, not
+  registered: output norm 0.39 to 0.69, confidence -0.32 to -0.73. In these
+  multi-head models output norm also ranks heads across layers, which it
+  did not in round 12's grouped-query models (-0.08 to 0.24).
+
+Correction found while writing this round up: the statistic called Voita et
+al.'s confidence in preregistrations 12, 14 and 15 is the largest attention
+weight over all tokens, sink included. Voita et al. exclude the
+end-of-sentence token, the no-op token of their translation encoders (their
+footnote 2). The registered results stand for the statistic computed; the
+attribution was wrong. Preregistration 16 (frozen at f5a9539) tests their
+definition.
