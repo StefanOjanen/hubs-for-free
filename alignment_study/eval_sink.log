@@ -1,0 +1,9 @@
+K1_all_layer_zero_over_random_token {"per_model": {"mistralai/Mistral-7B-v0.1": 28.061836202277476, "Qwen/Qwen2.5-1.5B": 68.24434045322947, "Qwen/Qwen2.5-7B": 40.7312577201084, "TinyLlama/TinyLlama_v1.1": 39.718011160731045}, "pass_": true}
+K2_all_layer_mean_over_zero {"per_model": {"mistralai/Mistral-7B-v0.1": 0.4263177939333605, "Qwen/Qwen2.5-1.5B": 0.12751447318087944, "Qwen/Qwen2.5-7B": 0.17420919488141995, "TinyLlama/TinyLlama_v1.1": 0.18730706994154153}, "pass_": true}
+K3_zero_above_random_token_in_high_sink_layers {"per_model": {"mistralai/Mistral-7B-v0.1": 1.0, "Qwen/Qwen2.5-1.5B": 1.0, "Qwen/Qwen2.5-7B": 1.0, "TinyLlama/TinyLlama_v1.1": null}, "pass_": true}
+K4_mean_over_zero_high_sink_layers {"median": 0.21311078719213894, "ci95": [0.17823168193527097, 0.6376258303266207], "n_layers": 33, "pass_": true}
+primary_passes 4
+  Mistral-7B-v0.1          equiv 0.0e+00 | all-layer KL zero 0.0794 mean 0.0338 renorm 0.0240 zero_rand 0.0028 | zero/rand 28.1 mean/zero 0.43 | high-sink 8/8 zero>rand 1.0 median mean/zero 0.3199618808664596
+  Qwen2.5-1.5B             equiv 0.0e+00 | all-layer KL zero 0.4921 mean 0.0627 renorm 0.0108 zero_rand 0.0072 | zero/rand 68.2 mean/zero 0.13 | high-sink 19/28 zero>rand 1.0 median mean/zero 0.18369424960224867
+  Qwen2.5-7B               equiv 0.0e+00 | all-layer KL zero 0.3174 mean 0.0553 renorm 0.0254 zero_rand 0.0078 | zero/rand 40.7 mean/zero 0.17 | high-sink 6/7 zero>rand 1.0 median mean/zero 0.6376258303266207
+  TinyLlama_v1.1           equiv 0.0e+00 | all-layer KL zero 0.2445 mean 0.0458 renorm 0.0143 zero_rand 0.0062 | zero/rand 39.7 mean/zero 0.19 | high-sink 0/22 zero>rand None median mean/zero None

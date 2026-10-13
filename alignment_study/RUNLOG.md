@@ -412,3 +412,11 @@ resumed it on the charger at 23:08 UTC; the runner's exit code 145 reflects
 that stop, the program finished normally. Evaluation unchanged since the
 freeze: 8 of 8 primary clauses pass (standard_results.json,
 eval_standard.log).
+
+What-the-sink-does results (2026-10-13, 00:21 to 00:40 UTC, head 97d2837).
+Qwen2.5-1.5B 321 s, TinyLlama 165 s, Mistral-7B 359 s, Qwen2.5-7B 306 s;
+sinkint attention identical to eager attention in all four (maximum logit
+difference 0.0), restore checks 0. Evaluation unchanged since the freeze:
+4 of 4 primary clauses pass (sink_results.json, eval_sink.log). TinyLlama
+has no layer whose first-token mass exceeds 0.3, so K3 rests on the other
+three models; its sink is not concentrated on the first token.

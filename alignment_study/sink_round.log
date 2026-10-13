@@ -1,0 +1,89 @@
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (298938 > 131072). Running this sequence through the model will result in indexing errors
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:   0%|          | 1/338 [00:01<06:11,  1.10s/it]Loading weights:  51%|█████     | 172/338 [00:01<00:00, 196.89it/s]Loading weights:  80%|████████  | 272/338 [00:01<00:00, 204.37it/s]Loading weights:  99%|█████████▉| 336/338 [00:01<00:00, 217.97it/s]Loading weights: 100%|██████████| 338/338 [00:01<00:00, 176.40it/s]
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:  33%|███▎      | 112/338 [00:00<00:00, 1114.92it/s]Loading weights:  72%|███████▏  | 245/338 [00:00<00:00, 1166.76it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 1198.68it/s]
+Qwen/Qwen2.5-1.5B DTYPE float32 layers 28; sinkint vs eager max abs logit difference 0.00e+00 (11s)
+  layer 0: zero 0.0036 mean 0.0035 renorm 0.0254 zero_rand 0.0001 (24s)
+  layer 1: zero 0.0098 mean 0.0094 renorm 0.0062 zero_rand 0.0001 (35s)
+  layer 2: zero 0.0045 mean 0.0008 renorm 0.0282 zero_rand 0.0000 (45s)
+  layer 3: zero 0.0045 mean 0.0010 renorm 0.0367 zero_rand 0.0000 (55s)
+  layer 4: zero 0.0056 mean 0.0005 renorm 0.0419 zero_rand 0.0000 (65s)
+  layer 5: zero 0.0051 mean 0.0012 renorm 0.0689 zero_rand 0.0000 (76s)
+  layer 6: zero 0.0035 mean 0.0003 renorm 0.0542 zero_rand 0.0000 (86s)
+  layer 7: zero 0.0024 mean 0.0010 renorm 0.0096 zero_rand 0.0001 (96s)
+  layer 8: zero 0.0052 mean 0.0008 renorm 0.0638 zero_rand 0.0000 (107s)
+  layer 9: zero 0.0052 mean 0.0010 renorm 0.0216 zero_rand 0.0000 (117s)
+  layer 10: zero 0.0034 mean 0.0007 renorm 0.0156 zero_rand 0.0000 (127s)
+  layer 11: zero 0.0040 mean 0.0012 renorm 0.0102 zero_rand 0.0000 (137s)
+  layer 12: zero 0.0038 mean 0.0007 renorm 0.0187 zero_rand 0.0000 (148s)
+  layer 13: zero 0.0023 mean 0.0006 renorm 0.0069 zero_rand 0.0000 (158s)
+  layer 14: zero 0.0025 mean 0.0004 renorm 0.0453 zero_rand 0.0000 (168s)
+  layer 15: zero 0.0020 mean 0.0006 renorm 0.0065 zero_rand 0.0000 (179s)
+  layer 16: zero 0.0020 mean 0.0007 renorm 0.0056 zero_rand 0.0000 (189s)
+  layer 17: zero 0.0018 mean 0.0005 renorm 0.0141 zero_rand 0.0000 (199s)
+  layer 18: zero 0.0012 mean 0.0004 renorm 0.0057 zero_rand 0.0000 (210s)
+  layer 19: zero 0.0012 mean 0.0003 renorm 0.0248 zero_rand 0.0000 (220s)
+  layer 20: zero 0.0031 mean 0.0007 renorm 0.0132 zero_rand 0.0000 (230s)
+  layer 21: zero 0.0152 mean 0.0035 renorm 0.0147 zero_rand 0.0000 (241s)
+  layer 22: zero 0.0011 mean 0.0002 renorm 0.0161 zero_rand 0.0000 (251s)
+  layer 23: zero 0.0246 mean 0.0013 renorm 0.0252 zero_rand 0.0001 (261s)
+  layer 24: zero 0.0067 mean 0.0013 renorm 0.0194 zero_rand 0.0000 (274s)
+  layer 25: zero 0.0067 mean 0.0010 renorm 0.0312 zero_rand 0.0001 (287s)
+  layer 26: zero 0.0143 mean 0.0013 renorm 0.0138 zero_rand 0.0000 (297s)
+  layer 27: zero 0.0002 mean 0.0002 renorm 0.0000 zero_rand 0.0001 (308s)
+  all layers: zero 0.4921 mean 0.0627 renorm 0.0108 zero_rand 0.0072 (318s)
+MODEL_DONE Qwen/Qwen2.5-1.5B 321.0s
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 46091.25it/s]
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 44596.65it/s]
+TinyLlama/TinyLlama_v1.1 DTYPE float32 layers 22; sinkint vs eager max abs logit difference 0.00e+00 (13s)
+  layer 0: zero 0.0039 mean 0.0037 renorm 0.0176 zero_rand 0.0000 (21s)
+  layer 1: zero 0.0040 mean 0.0039 renorm 0.0054 zero_rand 0.0001 (27s)
+  layer 2: zero 0.0020 mean 0.0008 renorm 0.3452 zero_rand 0.0006 (34s)
+  layer 3: zero 0.0019 mean 0.0006 renorm 0.2135 zero_rand 0.0000 (40s)
+  layer 4: zero 0.0030 mean 0.0010 renorm 0.5377 zero_rand 0.0000 (47s)
+  layer 5: zero 0.0029 mean 0.0010 renorm 0.5136 zero_rand 0.0000 (53s)
+  layer 6: zero 0.0088 mean 0.0032 renorm 0.4582 zero_rand 0.0000 (59s)
+  layer 7: zero 0.0323 mean 0.0110 renorm 0.1845 zero_rand 0.0000 (66s)
+  layer 8: zero 0.0030 mean 0.0010 renorm 0.0697 zero_rand 0.0001 (72s)
+  layer 9: zero 0.0043 mean 0.0025 renorm 0.0518 zero_rand 0.0000 (79s)
+  layer 10: zero 0.0053 mean 0.0038 renorm 0.1496 zero_rand 0.0000 (85s)
+  layer 11: zero 0.0022 mean 0.0008 renorm 0.0209 zero_rand 0.0000 (92s)
+  layer 12: zero 0.0023 mean 0.0007 renorm 0.0201 zero_rand 0.0000 (98s)
+  layer 13: zero 0.0021 mean 0.0006 renorm 0.0108 zero_rand 0.0000 (105s)
+  layer 14: zero 0.0012 mean 0.0004 renorm 0.0217 zero_rand 0.0000 (111s)
+  layer 15: zero 0.0016 mean 0.0007 renorm 0.0313 zero_rand 0.0000 (117s)
+  layer 16: zero 0.0019 mean 0.0006 renorm 0.0237 zero_rand 0.0000 (124s)
+  layer 17: zero 0.0010 mean 0.0003 renorm 0.0211 zero_rand 0.0000 (130s)
+  layer 18: zero 0.0007 mean 0.0003 renorm 0.0250 zero_rand 0.0001 (137s)
+  layer 19: zero 0.0021 mean 0.0006 renorm 0.0323 zero_rand 0.0000 (143s)
+  layer 20: zero 0.0009 mean 0.0003 renorm 0.0313 zero_rand 0.0000 (150s)
+  layer 21: zero 0.0176 mean 0.0032 renorm 0.0119 zero_rand 0.0000 (156s)
+  all layers: zero 0.2445 mean 0.0458 renorm 0.0143 zero_rand 0.0062 (163s)
+MODEL_DONE TinyLlama/TinyLlama_v1.1 165.0s
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 4561.07it/s]
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 4538.16it/s]
+mistralai/Mistral-7B-v0.1 DTYPE bfloat16 layers 32; sinkint vs eager max abs logit difference 0.00e+00 (79s)
+  layer 0: zero 0.0232 mean 0.0199 renorm 0.0293 zero_rand 0.0001 (115s)
+  layer 4: zero 0.0030 mean 0.0005 renorm 0.0269 zero_rand 0.0000 (145s)
+  layer 8: zero 0.0027 mean 0.0005 renorm 0.0097 zero_rand 0.0000 (174s)
+  layer 12: zero 0.0013 mean 0.0004 renorm 0.0085 zero_rand 0.0000 (204s)
+  layer 16: zero 0.0014 mean 0.0004 renorm 0.0024 zero_rand 0.0000 (233s)
+  layer 20: zero 0.0008 mean 0.0003 renorm 0.0044 zero_rand 0.0000 (262s)
+  layer 24: zero 0.0003 mean 0.0002 renorm 0.0042 zero_rand 0.0000 (291s)
+  layer 28: zero 0.0004 mean 0.0002 renorm 0.0025 zero_rand 0.0000 (321s)
+  all layers: zero 0.0794 mean 0.0338 renorm 0.0240 zero_rand 0.0028 (351s)
+MODEL_DONE mistralai/Mistral-7B-v0.1 358.6s
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (298938 > 131072). Running this sequence through the model will result in indexing errors
+Loading weights:   0%|          | 0/339 [00:00<?, ?it/s]Loading weights: 100%|██████████| 339/339 [00:00<00:00, 4182.85it/s]
+Loading weights:   0%|          | 0/339 [00:00<?, ?it/s]Loading weights: 100%|██████████| 339/339 [00:00<00:00, 4373.76it/s]
+Qwen/Qwen2.5-7B DTYPE bfloat16 layers 28; sinkint vs eager max abs logit difference 0.00e+00 (72s)
+  layer 0: zero 0.0124 mean 0.0130 renorm 0.0285 zero_rand 0.0009 (107s)
+  layer 4: zero 0.0136 mean 0.0051 renorm 0.1477 zero_rand 0.0005 (134s)
+  layer 8: zero 0.0119 mean 0.0056 renorm 0.0527 zero_rand 0.0005 (161s)
+  layer 12: zero 0.0083 mean 0.0047 renorm 0.0239 zero_rand 0.0005 (189s)
+  layer 16: zero 0.0060 mean 0.0045 renorm 0.0167 zero_rand 0.0006 (216s)
+  layer 20: zero 0.0048 mean 0.0044 renorm 0.0128 zero_rand 0.0004 (244s)
+  layer 24: zero 0.0070 mean 0.0049 renorm 0.0224 zero_rand 0.0003 (271s)
+  all layers: zero 0.3174 mean 0.0553 renorm 0.0254 zero_rand 0.0078 (299s)
+MODEL_DONE Qwen/Qwen2.5-7B 306.3s
+SINK_ROUND_DONE
