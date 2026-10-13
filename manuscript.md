@@ -599,8 +599,9 @@ median is v n times the median of the law. The edge therefore lands inside
 the bulk, at a third of its true value for square matrices and three
 quarters for the K and V shape. The paper's own Section VII notes that the
 median-based estimate differs slightly from the exact Marchenko-Pastur
-median and lists random-matrix controls as future work; the nulls above are
-those controls. Refitting the scale by matching the law's median or its
+median and proposes shuffled-weight and randomly initialized controls as
+future work for its entry-level analysis; the nulls above apply controls of
+that kind to the spectral counts. Refitting the scale by matching the law's median or its
 mean, neither of which needs to know v, puts a Gaussian matrix at zero
 outliers and leaves the real matrices with hundreds. The real counts then
 fall by a factor of 1.3 to 9, and the two calibrated estimators differ from
@@ -778,7 +779,9 @@ layers; S2). Against the damage of removing a head it has the wrong sign
 itself is more strongly negative (-0.42): heads that attend to the sink more
 matter less. The norm of a head's output predicts the damage at 0.53
 (interval 0.35 to 0.73; S4), ahead of confidence by 0.69 and of entropy by
-0.62 (S3). The comparison holds within a layer only. Ranked across all
+0.62 (S3). Voita et al. studied the encoder heads of a machine-translation
+Transformer; the result here concerns decoder language models with attention
+sinks, where a head's largest attention weight is usually its sink weight. The comparison holds within a layer only. Ranked across all
 layers of a model, output norm predicts removal damage at -0.08 to 0.24, no
 better than chance, because head output norms are not comparable between
 layers; confidence and sink mass stay negative across layers.

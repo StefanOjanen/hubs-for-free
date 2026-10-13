@@ -262,8 +262,9 @@ Each instrument below exists because a finding above required it.
 - **The statistics the field uses, tested the same way.** A third
   preregistered round took the comparisons published papers use. Voita et
   al.'s head "confidence", the average largest attention weight, which that
-  work linked to important heads, turns out to be a sink detector: it
-  tracks how much a head attends to the sink at 0.92. Against the damage of
+  work linked to important heads in a translation model, turns out to be a
+  sink detector in these language models: it tracks how much a head attends
+  to the sink at 0.92. Against the damage of
   actually removing a head it has the wrong sign, and heads that attend to
   the sink more matter less. The size of a head's output predicts the
   damage at 0.53 within a layer, though not across layers. For pairs of
