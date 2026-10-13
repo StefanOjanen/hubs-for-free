@@ -260,26 +260,47 @@ Each instrument below exists because a finding above required it.
 <p align="center"><em>Comparisons that see only the attention map predict merge damage weakly, with or without the sink; comparisons that include what attention moves predict it best.</em></p>
 
 - **The statistics the field uses, tested the same way.** A third
-  preregistered round took the comparisons published papers use. Voita et
-  al.'s head "confidence", the average largest attention weight, which that
-  work linked to important heads in a translation model, turns out to be a
-  sink detector in these language models: it tracks how much a head attends
-  to the sink at 0.92. Against the damage of
-  actually removing a head it has the wrong sign, and heads that attend to
-  the sink more matter less. The size of a head's output predicts the
-  damage at 0.53 within a layer, though not across layers. For pairs of
-  heads, Clark et al.'s divergence and CHAI-style correlations predict merge
-  damage at 0.29 to 0.43, against 0.65 for the output perturbation. When one
-  pair per key-value group is merged in every layer, as compression methods
-  do, pairs chosen by output perturbation cause 0.58 to 0.86 of the damage
-  of pairs chosen by the commutator or CHAI-style criteria, in all four
-  models; at twice that budget the advantage shrinks in two of them. All
-  eight registered predictions held. Repeated at four times the context on
-  two models, six of seven held; the advantage over the commutator criterion
-  stayed in both models but missed its registered size.
+  preregistered round took the comparisons published papers use. For pairs
+  of heads, Clark et al.'s divergence and CHAI-style correlations predict
+  merge damage at 0.29 to 0.43, against 0.65 for the output perturbation.
+  When one pair per key-value group is merged in every layer, as
+  compression methods do, pairs chosen by output perturbation cause 0.58
+  to 0.86 of the damage of pairs chosen by the commutator or CHAI-style
+  criteria, in all four models; at twice that budget the advantage shrinks
+  in two of them. For single heads, the round took the average largest
+  attention weight over all tokens. That version is a sink detector: it
+  tracks how much a head attends to the sink at 0.92, and against the
+  damage of actually removing a head it has the wrong sign, because heads
+  that attend to the sink more matter less. The size of a head's output
+  predicts the damage at 0.53 within a layer, though not across layers.
+  All eight registered predictions held. Repeated at four times the context
+  on two models, six of seven held; the advantage over the commutator
+  criterion stayed in both models but missed its registered size. On GPT-2
+  and Pythia, which use multi-head attention, and on a second corpus, C4,
+  all seven head-importance predictions held, with output norm at 0.68 and
+  0.69; in these models it also ranks heads across layers.
 
-<p align="center"><img src="figures/readme/fig15_standard_statistics.png" alt="Two dot plots. Left: within-layer correlation with the damage of removing a head, output norm +0.53, low entropy -0.09, Voita confidence -0.16, sink mass -0.42. Right: damage of merges chosen by eight criteria relative to random pairs, from output perturbation 0.47 to the commutator object 0.65" width="880"></p>
-<p align="center"><em>Attention-weight heuristics for head importance point the wrong way, and the similarity statistics in use choose costlier merges than a comparison that includes what attention moves.</em></p>
+<p align="center"><img src="figures/readme/fig15_standard_statistics.png" alt="Two dot plots. Left: within-layer correlation with the damage of removing a head, output norm +0.53, low entropy -0.09, confidence over all tokens -0.16, sink mass -0.42. Right: damage of merges chosen by eight criteria relative to random pairs, from output perturbation 0.47 to the commutator object 0.65" width="880"></p>
+<p align="center"><em>Computed over all tokens, attention confidence points the wrong way, and the similarity statistics in use choose costlier merges than a comparison that includes what attention moves.</em></p>
+
+- **Head confidence, as its authors defined it.** The all-token statistic
+  above is not quite Voita et al.'s "confidence", although an earlier
+  version of this page called it that. They average a head's largest
+  attention weight with the end-of-sentence token left out, because it is
+  not a real token. In translation encoders that token draws a large share
+  of attention, the role the sink plays in a decoder. Computed their way,
+  with the sink left out, confidence predicts the damage of removing a head
+  in all seven decoders tested (+0.32 against -0.21 for the all-token
+  version). In the setting they studied, the encoder heads of translation
+  models for their three language pairs, it predicts the damage at +0.53,
+  and there leaving the token out barely matters (+0.48 with it included);
+  that token takes only about a fifth of the attention. Five of six
+  registered predictions held; the one that failed expected that exclusion
+  to matter in translation encoders. In both settings the norm of what a
+  head writes predicts better.
+
+<p align="center"><img src="figures/readme/fig17_confidence_definition.png" alt="Two dot plots of within-layer correlation with the damage of removing a head. Decoder language models, seven models: output norm +0.62, confidence without the sink +0.32, confidence over all tokens -0.21, sink mass -0.38. Translation encoders, three models: output norm +0.73, confidence without the end-of-sentence token +0.53, confidence over all tokens +0.48, end-of-sentence mass -0.27" width="880"></p>
+<p align="center"><em>Leaving the sink out turns confidence from a sink detector into a marker of heads that matter in decoders; in translation encoders it works with or without the end-of-sentence token, and output norm predicts better in both.</em></p>
 
 - **What the sink does.** A fourth round edited the sink directly. Removing
   its contribution from every head costs 28 to 68 times as much as removing
@@ -339,9 +360,9 @@ Each instrument below exists because a finding above required it.
 
 ## Evidence standard
 
-Thirteen preregistrations with numeric thresholds and falsification clauses
+Fifteen preregistrations with numeric thresholds and falsification clauses
 were frozen in git before their runs (`alignment_study/PREREGISTRATION.md`
-and `PREREGISTRATION2.md` to `PREREGISTRATION14.md`, the audits of
+and `PREREGISTRATION2.md` to `PREREGISTRATION16.md`, the audits of
 `audits/PREREGISTRATION4.md` counted separately; the second committed
 before the held-out models were downloaded, the third and all later ones
 pushed publicly before execution, evaluation scripts committed before
@@ -352,18 +373,21 @@ documented and replaced), the sharp regime-edge threshold (H4b),
 one-column sufficiency on TinyLlama (H2) and OLMo-2 (S2), the
 dissociation control at 32 heads (S3), early sink formation on
 Pythia-160m (D4), both merge-tolerance predictions (M1, M2), the
-derivation gate (G1), and in the functional round the advantage of the
+derivation gate (G1), in the functional round the advantage of the
 plain map over the commutator object (F3b) and the practical merge
-criterion (F4). Out of sample, 7 of 8 registered clauses passed in the
-sub-2B round, 3 of 4 in the 3B-to-7B round, 5 of 5 primary clauses in the
+criterion (F4), the registered size of the multi-pair merge advantage at
+1,024 tokens (S5), and the effect of leaving out the end-of-sentence token
+in translation encoders (V5). Out of sample, 7 of 8 registered clauses
+passed in the sub-2B round, 3 of 4 in the 3B-to-7B round, 5 of 5 primary clauses in the
 training-dynamics round, 4 of 4 in 11 of 11 models in the
 fixed-instrument rerun, where the earlier failures on TinyLlama, OLMo-2
 and the 32-head models resolved without moving a threshold, 0 of 2
 primary clauses in the head-merging round, whose negative result is
 reported in full above, 4 of 4 in the sink-profile round, 5 of 5 on
 the four new attention designs, 5 of 7 in the functional round, 8 of 8 in
-the standard-statistics round, 4 of 4 in the sink-editing round, and 6 of
-7 at 1,024 tokens. Development
+the standard-statistics round, 4 of 4 in the sink-editing round, 6 of
+7 at 1,024 tokens, 7 of 7 on multi-head models with a second corpus, and
+5 of 6 for head confidence as its authors defined it. Development
 calibration that shaped a preregistration is committed and labeled as
 such. A blind reimplementation from the written specification
 reproduced the anchor values to four decimals; surrogate invariants hold
@@ -447,8 +471,10 @@ against the CPU protocol are in `hubsfree/adapters.py` and the run log.
 ## Scope and open items
 
 Results cover seventeen models up to 8B parameters in ten families, English
-text and code, contexts up to 256 tokens, and training dynamics for two
-models of one family. Where the sink sits on a mid-sequence,
+text and code, contexts up to 256 tokens for the structural results and
+1,024 for the functional ones, training dynamics for two models of one
+family, and, for head importance, the encoders of three translation
+models. Where the sink sits on a mid-sequence,
 window-varying column (OLMo-2, late Qwen2.5-3B layers) the sink-operator
 identification weakens and one-column surrogates lose their grip, which
 a set of up to three columns repairs in most layers but not all. In
@@ -456,5 +482,5 @@ a set of up to three columns repairs in most layers but not all. In
 dissociation test needs 256-token windows. The
 residual deviation directions carry structure the three-number summary
 does not capture, and one low-dispersion layer is ill-conditioned for the
-correlation statistic (diagnosed and flagged). Larger models, other
-languages, and long contexts are untested.
+correlation statistic (diagnosed and flagged). Larger models, input
+in other languages, and long contexts are untested.

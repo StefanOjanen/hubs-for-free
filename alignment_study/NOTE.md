@@ -872,7 +872,7 @@ Development on gpt2 labeled. 7 of 7 clauses pass:
   confidence's by 0.91 (WikiText) and 0.95 (C4) and negative entropy's by
   0.86 and 0.89, every interval above zero.
 - S4: output norm 0.68 (0.62 to 0.73) on WikiText and 0.69 (0.61 to 0.76) on
-  C4; per model 0.66 to 0.74.
+  C4; per model 0.65 to 0.74.
 - Secondary: confidence -0.24 and -0.26, negative entropy -0.18 and -0.20,
   sink mass -0.36 and -0.40 (WikiText, C4). Across all layers of a model, not
   registered: output norm 0.39 to 0.69, confidence -0.32 to -0.73. In these
@@ -882,8 +882,8 @@ Development on gpt2 labeled. 7 of 7 clauses pass:
 Correction found while writing this round up: the statistic called Voita et
 al.'s confidence in preregistrations 12, 14 and 15 is the largest attention
 weight over all tokens, sink included. Voita et al. exclude the
-end-of-sentence token, the no-op token of their translation encoders (their
-footnote 2). The registered results stand for the statistic computed; the
+end-of-sentence token (their footnote 2), which in translation encoders
+draws attention the way the sink does in a decoder. The registered results stand for the statistic computed; the
 attribution was wrong. Preregistration 16 (frozen at f5a9539) tests their
 definition.
 
@@ -905,14 +905,14 @@ English to Russian, German and French (18 layers, 144 heads; restore checks
 - V5 FAILS: in the translation encoders, excluding EOS adds 0.05 (-0.02 to
   0.13) against the registered 0.1; the all-token version is already +0.48.
   EOS takes 19 to 25 percent of encoder attention on average.
-- V6: in the decoders, output norm (+0.63) exceeds the sink-excluded
+- V6: in the decoders, output norm (+0.62) exceeds the sink-excluded
   confidence by 0.31 (0.19 to 0.42).
 - Secondary: on C4 (round 15's models) +0.35 against -0.26 for the all-token
   version. Excluding only the first token gives +0.26 (Qwen2.5-7B +0.02,
   whose sink set often holds other columns). Dividing by the non-sink mass
   leaves +0.11 (-0.01 to 0.22): most of what the definition carries is how
   much attention a head puts on real tokens. Translation encoders: output
-  norm +0.73 (0.62 to 0.82), ahead of confidence by 0.20 (0.05 to 0.36);
+  norm +0.73 (0.62 to 0.82), ahead of confidence by 0.20 (0.05 to 0.35);
   negative entropy +0.49; EOS mass -0.27.
 
 Reading: Voita et al.'s statistic, as they define it, marks heads whose

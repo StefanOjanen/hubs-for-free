@@ -42,9 +42,13 @@ included as the positive control, are untouched by every null. Weighting
 attention by the vectors it moves halves the sink's account of head
 similarity, and a comparison that brings in values and output weights
 predicts the damage of merging two heads far better than any map statistic
-and chooses cheaper merges when many pairs are merged. The head-importance
-heuristic that reads attention weights measures the sink and points the
-wrong way, and the sink itself is not a no-op: removing its contribution
+and chooses cheaper merges when many pairs are merged. Head confidence
+computed over all tokens measures the sink and points the wrong way;
+computed as its authors define it, without the sink or end-of-sentence
+token, it marks heads
+whose removal matters, in decoders and in translation encoders, though less
+well than the norm of what a head writes. The sink itself is not a no-op:
+removing its contribution
 costs 28 to 68 times as much as removing an ordinary token's, mostly as a
 constant bias. Each
 registered expectation that failed is reported as a failure; one of them
@@ -760,9 +764,12 @@ the literature on the same four held-out models. For pairs of heads it
 used the Jensen-Shannon divergence between attention rows (Clark et al.
 2019), the cosine of the flattened maps, and the correlation of attention
 rows in both readings of CHAI's statistic, the last row and every row. For
-single heads it used the confidence of Voita et al. (2019), the mean largest
-attention weight, which that work found to mark important heads, and row
-entropy, against the damage of removing the head. It also retested round
+single heads it used the mean largest attention weight and row entropy,
+against the damage of removing the head. The first was registered as the
+confidence of Voita et al. (2019), which that work found to mark important
+heads, but computed over all tokens; Voita et al. leave out the
+end-of-sentence token, and preregistration 16 tests their definition
+(below). It also retested round
 11's failed practical clause where it matters for compression, with many
 pairs merged at once. All eight registered clauses pass. The pair-level
 merge outcomes are round 11's; the removal and multi-pair outcomes are new.
@@ -772,19 +779,19 @@ damage at Spearman 0.29 for both readings of the CHAI statistic, 0.35 for
 map cosine and 0.43 for Jensen-Shannon divergence. The output perturbation
 reaches 0.65, ahead of each by 0.22 to 0.36, every interval above zero (S1).
 
-Head importance. Confidence is a sink detector: within a high-sink layer it
+Head importance. Computed over all tokens, confidence is a sink detector:
+within a high-sink layer it
 tracks the head's sink mass at Spearman 0.92 (interval 0.86 to 0.97, 73
 layers; S2). Against the damage of removing a head it has the wrong sign
 (-0.16, interval -0.44 to -0.01), entropy is no better (-0.09), and sink mass
 itself is more strongly negative (-0.42): heads that attend to the sink more
 matter less. The norm of a head's output predicts the damage at 0.53
 (interval 0.35 to 0.73; S4), ahead of confidence by 0.69 and of entropy by
-0.62 (S3). Voita et al. studied the encoder heads of a machine-translation
-Transformer; the result here concerns decoder language models with attention
-sinks, where a head's largest attention weight is usually its sink weight. The comparison holds within a layer only. Ranked across all
+0.62 (S3). The comparison holds within a layer only. Ranked across all
 layers of a model, output norm predicts removal damage at -0.08 to 0.24, no
 better than chance, because head output norms are not comparable between
-layers; confidence and sink mass stay negative across layers.
+layers in these models; confidence and sink mass stay negative across
+layers.
 
 Merging many pairs. With one pair merged per KV group in every layer but the
 first, 54 to 248 pairs per model, the pairs chosen by output perturbation
@@ -806,6 +813,39 @@ predicts removal damage at 0.50 and beats confidence and entropy by 0.66 and
 models, at 0.75 and 0.50 of the damage of the CHAI-style choice. Against the
 generator cosine its merges cost 0.83 and 0.82, cheaper in both models but
 short of the registered geometric mean of 0.8, so that clause fails.
+
+With multi-head attention and a second corpus (preregistration 15: GPT-2
+medium, Pythia-160m and Pythia-410m, every head of every layer, removal
+damage on WikiText-103 and on C4), all seven clauses hold. Confidence over
+all tokens tracks sink mass at 0.86; output norm predicts removal damage at
+0.68 on WikiText and 0.69 on C4, ahead of confidence by 0.91 and 0.95 and of
+entropy by 0.86 and 0.89. In these models output norm also ranks heads
+across layers (0.39 to 0.69), which it did not in the grouped-query models.
+
+Confidence as its authors define it. Voita et al. average a head's largest
+attention weight over tokens, excluding the end-of-sentence token because it
+is not a real token. In translation encoders that token draws a large share
+of attention, the role the first-token sink plays in a decoder.
+Preregistration 16 left the sink columns out as keys, on the windows of
+rounds 12 and 15 (the recomputed all-token values match the stored ones
+exactly), and tested the result against the stored removal damage of seven
+decoders. It also went to their setting: the encoder heads of three Marian
+translation models for their language pairs, English to Russian, German and
+French (OPUS-MT, stand-ins for their own models), with removal damage
+measured on the decoder's output where they used relevance propagation. Five
+of six clauses pass. Without the sink, confidence predicts removal damage at
++0.32 (interval 0.19 to 0.44), positive in all seven decoders, against -0.21
+over all tokens (V1, V2), and carries a little beyond sink mass (partial
+correlation +0.15, interval 0.02 to 0.28; V3). In the translation encoders
+it predicts removal damage at +0.53 (0.41 to 0.63; V4), but leaving out EOS
+adds only 0.05 there (-0.02 to 0.13), short of the registered 0.1, so V5
+fails: EOS takes 19 to 25 percent of encoder attention, and the all-token
+version is already +0.48. The norm of what a head writes predicts better in
+both settings, by 0.31 in the decoders (V6) and by 0.20 in the translation
+encoders (not registered). Rounds 12, 14 and 15 registered the all-token
+statistic under Voita et al.'s name. That attribution was wrong: their
+definition marks heads that matter, and in decoders including the sink is
+what flips the sign.
 
 ### 6.3 What the sink does
 
@@ -838,7 +878,9 @@ Results cover seventeen models up to 8B parameters in ten families, three
 position schemes and three attention layouts, English text and code,
 windows up to 256 tokens for the statistics and 512 for perplexity; the
 functional comparisons of Section 6.2 were repeated at 1,024 tokens on two
-models (six of seven clauses hold). Where the sink sits on a mid-sequence, window-varying column
+models (six of seven clauses hold), on three multi-head models with C4 as a
+second corpus (seven of seven), and on the encoder heads of three
+translation models. Where the sink sits on a mid-sequence, window-varying column
 (OLMo-2, late Qwen2.5-3B layers), the sink-operator identification weakens
 (cosine 0.61 to 0.82 with one column) and the column set repairs most but
 not all of it (four of OLMo-2's 19 high-sink layers keep a sufficiency
@@ -867,7 +909,9 @@ alignment or shared structure, run a dissociation control at a width of at
 least eight tokens per head; report adaptive fits against the best fit the
 identical search reaches on shape-matched noise; freeze thresholds before
 the runs and report failures. The toolkit runs the first four in one
-command.
+command. To rank heads from their attention weights, leave the sink or
+end-of-sentence token out, as Voita et al. did, and check the ranking
+against the norm of what each head writes.
 
 ## Appendix A. Preregistration ledger
 
@@ -876,13 +920,19 @@ command.
 | 1 | commits 41769a9, 6e57f84 | A1 to A7 on the development model, GPT-2, Pythia-160m | A1 fail, A2 to A6 pass, A7 fail (control redesigned) |
 | 2 | 9ab1c28, before download | H0 to H6 on five held-out sub-2B models | 7 of 8 clauses pass; H2 fails on TinyLlama, H4b fails |
 | 3 | 9dd433a, pushed before execution | S1 to S4 on five 3B to 7B models | S1, S2, S4 pass; S3 fails (causal width) |
+| 4 | ee4e267, pushed before any battery | E1 to E5, audits of four published findings (Target 2 dropped before the freeze) | positive control holds (E3); E1, E2, E5 fail as registered; three findings shrink |
 | 5 | 68b65f9, pushed before download | D0 to D5, Pythia checkpoints | D0 to D3, D5 pass; D4 (secondary) fails |
 | 6 | 3d5b337, pushed before execution | S1' to S4 with repaired instruments, thirteen models | 4 of 4 in 11 of 11 |
 | 7 | 6b8f8ea, pushed before execution | M1 to M3, head merging | M1, M2 fail; secondary clauses fail; costs reported |
 | 8 | b9b8ef0, pushed before execution | G1 to G4, derived shared energy | G1 (gate) fails at R^2 0.55; G2 to G4 pass |
 | 9 | 6e6b253, pushed before execution | P1 to P4, sink-profile generative model | P1 to P4 pass (11 of 12 models; TinyLlama's low-sink layers the exception) |
 | 10 | de18d52, pushed before download | N1 to N5 on Falcon-7B, BLOOM-7b1, OPT-6.7B, Qwen3-8B | N1 to N5 pass, 4 of 4 models |
-| 4 (draft) | criteria for Targets 1, 3, 4, 5 frozen by commit | audits | Target 2 not reproducible; batteries pending public registration |
+| 11 | e45b49f, pushed before execution | F1 to F4, attention weighted by what it moves, against merge damage | 5 of 7; F3b, F4 fail |
+| 12 | fc6ae80, pushed before execution | S1 to S7, the field's statistics against merge and removal damage | 8 of 8 |
+| 13 | 97d2837, pushed before execution | K1 to K4, edits of the sink | 4 of 4 |
+| 14 | 18901f6, pushed before execution | round 12's clauses at 1,024 tokens, two models | 6 of 7; S5 fails |
+| 15 | 46fd50c, pushed before execution | round 12's head-importance clauses on GPT-2 medium and Pythia, WikiText-103 and C4 | 7 of 7 |
+| 16 | f5a9539, pushed before execution | V1 to V6, Voita et al.'s confidence as defined, seven decoders and three translation encoders | 5 of 6; V5 fails |
 
 ## Appendix B. Numbers ledger
 
@@ -913,3 +963,14 @@ command.
 | Target 4 reproduction | audits/dewage2026/Mistral-7B-v0.1_base_result.json |
 | Target 5 reproduction | audits/retrieval_heads/Qwen2.5-7B_base_result.json |
 | MPS fidelity | alignment_study/platform_fidelity.json |
+| audit batteries, E1 to E5 | audits/*/battery_result*.json, audits/battery_results.json, audits/RESULTS.md (regenerated by audits/eval_batteries.py) |
+| Target 4 edge calibration (post hoc) | audits/dewage2026/posthoc_edge.json |
+| Llama-2-7B-80K inclusion tests | audits/retrieval_heads/llama-2-7b-80k_inclusion_test.json, llama-2-7b-80k_inclusion_test_answerspan.json |
+| model-clustered intervals | alignment_study/clustered_stats.json |
+| functional round, F1 to F4 | alignment_study/functional_results.json, functional/, functional_dev_calibration.json |
+| the field's statistics, S1 to S7 | alignment_study/standard_results.json, standard/, standard_dev_results.json |
+| sink edits, K1 to K4 | alignment_study/sink_results.json, sink/ |
+| 1,024 tokens | alignment_study/standard_long_results.json, standard_long/ |
+| multi-head models and C4 | alignment_study/importance_mha_results.json, importance_mha/, importance_mha_dev_results.json |
+| confidence as defined, V1 to V6 | alignment_study/voita_results.json, voita/, voita_dev_results.json |
+| shared energy against merge damage (post hoc) | alignment_study/posthoc/sharedE_vs_merge_kl.json |

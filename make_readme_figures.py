@@ -580,7 +580,7 @@ if glob.glob(SR):
     fig, (axL, axR) = plt.subplots(1, 2, figsize=(13.2, 5.0), gridspec_kw={"left": 0.15, "right": 0.95, "top": 0.74, "bottom": 0.15, "wspace": 0.95})
     # left: head statistics against the damage of removing the head
     hb = R15["secondary"]["B_rho_by_head_statistic"]
-    rowsL = [("sink_mass", "Sink mass", False), ("conf", "Confidence (Voita et al.)", False), ("neg_entropy", "Low entropy", False), ("out_norm", "Output norm", True)]
+    rowsL = [("sink_mass", "Sink mass", False), ("conf", "Confidence, all tokens", False), ("neg_entropy", "Low entropy", False), ("out_norm", "Output norm", True)]
     for yy, (k, lab, func) in enumerate(rowsL):
         col = S1 if func else MUTED; lo, hi = hb[k]["ci95"]
         axL.plot([lo, hi], [yy, yy], color=col, lw=2, solid_capstyle="round", zorder=2)
@@ -651,5 +651,40 @@ if SK:
     fig.text(0.02, 0.97, "The sink is not a no-op, and mostly acts as a bias", fontsize=15, color=INK, va="top")
     fig.text(0.02, 0.905, "Preregistration 13, four models; the first token's attention weight edited after the softmax in every head and layer.", fontsize=10, color=INK2, va="top")
     fig.savefig(OUT + "fig16_sink_edits.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
+# ============ Figure 17: confidence as its authors define it (preregistration 16) ============
+VR = "alignment_study/voita_results.json"
+if glob.glob(VR):
+    plt.rcParams["axes.grid"] = False
+    R17 = json.load(open(VR)); sec17, pm17 = R17["secondary"], R17["per_model"]
+    fig, axes = plt.subplots(1, 2, figsize=(13.2, 4.4), gridspec_kw={"left": 0.17, "right": 0.95, "top": 0.68, "bottom": 0.17, "wspace": 0.95})
+    panels = [("D_wikitext_", lambda pm: pm.get("wikitext", {}).get("rho_mean"), "Decoder language models",
+               [("sink_mass", "Sink mass", MUTED), ("conf_all", "Confidence, all tokens", MUTED),
+                ("conf_voita", "Confidence without the sink", S2), ("out_norm", "Output norm", S1)]),
+              ("T_", lambda pm: pm.get("rho_mean") if "eos_mass_mean" in pm else None, "Translation encoders",
+               [("eos_mass", "End-of-sentence mass", MUTED), ("conf_all", "Confidence, all tokens", MUTED),
+                ("conf_voita", "Confidence without EOS", S2), ("out_norm", "Output norm", S1)])]
+    for ax, (pre, getpm, title, rows) in zip(axes, panels):
+        per_models = [getpm(pm) for pm in pm17.values() if getpm(pm)]
+        for yy, (k, lab, col) in enumerate(rows):
+            v = sec17[pre + k]; lo, hi = v["ci95"]
+            ax.plot([lo, hi], [yy, yy], color=col, lw=2, solid_capstyle="round", zorder=2)
+            ax.scatter([p[k] for p in per_models], [yy] * len(per_models), s=24, facecolors=SURF, edgecolors=INK2, linewidths=1.0, zorder=3)
+            ax.scatter([v["value"]], [yy], s=90, color=col, edgecolors=SURF, linewidths=2, zorder=4)
+            ax.text(1.04, yy, f"{v['value']:+.2f}", va="center", fontsize=11, color=INK, transform=ax.get_yaxis_transform(), clip_on=False)
+        ax.axvline(0, color=INK2, lw=0.8, zorder=1)
+        ax.set_yticks(range(len(rows))); ax.set_yticklabels([r[1] for r in rows], fontsize=10.5)
+        ax.set_xlim(-1, 1); ax.set_xticks([-1, -0.5, 0, 0.5, 1])
+        ax.set_xlabel("within-layer Spearman with the damage of removing a head")
+        style(ax, f"{title}, {len(per_models)} models")
+    from matplotlib.lines import Line2D
+    hl = [Line2D([], [], marker="o", ls="", ms=9, color=MUTED, mec=SURF), Line2D([], [], marker="o", ls="", ms=9, color=S2, mec=SURF),
+          Line2D([], [], marker="o", ls="", ms=9, color=S1, mec=SURF), Line2D([], [], marker="o", ls="", ms=5.5, mfc=SURF, mec=INK2)]
+    fig.legend(hl, ["sink or EOS token included", "sink or EOS token left out, as Voita et al. define it", "what the head writes", "each model"],
+               loc="upper left", bbox_to_anchor=(0.012, 0.855), ncol=4, fontsize=9.5, frameon=False, handletextpad=0.4, columnspacing=1.6)
+    fig.text(0.012, 0.975, "Head confidence, computed as its authors defined it, marks the heads that matter", fontsize=15, color=INK, va="top")
+    fig.text(0.012, 0.918, "Preregistration 16. Big dots: mean over models with model-clustered 95% intervals. Decoders: removal damage on WikiText-103; translation: OPUS-MT English to Russian, German, French.",
+             fontsize=9.5, color=INK2, va="top")
+    fig.savefig(OUT + "fig17_confidence_definition.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
 print("FIGURES_DONE", sorted(glob.glob(OUT + "*")))
