@@ -922,3 +922,44 @@ which turns it into a sink detector with the wrong sign. The token they
 excluded matters little in their translation encoders and decides the sign
 in decoders, where the sink takes far more attention. The norm of what a
 head writes predicts removal damage better in both settings.
+
+## Two audits under the sources' own readings (2026-10-14, preregistration 17)
+
+Frozen at 94b7734 (`audits/PREREGISTRATION17.md`); instruments checked
+against the registered batteries before the freeze. 8 of 9 clauses pass.
+
+Part K, Target 1 in Clark et al.'s input format: bert-base-cased with
+segment ids on 1,000 segments, [CLS] A [SEP] B [SEP], built with the logic of
+their preprocessing script from WikiText-103 validation articles (97.9
+percent at 128 tokens). All five clauses pass. K0: D = 0.096, same-layer
+nearest neighbor 36.1 percent (chance 7.7). K1: the null keeping the [CLS]
+column and both [SEP] columns reproduces 0.638 of D (Target 1: 0.638). K2:
+marginal null 0.125. K3: random and untrained nulls about zero. K4: label
+shrinks, as in Target 1.
+
+Part C, Target 3 under the every-row reading (per-row Pearson across heads
+over the causal support, 64 rows, the same 32 C4 documents of 1,024 tokens):
+- C1: on Mistral-7B the sink-set null reproduces a median 0.97 (0.80 to
+  0.998 over layers; last row 0.96).
+- C2 FAILS: on OPT-6.7B the median is 0.43 (0.08 to 0.96; last row 0.68).
+  The share is below one half in 18 of 32 layers, 0.08 to 0.36 in the first
+  seven, and 0.87 to 0.96 in the last seven.
+- C3: marginal null 0.007 (Mistral) and 0.014 (OPT). C4: untrained models
+  0.0004 and 0.002.
+- Reported: every-row correlation 0.58 to 0.98 (Mistral) and 0.25 to 0.88
+  (OPT); depth trend -0.36 and +0.64 (last row -0.38 and +0.49); majority
+  clusters at 0.95 in 4 and 0 layers, at 0.90 in 7 and 3. The recomputed
+  last-row statistics equal Target 3's exactly.
+
+Reading: the input format does not change the BERT result. The sink account
+of CHAI's redundancy holds on Mistral-7B under either reading; on OPT-6.7B
+it depends on the rows read, and over every row most of the correlation in
+the early and middle layers is something other than the sink columns.
+
+Related work found after this round (2026-10-14; to be cited): Papamichalis
+and Ruane (arXiv 2608.14712, August 2026) show that keeping or dropping the
+sink flips 17 to 47 percent of head-similarity verdicts in ten models and
+that the most prominent structure in a standard BERT head-clustering
+pipeline follows from that choice; Sandoval-Segura et al. (ICLR 2026) find
+that output-norm scores identify inactive heads that attention-weight
+scores miss.

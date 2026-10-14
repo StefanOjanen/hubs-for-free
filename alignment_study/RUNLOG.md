@@ -474,3 +474,18 @@ to 17:13:38 (234 s) once its download finished; translation restore checks
 0. The run scripts ran at head 54d6def; voita_definition.py and eval_voita.py
 are unchanged since the freeze (empty git diff against f5a9539). Evaluation:
 5 of 6 clauses pass, V5 fails (voita_results.json, eval_voita.log).
+
+Readings round (audits/PREREGISTRATION17.md, frozen at 94b7734). Both halves
+launched 2026-10-13 20:20 UTC with --registered=<freeze permalink>,
+concurrently on the GPU. The laptop ran on battery: the guard paused both
+runs at 24 percent at 21:02:51 UTC and resumed them on AC at 03:24:36 UTC on
+2026-10-14. A second pause at 11 percent (03:38:58 to 03:39:18) came while
+both runs drew more than the 65 W adapter supplies. A hysteresis watcher
+(hold at 6 percent while discharging, release at 20) was added for the CHAI
+half and never triggered. Clark finished 03:52:39 UTC, Mistral-7B 04:00:00,
+OPT-6.7B 04:35:24 (2,101 s). The guards logged exit status 145 for the two
+runs they had stopped and resumed (zsh's record of a stopped job); both runs
+printed their completion lines and wrote complete result files. The scripts
+are unchanged since the freeze (empty git diff against 94b7734). Evaluation
+(eval_readings.py, unchanged): 8 of 9 clauses pass, C2 fails
+(readings_results.json, eval_readings.log).

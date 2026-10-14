@@ -1,0 +1,196 @@
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 4730.55it/s]
+mistralai/Mistral-7B-v0.1 DTYPE bfloat16 layers 32 heads 32 documents 32 rows 64 draws 30 (156s)
+  document 1/32 (207s)
+  document 2/32 (249s)
+  document 3/32 (290s)
+  document 4/32 (331s)
+  document 5/32 (371s)
+  document 6/32 (414s)
+  document 7/32 (461s)
+  document 8/32 (503s)
+  document 9/32 (552s)
+  document 10/32 (609s)
+  document 11/32 (698s)
+  document 12/32 (767s)
+  document 13/32 (818s)
+  document 14/32 (869s)
+  document 15/32 (927s)
+  document 16/32 (974s)
+  document 17/32 (1023s)
+  document 18/32 (1073s)
+  document 19/32 (1126s)
+  document 20/32 (1179s)
+  document 21/32 (1242s)
+  document 22/32 (1323s)
+  document 23/32 (1378s)
+  document 24/32 (1432s)
+  document 25/32 (1483s)
+  document 26/32 (1532s)
+  document 27/32 (1581s)
+  document 28/32 (1638s)
+  document 29/32 (1741s)
+  document 30/32 (1826s)
+  document 31/32 (1900s)
+  document 32/32 (1954s)
+untrained 1/5 (25627s)
+untrained 2/5 (26442s)
+untrained 3/5 (26932s)
+untrained 4/5 (27276s)
+untrained 5/5 (27585s)
+  L 0 every-row corr 0.584 (last row 0.546) | colset reproduced 0.95 | marginal 0.00 | untrained 0.00
+  L 1 every-row corr 0.941 (last row 0.942) | colset reproduced 0.99 | marginal 0.00 | untrained 0.00
+  L 2 every-row corr 0.981 (last row 0.981) | colset reproduced 1.00 | marginal 0.00 | untrained 0.00
+  L 3 every-row corr 0.973 (last row 0.971) | colset reproduced 0.99 | marginal 0.00 | untrained 0.00
+  L 4 every-row corr 0.964 (last row 0.962) | colset reproduced 0.99 | marginal 0.00 | untrained 0.00
+  L 5 every-row corr 0.933 (last row 0.933) | colset reproduced 0.99 | marginal 0.00 | untrained 0.00
+  L 6 every-row corr 0.923 (last row 0.930) | colset reproduced 0.99 | marginal 0.00 | untrained 0.00
+  L 7 every-row corr 0.856 (last row 0.858) | colset reproduced 0.97 | marginal 0.00 | untrained 0.00
+  L 8 every-row corr 0.861 (last row 0.847) | colset reproduced 0.96 | marginal 0.01 | untrained 0.00
+  L 9 every-row corr 0.834 (last row 0.797) | colset reproduced 0.96 | marginal 0.00 | untrained 0.00
+  L10 every-row corr 0.779 (last row 0.769) | colset reproduced 0.92 | marginal 0.01 | untrained 0.00
+  L11 every-row corr 0.754 (last row 0.731) | colset reproduced 0.94 | marginal 0.01 | untrained 0.00
+  L12 every-row corr 0.733 (last row 0.712) | colset reproduced 0.92 | marginal 0.01 | untrained 0.00
+  L13 every-row corr 0.731 (last row 0.712) | colset reproduced 0.80 | marginal 0.02 | untrained 0.00
+  L14 every-row corr 0.688 (last row 0.649) | colset reproduced 0.89 | marginal 0.02 | untrained 0.00
+  L15 every-row corr 0.703 (last row 0.661) | colset reproduced 0.90 | marginal 0.02 | untrained 0.00
+  L16 every-row corr 0.732 (last row 0.678) | colset reproduced 0.91 | marginal 0.02 | untrained 0.00
+  L17 every-row corr 0.728 (last row 0.689) | colset reproduced 0.89 | marginal 0.03 | untrained 0.00
+  L18 every-row corr 0.680 (last row 0.639) | colset reproduced 0.94 | marginal 0.03 | untrained 0.00
+  L19 every-row corr 0.740 (last row 0.701) | colset reproduced 0.95 | marginal 0.01 | untrained 0.00
+  L20 every-row corr 0.800 (last row 0.761) | colset reproduced 0.97 | marginal 0.01 | untrained 0.00
+  L21 every-row corr 0.827 (last row 0.778) | colset reproduced 0.98 | marginal 0.01 | untrained 0.00
+  L22 every-row corr 0.863 (last row 0.823) | colset reproduced 0.99 | marginal 0.00 | untrained 0.00
+  L23 every-row corr 0.827 (last row 0.802) | colset reproduced 0.98 | marginal 0.01 | untrained 0.00
+  L24 every-row corr 0.859 (last row 0.829) | colset reproduced 0.99 | marginal 0.00 | untrained 0.00
+  L25 every-row corr 0.883 (last row 0.852) | colset reproduced 0.99 | marginal 0.00 | untrained 0.00
+  L26 every-row corr 0.857 (last row 0.831) | colset reproduced 0.99 | marginal 0.00 | untrained 0.00
+  L27 every-row corr 0.830 (last row 0.821) | colset reproduced 0.99 | marginal 0.00 | untrained 0.00
+  L28 every-row corr 0.757 (last row 0.727) | colset reproduced 0.98 | marginal 0.01 | untrained 0.00
+  L29 every-row corr 0.746 (last row 0.720) | colset reproduced 0.96 | marginal 0.01 | untrained 0.00
+  L30 every-row corr 0.724 (last row 0.693) | colset reproduced 0.96 | marginal 0.02 | untrained 0.00
+  L31 every-row corr 0.638 (last row 0.600) | colset reproduced 0.91 | marginal 0.06 | untrained 0.00
+{
+ "b_marginal": {
+  "median": 0.0069073587415488455,
+  "min": 0.00028363552906414803,
+  "max": 0.057233132975105995
+ },
+ "c_colset": {
+  "median": 0.9682052260587899,
+  "min": 0.7976187113897361,
+  "max": 0.9979221279705729
+ },
+ "d_untrained": {
+  "median": 0.0003670443617708616,
+  "min": 0.00020483684000350297,
+  "max": 0.0005180360203662339
+ },
+ "depth_spearman_every_row": -0.3574046920821114,
+ "depth_spearman_last_row": -0.3779325513196481,
+ "layers_majority_95_every_row": 4,
+ "layers_majority_90_every_row": 7,
+ "last_row_check_max_abs_diff": {
+  "mean_corr": 3.3306690738754696e-16,
+  "largest95": 0.0,
+  "largest90": 0.0
+ }
+}
+CHAI_READING_DONE audits/readings/chai_every_row_Mistral-7B-v0.1.json
+Loading weights:   0%|          | 0/516 [00:00<?, ?it/s]Loading weights:   0%|          | 2/516 [00:00<02:08,  4.01it/s]Loading weights:  10%|█         | 54/516 [00:00<00:04, 99.38it/s]Loading weights:  14%|█▍        | 71/516 [00:00<00:04, 105.87it/s]Loading weights:  17%|█▋        | 86/516 [00:00<00:04, 104.74it/s]Loading weights:  20%|█▉        | 102/516 [00:01<00:03, 108.21it/s]Loading weights:  23%|██▎       | 118/516 [00:01<00:03, 108.84it/s]Loading weights:  26%|██▌       | 134/516 [00:01<00:03, 110.51it/s]Loading weights:  29%|██▉       | 150/516 [00:01<00:03, 110.10it/s]Loading weights:  32%|███▏      | 166/516 [00:01<00:03, 112.35it/s]Loading weights:  35%|███▌      | 182/516 [00:01<00:02, 112.26it/s]Loading weights:  38%|███▊      | 198/516 [00:01<00:02, 113.39it/s]Loading weights:  41%|████▏     | 214/516 [00:02<00:02, 112.00it/s]Loading weights:  45%|████▍     | 230/516 [00:02<00:02, 110.21it/s]Loading weights:  48%|████▊     | 246/516 [00:02<00:02, 110.90it/s]Loading weights:  51%|█████     | 262/516 [00:02<00:02, 113.72it/s]Loading weights:  54%|█████▍    | 278/516 [00:02<00:02, 113.71it/s]Loading weights:  57%|█████▋    | 294/516 [00:02<00:01, 114.69it/s]Loading weights:  60%|██████    | 310/516 [00:03<00:02, 73.25it/s] Loading weights:  63%|██████▎   | 326/516 [00:04<00:07, 26.37it/s]Loading weights:  66%|██████▋   | 342/516 [00:05<00:06, 26.09it/s]Loading weights:  69%|██████▉   | 358/516 [00:05<00:05, 26.91it/s]Loading weights:  72%|███████▏  | 374/516 [00:06<00:05, 28.16it/s]Loading weights:  76%|███████▌  | 390/516 [00:06<00:04, 29.15it/s]Loading weights:  79%|███████▊  | 406/516 [00:07<00:03, 29.43it/s]Loading weights:  82%|████████▏ | 422/516 [00:08<00:03, 28.68it/s]Loading weights:  85%|████████▍ | 438/516 [00:08<00:02, 29.06it/s]Loading weights:  88%|████████▊ | 454/516 [00:09<00:02, 30.21it/s]Loading weights:  91%|█████████ | 470/516 [00:09<00:01, 29.91it/s]Loading weights:  94%|█████████▍| 486/516 [00:10<00:01, 29.00it/s]Loading weights:  97%|█████████▋| 502/516 [00:10<00:00, 28.66it/s]Loading weights: 100%|██████████| 516/516 [00:10<00:00, 47.81it/s]
+facebook/opt-6.7b DTYPE bfloat16 layers 32 heads 32 documents 32 rows 64 draws 30 (26s)
+  document 1/32 (54s)
+  document 2/32 (78s)
+  document 3/32 (102s)
+  document 4/32 (126s)
+  document 5/32 (151s)
+  document 6/32 (174s)
+  document 7/32 (198s)
+  document 8/32 (221s)
+  document 9/32 (245s)
+  document 10/32 (269s)
+  document 11/32 (293s)
+  document 12/32 (317s)
+  document 13/32 (341s)
+  document 14/32 (365s)
+  document 15/32 (389s)
+  document 16/32 (412s)
+  document 17/32 (436s)
+  document 18/32 (461s)
+  document 19/32 (485s)
+  document 20/32 (509s)
+  document 21/32 (534s)
+  document 22/32 (558s)
+  document 23/32 (582s)
+  document 24/32 (606s)
+  document 25/32 (630s)
+  document 26/32 (655s)
+  document 27/32 (679s)
+  document 28/32 (703s)
+  document 29/32 (728s)
+  document 30/32 (752s)
+  document 31/32 (776s)
+  document 32/32 (801s)
+untrained 1/5 (1065s)
+untrained 2/5 (1331s)
+untrained 3/5 (1588s)
+untrained 4/5 (1842s)
+untrained 5/5 (2101s)
+  L 0 every-row corr 0.245 (last row 0.337) | colset reproduced 0.08 | marginal 0.03 | untrained 0.00
+  L 1 every-row corr 0.634 (last row 0.548) | colset reproduced 0.14 | marginal 0.01 | untrained 0.00
+  L 2 every-row corr 0.642 (last row 0.598) | colset reproduced 0.14 | marginal 0.01 | untrained 0.00
+  L 3 every-row corr 0.630 (last row 0.570) | colset reproduced 0.24 | marginal 0.01 | untrained 0.00
+  L 4 every-row corr 0.615 (last row 0.578) | colset reproduced 0.34 | marginal 0.01 | untrained 0.00
+  L 5 every-row corr 0.555 (last row 0.532) | colset reproduced 0.36 | marginal 0.02 | untrained 0.00
+  L 6 every-row corr 0.531 (last row 0.516) | colset reproduced 0.36 | marginal 0.03 | untrained 0.00
+  L 7 every-row corr 0.546 (last row 0.539) | colset reproduced 0.16 | marginal 0.04 | untrained 0.00
+  L 8 every-row corr 0.589 (last row 0.576) | colset reproduced 0.13 | marginal 0.05 | untrained 0.00
+  L 9 every-row corr 0.621 (last row 0.614) | colset reproduced 0.16 | marginal 0.04 | untrained 0.00
+  L10 every-row corr 0.644 (last row 0.624) | colset reproduced 0.20 | marginal 0.04 | untrained 0.00
+  L11 every-row corr 0.623 (last row 0.614) | colset reproduced 0.23 | marginal 0.03 | untrained 0.00
+  L12 every-row corr 0.631 (last row 0.600) | colset reproduced 0.36 | marginal 0.03 | untrained 0.00
+  L13 every-row corr 0.651 (last row 0.648) | colset reproduced 0.37 | marginal 0.02 | untrained 0.00
+  L14 every-row corr 0.598 (last row 0.582) | colset reproduced 0.43 | marginal 0.03 | untrained 0.00
+  L15 every-row corr 0.607 (last row 0.587) | colset reproduced 0.43 | marginal 0.02 | untrained 0.01
+  L16 every-row corr 0.663 (last row 0.640) | colset reproduced 0.45 | marginal 0.01 | untrained 0.00
+  L17 every-row corr 0.633 (last row 0.619) | colset reproduced 0.43 | marginal 0.02 | untrained 0.00
+  L18 every-row corr 0.615 (last row 0.546) | colset reproduced 0.52 | marginal 0.01 | untrained 0.01
+  L19 every-row corr 0.588 (last row 0.543) | colset reproduced 0.57 | marginal 0.02 | untrained 0.00
+  L20 every-row corr 0.591 (last row 0.508) | colset reproduced 0.65 | marginal 0.01 | untrained 0.00
+  L21 every-row corr 0.658 (last row 0.595) | colset reproduced 0.67 | marginal 0.01 | untrained 0.00
+  L22 every-row corr 0.630 (last row 0.524) | colset reproduced 0.74 | marginal 0.01 | untrained 0.00
+  L23 every-row corr 0.612 (last row 0.527) | colset reproduced 0.75 | marginal 0.01 | untrained 0.00
+  L24 every-row corr 0.648 (last row 0.533) | colset reproduced 0.80 | marginal 0.01 | untrained 0.01
+  L25 every-row corr 0.749 (last row 0.640) | colset reproduced 0.87 | marginal 0.00 | untrained 0.00
+  L26 every-row corr 0.745 (last row 0.624) | colset reproduced 0.89 | marginal 0.00 | untrained 0.00
+  L27 every-row corr 0.743 (last row 0.663) | colset reproduced 0.89 | marginal 0.00 | untrained 0.00
+  L28 every-row corr 0.807 (last row 0.733) | colset reproduced 0.92 | marginal 0.00 | untrained 0.00
+  L29 every-row corr 0.820 (last row 0.766) | colset reproduced 0.94 | marginal 0.00 | untrained 0.00
+  L30 every-row corr 0.879 (last row 0.831) | colset reproduced 0.95 | marginal 0.00 | untrained 0.00
+  L31 every-row corr 0.832 (last row 0.784) | colset reproduced 0.96 | marginal 0.00 | untrained -0.00
+{
+ "b_marginal": {
+  "median": 0.014113486200751634,
+  "min": 0.001102538468713348,
+  "max": 0.04794556608009373
+ },
+ "c_colset": {
+  "median": 0.4274998710626475,
+  "min": 0.07758867391217664,
+  "max": 0.9581983892643533
+ },
+ "d_untrained": {
+  "median": 0.002275449463316441,
+  "min": -0.0003905513859166251,
+  "max": 0.00778235757275862
+ },
+ "depth_spearman_every_row": 0.6381964809384163,
+ "depth_spearman_last_row": 0.4915689149560116,
+ "layers_majority_95_every_row": 0,
+ "layers_majority_90_every_row": 3,
+ "last_row_check_max_abs_diff": {
+  "mean_corr": 2.220446049250313e-16,
+  "largest95": 0.0,
+  "largest90": 0.0
+ }
+}
+CHAI_READING_DONE audits/readings/chai_every_row_opt-6.7b.json

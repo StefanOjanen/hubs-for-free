@@ -1,0 +1,63 @@
+{
+ "part": "K",
+ "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/94b7734/audits/PREREGISTRATION17.md",
+ "check": false,
+ "model": "bert-base-cased",
+ "n_segments": 1000,
+ "tokens_mean": 127.013,
+ "share_at_128": 0.979,
+ "draws": 20,
+ "device": "mps",
+ "real": {
+  "D": 0.09609197893213078,
+  "nn_same_layer": 0.3611111111111111
+ },
+ "nulls": {
+  "a_random": {
+   "D_median": 2.3813051653609474e-06,
+   "D_p5_p95": [
+    -3.8314801232107455e-05,
+    1.585313238677e-05
+   ],
+   "percentile_of_real": 100.0,
+   "shrinkage": 2.478151862230717e-05,
+   "nn_median": 0.08333333333333333,
+   "n": 20
+  },
+  "b_marginal": {
+   "D_median": 0.012045961258389692,
+   "D_p5_p95": [
+    0.01203654273493715,
+    0.01205303048148813
+   ],
+   "percentile_of_real": 100.0,
+   "shrinkage": 0.12535865524111733,
+   "nn_median": 0.10416666666666667,
+   "n": 20
+  },
+  "c_colfix": {
+   "D_median": 0.06131255980582018,
+   "D_p5_p95": [
+    0.061308941127781,
+    0.061315250395458556
+   ],
+   "percentile_of_real": 100.0,
+   "shrinkage": 0.6380611627233204,
+   "nn_median": 0.3125,
+   "n": 20
+  },
+  "d_untrained": {
+   "D_median": -3.1207820514449897e-06,
+   "D_p5_p95": [
+    -2.2211522131693195e-05,
+    2.5827849469274228e-05
+   ],
+   "percentile_of_real": 100.0,
+   "shrinkage": -3.247702967642263e-05,
+   "nn_median": 0.09027777777777778,
+   "n": 5
+  }
+ },
+ "outcome": "shrinks",
+ "runtime_s": 27145.6
+}

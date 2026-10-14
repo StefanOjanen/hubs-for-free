@@ -1,0 +1,10 @@
+pr17 chai start 2026-10-13T20:20:06Z head 94b7734
+model mistralai/Mistral-7B-v0.1 20:20:06Z
+paused at 24% 21:02:51Z
+resumed 03:24:36Z
+paused at 11% 03:38:58Z
+resumed 03:39:18Z
+exit 145 2026-10-14T04:00:00Z
+model facebook/opt-6.7b 04:00:00Z
+exit 0 2026-10-14T04:35:24Z
+pr17 chai end 2026-10-14T04:35:24Z

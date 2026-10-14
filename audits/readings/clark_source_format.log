@@ -1,0 +1,100 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6795.30it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-cased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+bert-base-cased segments 1000 tokens mean 127.0 max 128 share at 128 0.98 (6s)
+  segment 0 (10s)
+  segment 50 (152s)
+  segment 100 (338s)
+  segment 150 (541s)
+  segment 200 (742s)
+  segment 250 (975s)
+  segment 300 (1212s)
+  segment 350 (1438s)
+  segment 400 (1667s)
+  segment 450 (1888s)
+  segment 500 (2086s)
+  segment 550 (2260s)
+  segment 600 (2476s)
+  segment 650 (25563s)
+  segment 700 (25719s)
+  segment 750 (25873s)
+  segment 800 (26045s)
+  segment 850 (26228s)
+  segment 900 (26442s)
+  segment 950 (26593s)
+untrained done (27145s)
+{
+ "part": "K",
+ "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/94b7734/audits/PREREGISTRATION17.md",
+ "check": false,
+ "model": "bert-base-cased",
+ "n_segments": 1000,
+ "tokens_mean": 127.013,
+ "share_at_128": 0.979,
+ "draws": 20,
+ "device": "mps",
+ "real": {
+  "D": 0.09609197893213078,
+  "nn_same_layer": 0.3611111111111111
+ },
+ "outcome": "shrinks",
+ "runtime_s": 27145.6
+}
+{
+ "a_random": {
+  "D_median": 2.3813051653609474e-06,
+  "D_p5_p95": [
+   -3.8314801232107455e-05,
+   1.585313238677e-05
+  ],
+  "percentile_of_real": 100.0,
+  "shrinkage": 2.478151862230717e-05,
+  "nn_median": 0.08333333333333333,
+  "n": 20
+ },
+ "b_marginal": {
+  "D_median": 0.012045961258389692,
+  "D_p5_p95": [
+   0.01203654273493715,
+   0.01205303048148813
+  ],
+  "percentile_of_real": 100.0,
+  "shrinkage": 0.12535865524111733,
+  "nn_median": 0.10416666666666667,
+  "n": 20
+ },
+ "c_colfix": {
+  "D_median": 0.06131255980582018,
+  "D_p5_p95": [
+   0.061308941127781,
+   0.061315250395458556
+  ],
+  "percentile_of_real": 100.0,
+  "shrinkage": 0.6380611627233204,
+  "nn_median": 0.3125,
+  "n": 20
+ },
+ "d_untrained": {
+  "D_median": -3.1207820514449897e-06,
+  "D_p5_p95": [
+   -2.2211522131693195e-05,
+   2.5827849469274228e-05
+  ],
+  "percentile_of_real": 100.0,
+  "shrinkage": -3.247702967642263e-05,
+  "nn_median": 0.09027777777777778,
+  "n": 5
+ }
+}
+CLARK_READING_DONE audits/readings/clark_source_format_result.json
