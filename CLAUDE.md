@@ -71,7 +71,15 @@ confidence as they define it, sink or EOS token excluded (voita/; 5 of 6; marks
 important heads in seven decoders and three OPUS-MT translation encoders;
 V5 failed). Rounds 12, 14 and 15 computed confidence over all tokens; Voita
 et al. exclude the end-of-sentence token, so never call the all-token
-statistic theirs. Instruments: functional_common.py, standard_common.py. Audit base results: audits/clark2019/, audits/chai/ (Mistral-7B
+statistic theirs. 17 (audits/PREREGISTRATION17.md, audits/readings/): Target 1
+in Clark et al.'s input format (same 64 percent) and Target 3 under CHAI's
+every-row reading (97 percent Mistral, 43 percent OPT, C2 failed); 8 of 9.
+Instruments: functional_common.py, standard_common.py, audits/readings/readings_common.py.
+Closest prior and concurrent work to cite: Papamichalis and Ruane (arXiv
+2608.14712, sink convention and BERT clustering), Sandoval-Segura et al.
+(ICLR 2026, output-norm head scores), Sok et al. (EMNLP 2026, BOS sink
+heads), Meloux et al. (arXiv 2512.18792), Heap et al. (arXiv 2501.17727),
+Fesser et al. (arXiv 2606.08105). Audit base results: audits/clark2019/, audits/chai/ (Mistral-7B
 and OPT-6.7B), audits/dewage2026/ (Mistral-7B), audits/retrieval_heads/
 (Qwen2.5-7B, Mistral-7B-Instruct-v0.2 reproduced; Llama-2-7B-80K not
 reproduced under our haystack and excluded); criteria in

@@ -330,10 +330,19 @@ Each instrument below exists because a finding above required it.
   script was committed before any result existed, and all six batteries are
   now complete (`audits/RESULTS.md`). Three findings shrink and the control
   holds. A null that keeps only the shared separator columns reproduces two
-  thirds of BERT's layer clustering, and the row values alone a tenth. The cross-head redundancy
-  behind a KV-compression method is mostly the shared sink column: the
-  sink-kept null reproduces a median 96 percent of it on Mistral-7B and 68
-  percent on OPT-6.7B, from the OPT family the source evaluates. A Gaussian
+  thirds of BERT's layer clustering, and the row values alone a tenth. In
+  Clark et al.'s own input format, cased BERT on two-segment inputs of 128
+  tokens, a seventeenth preregistered round finds the same 64 percent.
+  Papamichalis and Ruane (2026) found independently that the most prominent
+  structure of a standard BERT head-clustering pipeline depends on whether
+  the metric keeps or drops the sink.
+  The cross-head redundancy behind a KV-compression method is mostly the
+  shared sink column: the sink-kept null reproduces a median 96 percent of
+  it on Mistral-7B and 68 percent on OPT-6.7B, from the OPT family the
+  source evaluates, when the last token's row is read. The source does not
+  say which rows it correlates; read over every row, as the maintainers'
+  dump code does, the share stays at 97 percent on Mistral-7B but falls to
+  43 percent on OPT-6.7B, below the registered half. A Gaussian
   matrix matched in shape and norm produces 85 to 89 percent of the
   reported spectral outlier count in the square projections, because the
   recipe places its Marchenko-Pastur edge inside the bulk; with the edge
@@ -342,7 +351,7 @@ Each instrument below exists because a finding above required it.
   the three randomization nulls on two models with about one percent of
   their score reproduced. Notes go to the original authors with four weeks to respond.
 
-<p align="center"><img src="figures/readme/fig13_audit_batteries.png" alt="Horizontal bar chart of the share of each published finding that a constrained null reproduces: 64 percent of BERT head clustering from the separator columns, 96 and 68 percent of cross-head redundancy from the sink columns, 85 to 89 percent of the spectral outlier count from a shape and norm matched Gaussian, and 1 percent of the retrieval-head score, the positive control" width="880"></p>
+<p align="center"><img src="figures/readme/fig13_audit_batteries.png" alt="Horizontal bar chart of the share of each published finding that a constrained null reproduces: 64 percent of BERT head clustering from the separator columns (64 percent again in the source's input format), 96 and 68 percent of cross-head redundancy from the sink columns (97 and 43 percent when every row is read), 85 to 89 percent of the spectral outlier count from a shape and norm matched Gaussian, and 1 percent of the retrieval-head score, the positive control" width="880"></p>
 <p align="center"><em>Each bar is the share of a published effect that a null reproduces while keeping the constraint named beneath it. The control at the bottom is what the nulls must not reproduce, and do not.</em></p>
 - **Deriving the operator rather than measuring it: a floor, not a
   formula.** A preregistered derivation writes each head's energy along
@@ -363,7 +372,8 @@ Each instrument below exists because a finding above required it.
 Fifteen preregistrations with numeric thresholds and falsification clauses
 were frozen in git before their runs (`alignment_study/PREREGISTRATION.md`
 and `PREREGISTRATION2.md` to `PREREGISTRATION16.md`, the audits of
-`audits/PREREGISTRATION4.md` counted separately; the second committed
+`audits/PREREGISTRATION4.md` and `audits/PREREGISTRATION17.md` counted
+separately; the second committed
 before the held-out models were downloaded, the third and all later ones
 pushed publicly before execution, evaluation scripts committed before
 results existed). Registered predictions that failed are
@@ -376,8 +386,9 @@ Pythia-160m (D4), both merge-tolerance predictions (M1, M2), the
 derivation gate (G1), in the functional round the advantage of the
 plain map over the commutator object (F3b) and the practical merge
 criterion (F4), the registered size of the multi-pair merge advantage at
-1,024 tokens (S5), and the effect of leaving out the end-of-sentence token
-in translation encoders (V5). Out of sample, 7 of 8 registered clauses
+1,024 tokens (S5), the effect of leaving out the end-of-sentence token
+in translation encoders (V5), and the sink account of CHAI's redundancy on
+OPT-6.7B when every row is read (C2). Out of sample, 7 of 8 registered clauses
 passed in the sub-2B round, 3 of 4 in the 3B-to-7B round, 5 of 5 primary clauses in the
 training-dynamics round, 4 of 4 in 11 of 11 models in the
 fixed-instrument rerun, where the earlier failures on TinyLlama, OLMo-2
@@ -386,8 +397,9 @@ primary clauses in the head-merging round, whose negative result is
 reported in full above, 4 of 4 in the sink-profile round, 5 of 5 on
 the four new attention designs, 5 of 7 in the functional round, 8 of 8 in
 the standard-statistics round, 4 of 4 in the sink-editing round, 6 of
-7 at 1,024 tokens, 7 of 7 on multi-head models with a second corpus, and
-5 of 6 for head confidence as its authors defined it. Development
+7 at 1,024 tokens, 7 of 7 on multi-head models with a second corpus,
+5 of 6 for head confidence as its authors defined it, and 8 of 9 for two
+audits repeated under the sources' own readings. Development
 calibration that shaped a preregistration is committed and labeled as
 such. A blind reimplementation from the written specification
 reproduced the anchor values to four decimals; surrogate invariants hold

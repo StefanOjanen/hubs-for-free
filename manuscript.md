@@ -33,9 +33,11 @@ correctly but leaves a residual the sink does not explain. We
 release the nulls as a toolkit and apply them to four published findings
 under criteria frozen before any battery ran. Three of the four shrink: a
 null that keeps only BERT's separator columns reproduces two thirds of the
-layer clustering of its heads, the cross-head redundancy behind a KV-compression method is
-mostly the shared sink column on Mistral-7B and about two thirds of it on
-OPT-6.7B, and 85 to 89 percent of the Marchenko-Pastur "outliers" reported
+layer clustering of its heads, with our inputs and with the source's own;
+the cross-head redundancy behind a KV-compression method is mostly the
+shared sink column on Mistral-7B whichever attention rows are read, and on
+OPT-6.7B two thirds of it in the last row but less than half over every
+row; and 85 to 89 percent of the Marchenko-Pastur "outliers" reported
 for the square attention projections are produced by a Gaussian matrix of
 the same shape and norm. Retrieval heads,
 included as the positive control, are untouched by every null. Weighting
@@ -127,6 +129,22 @@ literature is not the sink itself but a measurement: what share of the
 second-order statistics that other analyses report is the sink, and what
 is left when it is removed while every head keeps its concentration.
 
+Recent work. Papamichalis and Ruane (2026) show that whether a metric keeps
+or drops the sink decides 17 to 47 percent of head-similarity verdicts in
+ten models, and that the most prominent structure of a standard BERT
+head-clustering pipeline follows from that choice; our Target 1 result
+agrees with theirs by a different route, constrained nulls rather than a
+change of metric. Sandoval-Segura et al. (2026) find that output-norm scores
+identify inactive heads that attention-weight scores miss, and Sok et al.
+(2026) prune heads that attend to the first token with little loss; Section
+6.2 agrees and adds the sign of attention-weight heuristics against removal
+damage and the role of the token Voita et al. leave out. Méloux et al.
+(2025) and Heap et al. (2025) show interpretability methods and metrics
+returning plausible results on random networks, the general form of the
+problem Section 2 documents for one pipeline. Fesser et al. (2026) separate
+sinks that suppress a head's update from sinks that broadcast information;
+Section 6.3 measures how much of the sink's effect is a constant bias.
+
 Null models. The battery is assembled from three older traditions. From
 network science come constrained randomizations: Maslov and Sneppen (2002)
 rewired protein networks while preserving every node's degree, the
@@ -171,7 +189,10 @@ Pastur, Mathematics of the USSR-Sbornik 1967; Martin and Mahoney, JMLR
 2021; Maslov and Sneppen, Science 2002; Michel, Levy and Neubig, NeurIPS
 2019; Newman, SIAM Review 2003; Schreiber and Schmitz, Physica D 2000; Sun
 et al., 2024; Theiler et al., Physica D 1992; Voita et al., ACL 2019;
-Wiegreffe and Pinter, EMNLP 2019; Xiao et al., ICLR 2024.
+Wiegreffe and Pinter, EMNLP 2019; Xiao et al., ICLR 2024. Recent work:
+Fesser et al., arXiv 2606.08105, 2026; Heap et al., arXiv 2501.17727, 2025;
+Méloux et al., arXiv 2512.18792, 2025; Papamichalis and Ruane, arXiv
+2608.14712, 2026; Sandoval-Segura et al., ICLR 2026; Sok et al., EMNLP 2026.
 
 ## 2. The container: three propositions and two cancellations
 
@@ -524,6 +545,18 @@ a null that keeps only each row's values and the separator columns
 reproduces about two thirds of it, and the remaining third is same-layer
 similarity the separator columns do not carry.
 
+The input format does not change this. Preregistration 17 rebuilt 1,000
+segments with the logic of Clark et al.'s preprocessing script, [CLS] A
+[SEP] B [SEP] with 98 percent at the full 128 tokens, from the same
+WikiText-103 articles, and ran bert-base-cased with segment ids (20 draws
+per null; the instrument reproduces this battery's contrast on its own
+inputs to 1e-8). The contrast is smaller, D = 0.096, with 36.1 percent of
+nearest neighbors in the own layer. The null that keeps the [CLS] column and
+both [SEP] columns reproduces 63.8 percent of it, the same share to three
+digits, and puts 31.2 percent of nearest neighbors in the own layer; the
+marginal null reproduces 12.5 percent, random maps and untrained models
+nothing. Label: shrinks. All five registered clauses for this part pass.
+
 Target 2, Kovaleva et al. (2019), five attention-pattern types with the
 vertical pattern dominant. Not reproducible in its stated form: the
 proportions rest on a classifier trained on about 400 manually annotated
@@ -569,6 +602,24 @@ On Mistral-7B the redundancy is mostly the shared sink columns. On OPT-6.7B
 they account for about two thirds of it in the median layer and little in
 the early layers, where the last row puts almost no mass on the first token
 and something other than the sink drives the correlation.
+
+A maintainer has since confirmed on the repository's issue tracker that the
+correlation is Pearson's, and the dump code a maintainer posted there for
+the clustering script writes the attention rows of every query position.
+Preregistration 17 repeated the battery on that every-row reading: per
+layer, the Pearson correlation across heads of each query row over its
+causal support, averaged over 64 rows from position 16 to the end and over
+the same 32 documents (30 draws per null; the recomputed last-row statistic
+equals the registered battery's exactly). On Mistral-7B the result does not
+change: the sink-set surrogate reproduces a median 97 percent of the
+every-row correlation (80 to 99.8 percent), the marginal surrogate 0.7
+percent and five untrained models nothing. On OPT-6.7B it does: the
+sink-set surrogate reproduces a median 43 percent, below the registered
+half, so that clause fails. The share is 8 to 36 percent in the first seven
+layers and 87 to 96 percent in the last seven, and the every-row
+correlation rises with depth (Spearman 0.64). Over every row, most of OPT's
+cross-head correlation in the early and middle layers is something other
+than the sink columns.
 
 Target 4, Dewage et al. (2026): singular values of the attention projection
 weights above the Marchenko-Pastur edge encode the dominant component of the
@@ -679,6 +730,13 @@ statistical indistinguishability where the question was an effect size.
 Preregistrations 11 and 12 state every clause as an effect size with an
 interval.
 
+Two audits rest on choices the sources made differently or left open, and
+preregistration 17 repeated both under the sources' readings: Target 1 in
+Clark et al.'s input format, where the separator columns reproduce the same
+64 percent, and Target 3 under the every-row reading, where the sink account
+holds on Mistral-7B and fails its registered clause on OPT-6.7B (8 of 9
+clauses pass).
+
 ## 6. A practical test that failed: which heads can be merged
 
 Preregistration 7 asked whether the shared-operator description has a
@@ -785,7 +843,8 @@ tracks the head's sink mass at Spearman 0.92 (interval 0.86 to 0.97, 73
 layers; S2). Against the damage of removing a head it has the wrong sign
 (-0.16, interval -0.44 to -0.01), entropy is no better (-0.09), and sink mass
 itself is more strongly negative (-0.42): heads that attend to the sink more
-matter less. The norm of a head's output predicts the damage at 0.53
+matter less, as Sok et al. (2026) also find for heads that attend to the
+first token. The norm of a head's output predicts the damage at 0.53
 (interval 0.35 to 0.73; S4), ahead of confidence by 0.69 and of entropy by
 0.62 (S3). The comparison holds within a layer only. Ranked across all
 layers of a model, output norm predicts removal damage at -0.08 to 0.24, no
@@ -897,7 +956,11 @@ criterion did not beat the generator cosine at choosing single merges. The audit
 criteria are frozen for four targets by public commit and their batteries
 run against that freeze (Section 5 reports each as it completes); the
 reproductions of Targets 3 and 5 ran at reduced scale
-(fewer documents, shorter contexts) than the sources.
+(fewer documents, shorter contexts) than the sources. Target 1 was repeated
+in the source's input format, on WikiText-103's Wikipedia articles rather
+than the source's sample, and Target 3 under the every-row reading
+(preregistration 17); which rows CHAI's Figure 6 uses is still not stated
+by the source.
 
 ## 8. Recommendations
 
@@ -933,6 +996,7 @@ against the norm of what each head writes.
 | 14 | 18901f6, pushed before execution | round 12's clauses at 1,024 tokens, two models | 6 of 7; S5 fails |
 | 15 | 46fd50c, pushed before execution | round 12's head-importance clauses on GPT-2 medium and Pythia, WikiText-103 and C4 | 7 of 7 |
 | 16 | f5a9539, pushed before execution | V1 to V6, Voita et al.'s confidence as defined, seven decoders and three translation encoders | 5 of 6; V5 fails |
+| 17 | 94b7734, pushed before execution | K0 to K4, C1 to C4: Target 1 in the source's input format, Target 3 under the every-row reading | 8 of 9; C2 fails (OPT-6.7B) |
 
 ## Appendix B. Numbers ledger
 
@@ -973,4 +1037,5 @@ against the norm of what each head writes.
 | 1,024 tokens | alignment_study/standard_long_results.json, standard_long/ |
 | multi-head models and C4 | alignment_study/importance_mha_results.json, importance_mha/, importance_mha_dev_results.json |
 | confidence as defined, V1 to V6 | alignment_study/voita_results.json, voita/, voita_dev_results.json |
+| sources' readings, K0 to K4 and C1 to C4 | audits/readings/readings_results.json, clark_source_format_result.json, chai_every_row_*.json, check_clark.json, dev/ |
 | shared energy against merge damage (post hoc) | alignment_study/posthoc/sharedE_vs_merge_kl.json |

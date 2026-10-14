@@ -128,3 +128,18 @@ weeks to respond before any preprint; responses are published alongside.
   loading deviation; the two other models of the paper reproduce its
   figures. Recorded as a boundary of the reproduction, not as evidence
   against the source.
+- Correction (2026-10-12, recorded here 2026-10-14): CHAI's code is public
+  (facebookresearch/chai, created 2024-05-09, not linked from the paper);
+  the 2026-09-11 entry above said no code was released. It holds the merge
+  patch and the clustering script, not the correlation figures. A
+  maintainer confirmed Pearson correlation (issue 6); the dump code a
+  maintainer posted (issue 4) writes every query position's rows.
+- Targets 1 and 3 under the sources' readings (2026-10-14,
+  `PREREGISTRATION17.md`, frozen at 94b7734; `readings/`): Target 1 in
+  Clark et al.'s input format (bert-base-cased, 1,000 segments [CLS] A
+  [SEP] B [SEP] built with their preprocessing logic, 97.9 percent at 128
+  tokens): the separator-column null reproduces 0.638 of the contrast, as
+  in Target 1; label shrinks. Target 3 under the every-row reading: the
+  sink-set null reproduces a median 0.97 on Mistral-7B and 0.43 on
+  OPT-6.7B (registered threshold 0.5; that clause fails). 8 of 9 clauses
+  pass (`readings/readings_results.json`).

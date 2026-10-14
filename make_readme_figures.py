@@ -518,11 +518,28 @@ if glob.glob(BR):
         fig, ax = plt.subplots(figsize=(10.2, 0.62 * len(bars) + 2.1),
                                gridspec_kw={"left": 0.30, "right": 0.97, "top": 0.80, "bottom": 0.13})
         y = np.arange(len(bars))[::-1]
+        # preregistration 17: the same null under the source's own reading (Clark: their input format; CHAI: every row)
+        PR17_FILES = {"Head clustering\nBERT-base": ("audits/readings/clark_source_format_result.json", "source's input format"),
+              "Cross-head redundancy\nMistral-7B": ("audits/readings/chai_every_row_Mistral-7B-v0.1.json", "every row read"),
+              "Cross-head redundancy\nOPT-6.7B": ("audits/readings/chai_every_row_opt-6.7b.json", "every row read")}
+        pr17 = {}
+        if all(glob.glob(p) for p, _ in PR17_FILES.values()):
+            for lab, (p, what) in PR17_FILES.items():
+                r = json.load(open(p))
+                pr17[lab] = (r["nulls"]["c_colfix"]["shrinkage"] if "nulls" in r else r["summary"]["c_colset"]["median"], what)
         ax.barh(y, [b[2] for b in bars], height=0.62, color=[b[3] for b in bars], zorder=3)
         for yy, b in zip(y, bars):
+            note = b[4] + (f"; {pr17[b[0]][1]}: {pr17[b[0]][0]:.0%}" if b[0] in pr17 else "")
             ax.text(min(b[2], 1.0) + 0.015, yy + 0.13, f"{b[2]:.0%}", va="center", fontsize=11.5, color=INK, zorder=4)
-            ax.text(min(b[2], 1.0) + 0.015, yy - 0.22, b[4], va="center", fontsize=9, color=INK2, zorder=4)
+            ax.text(min(b[2], 1.0) + 0.015, yy - 0.22, note, va="center", fontsize=9, color=INK2, zorder=4)
+            if b[0] in pr17:
+                ax.scatter([pr17[b[0]][0]], [yy], marker="D", s=46, color=INK, edgecolors=SURF, linewidths=1.4, zorder=5)
         ax.set_yticks(y); ax.set_yticklabels([b[0] for b in bars], fontsize=10.5)
+        if pr17:
+            from matplotlib.lines import Line2D
+            fig.legend([Line2D([], [], marker="D", ls="", ms=7, color=INK, mec=SURF)],
+                       ["the same null under the source's own reading (preregistration 17)"], loc="upper left",
+                       bbox_to_anchor=(0.012, 0.865), fontsize=9.5, frameon=False, handletextpad=0.4)
         ax.set_xlim(0, 1.62); ax.set_xticks([0, 0.25, 0.5, 0.75, 1.0]); ax.set_xticklabels(["0", "25%", "50%", "75%", "100%"])
         ax.set_xlabel("share of the reported effect a constrained null already reproduces")
         ax.axvline(1.0, color=GRID, lw=1.4, zorder=2)
