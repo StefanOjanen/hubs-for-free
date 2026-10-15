@@ -1,0 +1,19 @@
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights:   1%|          | 1/197 [00:00<01:35,  2.06it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 402.70it/s]
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 10360.59it/s]
+facebook/opt-125m layers 12 heads 12; capture vs eager max logit difference 0.00e+00 (39s)
+criteria done (69s)
+  layer 0: 66 merges (78s)
+  layer 1: 66 merges (87s)
+  layer 2: 66 merges (96s)
+  layer 3: 66 merges (105s)
+  layer 4: 66 merges (114s)
+  layer 5: 66 merges (123s)
+  layer 6: 66 merges (132s)
+  layer 7: 66 merges (141s)
+  layer 8: 66 merges (150s)
+  layer 9: 66 merges (159s)
+  layer 10: 66 merges (168s)
+  layer 11: 66 merges (177s)
+MODEL_DONE facebook/opt-125m: one pair per layer out_pert 0.0632 corr_last 0.1301 corr_rows 0.1506 js 0.1235 cos_map 0.1658 qk_wcos 0.0886 kv_wcos 0.0791 k_act 0.0959 v_act 0.1152 random0 0.0952 random1 0.0949 random2 0.1133 random3 0.1468 random4 0.1483 (182s)
+MERGE_BENCH2_DONE S

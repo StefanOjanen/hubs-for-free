@@ -1,0 +1,10 @@
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 7831.61it/s]
+  gpt2 budget 1: out_pert 0.410 corr_last 0.155 js 0.175 random0 0.270 random1 0.285 random2 0.320 (17s)
+  gpt2 budget 2: out_pert 0.290 corr_last 0.090 js 0.075 random0 0.180 random1 0.180 random2 0.275 (26s)
+MODEL_DONE gpt2: base 0.370 (27s)
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights:  69%|██████▊   | 135/197 [00:00<00:00, 1345.59it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 1735.71it/s]
+  facebook/opt-125m budget 1: out_pert 0.370 corr_last 0.355 js 0.345 random0 0.355 random1 0.370 random2 0.365 (39s)
+  facebook/opt-125m budget 2: out_pert 0.340 corr_last 0.235 js 0.270 random0 0.250 random1 0.300 random2 0.245 (46s)
+MODEL_DONE facebook/opt-125m: base 0.410 (48s)
+MERGE_BENCH2_DONE D
