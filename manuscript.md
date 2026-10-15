@@ -51,8 +51,10 @@ token, it marks heads
 whose removal matters, in decoders and in translation encoders, though less
 well than the norm of what a head writes. The sink itself is not a no-op:
 removing its contribution
-costs 28 to 68 times as much as removing an ordinary token's, mostly as a
-constant bias. Each
+costs 28 to 68 times as much as removing an ordinary token's in four
+grouped-query decoders, mostly as a constant bias, and the same holds in
+Pythia and OPT but not in GPT-2, while in encoders the special tokens are
+close to no-ops. Each
 registered expectation that failed is reported as a failure; one of them
 failed by demanding statistical indistinguishability where the question
 was an effect size.
@@ -737,6 +739,42 @@ Clark et al.'s input format, where the separator columns reproduce the same
 holds on Mistral-7B and fails its registered clause on OPT-6.7B (8 of 9
 clauses pass).
 
+A rule, tested prospectively. The audits fit one pattern: findings that
+summarize or compare whole attention distributions are mostly reproduced by
+nulls that keep the shared columns, and a finding about where heads look is
+not. Preregistration 18 stated this as a rule and tested it on six claims
+nobody had audited with nulls: three observations behind KV-cache eviction,
+heavy hitters (Zhang et al. 2023), persistence of importance (Liu et al.
+2023) and the observation-window hit rate (Li et al. 2024), predicted to be
+mostly sink (s at least 0.5); and three claims about where heads look,
+induction heads (Olsson et al. 2022), and positional and syntactic heads
+(Clark et al. 2019), predicted to survive (s at most 0.2). All six reproduce,
+and the rule as stated predicts four. Heavy hitters are mostly the sink (s
+= 0.64 on OPT-6.7B); induction, positional and syntactic heads survive (s
+at most 0.01). Persistence and the hit rate survive too (s = 0.002 and 0.04),
+against the prediction. Development had already shown this, and the rule was
+kept as stated with a refinement registered as a development-informed
+secondary reading, which fits all six: statistics that weigh attention by its
+mass are dominated by the shared columns, statistics that count positions
+above a threshold are not. That reading still needs a test on claims not used
+to form it.
+
+A vision claim. Dosovitskiy et al. (2021) report that attention distance
+grows with depth and that late-layer heads attend widely. Large vision
+transformers develop high-norm artifact tokens that absorb attention
+(Darcet et al. 2024), which could make a late-layer row look wide by
+construction. Preregistration 19 tested that reading on 128 images and
+found the claim genuine. In the source's architecture, supervised ViT-L/16,
+attention distance rises 24 pixels from the first half of the layers to the
+second, in every head, and the second half sits near the distance of uniform
+attention (111 against 117 pixels); ViT-B/16 rises 37 pixels. Neither has
+artifact columns of note (0.002 and 0.08 of late attention). DINOv2-L has
+artifact columns holding 0.16 of late attention, and its registers model has
+none, but its attention distance does not grow with depth (-2.4 pixels), so
+the registered predictions that artifacts carry the depth trend failed (3 of
+5 clauses). Development on DINOv2-B, where removing the artifact columns
+erased 0.47 of the increase, did not carry over to the large model.
+
 ## 6. A practical test that failed: which heads can be merged
 
 Preregistration 7 asked whether the shared-operator description has a
@@ -931,6 +969,50 @@ costly in some single layers, up to 0.54 in TinyLlama, but applied to every
 layer at once it costs less than removing the sink term (0.01 to 0.03); we
 report this without an explanation.
 
+Preregistration 21 asked how far this generalizes, with a custom attention
+function for multi-head and grouped-query decoders and for bidirectional
+encoders (equal to eager attention exactly in float32; in OPT-6.7B, run in
+bfloat16, the maximum logit difference is 0.44 because the function computes
+attention in float32). In Pythia-410m and OPT-6.7B removing the sink costs
+16 and 14 times an ordinary token and a constant vector reproduces 0.69 and
+0.58 of its effect, as in round 13. GPT-2 medium's sink is cheaper (2.2
+times) and gate-like (bias share -0.06), so neither the registered account
+by position scheme (OPT also uses learned positions) nor the registered
+minimum cost of five times holds. In encoders the special tokens are close
+to no-ops: removing BERT's [SEP] contributions costs 1.3 times an ordinary
+token and a translation encoder's end-of-sentence token 0.95 times. Under
+sliding-window attention with a 256-token window, evicting the first token
+raises next-token loss by 3.9, 2.6 and 1.8 nats in TinyLlama, Qwen2.5-1.5B
+and Pythia-410m, and keeping the first four tokens removes most of that, as
+in StreamingLLM. A constant per-head virtual sink, with no sink token kept,
+recovers 0.87 and 0.54 of what the first four tokens recover in Qwen2.5-1.5B
+and Pythia-410m but 0.06 in TinyLlama, whose sink is not concentrated on the
+first token. Three of six clauses pass.
+
+### 6.4 A benchmark of merge criteria
+
+Methods that share keys and values between heads, or convert multi-head to
+grouped-query attention, merge heads chosen by a similarity: of attention
+scores (CHAI), of query and key weights, of key and value activations or
+weights. Preregistration 20 measured what such a merge costs. In GPT-2
+medium, Pythia-160m and Pythia-410m every pair of heads in every layer was
+merged on its own, the two heads' key and value projections replaced by
+their mean (the mean pooling of grouped-query conversion), and the damage
+measured as next-token KL: 6,552 merges. Nine criteria were computed on
+2,048 held-out tokens through a custom attention function that equals eager
+attention exactly. All five registered clauses pass. No similarity in use
+predicts merge damage: within a layer, Jensen-Shannon divergence reaches
+Spearman 0.12, key-activation cosine 0.10, key-value and query-key weight
+cosines 0.09 and 0.08, map cosine 0.08, CHAI's every-row and last-row
+correlations 0.06 and 0.05, value-activation cosine -0.01. Simulating the
+merge on the held-out tokens, the change in the two heads' summed
+contribution to the residual stream, predicts it at 0.72 (interval 0.64 to
+0.79), 0.66 to 0.79 per model. With one pair merged per layer in every layer
+but the first, its choices cost 0.28 to 0.57 of the damage of the CHAI-style
+choices and 0.28 to 0.46 of random pairs; with two pairs, 0.35 to 0.48 of the
+CHAI-style choices. The outcomes of all 6,552 merges are released with their
+criteria as a benchmark.
+
 ## 7. Limitations
 
 Results cover seventeen models up to 8B parameters in ten families, three
@@ -939,7 +1021,9 @@ windows up to 256 tokens for the statistics and 512 for perplexity; the
 functional comparisons of Section 6.2 were repeated at 1,024 tokens on two
 models (six of seven clauses hold), on three multi-head models with C4 as a
 second corpus (seven of seven), and on the encoder heads of three
-translation models. Where the sink sits on a mid-sequence, window-varying column
+translation models; the later rounds add vision transformers (ViT-B/16,
+ViT-L/16, DINOv2-L with and without registers), BERT-base cased, and
+contexts of 2,048 tokens for the KV-cache and streaming tests. Where the sink sits on a mid-sequence, window-varying column
 (OLMo-2, late Qwen2.5-3B layers), the sink-operator identification weakens
 (cosine 0.61 to 0.82 with one column) and the column set repairs most but
 not all of it (four of OLMo-2's 19 high-sink layers keep a sufficiency
@@ -997,6 +1081,10 @@ against the norm of what each head writes.
 | 15 | 46fd50c, pushed before execution | round 12's head-importance clauses on GPT-2 medium and Pythia, WikiText-103 and C4 | 7 of 7 |
 | 16 | f5a9539, pushed before execution | V1 to V6, Voita et al.'s confidence as defined, seven decoders and three translation encoders | 5 of 6; V5 fails |
 | 17 | 94b7734, pushed before execution | K0 to K4, C1 to C4: Target 1 in the source's input format, Target 3 under the every-row reading | 8 of 9; C2 fails (OPT-6.7B) |
+| 18 | cdda0f1, pushed before execution | a rule for which attention claims survive nulls, six new claims | 4 of 6; A2, A3 fail |
+| 19 | 8455f04, pushed before execution | V1 to V5, ViT attention distance and artifact tokens | 3 of 5; V1, V4 fail |
+| 20 | 283e5b5, pushed before execution | B1 to B5, a benchmark of head-merging criteria | 5 of 5 |
+| 21 | 8a15d0a, pushed before execution | G1 to G6, the sink as bias or gate; a sink-free stream | 3 of 6; G2, G3, G6 fail |
 
 ## Appendix B. Numbers ledger
 
@@ -1038,4 +1126,8 @@ against the norm of what each head writes.
 | multi-head models and C4 | alignment_study/importance_mha_results.json, importance_mha/, importance_mha_dev_results.json |
 | confidence as defined, V1 to V6 | alignment_study/voita_results.json, voita/, voita_dev_results.json |
 | sources' readings, K0 to K4 and C1 to C4 | audits/readings/readings_results.json, clark_source_format_result.json, chai_every_row_*.json, check_clark.json, dev/ |
+| the rule on six claims | audits/rule_results.json, audits/rule/*.json, audits/rule/dev/ |
+| ViT attention distance | audits/vit_results.json, audits/vit/*.json, audits/vit/dev/ |
+| merge benchmark | alignment_study/merge_bench_results.json, merge_bench/, merge_bench_dev/ |
+| sink across architectures and streaming | alignment_study/sink_arch_results.json, sink_arch/, sink_arch_dev/ |
 | shared energy against merge damage (post hoc) | alignment_study/posthoc/sharedE_vs_merge_kl.json |

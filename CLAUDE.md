@@ -74,6 +74,22 @@ et al. exclude the end-of-sentence token, so never call the all-token
 statistic theirs. 17 (audits/PREREGISTRATION17.md, audits/readings/): Target 1
 in Clark et al.'s input format (same 64 percent) and Target 3 under CHAI's
 every-row reading (97 percent Mistral, 43 percent OPT, C2 failed); 8 of 9.
+18 (audits/PREREGISTRATION18.md, audits/rule/): a rule for which attention
+claims survive nulls, six new claims; 4 of 6 (H2O heavy hitters mostly sink;
+Scissorhands persistence and SnapKV hit rate survive against the rule; the
+dev-informed mass-weighted versus count-based reading fits 6 of 6 but is not
+yet prospectively tested). 19 (audits/PREREGISTRATION19.md, audits/vit/):
+ViT attention distance survives; artifact hypothesis fails; 3 of 5.
+20 (alignment_study/PREREGISTRATION20.md, merge_bench/): KV-merge benchmark,
+6,552 merges; simulated output perturbation 0.72, every similarity in use
+<= 0.12; 5 of 5. 21 (alignment_study/PREREGISTRATION21.md, sink_arch/): sink
+bias-like in Pythia and OPT, gate-like in GPT-2, near no-op in encoders;
+constant virtual sink replaces the sink token in streaming for Qwen and
+Pythia, not TinyLlama; 3 of 6. Untrained 7B initializations are built on the
+CPU and copied to the GPU; with two heavy runs the 65 W adapter and 32 GB
+memory saturate (swap up to 37 GB), so queue 7B runs one at a time.
+Drafts for a TMLR submission and a position paper are in private/drafts/
+(unpublished; the author decides on submission and posting).
 Instruments: functional_common.py, standard_common.py, audits/readings/readings_common.py.
 Closest prior and concurrent work to cite: Papamichalis and Ruane (arXiv
 2608.14712, sink convention and BERT clustering), Sandoval-Segura et al.

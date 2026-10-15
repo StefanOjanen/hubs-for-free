@@ -302,6 +302,21 @@ Each instrument below exists because a finding above required it.
 <p align="center"><img src="figures/readme/fig17_confidence_definition.png" alt="Two dot plots of within-layer correlation with the damage of removing a head. Decoder language models, seven models: output norm +0.62, confidence without the sink +0.32, confidence over all tokens -0.21, sink mass -0.38. Translation encoders, three models: output norm +0.73, confidence without the end-of-sentence token +0.53, confidence over all tokens +0.48, end-of-sentence mass -0.27" width="880"></p>
 <p align="center"><em>Leaving the sink out turns confidence from a sink detector into a marker of heads that matter in decoders; in translation encoders it works with or without the end-of-sentence token, and output norm predicts better in both.</em></p>
 
+- **A benchmark for merging heads.** Methods that share keys and values
+  between heads, or convert multi-head to grouped-query attention, choose
+  which heads to merge by a similarity: of attention scores, of query and
+  key weights, of key and value activations. A preregistered benchmark merged
+  every pair of key-value heads in every layer of GPT-2 medium, Pythia-160m
+  and Pythia-410m, 6,552 merges, and measured the damage of each. No
+  similarity in use predicts it: within a layer they reach Spearman 0.12 at
+  best. Simulating the merge on 2,048 tokens predicts it at 0.72, and the
+  merges it chooses cost 0.28 to 0.57 of those chosen by the CHAI-style
+  correlation, at one pair per layer, and 0.35 to 0.48 at two. All five
+  registered predictions held.
+
+<p align="center"><img src="figures/readme/fig18_merge_benchmark.png" alt="Dot plot of nine criteria for choosing which key-value heads to merge, by within-layer Spearman with measured merge damage: output perturbation +0.72, Jensen-Shannon +0.12, key activation cosine +0.10, key-value weight cosine +0.09, query-key weight cosine +0.08, map cosine +0.08, CHAI-style every row +0.06, CHAI-style last row +0.05, value activation cosine -0.01" width="880"></p>
+<p align="center"><em>Every similarity used to decide which heads can share keys and values is close to uninformative about the damage; simulating the merge is not.</em></p>
+
 - **What the sink does.** A fourth round edited the sink directly. Removing
   its contribution from every head costs 28 to 68 times as much as removing
   an ordinary token's, in all four models, so the sink is not the no-op the
@@ -311,6 +326,25 @@ Each instrument below exists because a finding above required it.
 
 <p align="center"><img src="figures/readme/fig16_sink_edits.png" alt="Dot plot for four models of the change in predictions when the first-token sink is edited in every layer: removing its contribution costs 28 to 68 times removing an ordinary token, and replacing it with its average recovers most of that" width="820"></p>
 <p align="center"><em>Removing the sink's contribution hurts far more than removing an ordinary token; replacing it with a constant recovers most of the damage.</em></p>
+
+- **The sink across architectures, and streaming without it.** A further
+  round asked whether that holds beyond those four models. In Pythia-410m
+  and OPT-6.7B removing the sink costs 16 and 14 times an ordinary token, and
+  a constant vector reproduces 0.69 and 0.58 of its effect. GPT-2 medium is
+  the exception: its sink is cheaper (2.2 times) and gate-like, which a
+  constant does not reproduce, so the registered idea that the position
+  scheme decides this failed. In encoders the special tokens are close to
+  no-ops: removing BERT's [SEP] or a translation encoder's end-of-sentence
+  token costs about as much as removing an ordinary token. Under
+  sliding-window attention, evicting the first token breaks generation, as
+  StreamingLLM found; a constant per-head virtual sink, with no sink token
+  kept, recovers 87 and 54 percent of what keeping the first four tokens
+  recovers in Qwen2.5-1.5B and Pythia-410m, but 6 percent in TinyLlama,
+  whose sink is not concentrated on the first token. Three of six registered
+  predictions held.
+
+<p align="center"><img src="figures/readme/fig20_sink_architectures.png" alt="Left: bar chart of the share of the sink's effect that a constant vector reproduces: Pythia-410m 0.69, GPT-2 medium -0.06, OPT-6.7B 0.58, BERT [SEP] 0.19, OPUS-MT end-of-sentence 0.67. Right: extra loss over full attention under a 256-token attention window for TinyLlama, Qwen2.5-1.5B and Pythia-410m, with the window alone, the window plus the first four tokens, and the window plus a constant virtual sink, which recovers 0.06, 0.87 and 0.54 of the first-four-tokens improvement" width="880"></p>
+<p align="center"><em>The sink is a costly constant bias in most decoders tested, a gate in GPT-2 and nearly a no-op in encoders; where it is a bias, a constant can replace the sink token.</em></p>
 
 - **Turning the nulls on published findings.** The audit program
   (`audits/TARGETS.md`) asks whether well-known findings about attention
@@ -353,6 +387,35 @@ Each instrument below exists because a finding above required it.
 
 <p align="center"><img src="figures/readme/fig13_audit_batteries.png" alt="Horizontal bar chart of the share of each published finding that a constrained null reproduces: 64 percent of BERT head clustering from the separator columns (64 percent again in the source's input format), 96 and 68 percent of cross-head redundancy from the sink columns (97 and 43 percent when every row is read), 85 to 89 percent of the spectral outlier count from a shape and norm matched Gaussian, and 1 percent of the retrieval-head score, the positive control" width="880"></p>
 <p align="center"><em>Each bar is the share of a published effect that a null reproduces while keeping the constraint named beneath it. The control at the bottom is what the nulls must not reproduce, and do not.</em></p>
+
+- **A rule for which claims survive, tested on six new ones.** The audits
+  fit one pattern: findings that summarize whole attention distributions
+  shrink, findings about where heads look survive. A preregistered round
+  stated that as a rule and tested it on six claims nobody had audited with
+  nulls. All six reproduce, and the rule predicted four. Heavy hitters, the
+  observation behind the H2O cache-eviction method, are mostly the sink
+  (64 percent); induction, positional and syntactic heads survive (at most
+  1 percent). But persistence of importance and the observation-window hit
+  rate, behind Scissorhands and SnapKV, survive as well (0.2 and 4 percent),
+  against the prediction. The reading that fits all six came out of the
+  development run and is labeled as such: statistics that weigh attention by
+  its mass are dominated by the sink, statistics that count positions above
+  a threshold are not.
+
+<p align="center"><img src="figures/readme/fig19_rule_test.png" alt="Dot chart of six published attention claims by the share reproduced by the null that keeps the shared columns: heavy hitters 0.64 (predicted mostly sink, held), persistence of importance 0.002 and observation-window hit rate 0.04 (predicted mostly sink, failed), induction, positional and syntactic heads near 0 (predicted to survive, held)" width="880"></p>
+<p align="center"><em>Four of six predictions held; the two that failed are statistics that count positions rather than weigh them by attention.</em></p>
+
+- **A vision claim that survives.** The ViT paper reports that attention
+  distance grows with depth and that late-layer heads attend widely. Large
+  vision transformers develop artifact tokens that absorb attention, which
+  could make a row look wide by construction. A preregistered round found
+  the claim genuine: in the source's supervised ViT-L/16, and in ViT-B/16,
+  the distance rises 24 and 37 pixels into the second half of the network,
+  close to the distance of uniform attention, with no artifact columns of
+  note. DINOv2-L has artifacts holding 16 percent of late attention, and
+  registers remove them, but its attention distance does not grow with
+  depth, so the predictions that artifacts carry the trend failed (3 of 5
+  clauses held).
 - **Deriving the operator rather than measuring it: a floor, not a
   formula.** A preregistered derivation writes each head's energy along
   the ideal sink direction from its own sink mass and row sharpness, with
@@ -369,11 +432,11 @@ Each instrument below exists because a finding above required it.
 
 ## Evidence standard
 
-Fifteen preregistrations with numeric thresholds and falsification clauses
-were frozen in git before their runs (`alignment_study/PREREGISTRATION.md`
-and `PREREGISTRATION2.md` to `PREREGISTRATION16.md`, the audits of
-`audits/PREREGISTRATION4.md` and `audits/PREREGISTRATION17.md` counted
-separately; the second committed
+Twenty-one preregistrations with numeric thresholds and falsification
+clauses were frozen in git before their runs (`alignment_study/PREREGISTRATION.md`,
+`PREREGISTRATION2.md` to `PREREGISTRATION16.md`, `PREREGISTRATION20.md` and
+`PREREGISTRATION21.md`; `audits/PREREGISTRATION4.md` and
+`PREREGISTRATION17.md` to `PREREGISTRATION19.md`; the second committed
 before the held-out models were downloaded, the third and all later ones
 pushed publicly before execution, evaluation scripts committed before
 results existed). Registered predictions that failed are
@@ -387,8 +450,12 @@ derivation gate (G1), in the functional round the advantage of the
 plain map over the commutator object (F3b) and the practical merge
 criterion (F4), the registered size of the multi-pair merge advantage at
 1,024 tokens (S5), the effect of leaving out the end-of-sentence token
-in translation encoders (V5), and the sink account of CHAI's redundancy on
-OPT-6.7B when every row is read (C2). Out of sample, 7 of 8 registered clauses
+in translation encoders (V5), the sink account of CHAI's redundancy on
+OPT-6.7B when every row is read (C2), the rule's predictions for two
+count-based claims (A2, A3), artifact tokens as the source of ViT attention
+distance (V1, V4), the position scheme as what separates bias-like from
+gate-like sinks (G2), the size of GPT-2 medium's sink cost (G3), and the
+constant virtual sink in TinyLlama (G6). Out of sample, 7 of 8 registered clauses
 passed in the sub-2B round, 3 of 4 in the 3B-to-7B round, 5 of 5 primary clauses in the
 training-dynamics round, 4 of 4 in 11 of 11 models in the
 fixed-instrument rerun, where the earlier failures on TinyLlama, OLMo-2
@@ -398,8 +465,11 @@ reported in full above, 4 of 4 in the sink-profile round, 5 of 5 on
 the four new attention designs, 5 of 7 in the functional round, 8 of 8 in
 the standard-statistics round, 4 of 4 in the sink-editing round, 6 of
 7 at 1,024 tokens, 7 of 7 on multi-head models with a second corpus,
-5 of 6 for head confidence as its authors defined it, and 8 of 9 for two
-audits repeated under the sources' own readings. Development
+5 of 6 for head confidence as its authors defined it, 8 of 9 for two
+audits repeated under the sources' own readings, 4 of 6 for the rule tested
+on six new claims, 3 of 5 for vision transformers' attention distance, 5 of
+5 for the merge benchmark, and 3 of 6 for the sink across architectures.
+Development
 calibration that shaped a preregistration is committed and labeled as
 such. A blind reimplementation from the written specification
 reproduced the anchor values to four decimals; surrogate invariants hold
@@ -427,6 +497,18 @@ its shared component with the sink; the commutator cancellation and its
 measured dominance structure; per-row marginal-matched and
 column-preserving surrogates for attention statistics; the out-of-sample
 alignment-fraction law; and the toolkit that packages the nulls.
+
+Closest recent work, found after the audits were frozen: Papamichalis and
+Ruane (2026) show that whether an attention metric keeps or drops the sink
+flips 17 to 47 percent of head-similarity verdicts in ten models and decides
+the most prominent structure of a standard BERT head-clustering pipeline;
+Sandoval-Segura et al. (ICLR 2026) find that output-norm scores identify
+inactive heads that attention-weight scores miss; Sok et al. (EMNLP 2026)
+prune heads that attend to the first token with little loss; Méloux et al.
+(2025) and Heap et al. (2025) show interpretability methods and metrics
+returning plausible results on random networks; Fesser et al. (2026)
+separate sinks that suppress a head's update from sinks that broadcast
+information.
 
 ## Repository map
 
