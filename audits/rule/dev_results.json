@@ -1,0 +1,199 @@
+{
+ "thresholds": {
+  "aggregate": 0.5,
+  "located": 0.2
+ },
+ "per_model": [
+  {
+   "claim": "A1",
+   "model": "Qwen/Qwen2.5-0.5B",
+   "kind": "aggregate",
+   "real": 0.5895461111019055,
+   "random_median": 0.3335661155482133,
+   "colset_median": 0.5446627729882797,
+   "marginal_median": 0.3444992732256651,
+   "untrained": [
+    0.335571030775706
+   ],
+   "s_colset": 0.8246607590700914,
+   "s_marginal": 0.04271098471504795,
+   "s_untrained": 0.00783231214281412,
+   "reproduces": true,
+   "prediction_holds": true,
+   "secondary_holds": true
+  },
+  {
+   "claim": "A2",
+   "model": "Qwen/Qwen2.5-0.5B",
+   "kind": "aggregate",
+   "real": 0.037630712003495624,
+   "random_median": 0.0,
+   "colset_median": 0.001363050214487534,
+   "marginal_median": -0.0014703314156498948,
+   "untrained": [
+    2.0728934577718405e-05
+   ],
+   "s_colset": 0.036221749255260345,
+   "s_marginal": -0.03907264405502908,
+   "s_untrained": 0.0005508515112813394,
+   "reproduces": true,
+   "prediction_holds": false,
+   "secondary_holds": true
+  },
+  {
+   "claim": "A3",
+   "model": "Qwen/Qwen2.5-0.5B",
+   "kind": "aggregate",
+   "real": 0.5466355625540018,
+   "random_median": 0.09989888888473313,
+   "colset_median": 0.10891130038847525,
+   "marginal_median": 0.09994306849936645,
+   "untrained": [
+    0.20064802390212813
+   ],
+   "s_colset": 0.020173878785725713,
+   "s_marginal": 9.889408512279235e-05,
+   "s_untrained": 0.2255224183631325,
+   "reproduces": true,
+   "prediction_holds": false,
+   "secondary_holds": true
+  },
+  {
+   "claim": "L1",
+   "model": "gpt2",
+   "kind": "located",
+   "real": 0.9008516073226929,
+   "random_median": 0.007071401923894882,
+   "colset_median": 0.008227290585637093,
+   "marginal_median": 0.010132918134331703,
+   "untrained": [
+    0.005610047373920679
+   ],
+   "s_colset": 0.0012932582918710551,
+   "s_marginal": 0.003425356918786085,
+   "s_untrained": -0.0016350267561834823,
+   "reproduces": true,
+   "prediction_holds": true,
+   "secondary_holds": true
+  },
+  {
+   "claim": "L2",
+   "model": "bert-base-uncased",
+   "kind": "located",
+   "real": 0.6628655791282654,
+   "random_median": 0.008699764497578144,
+   "colset_median": 0.017541324719786644,
+   "marginal_median": 0.009902090765535831,
+   "untrained": [
+    0.008498026058077812
+   ],
+   "s_colset": 0.013515778453204634,
+   "s_marginal": 0.001837953376754282,
+   "s_untrained": -0.00030839037288156733,
+   "reproduces": true,
+   "prediction_holds": true,
+   "secondary_holds": true
+  },
+  {
+   "claim": "L3",
+   "model": "bert-base-uncased",
+   "kind": "located",
+   "real": 0.8729840413410938,
+   "random_median": 0.29747405000883814,
+   "colset_median": 0.3354903238584453,
+   "marginal_median": 0.3277881226347387,
+   "untrained": [
+    0.21743046105158692
+   ],
+   "s_colset": 0.06605667046996487,
+   "s_marginal": 0.052673408077114584,
+   "s_untrained": -0.1390828832909699,
+   "reproduces": true,
+   "prediction_holds": true,
+   "secondary_holds": true
+  }
+ ],
+ "claims": {
+  "A1": {
+   "kind": "aggregate",
+   "models": [
+    "Qwen/Qwen2.5-0.5B"
+   ],
+   "s_colset": [
+    0.8246607590700914
+   ],
+   "included": true,
+   "prediction_holds": true,
+   "secondary_kind": "weighted",
+   "secondary_holds": true
+  },
+  "A2": {
+   "kind": "aggregate",
+   "models": [
+    "Qwen/Qwen2.5-0.5B"
+   ],
+   "s_colset": [
+    0.036221749255260345
+   ],
+   "included": true,
+   "prediction_holds": false,
+   "secondary_kind": "count",
+   "secondary_holds": true
+  },
+  "A3": {
+   "kind": "aggregate",
+   "models": [
+    "Qwen/Qwen2.5-0.5B"
+   ],
+   "s_colset": [
+    0.020173878785725713
+   ],
+   "included": true,
+   "prediction_holds": false,
+   "secondary_kind": "count",
+   "secondary_holds": true
+  },
+  "L1": {
+   "kind": "located",
+   "models": [
+    "gpt2"
+   ],
+   "s_colset": [
+    0.0012932582918710551
+   ],
+   "included": true,
+   "prediction_holds": true,
+   "secondary_kind": "located",
+   "secondary_holds": true
+  },
+  "L2": {
+   "kind": "located",
+   "models": [
+    "bert-base-uncased"
+   ],
+   "s_colset": [
+    0.013515778453204634
+   ],
+   "included": true,
+   "prediction_holds": true,
+   "secondary_kind": "located",
+   "secondary_holds": true
+  },
+  "L3": {
+   "kind": "located",
+   "models": [
+    "bert-base-uncased"
+   ],
+   "s_colset": [
+    0.06605667046996487
+   ],
+   "included": true,
+   "prediction_holds": true,
+   "secondary_kind": "located",
+   "secondary_holds": true
+  }
+ },
+ "K": 4,
+ "N": 6,
+ "K_secondary": 6
+}

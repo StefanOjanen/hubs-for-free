@@ -40,3 +40,4 @@ dist/
 alignment_study/rerun_smoke/
 alignment_study/rerun_smoke_results.json
 audits/eval_batteries.log
+audits/rule/data/
