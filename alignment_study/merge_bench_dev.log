@@ -1,0 +1,20 @@
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (286177 > 1024). Running this sequence through the model will result in indexing errors
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 6804.61it/s]
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 11432.83it/s]
+gpt2 layers 12 heads 12; capture vs eager max logit difference 0.00e+00 (10s)
+criteria done (40s)
+  layer 0: 66 merges (51s)
+  layer 1: 66 merges (68s)
+  layer 2: 66 merges (90s)
+  layer 3: 66 merges (112s)
+  layer 4: 66 merges (122s)
+  layer 5: 66 merges (132s)
+  layer 6: 66 merges (141s)
+  layer 7: 66 merges (151s)
+  layer 8: 66 merges (161s)
+  layer 9: 66 merges (170s)
+  layer 10: 66 merges (180s)
+  layer 11: 66 merges (189s)
+MODEL_DONE gpt2: one pair per layer out_pert 0.1095 corr_last 0.1830 corr_rows 0.1562 js 0.1321 cos_map 0.1450 qk_wcos 0.1408 kv_wcos 0.2048 k_act 0.1984 v_act 0.1601 random0 0.1660 random1 0.1453 random2 0.1905 random3 0.1650 random4 0.2357 (195s)
+MERGE_BENCH_DONE

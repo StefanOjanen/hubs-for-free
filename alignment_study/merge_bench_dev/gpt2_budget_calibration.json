@@ -1,0 +1,36 @@
+{
+ "1": {
+  "out_pert": 0.1095,
+  "corr_last": 0.183,
+  "corr_rows": 0.1562,
+  "js": 0.1321,
+  "cos_map": 0.145,
+  "qk_wcos": 0.1408,
+  "kv_wcos": 0.2048,
+  "k_act": 0.1984,
+  "v_act": 0.1601,
+  "random0": 0.166,
+  "random1": 0.1453,
+  "random2": 0.1905,
+  "random3": 0.165,
+  "random4": 0.2357,
+  "random_median": 0.166
+ },
+ "2": {
+  "out_pert": 0.3134,
+  "corr_last": 0.3581,
+  "corr_rows": 0.3441,
+  "js": 0.3471,
+  "cos_map": 0.3171,
+  "qk_wcos": 0.336,
+  "kv_wcos": 0.3944,
+  "k_act": 0.401,
+  "v_act": 0.529,
+  "random0": 0.5458,
+  "random1": 0.3846,
+  "random2": 0.4183,
+  "random3": 0.3281,
+  "random4": 0.3665,
+  "random_median": 0.3846
+ }
+}
