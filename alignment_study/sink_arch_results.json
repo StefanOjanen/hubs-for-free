@@ -1,0 +1,161 @@
+{
+ "clauses": {
+  "G1": {
+   "what": "rotary decoder (Pythia-410m): bias share >= 0.5",
+   "value": 0.686677223524611,
+   "pass_": true
+  },
+  "G2": {
+   "what": "learned-absolute-position decoders (GPT-2 medium, OPT-6.7B): bias share < 0.5",
+   "value": [
+    -0.06092545998834198,
+    0.581939014564048
+   ],
+   "pass_": false
+  },
+  "G3": {
+   "what": "decoders: removing the sink costs at least 5 times an ordinary token",
+   "value": [
+    2.244728210663222,
+    16.26082991655312,
+    13.883083546317545
+   ],
+   "pass_": false
+  },
+  "G4": {
+   "what": "encoders (BERT [SEP], OPUS-MT end-of-sentence): removing the sink costs at most 2 times an ordinary token",
+   "value": [
+    1.3279300553402515,
+    0.9496575567670182
+   ],
+   "pass_": true
+  },
+  "G5": {
+   "what": "StreamingLLM reproduces: keeping the first four tokens lowers NLL against the window alone in every model",
+   "value": {
+    "TinyLlama_v1.1": [
+     5.834488596235003,
+     2.2166229486465454
+    ],
+    "Qwen2.5-1.5B": [
+     4.865827151707241,
+     2.508528913770403
+    ],
+    "pythia-410m": [
+     4.535057067871094,
+     2.9960741996765137
+    ]
+   },
+   "pass_": true
+  },
+  "G6": {
+   "what": "a constant virtual sink recovers at least half of StreamingLLM's improvement in every model",
+   "value": {
+    "TinyLlama_v1.1": 0.05914106521979274,
+    "Qwen2.5-1.5B": 0.8653446876285298,
+    "pythia-410m": 0.538529561776329
+   },
+   "pass_": false
+  }
+ },
+ "passes": 3,
+ "checks": {
+  "E_gpt2-medium": [
+   0.0,
+   0.0
+  ],
+  "E_pythia-410m": [
+   0.0,
+   0.0
+  ],
+  "E_opt-6.7b": [
+   0.4375,
+   0.0
+  ],
+  "E_bert-base-cased": [
+   0.0,
+   0.0
+  ],
+  "E_opus-mt-en-de": [
+   0.0,
+   0.0
+  ],
+  "W_TinyLlama_v1.1": [
+   0.0
+  ],
+  "W_Qwen2.5-1.5B": [
+   0.0
+  ],
+  "W_pythia-410m": [
+   0.0
+  ]
+ },
+ "reported": {
+  "E": {
+   "gpt2-medium": {
+    "bias_share": -0.06092545998834198,
+    "zero_over_rand": 2.244728210663222,
+    "zero": 0.009146471158601344,
+    "mean": 0.009703724121209234,
+    "rand": 0.004074645257787779
+   },
+   "pythia-410m": {
+    "bias_share": 0.686677223524611,
+    "zero_over_rand": 16.26082991655312,
+    "zero": 0.11647114343941212,
+    "mean": 0.036493062041699886,
+    "rand": 0.007162681366025936
+   },
+   "opt-6.7b": {
+    "bias_share": 0.581939014564048,
+    "zero_over_rand": 13.883083546317545,
+    "zero": 0.04418114759027958,
+    "mean": 0.018470414099283516,
+    "rand": 0.0031823728095332626
+   },
+   "bert-base-cased": {
+    "bias_share": 0.19353455737733805,
+    "zero_over_rand": 1.3279300553402515,
+    "zero": 0.10473860503282174,
+    "mean": 0.08446806546747476,
+    "rand": 0.078873585707031
+   },
+   "opus-mt-en-de": {
+    "bias_share": 0.6742909081513996,
+    "zero_over_rand": 0.9496575567670182,
+    "zero": 0.02929694697704931,
+    "mean": 0.00954228199383133,
+    "rand": 0.030850011952505106
+   }
+  },
+  "W": {
+   "TinyLlama_v1.1": {
+    "full": 1.9755110059465681,
+    "window": 5.834488596235003,
+    "stream": 2.2166229486465454,
+    "stream1": 2.2195206710270474,
+    "bias": 5.620524168014526,
+    "recovery": 0.05914106521979274,
+    "virtual_weight_mean": 0.09003194942223755
+   },
+   "Qwen2.5-1.5B": {
+    "full": 2.2922412838254655,
+    "window": 4.865827151707241,
+    "stream": 2.508528913770403,
+    "stream1": 2.511147686413356,
+    "bias": 2.825951644352504,
+    "recovery": 0.8653446876285298,
+    "virtual_weight_mean": 0.31382433241209845
+   },
+   "pythia-410m": {
+    "full": 2.72564925466265,
+    "window": 4.535057067871094,
+    "stream": 2.9960741996765137,
+    "stream1": 2.996516057423183,
+    "bias": 3.7062692982809886,
+    "recovery": 0.538529561776329,
+    "virtual_weight_mean": 0.16274509722643415
+   }
+  }
+ }
+}

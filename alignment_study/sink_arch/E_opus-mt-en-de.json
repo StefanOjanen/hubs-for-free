@@ -1,0 +1,24 @@
+{
+ "equivalence_max_logit_diff": 0.0,
+ "sink": "end-of-sentence column",
+ "n_sentences": 60,
+ "zero": {
+  "kl": 0.02929694697704931
+ },
+ "mean": {
+  "kl": 0.00954228199383133
+ },
+ "rand": {
+  "kl": 0.030850011952505106
+ },
+ "restore_check_kl": 0.0,
+ "bias_share": 0.6742909081513996,
+ "zero_over_rand": 0.9496575567670182,
+ "part": "E",
+ "kind": "marian",
+ "model": "Helsinki-NLP/opus-mt-en-de",
+ "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/8a15d0a/alignment_study/PREREGISTRATION21.md",
+ "dev": false,
+ "device": "mps",
+ "runtime_s": 222.9
+}

@@ -1,0 +1,21 @@
+{
+ "T": 2048,
+ "W": 256,
+ "n_cal": 4,
+ "n_eval": 8,
+ "equivalence_max_logit_diff": 0.0,
+ "full": 2.2922412838254655,
+ "window": 4.865827151707241,
+ "stream": 2.508528913770403,
+ "stream1": 2.511147686413356,
+ "bias": 2.825951644352504,
+ "recovery": 0.8653446876285298,
+ "virtual_weight_mean": 0.31382433241209845,
+ "part": "W",
+ "kind": "streaming",
+ "model": "Qwen/Qwen2.5-1.5B",
+ "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/8a15d0a/alignment_study/PREREGISTRATION21.md",
+ "dev": false,
+ "device": "mps",
+ "runtime_s": 154.1
+}

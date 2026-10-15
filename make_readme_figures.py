@@ -704,4 +704,95 @@ if glob.glob(VR):
              fontsize=9.5, color=INK2, va="top")
     fig.savefig(OUT + "fig17_confidence_definition.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
+# ============ Figure 18: a benchmark of head-merging criteria (preregistration 20) ============
+MB = "alignment_study/merge_bench_results.json"
+if glob.glob(MB):
+    plt.rcParams["axes.grid"] = False
+    R18 = json.load(open(MB)); pooled18 = R18["pooled"]
+    NAMES = {"out_pert": "Output perturbation (merge simulated)", "js": "Jensen-Shannon (Clark et al.)", "k_act": "Key activation cosine",
+             "kv_wcos": "Key-value weight cosine", "qk_wcos": "Query-key weight cosine", "cos_map": "Map cosine",
+             "corr_rows": "CHAI-style, every row", "corr_last": "CHAI-style, last row", "v_act": "Value activation cosine"}
+    order18 = sorted(NAMES, key=lambda c: pooled18[c]["value"])
+    fig, ax = plt.subplots(figsize=(10.2, 5.0), gridspec_kw={"left": 0.33, "right": 0.90, "top": 0.74, "bottom": 0.13})
+    for yy, c in enumerate(order18):
+        v = pooled18[c]; col = S1 if c == "out_pert" else MUTED; lo, hi = v["ci95"]
+        ax.plot([lo, hi], [yy, yy], color=col, lw=2, solid_capstyle="round", zorder=2)
+        ax.scatter(v["per_model"], [yy] * len(v["per_model"]), s=26, facecolors=SURF, edgecolors=INK2, linewidths=1.0, zorder=3)
+        ax.scatter([v["value"]], [yy], s=95, color=col, edgecolors=SURF, linewidths=2, zorder=4)
+        ax.text(1.03, yy, f"{v['value']:+.2f}", va="center", fontsize=11.5, color=INK, transform=ax.get_yaxis_transform(), clip_on=False)
+    ax.axvline(0, color=INK2, lw=0.8, zorder=1)
+    ax.set_yticks(range(len(order18))); ax.set_yticklabels([NAMES[c] for c in order18], fontsize=10.5)
+    ax.set_xlim(-0.3, 1.0); ax.set_xlabel("within-layer Spearman with the damage of merging two key-value heads")
+    style(ax)
+    from matplotlib.lines import Line2D
+    hl = [Line2D([], [], marker="o", ls="", ms=9, color=MUTED, mec=SURF), Line2D([], [], marker="o", ls="", ms=9, color=S1, mec=SURF),
+          Line2D([], [], marker="o", ls="", ms=5.5, mfc=SURF, mec=INK2)]
+    fig.legend(hl, ["similarities in use", "the merge simulated on 2,048 tokens", "each model"], loc="upper left", bbox_to_anchor=(0.012, 0.865),
+               ncol=3, fontsize=9.5, frameon=False, handletextpad=0.4, columnspacing=1.6)
+    fig.text(0.012, 0.975, "Which heads can share keys and values? Similarities in use do not say", fontsize=15, color=INK, va="top")
+    fig.text(0.012, 0.918, "Preregistration 20: every pair of key-value heads merged in GPT-2 medium, Pythia-160m and Pythia-410m (6,552 merges). Big dots: pooled, model-clustered 95% intervals.",
+             fontsize=9.5, color=INK2, va="top")
+    fig.savefig(OUT + "fig18_merge_benchmark.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
+# ============ Figure 19: the rule tested on six new claims (preregistration 18) ============
+RR18 = "audits/rule_results.json"
+if glob.glob(RR18):
+    plt.rcParams["axes.grid"] = False
+    R19 = json.load(open(RR18))
+    LAB = {"A1": "Heavy hitters (H2O)", "A2": "Persistence of importance (Scissorhands)", "A3": "Observation-window hit rate (SnapKV)",
+           "L1": "Induction heads (Olsson et al.)", "L2": "Positional heads (Clark et al.)", "L3": "Syntactic heads (Clark et al.)"}
+    rows19 = [c for c in ("A1", "A2", "A3", "L1", "L2", "L3") if c in R19["claims"]][::-1]
+    fig, ax = plt.subplots(figsize=(10.2, 4.6), gridspec_kw={"left": 0.36, "right": 0.88, "top": 0.72, "bottom": 0.14})
+    ax.axvspan(0.5, 1.05, color=S2, alpha=0.08, zorder=0); ax.axvspan(-0.05, 0.2, color=S1, alpha=0.08, zorder=0)
+    for yy, c in enumerate(rows19):
+        v = R19["claims"][c]; col = S2 if v["kind"] == "aggregate" else S1
+        ss = [s for s in v["s_colset"] if s is not None]
+        ax.scatter(ss, [yy] * len(ss), s=90, color=col, edgecolors=SURF, linewidths=2, zorder=4)
+        ax.text(1.07, yy, "held" if v["prediction_holds"] else "failed", va="center", fontsize=11, color=INK, transform=ax.get_yaxis_transform(), clip_on=False)
+    ax.set_yticks(range(len(rows19))); ax.set_yticklabels([LAB[c] for c in rows19], fontsize=10.5)
+    ax.set_xlim(-0.05, 1.05); ax.set_xticks([0, 0.2, 0.5, 1.0]); ax.set_xticklabels(["0", "0.2", "0.5", "1"])
+    ax.set_xlabel("share of the claimed effect reproduced by the null that keeps the shared columns")
+    style(ax)
+    from matplotlib.lines import Line2D
+    hl = [Line2D([], [], marker="o", ls="", ms=9, color=S2, mec=SURF), Line2D([], [], marker="o", ls="", ms=9, color=S1, mec=SURF)]
+    fig.legend(hl, ["predicted mostly sink (shaded: 0.5 or more)", "predicted to survive (shaded: 0.2 or less)"], loc="upper left", bbox_to_anchor=(0.012, 0.855),
+               ncol=2, fontsize=9.5, frameon=False, handletextpad=0.4, columnspacing=1.6)
+    fig.text(0.012, 0.975, f"A rule for which attention claims survive nulls: {R19['K']} of {R19['N']} predictions held", fontsize=15, color=INK, va="top")
+    fig.text(0.012, 0.91, "Preregistration 18, six published claims nobody had audited with nulls; one dot per confirmatory model.", fontsize=9.5, color=INK2, va="top")
+    fig.savefig(OUT + "fig19_rule_test.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
+# ============ Figure 20: the sink as bias or gate, and a sink-free stream (preregistration 21) ============
+SA = "alignment_study/sink_arch_results.json"
+if glob.glob(SA):
+    plt.rcParams["axes.grid"] = False
+    R20 = json.load(open(SA)); E20, W20 = R20["reported"]["E"], R20["reported"]["W"]
+    NICE20 = {"pythia-410m": "Pythia-410m (rotary)", "gpt2-medium": "GPT-2 medium (learned positions)", "opt-6.7b": "OPT-6.7B (learned positions)",
+              "bert-base-cased": "BERT, [SEP] (encoder)", "opus-mt-en-de": "OPUS-MT en-de, EOS (encoder)"}
+    fig, (axL, axR) = plt.subplots(1, 2, figsize=(13.2, 4.4), gridspec_kw={"left": 0.20, "right": 0.97, "top": 0.70, "bottom": 0.16, "wspace": 0.75})
+    order20 = ["pythia-410m", "gpt2-medium", "opt-6.7b", "bert-base-cased", "opus-mt-en-de"][::-1]
+    for yy, m in enumerate(order20):
+        b = E20[m]["bias_share"]
+        axL.barh(yy, b, height=0.6, color=S1 if b >= 0.5 else MUTED, zorder=3)
+        axL.text(max(b, 0) + 0.02, yy, f"{b:.2f}  (removal {E20[m]['zero_over_rand']:.1f}x a token)", va="center", fontsize=9.5, color=INK2, zorder=4)
+    axL.axvline(0.5, color=GRID, lw=1.2, zorder=1); axL.axvline(0, color=INK2, lw=0.8, zorder=1)
+    axL.set_yticks(range(len(order20))); axL.set_yticklabels([NICE20[m] for m in order20], fontsize=10)
+    axL.set_xlim(min(-0.2, min(E20[m]["bias_share"] for m in order20) - 0.05), 1.6); axL.set_xlabel("share of the sink's effect a constant vector reproduces")
+    style(axL, "Bias or gate")
+    mods = list(W20)
+    for i, m in enumerate(mods):
+        r = W20[m]; base = r["full"]
+        for j, (k, col) in enumerate((("window", MUTED), ("stream", S2), ("bias", S1))):
+            axR.bar(i + (j - 1) * 0.26, r[k] - base, width=0.24, color=col, zorder=3)
+        axR.text(i, max(r["window"] - base, 0) + 0.05, f"recovery {r['recovery']:.2f}", ha="center", fontsize=9.5, color=INK)
+    axR.set_xticks(range(len(mods))); axR.set_xticklabels([m.replace("_v1.1", "") for m in mods], fontsize=10)
+    axR.set_ylabel("extra loss over full attention (nats)")
+    style(axR, "Streaming without the sink token")
+    from matplotlib.patches import Patch
+    axR.legend([Patch(color=MUTED), Patch(color=S2), Patch(color=S1)], ["window only", "window + first 4 tokens", "window + constant virtual sink"],
+               fontsize=9, frameon=False, loc="upper right")
+    fig.text(0.012, 0.975, "What the sink does depends on the model; a constant stands in for it in two of three", fontsize=15, color=INK, va="top")
+    fig.text(0.012, 0.915, "Preregistration 21. Left: removing the sink's contribution in every layer, against replacing its weight by its mean. Right: 2,048-token windows, attention window 256.",
+             fontsize=9.5, color=INK2, va="top")
+    fig.savefig(OUT + "fig20_sink_architectures.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
 print("FIGURES_DONE", sorted(glob.glob(OUT + "*")))

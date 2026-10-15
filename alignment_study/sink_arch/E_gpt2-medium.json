@@ -1,0 +1,26 @@
+{
+ "equivalence_max_logit_diff": 0.0,
+ "rand_col": 436,
+ "zero": {
+  "kl": 0.009146471158601344,
+  "dnll": 0.007447246462106705
+ },
+ "mean": {
+  "kl": 0.009703724121209234,
+  "dnll": 0.006395625328877941
+ },
+ "rand": {
+  "kl": 0.004074645257787779,
+  "dnll": 0.005253369723504875
+ },
+ "restore_check_kl": 0.0,
+ "bias_share": -0.06092545998834198,
+ "zero_over_rand": 2.244728210663222,
+ "part": "E",
+ "kind": "decoder",
+ "model": "gpt2-medium",
+ "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/8a15d0a/alignment_study/PREREGISTRATION21.md",
+ "dev": false,
+ "device": "mps",
+ "runtime_s": 13.1
+}

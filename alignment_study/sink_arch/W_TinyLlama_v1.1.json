@@ -1,0 +1,21 @@
+{
+ "T": 2048,
+ "W": 256,
+ "n_cal": 4,
+ "n_eval": 8,
+ "equivalence_max_logit_diff": 0.0,
+ "full": 1.9755110059465681,
+ "window": 5.834488596235003,
+ "stream": 2.2166229486465454,
+ "stream1": 2.2195206710270474,
+ "bias": 5.620524168014526,
+ "recovery": 0.05914106521979274,
+ "virtual_weight_mean": 0.09003194942223755,
+ "part": "W",
+ "kind": "streaming",
+ "model": "TinyLlama/TinyLlama_v1.1",
+ "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/8a15d0a/alignment_study/PREREGISTRATION21.md",
+ "dev": false,
+ "device": "mps",
+ "runtime_s": 65.7
+}

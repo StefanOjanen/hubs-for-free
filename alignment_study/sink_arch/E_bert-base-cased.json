@@ -1,0 +1,24 @@
+{
+ "equivalence_max_logit_diff": 0.0,
+ "sink": "both [SEP] columns",
+ "n_segments": 200,
+ "zero": {
+  "kl": 0.10473860503282174
+ },
+ "mean": {
+  "kl": 0.08446806546747476
+ },
+ "rand": {
+  "kl": 0.078873585707031
+ },
+ "restore_check_kl": 0.0,
+ "bias_share": 0.19353455737733805,
+ "zero_over_rand": 1.3279300553402515,
+ "part": "E",
+ "kind": "bert",
+ "model": "bert-base-cased",
+ "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/8a15d0a/alignment_study/PREREGISTRATION21.md",
+ "dev": false,
+ "device": "mps",
+ "runtime_s": 182.6
+}

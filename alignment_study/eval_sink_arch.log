@@ -1,0 +1,8 @@
+G1 PASS rotary decoder (Pythia-410m): bias share >= 0.5 0.686677223524611
+G2 FAIL learned-absolute-position decoders (GPT-2 medium, OPT-6.7B): bias share < 0.5 [-0.06092545998834198, 0.581939014564048]
+G3 FAIL decoders: removing the sink costs at least 5 times an ordinary token [2.244728210663222, 16.26082991655312, 13.883083546317545]
+G4 PASS encoders (BERT [SEP], OPUS-MT end-of-sentence): removing the sink costs at most 2 times an ordinary token [1.3279300553402515, 0.9496575567670182]
+G5 PASS StreamingLLM reproduces: keeping the first four tokens lowers NLL against the window alone in every model {"TinyLlama_v1.1": [5.834488596235003, 2.2166229486465454], "Qwen2.5-1.5B": [4.865827151707241, 2.508528913770403], "pythia-410m": [4.535057067871094, 2.9960741996765137]}
+G6 FAIL a constant virtual sink recovers at least half of StreamingLLM's improvement in every model {"TinyLlama_v1.1": 0.05914106521979274, "Qwen2.5-1.5B": 0.8653446876285298, "pythia-410m": 0.538529561776329}
+passes 3 of 6
+checks {'E_gpt2-medium': [0.0, 0.0], 'E_pythia-410m': [0.0, 0.0], 'E_opt-6.7b': [0.4375, 0.0], 'E_bert-base-cased': [0.0, 0.0], 'E_opus-mt-en-de': [0.0, 0.0], 'W_TinyLlama_v1.1': [0.0], 'W_Qwen2.5-1.5B': [0.0], 'W_pythia-410m': [0.0]}

@@ -513,3 +513,11 @@ to 23 GB at its lowest; nothing was paused or lost). Evaluation (eval_rule.py,
 unchanged since the freeze): K = 4 of N = 6 (A2, A3 fail); the
 development-informed secondary reading fits 6 of 6 (rule_results.json,
 eval_rule.log).
+
+Sink-architectures round (alignment_study/PREREGISTRATION21.md, frozen at
+8a15d0a, 2026-10-15 01:46:27 to 01:53:48 UTC, run at head fbf5f37 with the
+round's scripts unchanged since the freeze): Part E (five models) and Part W
+(three models). OPT-6.7B's equivalence check is not exact in bfloat16
+(maximum logit difference 0.44; recorded in the result file and the note).
+Evaluation (eval_sink_arch.py, unchanged): 3 of 6 clauses pass, G2, G3 and G6
+fail (sink_arch_results.json, eval_sink_arch.log).

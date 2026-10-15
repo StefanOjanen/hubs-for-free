@@ -1034,3 +1034,37 @@ and needs a prospective test on new claims.
 Reading: H2O's heavy hitters are mostly the sink; the persistence and
 window observations behind Scissorhands and SnapKV, and the three located
 claims, are not reproduced by the sink at all.
+
+## The sink as bias or gate, across architectures, and a sink-free stream (2026-10-15, preregistration 21)
+
+Frozen at 8a15d0a. 3 of 6 clauses pass.
+- G1 passes: in the rotary decoder Pythia-410m a constant vector reproduces
+  0.69 of the sink's effect (bias share), and removing the sink costs 16
+  times an ordinary token.
+- G2 FAILS: the learned-position decoders split. GPT-2 medium's sink is
+  gate-like (bias share -0.06, as in development on gpt2), but OPT-6.7B's is
+  bias-like (0.58). The position scheme does not separate them.
+- G3 FAILS: removing the sink costs 16 and 14 times an ordinary token in
+  Pythia-410m and OPT-6.7B but only 2.2 times in GPT-2 medium.
+- G4 passes: in encoders the special tokens are close to no-ops. Removing
+  BERT's [SEP] contributions costs 1.3 times an ordinary token, the
+  translation encoder's end-of-sentence token 0.95 times (bias shares 0.19
+  and 0.67).
+- G5 passes: evicting the first token from a 256-token attention window
+  raises next-token loss from 1.98, 2.29 and 2.73 nats (full attention) to
+  5.83, 4.87 and 4.54; keeping the first four tokens (StreamingLLM) brings it
+  to 2.22, 2.51 and 3.00 (TinyLlama, Qwen2.5-1.5B, Pythia-410m).
+- G6 FAILS: a constant virtual sink, with no sink token kept, recovers 0.87
+  of StreamingLLM's improvement in Qwen2.5-1.5B and 0.54 in Pythia-410m, but
+  0.06 in TinyLlama, whose sink is not concentrated on the first token
+  (round 13).
+- Checks: the custom attention equals eager attention exactly in every
+  float32 model; for OPT-6.7B, run in bfloat16, the maximum logit difference
+  is 0.44, because the function computes attention in float32 and eager
+  attention in bfloat16. OPT's edits are measured against the function's
+  own unedited output (restore check 0), so they are internally consistent,
+  but the registered "equal to eager" holds there only up to that precision.
+Reading: the sink is a costly constant bias in most decoders tested here
+(round 13's four, Pythia, OPT), a cheaper gate in GPT-2, and close to a
+no-op in encoders; where it is a bias, a constant per-head vector can stand
+in for the sink token in streaming attention.

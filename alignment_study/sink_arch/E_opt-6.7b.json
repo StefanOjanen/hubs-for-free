@@ -1,0 +1,26 @@
+{
+ "equivalence_max_logit_diff": 0.4375,
+ "rand_col": 436,
+ "zero": {
+  "kl": 0.04418114759027958,
+  "dnll": 0.03665424813516438
+ },
+ "mean": {
+  "kl": 0.018470414099283516,
+  "dnll": 0.005874429160030559
+ },
+ "rand": {
+  "kl": 0.0031823728095332626,
+  "dnll": 0.002723375342611689
+ },
+ "restore_check_kl": 0.0,
+ "bias_share": 0.581939014564048,
+ "zero_over_rand": 13.883083546317545,
+ "part": "E",
+ "kind": "decoder",
+ "model": "facebook/opt-6.7b",
+ "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/8a15d0a/alignment_study/PREREGISTRATION21.md",
+ "dev": false,
+ "device": "mps",
+ "runtime_s": 160.1
+}
