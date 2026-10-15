@@ -989,7 +989,7 @@ carry over to the large model.
 
 Frozen at 283e5b5. Key-value merges (two heads' key and value projections
 averaged, the multi-head to grouped-query conversion) in gpt2-medium,
-Pythia-160m and Pythia-410m, every pair of heads in every layer (3,672
+Pythia-160m and Pythia-410m, every pair of heads in every layer (6,552
 merges), damage as next-token KL. 5 of 5 clauses pass.
 - B1: the simulated output perturbation predicts merge damage at within-layer
   Spearman 0.72 (0.64 to 0.79; per model 0.66, 0.70, 0.79).
