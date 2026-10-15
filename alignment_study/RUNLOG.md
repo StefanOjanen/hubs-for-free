@@ -497,3 +497,9 @@ run. transformers 5's image processors require torchvision; each model's own
 preprocessor_config.json is applied with PIL and numpy instead (frozen code).
 Evaluation (eval_vit.py, unchanged): 3 of 5 clauses pass, V1 and V4 fail
 (vit_results.json, eval_vit.log).
+
+Merge benchmark (alignment_study/PREREGISTRATION20.md, frozen at 283e5b5,
+2026-10-15 00:21:32 UTC to about 01:08 UTC): gpt2-medium 1,329 s, then
+Pythia-160m and Pythia-410m, beside preregistration 18's 7B runs. Evaluation
+(eval_merge_bench.py, unchanged since the freeze): 5 of 5 clauses pass
+(merge_bench_results.json, eval_merge_bench.log).

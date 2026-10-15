@@ -1,0 +1,78 @@
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (286177 > 1024). Running this sequence through the model will result in indexing errors
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 5642.10it/s]
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 9498.35it/s]
+gpt2-medium layers 24 heads 16; capture vs eager max logit difference 0.00e+00 (13s)
+criteria done (114s)
+  layer 0: 120 merges (171s)
+  layer 1: 120 merges (227s)
+  layer 2: 120 merges (277s)
+  layer 3: 120 merges (328s)
+  layer 4: 120 merges (382s)
+  layer 5: 120 merges (429s)
+  layer 6: 120 merges (473s)
+  layer 7: 120 merges (517s)
+  layer 8: 120 merges (561s)
+  layer 9: 120 merges (606s)
+  layer 10: 120 merges (659s)
+  layer 11: 120 merges (718s)
+  layer 12: 120 merges (765s)
+  layer 13: 120 merges (809s)
+  layer 14: 120 merges (853s)
+  layer 15: 120 merges (897s)
+  layer 16: 120 merges (941s)
+  layer 17: 120 merges (990s)
+  layer 18: 120 merges (1048s)
+  layer 19: 120 merges (1103s)
+  layer 20: 120 merges (1148s)
+  layer 21: 120 merges (1209s)
+  layer 22: 120 merges (1260s)
+  layer 23: 120 merges (1313s)
+MODEL_DONE gpt2-medium: one pair per layer out_pert 0.0376 corr_last 0.0663 corr_rows 0.0642 js 0.0717 cos_map 0.0819 qk_wcos 0.0723 kv_wcos 0.0680 k_act 0.0516 v_act 0.0773 random0 0.1539 random1 0.0579 random2 0.0817 random3 0.1506 random4 0.0653 (1329s)
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights:   1%|          | 1/148 [00:00<01:19,  1.86it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 239.71it/s]
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 1525.41it/s]
+EleutherAI/pythia-160m layers 12 heads 12; capture vs eager max logit difference 0.00e+00 (1336s)
+criteria done (1363s)
+  layer 0: 66 merges (1374s)
+  layer 1: 66 merges (1384s)
+  layer 2: 66 merges (1399s)
+  layer 3: 66 merges (1410s)
+  layer 4: 66 merges (1420s)
+  layer 5: 66 merges (1431s)
+  layer 6: 66 merges (1441s)
+  layer 7: 66 merges (1451s)
+  layer 8: 66 merges (1465s)
+  layer 9: 66 merges (1476s)
+  layer 10: 66 merges (1486s)
+  layer 11: 66 merges (1496s)
+MODEL_DONE EleutherAI/pythia-160m: one pair per layer out_pert 0.1117 corr_last 0.3987 corr_rows 0.6094 js 0.7306 cos_map 0.4201 qk_wcos 0.2986 kv_wcos 0.3500 k_act 0.4363 v_act 0.3234 random0 0.2688 random1 0.2463 random2 0.2494 random3 0.2420 random4 0.2353 (1504s)
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights:   0%|          | 1/292 [00:00<04:22,  1.11it/s]Loading weights:  34%|███▎      | 98/292 [00:01<00:01, 126.99it/s]Loading weights:  48%|████▊     | 140/292 [00:01<00:01, 87.73it/s]Loading weights:  58%|█████▊    | 168/292 [00:01<00:01, 106.85it/s]Loading weights:  66%|██████▋   | 194/292 [00:02<00:00, 114.72it/s]Loading weights:  74%|███████▍  | 216/292 [00:02<00:00, 110.86it/s]Loading weights:  80%|████████  | 234/292 [00:02<00:00, 118.12it/s]Loading weights:  86%|████████▋ | 252/292 [00:02<00:00, 124.18it/s]Loading weights:  92%|█████████▏| 269/292 [00:02<00:00, 132.87it/s]Loading weights:  98%|█████████▊| 286/292 [00:02<00:00, 128.11it/s]Loading weights: 100%|██████████| 292/292 [00:02<00:00, 103.68it/s]
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 3892.92it/s]
+EleutherAI/pythia-410m layers 24 heads 16; capture vs eager max logit difference 0.00e+00 (1521s)
+criteria done (1610s)
+  layer 0: 120 merges (1656s)
+  layer 1: 120 merges (1703s)
+  layer 2: 120 merges (1755s)
+  layer 3: 120 merges (1806s)
+  layer 4: 120 merges (1856s)
+  layer 5: 120 merges (1909s)
+  layer 6: 120 merges (1954s)
+  layer 7: 120 merges (2006s)
+  layer 8: 120 merges (2057s)
+  layer 9: 120 merges (2102s)
+  layer 10: 120 merges (2158s)
+  layer 11: 120 merges (2204s)
+  layer 12: 120 merges (2248s)
+  layer 13: 120 merges (2306s)
+  layer 14: 120 merges (2351s)
+  layer 15: 120 merges (2404s)
+  layer 16: 120 merges (2452s)
+  layer 17: 120 merges (2493s)
+  layer 18: 120 merges (2535s)
+  layer 19: 120 merges (2576s)
+  layer 20: 120 merges (2618s)
+  layer 21: 120 merges (2661s)
+  layer 22: 120 merges (2706s)
+  layer 23: 120 merges (2752s)
+MODEL_DONE EleutherAI/pythia-410m: one pair per layer out_pert 0.0830 corr_last 0.2456 corr_rows 0.2120 js 0.1845 cos_map 0.2040 qk_wcos 0.3700 kv_wcos 0.3191 k_act 0.2053 v_act 0.2735 random0 0.3015 random1 0.2645 random2 0.2975 random3 0.2255 random4 0.3285 (2766s)
+MERGE_BENCH_DONE

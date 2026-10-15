@@ -984,3 +984,27 @@ Reading: the late-layer globality of the source's models is genuine, not an
 artifact effect; artifacts appear in the self-supervised large model, which
 does not show the depth trend. Development on DINOv2-B (share 0.47) did not
 carry over to the large model.
+
+## A benchmark of head-merging criteria (2026-10-15, preregistration 20)
+
+Frozen at 283e5b5. Key-value merges (two heads' key and value projections
+averaged, the multi-head to grouped-query conversion) in gpt2-medium,
+Pythia-160m and Pythia-410m, every pair of heads in every layer (3,672
+merges), damage as next-token KL. 5 of 5 clauses pass.
+- B1: the simulated output perturbation predicts merge damage at within-layer
+  Spearman 0.72 (0.64 to 0.79; per model 0.66, 0.70, 0.79).
+- B2, B3: every criterion in use stays below 0.3: Jensen-Shannon 0.12, key
+  cosine 0.10, key-value weight cosine 0.09, query-key weight cosine 0.08,
+  map cosine 0.08, every-row correlation 0.06, last-row correlation 0.05,
+  value cosine -0.01; output perturbation leads the best of them by 0.60
+  (0.52 to 0.73).
+- B4, B5: one pair per layer, the output perturbation's merges cost 0.57,
+  0.28 and 0.34 of the last-row correlation's (the CHAI-style choice) and
+  0.46, 0.45 and 0.28 of the random median; two pairs per layer, 0.48, 0.40
+  and 0.35 of the CHAI-style choice.
+- Checks: capture attention equals eager attention (0.0) and restore checks
+  0 in all three models. The full table of pair outcomes and criteria is the
+  benchmark (alignment_study/merge_bench/).
+Reading: for the merge that grouped-query conversion performs, no similarity
+in use predicts which heads can be merged; simulating the merge on a few
+hundred tokens does.

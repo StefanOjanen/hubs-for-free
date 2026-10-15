@@ -1,0 +1,7 @@
+B1 PASS out_pert within-layer Spearman >= 0.4, interval above zero {"value": 0.715807322350143, "ci95": [0.6372252999182423, 0.7895542607882978], "per_model": [0.6551398245248511, 0.6972062763107539, 0.7857753431951292]}
+B2 PASS out_pert exceeds the best other criterion (js) by >= 0.2, interval above zero {"value": 0.6001288941723133, "ci95": [0.5197443876886719, 0.7269813516740398]}
+B3 PASS every other criterion below 0.3 {"corr_last": 0.045968379666200716, "corr_rows": 0.06024756125562255, "js": 0.11567842817782956, "cos_map": 0.07568217984691765, "qk_wcos": 0.08126909844884143, "kv_wcos": 0.08566851085966737, "k_act"
+B4 PASS one pair per layer: out_pert below the CHAI-style choice in every model, geometric mean ratio <= 0.8 [0.566259691254239, 0.28006917900589906, 0.33796983848297935]
+B5 PASS one pair per layer: out_pert below the random median in every model [0.45980704353211765, 0.45329085218515386, 0.27898202208646505]
+passes 5 of 5
+{'out_pert': 0.716, 'corr_last': 0.046, 'corr_rows': 0.06, 'js': 0.116, 'cos_map': 0.076, 'qk_wcos': 0.081, 'kv_wcos': 0.086, 'k_act': 0.099, 'v_act': -0.008}
