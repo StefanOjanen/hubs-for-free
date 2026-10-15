@@ -1,0 +1,7 @@
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+W streaming Qwen/Qwen2.5-0.5B (0s)
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (298938 > 131072). Running this sequence through the model will result in indexing errors
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:02<09:57,  2.07s/it]Loading weights: 100%|██████████| 290/290 [00:02<00:00, 139.07it/s]
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:00<02:18,  2.08it/s]Loading weights:  80%|███████▉  | 231/290 [00:00<00:00, 488.27it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 435.35it/s]
+RESULT W Qwen/Qwen2.5-0.5B: {"equivalence_max_logit_diff": 0.0, "full": 2.6978, "window": 4.9886, "stream": 2.9144, "bias": 3.2173, "recovery": 0.854} (56s)
+SINK_ARCH_DONE W

@@ -1,0 +1,24 @@
+{
+ "equivalence_max_logit_diff": 0.0,
+ "sink": "both [SEP] columns",
+ "n_segments": 40,
+ "zero": {
+  "kl": 0.08563209647206249
+ },
+ "mean": {
+  "kl": 0.07157792337238789
+ },
+ "rand": {
+  "kl": 0.08838548742351934
+ },
+ "restore_check_kl": 0.0,
+ "bias_share": 0.16412272592508326,
+ "zero_over_rand": 0.9688479293182675,
+ "part": "E",
+ "kind": "bert",
+ "model": "bert-base-uncased",
+ "registered": null,
+ "dev": true,
+ "device": "mps",
+ "runtime_s": 53.6
+}
