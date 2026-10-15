@@ -1,0 +1,233 @@
+{
+ "thresholds": {
+  "aggregate": 0.5,
+  "located": 0.2
+ },
+ "per_model": [
+  {
+   "claim": "A1",
+   "model": "facebook/opt-6.7b",
+   "kind": "aggregate",
+   "real": 0.7013841225998476,
+   "random_median": 0.3335215519182384,
+   "colset_median": 0.5695299147628248,
+   "marginal_median": 0.3569967827061191,
+   "untrained": [
+    0.43522754823789,
+    0.4387067569186911,
+    0.43813356407918036
+   ],
+   "s_colset": 0.6415666655275328,
+   "s_marginal": 0.06381521975552902,
+   "s_untrained": 0.28437797291283895,
+   "reproduces": true,
+   "prediction_holds": true,
+   "secondary_holds": true
+  },
+  {
+   "claim": "A2",
+   "model": "facebook/opt-6.7b",
+   "kind": "aggregate",
+   "real": 0.1947592700307723,
+   "random_median": 0.0,
+   "colset_median": 0.0003748437724766518,
+   "marginal_median": 1.2163456631242298e-05,
+   "untrained": [
+    0.11067254601948662,
+    0.10616622737143189,
+    0.10713828451844165
+   ],
+   "s_colset": 0.0019246517632635705,
+   "s_marginal": 6.245380068081201e-05,
+   "s_untrained": 0.5501062131805773,
+   "reproduces": true,
+   "prediction_holds": false,
+   "secondary_holds": true
+  },
+  {
+   "claim": "A3",
+   "model": "mistralai/Mistral-7B-Instruct-v0.2",
+   "kind": "aggregate",
+   "real": 0.60704660989965,
+   "random_median": 0.09989453743522367,
+   "colset_median": 0.11857066305431849,
+   "marginal_median": 0.09988251611745605,
+   "untrained": [
+    0.12817776719263443,
+    0.13248878115943322,
+    0.13116848546390733
+   ],
+   "s_colset": 0.03682549403444435,
+   "s_marginal": -2.3703576146702914e-05,
+   "s_untrained": 0.061665819241776526,
+   "reproduces": true,
+   "prediction_holds": false,
+   "secondary_holds": true
+  },
+  {
+   "claim": "L1",
+   "model": "gpt2-medium",
+   "kind": "located",
+   "real": 0.9254735708236694,
+   "random_median": 0.006232139654457569,
+   "colset_median": 0.0069914760533720255,
+   "marginal_median": 0.008688151836395264,
+   "untrained": [
+    0.005646884441375732,
+    0.005698431748896837,
+    0.005649808794260025
+   ],
+   "s_colset": 0.0008260467524278499,
+   "s_marginal": 0.0026717814261415698,
+   "s_untrained": -0.0006334906592024026,
+   "reproduces": true,
+   "prediction_holds": true,
+   "secondary_holds": true
+  },
+  {
+   "claim": "L1",
+   "model": "EleutherAI/pythia-410m",
+   "kind": "located",
+   "real": 0.9123884439468384,
+   "random_median": 0.006238300586119294,
+   "colset_median": 0.00654817814938724,
+   "marginal_median": 0.008532637730240822,
+   "untrained": [
+    0.006437613163143396,
+    0.0064580426551401615,
+    0.006536061875522137
+   ],
+   "s_colset": 0.00034197154361050584,
+   "s_marginal": 0.002531961354232442,
+   "s_untrained": 0.00024250072753494308,
+   "reproduces": true,
+   "prediction_holds": true,
+   "secondary_holds": true
+  },
+  {
+   "claim": "L2",
+   "model": "bert-base-cased",
+   "kind": "located",
+   "real": 0.7631750106811523,
+   "random_median": 0.00809815851971507,
+   "colset_median": 0.018181202933192253,
+   "marginal_median": 0.008445034269243479,
+   "untrained": [
+    0.008351359516382217,
+    0.008356492966413498,
+    0.008394118398427963
+   ],
+   "s_colset": 0.013353666430925634,
+   "s_marginal": 0.00045939131697053426,
+   "s_untrained": 0.0003421300043286119,
+   "reproduces": true,
+   "prediction_holds": true,
+   "secondary_holds": true
+  },
+  {
+   "claim": "L3",
+   "model": "bert-base-cased",
+   "kind": "located",
+   "real": 0.7769470183941748,
+   "random_median": 0.1357053159577799,
+   "colset_median": 0.13647554838390424,
+   "marginal_median": 0.13341577695331874,
+   "untrained": [
+    0.14926844875860543,
+    0.1458933809393946,
+    0.1484461997655058
+   ],
+   "s_colset": 0.0012011577275742443,
+   "s_marginal": -0.003570477396841266,
+   "s_untrained": 0.0198690817507922,
+   "reproduces": true,
+   "prediction_holds": true,
+   "secondary_holds": true
+  }
+ ],
+ "claims": {
+  "A1": {
+   "kind": "aggregate",
+   "models": [
+    "facebook/opt-6.7b"
+   ],
+   "s_colset": [
+    0.6415666655275328
+   ],
+   "included": true,
+   "prediction_holds": true,
+   "secondary_kind": "weighted",
+   "secondary_holds": true
+  },
+  "A2": {
+   "kind": "aggregate",
+   "models": [
+    "facebook/opt-6.7b"
+   ],
+   "s_colset": [
+    0.0019246517632635705
+   ],
+   "included": true,
+   "prediction_holds": false,
+   "secondary_kind": "count",
+   "secondary_holds": true
+  },
+  "A3": {
+   "kind": "aggregate",
+   "models": [
+    "mistralai/Mistral-7B-Instruct-v0.2"
+   ],
+   "s_colset": [
+    0.03682549403444435
+   ],
+   "included": true,
+   "prediction_holds": false,
+   "secondary_kind": "count",
+   "secondary_holds": true
+  },
+  "L1": {
+   "kind": "located",
+   "models": [
+    "gpt2-medium",
+    "EleutherAI/pythia-410m"
+   ],
+   "s_colset": [
+    0.0008260467524278499,
+    0.00034197154361050584
+   ],
+   "included": true,
+   "prediction_holds": true,
+   "secondary_kind": "located",
+   "secondary_holds": true
+  },
+  "L2": {
+   "kind": "located",
+   "models": [
+    "bert-base-cased"
+   ],
+   "s_colset": [
+    0.013353666430925634
+   ],
+   "included": true,
+   "prediction_holds": true,
+   "secondary_kind": "located",
+   "secondary_holds": true
+  },
+  "L3": {
+   "kind": "located",
+   "models": [
+    "bert-base-cased"
+   ],
+   "s_colset": [
+    0.0012011577275742443
+   ],
+   "included": true,
+   "prediction_holds": true,
+   "secondary_kind": "located",
+   "secondary_holds": true
+  }
+ },
+ "K": 4,
+ "N": 6,
+ "K_secondary": 6
+}

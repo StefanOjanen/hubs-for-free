@@ -1,0 +1,70 @@
+L1 gpt2-medium (0s)
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 6932.42it/s]
+RESULT L1 gpt2-medium: real 0.9254735708236694 (56s)
+L1 EleutherAI/pythia-410m (56s)
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights:   0%|          | 1/292 [00:00<01:52,  2.60it/s]Loading weights:  66%|██████▌   | 192/292 [00:00<00:00, 506.93it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 493.70it/s]
+RESULT L1 EleutherAI/pythia-410m: real 0.9123884439468384 (94s)
+RULE_DONE L1
+L2 bert-base-cased (0s)
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6517.93it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-cased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+RESULT L2 bert-base-cased: real 0.7631750106811523 (42s)
+RULE_DONE L2
+L3 bert-base-cased (0s)
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 14269.27it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-cased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+RESULT L3 bert-base-cased: real 0.7769470183941748 (82s)
+RULE_DONE L3
+A1A2 facebook/opt-6.7b (0s)
+Loading weights:   0%|          | 0/516 [00:00<?, ?it/s]Loading weights:   0%|          | 2/516 [00:00<02:11,  3.91it/s]Loading weights:  10%|█         | 54/516 [00:00<00:05, 82.06it/s]Loading weights:  14%|█▎        | 70/516 [00:00<00:05, 83.88it/s]Loading weights:  17%|█▋        | 86/516 [00:01<00:07, 57.75it/s]Loading weights:  18%|█▊        | 94/516 [00:01<00:06, 60.33it/s]Loading weights:  20%|█▉        | 102/516 [00:02<00:10, 40.88it/s]Loading weights:  23%|██▎       | 118/516 [00:02<00:13, 29.66it/s]Loading weights:  24%|██▍       | 123/516 [00:02<00:12, 30.99it/s]Loading weights:  26%|██▌       | 134/516 [00:03<00:14, 26.30it/s]Loading weights:  29%|██▉       | 150/516 [00:04<00:14, 25.34it/s]Loading weights:  32%|███▏      | 166/516 [00:04<00:13, 26.14it/s]Loading weights:  35%|███▌      | 182/516 [00:05<00:12, 27.28it/s]Loading weights:  36%|███▌      | 186/516 [00:05<00:11, 28.03it/s]Loading weights:  38%|███▊      | 198/516 [00:06<00:12, 24.55it/s]Loading weights:  41%|████▏     | 214/516 [00:06<00:11, 25.50it/s]Loading weights:  45%|████▍     | 230/516 [00:07<00:11, 25.94it/s]Loading weights:  48%|████▊     | 246/516 [00:07<00:10, 26.24it/s]Loading weights:  51%|█████     | 262/516 [00:08<00:09, 25.48it/s]Loading weights:  54%|█████▍    | 278/516 [00:09<00:09, 25.38it/s]Loading weights:  54%|█████▍    | 281/516 [00:09<00:11, 21.02it/s]Loading weights:  57%|█████▋    | 294/516 [00:10<00:10, 21.78it/s]Loading weights:  60%|██████    | 310/516 [00:10<00:09, 21.41it/s]Loading weights:  61%|██████    | 313/516 [00:10<00:09, 21.85it/s]Loading weights:  63%|██████▎   | 326/516 [00:11<00:08, 21.40it/s]Loading weights:  66%|██████▋   | 342/516 [00:12<00:07, 22.23it/s]Loading weights:  67%|██████▋   | 345/516 [00:12<00:07, 22.73it/s]Loading weights:  69%|██████▉   | 358/516 [00:12<00:06, 22.69it/s]Loading weights:  72%|███████▏  | 374/516 [00:13<00:05, 23.81it/s]Loading weights:  76%|███████▌  | 390/516 [00:14<00:05, 24.48it/s]Loading weights:  79%|███████▊  | 406/516 [00:14<00:04, 25.74it/s]Loading weights:  79%|███████▉  | 409/516 [00:14<00:04, 26.04it/s]Loading weights:  82%|████████▏ | 422/516 [00:15<00:03, 25.99it/s]Loading weights:  85%|████████▍ | 438/516 [00:15<00:02, 26.96it/s]Loading weights:  88%|████████▊ | 454/516 [00:16<00:02, 26.00it/s]Loading weights:  91%|█████████ | 470/516 [00:17<00:01, 25.19it/s]Loading weights:  94%|█████████▍| 486/516 [00:17<00:01, 24.90it/s]Loading weights:  97%|█████████▋| 502/516 [00:18<00:00, 24.93it/s]Loading weights: 100%|██████████| 516/516 [00:18<00:00, 27.79it/s]
+  document 1/8 (86s)
+  document 2/8 (132s)
+  document 3/8 (179s)
+  document 4/8 (228s)
+  document 5/8 (354s)
+  document 6/8 (445s)
+  document 7/8 (520s)
+  document 8/8 (632s)
+RESULT A1A2 facebook/opt-6.7b: real {'heavy': 0.7013841225998476, 'persist': 0.1947592700307723} (1897s)
+RULE_DONE A1A2
+A3 mistralai/Mistral-7B-Instruct-v0.2 (0s)
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 3498.78it/s]
+  generated 1/6 (79s)
+  generated 2/6 (166s)
+  generated 3/6 (278s)
+  generated 4/6 (346s)
+  generated 5/6 (438s)
+  generated 6/6 (532s)
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 3209.55it/s]
+  sequence 1/6 (664s)
+  sequence 2/6 (786s)
+  sequence 3/6 (917s)
+  sequence 4/6 (1048s)
+  sequence 5/6 (1191s)
+  sequence 6/6 (1314s)
+RESULT A3 mistralai/Mistral-7B-Instruct-v0.2: real 0.60704660989965 (3955s)
+RULE_DONE A3

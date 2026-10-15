@@ -1008,3 +1008,29 @@ merges), damage as next-token KL. 5 of 5 clauses pass.
 Reading: for the merge that grouped-query conversion performs, no similarity
 in use predicts which heads can be merged; simulating the merge on a few
 hundred tokens does.
+
+## A rule for which attention claims survive nulls, tested on six claims (2026-10-15, preregistration 18)
+
+Frozen at cdda0f1 (`audits/PREREGISTRATION18.md`). Rule as stated before
+testing: claims that aggregate attention into distribution-level summaries
+have s >= 0.5 (s = share reproduced by the null keeping each row's values and
+the shared columns); claims about where heads look have s <= 0.2. All six
+claims reproduce. The rule as stated predicts 4 of 6.
+- A1, heavy hitters (H2O; OPT-6.7B): top-10-percent share of accumulated
+  attention 0.70 against 0.33 random; s = 0.64. Holds.
+- A2, persistence of importance (Scissorhands; OPT-6.7B): persistence beyond
+  chance 0.19; s = 0.002. FAILS (predicted >= 0.5).
+- A3, observation-window hit rate (SnapKV; Mistral-7B-Instruct-v0.2): 0.61
+  against 0.10 random; s = 0.04. FAILS (predicted >= 0.5).
+- L1, induction heads (GPT-2 medium, Pythia-410m): prefix matching 0.93 and
+  0.91; s = 0.001 and 0.000. Holds.
+- L2, positional heads (bert-base-cased): 0.76; s = 0.01. Holds.
+- L3, syntactic heads (bert-base-cased, UD EWT): 0.78 against 0.14 random;
+  s = 0.001. Holds.
+The development-informed secondary reading, that statistics weighted by
+attention mass are sink-dominated while statistics that count positions
+above a threshold are not, fits 6 of 6; it was formed on development data
+and needs a prospective test on new claims.
+Reading: H2O's heavy hitters are mostly the sink; the persistence and
+window observations behind Scissorhands and SnapKV, and the three located
+claims, are not reproduced by the sink at all.

@@ -503,3 +503,13 @@ Merge benchmark (alignment_study/PREREGISTRATION20.md, frozen at 283e5b5,
 Pythia-160m and Pythia-410m, beside preregistration 18's 7B runs. Evaluation
 (eval_merge_bench.py, unchanged since the freeze): 5 of 5 clauses pass
 (merge_bench_results.json, eval_merge_bench.log).
+
+Rule round (audits/PREREGISTRATION18.md, frozen at cdda0f1, 2026-10-15
+00:03:48 to 01:46:06 UTC): L1, L2, L3 in minutes; A1 and A2 on OPT-6.7B
+(1,897 s) and A3 on Mistral-7B-Instruct-v0.2 (3,955 s), most of it the
+untrained 7B initializations, which are built on the CPU and copied to the
+GPU and ran slowly under memory pressure (swap up to 37 GB, disk free down
+to 23 GB at its lowest; nothing was paused or lost). Evaluation (eval_rule.py,
+unchanged since the freeze): K = 4 of N = 6 (A2, A3 fail); the
+development-informed secondary reading fits 6 of 6 (rule_results.json,
+eval_rule.log).

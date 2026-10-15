@@ -1,0 +1,8 @@
+A1 opt-6.7b                 real 0.7014 random 0.3335 colset 0.5695 s_colset +0.642 s_marginal +0.064 reproduces True holds True
+A2 opt-6.7b                 real 0.1948 random 0.0000 colset 0.0004 s_colset +0.002 s_marginal +0.000 reproduces True holds False
+A3 Mistral-7B-Instruct-v0.2 real 0.6070 random 0.0999 colset 0.1186 s_colset +0.037 s_marginal -0.000 reproduces True holds False
+L1 gpt2-medium              real 0.9255 random 0.0062 colset 0.0070 s_colset +0.001 s_marginal +0.003 reproduces True holds True
+L1 pythia-410m              real 0.9124 random 0.0062 colset 0.0065 s_colset +0.000 s_marginal +0.003 reproduces True holds True
+L2 bert-base-cased          real 0.7632 random 0.0081 colset 0.0182 s_colset +0.013 s_marginal +0.000 reproduces True holds True
+L3 bert-base-cased          real 0.7769 random 0.1357 colset 0.1365 s_colset +0.001 s_marginal -0.004 reproduces True holds True
+K 4 of N 6 | secondary (dev-informed): 6 of 6
