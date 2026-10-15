@@ -963,3 +963,24 @@ that the most prominent structure in a standard BERT head-clustering
 pipeline follows from that choice; Sandoval-Segura et al. (ICLR 2026) find
 that output-norm scores identify inactive heads that attention-weight
 scores miss.
+
+## Vision transformers' attention distance and artifact tokens (2026-10-15, preregistration 19)
+
+Frozen at 8455f04 (`audits/PREREGISTRATION19.md`). 128 Imagenette images.
+3 of 5 clauses pass; the artifact hypothesis is not supported.
+- V5 passes: the source's claim reproduces on supervised ViT-L/16. Attention
+  distance rises 24 pixels from the first to the second half of the layers,
+  every head's distance correlates positively with depth, and the second
+  half sits near the uniform distance (111 against 117 pixels). ViT-B/16:
+  +37 pixels. Neither has artifact columns of note (0.002 and 0.08 of
+  second-half attention; artifact share of the increase -0.01 and 0.02).
+- V2 and V3 pass: DINOv2-L has artifact columns holding 0.16 of second-half
+  attention, DINOv2-L with registers has none (registers hold 0.36).
+- V1 and V4 fail: in DINOv2-L the distance does not grow with depth (-2.4
+  pixels; removing the artifact columns lowers the second-half distance from
+  85.6 to 78.7 pixels but the increase is undefined), and the registers model
+  grows more (+4.8 pixels), not less.
+Reading: the late-layer globality of the source's models is genuine, not an
+artifact effect; artifacts appear in the self-supervised large model, which
+does not show the depth trend. Development on DINOv2-B (share 0.47) did not
+carry over to the large model.

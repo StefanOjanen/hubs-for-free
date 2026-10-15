@@ -1,0 +1,89 @@
+{
+ "clauses": {
+  "V1": {
+   "what": "DINOv2-L: artifact share of the depth increase >= 0.4",
+   "value": -2.9282432313656113,
+   "pass_": false
+  },
+  "V2": {
+   "what": "DINOv2-L: second-half attention mass on artifact columns >= 0.1",
+   "value": 0.15829858995372584,
+   "pass_": true
+  },
+  "V3": {
+   "what": "DINOv2-L with registers: artifact share <= 0.1 and second-half artifact mass < 0.02",
+   "value": [
+    0.001714823655722767,
+    0.0
+   ],
+   "pass_": true
+  },
+  "V4": {
+   "what": "registers shrink the depth increase: delta D_all with registers below the model without",
+   "value": [
+    4.798963255968587,
+    -2.376522303597696
+   ],
+   "pass_": false
+  },
+  "V5": {
+   "what": "the source's claim reproduces on ViT-L/16: delta D_all > 0 and at least half of the heads increase with depth",
+   "value": [
+    24.20915450208122,
+    1.0
+   ],
+   "pass_": true
+  }
+ },
+ "passes": 3,
+ "reported": {
+  "dinov2-large": {
+   "delta_D_all": -2.376522303597696,
+   "delta_D_ex": -9.335557653297059,
+   "artifact_share": -2.9282432313656113,
+   "second_half_D_all": 85.61832483586234,
+   "second_half_D_ex": 78.66961394211587,
+   "uniform_distance": 117.02217102050781,
+   "second_half_mass_art": 0.15829858995372584,
+   "second_half_mass_cls": 0.10451906621771438,
+   "second_half_mass_reg": 0.0,
+   "heads_increase_with_depth": 0.3125
+  },
+  "dinov2-with-registers-large": {
+   "delta_D_all": 4.798963255968587,
+   "delta_D_ex": 4.790733880254308,
+   "artifact_share": 0.001714823655722767,
+   "second_half_D_all": 85.27487189415842,
+   "second_half_D_ex": 85.27487189415842,
+   "uniform_distance": 117.02217102050781,
+   "second_half_mass_art": 0.0,
+   "second_half_mass_cls": 0.01526434254932004,
+   "second_half_mass_reg": 0.36195454630069435,
+   "heads_increase_with_depth": 0.75
+  },
+  "vit-large-patch16-224": {
+   "delta_D_all": 24.20915450208122,
+   "delta_D_ex": 24.419011823697176,
+   "artifact_share": -0.008668510979923542,
+   "second_half_D_all": 110.61446681153029,
+   "second_half_D_ex": 110.63501594215631,
+   "uniform_distance": 117.08961486816406,
+   "second_half_mass_art": 0.0017016998535837047,
+   "second_half_mass_cls": 0.010654924517590795,
+   "second_half_mass_reg": 0.0,
+   "heads_increase_with_depth": 1.0
+  },
+  "vit-base-patch16-224": {
+   "delta_D_all": 36.588299023740234,
+   "delta_D_ex": 35.79620433285257,
+   "artifact_share": 0.021648852557308473,
+   "second_half_D_all": 106.67989704302617,
+   "second_half_D_ex": 105.8878023661673,
+   "uniform_distance": 117.08961486816406,
+   "second_half_mass_art": 0.08029462378181051,
+   "second_half_mass_cls": 0.0015701917856555763,
+   "second_half_mass_reg": 0.0,
+   "heads_increase_with_depth": 1.0
+  }
+ }
+}

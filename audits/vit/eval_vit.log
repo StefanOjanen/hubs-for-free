@@ -1,0 +1,10 @@
+V1 FAIL DINOv2-L: artifact share of the depth increase >= 0.4 -2.9282432313656113
+V2 PASS DINOv2-L: second-half attention mass on artifact columns >= 0.1 0.15829858995372584
+V3 PASS DINOv2-L with registers: artifact share <= 0.1 and second-half artifact mass < 0.02 [0.001714823655722767, 0.0]
+V4 FAIL registers shrink the depth increase: delta D_all with registers below the model without [4.798963255968587, -2.376522303597696]
+V5 PASS the source's claim reproduces on ViT-L/16: delta D_all > 0 and at least half of the heads increase with depth [24.20915450208122, 1.0]
+passes 3 of 5
+dinov2-large {'delta_D_all': -2.377, 'delta_D_ex': -9.336, 'artifact_share': -2.928, 'second_half_D_all': 85.618, 'second_half_D_ex': 78.67, 'uniform_distance': 117.022, 'second_half_mass_art': 0.158, 'second_half_mass_cls': 0.105, 'second_half_mass_reg': 0.0, 'heads_increase_with_depth': 0.312}
+dinov2-with-registers-large {'delta_D_all': 4.799, 'delta_D_ex': 4.791, 'artifact_share': 0.002, 'second_half_D_all': 85.275, 'second_half_D_ex': 85.275, 'uniform_distance': 117.022, 'second_half_mass_art': 0.0, 'second_half_mass_cls': 0.015, 'second_half_mass_reg': 0.362, 'heads_increase_with_depth': 0.75}
+vit-large-patch16-224 {'delta_D_all': 24.209, 'delta_D_ex': 24.419, 'artifact_share': -0.009, 'second_half_D_all': 110.614, 'second_half_D_ex': 110.635, 'uniform_distance': 117.09, 'second_half_mass_art': 0.002, 'second_half_mass_cls': 0.011, 'second_half_mass_reg': 0.0, 'heads_increase_with_depth': 1.0}
+vit-base-patch16-224 {'delta_D_all': 36.588, 'delta_D_ex': 35.796, 'artifact_share': 0.022, 'second_half_D_all': 106.68, 'second_half_D_ex': 105.888, 'uniform_distance': 117.09, 'second_half_mass_art': 0.08, 'second_half_mass_cls': 0.002, 'second_half_mass_reg': 0.0, 'heads_increase_with_depth': 1.0}

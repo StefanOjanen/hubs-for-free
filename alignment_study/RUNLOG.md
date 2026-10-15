@@ -489,3 +489,11 @@ printed their completion lines and wrote complete result files. The scripts
 are unchanged since the freeze (empty git diff against 94b7734). Evaluation
 (eval_readings.py, unchanged): 8 of 9 clauses pass, C2 fails
 (readings_results.json, eval_readings.log).
+
+ViT attention-distance round (audits/PREREGISTRATION19.md, frozen at 8455f04,
+2026-10-15 00:12:00 to 00:17:38 UTC): DINOv2-L, DINOv2-L with registers,
+ViT-L/16, ViT-B/16 on 128 images, ran beside preregistration 18's OPT-6.7B
+run. transformers 5's image processors require torchvision; each model's own
+preprocessor_config.json is applied with PIL and numpy instead (frozen code).
+Evaluation (eval_vit.py, unchanged): 3 of 5 clauses pass, V1 and V4 fail
+(vit_results.json, eval_vit.log).

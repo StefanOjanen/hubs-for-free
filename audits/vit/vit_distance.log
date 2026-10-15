@@ -1,0 +1,48 @@
+128 images (1s)
+Loading weights:   0%|          | 0/439 [00:00<?, ?it/s]Loading weights:  68%|██████▊   | 300/439 [00:00<00:00, 2992.37it/s]Loading weights: 100%|██████████| 439/439 [00:00<00:00, 3985.72it/s]
+  facebook/dinov2-large image 32/128 (15s)
+  facebook/dinov2-large image 64/128 (19s)
+  facebook/dinov2-large image 96/128 (23s)
+  facebook/dinov2-large image 128/128 (29s)
+RESULT facebook/dinov2-large: delta D_all -2.4px, delta D_ex -9.3px, artifact share -2.9282432313656113, second-half D_all 85.6 D_ex 78.7 (uniform 117.0), artifact mass 0.16, registers mass 0.00 (29s)
+Loading weights:   0%|          | 0/440 [00:00<?, ?it/s]Loading weights: 100%|██████████| 440/440 [00:00<00:00, 5658.58it/s]
+  facebook/dinov2-with-registers-large image 32/128 (41s)
+  facebook/dinov2-with-registers-large image 64/128 (50s)
+  facebook/dinov2-with-registers-large image 96/128 (65s)
+  facebook/dinov2-with-registers-large image 128/128 (93s)
+RESULT facebook/dinov2-with-registers-large: delta D_all 4.8px, delta D_ex 4.8px, artifact share 0.001714823655722767, second-half D_all 85.3 D_ex 85.3 (uniform 117.0), artifact mass 0.00, registers mass 0.36 (94s)
+Loading weights:   0%|          | 0/390 [00:00<?, ?it/s]Loading weights: 100%|██████████| 390/390 [00:00<00:00, 48034.84it/s]
+[transformers] [1mViTModel LOAD REPORT[0m from: google/vit-large-patch16-224
+Key                 | Status     | 
+--------------------+------------+-
+classifier.bias     | UNEXPECTED | 
+classifier.weight   | UNEXPECTED | 
+pooler.dense.bias   | MISSING    | 
+pooler.dense.weight | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+  google/vit-large-patch16-224 image 32/128 (234s)
+  google/vit-large-patch16-224 image 64/128 (236s)
+  google/vit-large-patch16-224 image 96/128 (239s)
+  google/vit-large-patch16-224 image 128/128 (242s)
+RESULT google/vit-large-patch16-224: delta D_all 24.2px, delta D_ex 24.4px, artifact share -0.008668510979923542, second-half D_all 110.6 D_ex 110.6 (uniform 117.1), artifact mass 0.00, registers mass 0.00 (242s)
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3983.81it/s]
+[transformers] [1mViTModel LOAD REPORT[0m from: google/vit-base-patch16-224
+Key                 | Status     | 
+--------------------+------------+-
+classifier.bias     | UNEXPECTED | 
+classifier.weight   | UNEXPECTED | 
+pooler.dense.bias   | MISSING    | 
+pooler.dense.weight | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+  google/vit-base-patch16-224 image 32/128 (245s)
+  google/vit-base-patch16-224 image 64/128 (248s)
+  google/vit-base-patch16-224 image 96/128 (253s)
+  google/vit-base-patch16-224 image 128/128 (257s)
+RESULT google/vit-base-patch16-224: delta D_all 36.6px, delta D_ex 35.8px, artifact share 0.021648852557308473, second-half D_all 106.7 D_ex 105.9 (uniform 117.1), artifact mass 0.08, registers mass 0.00 (257s)
+VIT_DONE
