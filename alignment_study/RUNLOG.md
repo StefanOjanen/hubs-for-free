@@ -528,3 +528,8 @@ f5d3b5e, 2026-10-15 21:13:30 to 2026-10-16 04:21:47 UTC): Part S Pythia-1.4B
 models, 2,662 s. Evaluation (eval_merge_bench2.py, unchanged since the
 freeze): 6 of 7 clauses pass, D2 fails (merge_bench2_results.json,
 eval_merge_bench2.log).
+
+Weighting-flip round (audits/PREREGISTRATION23.md, frozen at 50fdbc4,
+2026-10-16 04:21:57 to 04:53:59 UTC): Clark 19 s, CHAI 479 s, OPT-6.7B 428 s,
+SnapKV 922 s. Evaluation (eval_flip.py, unchanged since the freeze): 4 of 5
+clauses pass, F2 fails (flip_results.json, eval_flip.log).

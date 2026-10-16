@@ -1,0 +1,7 @@
+F1_heavy PASS heavy: s(mass) - s(count) >= 0.3 [0.642, 0.217, 0.424]
+F1_persist PASS persist: s(mass) - s(count) >= 0.3 [0.522, 0.002, 0.52]
+F1_hit PASS hit: s(mass) - s(count) >= 0.3 [0.644, 0.037, 0.607]
+F1_chai PASS chai: s(mass) - s(count) >= 0.3 [0.953, 0.105, 0.847]
+F2_clark FAIL clark (top-5 of about 64 positions): |s(mass) - s(count)| < 0.3 [0.638, 0.27, 0.368]
+passes 4 of 5
+simple rule: {'corr_last': (0.953, True), 'jaccard_last': (0.105, True), 'clark_js': (0.638, True), 'clark_jaccard': (0.27, False), 'heavy_mass': (0.642, True), 'heavy_count': (0.217, False), 'persist_count': (0.002, True), 'persist_mass': (0.522, True), 'hit_count': (0.037, True), 'hit_mass': (0.644, True)}

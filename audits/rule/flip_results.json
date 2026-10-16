@@ -1,0 +1,114 @@
+{
+ "clauses": {
+  "F1_heavy": {
+   "what": "heavy: s(mass) - s(count) >= 0.3",
+   "value": [
+    0.6415666655275328,
+    0.21708885236136022,
+    0.4244778131661726
+   ],
+   "pass_": true
+  },
+  "F1_persist": {
+   "what": "persist: s(mass) - s(count) >= 0.3",
+   "value": [
+    0.5219347798254904,
+    0.0019246517632635705,
+    0.5200101280622268
+   ],
+   "pass_": true
+  },
+  "F1_hit": {
+   "what": "hit: s(mass) - s(count) >= 0.3",
+   "value": [
+    0.643780889637759,
+    0.036838731003871375,
+    0.6069421586338877
+   ],
+   "pass_": true
+  },
+  "F1_chai": {
+   "what": "chai: s(mass) - s(count) >= 0.3",
+   "value": [
+    0.9527603997767633,
+    0.10546507903274627,
+    0.847295320744017
+   ],
+   "pass_": true
+  },
+  "F2_clark": {
+   "what": "clark (top-5 of about 64 positions): |s(mass) - s(count)| < 0.3",
+   "value": [
+    0.6380523401351995,
+    0.2700564514885897,
+    0.3679958886466098
+   ],
+   "pass_": false
+  }
+ },
+ "passes": 4,
+ "secondary_simple_rule": {
+  "corr_last": {
+   "s": 0.9527603997767633,
+   "kind": "mass",
+   "simple_rule_holds": true
+  },
+  "jaccard_last": {
+   "s": 0.10546507903274627,
+   "kind": "count",
+   "simple_rule_holds": true
+  },
+  "clark_js": {
+   "s": 0.6380523401351995,
+   "kind": "mass",
+   "simple_rule_holds": true
+  },
+  "clark_jaccard": {
+   "s": 0.2700564514885897,
+   "kind": "count",
+   "simple_rule_holds": false
+  },
+  "heavy_mass": {
+   "s": 0.6415666655275328,
+   "kind": "mass",
+   "simple_rule_holds": true
+  },
+  "heavy_count": {
+   "s": 0.21708885236136022,
+   "kind": "count",
+   "simple_rule_holds": false
+  },
+  "persist_count": {
+   "s": 0.0019246517632635705,
+   "kind": "count",
+   "simple_rule_holds": true
+  },
+  "persist_mass": {
+   "s": 0.5219347798254904,
+   "kind": "mass",
+   "simple_rule_holds": true
+  },
+  "hit_count": {
+   "s": 0.036838731003871375,
+   "kind": "count",
+   "simple_rule_holds": true
+  },
+  "hit_mass": {
+   "s": 0.643780889637759,
+   "kind": "mass",
+   "simple_rule_holds": true
+  }
+ },
+ "reproduces": {
+  "corr_last": true,
+  "jaccard_last": true,
+  "clark_js": true,
+  "clark_jaccard": true,
+  "heavy_mass": true,
+  "heavy_count": true,
+  "persist_count": true,
+  "persist_mass": true,
+  "hit_count": true,
+  "hit_mass": true
+ }
+}

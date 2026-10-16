@@ -1,0 +1,78 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6612.58it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+RESULT clark bert-base-uncased {"clark_js": {"real": 0.1265, "s": 0.638}, "clark_jaccard": {"real": 0.0921, "s": 0.27}} (19s)
+FLIP_DONE clark
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 4853.71it/s]
+  document 1/32 (62s)
+  document 2/32 (78s)
+  document 3/32 (89s)
+  document 4/32 (105s)
+  document 5/32 (115s)
+  document 6/32 (127s)
+  document 7/32 (143s)
+  document 8/32 (155s)
+  document 9/32 (171s)
+  document 10/32 (183s)
+  document 11/32 (199s)
+  document 12/32 (215s)
+  document 13/32 (226s)
+  document 14/32 (236s)
+  document 15/32 (251s)
+  document 16/32 (263s)
+  document 17/32 (279s)
+  document 18/32 (293s)
+  document 19/32 (304s)
+  document 20/32 (319s)
+  document 21/32 (331s)
+  document 22/32 (347s)
+  document 23/32 (359s)
+  document 24/32 (374s)
+  document 25/32 (385s)
+  document 26/32 (401s)
+  document 27/32 (412s)
+  document 28/32 (423s)
+  document 29/32 (439s)
+  document 30/32 (449s)
+  document 31/32 (460s)
+  document 32/32 (478s)
+RESULT chai mistralai/Mistral-7B-v0.1 {"corr_last": {"real": 0.7795, "s": 0.953}, "jaccard_last": {"real": 0.2623, "s": 0.105}} (479s)
+FLIP_DONE chai
+Loading weights:   0%|          | 0/516 [00:00<?, ?it/s]Loading weights:   0%|          | 2/516 [00:00<02:14,  3.82it/s]Loading weights:  10%|█         | 54/516 [00:00<00:04, 92.45it/s]Loading weights:  14%|█▎        | 70/516 [00:00<00:04, 96.55it/s]Loading weights:  17%|█▋        | 86/516 [00:01<00:04, 98.31it/s]Loading weights:  20%|█▉        | 102/516 [00:01<00:03, 104.15it/s]Loading weights:  23%|██▎       | 118/516 [00:01<00:03, 106.90it/s]Loading weights:  26%|██▌       | 134/516 [00:01<00:03, 110.76it/s]Loading weights:  29%|██▉       | 150/516 [00:01<00:03, 110.36it/s]Loading weights:  32%|███▏      | 166/516 [00:01<00:03, 111.69it/s]Loading weights:  35%|███▌      | 182/516 [00:01<00:03, 111.30it/s]Loading weights:  38%|███▊      | 198/516 [00:02<00:02, 113.47it/s]Loading weights:  41%|████▏     | 214/516 [00:02<00:02, 113.78it/s]Loading weights:  45%|████▍     | 230/516 [00:02<00:02, 115.43it/s]Loading weights:  48%|████▊     | 246/516 [00:02<00:02, 114.46it/s]Loading weights:  51%|█████     | 262/516 [00:02<00:02, 116.38it/s]Loading weights:  54%|█████▍    | 278/516 [00:02<00:02, 115.81it/s]Loading weights:  57%|█████▋    | 294/516 [00:02<00:01, 113.23it/s]Loading weights:  60%|██████    | 310/516 [00:02<00:01, 110.42it/s]Loading weights:  63%|██████▎   | 326/516 [00:03<00:01, 111.59it/s]Loading weights:  66%|██████▋   | 342/516 [00:03<00:03, 49.94it/s] Loading weights:  68%|██████▊   | 351/516 [00:05<00:06, 24.02it/s]Loading weights:  69%|██████▉   | 358/516 [00:05<00:07, 20.77it/s]Loading weights:  72%|███████▏  | 374/516 [00:06<00:06, 23.31it/s]Loading weights:  76%|███████▌  | 390/516 [00:06<00:04, 25.75it/s]Loading weights:  79%|███████▊  | 406/516 [00:06<00:03, 30.85it/s]Loading weights:  82%|████████▏ | 422/516 [00:07<00:03, 31.01it/s]Loading weights:  85%|████████▍ | 438/516 [00:07<00:02, 33.94it/s]Loading weights:  88%|████████▊ | 454/516 [00:08<00:01, 33.60it/s]Loading weights:  91%|█████████ | 470/516 [00:08<00:01, 35.16it/s]Loading weights:  94%|█████████▍| 486/516 [00:09<00:00, 34.78it/s]Loading weights:  97%|█████████▋| 502/516 [00:09<00:00, 35.37it/s]Loading weights: 100%|██████████| 516/516 [00:09<00:00, 53.35it/s]
+  window 1/8 (77s)
+  window 2/8 (126s)
+  window 3/8 (177s)
+  window 4/8 (228s)
+  window 5/8 (278s)
+  window 6/8 (328s)
+  window 7/8 (377s)
+  window 8/8 (427s)
+RESULT dec facebook/opt-6.7b {"heavy_mass": {"real": 0.7014, "s": 0.642}, "heavy_count": {"real": 0.4987, "s": 0.217}, "persist_count": {"real": 0.1948, "s": 0.002}, "persist_mass": {"real": 0.5938, "s": 0.522}} (428s)
+FLIP_DONE dec
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 4570.22it/s]
+  generated 1/6 (55s)
+  generated 2/6 (128s)
+  generated 3/6 (189s)
+  generated 4/6 (253s)
+  generated 5/6 (319s)
+  generated 6/6 (381s)
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 3308.14it/s]
+  sequence 1/6 (475s)
+  sequence 2/6 (559s)
+  sequence 3/6 (646s)
+  sequence 4/6 (729s)
+  sequence 5/6 (823s)
+  sequence 6/6 (921s)
+RESULT snap mistralai/Mistral-7B-Instruct-v0.2 {"hit_count": {"real": 0.607, "s": 0.037}, "hit_mass": {"real": 0.8631, "s": 0.644}} (922s)
+FLIP_DONE snap

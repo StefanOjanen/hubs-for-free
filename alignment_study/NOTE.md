@@ -1098,3 +1098,30 @@ Reading: the predictive result holds at 1.3 to 1.4B parameters and in OPT;
 KL damage is a good proxy for LAMBADA accuracy across configurations; the
 task-level advantage is clear where merges cost accuracy (the Pythia
 family) and within noise where they barely do (OPT-1.3B, GPT-2 large).
+
+## Flipping the weighting of five audited statistics (2026-10-16, preregistration 23)
+
+Frozen at 50fdbc4 (`audits/PREREGISTRATION23.md`). 4 of 5 clauses pass.
+- F1 passes in all four decoder pairs: flipping a statistic from counted
+  positions to attention mass, or back, moves the share reproduced by the
+  shared-columns null in the predicted direction. Heavy hitters (OPT-6.7B):
+  mass 0.64, counted 0.22. Persistence (OPT-6.7B): mass 0.52, counted 0.00.
+  SnapKV hit rate (Mistral-7B-Instruct-v0.2): mass 0.64, counted 0.04.
+  CHAI last row (Mistral-7B): Pearson 0.95, top-5% Jaccard 0.11.
+- F2 FAILS: for Clark's statistic (bert-base-uncased), where the counted
+  version takes the top 5 of about 64 positions, the occupancy reading
+  predicted no separation; the Jensen-Shannon contrast is reproduced at 0.64
+  and the Jaccard contrast at 0.27, a gap of 0.37. The separator columns
+  raise the counted share above the other counted statistics (0.00 to 0.22)
+  but do not keep it near the weighted one.
+- Secondary, the plain rule: 8 of 10 statistics on the predicted side of 0.5
+  or 0.2; the exceptions are Clark's counted statistic (0.27) and the counted
+  heavy-hitter share (0.22).
+- The recomputed originals match their rounds: Clark 0.638 (Target 1), CHAI
+  0.95 (Target 3), heavy hitters 0.64, persistence 0.002 and hit rate 0.04
+  (round 18).
+Reading: whether nulls that keep the shared columns reproduce an attention
+statistic depends on how the statistic weighs positions. Weighted by
+attention mass, it is mostly the sink; counted by positions, it mostly is
+not. This held prospectively on five new statistics; the finer occupancy
+reading did not.
