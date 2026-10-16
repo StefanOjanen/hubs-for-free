@@ -1,0 +1,484 @@
+{
+ "models": [
+  "gpt2-medium",
+  "EleutherAI/pythia-410m"
+ ],
+ "clauses": {
+  "P1": {
+   "what": "aligning before pooling lowers perplexity (contiguous, random0) in >= 18 of 20",
+   "value": {
+    "gpt2-medium g2 contiguous": true,
+    "gpt2-medium g2 random0": true,
+    "gpt2-medium g4 contiguous": true,
+    "gpt2-medium g4 random0": true,
+    "EleutherAI/pythia-410m g2 contiguous": true,
+    "EleutherAI/pythia-410m g2 random0": true,
+    "EleutherAI/pythia-410m g4 contiguous": true,
+    "EleutherAI/pythia-410m g4 random0": true
+   },
+   "count": 8,
+   "of": 8,
+   "pass_": false
+  },
+  "P2": {
+   "what": "sim_align perplexity below jin's in >= 8 of 10 cells",
+   "value": {
+    "gpt2-medium g2": true,
+    "gpt2-medium g4": true,
+    "EleutherAI/pythia-410m g2": true,
+    "EleutherAI/pythia-410m g4": true
+   },
+   "count": 4,
+   "pass_": false
+  },
+  "P3": {
+   "what": "sim_align lowest perplexity of the nine arms in >= 8 of 10 cells",
+   "value": {
+    "gpt2-medium g2": "sim_align",
+    "gpt2-medium g4": "sim_align",
+    "EleutherAI/pythia-410m g2": "sim_align",
+    "EleutherAI/pythia-410m g4": "sim_align"
+   },
+   "count": 4,
+   "pass_": false
+  },
+  "P4": {
+   "what": "g=2: geometric mean over models of dlog(sim_align)/dlog(jin) <= 0.85",
+   "value": {
+    "per_model": {
+     "gpt2-medium": 0.7067626714756545,
+     "EleutherAI/pythia-410m": 0.7346594994571457
+    },
+    "geometric_mean": 0.7205760962322435
+   },
+   "pass_": true
+  },
+  "P5": {
+   "what": "g=2: sim_align accuracy above jin's in >= 4 of 5 models and pooled 95% interval above zero",
+   "value": {
+    "per_model": {
+     "gpt2-medium": 0.010857142857142855,
+     "EleutherAI/pythia-410m": 0.008857142857142855
+    },
+    "pooled": [
+     0.009857142857142856,
+     0.0007142857142857146,
+     0.018857142857142857
+    ]
+   },
+   "count": 2,
+   "pass_": false
+  },
+  "P6": {
+   "what": "Spearman(simulated cost, dlog) across the nine arms >= 0.6 in >= 8 of 10 cells",
+   "value": {
+    "gpt2-medium g2": 0.9,
+    "gpt2-medium g4": 0.75,
+    "EleutherAI/pythia-410m g2": 0.9666666666666667,
+    "EleutherAI/pythia-410m g4": 0.9
+   },
+   "count": 4,
+   "pass_": false
+  },
+  "P7": {
+   "what": "every unaligned arm >= 5x base perplexity in >= 9 of 10 cells",
+   "value": {
+    "gpt2-medium g2": 14.477057302341139,
+    "gpt2-medium g4": 37.49134528988613,
+    "EleutherAI/pythia-410m g2": 93.00641942822445,
+    "EleutherAI/pythia-410m g4": 93.05566143124712
+   },
+   "count": 4,
+   "pass_": false
+  },
+  "P8": {
+   "what": "g=2: sim perplexity below contiguous in >= 4 of 5 models",
+   "value": {
+    "gpt2-medium": true,
+    "EleutherAI/pythia-410m": true
+   },
+   "count": 2,
+   "pass_": false
+  },
+  "C1": {
+   "what": "unaligned neighbouring pooling: perplexity spread across four bases >= 1.1 in >= 8 of 10 cells",
+   "value": {
+    "gpt2-medium g2": 1.309696957663481,
+    "gpt2-medium g4": 1.359109305162972,
+    "EleutherAI/pythia-410m g2": 1.2007992729342045,
+    "EleutherAI/pythia-410m g4": 1.2274760105883649
+   },
+   "count": 4,
+   "pass_": false
+  },
+  "C2": {
+   "what": "aligned neighbouring pooling: perplexity within 0.1 percent of the original basis in all 30 cases",
+   "value": {
+    "gpt2-medium g2 basis 0": 1.0441008568840005e-07,
+    "gpt2-medium g2 basis 1": 1.267836742258055e-07,
+    "gpt2-medium g2 basis 2": 8.949435992278154e-08,
+    "gpt2-medium g4 basis 0": 2.983145430679457e-08,
+    "gpt2-medium g4 basis 1": 2.2373590757851503e-08,
+    "gpt2-medium g4 basis 2": 1.2678369110119547e-07,
+    "EleutherAI/pythia-410m g2 basis 0": 1.8048013786797767e-06,
+    "EleutherAI/pythia-410m g2 basis 1": 4.1763949328865735e-06,
+    "EleutherAI/pythia-410m g2 basis 2": 1.3498724130700523e-06,
+    "EleutherAI/pythia-410m g4 basis 0": 2.610252622936571e-07,
+    "EleutherAI/pythia-410m g4 basis 1": 1.0068121016892917e-06,
+    "EleutherAI/pythia-410m g4 basis 2": 1.2156325164269788e-06
+   },
+   "count": 12,
+   "pass_": true
+  }
+ },
+ "passes": 2,
+ "of": 10,
+ "table": {
+  "gpt2-medium g2": {
+   "contiguous": {
+    "ppl": 363.6606257863624,
+    "dlog": 2.818338221941659,
+    "acc": 0.3188571428571429,
+    "sim_cost": 1843.8152384757996
+   },
+   "random0": {
+    "ppl": 379.69399448974553,
+    "dlog": 2.861482786602888,
+    "acc": 0.33,
+    "sim_cost": 1889.7934340536594
+   },
+   "wse": {
+    "ppl": 390.10488381549095,
+    "dlog": 2.888532771779212,
+    "acc": 0.3171428571428571,
+    "sim_cost": 1857.42771422863
+   },
+   "act": {
+    "ppl": 387.9789349912281,
+    "dlog": 2.8830681828409745,
+    "acc": 0.3211428571428572,
+    "sim_cost": 1825.0165783315897
+   },
+   "sim": {
+    "ppl": 314.3314509259978,
+    "dlog": 2.672565141328136,
+    "acc": 0.3282857142857143,
+    "sim_cost": 1677.7685856074095
+   },
+   "contiguous_align": {
+    "ppl": 137.61152185866018,
+    "dlog": 1.8465517923828945,
+    "acc": 0.342,
+    "sim_cost": 1275.1895511597395
+   },
+   "random0_align": {
+    "ppl": 182.6741048567799,
+    "dlog": 2.129820853420983,
+    "acc": 0.3354285714285714,
+    "sim_cost": 1273.258990034461
+   },
+   "jin": {
+    "ppl": 121.39144913911245,
+    "dlog": 1.721137576668543,
+    "acc": 0.3457142857142857,
+    "sim_cost": 1200.6972286105156
+   },
+   "sim_align": {
+    "ppl": 73.28226697723953,
+    "dlog": 1.2164357916633937,
+    "acc": 0.3565714285714286,
+    "sim_cost": 1009.1785684078932
+   },
+   "base": {
+    "ppl": 21.712385629306453,
+    "acc": 0.4422857142857143
+   }
+  },
+  "gpt2-medium g4": {
+   "contiguous": {
+    "ppl": 839.9817198440181,
+    "dlog": 3.6554972654613533,
+    "acc": 0.3005714285714286,
+    "sim_cost": 1594.6652099192142
+   },
+   "random0": {
+    "ppl": 1165.5456182197809,
+    "dlog": 3.9830617341328023,
+    "acc": 0.30114285714285716,
+    "sim_cost": 1621.947745859623
+   },
+   "wse": {
+    "ppl": 814.0265466954897,
+    "dlog": 3.6241101140700276,
+    "acc": 0.2968571428571429,
+    "sim_cost": 1643.0667529404163
+   },
+   "act": {
+    "ppl": 845.0224939725493,
+    "dlog": 3.661480383039969,
+    "acc": 0.31028571428571433,
+    "sim_cost": 1583.4155130684376
+   },
+   "sim": {
+    "ppl": 905.6676419695247,
+    "dlog": 3.730789533598332,
+    "acc": 0.30828571428571433,
+    "sim_cost": 1429.1050838679075
+   },
+   "contiguous_align": {
+    "ppl": 519.837948286653,
+    "dlog": 3.1756342610472523,
+    "acc": 0.31,
+    "sim_cost": 1133.7911136746407
+   },
+   "random0_align": {
+    "ppl": 507.21989987154666,
+    "dlog": 3.1510617730671124,
+    "acc": 0.30485714285714277,
+    "sim_cost": 1179.9149433523417
+   },
+   "jin": {
+    "ppl": 376.40229964071005,
+    "dlog": 2.8527756532099873,
+    "acc": 0.31771428571428567,
+    "sim_cost": 1071.8448125422
+   },
+   "sim_align": {
+    "ppl": 324.70892252969867,
+    "dlog": 2.7050462939855424,
+    "acc": 0.32371428571428573,
+    "sim_cost": 981.6488319188356
+   },
+   "base": {
+    "ppl": 21.712385629306453,
+    "acc": 0.4422857142857143
+   }
+  },
+  "EleutherAI/pythia-410m g2": {
+   "contiguous": {
+    "ppl": 2653.315583962361,
+    "dlog": 4.9913229971831425,
+    "acc": 0.3111428571428571,
+    "sim_cost": 410.18783485889435
+   },
+   "random0": {
+    "ppl": 2563.127119233917,
+    "dlog": 4.956741019459053,
+    "acc": 0.29542857142857143,
+    "sim_cost": 411.05963069200516
+   },
+   "wse": {
+    "ppl": 2504.245262590316,
+    "dlog": 4.933500372238802,
+    "acc": 0.2977142857142857,
+    "sim_cost": 387.6983724832535
+   },
+   "act": {
+    "ppl": 1784.662942128141,
+    "dlog": 4.5947425449407024,
+    "acc": 0.30342857142857144,
+    "sim_cost": 389.0994035601616
+   },
+   "sim": {
+    "ppl": 1677.249989838191,
+    "dlog": 4.532668516881004,
+    "acc": 0.3022857142857143,
+    "sim_cost": 345.208955347538
+   },
+   "contiguous_align": {
+    "ppl": 573.185194366382,
+    "dlog": 3.4589665623305486,
+    "acc": 0.30828571428571433,
+    "sim_cost": 324.08875143527985
+   },
+   "random0_align": {
+    "ppl": 648.7390540821917,
+    "dlog": 3.5827882585140576,
+    "acc": 0.31057142857142855,
+    "sim_cost": 329.68036913871765
+   },
+   "jin": {
+    "ppl": 382.7402129239159,
+    "dlog": 3.055114160293156,
+    "acc": 0.3202857142857143,
+    "sim_cost": 317.65542298555374
+   },
+   "sim_align": {
+    "ppl": 170.15519685883152,
+    "dlog": 2.244468639785408,
+    "acc": 0.3291428571428572,
+    "sim_cost": 245.14148253202438
+   },
+   "base": {
+    "ppl": 18.03370133104167,
+    "acc": 0.4597142857142857
+   }
+  },
+  "EleutherAI/pythia-410m g4": {
+   "contiguous": {
+    "ppl": 2056.481532505428,
+    "dlog": 4.736509504066203,
+    "acc": 0.2982857142857143,
+    "sim_cost": 279.476830303669
+   },
+   "random0": {
+    "ppl": 2073.5829161387337,
+    "dlog": 4.744790963875813,
+    "acc": 0.2937142857142857,
+    "sim_cost": 280.80492359399796
+   },
+   "wse": {
+    "ppl": 2308.9462638676296,
+    "dlog": 4.852304233110679,
+    "acc": 0.29800000000000004,
+    "sim_cost": 273.8706870675087
+   },
+   "act": {
+    "ppl": 1798.9978809134752,
+    "dlog": 4.602742752521765,
+    "acc": 0.3005714285714286,
+    "sim_cost": 275.89799362421036
+   },
+   "sim": {
+    "ppl": 1678.1380054136441,
+    "dlog": 4.533197824130981,
+    "acc": 0.29942857142857143,
+    "sim_cost": 252.60864448547363
+   },
+   "contiguous_align": {
+    "ppl": 1732.9563197292994,
+    "dlog": 4.565341780891285,
+    "acc": 0.3108571428571429,
+    "sim_cost": 256.47346264123917
+   },
+   "random0_align": {
+    "ppl": 1727.5958131004777,
+    "dlog": 4.562243714044965,
+    "acc": 0.2991428571428572,
+    "sim_cost": 254.79469847679138
+   },
+   "jin": {
+    "ppl": 997.8755303425758,
+    "dlog": 4.013386245934395,
+    "acc": 0.3108571428571429,
+    "sim_cost": 251.014144718647
+   },
+   "sim_align": {
+    "ppl": 777.9068115353058,
+    "dlog": 3.7643644339832703,
+    "acc": 0.30885714285714283,
+    "sim_cost": 204.85589343309402
+   },
+   "base": {
+    "ppl": 18.03370133104167,
+    "acc": 0.4597142857142857
+   }
+  }
+ },
+ "reported": {
+  "gpt2-medium g2": {
+   "acc_diff_sim_align_minus_jin": [
+    0.010857142857142855,
+    -0.001428571428571428,
+    0.023142857142857142
+   ],
+   "wse_vs_random0_ppl_ratio": 1.0274191572077302,
+   "act_vs_random0_ppl_ratio": 1.0218200461996148
+  },
+  "gpt2-medium g4": {
+   "acc_diff_sim_align_minus_jin": [
+    0.006,
+    -0.005714285714285713,
+    0.01742857142857143
+   ],
+   "wse_vs_random0_ppl_ratio": 0.6984081394761787,
+   "act_vs_random0_ppl_ratio": 0.7250016479519791
+  },
+  "EleutherAI/pythia-410m g2": {
+   "acc_diff_sim_align_minus_jin": [
+    0.008857142857142855,
+    -0.005435714285714286,
+    0.022285714285714287
+   ],
+   "wse_vs_random0_ppl_ratio": 0.9770273365679968,
+   "act_vs_random0_ppl_ratio": 0.6962834300085561
+  },
+  "EleutherAI/pythia-410m g4": {
+   "acc_diff_sim_align_minus_jin": [
+    -0.0020000000000000005,
+    -0.015142857142857142,
+    0.010857142857142857
+   ],
+   "wse_vs_random0_ppl_ratio": 1.1135056360163167,
+   "act_vs_random0_ppl_ratio": 0.8675794282986429
+  }
+ },
+ "checks": {
+  "gpt2-medium": {
+   "capture_vs_eager": 0.0,
+   "sdpa_vs_eager": 0.002838134765625,
+   "alignment_max_logit_diff": 0.00311279296875,
+   "restore_check_ppl": 21.712385629306453
+  },
+  "EleutherAI/pythia-410m": {
+   "capture_vs_eager": 0.0,
+   "sdpa_vs_eager": 0.009225159883499146,
+   "alignment_max_logit_diff": 0.0056378841400146484,
+   "restore_check_ppl": 18.03370133104167
+  }
+ },
+ "convention_checks": {
+  "gpt2-medium": {
+   "2": {
+    "aligned_vs_original_basis_max_logit_diff": {
+     "0": 0.0015981197357177734,
+     "1": 0.0011985301971435547,
+     "2": 0.0032265186309814453
+    },
+    "function_check_random_bases": {
+     "0": 0.00087738037109375,
+     "1": 0.001739501953125,
+     "2": 0.00167083740234375
+    }
+   },
+   "4": {
+    "aligned_vs_original_basis_max_logit_diff": {
+     "0": 0.00057220458984375,
+     "1": 0.000335693359375,
+     "2": 0.0004730224609375
+    },
+    "function_check_random_bases": {
+     "0": 0.00087738037109375,
+     "1": 0.001739501953125,
+     "2": 0.00167083740234375
+    }
+   }
+  },
+  "EleutherAI/pythia-410m": {
+   "2": {
+    "aligned_vs_original_basis_max_logit_diff": {
+     "0": 0.004434347152709961,
+     "1": 0.0072748661041259766,
+     "2": 0.004413604736328125
+    },
+    "function_check_random_bases": {
+     "0": 0.004879951477050781,
+     "1": 0.005579710006713867,
+     "2": 0.004994869232177734
+    }
+   },
+   "4": {
+    "aligned_vs_original_basis_max_logit_diff": {
+     "0": 0.0031728744506835938,
+     "1": 0.003127574920654297,
+     "2": 0.002818584442138672
+    },
+    "function_check_random_bases": {
+     "0": 0.004879951477050781,
+     "1": 0.005579710006713867,
+     "2": 0.004994869232177734
+    }
+   }
+  }
+ }
+}

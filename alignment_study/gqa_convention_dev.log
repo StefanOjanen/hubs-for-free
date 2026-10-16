@@ -1,0 +1,10 @@
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+gpt2-medium: base ppl 22.88 on 64 windows (17s)
+  g=2: unaligned original 374.2, 0 490.0, 1 408.1, 2 381.8 | aligned original 143.68, 0 143.68, 1 143.68, 2 143.68 | aligned-model difference across bases 1.6e-03, 1.2e-03, 3.2e-03 (100s)
+  g=4: unaligned original 830.5, 0 1025.1, 1 817.5, 2 754.3 | aligned original 525.81, 0 525.81, 1 525.81, 2 525.81 | aligned-model difference across bases 5.7e-04, 3.4e-04, 4.7e-04 (191s)
+MODEL_DONE gpt2-medium (191s)
+EleutherAI/pythia-410m: base ppl 18.92 on 64 windows (205s)
+  g=2: unaligned original 2594.3, 0 2524.2, 1 2196.5, 2 2160.5 | aligned original 586.23, 0 586.23, 1 586.23, 2 586.23 | aligned-model difference across bases 4.4e-03, 7.3e-03, 4.4e-03 (274s)
+  g=4: unaligned original 1922.3, 0 1566.1, 1 1673.1, 2 1774.9 | aligned original 1717.71, 0 1717.71, 1 1717.71, 2 1717.71 | aligned-model difference across bases 3.2e-03, 3.1e-03, 2.8e-03 (354s)
+MODEL_DONE EleutherAI/pythia-410m (354s)
+GQA_CONVENTION_DONE
