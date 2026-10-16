@@ -305,14 +305,24 @@ Each instrument below exists because a finding above required it.
 - **A benchmark for merging heads.** Methods that share keys and values
   between heads, or convert multi-head to grouped-query attention, choose
   which heads to merge by a similarity: of attention scores, of query and
-  key weights, of key and value activations. A preregistered benchmark merged
-  every pair of key-value heads in every layer of GPT-2 medium, Pythia-160m
-  and Pythia-410m, 6,552 merges, and measured the damage of each. No
-  similarity in use predicts it: within a layer they reach Spearman 0.12 at
-  best. Simulating the merge on 2,048 tokens predicts it at 0.72, and the
-  merges it chooses cost 0.28 to 0.57 of those chosen by the CHAI-style
-  correlation, at one pair per layer, and 0.35 to 0.48 at two. All five
-  registered predictions held.
+  key weights, of key and value activations. A preregistered benchmark
+  merged every pair of key-value heads in every layer of GPT-2 medium,
+  Pythia-160m and Pythia-410m, 6,552 merges, and measured the damage of
+  each. No similarity in use predicts it: within a layer they reach Spearman
+  0.12 at best. Simulating the merge on 2,048 tokens predicts it at 0.72,
+  and the merges it chooses cost 0.28 to 0.57 of those chosen by the
+  CHAI-style correlation, at one pair per layer, and 0.35 to 0.48 at two.
+  All five registered predictions held. A second round repeated it at larger
+  scale and on a task: in Pythia-1.4B, OPT-1.3B and GPT-2 large (21,624
+  merges) the simulation predicts the damage at 0.68 while the similarities
+  in use average 0.24 or less, and across 72 merge configurations the drop
+  in LAMBADA accuracy follows the KL damage at Spearman 0.86. Its merges
+  lose less LAMBADA accuracy than the CHAI-style choice in 5 of 6 models at
+  one pair per layer, but only 4 of 6 at two pairs, so that registered
+  prediction failed: at two pairs GPT-2 medium lost 11 points of accuracy
+  against the CHAI-style choice's 4 despite half the KL, and in OPT-1.3B,
+  where the chosen merges move accuracy by at most 2.5 points, the
+  CHAI-style choice did slightly better at both budgets.
 
 <p align="center"><img src="figures/readme/fig18_merge_benchmark.png" alt="Dot plot of nine criteria for choosing which key-value heads to merge, by within-layer Spearman with measured merge damage: output perturbation +0.72, Jensen-Shannon +0.12, key activation cosine +0.10, key-value weight cosine +0.09, query-key weight cosine +0.08, map cosine +0.08, CHAI-style every row +0.06, CHAI-style last row +0.05, value activation cosine -0.01" width="880"></p>
 <p align="center"><em>Every similarity used to decide which heads can share keys and values is close to uninformative about the damage; simulating the merge is not.</em></p>
@@ -400,10 +410,23 @@ Each instrument below exists because a finding above required it.
   against the prediction. The reading that fits all six came out of the
   development run and is labeled as such: statistics that weigh attention by
   its mass are dominated by the sink, statistics that count positions above
-  a threshold are not.
+  a threshold are not. A later preregistered round tested that reading
+  prospectively by computing five audited statistics both ways on the same
+  maps. Weighted by attention mass, the null that keeps the shared columns
+  reproduces 52 to 95 percent of each; counted, 0.2 to 27 percent, and the
+  registered gap of 0.3 held for all four decoder statistics (0.42 to
+  0.85). A sharper version, that the sink matters in proportion to the
+  share of a statistic's units it occupies, predicted a small gap for
+  Clark's top-5 count, where the two separator columns can take two of the
+  five counted slots. The gap was 0.37, so that prediction failed: the
+  weighting moves the sink's share in all five pairs, the small-k case
+  included.
 
 <p align="center"><img src="figures/readme/fig19_rule_test.png" alt="Dot chart of six published attention claims by the share reproduced by the null that keeps the shared columns: heavy hitters 0.64 (predicted mostly sink, held), persistence of importance 0.002 and observation-window hit rate 0.04 (predicted mostly sink, failed), induction, positional and syntactic heads near 0 (predicted to survive, held)" width="880"></p>
 <p align="center"><em>Four of six predictions held; the two that failed are statistics that count positions rather than weigh them by attention.</em></p>
+
+<p align="center"><img src="figures/readme/fig21_weighting_flip.png" alt="Dumbbell chart of five audited statistics, each computed weighted by attention mass and by counted positions, by the share reproduced by the null that keeps the shared columns: heavy hitters 0.64 weighted against 0.22 counted, persistence 0.52 against 0.002, hit rate 0.64 against 0.04, cross-head redundancy 0.95 against 0.11, layer clustering 0.64 against 0.27" width="880"></p>
+<p align="center"><em>Same maps, same claim, two weightings: counting positions instead of weighing them removes most of the sink's share in all five. The registered exception for Clark's top-5 count did not hold.</em></p>
 
 - **A vision claim that survives.** The ViT paper reports that attention
   distance grows with depth and that late-layer heads attend widely. Large
@@ -432,11 +455,12 @@ Each instrument below exists because a finding above required it.
 
 ## Evidence standard
 
-Twenty-one preregistrations with numeric thresholds and falsification
+Twenty-three preregistrations with numeric thresholds and falsification
 clauses were frozen in git before their runs (`alignment_study/PREREGISTRATION.md`,
-`PREREGISTRATION2.md` to `PREREGISTRATION16.md`, `PREREGISTRATION20.md` and
-`PREREGISTRATION21.md`; `audits/PREREGISTRATION4.md` and
-`PREREGISTRATION17.md` to `PREREGISTRATION19.md`; the second committed
+`PREREGISTRATION2.md` to `PREREGISTRATION16.md` and `PREREGISTRATION20.md`
+to `PREREGISTRATION22.md`; `audits/PREREGISTRATION4.md`,
+`PREREGISTRATION17.md` to `PREREGISTRATION19.md` and
+`PREREGISTRATION23.md`; the second committed
 before the held-out models were downloaded, the third and all later ones
 pushed publicly before execution, evaluation scripts committed before
 results existed). Registered predictions that failed are
@@ -454,8 +478,10 @@ in translation encoders (V5), the sink account of CHAI's redundancy on
 OPT-6.7B when every row is read (C2), the rule's predictions for two
 count-based claims (A2, A3), artifact tokens as the source of ViT attention
 distance (V1, V4), the position scheme as what separates bias-like from
-gate-like sinks (G2), the size of GPT-2 medium's sink cost (G3), and the
-constant virtual sink in TinyLlama (G6). Out of sample, 7 of 8 registered clauses
+gate-like sinks (G2), the size of GPT-2 medium's sink cost (G3), the
+constant virtual sink in TinyLlama (G6), the task-level advantage of the
+simulated merge at two pairs per layer (D2), and the occupancy reading of
+Clark's top-5 count (F2). Out of sample, 7 of 8 registered clauses
 passed in the sub-2B round, 3 of 4 in the 3B-to-7B round, 5 of 5 primary clauses in the
 training-dynamics round, 4 of 4 in 11 of 11 models in the
 fixed-instrument rerun, where the earlier failures on TinyLlama, OLMo-2
@@ -468,7 +494,9 @@ the standard-statistics round, 4 of 4 in the sink-editing round, 6 of
 5 of 6 for head confidence as its authors defined it, 8 of 9 for two
 audits repeated under the sources' own readings, 4 of 6 for the rule tested
 on six new claims, 3 of 5 for vision transformers' attention distance, 5 of
-5 for the merge benchmark, and 3 of 6 for the sink across architectures.
+5 for the merge benchmark, 3 of 6 for the sink across architectures, 6 of 7
+for the merge benchmark at larger scale and on LAMBADA, and 4 of 5 for the
+weighting flip.
 Development
 calibration that shaped a preregistration is committed and labeled as
 such. A blind reimplementation from the written specification
@@ -568,7 +596,10 @@ Results cover seventeen models up to 8B parameters in ten families, English
 text and code, contexts up to 256 tokens for the structural results and
 1,024 for the functional ones, training dynamics for two models of one
 family, and, for head importance, the encoders of three translation
-models. Where the sink sits on a mid-sequence,
+models. Later rounds add vision transformers, three more decoders and
+one downstream task (LAMBADA accuracy) for the merge benchmark, and
+2,048-token contexts for the KV-cache and streaming tests. Where the sink
+sits on a mid-sequence,
 window-varying column (OLMo-2, late Qwen2.5-3B layers) the sink-operator
 identification weakens and one-column surrogates lose their grip, which
 a set of up to three columns repairs in most layers but not all. In
@@ -576,5 +607,6 @@ a set of up to three columns repairs in most layers but not all. In
 dissociation test needs 256-token windows. The
 residual deviation directions carry structure the three-number summary
 does not capture, and one low-dispersion layer is ill-conditioned for the
-correlation statistic (diagnosed and flagged). Larger models, input
-in other languages, and long contexts are untested.
+correlation statistic (diagnosed and flagged). Models above 8B
+parameters, input in other languages, and contexts beyond 2,048 tokens are
+untested.

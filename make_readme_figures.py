@@ -795,4 +795,31 @@ if glob.glob(SA):
              fontsize=9.5, color=INK2, va="top")
     fig.savefig(OUT + "fig20_sink_architectures.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
+# ============ Figure 21: flipping the weighting of five statistics (preregistration 23) ============
+FR23 = "audits/rule/flip_results.json"
+if glob.glob(FR23):
+    plt.rcParams["axes.grid"] = False
+    R21 = json.load(open(FR23))["secondary_simple_rule"]
+    PAIRS21 = [("Heavy hitters (H2O)", "heavy_mass", "heavy_count"), ("Persistence (Scissorhands)", "persist_mass", "persist_count"),
+               ("Hit rate (SnapKV)", "hit_mass", "hit_count"), ("Cross-head redundancy (CHAI)", "corr_last", "jaccard_last"),
+               ("Layer clustering (Clark et al.)", "clark_js", "clark_jaccard")][::-1]
+    fig, ax = plt.subplots(figsize=(10.2, 4.4), gridspec_kw={"left": 0.33, "right": 0.95, "top": 0.72, "bottom": 0.15})
+    for yy, (lab, m, c) in enumerate(PAIRS21):
+        sm, sc = R21[m]["s"], R21[c]["s"]
+        ax.plot([sc, sm], [yy, yy], color=GRID, lw=3, zorder=1)
+        ax.scatter([sm], [yy], s=95, color=S2, edgecolors=SURF, linewidths=2, zorder=3)
+        ax.scatter([sc], [yy], s=95, color=S1, edgecolors=SURF, linewidths=2, zorder=3)
+    ax.set_yticks(range(len(PAIRS21))); ax.set_yticklabels([p[0] for p in PAIRS21], fontsize=10.5)
+    ax.set_xlim(-0.05, 1.05); ax.set_xticks([0, 0.2, 0.5, 1.0]); ax.set_xticklabels(["0", "0.2", "0.5", "1"])
+    ax.set_xlabel("share of the statistic reproduced by the null that keeps the shared columns")
+    style(ax)
+    from matplotlib.lines import Line2D
+    hl = [Line2D([], [], marker="o", ls="", ms=9, color=S2, mec=SURF), Line2D([], [], marker="o", ls="", ms=9, color=S1, mec=SURF)]
+    fig.legend(hl, ["positions weighted by attention mass", "positions counted (above a threshold or in the top k)"], loc="upper left",
+               bbox_to_anchor=(0.012, 0.86), ncol=2, fontsize=9.5, frameon=False, handletextpad=0.4, columnspacing=1.6)
+    fig.text(0.012, 0.975, "Weighted by attention, each statistic is mostly the sink; counted, it mostly is not", fontsize=15, color=INK, va="top")
+    fig.text(0.012, 0.915, "Preregistration 23 on OPT-6.7B, two Mistral-7B models and BERT-base. Registered: a gap of at least 0.3 in the top four rows (all held) and under 0.3 for Clark's (failed).",
+             fontsize=9.5, color=INK2, va="top")
+    fig.savefig(OUT + "fig21_weighting_flip.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
 print("FIGURES_DONE", sorted(glob.glob(OUT + "*")))

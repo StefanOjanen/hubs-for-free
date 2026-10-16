@@ -40,11 +40,20 @@ OPT-6.7B two thirds of it in the last row but less than half over every
 row; and 85 to 89 percent of the Marchenko-Pastur "outliers" reported
 for the square attention projections are produced by a Gaussian matrix of
 the same shape and norm. Retrieval heads,
-included as the positive control, are untouched by every null. Weighting
+included as the positive control, are untouched by every null. Six claims
+nobody had audited were tested against a rule stated in advance, which
+predicted four; recomputing five audited statistics with the other weighting
+then showed that weighting positions by attention mass makes each mostly the
+sink (0.52 to 0.95 reproduced) and counting them does not (0.002 to 0.27),
+including in the one case registered as an exception. Weighting
 attention by the vectors it moves halves the sink's account of head
 similarity, and a comparison that brings in values and output weights
 predicts the damage of merging two heads far better than any map statistic
-and chooses cheaper merges when many pairs are merged. Head confidence
+and chooses cheaper merges when many pairs are merged. In a benchmark of
+28,176 merges in six models, simulating a merge predicts its damage at
+within-layer Spearman 0.72 and 0.68 in two rounds, while the similarities
+used to choose merges average 0.24 or less, and the damage tracks LAMBADA
+accuracy at 0.86. Head confidence
 computed over all tokens measures the sink and points the wrong way;
 computed as its authors define it, without the sink or end-of-sentence
 token, it marks heads
@@ -756,8 +765,26 @@ against the prediction. Development had already shown this, and the rule was
 kept as stated with a refinement registered as a development-informed
 secondary reading, which fits all six: statistics that weigh attention by its
 mass are dominated by the shared columns, statistics that count positions
-above a threshold are not. That reading still needs a test on claims not used
-to form it.
+above a threshold are not.
+
+Preregistration 23 tested that reading on statistics not used to form it. It
+computed five audited statistics both ways on the same maps and inputs: heavy
+hitters and persistence on OPT-6.7B and the hit rate on
+Mistral-7B-Instruct-v0.2, as in round 18, CHAI's cross-head redundancy on
+Mistral-7B (Target 3) and the layer clustering of Clark et al. on BERT-base
+(Target 1). Each statistic received a counterpart with the other weighting,
+defined before any confirmatory run. Weighted by attention mass, s is 0.52 to
+0.95; counted, 0.002 to 0.27. The registered gap of at least 0.3 held in all
+four decoder pairs: heavy hitters 0.64 against 0.22, persistence 0.52 against
+0.002, the hit rate 0.64 against 0.04, and the redundancy 0.95 against 0.11.
+Development had suggested a sharper reading, that the shared columns dominate
+a statistic in proportion to the share of its units, attention mass or counted
+slots, that they occupy. On that reading Clark's top-5 count, in which the two
+separator columns can take two of the five counted slots, should move by less
+than 0.3. It moved by 0.37 (0.64 against 0.27), so that clause fails, and 4 of
+5 pass. The plain cutoffs, s at least 0.5 weighted and at most 0.2 counted,
+hold for 8 of 10 statistics; the counted heavy hitters (0.22) and Clark's
+count (0.27) exceed 0.2.
 
 A vision claim. Dosovitskiy et al. (2021) report that attention distance
 grows with depth and that late-layer heads attend widely. Large vision
@@ -1013,6 +1040,22 @@ choices and 0.28 to 0.46 of random pairs; with two pairs, 0.35 to 0.48 of the
 CHAI-style choices. The outcomes of all 6,552 merges are released with their
 criteria as a benchmark.
 
+Preregistration 22 repeated the benchmark at larger scale and on a task. In
+Pythia-1.4B, OPT-1.3B and GPT-2 large (21,624 merges) the simulated merge
+predicts the damage at 0.68 (interval 0.64 to 0.72), no similarity in use
+averages above 0.24 (Jensen-Shannon 0.24, CHAI's correlations 0.17 and 0.18,
+the map cosine 0.18, weight and activation cosines 0.00 to 0.07; per model at
+most 0.32, Jensen-Shannon on Pythia-1.4B), and at one pair per
+layer its merges cost 0.48 to 0.64 of the CHAI-style choice's KL. Across 72
+merge configurations in six models, the drop in LAMBADA accuracy (OpenAI
+version, 1,000 examples) tracks the KL damage at Spearman 0.86. The simulated
+merge's choices lose less accuracy than the CHAI-style choices in 5 of 6
+models at one pair per layer, but in 4 of 6 at two pairs, short of the
+registered five: GPT-2 medium lost more (0.113 against 0.039) despite half the
+KL, and in OPT-1.3B, where the chosen merges move accuracy by at most 0.025,
+the CHAI-style choice did slightly better at both budgets. Six of seven
+clauses pass.
+
 ## 7. Limitations
 
 Results cover seventeen models up to 8B parameters in ten families, three
@@ -1022,8 +1065,13 @@ functional comparisons of Section 6.2 were repeated at 1,024 tokens on two
 models (six of seven clauses hold), on three multi-head models with C4 as a
 second corpus (seven of seven), and on the encoder heads of three
 translation models; the later rounds add vision transformers (ViT-B/16,
-ViT-L/16, DINOv2-L with and without registers), BERT-base cased, and
-contexts of 2,048 tokens for the KV-cache and streaming tests. Where the sink sits on a mid-sequence, window-varying column
+ViT-L/16, DINOv2-L with and without registers), BERT-base cased,
+Pythia-1.4B, OPT-1.3B and GPT-2 large for the merge benchmark, one
+downstream task (LAMBADA accuracy on 1,000 examples, where the merge
+criterion's advantage held in 5 of 6 models at one pair per layer and 4 of 6
+at two), and contexts of 2,048 tokens for the KV-cache and streaming tests.
+The weighting account of Section 5 was tested prospectively on five pairs of
+statistics, and its occupancy refinement failed on the one small-k statistic. Where the sink sits on a mid-sequence, window-varying column
 (OLMo-2, late Qwen2.5-3B layers), the sink-operator identification weakens
 (cosine 0.61 to 0.82 with one column) and the column set repairs most but
 not all of it (four of OLMo-2's 19 high-sink layers keep a sufficiency
@@ -1085,6 +1133,8 @@ against the norm of what each head writes.
 | 19 | 8455f04, pushed before execution | V1 to V5, ViT attention distance and artifact tokens | 3 of 5; V1, V4 fail |
 | 20 | 283e5b5, pushed before execution | B1 to B5, a benchmark of head-merging criteria | 5 of 5 |
 | 21 | 8a15d0a, pushed before execution | G1 to G6, the sink as bias or gate; a sink-free stream | 3 of 6; G2, G3, G6 fail |
+| 22 | f5d3b5e, pushed before execution | S1 to S4, D1 to D3, the merge benchmark at larger scale and on LAMBADA | 6 of 7; D2 fails |
+| 23 | 50fdbc4, pushed before execution | F1, F2, flipping the weighting of five audited statistics | 4 of 5; F2 fails |
 
 ## Appendix B. Numbers ledger
 
@@ -1130,4 +1180,6 @@ against the norm of what each head writes.
 | ViT attention distance | audits/vit_results.json, audits/vit/*.json, audits/vit/dev/ |
 | merge benchmark | alignment_study/merge_bench_results.json, merge_bench/, merge_bench_dev/ |
 | sink across architectures and streaming | alignment_study/sink_arch_results.json, sink_arch/, sink_arch_dev/ |
+| merge benchmark at larger scale and on LAMBADA, S1 to S4 and D1 to D3 | alignment_study/merge_bench2_results.json, merge_bench2/, merge_bench2_dev/ |
+| weighting flip, F1 and F2 | audits/rule/flip_results.json, audits/rule/flip/, audits/rule/flip_dev/, audits/rule/flip_dev_results.json |
 | shared energy against merge damage (post hoc) | alignment_study/posthoc/sharedE_vs_merge_kl.json |

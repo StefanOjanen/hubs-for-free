@@ -77,15 +77,24 @@ every-row reading (97 percent Mistral, 43 percent OPT, C2 failed); 8 of 9.
 18 (audits/PREREGISTRATION18.md, audits/rule/): a rule for which attention
 claims survive nulls, six new claims; 4 of 6 (H2O heavy hitters mostly sink;
 Scissorhands persistence and SnapKV hit rate survive against the rule; the
-dev-informed mass-weighted versus count-based reading fits 6 of 6 but is not
-yet prospectively tested). 19 (audits/PREREGISTRATION19.md, audits/vit/):
+dev-informed mass-weighted versus count-based reading fits 6 of 6 and was
+tested prospectively in round 23). 19 (audits/PREREGISTRATION19.md, audits/vit/):
 ViT attention distance survives; artifact hypothesis fails; 3 of 5.
 20 (alignment_study/PREREGISTRATION20.md, merge_bench/): KV-merge benchmark,
 6,552 merges; simulated output perturbation 0.72, every similarity in use
 <= 0.12; 5 of 5. 21 (alignment_study/PREREGISTRATION21.md, sink_arch/): sink
 bias-like in Pythia and OPT, gate-like in GPT-2, near no-op in encoders;
 constant virtual sink replaces the sink token in streaming for Qwen and
-Pythia, not TinyLlama; 3 of 6. Untrained 7B initializations are built on the
+Pythia, not TinyLlama; 3 of 6. 22 (alignment_study/PREREGISTRATION22.md,
+merge_bench2/): the benchmark in Pythia-1.4B, OPT-1.3B and GPT-2 large,
+21,624 merges; simulation 0.68, similarities in use average <= 0.24; KL
+damage tracks LAMBADA accuracy at Spearman 0.86 over 72 configurations;
+task advantage over the CHAI-style choice in 5 of 6 models at one pair per
+layer, 4 of 6 at two (D2 failed); 6 of 7. 23 (audits/PREREGISTRATION23.md,
+audits/rule/flip/): five audited statistics computed weighted by attention
+mass and by counted positions; mass s 0.52 to 0.95, counted s 0.002 to
+0.27, gap >= 0.3 in all four decoder pairs; the occupancy refinement failed
+on Clark's top-5 count (gap 0.37, F2); 4 of 5. Untrained 7B initializations are built on the
 CPU and copied to the GPU; with two heavy runs the 65 W adapter and 32 GB
 memory saturate (swap up to 37 GB), so queue 7B runs one at a time.
 Drafts for a TMLR submission and a position paper are in private/drafts/
@@ -94,7 +103,7 @@ Instruments: functional_common.py, standard_common.py, audits/readings/readings_
 Closest prior and concurrent work to cite: Papamichalis and Ruane (arXiv
 2608.14712, sink convention and BERT clustering), Sandoval-Segura et al.
 (ICLR 2026, output-norm head scores), Sok et al. (EMNLP 2026, BOS sink
-heads), Meloux et al. (arXiv 2512.18792), Heap et al. (arXiv 2501.17727),
+heads), Méloux et al. (arXiv 2512.18792), Heap et al. (arXiv 2501.17727),
 Fesser et al. (arXiv 2606.08105). Audit base results: audits/clark2019/, audits/chai/ (Mistral-7B
 and OPT-6.7B), audits/dewage2026/ (Mistral-7B), audits/retrieval_heads/
 (Qwen2.5-7B, Mistral-7B-Instruct-v0.2 reproduced; Llama-2-7B-80K not
