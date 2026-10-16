@@ -25,6 +25,7 @@ HELLASWAG_STRIDE = 10         # the validation split is ordered by source; a str
 AVG_METRIC = {"lambada_openai": "acc", "hellaswag": "acc_norm", "piqa": "acc", "winogrande": "acc",
               "arc_easy": "acc", "arc_challenge": "acc_norm", "openbookqa": "acc_norm"}
 TOKEN_BUDGET = 12288          # padded tokens per forward batch
+CACHE_EVERY = 1               # empty the MPS allocator cache after every batch (memory only; values unchanged)
 
 
 def _pq(repo, path):
@@ -113,15 +114,18 @@ def score_requests(model, reqs, device, pad_id):
     base, head = _parts(model)
     order = sorted(range(len(reqs)), key=lambda i: -len(reqs[i][3]))
     ll, greedy = np.zeros(len(reqs)), np.zeros(len(reqs), dtype=bool)
-    i = 0
+    i, nb = 0, 0
     while i < len(order):
+        nb += 1
+        if device == "mps" and nb % CACHE_EVERY == 0:
+            torch.mps.empty_cache()
         Lb = _bucket(len(reqs[order[i]][3])); bs = max(1, TOKEN_BUDGET // Lb)
         idx = order[i:i + bs]; i += len(idx)
         ids = torch.full((bs, Lb), pad_id, dtype=torch.long)
         att = torch.zeros(bs, Lb, dtype=torch.long); att[:, 0] = 1
         for r, j in enumerate(idx):
             s = reqs[j][3]; ids[r, :len(s)] = torch.tensor(s); att[r, :len(s)] = 1
-        h = base(input_ids=ids.to(device), attention_mask=att.to(device)).last_hidden_state
+        h = base(input_ids=ids.to(device), attention_mask=att.to(device), use_cache=False).last_hidden_state
         rows, pos, tgt = [], [], []
         for r, j in enumerate(idx):
             s, k = reqs[j][3], reqs[j][4]
@@ -137,6 +141,8 @@ def score_requests(model, reqs, device, pad_id):
         for r, j in enumerate(idx):
             k = reqs[j][4]
             ll[j] = lp[o:o + k].sum(); greedy[j] = hit[o:o + k].all(); o += k
+    if device == "mps":
+        torch.mps.empty_cache()
     return ll, greedy
 
 
@@ -179,8 +185,10 @@ def perplexity(model, X, device, bs=4):
     nll, cnt = 0.0, 0
     for i in range(0, X.shape[0], bs):
         x = X[i:i + bs].to(device)
-        h = base(input_ids=x).last_hidden_state[:, :-1]
+        h = base(input_ids=x, use_cache=False).last_hidden_state[:, :-1]
         for r in range(x.shape[0]):
             logp = torch.log_softmax(head(h[r]).float(), -1)
             nll += float(-logp.gather(1, x[r, 1:, None]).sum()); cnt += x.shape[1] - 1
+    if device == "mps":
+        torch.mps.empty_cache()
     return float(np.exp(nll / cnt))

@@ -533,3 +533,36 @@ Weighting-flip round (audits/PREREGISTRATION23.md, frozen at 50fdbc4,
 2026-10-16 04:21:57 to 04:53:59 UTC): Clark 19 s, CHAI 479 s, OPT-6.7B 428 s,
 SnapKV 922 s. Evaluation (eval_flip.py, unchanged since the freeze): 4 of 5
 clauses pass, F2 fails (flip_results.json, eval_flip.log).
+
+MHA-to-GQA conversion round (alignment_study/PREREGISTRATION24.md),
+development, 2026-10-16. The zero-shot harness (zeroshot.py) first ran more
+than 25 minutes on Pythia-410m without finishing: MPS rebuilt its kernels for
+nearly every batch, each of a new shape; bucketing lengths (multiples of 32,
+then 64) and padding the output-head rows to multiples of 512 brought the
+35,551 requests to 204 s. Its base numbers on Pythia-410m and GPT-2 medium
+match EleutherAI's published lm-evaluation-harness values within 0.3 points.
+The first conversion code spent 463 s on OPT-125m's partitions, most of it in
+generalized Procrustes with SVDs falling back to the CPU one at a time; the
+rewrite on head-dimension Gram blocks gives the same 144 partitions in 168 s.
+Casting to float64 on the MPS device fails; the arrays now move to the host
+first. Code-path check (OPT-125m, Llama-160m, Phi-1.5) 3,427 s; development
+runs GPT-2 medium 3,165 s and Pythia-410m 2,573 s; convention null 354 s.
+Frozen at 7f12472; confirmatory runs started 2026-10-16 11:57 UTC, the five
+models in sequence and then the convention null, under caffeinate with a
+battery guard that pauses below 20 percent when discharging.
+
+MHA-to-GQA conversion round, first confirmatory attempt (2026-10-16 11:57 to
+14:03 UTC): OPT-1.3B's partitions took about an hour and its unconverted
+evaluation 3,410 s, about four times the expected time, because the machine
+was swapping at about 250 MB/s in each direction. The process held 29 GB of
+GPU memory for 8 GB of live tensors: each 12,288-token scoring batch returned
+a key-value cache for every layer (4.8 GB on OPT-1.3B), and the MPS allocator
+kept the freed blocks. The run was stopped. zeroshot.py now passes
+use_cache=False when scoring and empties the allocator cache after every
+batch and every evaluation; neither changes a computed value (on the first 300
+examples of each task, the per-example results with and without the change,
+and the first attempt's full-run results on the same examples, agree in all
+2,100 cases), and the footprint fell to about 9 GB. The first attempt's
+unconverted OPT-1.3B evaluation is kept (alignment_study/gqa/opt-1.3b.json.partial).
+The models are now run one invocation each (--only), fastest first; the order
+does not affect any result.
