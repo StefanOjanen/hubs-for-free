@@ -1,0 +1,128 @@
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights:   0%|          | 1/292 [00:01<06:03,  1.25s/it]Loading weights:  19%|█▉        | 56/292 [00:01<00:04, 54.76it/s]Loading weights:  27%|██▋       | 79/292 [00:01<00:03, 58.62it/s]Loading weights:  33%|███▎      | 95/292 [00:01<00:03, 65.44it/s]Loading weights:  37%|███▋      | 109/292 [00:02<00:03, 57.92it/s]Loading weights:  41%|████      | 120/292 [00:02<00:02, 58.47it/s]Loading weights:  44%|████▍     | 129/292 [00:02<00:02, 62.63it/s]Loading weights:  47%|████▋     | 138/292 [00:02<00:02, 58.52it/s]Loading weights:  50%|█████     | 146/292 [00:02<00:02, 53.03it/s]Loading weights:  53%|█████▎    | 156/292 [00:03<00:02, 51.20it/s]Loading weights:  58%|█████▊    | 168/292 [00:03<00:02, 49.15it/s]Loading weights:  62%|██████▏   | 180/292 [00:03<00:02, 52.48it/s]Loading weights:  64%|██████▎   | 186/292 [00:03<00:02, 48.43it/s]Loading weights:  66%|██████▌   | 192/292 [00:03<00:02, 45.60it/s]Loading weights:  70%|██████▉   | 204/292 [00:04<00:01, 51.23it/s]Loading weights:  74%|███████▍  | 216/292 [00:04<00:01, 56.84it/s]Loading weights:  76%|███████▌  | 222/292 [00:04<00:01, 55.28it/s]Loading weights:  79%|███████▉  | 230/292 [00:04<00:01, 59.62it/s]Loading weights:  82%|████████▏ | 240/292 [00:04<00:00, 62.59it/s]Loading weights:  85%|████████▍ | 247/292 [00:04<00:00, 51.28it/s]Loading weights:  90%|█████████ | 264/292 [00:04<00:00, 67.50it/s]Loading weights:  93%|█████████▎| 272/292 [00:05<00:00, 65.03it/s]Loading weights:  96%|█████████▌| 279/292 [00:05<00:00, 60.57it/s]Loading weights:  99%|█████████▉| 290/292 [00:05<00:00, 71.24it/s]Loading weights: 100%|██████████| 292/292 [00:05<00:00, 54.29it/s]
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights:   0%|          | 1/292 [00:00<02:29,  1.94it/s]Loading weights:  16%|█▋        | 48/292 [00:00<00:03, 70.11it/s]Loading weights:  21%|██        | 60/292 [00:00<00:02, 78.24it/s]Loading weights:  25%|██▌       | 74/292 [00:01<00:02, 81.86it/s]Loading weights:  29%|██▉       | 84/292 [00:01<00:02, 81.41it/s]Loading weights:  33%|███▎      | 96/292 [00:01<00:02, 79.17it/s]Loading weights:  37%|███▋      | 108/292 [00:01<00:02, 80.55it/s]Loading weights:  42%|████▏     | 122/292 [00:01<00:02, 82.62it/s]Loading weights:  49%|████▉     | 144/292 [00:01<00:01, 105.22it/s]Loading weights:  58%|█████▊    | 168/292 [00:01<00:00, 134.95it/s]Loading weights:  63%|██████▎   | 183/292 [00:02<00:00, 132.19it/s]Loading weights:  75%|███████▍  | 218/292 [00:02<00:00, 180.39it/s]Loading weights:  82%|████████▏ | 240/292 [00:02<00:00, 183.83it/s]Loading weights:  95%|█████████▍| 276/292 [00:02<00:00, 223.46it/s]Loading weights: 100%|██████████| 292/292 [00:02<00:00, 121.22it/s]
+EleutherAI/pythia-1.4b layers 24 heads 16; capture vs eager max logit difference 0.00e+00 (27s)
+criteria done (234s)
+  layer 0: 120 merges (355s)
+  layer 1: 120 merges (462s)
+  layer 2: 120 merges (570s)
+  layer 3: 120 merges (677s)
+  layer 4: 120 merges (784s)
+  layer 5: 120 merges (892s)
+  layer 6: 120 merges (999s)
+  layer 7: 120 merges (1106s)
+  layer 8: 120 merges (1212s)
+  layer 9: 120 merges (1319s)
+  layer 10: 120 merges (1427s)
+  layer 11: 120 merges (1535s)
+  layer 12: 120 merges (1643s)
+  layer 13: 120 merges (1751s)
+  layer 14: 120 merges (1859s)
+  layer 15: 120 merges (2079s)
+  layer 16: 120 merges (2307s)
+  layer 17: 120 merges (2556s)
+  layer 18: 120 merges (2797s)
+  layer 19: 120 merges (3009s)
+  layer 20: 120 merges (3214s)
+  layer 21: 120 merges (3420s)
+  layer 22: 120 merges (3663s)
+  layer 23: 120 merges (3917s)
+MODEL_DONE EleutherAI/pythia-1.4b: one pair per layer out_pert 0.0746 corr_last 0.1560 corr_rows 0.1939 js 0.1330 cos_map 0.1676 qk_wcos 0.1895 kv_wcos 0.3358 k_act 0.2144 v_act 0.1950 random0 0.1374 random1 0.1600 random2 0.2889 random3 0.1550 random4 0.1785 (3975s)
+Loading weights:   0%|          | 0/389 [00:00<?, ?it/s]Loading weights:   0%|          | 1/389 [00:01<08:46,  1.36s/it]Loading weights:  18%|█▊        | 71/389 [00:01<00:05, 57.52it/s]Loading weights:  22%|██▏       | 87/389 [00:01<00:04, 66.58it/s]Loading weights:  26%|██▋       | 103/389 [00:01<00:03, 75.62it/s]Loading weights:  31%|███       | 119/389 [00:02<00:03, 77.37it/s]Loading weights:  34%|███▎      | 131/389 [00:02<00:03, 79.56it/s]Loading weights:  37%|███▋      | 142/389 [00:02<00:03, 79.17it/s]Loading weights:  39%|███▉      | 152/389 [00:02<00:02, 79.13it/s]Loading weights:  43%|████▎     | 167/389 [00:02<00:02, 75.51it/s]Loading weights:  47%|████▋     | 183/389 [00:02<00:02, 77.55it/s]Loading weights:  51%|█████     | 199/389 [00:03<00:02, 75.18it/s]Loading weights:  55%|█████▌    | 215/389 [00:03<00:02, 75.19it/s]Loading weights:  57%|█████▋    | 223/389 [00:03<00:02, 73.37it/s]Loading weights:  59%|█████▉    | 231/389 [00:03<00:02, 61.33it/s]Loading weights:  63%|██████▎   | 247/389 [00:03<00:01, 75.49it/s]Loading weights:  68%|██████▊   | 263/389 [00:03<00:01, 81.13it/s]Loading weights:  72%|███████▏  | 279/389 [00:04<00:01, 83.07it/s]Loading weights:  76%|███████▌  | 295/389 [00:04<00:01, 83.15it/s]Loading weights:  80%|███████▉  | 311/389 [00:04<00:00, 84.76it/s]Loading weights:  84%|████████▍ | 327/389 [00:04<00:00, 80.84it/s]Loading weights:  88%|████████▊ | 343/389 [00:04<00:00, 79.05it/s]Loading weights:  92%|█████████▏| 359/389 [00:05<00:00, 75.06it/s]Loading weights:  96%|█████████▋| 375/389 [00:05<00:00, 77.27it/s]Loading weights: 100%|██████████| 389/389 [00:05<00:00, 72.07it/s]
+Loading weights:   0%|          | 0/389 [00:00<?, ?it/s]Loading weights:  43%|████▎     | 167/389 [00:00<00:00, 1633.94it/s]Loading weights:  85%|████████▌ | 331/389 [00:00<00:00, 1450.56it/s]Loading weights: 100%|██████████| 389/389 [00:00<00:00, 1144.94it/s]
+facebook/opt-1.3b layers 24 heads 32; capture vs eager max logit difference 0.00e+00 (4207s)
+criteria done (4749s)
+  layer 0: 496 merges (5223s)
+  layer 1: 496 merges (5887s)
+  layer 2: 496 merges (6695s)
+  layer 3: 496 merges (7297s)
+  layer 4: 496 merges (7894s)
+  layer 5: 496 merges (8454s)
+  layer 6: 496 merges (8950s)
+  layer 7: 496 merges (9539s)
+  layer 8: 496 merges (10150s)
+  layer 9: 496 merges (10755s)
+  layer 10: 496 merges (11365s)
+  layer 11: 496 merges (11947s)
+  layer 12: 496 merges (12499s)
+  layer 13: 496 merges (13063s)
+  layer 14: 496 merges (13531s)
+  layer 15: 496 merges (14000s)
+  layer 16: 496 merges (14469s)
+  layer 17: 496 merges (14938s)
+  layer 18: 496 merges (15406s)
+  layer 19: 496 merges (15874s)
+  layer 20: 496 merges (16343s)
+  layer 21: 496 merges (16811s)
+  layer 22: 496 merges (17280s)
+  layer 23: 496 merges (17749s)
+MODEL_DONE facebook/opt-1.3b: one pair per layer out_pert 0.0147 corr_last 0.0306 corr_rows 0.0298 js 0.0365 cos_map 0.0371 qk_wcos 0.0210 kv_wcos 0.0228 k_act 0.0216 v_act 0.0352 random0 0.0268 random1 0.0290 random2 0.0308 random3 0.0241 random4 0.0310 (17778s)
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (286177 > 1024). Running this sequence through the model will result in indexing errors
+Loading weights:   0%|          | 0/436 [00:00<?, ?it/s]Loading weights: 100%|██████████| 436/436 [00:00<00:00, 6291.95it/s]
+Loading weights:   0%|          | 0/436 [00:00<?, ?it/s]Loading weights: 100%|██████████| 436/436 [00:00<00:00, 7128.17it/s]
+gpt2-large layers 36 heads 20; capture vs eager max logit difference 0.00e+00 (17799s)
+criteria done (17962s)
+  layer 0: 190 merges (18103s)
+  layer 1: 190 merges (18242s)
+  layer 2: 190 merges (18381s)
+  layer 3: 190 merges (18521s)
+  layer 4: 190 merges (18660s)
+  layer 5: 190 merges (18799s)
+  layer 6: 190 merges (18939s)
+  layer 7: 190 merges (19078s)
+  layer 8: 190 merges (19217s)
+  layer 9: 190 merges (19357s)
+  layer 10: 190 merges (19496s)
+  layer 11: 190 merges (19635s)
+  layer 12: 190 merges (19774s)
+  layer 13: 190 merges (19914s)
+  layer 14: 190 merges (20053s)
+  layer 15: 190 merges (20192s)
+  layer 16: 190 merges (20332s)
+  layer 17: 190 merges (20471s)
+  layer 18: 190 merges (20610s)
+  layer 19: 190 merges (20750s)
+  layer 20: 190 merges (20889s)
+  layer 21: 190 merges (21028s)
+  layer 22: 190 merges (21168s)
+  layer 23: 190 merges (21307s)
+  layer 24: 190 merges (21446s)
+  layer 25: 190 merges (21585s)
+  layer 26: 190 merges (21725s)
+  layer 27: 190 merges (21864s)
+  layer 28: 190 merges (22003s)
+  layer 29: 190 merges (22143s)
+  layer 30: 190 merges (22282s)
+  layer 31: 190 merges (22421s)
+  layer 32: 190 merges (22561s)
+  layer 33: 190 merges (22700s)
+  layer 34: 190 merges (22839s)
+  layer 35: 190 merges (22979s)
+MODEL_DONE gpt2-large: one pair per layer out_pert 0.0182 corr_last 0.0285 corr_rows 0.0399 js 0.0368 cos_map 0.0437 qk_wcos 0.0384 kv_wcos 0.0465 k_act 0.0251 v_act 0.0432 random0 0.0339 random1 0.0314 random2 0.0305 random3 0.0320 random4 0.0331 (23003s)
+MERGE_BENCH2_DONE S
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 7064.58it/s]
+  gpt2-medium budget 1: out_pert 0.381 corr_last 0.374 js 0.332 random0 0.401 random1 0.364 random2 0.376 (139s)
+  gpt2-medium budget 2: out_pert 0.312 corr_last 0.386 js 0.257 random0 0.273 random1 0.315 random2 0.305 (253s)
+MODEL_DONE gpt2-medium: base 0.425 (272s)
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights:   1%|          | 1/148 [00:00<00:19,  7.57it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 1009.80it/s]
+  EleutherAI/pythia-160m budget 1: out_pert 0.294 corr_last 0.203 js 0.126 random0 0.196 random1 0.266 random2 0.227 (318s)
+  EleutherAI/pythia-160m budget 2: out_pert 0.236 corr_last 0.143 js 0.049 random0 0.071 random1 0.145 random2 0.124 (354s)
+MODEL_DONE EleutherAI/pythia-160m: base 0.350 (361s)
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights:   0%|          | 1/292 [00:00<01:04,  4.52it/s]Loading weights:  77%|███████▋  | 224/292 [00:00<00:00, 867.18it/s]Loading weights: 100%|██████████| 292/292 [00:00<00:00, 780.80it/s]
+  EleutherAI/pythia-410m budget 1: out_pert 0.509 corr_last 0.381 js 0.485 random0 0.387 random1 0.359 random2 0.400 (477s)
+  EleutherAI/pythia-410m budget 2: out_pert 0.430 corr_last 0.204 js 0.272 random0 0.223 random1 0.122 random2 0.306 (566s)
+MODEL_DONE EleutherAI/pythia-410m: base 0.520 (581s)
+Loading weights:   0%|          | 0/292 [00:00<?, ?it/s]Loading weights:   0%|          | 1/292 [00:00<01:33,  3.11it/s]Loading weights:  25%|██▍       | 72/292 [00:00<00:01, 212.13it/s]Loading weights:  38%|███▊      | 110/292 [00:00<00:00, 222.65it/s]Loading weights:  50%|█████     | 146/292 [00:00<00:00, 251.80it/s]Loading weights:  62%|██████▏   | 181/292 [00:00<00:00, 278.21it/s]Loading weights:  74%|███████▍  | 216/292 [00:00<00:00, 292.76it/s]Loading weights:  86%|████████▋ | 252/292 [00:01<00:00, 306.54it/s]Loading weights:  99%|█████████▉| 290/292 [00:01<00:00, 324.84it/s]Loading weights: 100%|██████████| 292/292 [00:01<00:00, 260.64it/s]
+  EleutherAI/pythia-1.4b budget 1: out_pert 0.589 corr_last 0.551 js 0.549 random0 0.563 random1 0.488 random2 0.517 (958s)
+  EleutherAI/pythia-1.4b budget 2: out_pert 0.527 corr_last 0.402 js 0.469 random0 0.551 random1 0.356 random2 0.449 (1283s)
+MODEL_DONE EleutherAI/pythia-1.4b: base 0.615 (1339s)
+Loading weights:   0%|          | 0/389 [00:00<?, ?it/s]Loading weights:   0%|          | 1/389 [00:00<01:44,  3.70it/s]Loading weights:  22%|██▏       | 87/389 [00:00<00:01, 285.84it/s]Loading weights:  35%|███▍      | 135/389 [00:00<00:00, 339.20it/s]Loading weights:  47%|████▋     | 183/389 [00:00<00:00, 365.23it/s]Loading weights:  59%|█████▉    | 231/389 [00:00<00:00, 391.84it/s]Loading weights:  72%|███████▏  | 279/389 [00:00<00:00, 405.94it/s]Loading weights:  84%|████████▍ | 327/389 [00:00<00:00, 418.87it/s]Loading weights:  96%|█████████▌| 372/389 [00:01<00:00, 417.64it/s]Loading weights: 100%|██████████| 389/389 [00:01<00:00, 361.96it/s]
+  facebook/opt-1.3b budget 1: out_pert 0.575 corr_last 0.597 js 0.574 random0 0.559 random1 0.588 random2 0.573 (1738s)
+  facebook/opt-1.3b budget 2: out_pert 0.566 corr_last 0.577 js 0.576 random0 0.542 random1 0.578 random2 0.534 (2072s)
+MODEL_DONE facebook/opt-1.3b: base 0.591 (2130s)
+Loading weights:   0%|          | 0/436 [00:00<?, ?it/s]Loading weights: 100%|██████████| 436/436 [00:00<00:00, 6072.61it/s]
+  gpt2-large budget 1: out_pert 0.434 corr_last 0.433 js 0.405 random0 0.415 random1 0.438 random2 0.443 (2394s)
+  gpt2-large budget 2: out_pert 0.389 corr_last 0.378 js 0.362 random0 0.341 random1 0.421 random2 0.393 (2624s)
+MODEL_DONE gpt2-large: base 0.461 (2662s)
+MERGE_BENCH2_DONE D

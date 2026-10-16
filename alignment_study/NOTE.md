@@ -1068,3 +1068,33 @@ Reading: the sink is a costly constant bias in most decoders tested here
 (round 13's four, Pythia, OPT), a cheaper gate in GPT-2, and close to a
 no-op in encoders; where it is a bias, a constant per-head vector can stand
 in for the sink token in streaming attention.
+
+## The merge benchmark at larger scale and on a task (2026-10-16, preregistration 22)
+
+Frozen at f5d3b5e. 6 of 7 clauses pass.
+- S1 to S4 pass: in Pythia-1.4B, OPT-1.3B and GPT-2 large (21,624 merges),
+  the simulated merge predicts merge damage at within-layer Spearman 0.68
+  (0.64 to 0.72; 0.67, 0.67 and 0.70 per model). Every similarity in use stays
+  below 0.3: Jensen-Shannon 0.24, map cosine 0.18, every-row and last-row
+  correlation 0.18 and 0.17, key cosine 0.07, key-value and query-key weight
+  cosines 0.06 and 0.05, value cosine 0.00; the lead over the best of them is
+  0.44 (0.37 to 0.51). At one pair per layer its merges cost 0.48 (Pythia),
+  0.48 (OPT) and 0.64 (GPT-2 large) of the CHAI-style choice's KL.
+- D3 passes: across 72 configurations (six models, two budgets, six
+  choices) the LAMBADA accuracy drop tracks the KL damage at Spearman 0.86.
+- D1 passes: at one pair per layer the simulated merge's choices lose less
+  LAMBADA accuracy than the CHAI-style choice's in 5 of 6 models (accuracy
+  drops 0.011 against 0.139 in Pythia-410m, 0.056 against 0.147 in
+  Pythia-160m, 0.026 against 0.064 in Pythia-1.4B, 0.044 against 0.051 in
+  GPT-2 medium, 0.027 against 0.028 in GPT-2 large; OPT-1.3B 0.016 against
+  -0.006).
+- D2 FAILS: at two pairs per layer, 4 of 6. The Pythia models and GPT-2 large
+  favor the simulated merge (0.088 to 0.114 against 0.083 to 0.316), GPT-2
+  medium does not (0.113 against 0.039, although its KL was half), and in
+  OPT-1.3B the merges barely move accuracy (0.025 against 0.014).
+- Checks: capture equals eager attention (0.0) and restore checks 0 in all
+  three new models; LAMBADA restore equals the base accuracy in all six.
+Reading: the predictive result holds at 1.3 to 1.4B parameters and in OPT;
+KL damage is a good proxy for LAMBADA accuracy across configurations; the
+task-level advantage is clear where merges cost accuracy (the Pythia
+family) and within noise where they barely do (OPT-1.3B, GPT-2 large).

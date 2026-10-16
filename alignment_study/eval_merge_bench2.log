@@ -1,0 +1,8 @@
+S1 PASS new models: out_pert within-layer Spearman >= 0.4, interval above zero {"value": 0.6761948951344644, "ci95": [0.6409087403274099, 0.7150853469945385], "per_model": [0.6666423184196676, 0.6713598920010777, 0.6953587633400465]}
+S2 PASS exceeds the best other criterion (js) by >= 0.2, interval above zero {"value": 0.44049707331609705, "ci95": [0.3678284878000787, 0.5059711133873835]}
+S3 PASS every other criterion below 0.3 {"corr_last": 0.16833111167220977, "corr_rows": 0.1803455688271202, "js": 0.2356978218183675, "cos_map": 0.18412220028260814, "qk_wcos": 0.050209365839247996, "kv_wcos": 0.056349730242701235, "k_act": 0.06524378408864644
+S4 PASS one pair per layer: out_pert KL below the CHAI-style choice in every new model, geometric mean ratio <= 0.8 [0.637333798659844, 0.4804750863471694, 0.4785687134583929]
+D1 PASS 1 pair(s) per layer: out_pert's LAMBADA accuracy drop below the CHAI-style choice's in at least 5 of 6 models {"gpt2-large": [0.027000000000000024, 0.028000000000000025], "gpt2-medium": [0.043999999999999984, 0.05099999999999999], "facebook/opt-1.3b": [0.016000000000000014, -0.006000000000000005], "EleutherAI/pythia-1.4b": [0.02
+D2 FAIL 2 pair(s) per layer: out_pert's LAMBADA accuracy drop below the CHAI-style choice's in at least 5 of 6 models {"gpt2-large": [0.07200000000000001, 0.08300000000000002], "gpt2-medium": [0.11299999999999999, 0.03899999999999998], "facebook/opt-1.3b": [0.025000000000000022, 0.014000000000000012], "EleutherAI/pythia-1.4b": [0.087999
+D3 PASS accuracy drop tracks KL damage across configurations: Spearman >= 0.5 {"spearman": 0.8601358698349495, "configs": 72}
+passes 6 of 7

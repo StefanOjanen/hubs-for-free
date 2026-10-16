@@ -1,0 +1,62 @@
+{
+ "model": "EleutherAI/pythia-1.4b",
+ "n_examples": 1000,
+ "base": 0.615,
+ "multi": {
+  "1": {
+   "out_pert": {
+    "acc": 0.589,
+    "kl": 0.07464872673153877
+   },
+   "corr_last": {
+    "acc": 0.551,
+    "kl": 0.15598329901695251
+   },
+   "js": {
+    "acc": 0.549,
+    "kl": 0.13302507996559143
+   },
+   "random0": {
+    "acc": 0.563,
+    "kl": 0.13739977031946182
+   },
+   "random1": {
+    "acc": 0.488,
+    "kl": 0.1599644348025322
+   },
+   "random2": {
+    "acc": 0.517,
+    "kl": 0.28885314986109734
+   }
+  },
+  "2": {
+   "out_pert": {
+    "acc": 0.527,
+    "kl": 0.181826364248991
+   },
+   "corr_last": {
+    "acc": 0.402,
+    "kl": 0.4511265307664871
+   },
+   "js": {
+    "acc": 0.469,
+    "kl": 0.3393241763114929
+   },
+   "random0": {
+    "acc": 0.551,
+    "kl": 0.3961476907134056
+   },
+   "random1": {
+    "acc": 0.356,
+    "kl": 0.5341255813837051
+   },
+   "random2": {
+    "acc": 0.449,
+    "kl": 0.5697553306818008
+   }
+  }
+ },
+ "restore_check_acc": 0.615,
+ "runtime_s": 757.9,
+ "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/f5d3b5e/alignment_study/PREREGISTRATION22.md"
+}

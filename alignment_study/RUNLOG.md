@@ -521,3 +521,10 @@ round's scripts unchanged since the freeze): Part E (five models) and Part W
 (maximum logit difference 0.44; recorded in the result file and the note).
 Evaluation (eval_sink_arch.py, unchanged): 3 of 6 clauses pass, G2, G3 and G6
 fail (sink_arch_results.json, eval_sink_arch.log).
+
+Merge benchmark at scale (alignment_study/PREREGISTRATION22.md, frozen at
+f5d3b5e, 2026-10-15 21:13:30 to 2026-10-16 04:21:47 UTC): Part S Pythia-1.4B
+3,975 s, OPT-1.3B 13,802 s (11,904 merges), GPT-2 large 5,225 s; Part D six
+models, 2,662 s. Evaluation (eval_merge_bench2.py, unchanged since the
+freeze): 6 of 7 clauses pass, D2 fails (merge_bench2_results.json,
+eval_merge_bench2.log).
