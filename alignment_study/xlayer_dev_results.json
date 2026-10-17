@@ -1,0 +1,231 @@
+{
+ "models": [
+  "Qwen/Qwen2.5-0.5B",
+  "TinyLlama/TinyLlama_v1.1",
+  "EleutherAI/pythia-410m"
+ ],
+ "clauses": {
+  "A1": {
+   "what": "|median K and V cosine| <= 0.1 and median residual-stream cosine > 0.5, every model",
+   "value": {
+    "Qwen/Qwen2.5-0.5B": true,
+    "TinyLlama/TinyLlama_v1.1": true,
+    "EleutherAI/pythia-410m": true
+   },
+   "pass_": true
+  },
+  "A2": {
+   "what": "median aligned V cosine exceeds the fitting null's by >= 0.1, every model",
+   "value": {
+    "Qwen/Qwen2.5-0.5B": 0.2779756709933281,
+    "TinyLlama/TinyLlama_v1.1": 0.23465202376246452,
+    "EleutherAI/pythia-410m": 0.23660433292388916
+   },
+   "pass_": true
+  },
+  "B1": {
+   "what": "MiniCache from L/2: trained-basis damage >= median random-basis damage - 0.1 nats, every model",
+   "value": {
+    "Qwen/Qwen2.5-0.5B": 0.24971051683612933,
+    "TinyLlama/TinyLlama_v1.1": 0.07549791523054505,
+    "EleutherAI/pythia-410m": 0.20578395619111944
+   },
+   "pass_": true
+  },
+  "B2": {
+   "what": "aligned damage <= 0.6 x trained-basis damage in >= 7 of 8 (model, setting) cells",
+   "value": {
+    "Qwen/Qwen2.5-0.5B L/2": 0.42555821144035333,
+    "Qwen/Qwen2.5-0.5B L/4": 0.47648374781640485,
+    "TinyLlama/TinyLlama_v1.1 L/2": 0.1662242288862712,
+    "TinyLlama/TinyLlama_v1.1 L/4": 0.3959002822783473,
+    "EleutherAI/pythia-410m L/2": 0.4756682824443364,
+    "EleutherAI/pythia-410m L/4": 0.2838233577307786
+   },
+   "count": 6,
+   "pass_": false
+  },
+  "C1": {
+   "what": "XQuant's statistic (share of |code difference| <= 1) within 0.02 of independence, keys and values, every model",
+   "value": {
+    "Qwen/Qwen2.5-0.5B k": 0.006044923474103903,
+    "Qwen/Qwen2.5-0.5B v": -0.0003875122090017946,
+    "TinyLlama/TinyLlama_v1.1 k": 0.0018132498241529849,
+    "TinyLlama/TinyLlama_v1.1 v": 0.001132632640367448,
+    "EleutherAI/pythia-410m k": 0.000997538255019803,
+    "EleutherAI/pythia-410m v": -0.000481324354071222
+   },
+   "pass_": true
+  },
+  "C2": {
+   "what": "after alignment, exact value-code agreement exceeds independence by >= 0.03, every model",
+   "value": {
+    "Qwen/Qwen2.5-0.5B": 0.0717230862514539,
+    "TinyLlama/TinyLlama_v1.1": 0.05309698094559978,
+    "EleutherAI/pythia-410m": 0.052980354131648755
+   },
+   "pass_": true
+  },
+  "C3": {
+   "what": "XQuant's sharing loses less in the trained basis than in random bases in >= 3 of 4 models",
+   "value": {
+    "Qwen/Qwen2.5-0.5B": 1.458353798062193,
+    "TinyLlama/TinyLlama_v1.1": 0.37631925695082735,
+    "EleutherAI/pythia-410m": 0.09649818270814148
+   },
+   "count": 3,
+   "pass_": true
+  }
+ },
+ "passes": 6,
+ "of": 7,
+ "summary": {
+  "Qwen/Qwen2.5-0.5B": {
+   "k": 0.0014990282943472266,
+   "v": -0.001710304873995483,
+   "hidden": 0.9182813763618469,
+   "normed_input": 0.7407732605934143,
+   "k_aligned": 0.42777925729751587,
+   "v_aligned": 0.3873475193977356,
+   "k_null": 0.2863740622997284,
+   "v_null": 0.1093718484044075,
+   "codes_k": {
+    "adjacent_le1": 0.7934792258522727,
+    "independence_le1": 0.7874343023781688,
+    "aligned_exact": 0.38701005415482953,
+    "independence_exact": 0.31664769379960855
+   },
+   "codes_v": {
+    "adjacent_le1": 0.8215110085227273,
+    "independence_le1": 0.8218985207317291,
+    "aligned_exact": 0.4129111550071023,
+    "independence_exact": 0.3411880687556484
+   },
+   "merge_damage": {
+    "12": {
+     "trained": 1.5256834890328204,
+     "random0": 1.4582481982661228,
+     "random1": 1.1501676596847235,
+     "random2": 1.275972972196691,
+     "aligned": 0.649267136816885,
+     "aligned_nomatch": 0.7643774294385723,
+     "random_median": 1.275972972196691
+    },
+    "6": {
+     "trained": 3.0168634152879905,
+     "random0": 2.671348706413718,
+     "random1": 2.4625621945250264,
+     "random2": 2.542654568541284,
+     "aligned": 1.4374863867666208,
+     "aligned_nomatch": 1.8549224404727713,
+     "random_median": 2.542654568541284
+    }
+   },
+   "xquant_damage": {
+    "kivi": 0.1354055928248985,
+    "trained": 3.4199810252470133,
+    "random": 4.878334823309206,
+    "aligned": 3.186733829273897,
+    "kivi_rot": 0.14216560662961486
+   }
+  },
+  "TinyLlama/TinyLlama_v1.1": {
+   "k": 0.021731268614530563,
+   "v": 0.0011679460294544697,
+   "hidden": 0.8749976754188538,
+   "normed_input": 0.8957939147949219,
+   "k_aligned": 0.38923096656799316,
+   "v_aligned": 0.27703621983528137,
+   "k_null": 0.20293062925338745,
+   "v_null": 0.04238419607281685,
+   "codes_k": {
+    "adjacent_le1": 0.7915843616832386,
+    "independence_le1": 0.7897711118590857,
+    "aligned_exact": 0.3937738591974432,
+    "independence_exact": 0.31826476296332995
+   },
+   "codes_v": {
+    "adjacent_le1": 0.8196660822088068,
+    "independence_le1": 0.8185334495684393,
+    "aligned_exact": 0.39225630326704547,
+    "independence_exact": 0.3391593223214457
+   },
+   "merge_damage": {
+    "11": {
+     "trained": 1.1199931986191691,
+     "random0": 1.067313018499636,
+     "random1": 1.044495283388624,
+     "random2": 0.6715691472969803,
+     "aligned": 0.18617000579833975,
+     "aligned_nomatch": 0.2954049129112093,
+     "random_median": 1.044495283388624
+    },
+    "5": {
+     "trained": 2.766350589079015,
+     "random0": 3.4022119821286667,
+     "random1": 2.9919340432858936,
+     "random2": 3.21355775197347,
+     "aligned": 1.0951989790972543,
+     "aligned_nomatch": 2.239013787811878,
+     "random_median": 3.21355775197347
+    }
+   },
+   "xquant_damage": {
+    "kivi": 0.07276703329647272,
+    "trained": 3.4438336503271962,
+    "random": 3.8201529072780236,
+    "aligned": 3.573939420662674,
+    "kivi_rot": 0.072182539397595
+   }
+  },
+  "EleutherAI/pythia-410m": {
+   "k": 0.01822090335190296,
+   "v": -0.002179010072723031,
+   "hidden": 0.9045577049255371,
+   "normed_input": 0.888533353805542,
+   "k_aligned": 0.7010816931724548,
+   "v_aligned": 0.2797098159790039,
+   "k_null": 0.5987774133682251,
+   "v_null": 0.043105483055114746,
+   "codes_k": {
+    "adjacent_le1": 0.8052884882146663,
+    "independence_le1": 0.8042909499596465,
+    "aligned_exact": 0.40898999300870026,
+    "independence_exact": 0.32846590985874985
+   },
+   "codes_v": {
+    "adjacent_le1": 0.8163743452592329,
+    "independence_le1": 0.8168556696133041,
+    "aligned_exact": 0.39062950827858667,
+    "independence_exact": 0.3376491541469379
+   },
+   "merge_damage": {
+    "12": {
+     "trained": 2.3203682244992727,
+     "random0": 2.041655746160769,
+     "random1": 2.1145842683081533,
+     "random2": 2.1529000974168966,
+     "aligned": 1.1037255679859834,
+     "aligned_nomatch": 1.312181360581342,
+     "random_median": 2.1145842683081533
+    },
+    "6": {
+     "trained": 4.355455308801988,
+     "random0": 3.884762939752317,
+     "random1": 3.9656924154244217,
+     "random2": 4.326092821009019,
+     "aligned": 1.2361799501905253,
+     "aligned_nomatch": 2.10013064216165,
+     "random_median": 3.9656924154244217
+    }
+   },
+   "xquant_damage": {
+    "kivi": 0.8667773078469669,
+    "trained": 3.729138460346297,
+    "random": 3.8256366430544384,
+    "aligned": 2.5315198486926507,
+    "kivi_rot": 0.8620391396915212
+   }
+  }
+ }
+}

@@ -566,3 +566,23 @@ and the first attempt's full-run results on the same examples, agree in all
 unconverted OPT-1.3B evaluation is kept (alignment_study/gqa/opt-1.3b.json.partial).
 The models are now run one invocation each (--only), fastest first; the order
 does not affect any result.
+
+Cross-layer KV compression, exploration and development (2026-10-17, while
+round 24 ran on the GPU; preregistration 25). Exploratory scratch probes, not
+registered: per-token cosine between adjacent layers' keys and values, trained
+basis, held-out, near zero in TinyLlama, Qwen2.5-0.5B, Pythia-410m and
+yaofu/llama-2-7b-80k (every layer pair within 0.07 of zero in the last, run in
+bfloat16 on the CPU); the residual stream of the last rose from 0.61 to 0.97
+with depth. A MiniCache-style merge on 16 documents was no better in the
+trained basis than in random function-preserving bases and much better after
+alignment in all three small models. XQuant's code-difference statistic matched
+the independence prediction. A per-head sink-logit correction after round 24's
+GPT-2 medium conversion removed the sink drift but not the damage (396 to 405,
+82 to 79). GPT-2 medium returns NaN logits on the CPU in float32 with this
+transformers version (the MPS runs are unaffected); the CPU probes used other
+models. The development runs of xlayer_round.py ran on the CPU (XLAYER_DEVICE)
+to leave the GPU to round 24: TinyLlama 2,901 s, Qwen2.5-0.5B 1,277 s,
+Pythia-410m 1,482 s. A first development attempt on the GPU alongside round 24
+drained the battery while plugged in (68 to 25 percent): the adapter cannot
+feed both, so it was stopped and the guard now pauses at 15 percent whatever
+the reported charging state.
