@@ -596,3 +596,20 @@ Phi-2 56,417 s (including a pause of 1 h 21 min by the battery guard), then
 the convention null, 4,920 s for the five models. Evaluation (eval_gqa.py,
 unchanged since the freeze): 9 of 10 clauses pass, P6 fails
 (gqa_results.json, eval_gqa.log).
+
+Closed-form fusion for grouped-query conversion (preregistration 26),
+exploration and development, 2026-10-18, while round 24's convention null ran on
+the GPU. Exploratory scratch probes on the CPU, not registered: a least-squares
+refit of the output projections after round 24's mean pooling (Pythia-410m,
+g = 2: 171 to 90 with sim_align's groups, 2,737 to 53,208 without alignment, 182
+with a target that also corrected the residual-stream drift); the closed-form
+fusion with and without query and output weighting on Pythia-410m, and on
+neighbouring groups of Pythia-160m, OPT-125m, Llama-160m and GPT-2; a
+sequential variant of the fusion (slightly worse, not used); a key-and-value
+split probe was written but not run. The first code-path check on OPT-125m
+returned non-finite weights for groups of one (an eigenvalue of zero in a
+direction without energy); such directions are now left out. Round 25's
+confirmatory pipeline was stopped before it started and is queued after round
+26's confirmatory runs, its preregistration and scripts unchanged. Development
+runs (fuse_round.py --dev, GPU): GPT-2 medium 1,499 s, Pythia-410m 1,427 s;
+architecture checks for Phi-1.5 (871 s) and OLMo-1B (705 s) on the CPU.

@@ -1,0 +1,361 @@
+{
+ "models": [
+  "gpt2-medium",
+  "EleutherAI/pythia-410m"
+ ],
+ "clauses": {
+  "F1": {
+   "what": "fuse/sim_align perplexity below round 24's sim_align (same groups) in >= 9 of 10 cells",
+   "value": {
+    "gpt2-medium g2": true,
+    "gpt2-medium g4": true,
+    "EleutherAI/pythia-410m g2": true,
+    "EleutherAI/pythia-410m g4": true
+   },
+   "count": 4,
+   "pass_": false
+  },
+  "F2": {
+   "what": "g=2: geometric mean over models of dlog(fuse/sim_align)/dlog(sim_align) <= 0.6",
+   "value": {
+    "per_model": {
+     "gpt2-medium": 0.49596380256590256,
+     "EleutherAI/pythia-410m": 0.32792943487426374
+    },
+    "geometric_mean": 0.40328789901697687
+   },
+   "pass_": true
+  },
+  "F3": {
+   "what": "weighted fusion perplexity below unweighted fusion on the same groups (contiguous, sim_align) in >= 18 of 20",
+   "value": {
+    "gpt2-medium g2 contiguous": true,
+    "gpt2-medium g2 sim_align": true,
+    "gpt2-medium g4 contiguous": true,
+    "gpt2-medium g4 sim_align": true,
+    "EleutherAI/pythia-410m g2 contiguous": true,
+    "EleutherAI/pythia-410m g2 sim_align": true,
+    "EleutherAI/pythia-410m g4 contiguous": true,
+    "EleutherAI/pythia-410m g4 sim_align": true
+   },
+   "count": 8,
+   "pass_": false
+  },
+  "F4": {
+   "what": "g=2: fuse/sim_align accuracy above round 24's sim_align in >= 4 of 5 models and pooled 95% interval above zero",
+   "value": {
+    "per_model": {
+     "gpt2-medium": 0.03742857142857143,
+     "EleutherAI/pythia-410m": 0.06942857142857142
+    },
+    "pooled": [
+     0.05342857142857142,
+     0.04442857142857142,
+     0.06328571428571428
+    ]
+   },
+   "count": 2,
+   "pass_": false
+  },
+  "F5": {
+   "what": "fuse/contiguous (neighbouring heads, no search) perplexity below round 24's sim_align in >= 8 of 10 cells",
+   "value": {
+    "gpt2-medium g2": true,
+    "gpt2-medium g4": true,
+    "EleutherAI/pythia-410m g2": true,
+    "EleutherAI/pythia-410m g4": true
+   },
+   "count": 4,
+   "pass_": false
+  },
+  "F6": {
+   "what": "fuse/sim_align perplexity below fuse/contiguous in >= 8 of 10 cells",
+   "value": {
+    "gpt2-medium g2": true,
+    "gpt2-medium g4": true,
+    "EleutherAI/pythia-410m g2": true,
+    "EleutherAI/pythia-410m g4": true
+   },
+   "count": 4,
+   "pass_": false
+  }
+ },
+ "passes": 1,
+ "of": 6,
+ "table": {
+  "gpt2-medium g2": {
+   "fuse_u/contiguous": {
+    "ppl": 60.79758752643476,
+    "dlog": 1.029667245294608,
+    "acc": 0.37542857142857144
+   },
+   "fuse/contiguous": {
+    "ppl": 46.0323801695009,
+    "dlog": 0.7514622015354435,
+    "acc": 0.3777142857142857
+   },
+   "fuse/jin": {
+    "ppl": 39.23620892312329,
+    "dlog": 0.5917171534205461,
+    "acc": 0.3962857142857143
+   },
+   "fuse/sim_align": {
+    "ppl": 39.693640456922125,
+    "dlog": 0.6033081208106408,
+    "acc": 0.3940000000000001
+   },
+   "fuse_u/sim_align": {
+    "ppl": 48.283169391681575,
+    "dlog": 0.7992001760839965,
+    "acc": 0.3871428571428572
+   },
+   "contiguous": {
+    "ppl": 363.6606257863624,
+    "dlog": 2.818338221941659,
+    "acc": 0.3188571428571429
+   },
+   "jin": {
+    "ppl": 121.39144913911245,
+    "dlog": 1.721137576668543,
+    "acc": 0.3457142857142857
+   },
+   "sim_align": {
+    "ppl": 73.28226697723953,
+    "dlog": 1.2164357916633937,
+    "acc": 0.3565714285714286
+   },
+   "base": {
+    "ppl": 21.712385629306453,
+    "acc": 0.4422857142857143
+   }
+  },
+  "gpt2-medium g4": {
+   "fuse_u/contiguous": {
+    "ppl": 180.48222133223553,
+    "dlog": 2.1177494120987377,
+    "acc": 0.3242857142857143
+   },
+   "fuse/contiguous": {
+    "ppl": 119.21474780842257,
+    "dlog": 1.7030436061544303,
+    "acc": 0.32857142857142857
+   },
+   "fuse/jin": {
+    "ppl": 96.30409673991531,
+    "dlog": 1.4896279952826075,
+    "acc": 0.35114285714285715
+   },
+   "fuse/sim_align": {
+    "ppl": 108.36558521582316,
+    "dlog": 1.607627694990661,
+    "acc": 0.34685714285714286
+   },
+   "fuse_u/sim_align": {
+    "ppl": 181.68892901752434,
+    "dlog": 2.124413179488942,
+    "acc": 0.33342857142857146
+   },
+   "contiguous": {
+    "ppl": 839.9817198440181,
+    "dlog": 3.6554972654613533,
+    "acc": 0.3005714285714286
+   },
+   "jin": {
+    "ppl": 376.40229964071005,
+    "dlog": 2.8527756532099873,
+    "acc": 0.31771428571428567
+   },
+   "sim_align": {
+    "ppl": 324.70892252969867,
+    "dlog": 2.7050462939855424,
+    "acc": 0.32371428571428573
+   },
+   "base": {
+    "ppl": 21.712385629306453,
+    "acc": 0.4422857142857143
+   }
+  },
+  "EleutherAI/pythia-410m g2": {
+   "fuse_u/contiguous": {
+    "ppl": 117.85154635615872,
+    "dlog": 1.8771834471856215,
+    "acc": 0.3465714285714286
+   },
+   "fuse/contiguous": {
+    "ppl": 44.02469851627864,
+    "dlog": 0.8925085028435995,
+    "acc": 0.3931428571428572
+   },
+   "fuse/jin": {
+    "ppl": 41.49975769975585,
+    "dlog": 0.8334452851561278,
+    "acc": 0.4028571428571429
+   },
+   "fuse/sim_align": {
+    "ppl": 37.64761614882983,
+    "dlog": 0.7360273326378363,
+    "acc": 0.3985714285714286
+   },
+   "fuse_u/sim_align": {
+    "ppl": 97.4748244151024,
+    "dlog": 1.6873518300310337,
+    "acc": 0.36257142857142854
+   },
+   "contiguous": {
+    "ppl": 2653.315583962361,
+    "dlog": 4.9913229971831425,
+    "acc": 0.3111428571428571
+   },
+   "jin": {
+    "ppl": 382.7402129239159,
+    "dlog": 3.055114160293156,
+    "acc": 0.3202857142857143
+   },
+   "sim_align": {
+    "ppl": 170.15519685883152,
+    "dlog": 2.244468639785408,
+    "acc": 0.3291428571428572
+   },
+   "base": {
+    "ppl": 18.03370133104167,
+    "acc": 0.4597142857142857
+   }
+  },
+  "EleutherAI/pythia-410m g4": {
+   "fuse_u/contiguous": {
+    "ppl": 311.70837237878135,
+    "dlog": 2.849825743283837,
+    "acc": 0.33171428571428574
+   },
+   "fuse/contiguous": {
+    "ppl": 144.93669338467907,
+    "dlog": 2.0840547462337815,
+    "acc": 0.3451428571428572
+   },
+   "fuse/jin": {
+    "ppl": 105.87434513617093,
+    "dlog": 1.7700106641951256,
+    "acc": 0.35800000000000004
+   },
+   "fuse/sim_align": {
+    "ppl": 111.28800365589495,
+    "dlog": 1.8198791651046449,
+    "acc": 0.35057142857142853
+   },
+   "fuse_u/sim_align": {
+    "ppl": 237.2660217411431,
+    "dlog": 2.57693966275456,
+    "acc": 0.3362857142857143
+   },
+   "contiguous": {
+    "ppl": 2056.481532505428,
+    "dlog": 4.736509504066203,
+    "acc": 0.2982857142857143
+   },
+   "jin": {
+    "ppl": 997.8755303425758,
+    "dlog": 4.013386245934395,
+    "acc": 0.3108571428571429
+   },
+   "sim_align": {
+    "ppl": 777.9068115353058,
+    "dlog": 3.7643644339832703,
+    "acc": 0.30885714285714283
+   },
+   "base": {
+    "ppl": 18.03370133104167,
+    "acc": 0.4597142857142857
+   }
+  }
+ },
+ "reported": {
+  "gpt2-medium g2": {
+   "acc_diff_fuse_sim_align_minus_sim_align": [
+    0.03742857142857143,
+    0.025714285714285717,
+    0.04971428571428571
+   ],
+   "ppl_over_base": {
+    "fuse_u/contiguous": 2.80013392192025,
+    "fuse/contiguous": 2.120097761499241,
+    "fuse/jin": 1.8070888014334052,
+    "fuse/sim_align": 1.8281565708443084,
+    "fuse_u/sim_align": 2.223761599301691,
+    "contiguous": 16.748994421668193,
+    "jin": 5.590884908347586,
+    "sim_align": 3.3751365800322857
+   }
+  },
+  "gpt2-medium g4": {
+   "acc_diff_fuse_sim_align_minus_sim_align": [
+    0.02314285714285715,
+    0.011421428571428567,
+    0.035428571428571434
+   ],
+   "ppl_over_base": {
+    "fuse_u/contiguous": 8.312408613847955,
+    "fuse/contiguous": 5.49063331150086,
+    "fuse/jin": 4.435445205520306,
+    "fuse/sim_align": 4.990957100059789,
+    "fuse_u/sim_align": 8.367985541500717,
+    "contiguous": 38.68675391939643,
+    "jin": 17.335833384087387,
+    "sim_align": 14.95500900147151
+   }
+  },
+  "EleutherAI/pythia-410m g2": {
+   "acc_diff_fuse_sim_align_minus_sim_align": [
+    0.06942857142857142,
+    0.05542857142857144,
+    0.08399999999999999
+   ],
+   "ppl_over_base": {
+    "fuse_u/contiguous": 6.535072539617763,
+    "fuse/contiguous": 2.4412458489871014,
+    "fuse/jin": 2.3012335037578624,
+    "fuse/sim_align": 2.087625577120236,
+    "fuse_u/sim_align": 5.405147985195784,
+    "contiguous": 147.13094861980278,
+    "jin": 21.22360828196149,
+    "sim_align": 9.435400627709239
+   }
+  },
+  "EleutherAI/pythia-410m g4": {
+   "acc_diff_fuse_sim_align_minus_sim_align": [
+    0.04171428571428571,
+    0.027428571428571424,
+    0.056
+   ],
+   "ppl_over_base": {
+    "fuse_u/contiguous": 17.28476959093435,
+    "fuse/contiguous": 8.036990894109877,
+    "fuse/jin": 5.870915969642233,
+    "fuse/sim_align": 6.171112719069674,
+    "fuse_u/sim_align": 13.156812203201662,
+    "contiguous": 114.03546586221746,
+    "jin": 55.33392796213821,
+    "sim_align": 43.136281191276225
+   }
+  }
+ },
+ "checks": {
+  "gpt2-medium": {
+   "groups_of_one_max_logit_diff": 0.000732421875,
+   "random_basis_function_check": 0.00087738037109375,
+   "basis_invariance_max_logit_diff": 0.00643157958984375,
+   "logit_scale": 359.40728759765625,
+   "restore_check_ppl": 21.712385629306453,
+   "base_ppl_round24": 21.712385629306453,
+   "base_ppl_this_round": 21.712385629306453
+  },
+  "EleutherAI/pythia-410m": {
+   "groups_of_one_max_logit_diff": 0.0054073333740234375,
+   "random_basis_function_check": 0.004879951477050781,
+   "basis_invariance_max_logit_diff": 0.00013065338134765625,
+   "logit_scale": 26.031272888183594,
+   "restore_check_ppl": 18.03370133104167,
+   "base_ppl_round24": 18.03370133104167,
+   "base_ppl_this_round": 18.03370133104167
+  }
+ }
+}
