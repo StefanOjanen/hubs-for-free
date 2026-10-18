@@ -94,7 +94,14 @@ layer, 4 of 6 at two (D2 failed); 6 of 7. 23 (audits/PREREGISTRATION23.md,
 audits/rule/flip/): five audited statistics computed weighted by attention
 mass and by counted positions; mass s 0.52 to 0.95, counted s 0.002 to
 0.27, gap >= 0.3 in all four decoder pairs; the occupancy refinement failed
-on Clark's top-5 count (gap 0.37, F2); 4 of 5. Untrained 7B initializations are built on the
+on Clark's top-5 count (gap 0.37, F2); 4 of 5. 24 (alignment_study/PREREGISTRATION24.md,
+gqa/, gqa_convention/): MHA-to-GQA conversion without training, nine recipes in
+OPT-1.3B, Pythia-1.4B, GPT-2 large, OLMo-1B and Phi-2; aligned groups chosen by
+the simulated merge lowest in 10 of 10 cells, 0.70 of Jin et al.'s
+log-perplexity increase at g = 2 and +1.6 to +5.3 accuracy points; unaligned
+pooling basis-dependent (spread 1.10 to 4.04), aligned not; the per-layer
+simulated cost does not order the recipes in OLMo-1B or Phi-2 g = 4 (P6); 9 of
+10. Untrained 7B initializations are built on the
 CPU and copied to the GPU; with two heavy runs the 65 W adapter and 32 GB
 memory saturate (swap up to 37 GB), so queue 7B runs one at a time.
 Drafts for a TMLR submission and a position paper are in private/drafts/

@@ -53,7 +53,11 @@ and chooses cheaper merges when many pairs are merged. In a benchmark of
 28,176 merges in six models, simulating a merge predicts its damage at
 within-layer Spearman 0.72 and 0.68 in two rounds, while the similarities
 used to choose merges average 0.24 or less, and the damage tracks LAMBADA
-accuracy at 0.86. Head confidence
+accuracy at 0.86. Converting multi-head attention to grouped-query attention
+without training, averaging the key and value projections of a group depends
+on each head's arbitrary basis; aligned first, groups chosen by the simulated
+merge give the lowest perplexity of nine recipes in all ten (model, group
+size) settings, though still well above the unconverted model's. Head confidence
 computed over all tokens measures the sink and points the wrong way;
 computed as its authors define it, without the sink or end-of-sentence
 token, it marks heads
@@ -1056,6 +1060,53 @@ KL, and in OPT-1.3B, where the chosen merges move accuracy by at most 0.025,
 the CHAI-style choice did slightly better at both budgets. Six of seven
 clauses pass.
 
+### 6.5 Converting multi-head to grouped-query attention without training
+
+Grouped-query attention lets g query heads share one key-value head and so
+divides the key-value cache by g. A multi-head checkpoint is converted by
+partitioning each layer's heads into groups and replacing the key and value
+projections of every head in a group by their mean (Ainslie et al. 2023);
+queries and output projections stay per head. Published conversions choose
+the groups by position (neighbouring heads), by the distance of the heads' key
+and value weights (QCQA; Joshi et al. 2024), by the similarity of their key and
+value activations (AsymGQA; Chen et al. 2024), or by the similarity of their
+value caches after aligning each head's basis by orthogonal Procrustes rotations
+that leave the model unchanged (Jin et al. 2025). Preregistration 24 compared
+nine recipes with no training in five multi-head models (OPT-1.3B, Pythia-1.4B,
+GPT-2 large, OLMo-1B, Phi-2; learned, partial-rotary and rotary positions) at
+half and a quarter of the key-value heads: neighbouring, random, QCQA's,
+AsymGQA's and the simulated merge's groupings without alignment; neighbouring
+and random groupings with Jin et al.'s alignment; Jin et al.'s method; and the
+simulated merge computed after each candidate group's alignment
+(`sim_align`). The same search (minimum-cost matching, then swaps for groups
+of four) served every criterion, on 8 C4 documents of 1,024 tokens; WikiText-2
+perplexity and seven zero-shot tasks with lm-evaluation-harness prompts
+measured the result.
+
+Nine of ten clauses pass. `sim_align` has the lowest perplexity of the nine
+recipes in all ten (model, group size) cells and beats Jin et al.'s in all ten
+(P2, P3). At half the heads its increase in log perplexity is 0.56 to 0.89 of
+Jin et al.'s (geometric mean 0.70; P4) and its average accuracy is higher in
+all five models (+0.016 to +0.053, mean +0.033, interval 0.029 to 0.036; P5);
+OPT-1.3B goes from 16.8 to 33.3 against Jin et al.'s 49.1, Phi-2 from 11.0 to
+34.9 against 57.2. Without alignment every recipe leaves perplexity at 12.8
+times the unconverted model's or more (P7), neighbouring-head pooling 13 to
+743 times at half the heads, and QCQA's and AsymGQA's criteria stay within a
+factor of two of a random grouping; alignment lowers perplexity in 19 of 20
+comparisons (P1). The simulated cost of each recipe's partition orders the
+recipes' damage at Spearman 0.67 to 0.98 in seven cells but not in OLMo-1B
+(0.47, 0.50), where every recipe but `sim_align` is unusable, nor in Phi-2 at
+a quarter of the heads (0.32), where the per-layer simulation does not see the
+benefit of alignment (P6 fails). The averaging itself depends on a convention:
+in three random function-preserving bases, the perplexity of unaligned
+neighbouring pooling moves by a factor of 1.10 to 4.04 (at least 1.1 in 9 of
+10 cells, C1), the trained basis is the best of the four in 3 of 10, and
+aligned pooling gives the same perplexity in every basis to within 3e-6 (C2).
+Even the best conversion stays short of the unconverted model, at 2.0 to 4.8
+times its perplexity at half the heads in four models (43 times in OLMo-1B)
+and 0.08 to 0.23 lower accuracy; it is an initialization for uptraining, and
+whether its advantage survives uptraining is untested.
+
 ## 7. Limitations
 
 Results cover seventeen models up to 8B parameters in ten families, three
@@ -1071,7 +1122,11 @@ downstream task (LAMBADA accuracy on 1,000 examples, where the merge
 criterion's advantage held in 5 of 6 models at one pair per layer and 4 of 6
 at two), and contexts of 2,048 tokens for the KV-cache and streaming tests.
 The weighting account of Section 5 was tested prospectively on five pairs of
-statistics, and its occupancy refinement failed on the one small-k statistic. Where the sink sits on a mid-sequence, window-varying column
+statistics, and its occupancy refinement failed on the one small-k statistic.
+The conversion of Section 6.5 was tested on five multi-head models up to 2.7B
+parameters and without uptraining; its best recipe still leaves perplexity at
+2 to 5 times the unconverted model's at half the key-value heads in four of
+them, and whether its advantage survives uptraining is untested. Where the sink sits on a mid-sequence, window-varying column
 (OLMo-2, late Qwen2.5-3B layers), the sink-operator identification weakens
 (cosine 0.61 to 0.82 with one column) and the column set repairs most but
 not all of it (four of OLMo-2's 19 high-sink layers keep a sufficiency
@@ -1135,6 +1190,7 @@ against the norm of what each head writes.
 | 21 | 8a15d0a, pushed before execution | G1 to G6, the sink as bias or gate; a sink-free stream | 3 of 6; G2, G3, G6 fail |
 | 22 | f5d3b5e, pushed before execution | S1 to S4, D1 to D3, the merge benchmark at larger scale and on LAMBADA | 6 of 7; D2 fails |
 | 23 | 50fdbc4, pushed before execution | F1, F2, flipping the weighting of five audited statistics | 4 of 5; F2 fails |
+| 24 | 7f12472, pushed before execution | P1 to P8, C1, C2: converting multi-head to grouped-query attention without training, nine recipes, a convention null | 9 of 10; P6 fails |
 
 ## Appendix B. Numbers ledger
 
@@ -1182,4 +1238,5 @@ against the norm of what each head writes.
 | sink across architectures and streaming | alignment_study/sink_arch_results.json, sink_arch/, sink_arch_dev/ |
 | merge benchmark at larger scale and on LAMBADA, S1 to S4 and D1 to D3 | alignment_study/merge_bench2_results.json, merge_bench2/, merge_bench2_dev/ |
 | weighting flip, F1 and F2 | audits/rule/flip_results.json, audits/rule/flip/, audits/rule/flip_dev/, audits/rule/flip_dev_results.json |
+| conversion to grouped-query attention, P1 to P8, C1, C2 | alignment_study/gqa_results.json, gqa/, gqa_convention/, gqa_dev/, gqa_convention_dev/, gqa_check/ |
 | shared energy against merge damage (post hoc) | alignment_study/posthoc/sharedE_vs_merge_kl.json |

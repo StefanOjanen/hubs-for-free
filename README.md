@@ -327,6 +327,44 @@ Each instrument below exists because a finding above required it.
 <p align="center"><img src="figures/readme/fig18_merge_benchmark.png" alt="Dot plot of nine criteria for choosing which key-value heads to merge, by within-layer Spearman with measured merge damage: output perturbation +0.72, Jensen-Shannon +0.12, key activation cosine +0.10, key-value weight cosine +0.09, query-key weight cosine +0.08, map cosine +0.08, CHAI-style every row +0.06, CHAI-style last row +0.05, value activation cosine -0.01" width="880"></p>
 <p align="center"><em>Every similarity used to decide which heads can share keys and values is close to uninformative about the damage; simulating the merge is not.</em></p>
 
+- **Converting heads to shared key-value heads, without training.**
+  Grouped-query attention lets several query heads share one key-value head,
+  which divides the key-value cache by the group size. An existing
+  multi-head model is converted by averaging the key and value projections
+  within each group (Ainslie et al. 2023), and published methods differ in
+  how they choose the groups. A preregistered round converted five models
+  (OPT-1.3B, Pythia-1.4B, GPT-2 large, OLMo-1B, Phi-2) to half and to a
+  quarter of their key-value heads with nine recipes and no training:
+  neighbouring heads, random groups, the groupings of QCQA, AsymGQA and Jin
+  et al., and the simulated merge, each with or without Jin et al.'s
+  alignment, which first rotates every head's internal basis in a way the
+  unconverted model does not notice. Without alignment, every recipe left
+  perplexity at 13 to 1,250 times the unconverted model's at half the heads,
+  and the published grouping criteria stayed within a factor of two of
+  random groups. Aligned, with the groups chosen by the simulated merge, the
+  converted models had the lowest perplexity of the nine recipes in all ten
+  settings and beat Jin et al.'s grouping in all ten: at half the heads, 33
+  against 49 in OPT-1.3B (unconverted 16.8) and 35 against 57 in Phi-2
+  (11.0), with higher average accuracy than Jin et al.'s on seven zero-shot
+  tasks in all five models (1.6 to 5.3 points). The averaging recipe also
+  depends on an arbitrary choice: rotating each head's internal basis, which
+  leaves the model unchanged, moves the perplexity of unaligned averaging by
+  a factor of 1.1 to 4, while aligned averaging gives the same model in
+  every basis. The best conversion still leaves perplexity at 2 to 5 times
+  the unconverted model's in four models and 43 times in OLMo-1B, so without
+  training it is a starting point for uptraining rather than a finished
+  model. One registered prediction failed: summed over layers, the simulated
+  cost does not order the recipes' damage in OLMo-1B, where damage compounds
+  across layers beyond what the per-layer simulation sees, or in Phi-2 at a
+  quarter of the heads, where the simulation misses what alignment adds.
+  Nine of ten registered predictions held.
+
+<p align="center"><img src="figures/readme/fig22_gqa_conversion.png" alt="Two-panel dot plot of perplexity, as a multiple of the unconverted model's, for nine training-free conversion recipes in five models at half and at a quarter of the key-value heads: unaligned recipes 13 to over 1,000 times, aligned neighbouring or random groups lower, Jin et al.'s grouping lower still, and groups chosen by the simulated merge lowest in all ten settings, 2.0 to 4.8 times at half the heads in four models" width="880"></p>
+<p align="center"><em>Without alignment no way of choosing the groups helps; aligned, choosing them by the simulated merge gives the lowest perplexity in every model and group size.</em></p>
+
+<p align="center"><img src="figures/readme/fig23_gqa_convention.png" alt="Dot plot of perplexity after neighbouring heads are pooled, relative to pooling in the trained basis, in three random bases that leave the model unchanged: unaligned pooling moves by a factor of 1.10 to 4.04, aligned pooling stays at exactly 1 in all ten settings" width="880"></p>
+<p align="center"><em>The standard recipe gives a different converted model in each of the equivalent bases; aligning first removes the dependence.</em></p>
+
 - **What the sink does.** A fourth round edited the sink directly. Removing
   its contribution from every head costs 28 to 68 times as much as removing
   an ordinary token's, in all four models, so the sink is not the no-op the
@@ -455,10 +493,10 @@ Each instrument below exists because a finding above required it.
 
 ## Evidence standard
 
-Twenty-three preregistrations with numeric thresholds and falsification
+Twenty-four preregistrations with numeric thresholds and falsification
 clauses were frozen in git before their runs (`alignment_study/PREREGISTRATION.md`,
-`PREREGISTRATION2.md` to `PREREGISTRATION16.md` and `PREREGISTRATION20.md`
-to `PREREGISTRATION22.md`; `audits/PREREGISTRATION4.md`,
+`PREREGISTRATION2.md` to `PREREGISTRATION16.md`, `PREREGISTRATION20.md`
+to `PREREGISTRATION22.md` and `PREREGISTRATION24.md`; `audits/PREREGISTRATION4.md`,
 `PREREGISTRATION17.md` to `PREREGISTRATION19.md` and
 `PREREGISTRATION23.md`; the second committed
 before the held-out models were downloaded, the third and all later ones
@@ -480,8 +518,9 @@ count-based claims (A2, A3), artifact tokens as the source of ViT attention
 distance (V1, V4), the position scheme as what separates bias-like from
 gate-like sinks (G2), the size of GPT-2 medium's sink cost (G3), the
 constant virtual sink in TinyLlama (G6), the task-level advantage of the
-simulated merge at two pairs per layer (D2), and the occupancy reading of
-Clark's top-5 count (F2). Out of sample, 7 of 8 registered clauses
+simulated merge at two pairs per layer (D2), the occupancy reading of
+Clark's top-5 count (F2), and the per-layer simulated cost as an ordering of
+whole-model conversion damage (P6). Out of sample, 7 of 8 registered clauses
 passed in the sub-2B round, 3 of 4 in the 3B-to-7B round, 5 of 5 primary clauses in the
 training-dynamics round, 4 of 4 in 11 of 11 models in the
 fixed-instrument rerun, where the earlier failures on TinyLlama, OLMo-2
@@ -495,8 +534,9 @@ the standard-statistics round, 4 of 4 in the sink-editing round, 6 of
 audits repeated under the sources' own readings, 4 of 6 for the rule tested
 on six new claims, 3 of 5 for vision transformers' attention distance, 5 of
 5 for the merge benchmark, 3 of 6 for the sink across architectures, 6 of 7
-for the merge benchmark at larger scale and on LAMBADA, and 4 of 5 for the
-weighting flip.
+for the merge benchmark at larger scale and on LAMBADA, 4 of 5 for the
+weighting flip, and 9 of 10 for converting heads to shared key-value heads
+without training.
 Development
 calibration that shaped a preregistration is committed and labeled as
 such. A blind reimplementation from the written specification
@@ -597,8 +637,9 @@ text and code, contexts up to 256 tokens for the structural results and
 1,024 for the functional ones, training dynamics for two models of one
 family, and, for head importance, the encoders of three translation
 models. Later rounds add vision transformers, three more decoders and
-one downstream task (LAMBADA accuracy) for the merge benchmark, and
-2,048-token contexts for the KV-cache and streaming tests. Where the sink
+one downstream task (LAMBADA accuracy) for the merge benchmark, OLMo-1B,
+Phi-2 and seven zero-shot tasks for the conversion to shared key-value
+heads, and 2,048-token contexts for the KV-cache and streaming tests. Where the sink
 sits on a mid-sequence,
 window-varying column (OLMo-2, late Qwen2.5-3B layers) the sink-operator
 identification weakens and one-column surrogates lose their grip, which

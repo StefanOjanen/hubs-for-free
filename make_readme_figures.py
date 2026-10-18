@@ -822,4 +822,84 @@ if glob.glob(FR23):
              fontsize=9.5, color=INK2, va="top")
     fig.savefig(OUT + "fig21_weighting_flip.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
+# ============ Figures 22 and 23: converting heads to shared key-value heads (preregistration 24) ============
+if glob.glob("alignment_study/gqa_results.json"):
+    from matplotlib.lines import Line2D
+    from matplotlib.ticker import FixedLocator, FixedFormatter, NullLocator
+    plt.rcParams["axes.grid"] = False
+    GQ = json.load(open("alignment_study/gqa_results.json"))
+    GNAMES = {"facebook/opt-1.3b": "OPT-1.3B", "EleutherAI/pythia-1.4b": "Pythia-1.4B", "gpt2-large": "GPT-2 large",
+              "allenai/OLMo-1B-hf": "OLMo-1B", "microsoft/phi-2": "Phi-2"}
+    GUNAL = ("contiguous", "random0", "wse", "act", "sim")
+    gruns = [json.load(open(p)) for p in sorted(glob.glob("alignment_study/gqa/*.json"))][::-1]
+    GTICKS = [1, 3, 10, 30, 100, 300, 1000, 3000]
+
+    def glayout(nrows, row_h, top_in, bottom_in=0.85):
+        H = top_in + nrows * row_h + bottom_in
+        return H, dict(left=0.13, right=0.98, top=1 - top_in / H, bottom=bottom_in / H, wspace=0.07)
+
+    H, gk = glayout(len(gruns), 0.62, 1.75)
+    fig, axes = plt.subplots(1, 2, figsize=(11.6, H), sharey=True, gridspec_kw=gk)
+    hi = max(r["evals"][k]["wikitext2_ppl"] / r["evals"]["base"]["wikitext2_ppl"] for r in gruns for k in r["evals"] if k.startswith("g"))
+    for ax, g in zip(axes, (2, 4)):
+        for y, r in enumerate(gruns):
+            ev = r["evals"]; b = ev["base"]["wikitext2_ppl"]
+            rel = lambda a: ev[f"g{g}/{a}"]["wikitext2_ppl"] / b
+            xs = [rel(a) for a in GUNAL + ("contiguous_align", "random0_align", "jin", "sim_align")]
+            ax.plot([min(xs), max(xs)], [y, y], color=GRID, lw=2.5, zorder=1, solid_capstyle="round")
+            ax.scatter([rel(a) for a in GUNAL], [y] * 5, s=46, color=MUTED, edgecolors=SURF, linewidths=1.2, zorder=3)
+            ax.scatter([rel("contiguous_align"), rel("random0_align")], [y, y], s=52, facecolors=SURF, edgecolors=S1, linewidths=1.6, zorder=3)
+            ax.scatter([rel("jin")], [y], s=80, color=S2, edgecolors=SURF, linewidths=1.6, zorder=4)
+            ax.scatter([rel("sim_align")], [y], s=110, marker="D", color=S1, edgecolors=SURF, linewidths=1.6, zorder=5)
+        t = [v for v in GTICKS if v <= hi * 1.05]
+        ax.set_xscale("log"); ax.set_xlim(0.8, hi * 1.25)
+        ax.xaxis.set_major_locator(FixedLocator(t)); ax.xaxis.set_major_formatter(FixedFormatter([f"{v:g}" for v in t])); ax.xaxis.set_minor_locator(NullLocator())
+        ax.axvline(1, color=INK2, lw=1, zorder=0)
+        ax.set_title(f"{'half' if g == 2 else 'a quarter'} of the key-value heads kept (groups of {g})", loc="left", fontsize=12, color=INK, pad=8)
+        ax.tick_params(length=0); ax.grid(axis="x", color=GRID, lw=0.8)
+        for sp in ("left", "bottom"): ax.spines[sp].set_color(GRID)
+    axes[0].set_yticks(range(len(gruns))); axes[0].set_yticklabels([GNAMES.get(r["model"], r["model"]) for r in gruns], fontsize=11.5)
+    hl = [Line2D([], [], marker="o", ls="", ms=7, color=MUTED, mec=SURF), Line2D([], [], marker="o", ls="", ms=7.5, mfc=SURF, mec=S1, mew=1.6),
+          Line2D([], [], marker="o", ls="", ms=9, color=S2, mec=SURF), Line2D([], [], marker="D", ls="", ms=9, color=S1, mec=SURF)]
+    fig.legend(hl, ["no alignment: GQA, random, QCQA, AsymGQA, simulated", "aligned, neighbouring or random groups",
+                    "aligned, Jin et al.'s grouping", "aligned, groups chosen by the simulated merge"],
+               loc="upper left", bbox_to_anchor=(0.012, 1 - 0.78 / H), ncol=2, fontsize=10.2, handletextpad=0.3, columnspacing=1.2)
+    n3 = GQ["clauses"]["P3"]["count"]
+    fig.text(0.012, 1 - 0.08 / H, "Turning attention heads into shared key-value heads without training", fontsize=15, color=INK, va="top")
+    fig.text(0.012, 1 - 0.46 / H, f"Preregistration 24, WikiText-2. Aligned groups chosen by the simulated merge have the lowest perplexity in {n3} of {2 * len(gruns)} settings.",
+             fontsize=10.5, color=INK2, va="top")
+    fig.supxlabel("perplexity, as a multiple of the unconverted model's (log scale)", fontsize=11.5, color=INK2, y=0.16 / H)
+    fig.savefig(OUT + "fig22_gqa_conversion.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
+    crs = [json.load(open(p)) for p in sorted(glob.glob("alignment_study/gqa_convention/*.json"))][::-1]
+    if crs:
+        rows = [(r, g) for r in crs for g in ("2", "4")]
+        H = 1.45 + 0.42 * len(rows) + 0.8
+        fig, ax = plt.subplots(figsize=(11.6, H), gridspec_kw=dict(left=0.2, right=0.97, top=1 - 1.45 / H, bottom=0.8 / H))
+        lo = hi = 1.0
+        for y, (r, g) in enumerate(rows):
+            G = r["groups"][g]
+            u = [G["unaligned"][sd] / G["unaligned"]["original"] for sd in ("0", "1", "2")]
+            a = [G["aligned"][sd] / G["aligned"]["original"] for sd in ("0", "1", "2")]
+            lo, hi = min(lo, *u), max(hi, *u)
+            ax.plot([min(u + [1]), max(u + [1])], [y, y], color=MUTED, lw=6, alpha=0.3, solid_capstyle="round", zorder=1)
+            ax.scatter(u, [y] * 3, s=46, facecolors=SURF, edgecolors=MUTED, linewidths=1.6, zorder=3)
+            ax.scatter(a, [y] * 3, s=80, marker="D", color=S1, edgecolors=SURF, linewidths=1.2, zorder=4)
+        ax.axvline(1, color=INK2, lw=1, zorder=0)
+        ax.set_yticks(range(len(rows))); ax.set_yticklabels([f"{GNAMES.get(r['model'], r['model'])}, groups of {g}" for r, g in rows], fontsize=11)
+        ax.set_xscale("log"); ax.set_xlim(lo / 1.08, hi * 1.08)
+        ct = [v for v in (0.5, 0.75, 1, 1.5, 2, 3, 4, 6) if lo / 1.08 <= v <= hi * 1.08]
+        ax.xaxis.set_major_locator(FixedLocator(ct)); ax.xaxis.set_major_formatter(FixedFormatter([f"{v:g}" for v in ct])); ax.xaxis.set_minor_locator(NullLocator())
+        ax.set_xlabel("perplexity after pooling, relative to pooling in the trained basis (log scale)")
+        ax.tick_params(length=0); ax.grid(axis="x", color=GRID, lw=0.8)
+        for sp in ("left", "bottom"): ax.spines[sp].set_color(GRID)
+        hl = [Line2D([], [], marker="o", ls="", ms=7.5, mfc=SURF, mec=MUTED, mew=1.6), Line2D([], [], marker="D", ls="", ms=8.5, color=S1, mec=SURF)]
+        fig.legend(hl, ["neighbouring heads pooled without alignment, in three random bases", "aligned before pooling, same three bases"],
+                   loc="upper left", bbox_to_anchor=(0.012, 1 - 0.78 / H), ncol=2, fontsize=10.2, handletextpad=0.3, columnspacing=1.4)
+        fig.text(0.012, 1 - 0.08 / H, "The standard conversion depends on a basis the model does not", fontsize=15, color=INK, va="top")
+        spread = [max(r["groups"][g]["unaligned"].values()) / min(r["groups"][g]["unaligned"].values()) for r, g in rows]
+        fig.text(0.012, 1 - 0.46 / H, f"Rotating each head's internal basis leaves the model unchanged. Pooled without alignment, perplexity moves by a factor of {min(spread):.2f} to {max(spread):.2f}"
+                 " across four such bases; aligned first, it does not move.", fontsize=10.5, color=INK2, va="top")
+        fig.savefig(OUT + "fig23_gqa_convention.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
 print("FIGURES_DONE", sorted(glob.glob(OUT + "*")))
