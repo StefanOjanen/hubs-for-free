@@ -1,0 +1,1066 @@
+{
+ "models": [
+  "allenai/OLMo-1B-hf",
+  "gpt2-large",
+  "facebook/opt-1.3b",
+  "microsoft/phi-2",
+  "EleutherAI/pythia-1.4b"
+ ],
+ "clauses": {
+  "P1": {
+   "what": "aligning before pooling lowers perplexity (contiguous, random0) in >= 18 of 20",
+   "value": {
+    "allenai/OLMo-1B-hf g2 contiguous": true,
+    "allenai/OLMo-1B-hf g2 random0": true,
+    "allenai/OLMo-1B-hf g4 contiguous": false,
+    "allenai/OLMo-1B-hf g4 random0": true,
+    "gpt2-large g2 contiguous": true,
+    "gpt2-large g2 random0": true,
+    "gpt2-large g4 contiguous": true,
+    "gpt2-large g4 random0": true,
+    "facebook/opt-1.3b g2 contiguous": true,
+    "facebook/opt-1.3b g2 random0": true,
+    "facebook/opt-1.3b g4 contiguous": true,
+    "facebook/opt-1.3b g4 random0": true,
+    "microsoft/phi-2 g2 contiguous": true,
+    "microsoft/phi-2 g2 random0": true,
+    "microsoft/phi-2 g4 contiguous": true,
+    "microsoft/phi-2 g4 random0": true,
+    "EleutherAI/pythia-1.4b g2 contiguous": true,
+    "EleutherAI/pythia-1.4b g2 random0": true,
+    "EleutherAI/pythia-1.4b g4 contiguous": true,
+    "EleutherAI/pythia-1.4b g4 random0": true
+   },
+   "count": 19,
+   "of": 20,
+   "pass_": true
+  },
+  "P2": {
+   "what": "sim_align perplexity below jin's in >= 8 of 10 cells",
+   "value": {
+    "allenai/OLMo-1B-hf g2": true,
+    "allenai/OLMo-1B-hf g4": true,
+    "gpt2-large g2": true,
+    "gpt2-large g4": true,
+    "facebook/opt-1.3b g2": true,
+    "facebook/opt-1.3b g4": true,
+    "microsoft/phi-2 g2": true,
+    "microsoft/phi-2 g4": true,
+    "EleutherAI/pythia-1.4b g2": true,
+    "EleutherAI/pythia-1.4b g4": true
+   },
+   "count": 10,
+   "pass_": true
+  },
+  "P3": {
+   "what": "sim_align lowest perplexity of the nine arms in >= 8 of 10 cells",
+   "value": {
+    "allenai/OLMo-1B-hf g2": "sim_align",
+    "allenai/OLMo-1B-hf g4": "sim_align",
+    "gpt2-large g2": "sim_align",
+    "gpt2-large g4": "sim_align",
+    "facebook/opt-1.3b g2": "sim_align",
+    "facebook/opt-1.3b g4": "sim_align",
+    "microsoft/phi-2 g2": "sim_align",
+    "microsoft/phi-2 g4": "sim_align",
+    "EleutherAI/pythia-1.4b g2": "sim_align",
+    "EleutherAI/pythia-1.4b g4": "sim_align"
+   },
+   "count": 10,
+   "pass_": true
+  },
+  "P4": {
+   "what": "g=2: geometric mean over models of dlog(sim_align)/dlog(jin) <= 0.85",
+   "value": {
+    "per_model": {
+     "allenai/OLMo-1B-hf": 0.5616041191436492,
+     "gpt2-large": 0.7766722520506181,
+     "facebook/opt-1.3b": 0.6368198137919407,
+     "microsoft/phi-2": 0.7011243067895314,
+     "EleutherAI/pythia-1.4b": 0.8913559149667154
+    },
+    "geometric_mean": 0.7045408242977944
+   },
+   "pass_": true
+  },
+  "P5": {
+   "what": "g=2: sim_align accuracy above jin's in >= 4 of 5 models and pooled 95% interval above zero",
+   "value": {
+    "per_model": {
+     "allenai/OLMo-1B-hf": 0.023706137053011684,
+     "gpt2-large": 0.01590005402505579,
+     "facebook/opt-1.3b": 0.05285908250237858,
+     "microsoft/phi-2": 0.046669830369890794,
+     "EleutherAI/pythia-1.4b": 0.02372428873413565
+    },
+    "pooled": [
+     0.0325718785368945,
+     0.028826729801098728,
+     0.03647020256473183
+    ]
+   },
+   "count": 5,
+   "pass_": true
+  },
+  "P6": {
+   "what": "Spearman(simulated cost, dlog) across the nine arms >= 0.6 in >= 8 of 10 cells",
+   "value": {
+    "allenai/OLMo-1B-hf g2": 0.4666666666666666,
+    "allenai/OLMo-1B-hf g4": 0.5,
+    "gpt2-large g2": 0.6666666666666667,
+    "gpt2-large g4": 0.7833333333333333,
+    "facebook/opt-1.3b g2": 0.9833333333333333,
+    "facebook/opt-1.3b g4": 0.8166666666666667,
+    "microsoft/phi-2 g2": 0.9333333333333332,
+    "microsoft/phi-2 g4": 0.31666666666666665,
+    "EleutherAI/pythia-1.4b g2": 0.9666666666666667,
+    "EleutherAI/pythia-1.4b g4": 0.9500000000000001
+   },
+   "count": 7,
+   "pass_": false
+  },
+  "P7": {
+   "what": "every unaligned arm >= 5x base perplexity in >= 9 of 10 cells",
+   "value": {
+    "allenai/OLMo-1B-hf g2": 415.7147160587084,
+    "allenai/OLMo-1B-hf g4": 1106.1691735866602,
+    "gpt2-large g2": 12.764902971903195,
+    "gpt2-large g4": 47.2848891035373,
+    "facebook/opt-1.3b g2": 18.89747049864633,
+    "facebook/opt-1.3b g4": 70.33264171798925,
+    "microsoft/phi-2 g2": 19.36656703850374,
+    "microsoft/phi-2 g4": 119.1327628875327,
+    "EleutherAI/pythia-1.4b g2": 51.41718188100063,
+    "EleutherAI/pythia-1.4b g4": 95.9491175498794
+   },
+   "count": 10,
+   "pass_": true
+  },
+  "P8": {
+   "what": "g=2: sim perplexity below contiguous in >= 4 of 5 models",
+   "value": {
+    "allenai/OLMo-1B-hf": true,
+    "gpt2-large": false,
+    "facebook/opt-1.3b": true,
+    "microsoft/phi-2": true,
+    "EleutherAI/pythia-1.4b": true
+   },
+   "count": 4,
+   "pass_": true
+  },
+  "C1": {
+   "what": "unaligned neighbouring pooling: perplexity spread across four bases >= 1.1 in >= 8 of 10 cells",
+   "value": {
+    "allenai/OLMo-1B-hf g2": 1.4292976413236582,
+    "allenai/OLMo-1B-hf g4": 4.038035543641629,
+    "gpt2-large g2": 1.2054749113151062,
+    "gpt2-large g4": 1.0956727955222112,
+    "facebook/opt-1.3b g2": 1.1867546357806844,
+    "facebook/opt-1.3b g4": 1.2797186859368084,
+    "microsoft/phi-2 g2": 1.6983518918708602,
+    "microsoft/phi-2 g4": 1.5320185463620446,
+    "EleutherAI/pythia-1.4b g2": 1.2958510792255062,
+    "EleutherAI/pythia-1.4b g4": 1.2305372091117925
+   },
+   "count": 9,
+   "pass_": true
+  },
+  "C2": {
+   "what": "aligned neighbouring pooling: perplexity within 0.1 percent of the original basis in all 30 cases",
+   "value": {
+    "allenai/OLMo-1B-hf g2 basis 0": 5.742556665744303e-07,
+    "allenai/OLMo-1B-hf g2 basis 1": 3.8035111904477503e-07,
+    "allenai/OLMo-1B-hf g2 basis 2": 3.281459489690164e-07,
+    "allenai/OLMo-1B-hf g4 basis 0": 8.35280381084047e-07,
+    "allenai/OLMo-1B-hf g4 basis 1": 1.3424155498320545e-07,
+    "allenai/OLMo-1B-hf g4 basis 2": 4.623874400033756e-07,
+    "gpt2-large g2 basis 0": 4.4747181071613795e-08,
+    "gpt2-large g2 basis 1": 6.33918391113042e-08,
+    "gpt2-large g2 basis 2": 1.3051262248708895e-07,
+    "gpt2-large g4 basis 0": 3.728931896596066e-08,
+    "gpt2-large g4 basis 1": 8.203650359028813e-08,
+    "gpt2-large g4 basis 2": 6.712077538217898e-08,
+    "facebook/opt-1.3b g2 basis 0": 5.220504417646765e-08,
+    "facebook/opt-1.3b g2 basis 1": 3.8035097515987104e-07,
+    "facebook/opt-1.3b g2 basis 2": 6.712077060821997e-08,
+    "facebook/opt-1.3b g4 basis 0": 0.0,
+    "facebook/opt-1.3b g4 basis 1": 4.4747171945580533e-07,
+    "facebook/opt-1.3b g4 basis 2": 3.057723632071685e-07,
+    "microsoft/phi-2 g2 basis 0": 3.0278880646106288e-06,
+    "microsoft/phi-2 g2 basis 1": 2.311935063725734e-06,
+    "microsoft/phi-2 g2 basis 2": 1.297669120603473e-06,
+    "microsoft/phi-2 g4 basis 0": 2.2895615242601863e-06,
+    "microsoft/phi-2 g4 basis 1": 1.5586947215151525e-06,
+    "microsoft/phi-2 g4 basis 2": 4.1764045310976883e-07,
+    "EleutherAI/pythia-1.4b g2 basis 0": 8.203650359028813e-08,
+    "EleutherAI/pythia-1.4b g2 basis 1": 1.2678369021301705e-07,
+    "EleutherAI/pythia-1.4b g2 basis 2": 4.5492958067328004e-07,
+    "EleutherAI/pythia-1.4b g4 basis 0": 1.3424155498320545e-07,
+    "EleutherAI/pythia-1.4b g4 basis 1": 1.5661514907172602e-07,
+    "EleutherAI/pythia-1.4b g4 basis 2": 4.1018241803136846e-07
+   },
+   "count": 30,
+   "pass_": true
+  }
+ },
+ "passes": 9,
+ "of": 10,
+ "table": {
+  "allenai/OLMo-1B-hf g2": {
+   "contiguous": {
+    "ppl": 9938.746489998759,
+    "dlog": 6.611053278147426,
+    "acc": 0.29217860380149563,
+    "sim_cost": 64.64258615672588
+   },
+   "random0": {
+    "ppl": 11088.257417717961,
+    "dlog": 6.720499031138899,
+    "acc": 0.2983045865781427,
+    "sim_cost": 65.04267609119415
+   },
+   "wse": {
+    "ppl": 5558.825657228627,
+    "dlog": 6.0299992463024585,
+    "acc": 0.29603048320494346,
+    "sim_cost": 62.81859166920185
+   },
+   "act": {
+    "ppl": 16679.454033932143,
+    "dlog": 7.128790037693437,
+    "acc": 0.2992930039956491,
+    "sim_cost": 62.13790360093117
+   },
+   "sim": {
+    "ppl": 9017.20977028173,
+    "dlog": 6.513747321190574,
+    "acc": 0.291985431630616,
+    "sim_cost": 59.17482389509678
+   },
+   "contiguous_align": {
+    "ppl": 8540.888909757412,
+    "dlog": 6.459477463254509,
+    "acc": 0.3085789643431679,
+    "sim_cost": 45.94437290728092
+   },
+   "random0_align": {
+    "ppl": 8751.094809928209,
+    "dlog": 6.4837911867543605,
+    "acc": 0.30477188211199663,
+    "sim_cost": 46.52040892839432
+   },
+   "jin": {
+    "ppl": 11002.709321784696,
+    "dlog": 6.712753917528626,
+    "acc": 0.29967541917597323,
+    "sim_cost": 43.75876957178116
+   },
+   "sim_align": {
+    "ppl": 580.0145310648406,
+    "dlog": 3.769910250881744,
+    "acc": 0.32338155622898496,
+    "sim_cost": 40.16868905723095
+   },
+   "base": {
+    "ppl": 13.371731724896634,
+    "acc": 0.5511549931575083
+   }
+  },
+  "allenai/OLMo-1B-hf g4": {
+   "contiguous": {
+    "ppl": 14791.397431551437,
+    "dlog": 7.0086581302283895,
+    "acc": 0.2989422972881858,
+    "sim_cost": 52.400598883628845
+   },
+   "random0": {
+    "ppl": 53188.48264023609,
+    "dlog": 8.288454254262177,
+    "acc": 0.2923358505049744,
+    "sim_cost": 52.40240779519081
+   },
+   "wse": {
+    "ppl": 33951.05708490973,
+    "dlog": 7.8395323631187965,
+    "acc": 0.29484839768646853,
+    "sim_cost": 52.18113014101982
+   },
+   "act": {
+    "ppl": 25699.940276081794,
+    "dlog": 7.561101041087787,
+    "acc": 0.2985359914673369,
+    "sim_cost": 52.09759986400604
+   },
+   "sim": {
+    "ppl": 39650.13807523001,
+    "dlog": 7.994706803503299,
+    "acc": 0.2961944947633467,
+    "sim_cost": 49.33691421151161
+   },
+   "contiguous_align": {
+    "ppl": 46517.63537377259,
+    "dlog": 8.154443869121307,
+    "acc": 0.3030200805450801,
+    "sim_cost": 42.30042624473572
+   },
+   "random0_align": {
+    "ppl": 30142.82528025454,
+    "dlog": 7.720559300444209,
+    "acc": 0.2977853905452109,
+    "sim_cost": 42.84210741519928
+   },
+   "jin": {
+    "ppl": 10906.649576115058,
+    "dlog": 6.7039850291602745,
+    "acc": 0.2985942986755136,
+    "sim_cost": 38.87579935789108
+   },
+   "sim_align": {
+    "ppl": 5508.833593197487,
+    "dlog": 6.020965284757843,
+    "acc": 0.3059144450372727,
+    "sim_cost": 36.954348027706146
+   },
+   "base": {
+    "ppl": 13.371731724896634,
+    "acc": 0.5511549931575083
+   }
+  },
+  "gpt2-large g2": {
+   "contiguous": {
+    "ppl": 255.47079652729445,
+    "dlog": 2.5756477942997447,
+    "acc": 0.3295761593124401,
+    "sim_cost": 1327.2956738471985
+   },
+   "random0": {
+    "ppl": 248.18135747857775,
+    "dlog": 2.546699449560226,
+    "acc": 0.3265667007765198,
+    "sim_cost": 1334.6644669771194
+   },
+   "wse": {
+    "ppl": 264.0692547693107,
+    "dlog": 2.608751087910535,
+    "acc": 0.32646088920416244,
+    "sim_cost": 1310.3837032914162
+   },
+   "act": {
+    "ppl": 271.97319537511487,
+    "dlog": 2.6382432055196987,
+    "acc": 0.3293675751971879,
+    "sim_cost": 1303.0921730995178
+   },
+   "sim": {
+    "ppl": 274.9235459239241,
+    "dlog": 2.6490327346859295,
+    "acc": 0.32834733475141453,
+    "sim_cost": 1232.9492067098618
+   },
+   "contiguous_align": {
+    "ppl": 103.2519370123848,
+    "dlog": 1.6697116825704115,
+    "acc": 0.3542055675744132,
+    "sim_cost": 878.4329482018948
+   },
+   "random0_align": {
+    "ppl": 95.9661961998594,
+    "dlog": 1.5965356970346103,
+    "acc": 0.36137661571251456,
+    "sim_cost": 870.1473579108715
+   },
+   "jin": {
+    "ppl": 54.71316299208291,
+    "dlog": 1.0346440106825932,
+    "acc": 0.3732450831548623,
+    "sim_cost": 813.7171861231327
+   },
+   "sim_align": {
+    "ppl": 43.42518634687271,
+    "dlog": 0.8035792938475333,
+    "acc": 0.38914513717991817,
+    "sim_cost": 755.2529624402523
+   },
+   "base": {
+    "ppl": 19.44247896163796,
+    "acc": 0.47177411826245425
+   }
+  },
+  "gpt2-large g4": {
+   "contiguous": {
+    "ppl": 1142.1849024800892,
+    "dlog": 4.07323797870791,
+    "acc": 0.30470336315663954,
+    "sim_cost": 1087.7066731452942
+   },
+   "random0": {
+    "ppl": 919.335461598908,
+    "dlog": 3.8561907751868847,
+    "acc": 0.3053615108485945,
+    "sim_cost": 1087.0522587299347
+   },
+   "wse": {
+    "ppl": 1168.596862896917,
+    "dlog": 4.096098736114565,
+    "acc": 0.3005754288804154,
+    "sim_cost": 1087.0445166826248
+   },
+   "act": {
+    "ppl": 1173.845067135016,
+    "dlog": 4.100579712101574,
+    "acc": 0.3030189660545277,
+    "sim_cost": 1078.6774830818176
+   },
+   "sim": {
+    "ppl": 1111.675961104912,
+    "dlog": 4.0461637209554135,
+    "acc": 0.30406668647592344,
+    "sim_cost": 1011.0078704357147
+   },
+   "contiguous_align": {
+    "ppl": 535.0404206246686,
+    "dlog": 3.3148819871062662,
+    "acc": 0.308203481858687,
+    "sim_cost": 781.4313008785248
+   },
+   "random0_align": {
+    "ppl": 542.0031103113441,
+    "dlog": 3.3278114304997333,
+    "acc": 0.31385735542568227,
+    "sim_cost": 778.5413846969604
+   },
+   "jin": {
+    "ppl": 333.3540362317989,
+    "dlog": 2.841744787575496,
+    "acc": 0.3246676055219198,
+    "sim_cost": 742.1891110539436
+   },
+   "sim_align": {
+    "ppl": 238.20990725367665,
+    "dlog": 2.5056919387158962,
+    "acc": 0.323254988405724,
+    "sim_cost": 696.2306668162346
+   },
+   "base": {
+    "ppl": 19.44247896163796,
+    "acc": 0.47177411826245425
+   }
+  },
+  "facebook/opt-1.3b g2": {
+   "contiguous": {
+    "ppl": 374.411276517011,
+    "dlog": 3.1042557987915775,
+    "acc": 0.32490233432425814,
+    "sim_cost": 634.1063381284475
+   },
+   "random0": {
+    "ppl": 418.38825638134614,
+    "dlog": 3.2153107801740215,
+    "acc": 0.3248373032805212,
+    "sim_cost": 634.1898032557219
+   },
+   "wse": {
+    "ppl": 410.74988018134303,
+    "dlog": 3.196885400949751,
+    "acc": 0.3406888626477014,
+    "sim_cost": 618.5624505560845
+   },
+   "act": {
+    "ppl": 359.82351751247836,
+    "dlog": 3.064514617855997,
+    "acc": 0.33564882033255,
+    "sim_cost": 617.609289187938
+   },
+   "sim": {
+    "ppl": 317.3886795679909,
+    "dlog": 2.939028077058295,
+    "acc": 0.3357856757881125,
+    "sim_cost": 520.8986993692815
+   },
+   "contiguous_align": {
+    "ppl": 155.32272157676206,
+    "dlog": 2.2244059628338935,
+    "acc": 0.3695352808482745,
+    "sim_cost": 380.58761469461024
+   },
+   "random0_align": {
+    "ppl": 138.08199139858175,
+    "dlog": 2.1067485850344423,
+    "acc": 0.36639115349436263,
+    "sim_cost": 371.38642771728337
+   },
+   "jin": {
+    "ppl": 49.101577618164185,
+    "dlog": 1.072792100739902,
+    "acc": 0.38061727647162946,
+    "sim_cost": 330.5525850020349
+   },
+   "sim_align": {
+    "ppl": 33.25730127091111,
+    "dlog": 0.6831752658306492,
+    "acc": 0.433476358974008,
+    "sim_cost": 265.47728670947254
+   },
+   "base": {
+    "ppl": 16.79529964556506,
+    "acc": 0.519976884720075
+   }
+  },
+  "facebook/opt-1.3b g4": {
+   "contiguous": {
+    "ppl": 1247.0473221820826,
+    "dlog": 4.307434829522271,
+    "acc": 0.3051578612918067,
+    "sim_cost": 472.8004954904318
+   },
+   "random0": {
+    "ppl": 1456.6400464353296,
+    "dlog": 4.462788660235618,
+    "acc": 0.3042264229884692,
+    "sim_cost": 469.96510794758797
+   },
+   "wse": {
+    "ppl": 1728.1506268919145,
+    "dlog": 4.6337080496447225,
+    "acc": 0.3066604325507537,
+    "sim_cost": 471.52896274626255
+   },
+   "act": {
+    "ppl": 1332.6611268817448,
+    "dlog": 4.373834005205878,
+    "acc": 0.30653066824599146,
+    "sim_cost": 470.0070138499141
+   },
+   "sim": {
+    "ppl": 1181.257792517799,
+    "dlog": 4.2532360113660905,
+    "acc": 0.3009502111263602,
+    "sim_cost": 426.4545302540064
+   },
+   "contiguous_align": {
+    "ppl": 1188.5755248025262,
+    "dlog": 4.259411766841715,
+    "acc": 0.3075739977268656,
+    "sim_cost": 332.45747842639685
+   },
+   "random0_align": {
+    "ppl": 1244.00042585984,
+    "dlog": 4.30498855136956,
+    "acc": 0.30663784269490535,
+    "sim_cost": 330.9332641363144
+   },
+   "jin": {
+    "ppl": 467.99812460076333,
+    "dlog": 3.327365224385724,
+    "acc": 0.3084333586726102,
+    "sim_cost": 301.51951647922397
+   },
+   "sim_align": {
+    "ppl": 183.06083025725616,
+    "dlog": 2.388719439123649,
+    "acc": 0.3293214561169559,
+    "sim_cost": 257.84695552662015
+   },
+   "base": {
+    "ppl": 16.79529964556506,
+    "acc": 0.519976884720075
+   }
+  },
+  "microsoft/phi-2 g2": {
+   "contiguous": {
+    "ppl": 932.1340812992507,
+    "dlog": 4.440724904263191,
+    "acc": 0.33374651194138394,
+    "sim_cost": 1713.940473496914
+   },
+   "random0": {
+    "ppl": 807.78994785275,
+    "dlog": 4.297550295065475,
+    "acc": 0.34784181104333756,
+    "sim_cost": 1732.2184010744095
+   },
+   "wse": {
+    "ppl": 499.71569085262064,
+    "dlog": 3.8172875542727915,
+    "acc": 0.3699812811676496,
+    "sim_cost": 1497.1926430165768
+   },
+   "act": {
+    "ppl": 471.1091775670875,
+    "dlog": 3.7583381025306073,
+    "acc": 0.3650183726339359,
+    "sim_cost": 1484.4231208860874
+   },
+   "sim": {
+    "ppl": 212.78877244208238,
+    "dlog": 2.963548230865185,
+    "acc": 0.3830344735858436,
+    "sim_cost": 1249.0647467374802
+   },
+   "contiguous_align": {
+    "ppl": 156.8209380334776,
+    "dlog": 2.6583528682483406,
+    "acc": 0.4132557848902897,
+    "sim_cost": 1382.3133439719677
+   },
+   "random0_align": {
+    "ppl": 221.77688982898388,
+    "dlog": 3.0049201116200983,
+    "acc": 0.4114744105229099,
+    "sim_cost": 1422.708463191986
+   },
+   "jin": {
+    "ppl": 57.19181874459233,
+    "dlog": 1.6496590950854948,
+    "acc": 0.4726669037175602,
+    "sim_cost": 1329.8721429109573
+   },
+   "sim_align": {
+    "ppl": 34.930761300383246,
+    "dlog": 1.1566160894808633,
+    "acc": 0.519336734087451,
+    "sim_cost": 789.9404364675283
+   },
+   "base": {
+    "ppl": 10.987428593773243,
+    "acc": 0.6816029591194105
+   }
+  },
+  "microsoft/phi-2 g4": {
+   "contiguous": {
+    "ppl": 1796.6696922505625,
+    "dlog": 5.0969382951020235,
+    "acc": 0.3002517917645792,
+    "sim_cost": 1263.4687856435776
+   },
+   "random0": {
+    "ppl": 1686.6774179987237,
+    "dlog": 5.03376408377068,
+    "acc": 0.30228629257417416,
+    "sim_cost": 1247.2173343896866
+   },
+   "wse": {
+    "ppl": 1600.1870704364273,
+    "dlog": 4.981124056286194,
+    "acc": 0.30520382803439056,
+    "sim_cost": 1171.9629514217377
+   },
+   "act": {
+    "ppl": 1308.9627254056848,
+    "dlog": 4.780238525748603,
+    "acc": 0.30801829398534275,
+    "sim_cost": 1165.0010343790054
+   },
+   "sim": {
+    "ppl": 1905.4841886178144,
+    "dlog": 5.155739658389273,
+    "acc": 0.30288562879348385,
+    "sim_cost": 1034.6763354539871
+   },
+   "contiguous_align": {
+    "ppl": 517.3122554595005,
+    "dlog": 3.8518949038022523,
+    "acc": 0.3244346338646072,
+    "sim_cost": 1248.0736654996872
+   },
+   "random0_align": {
+    "ppl": 549.4176395257757,
+    "dlog": 3.9121071159065544,
+    "acc": 0.329119397377764,
+    "sim_cost": 1210.6782290935516
+   },
+   "jin": {
+    "ppl": 282.81462506711057,
+    "dlog": 3.248039883785517,
+    "acc": 0.3628437052440122,
+    "sim_cost": 1128.856220304966
+   },
+   "sim_align": {
+    "ppl": 238.00225100007137,
+    "dlog": 3.075528367480292,
+    "acc": 0.3594561032964256,
+    "sim_cost": 765.7648250758648
+   },
+   "base": {
+    "ppl": 10.987428593773243,
+    "acc": 0.6816029591194105
+   }
+  },
+  "EleutherAI/pythia-1.4b g2": {
+   "contiguous": {
+    "ppl": 982.303487433271,
+    "dlog": 4.309434784698108,
+    "acc": 0.3111255313278591,
+    "sim_cost": 699.7987356185913
+   },
+   "random0": {
+    "ppl": 941.4630028451543,
+    "dlog": 4.266969525106547,
+    "acc": 0.3077297495453855,
+    "sim_cost": 701.4246256351471
+   },
+   "wse": {
+    "ppl": 936.2458365672715,
+    "dlog": 4.261412561647879,
+    "acc": 0.3109475547797284,
+    "sim_cost": 679.0231375694275
+   },
+   "act": {
+    "ppl": 846.3890849304263,
+    "dlog": 4.160513638895212,
+    "acc": 0.3149487512521955,
+    "sim_cost": 691.1348658800125
+   },
+   "sim": {
+    "ppl": 678.8756139325467,
+    "dlog": 3.9399723944432092,
+    "acc": 0.3160692648749389,
+    "sim_cost": 605.1614780426025
+   },
+   "contiguous_align": {
+    "ppl": 172.9595813324356,
+    "dlog": 2.572592407035047,
+    "acc": 0.3417702598218814,
+    "sim_cost": 482.86710971593857
+   },
+   "random0_align": {
+    "ppl": 236.85058128227675,
+    "dlog": 2.8869639573383687,
+    "acc": 0.3349709146877745,
+    "sim_cost": 502.8393378853798
+   },
+   "jin": {
+    "ppl": 77.49009194570513,
+    "dlog": 1.769684556074934,
+    "acc": 0.37897895259892284,
+    "sim_cost": 453.86205247044563
+   },
+   "sim_align": {
+    "ppl": 63.93611124273122,
+    "dlog": 1.5774187966826383,
+    "acc": 0.4027032413330585,
+    "sim_cost": 349.3002482652664
+   },
+   "base": {
+    "ppl": 13.203283204118986,
+    "acc": 0.5235471797693441
+   }
+  },
+  "EleutherAI/pythia-1.4b g4": {
+   "contiguous": {
+    "ppl": 1570.9367919104795,
+    "dlog": 4.778961876893994,
+    "acc": 0.3014957002268872,
+    "sim_cost": 517.5490852594376
+   },
+   "random0": {
+    "ppl": 1472.5728874482838,
+    "dlog": 4.714300887167164,
+    "acc": 0.30506280729588237,
+    "sim_cost": 511.728622674942
+   },
+   "wse": {
+    "ppl": 1559.1583566418617,
+    "dlog": 4.771435913430326,
+    "acc": 0.3005680058862816,
+    "sim_cost": 508.30236983299255
+   },
+   "act": {
+    "ppl": 1589.5234663231074,
+    "dlog": 4.790724017328698,
+    "acc": 0.3050255373301951,
+    "sim_cost": 512.0451810359955
+   },
+   "sim": {
+    "ppl": 1266.8433721963609,
+    "dlog": 4.563818025432567,
+    "acc": 0.3005906604359082,
+    "sim_cost": 477.73076117038727
+   },
+   "contiguous_align": {
+    "ppl": 730.3313129374052,
+    "dlog": 4.013032758271554,
+    "acc": 0.31362627916686897,
+    "sim_cost": 435.0294181108475
+   },
+   "random0_align": {
+    "ppl": 739.8658609598717,
+    "dlog": 4.026003374544344,
+    "acc": 0.31269763484819396,
+    "sim_cost": 430.9457257986069
+   },
+   "jin": {
+    "ppl": 505.30528598513405,
+    "dlog": 3.6446972470764174,
+    "acc": 0.3224474539016741,
+    "sim_cost": 412.5801111459732
+   },
+   "sim_align": {
+    "ppl": 471.77575590133944,
+    "dlog": 3.5760382530140293,
+    "acc": 0.32068799648046903,
+    "sim_cost": 346.06498301029205
+   },
+   "base": {
+    "ppl": 13.203283204118986,
+    "acc": 0.5235471797693441
+   }
+  }
+ },
+ "reported": {
+  "allenai/OLMo-1B-hf g2": {
+   "acc_diff_sim_align_minus_jin": [
+    0.023706137053011684,
+    0.013452114676401788,
+    0.03320592034307284
+   ],
+   "wse_vs_random0_ppl_ratio": 0.50132545158504,
+   "act_vs_random0_ppl_ratio": 1.5042448425917665
+  },
+  "allenai/OLMo-1B-hf g4": {
+   "acc_diff_sim_align_minus_jin": [
+    0.007320146361759107,
+    -0.002465148680469447,
+    0.01673605916773257
+   ],
+   "wse_vs_random0_ppl_ratio": 0.6383159548760353,
+   "act_vs_random0_ppl_ratio": 0.48318618994857865
+  },
+  "gpt2-large g2": {
+   "acc_diff_sim_align_minus_jin": [
+    0.01590005402505579,
+    0.008748795396053732,
+    0.022846401451027093
+   ],
+   "wse_vs_random0_ppl_ratio": 1.0640172874068687,
+   "act_vs_random0_ppl_ratio": 1.0958647262560435
+  },
+  "gpt2-large g4": {
+   "acc_diff_sim_align_minus_jin": [
+    -0.001412617116195846,
+    -0.008545719004615258,
+    0.00612130277137624
+   ],
+   "wse_vs_random0_ppl_ratio": 1.2711321511132547,
+   "act_vs_random0_ppl_ratio": 1.276840844465485
+  },
+  "facebook/opt-1.3b g2": {
+   "acc_diff_sim_align_minus_jin": [
+    0.05285908250237858,
+    0.04450280584643875,
+    0.06159962432678806
+   ],
+   "wse_vs_random0_ppl_ratio": 0.9817433303074334,
+   "act_vs_random0_ppl_ratio": 0.8600229858854163
+  },
+  "facebook/opt-1.3b g4": {
+   "acc_diff_sim_align_minus_jin": [
+    0.020888097444345693,
+    0.012154017080251052,
+    0.0291810030564664
+   ],
+   "wse_vs_random0_ppl_ratio": 1.1863951091561857,
+   "act_vs_random0_ppl_ratio": 0.9148870581603298
+  },
+  "microsoft/phi-2 g2": {
+   "acc_diff_sim_align_minus_jin": [
+    0.046669830369890794,
+    0.03869743312362455,
+    0.0548350501029042
+   ],
+   "wse_vs_random0_ppl_ratio": 0.6186208335235592,
+   "act_vs_random0_ppl_ratio": 0.5832075266836136
+  },
+  "microsoft/phi-2 g4": {
+   "acc_diff_sim_align_minus_jin": [
+    -0.0033876019475865896,
+    -0.010927260896724323,
+    0.00401073170276651
+   ],
+   "wse_vs_random0_ppl_ratio": 0.9487214646740697,
+   "act_vs_random0_ppl_ratio": 0.7760599101153527
+  },
+  "EleutherAI/pythia-1.4b g2": {
+   "acc_diff_sim_align_minus_jin": [
+    0.02372428873413565,
+    0.015584771640936577,
+    0.03155241349684017
+   ],
+   "wse_vs_random0_ppl_ratio": 0.994458447902768,
+   "act_vs_random0_ppl_ratio": 0.8990147062312493
+  },
+  "EleutherAI/pythia-1.4b g4": {
+   "acc_diff_sim_align_minus_jin": [
+    -0.0017594574212051247,
+    -0.009558818840307078,
+    0.0061897497406148035
+   ],
+   "wse_vs_random0_ppl_ratio": 1.058798766384743,
+   "act_vs_random0_ppl_ratio": 1.079419212367463
+  }
+ },
+ "checks": {
+  "allenai/OLMo-1B-hf": {
+   "capture_vs_eager": 0.0,
+   "sdpa_vs_eager": 6.628036499023438e-05,
+   "alignment_max_logit_diff": 0.000194549560546875,
+   "restore_check_ppl": 13.371731724896634
+  },
+  "gpt2-large": {
+   "capture_vs_eager": 0.0,
+   "sdpa_vs_eager": 7.2479248046875e-05,
+   "alignment_max_logit_diff": 8.0108642578125e-05,
+   "restore_check_ppl": 19.44247896163796
+  },
+  "facebook/opt-1.3b": {
+   "capture_vs_eager": 0.0,
+   "sdpa_vs_eager": 0.0003521442413330078,
+   "alignment_max_logit_diff": 0.0005210638046264648,
+   "restore_check_ppl": 16.79529964556506
+  },
+  "microsoft/phi-2": {
+   "capture_vs_eager": 0.0,
+   "sdpa_vs_eager": 0.003894805908203125,
+   "alignment_max_logit_diff": 0.004509687423706055,
+   "restore_check_ppl": 10.987428593773243
+  },
+  "EleutherAI/pythia-1.4b": {
+   "capture_vs_eager": 0.0,
+   "sdpa_vs_eager": 0.0028667449951171875,
+   "alignment_max_logit_diff": 0.001452803611755371,
+   "restore_check_ppl": 13.203283204118986
+  }
+ },
+ "convention_checks": {
+  "allenai/OLMo-1B-hf": {
+   "2": {
+    "aligned_vs_original_basis_max_logit_diff": {
+     "0": 0.00030422210693359375,
+     "1": 0.0005574226379394531,
+     "2": 0.0002627372741699219
+    },
+    "function_check_random_bases": {
+     "0": 0.00014638900756835938,
+     "1": 0.00013685226440429688,
+     "2": 0.00016736984252929688
+    }
+   },
+   "4": {
+    "aligned_vs_original_basis_max_logit_diff": {
+     "0": 0.0011723041534423828,
+     "1": 0.0016033649444580078,
+     "2": 0.0008697509765625
+    },
+    "function_check_random_bases": {
+     "0": 0.00014638900756835938,
+     "1": 0.00013685226440429688,
+     "2": 0.00016736984252929688
+    }
+   }
+  },
+  "gpt2-large": {
+   "2": {
+    "aligned_vs_original_basis_max_logit_diff": {
+     "0": 7.915496826171875e-05,
+     "1": 0.000102996826171875,
+     "2": 9.632110595703125e-05
+    },
+    "function_check_random_bases": {
+     "0": 9.5367431640625e-05,
+     "1": 6.4849853515625e-05,
+     "2": 6.4849853515625e-05
+    }
+   },
+   "4": {
+    "aligned_vs_original_basis_max_logit_diff": {
+     "0": 8.0108642578125e-05,
+     "1": 7.677078247070312e-05,
+     "2": 0.00011920928955078125
+    },
+    "function_check_random_bases": {
+     "0": 9.5367431640625e-05,
+     "1": 6.4849853515625e-05,
+     "2": 6.4849853515625e-05
+    }
+   }
+  },
+  "facebook/opt-1.3b": {
+   "2": {
+    "aligned_vs_original_basis_max_logit_diff": {
+     "0": 0.0009021759033203125,
+     "1": 0.0009064674377441406,
+     "2": 0.000957489013671875
+    },
+    "function_check_random_bases": {
+     "0": 0.0004935264587402344,
+     "1": 0.0005333423614501953,
+     "2": 0.000370025634765625
+    }
+   },
+   "4": {
+    "aligned_vs_original_basis_max_logit_diff": {
+     "0": 0.0006568413227796555,
+     "1": 0.0006377696990966797,
+     "2": 0.0004830360412597656
+    },
+    "function_check_random_bases": {
+     "0": 0.0004935264587402344,
+     "1": 0.0005333423614501953,
+     "2": 0.000370025634765625
+    }
+   }
+  },
+  "microsoft/phi-2": {
+   "2": {
+    "aligned_vs_original_basis_max_logit_diff": {
+     "0": 0.008307933807373047,
+     "1": 0.01887798309326172,
+     "2": 0.008053302764892578
+    },
+    "function_check_random_bases": {
+     "0": 0.008263587951660156,
+     "1": 0.006454944610595703,
+     "2": 0.005501747131347656
+    }
+   },
+   "4": {
+    "aligned_vs_original_basis_max_logit_diff": {
+     "0": 0.008999824523925781,
+     "1": 0.009268045425415039,
+     "2": 0.0053882598876953125
+    },
+    "function_check_random_bases": {
+     "0": 0.008263587951660156,
+     "1": 0.006454944610595703,
+     "2": 0.005501747131347656
+    }
+   }
+  },
+  "EleutherAI/pythia-1.4b": {
+   "2": {
+    "aligned_vs_original_basis_max_logit_diff": {
+     "0": 0.0021867752075195312,
+     "1": 0.0018477439880371094,
+     "2": 0.0019142627716064453
+    },
+    "function_check_random_bases": {
+     "0": 0.0015254020690917969,
+     "1": 0.003004908561706543,
+     "2": 0.0035854578018188477
+    }
+   },
+   "4": {
+    "aligned_vs_original_basis_max_logit_diff": {
+     "0": 0.0012183189392089844,
+     "1": 0.0012559890747070312,
+     "2": 0.0014536380767822266
+    },
+    "function_check_random_bases": {
+     "0": 0.0015254020690917969,
+     "1": 0.003004908561706543,
+     "2": 0.0035854578018188477
+    }
+   }
+  }
+ }
+}

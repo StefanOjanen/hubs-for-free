@@ -586,3 +586,13 @@ Pythia-410m 1,482 s. A first development attempt on the GPU alongside round 24
 drained the battery while plugged in (68 to 25 percent): the adapter cannot
 feed both, so it was stopped and the guard now pauses at 15 percent whatever
 the reported charging state.
+
+MHA-to-GQA conversion round, confirmatory (alignment_study/PREREGISTRATION24.md,
+frozen at 7f12472; run from 2026-10-16 14:30 UTC to 2026-10-18 04:26 UTC with
+the round's scripts unchanged since the freeze except zeroshot.py's memory
+fix, 5556656): GPT-2 large 14,437 s, Pythia-1.4B 22,260 s, OLMo-1B 17,877 s,
+OPT-1.3B 20,689 s (its unconverted evaluation reused from the first attempt),
+Phi-2 56,417 s (including a pause of 1 h 21 min by the battery guard), then
+the convention null, 4,920 s for the five models. Evaluation (eval_gqa.py,
+unchanged since the freeze): 9 of 10 clauses pass, P6 fails
+(gqa_results.json, eval_gqa.log).

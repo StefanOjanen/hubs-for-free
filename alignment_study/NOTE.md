@@ -1125,3 +1125,68 @@ statistic depends on how the statistic weighs positions. Weighted by
 attention mass, it is mostly the sink; counted by positions, it mostly is
 not. This held prospectively on five new statistics; the finer occupancy
 reading did not.
+
+## Converting multi-head attention to grouped-query attention without training (2026-10-16 to 18, preregistration 24)
+
+Frozen at 7f12472 (`alignment_study/PREREGISTRATION24.md`). 9 of 10 clauses pass.
+- P2 and P3 pass in 10 of 10 cells: with each group's heads aligned first
+  (Jin et al.'s generalized Procrustes rotations, folded into the weights) and
+  the groups chosen by the simulated merge, the converted model has the
+  lowest WikiText-2 perplexity of the nine recipes in every model and group
+  size, and lower than Jin et al.'s grouping in all ten. Half of the
+  key-value heads kept (g = 2): OPT-1.3B 33.3 against 49.1 (unconverted
+  16.8), GPT-2 large 43.4 against 54.7 (19.4), Phi-2 34.9 against 57.2
+  (11.0), Pythia-1.4B 63.9 against 77.5 (13.2), OLMo-1B 580 against 11,003
+  (13.4).
+- P4 passes: at g = 2 its increase in log perplexity is 0.56 to 0.89 of Jin
+  et al.'s, geometric mean 0.70 (registered: at most 0.85).
+- P5 passes: at g = 2 its average accuracy on the seven zero-shot tasks is
+  higher than Jin et al.'s in all five models (+0.016 to +0.053; mean +0.033,
+  interval 0.029 to 0.036). At g = 4, where every recipe is close to chance
+  (0.29 to 0.36 against a chance level of 0.29), the differences are within
+  noise except in OPT-1.3B (+0.021).
+- P1 passes (19 of 20): aligning before pooling lowers perplexity for
+  neighbouring and for random groups, except OLMo-1B's neighbouring groups at
+  g = 4 (46,518 against 14,791), where both are unusable.
+- P7 passes: without alignment every recipe leaves perplexity at 12.8 times
+  the unconverted model's or more, in all ten cells. Neighbouring-head mean
+  pooling, the standard initialization, gives 13 to 743 times at g = 2. QCQA's
+  and AsymGQA's criteria land within a factor of two of a random grouping in
+  every cell (0.48 to 1.50 times its perplexity).
+- P8 passes (4 of 5): without alignment the simulated merge's groups beat
+  neighbouring heads at g = 2 except in GPT-2 large (274.9 against 255.5).
+- P6 FAILS (7 of 10): across the nine recipes the simulated cost of each
+  partition orders its damage at Spearman 0.67 to 0.98 in OPT-1.3B,
+  Pythia-1.4B and GPT-2 large and in Phi-2 at g = 2, but at 0.47 and 0.50 in
+  OLMo-1B and 0.32 in Phi-2 at g = 4. In OLMo-1B every recipe but one is
+  unusable and their order is noise; the chosen groups cost 0.92 of Jin et
+  al.'s in the simulation summed over layers and give a nineteenth of the
+  perplexity, so the damage compounds across layers beyond what the
+  per-layer simulation sees. In Phi-2 at g = 4 the simulation misses what
+  alignment does: aligned neighbouring and random groups cost almost as much
+  as unaligned ones (1,248 against 1,263; 1,211 against 1,247) and reach a
+  third of their perplexity.
+- C1 and C2 pass: rotating every head's query-key and value-output spaces at
+  random, which leaves the model unchanged, moves the perplexity of
+  unaligned neighbouring pooling by a factor of 1.10 to 4.04 across the four
+  bases (at least 1.1 in 9 of 10 cells; GPT-2 large at g = 4, 1.096, the
+  exception), and the trained basis gives the lowest of the four in 3 of 10
+  cells. Aligned pooling gives the same perplexity in every basis (within
+  3e-6 relative in all 30 cases); its converted models differ by at most
+  1.9e-2 in any logit in Phi-2, whose logits reach 34, and by at most 2.2e-3
+  elsewhere.
+- Checks: capture equals eager attention exactly in all five models; the
+  alignment changes no logit by more than 1.5e-3 (4.5e-3 in Phi-2) before
+  pooling; restoring the unconverted weights returns the base perplexity in
+  all five.
+Reading: averaging key and value projections across heads, the standard
+initialization, depends on a convention the model does not have; aligned
+first, the conversion is a function of the model alone. Without training, how
+the groups are chosen matters once the heads are aligned, and choosing them by
+the simulated merge is better than every published criterion here, by a wide
+margin in perplexity and by 1.6 to 5.3 points of accuracy at half the heads.
+Without alignment no criterion rescues mean pooling. Even the best conversion
+stays well short of the unconverted model (perplexity 2.0 to 4.8 times at half
+the heads in four models, 43 times in OLMo-1B; accuracy 0.08 to 0.23 lower),
+so it is a starting point for uptraining, not a finished model; whether the
+advantage survives uptraining was not tested.
