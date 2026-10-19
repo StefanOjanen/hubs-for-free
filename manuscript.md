@@ -57,7 +57,11 @@ accuracy at 0.86. Converting multi-head attention to grouped-query attention
 without training, averaging the key and value projections of a group depends
 on each head's arbitrary basis; aligned first, groups chosen by the simulated
 merge give the lowest perplexity of nine recipes in all ten (model, group
-size) settings, though still well above the unconverted model's. Head confidence
+size) settings, though still well above the unconverted model's. Fitting the
+shared head in closed form to what the heads compute, weighting keys by each
+head's queries and values by its output projection, does better in all ten
+settings and leaves four of five models at 1.6 to 2.1 times the unconverted
+perplexity with half of the key-value heads, without training. Head confidence
 computed over all tokens measures the sink and points the wrong way;
 computed as its authors define it, without the sink or end-of-sentence
 token, it marks heads
@@ -1107,6 +1111,49 @@ times its perplexity at half the heads in four models (43 times in OLMo-1B)
 and 0.08 to 0.23 lower accuracy; it is an initialization for uptraining, and
 whether its advantage survives uptraining is untested.
 
+### 6.6 Fusing key and value heads by what the heads compute
+
+Averaging, even after alignment, fits the shared key and value head to each
+head's weights. Each head keeps its own query and output projection, so the
+shared head only has to preserve what the heads compute: the query-key
+bilinear form x_t^T A_h^T B_h x_s of every head in the group, and its
+value-output map O_h C_h x. With x augmented by a constant and S its second
+moment on calibration tokens, the best shared value projection spans the top
+eigenvectors of sum_h S^(1/2) C_h^T O_h^T O_h C_h S^(1/2), and each head's
+output projection absorbs the rest in closed form; the best shared key
+projection spans the top eigenvectors of the group's whitened key projections
+weighted by the second moment of each head's queries (on the key side
+centered, since a term constant over keys leaves the softmax unchanged). Under
+a rotary embedding each plane's queries and keys are complex numbers whose
+product must be kept for every pair of tokens; the shared key plane is the top
+eigenvector of the group's whitened key planes weighted by each head's query
+energy on the plane, and each query plane absorbs a complex scalar, which
+commutes with the embedding. The result does not depend on any head's basis,
+and groups of one head reproduce the model. Without the query and output
+weighting the same fit is the objective of weight-space fits with an
+input-covariance metric (CAGA; Wang et al. 2026); preserving query-key
+products rather than keys was shown for compressing one head's cache by KQ-SVD
+(Lesens et al. 2026).
+
+Preregistration 26 applied the fusion to round 24's models and groups, with
+round 24's calibration documents and evaluation. All six clauses pass. On
+round 24's groups the weighted fusion has a lower perplexity than round 24's
+best recipe in all ten cells (F1): at half the key-value heads 18.9 against
+34.9 in Phi-2 (unconverted 11.0), 27.3 against 63.9 in Pythia-1.4B (13.2),
+30.4 against 43.4 in GPT-2 large (19.4), 29.1 against 33.3 in OPT-1.3B (16.8)
+and 87.4 against 580 in OLMo-1B (13.4). Its increase in log perplexity is 0.46
+to 0.81 of round 24's best (geometric mean 0.55; F2), and its average accuracy
+is higher in all five models (+0.029 to +0.066, mean +0.044, interval 0.041 to
+0.048; F4). The weighting lowers perplexity against the unweighted fit on the
+same groups in 20 of 20 comparisons, by factors of 1.02 to 3.05 (F3).
+Neighbouring heads, fused without search, beat round 24's searched and aligned
+best in 9 of 10 cells, OPT-1.3B at half the heads the exception (F5), and
+round 24's groups still beat neighbouring heads after fusion in 10 of 10 (F6),
+although Jin et al.'s groups, fused, were lower still in 7 of 10 (not
+registered). At half the heads four of the five converted models reach 1.56 to
+2.07 times the unconverted perplexity, against 1.98 to 4.84 for round 24's
+best, and lose 0.05 to 0.10 of accuracy; OLMo-1B reaches 6.5 times.
+
 ## 7. Limitations
 
 Results cover seventeen models up to 8B parameters in ten families, three
@@ -1126,7 +1173,10 @@ statistics, and its occupancy refinement failed on the one small-k statistic.
 The conversion of Section 6.5 was tested on five multi-head models up to 2.7B
 parameters and without uptraining; its best recipe still leaves perplexity at
 2 to 5 times the unconverted model's at half the key-value heads in four of
-them, and whether its advantage survives uptraining is untested. Where the sink sits on a mid-sequence, window-varying column
+them, and whether its advantage survives uptraining is untested. The fusion of
+Section 6.6 narrows that gap on the same five models but was not tested on
+models that already share key-value heads, above 2.7B parameters, or after
+uptraining. Where the sink sits on a mid-sequence, window-varying column
 (OLMo-2, late Qwen2.5-3B layers), the sink-operator identification weakens
 (cosine 0.61 to 0.82 with one column) and the column set repairs most but
 not all of it (four of OLMo-2's 19 high-sink layers keep a sufficiency
@@ -1191,6 +1241,7 @@ against the norm of what each head writes.
 | 22 | f5d3b5e, pushed before execution | S1 to S4, D1 to D3, the merge benchmark at larger scale and on LAMBADA | 6 of 7; D2 fails |
 | 23 | 50fdbc4, pushed before execution | F1, F2, flipping the weighting of five audited statistics | 4 of 5; F2 fails |
 | 24 | 7f12472, pushed before execution | P1 to P8, C1, C2: converting multi-head to grouped-query attention without training, nine recipes, a convention null | 9 of 10; P6 fails |
+| 26 | 16404cf, pushed before execution | F1 to F6: closed-form fusion of key and value heads weighted by what the heads compute | 6 of 6 |
 
 ## Appendix B. Numbers ledger
 
@@ -1239,4 +1290,5 @@ against the norm of what each head writes.
 | merge benchmark at larger scale and on LAMBADA, S1 to S4 and D1 to D3 | alignment_study/merge_bench2_results.json, merge_bench2/, merge_bench2_dev/ |
 | weighting flip, F1 and F2 | audits/rule/flip_results.json, audits/rule/flip/, audits/rule/flip_dev/, audits/rule/flip_dev_results.json |
 | conversion to grouped-query attention, P1 to P8, C1, C2 | alignment_study/gqa_results.json, gqa/, gqa_convention/, gqa_dev/, gqa_convention_dev/, gqa_check/ |
+| fused conversion, F1 to F6 | alignment_study/fuse_results.json, fuse/, fuse_dev/, fuse_dev_results.json |
 | shared energy against merge damage (post hoc) | alignment_study/posthoc/sharedE_vs_merge_kl.json |

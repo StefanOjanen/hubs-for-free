@@ -101,9 +101,17 @@ the simulated merge lowest in 10 of 10 cells, 0.70 of Jin et al.'s
 log-perplexity increase at g = 2 and +1.6 to +5.3 accuracy points; unaligned
 pooling basis-dependent (spread 1.10 to 4.04), aligned not; the per-layer
 simulated cost does not order the recipes in OLMo-1B or Phi-2 g = 4 (P6); 9 of
-10. Untrained 7B initializations are built on the
+10. 26 (alignment_study/PREREGISTRATION26.md, fuse/; instrument fuse_common.py):
+closed-form fusion of each group's key and value heads weighted by what the
+heads compute (keys by each head's query second moment, rotary planes as complex
+numbers; values by O_h^T O_h); basis-invariant, groups of one exact; beats round
+24's best in 10 of 10 cells (dlog ratio 0.55 at g = 2, +2.9 to +6.6 accuracy
+points) and the unweighted fit in 20 of 20; 6 of 6. Round 25 (cross-layer KV,
+frozen 809f6fb) runs after it. Untrained 7B initializations are built on the
 CPU and copied to the GPU; with two heavy runs the 65 W adapter and 32 GB
-memory saturate (swap up to 37 GB), so queue 7B runs one at a time.
+memory saturate (swap up to 37 GB), so queue 7B runs one at a time. Keep the
+lid open during long GPU runs: closed, the GPU throttles to about a sixth of
+its speed (2026-10-18). Do not run CPU probes alongside a GPU round.
 Drafts for a TMLR submission and a position paper are in private/drafts/
 (unpublished; the author decides on submission and posting).
 Instruments: functional_common.py, standard_common.py, audits/readings/readings_common.py.

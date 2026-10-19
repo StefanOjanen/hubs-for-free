@@ -365,6 +365,37 @@ Each instrument below exists because a finding above required it.
 <p align="center"><img src="figures/readme/fig23_gqa_convention.png" alt="Dot plot of perplexity after neighbouring heads are pooled, relative to pooling in the trained basis, in three random bases that leave the model unchanged: unaligned pooling moves by a factor of 1.10 to 4.04, aligned pooling stays at exactly 1 in all ten settings" width="880"></p>
 <p align="center"><em>The standard recipe gives a different converted model in each of the equivalent bases; aligning first removes the dependence.</em></p>
 
+- **Fusing heads by what they compute.** Averaging, even after alignment,
+  asks the shared key and value head to look like each head's own. What a
+  head contributes is narrower: its queries read only some directions of its
+  keys, and its output projection writes only some directions of its values.
+  Since every head keeps its own query and output projection, the shared
+  head only has to preserve what the heads compute, and the best such head
+  has a closed form: a key subspace weighted by each head's queries and a
+  value subspace weighted by each head's output projection, from the second
+  moment of the attention input on 8,192 calibration tokens. It takes 1 to
+  18 seconds per layer on a laptop CPU, needs no alignment because the
+  result does not depend on any head's basis, and reproduces the model
+  exactly when nothing is merged. A preregistered round applied it to round
+  24's five models and groups. It beat round 24's best recipe in all ten
+  settings: at half the key-value heads, perplexity 18.9 against 34.9 in
+  Phi-2 (unconverted 11.0), 27.3 against 63.9 in Pythia-1.4B (13.2), 30.4
+  against 43.4 in GPT-2 large (19.4) and 29.1 against 33.3 in OPT-1.3B
+  (16.8), with average accuracy 2.9 to 6.6 points higher in all five models.
+  The weighting is what matters: the same fit without it, which is the
+  objective of weight-space fits with an input-covariance metric such as
+  CAGA (2026), did worse in all 20 comparisons, by up to a factor of three.
+  Even neighbouring heads, fused without any search, beat round 24's best in
+  9 of 10 settings. All six registered predictions held. At half the heads,
+  four of the five converted models reach 1.6 to 2.1 times the unconverted
+  perplexity without any training, against 2.0 to 4.8 for round 24's best;
+  OLMo-1B stays hard (6.5 times). Preserving query-key products rather than
+  keys was shown for compressing a single head's cache by KQ-SVD (2026);
+  here it decides how well heads can share one.
+
+<p align="center"><img src="figures/readme/fig25_kv_fusion.png" alt="Two-panel dot plot of perplexity, as a multiple of the unconverted model's, at half and at a quarter of the key-value heads, for averaging neighbouring heads, round 24's aligned averaging, the unweighted fusion and the fusion weighted by what the heads compute, in five models: the weighted fusion is lowest in every model, 1.6 to 2.1 times the unconverted perplexity at half the heads in four models" width="880"></p>
+<p align="center"><em>Fitting the shared head to what the heads compute, rather than to their weights, closes most of the gap that averaging leaves.</em></p>
+
 - **What the sink does.** A fourth round edited the sink directly. Removing
   its contribution from every head costs 28 to 68 times as much as removing
   an ordinary token's, in all four models, so the sink is not the no-op the
@@ -493,10 +524,10 @@ Each instrument below exists because a finding above required it.
 
 ## Evidence standard
 
-Twenty-four preregistrations with numeric thresholds and falsification
+Twenty-five preregistrations with numeric thresholds and falsification
 clauses were frozen in git before their runs (`alignment_study/PREREGISTRATION.md`,
 `PREREGISTRATION2.md` to `PREREGISTRATION16.md`, `PREREGISTRATION20.md`
-to `PREREGISTRATION22.md` and `PREREGISTRATION24.md`; `audits/PREREGISTRATION4.md`,
+to `PREREGISTRATION22.md`, `PREREGISTRATION24.md` and `PREREGISTRATION26.md`; `audits/PREREGISTRATION4.md`,
 `PREREGISTRATION17.md` to `PREREGISTRATION19.md` and
 `PREREGISTRATION23.md`; the second committed
 before the held-out models were downloaded, the third and all later ones
@@ -535,8 +566,8 @@ audits repeated under the sources' own readings, 4 of 6 for the rule tested
 on six new claims, 3 of 5 for vision transformers' attention distance, 5 of
 5 for the merge benchmark, 3 of 6 for the sink across architectures, 6 of 7
 for the merge benchmark at larger scale and on LAMBADA, 4 of 5 for the
-weighting flip, and 9 of 10 for converting heads to shared key-value heads
-without training.
+weighting flip, 9 of 10 for converting heads to shared key-value heads
+without training, and 6 of 6 for fusing them by what they compute.
 Development
 calibration that shaped a preregistration is committed and labeled as
 such. A blind reimplementation from the written specification

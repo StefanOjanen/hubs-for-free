@@ -902,4 +902,52 @@ if glob.glob("alignment_study/gqa_results.json"):
                  " across four such bases; aligned first, it does not move.", fontsize=10.5, color=INK2, va="top")
         fig.savefig(OUT + "fig23_gqa_convention.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
+# ============ Figure 25: closed-form fusion of key and value heads (preregistration 26) ============
+FU_RESULTS = "alignment_study/fuse_results.json"
+if glob.glob(FU_RESULTS):
+    from matplotlib.lines import Line2D
+    from matplotlib.ticker import FixedLocator, FixedFormatter, NullLocator
+    plt.rcParams["axes.grid"] = False
+    FU = json.load(open(FU_RESULTS))
+    FNAMES = {"facebook/opt-1.3b": "OPT-1.3B", "EleutherAI/pythia-1.4b": "Pythia-1.4B", "gpt2-large": "GPT-2 large",
+              "allenai/OLMo-1B-hf": "OLMo-1B", "microsoft/phi-2": "Phi-2", "gpt2-medium": "GPT-2 medium", "EleutherAI/pythia-410m": "Pythia-410m"}
+    fm = FU["models"][::-1]
+    top_in, bot_in = 1.75, 0.85
+    H = top_in + 0.62 * len(fm) + bot_in
+    fig, axes = plt.subplots(1, 2, figsize=(11.6, H), sharey=True,
+                             gridspec_kw=dict(left=0.14, right=0.98, top=1 - top_in / H, bottom=bot_in / H, wspace=0.07))
+    rel = lambda m, g, a: FU["table"][f"{m} g{g}"][a]["ppl"] / FU["table"][f"{m} g{g}"]["base"]["ppl"]
+    hi = max(rel(m, g, a) for m in fm for g in (2, 4) for a in ("contiguous", "sim_align", "fuse_u/sim_align", "fuse/contiguous", "fuse/sim_align"))
+    FT = [1, 2, 5, 10, 20, 50, 100, 300, 1000, 3000]
+    for ax, g in zip(axes, (2, 4)):
+        for y, m in enumerate(fm):
+            xs = [rel(m, g, a) for a in ("contiguous", "sim_align", "fuse_u/sim_align", "fuse/contiguous", "fuse/sim_align")]
+            ax.plot([min(xs), max(xs)], [y, y], color=GRID, lw=2.5, zorder=1, solid_capstyle="round")
+            ax.scatter([rel(m, g, "contiguous")], [y], s=46, color=MUTED, edgecolors=SURF, linewidths=1.2, zorder=3)
+            ax.scatter([rel(m, g, "sim_align")], [y], s=70, color=S2, edgecolors=SURF, linewidths=1.4, zorder=4)
+            ax.scatter([rel(m, g, "fuse_u/sim_align")], [y], s=60, facecolors=SURF, edgecolors=S1, linewidths=1.6, zorder=4)
+            ax.scatter([rel(m, g, "fuse/contiguous")], [y], s=60, marker="D", facecolors=SURF, edgecolors=S1, linewidths=1.6, zorder=4)
+            ax.scatter([rel(m, g, "fuse/sim_align")], [y], s=110, marker="D", color=S1, edgecolors=SURF, linewidths=1.6, zorder=5)
+        t = [v for v in FT if v <= hi * 1.05]
+        ax.set_xscale("log"); ax.set_xlim(0.85, hi * 1.3)
+        ax.xaxis.set_major_locator(FixedLocator(t)); ax.xaxis.set_major_formatter(FixedFormatter([f"{v:g}" for v in t])); ax.xaxis.set_minor_locator(NullLocator())
+        ax.axvline(1, color=INK2, lw=1, zorder=0)
+        ax.set_title(f"{'half' if g == 2 else 'a quarter'} of the key-value heads kept (groups of {g})", loc="left", fontsize=12, color=INK, pad=8)
+        ax.tick_params(length=0); ax.grid(axis="x", color=GRID, lw=0.8)
+        for sp in ("left", "bottom"): ax.spines[sp].set_color(GRID)
+    axes[0].set_yticks(range(len(fm))); axes[0].set_yticklabels([FNAMES.get(m, m) for m in fm], fontsize=11.5)
+    hl = [Line2D([], [], marker="o", ls="", ms=7, color=MUTED, mec=SURF), Line2D([], [], marker="o", ls="", ms=8.5, color=S2, mec=SURF),
+          Line2D([], [], marker="o", ls="", ms=8, mfc=SURF, mec=S1, mew=1.6), Line2D([], [], marker="D", ls="", ms=7.5, mfc=SURF, mec=S1, mew=1.6),
+          Line2D([], [], marker="D", ls="", ms=9, color=S1, mec=SURF)]
+    fig.legend(hl, ["averaging neighbouring heads (GQA)", "aligned averaging, round 24's best", "fused, unweighted fit, round 24's groups",
+                    "fused by what heads compute, neighbouring heads", "fused by what heads compute, round 24's groups"],
+               loc="upper left", bbox_to_anchor=(0.012, 1 - 0.78 / H), ncol=3, fontsize=9.8, handletextpad=0.3, columnspacing=1.0)
+    fig.text(0.012, 1 - 0.08 / H, "Fusing key-value heads by what the heads compute", fontsize=15, color=INK, va="top")
+    c1, c3 = FU["clauses"]["F1"], FU["clauses"]["F3"]
+    SUB25 = (f"Preregistration 26, WikiText-2. Fitting the shared head to what the heads compute beats averaging in {c1['count']} of {len(c1['value'])}"
+             f" settings and the unweighted fit in {c3['count']} of {len(c3['value'])} comparisons.")
+    fig.text(0.012, 1 - 0.46 / H, SUB25, fontsize=10.5, color=INK2, va="top")
+    fig.supxlabel("perplexity, as a multiple of the unconverted model's (log scale)", fontsize=11.5, color=INK2, y=0.16 / H)
+    fig.savefig(OUT + "fig25_kv_fusion.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
 print("FIGURES_DONE", sorted(glob.glob(OUT + "*")))
