@@ -177,14 +177,14 @@ def kivi(A, which, codes=None):
     """KIVI-quantize all but the last QRES tokens of A (batch, heads, T, hd); with codes given, dequantize those
     codes with A's own scale and zero-point (XQuant's sharing). Returns the dequantized tensor and the codes."""
     T, hd = A.shape[2], A.shape[3]; Tq = (T - QRES) // QG * QG
-    Aq = A[:, :, :Tq].double()
+    Aq = A[:, :, :Tq].cpu().double()               # float64 on the host (MPS has no float64); no value changes
     if which == "k":
         Z = Aq.reshape(A.shape[0], A.shape[1], Tq // QG, QG, hd); mn, mx = Z.amin(3, keepdim=True), Z.amax(3, keepdim=True)
     else:
         Z = Aq.reshape(A.shape[0], A.shape[1], Tq, hd // QG, QG); mn, mx = Z.amin(4, keepdim=True), Z.amax(4, keepdim=True)
     sc = (mx - mn).clamp_min(1e-12) / (2 ** QB - 1)
     c = torch.round((Z - mn) / sc).clamp(0, 2 ** QB - 1) if codes is None else codes
-    out = A.clone(); out[:, :, :Tq] = (c * sc + mn).reshape(Aq.shape).to(A.dtype)
+    out = A.clone(); out[:, :, :Tq] = (c * sc + mn).reshape(Aq.shape).to(A.dtype).to(A.device)
     return out, c
 
 

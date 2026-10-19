@@ -631,3 +631,15 @@ evaluation, which the partial file kept (it equals round 24's exactly).
 Evaluation (eval_fuse.py, unchanged since the freeze): 6 of 6 clauses pass
 (fuse_results.json, eval_fuse.log). Round 25's confirmatory pipeline started
 on completion (2026-10-19 09:22 UTC).
+
+Cross-layer round (alignment_study/PREREGISTRATION25.md), first confirmatory
+attempt (2026-10-19 09:22 to 10:14 UTC): LLaMA-2-7B-80K's Parts A and B
+completed (their lines are in xlayer.log) and Part C stopped at its first
+quantized arm, because the KIVI quantization converted the cache to float64 on
+the GPU, which MPS does not support (the development runs were on the CPU).
+The fix moves that conversion to the host and returns the result to the
+cache's device; on CPU tensors it changes nothing (outputs and codes
+bit-identical for float32 and float64 inputs), and on the GPU it reproduces the
+CPU result exactly; the whole instrument then ran end to end on the GPU on
+llama-68m. No result file had been written; the run restarts from the first
+model with the fix.
