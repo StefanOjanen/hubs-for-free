@@ -1,0 +1,290 @@
+{
+ "models": [
+  "mistralai/Mistral-7B-Instruct-v0.2",
+  "microsoft/Phi-3-mini-4k-instruct",
+  "Qwen/Qwen2.5-7B",
+  "yaofu/llama-2-7b-80k"
+ ],
+ "clauses": {
+  "A1": {
+   "what": "|median K and V cosine| <= 0.1 and median residual-stream cosine > 0.5, every model",
+   "value": {
+    "mistralai/Mistral-7B-Instruct-v0.2": true,
+    "microsoft/Phi-3-mini-4k-instruct": true,
+    "Qwen/Qwen2.5-7B": true,
+    "yaofu/llama-2-7b-80k": true
+   },
+   "pass_": true
+  },
+  "A2": {
+   "what": "median aligned V cosine exceeds the fitting null's by >= 0.1, every model",
+   "value": {
+    "mistralai/Mistral-7B-Instruct-v0.2": 0.22188361175358295,
+    "microsoft/Phi-3-mini-4k-instruct": 0.21463610604405403,
+    "Qwen/Qwen2.5-7B": 0.2843225672841072,
+    "yaofu/llama-2-7b-80k": 0.23490826040506363
+   },
+   "pass_": true
+  },
+  "B1": {
+   "what": "MiniCache from L/2: trained-basis damage >= median random-basis damage - 0.1 nats, every model",
+   "value": {
+    "mistralai/Mistral-7B-Instruct-v0.2": -0.0009182537303251692,
+    "microsoft/Phi-3-mini-4k-instruct": -0.05525981304692262,
+    "Qwen/Qwen2.5-7B": 1.189054870605469,
+    "yaofu/llama-2-7b-80k": -0.010928382125555025
+   },
+   "pass_": true
+  },
+  "B2": {
+   "what": "aligned damage <= 0.6 x trained-basis damage in >= 7 of 8 (model, setting) cells",
+   "value": {
+    "mistralai/Mistral-7B-Instruct-v0.2 L/2": 0.5175995043172875,
+    "mistralai/Mistral-7B-Instruct-v0.2 L/4": 0.4893707802404071,
+    "microsoft/Phi-3-mini-4k-instruct L/2": 0.37959163855112893,
+    "microsoft/Phi-3-mini-4k-instruct L/4": 0.20532899584214587,
+    "Qwen/Qwen2.5-7B L/2": 0.3033850954918345,
+    "Qwen/Qwen2.5-7B L/4": 0.7001919335309742,
+    "yaofu/llama-2-7b-80k L/2": 11.35395807385263,
+    "yaofu/llama-2-7b-80k L/4": 1.962003918616106
+   },
+   "count": 5,
+   "pass_": false
+  },
+  "C1": {
+   "what": "XQuant's statistic (share of |code difference| <= 1) within 0.02 of independence, keys and values, every model",
+   "value": {
+    "mistralai/Mistral-7B-Instruct-v0.2 k": 0.001219176842199854,
+    "mistralai/Mistral-7B-Instruct-v0.2 v": 0.0003246719995129155,
+    "microsoft/Phi-3-mini-4k-instruct k": 0.0021325943696521854,
+    "microsoft/Phi-3-mini-4k-instruct v": 0.0001668567887810335,
+    "Qwen/Qwen2.5-7B k": 0.002256878720469535,
+    "Qwen/Qwen2.5-7B v": 0.0007782456631511003,
+    "yaofu/llama-2-7b-80k k": 0.0012980258689214708,
+    "yaofu/llama-2-7b-80k v": 0.0005468116164030201
+   },
+   "pass_": true
+  },
+  "C2": {
+   "what": "after alignment, exact value-code agreement exceeds independence by >= 0.03, every model",
+   "value": {
+    "mistralai/Mistral-7B-Instruct-v0.2": 0.04475792475316043,
+    "microsoft/Phi-3-mini-4k-instruct": 0.04586503197351305,
+    "Qwen/Qwen2.5-7B": 0.07047436593873968,
+    "yaofu/llama-2-7b-80k": 0.07439740821111684
+   },
+   "pass_": true
+  },
+  "C3": {
+   "what": "XQuant's sharing loses less in the trained basis than in random bases in >= 3 of 4 models",
+   "value": {
+    "mistralai/Mistral-7B-Instruct-v0.2": -0.050192832946777344,
+    "microsoft/Phi-3-mini-4k-instruct": 0.4521780575022978,
+    "Qwen/Qwen2.5-7B": -0.1699950910082051,
+    "yaofu/llama-2-7b-80k": -0.07111325731464468
+   },
+   "count": 1,
+   "pass_": false
+  }
+ },
+ "passes": 5,
+ "of": 7,
+ "summary": {
+  "mistralai/Mistral-7B-Instruct-v0.2": {
+   "k": 0.0017754152650013566,
+   "v": 0.0004746953200083226,
+   "hidden": 0.8955009579658508,
+   "normed_input": 0.916324257850647,
+   "k_aligned": 0.324586421251297,
+   "v_aligned": 0.2477216124534607,
+   "k_null": 0.2243112027645111,
+   "v_null": 0.02583800069987774,
+   "codes_k": {
+    "adjacent_le1": 0.8005260120738636,
+    "independence_le1": 0.7993068352316638,
+    "aligned_exact": 0.3660257512872869,
+    "independence_exact": 0.32491256282443554
+   },
+   "codes_v": {
+    "adjacent_le1": 0.8203908746892756,
+    "independence_le1": 0.8200662026897627,
+    "aligned_exact": 0.3848242326216264,
+    "independence_exact": 0.340066307868466
+   },
+   "merge_damage": {
+    "16": {
+     "trained": 0.22543393116371302,
+     "random0": 0.19839998694027172,
+     "random1": 0.2986058328665939,
+     "random2": 0.2263521848940382,
+     "aligned": 0.11668449102663536,
+     "aligned_nomatch": 0.1779718604742313,
+     "random_median": 0.2263521848940382
+    },
+    "8": {
+     "trained": 0.450378324471268,
+     "random0": 0.5333106957229912,
+     "random1": 0.3890303742651846,
+     "random2": 0.45778629078584565,
+     "aligned": 0.22040199204987165,
+     "aligned_nomatch": 0.3167036580104454,
+     "random_median": 0.45778629078584565
+    }
+   },
+   "xquant_damage": {
+    "kivi": 0.01358688765881122,
+    "trained": 0.3959882175221163,
+    "random": 0.345795384575339,
+    "aligned": 0.39704355352065135,
+    "kivi_rot": 0.015568923950195268
+   }
+  },
+  "microsoft/Phi-3-mini-4k-instruct": {
+   "k": 0.004707376006990671,
+   "v": -1.5760517271701247e-05,
+   "hidden": 0.9367620348930359,
+   "normed_input": 0.9139304161071777,
+   "k_aligned": 0.3168480396270752,
+   "v_aligned": 0.2499772310256958,
+   "k_null": 0.2078763246536255,
+   "v_null": 0.03534112498164177,
+   "codes_k": {
+    "adjacent_le1": 0.8059854218454072,
+    "independence_le1": 0.803852827475755,
+    "aligned_exact": 0.3646258729876894,
+    "independence_exact": 0.32815050568395643
+   },
+   "codes_v": {
+    "adjacent_le1": 0.8170363686301492,
+    "independence_le1": 0.8168695118413681,
+    "aligned_exact": 0.38352180249763257,
+    "independence_exact": 0.3376567705241195
+   },
+   "merge_damage": {
+    "16": {
+     "trained": 0.33763479531980045,
+     "random0": 0.45602901496139236,
+     "random1": 0.3928946083667231,
+     "random2": 0.36296448988073027,
+     "aligned": 0.1281633451873181,
+     "aligned_nomatch": 0.20751118566475668,
+     "random_median": 0.3928946083667231
+    },
+    "8": {
+     "trained": 1.1693697966781318,
+     "random0": 1.0741131558137782,
+     "random1": 1.1950608290877998,
+     "random2": 1.3668645578272203,
+     "aligned": 0.2401055261200551,
+     "aligned_nomatch": 0.35178453595030557,
+     "random_median": 1.1950608290877998
+    }
+   },
+   "xquant_damage": {
+    "kivi": 0.02380755368401033,
+    "trained": 1.692712086322261,
+    "random": 2.1448901438245587,
+    "aligned": 1.2245062940260942,
+    "kivi_rot": 0.023340804904115053
+   }
+  },
+  "Qwen/Qwen2.5-7B": {
+   "k": -0.0004749674117192626,
+   "v": 0.0004742598976008594,
+   "hidden": 0.9127547740936279,
+   "normed_input": 0.8469090461730957,
+   "k_aligned": 0.247102752327919,
+   "v_aligned": 0.32292860746383667,
+   "k_null": 0.1701296716928482,
+   "v_null": 0.03860604017972946,
+   "codes_k": {
+    "adjacent_le1": 0.8005773370916194,
+    "independence_le1": 0.7983204583711498,
+    "aligned_exact": 0.3656040538441051,
+    "independence_exact": 0.324210808242956
+   },
+   "codes_v": {
+    "adjacent_le1": 0.8215311223810369,
+    "independence_le1": 0.8207528767178858,
+    "aligned_exact": 0.41107940673828125,
+    "independence_exact": 0.34060504079954157
+   },
+   "merge_damage": {
+    "14": {
+     "trained": 1.7896646686628754,
+     "random0": 0.6006097980574063,
+     "random1": 0.5709698246974568,
+     "random2": 0.6222671097400139,
+     "aligned": 0.5429575864006488,
+     "aligned_nomatch": 0.4113970924826229,
+     "random_median": 0.6006097980574063
+    },
+    "7": {
+     "trained": 0.5095799128214518,
+     "random0": 0.5529274959190218,
+     "random1": 0.6035373388552197,
+     "random2": 0.5901321934718711,
+     "aligned": 0.3568037444469976,
+     "aligned_nomatch": 0.5606996386658909,
+     "random_median": 0.5901321934718711
+    }
+   },
+   "xquant_damage": {
+    "kivi": 0.02528608359542539,
+    "trained": 0.7953623341579061,
+    "random": 0.625367243149701,
+    "aligned": 0.5193507662006454,
+    "kivi_rot": 0.0248063218359853
+   }
+  },
+  "yaofu/llama-2-7b-80k": {
+   "k": 0.002524629468098283,
+   "v": -0.00035963431582786143,
+   "hidden": 0.9007992148399353,
+   "normed_input": 0.9150362014770508,
+   "k_aligned": 0.3457683324813843,
+   "v_aligned": 0.3515009880065918,
+   "k_null": 0.19111530482769012,
+   "v_null": 0.11659272760152817,
+   "codes_k": {
+    "adjacent_le1": 0.7980119531804866,
+    "independence_le1": 0.7967139273115651,
+    "aligned_exact": 0.3803742148659446,
+    "independence_exact": 0.32308565640952774
+   },
+   "codes_v": {
+    "adjacent_le1": 0.8171617334539241,
+    "independence_le1": 0.816614921837521,
+    "aligned_exact": 0.4118755513971502,
+    "independence_exact": 0.33747814318603336
+   },
+   "merge_damage": {
+    "16": {
+     "trained": 0.025505013559378398,
+     "random0": 0.04060118432138449,
+     "random1": 0.03025179096296693,
+     "random2": 0.03643339568493342,
+     "aligned": 0.28958285462622513,
+     "aligned_nomatch": 0.2505225611668003,
+     "random_median": 0.03643339568493342
+    },
+    "8": {
+     "trained": 0.4025056502398314,
+     "random0": 0.21520165836109761,
+     "random1": 0.3538013159060007,
+     "random2": 0.5616614323036337,
+     "aligned": 0.789717663035673,
+     "aligned_nomatch": 0.656364209044213,
+     "random_median": 0.3538013159060007
+    }
+   },
+   "xquant_damage": {
+    "kivi": -0.0440057193531711,
+    "trained": 2.3525836645388134,
+    "random": 2.2814704072241687,
+    "aligned": 2.861116140029009,
+    "kivi_rot": -0.06477657392913283
+   }
+  }
+ }
+}

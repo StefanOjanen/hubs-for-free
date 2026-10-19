@@ -643,3 +643,10 @@ bit-identical for float32 and float64 inputs), and on the GPU it reproduces the
 CPU result exactly; the whole instrument then ran end to end on the GPU on
 llama-68m. No result file had been written; the run restarts from the first
 model with the fix.
+
+Cross-layer round, confirmatory (second attempt, with the device fix 82cadd2;
+2026-10-19 10:16 to 14:17 UTC): LLaMA-2-7B-80K 4,226 s (Parts A and B
+identical to the first attempt's), Mistral-7B-Instruct-v0.2 3,735 s,
+Qwen2.5-7B 3,783 s, Phi-3-mini 2,705 s. Evaluation (eval_xlayer.py, unchanged
+since the freeze): 5 of 7 clauses pass, B2 and C3 fail (xlayer_results.json,
+eval_xlayer.log).

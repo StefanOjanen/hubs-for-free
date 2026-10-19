@@ -1231,3 +1231,50 @@ reach 1.56 to 2.07 times the unconverted perplexity in four of the five models
 remains hard (6.5 times, 0.20). Once the heads are fused, the choice of groups
 still matters but less, and the groups chosen for averaging are not the best
 groups for fusion.
+
+## Cross-layer KV cache compression under the convention null (2026-10-19, preregistration 25)
+
+Frozen at 809f6fb (`alignment_study/PREREGISTRATION25.md`), run with the
+device fix 82cadd2. 5 of 7 clauses pass.
+- A1 passes: in all four models the per-token cosine between adjacent layers'
+  cached keys, and between their cached values, is within 0.005 of zero
+  (median over layer pairs), while the residual stream's is 0.90 to 0.94 and
+  the normalized layer input's 0.85 to 0.92. MiniCache's motivating similarity
+  is a property of the residual stream, not of the cache it merges.
+- A2 passes: after per-head alignment fitted on other documents, adjacent
+  layers' values reach a median cosine of 0.25 to 0.35, 0.21 to 0.28 above the
+  same fit to shuffled tokens.
+- B1 passes: MiniCache's merge from mid-depth does no better in the trained
+  basis than in random function-preserving bases (trained minus the random
+  median: -0.055 to -0.001 nats in three models; in Qwen2.5-7B the trained
+  basis is worse by 1.19 nats).
+- B2 FAILS (5 of 8): aligning heads first cuts the merge's damage to 0.21 to
+  0.52 of the trained basis's in Mistral-7B-Instruct-v0.2 and Phi-3-mini at
+  both depths and to 0.30 in Qwen2.5-7B from mid-depth, but only to 0.70 in
+  Qwen2.5-7B from a quarter of the depth, and in the LLaMA-2-7B derivative it
+  multiplies the damage (11.4 and 2.0 times).
+- C1 passes: XQuant's statistic, the share of positions whose 2-bit codes
+  differ by at most one level between adjacent layers, is 0.80 for keys and
+  0.82 for values, within 0.003 of what independent codes with the same
+  frequencies give, in every model.
+- C2 passes: after alignment the exact agreement of value codes exceeds
+  independence by 0.045 to 0.074.
+- C3 FAILS (1 of 4): XQuant's sharing loses less in the trained basis than in a
+  random basis only in Phi-3-mini (1.69 against 2.15 nats); in the other three
+  a random basis does as well or better (by 0.05 to 0.17 nats). The sharing
+  costs 0.40 to 2.35 nats of continuation loss, against 0.01 to 0.03 for the
+  same 2-bit quantization without sharing.
+- Caveat: the LLaMA-2-7B derivative's continuation perplexity is 84 in this
+  setup (Mistral 4.6, Qwen 6.1, Phi-3 5.3), and 2-bit quantization lowers it;
+  its configuration (rotary base 10,000 with dynamic scaling) probably does not
+  match its long-context training, and round 4's audit could not reproduce its
+  retrieval heads either. Its results are reported as registered.
+Reading: both premises fail against their nulls. Adjacent layers' caches are
+not similar token by token; the similarity MiniCache plots is the residual
+stream's. XQuant's "over 80 percent within one level" is what independent
+codes give. Functionally, neither method draws on the trained basis: MiniCache's
+merge is no better there than in random bases, and XQuant's sharing is better
+there in only one of four models. Aligning heads first exposes real shared
+structure (A2, C2) and makes MiniCache's merge much cheaper in three of the
+four models, but not reliably enough for the registered B2, and not in the
+miscalibrated LLaMA-2-7B derivative.
