@@ -61,7 +61,10 @@ size) settings, though still well above the unconverted model's. Fitting the
 shared head in closed form to what the heads compute, weighting keys by each
 head's queries and values by its output projection, does better in all ten
 settings and leaves four of five models at 1.6 to 2.1 times the unconverted
-perplexity with half of the key-value heads, without training. Head confidence
+perplexity with half of the key-value heads, without training. Two
+cross-layer cache compressions rest on premises that fail their nulls: adjacent
+layers' cached keys and values are uncorrelated token by token, and the
+code agreement one of them reports is what independent codes give. Head confidence
 computed over all tokens measures the sink and points the wrong way;
 computed as its authors define it, without the sink or end-of-sentence
 token, it marks heads
@@ -1154,6 +1157,47 @@ registered). At half the heads four of the five converted models reach 1.56 to
 2.07 times the unconverted perplexity, against 1.98 to 4.84 for round 24's
 best, and lose 0.05 to 0.10 of accuracy; OLMo-1B reaches 6.5 times.
 
+### 6.7 Cross-layer KV compression under the convention null
+
+Two methods compress the cache across layers on the premise that adjacent
+layers' keys and values are similar: MiniCache (Liu et al. 2024) merges them
+token by token (SLERP of the directions, magnitudes kept, the most distant
+tokens left unmerged), motivated by a cross-layer similarity that rises with
+depth to 0.8 to 0.9; XQuant (Yang et al. 2025) lets a layer dequantize the
+previous layer's 2-bit KIVI codes with its own scale and zero-point, motivated
+by over 80 percent of positions whose codes differ by at most one level. A
+per-token cosine between two layers' caches, a code-agreement rate and a merge
+that pairs head h of one layer with head h of the next all depend on each
+head's arbitrary basis and on the order of a layer's heads. Preregistration 25
+measured both premises against nulls and ran both methods in the trained
+basis, in random function-preserving bases and after aligning heads (Hungarian
+matching and orthogonal Procrustes rotations commuting with the rotary
+embedding), in a LLaMA-2-7B derivative, Mistral-7B-Instruct-v0.2, Qwen2.5-7B
+and Phi-3-mini.
+
+Five of seven clauses pass. Adjacent layers' cached keys and values have a
+per-token cosine within 0.005 of zero in every model, while the residual
+stream's is 0.90 to 0.94 and the normalized layer input's 0.85 to 0.92 (A1):
+MiniCache's motivating similarity belongs to the residual stream, not to the
+cache it merges. XQuant's statistic is 0.80 for keys and 0.82 for values,
+within 0.003 of what independent codes with the same frequencies give (C1).
+After alignment fitted on other documents, values agree at a median cosine of
+0.25 to 0.35, 0.21 to 0.28 above the same fit to shuffled tokens (A2), and
+value codes agree exactly 0.045 to 0.074 more often than independence predicts
+(C2). MiniCache's merge from mid-depth does no better in the trained basis
+than in random bases (B1; in Qwen2.5-7B the trained basis is worse by 1.19
+nats). Aligning heads first cuts its damage to 0.21 to 0.52 of the trained
+basis's in Mistral and Phi-3 at both depths and to 0.30 in Qwen2.5-7B from
+mid-depth, but to 0.70 in Qwen2.5-7B from a quarter of the depth, and it
+multiplies the damage in the LLaMA-2-7B derivative; the registered 7 of 8
+cells fails at 5 (B2). XQuant's sharing loses less in the trained basis than
+in a random basis only in Phi-3-mini (C3 fails at 1 of 4), and it costs 0.40
+to 2.35 nats against 0.01 to 0.03 for the same quantization without sharing.
+The LLaMA-2-7B derivative's continuation perplexity is 84 in this setup,
+against 4.6 to 6.1 for the other models, which suggests that its configuration
+does not match its long-context training; its results are reported as
+registered.
+
 ## 7. Limitations
 
 Results cover seventeen models up to 8B parameters in ten families, three
@@ -1176,7 +1220,9 @@ parameters and without uptraining; its best recipe still leaves perplexity at
 them, and whether its advantage survives uptraining is untested. The fusion of
 Section 6.6 narrows that gap on the same five models but was not tested on
 models that already share key-value heads, above 2.7B parameters, or after
-uptraining. Where the sink sits on a mid-sequence, window-varying column
+uptraining. The cross-layer audit of Section 6.7 covers four 3.8B to 7B models,
+one of them apparently misconfigured, and continuation loss after 1,536 tokens
+of context on WikiText-103. Where the sink sits on a mid-sequence, window-varying column
 (OLMo-2, late Qwen2.5-3B layers), the sink-operator identification weakens
 (cosine 0.61 to 0.82 with one column) and the column set repairs most but
 not all of it (four of OLMo-2's 19 high-sink layers keep a sufficiency
@@ -1241,6 +1287,7 @@ against the norm of what each head writes.
 | 22 | f5d3b5e, pushed before execution | S1 to S4, D1 to D3, the merge benchmark at larger scale and on LAMBADA | 6 of 7; D2 fails |
 | 23 | 50fdbc4, pushed before execution | F1, F2, flipping the weighting of five audited statistics | 4 of 5; F2 fails |
 | 24 | 7f12472, pushed before execution | P1 to P8, C1, C2: converting multi-head to grouped-query attention without training, nine recipes, a convention null | 9 of 10; P6 fails |
+| 25 | 809f6fb, pushed before execution | A1, A2, B1, B2, C1 to C3: cross-layer KV compression (MiniCache, XQuant) under the convention null | 5 of 7; B2, C3 fail |
 | 26 | 16404cf, pushed before execution | F1 to F6: closed-form fusion of key and value heads weighted by what the heads compute | 6 of 6 |
 
 ## Appendix B. Numbers ledger
@@ -1291,4 +1338,5 @@ against the norm of what each head writes.
 | weighting flip, F1 and F2 | audits/rule/flip_results.json, audits/rule/flip/, audits/rule/flip_dev/, audits/rule/flip_dev_results.json |
 | conversion to grouped-query attention, P1 to P8, C1, C2 | alignment_study/gqa_results.json, gqa/, gqa_convention/, gqa_dev/, gqa_convention_dev/, gqa_check/ |
 | fused conversion, F1 to F6 | alignment_study/fuse_results.json, fuse/, fuse_dev/, fuse_dev_results.json |
+| cross-layer KV compression, A1 to C3 | alignment_study/xlayer_results.json, xlayer/, xlayer_dev/, xlayer_dev_results.json |
 | shared energy against merge damage (post hoc) | alignment_study/posthoc/sharedE_vs_merge_kl.json |

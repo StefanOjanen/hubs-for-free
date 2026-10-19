@@ -902,6 +902,84 @@ if glob.glob("alignment_study/gqa_results.json"):
                  " across four such bases; aligned first, it does not move.", fontsize=10.5, color=INK2, va="top")
         fig.savefig(OUT + "fig23_gqa_convention.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
+# ============ Figure 24: cross-layer KV compression under the convention null (preregistration 25) ============
+XL_RESULTS = "alignment_study/xlayer_results.json"
+if glob.glob(XL_RESULTS):
+    from matplotlib.lines import Line2D
+    plt.rcParams["axes.grid"] = False
+    XR = json.load(open(XL_RESULTS))
+    XNAMES = {"yaofu/llama-2-7b-80k": "LLaMA-2-7B-80K", "mistralai/Mistral-7B-Instruct-v0.2": "Mistral-7B-Instruct",
+              "Qwen/Qwen2.5-7B": "Qwen2.5-7B", "microsoft/Phi-3-mini-4k-instruct": "Phi-3-mini",
+              "TinyLlama/TinyLlama_v1.1": "TinyLlama-1.1B", "Qwen/Qwen2.5-0.5B": "Qwen2.5-0.5B", "EleutherAI/pythia-410m": "Pythia-410m"}
+    xm = XR["models"][::-1]
+    top_in, bot_in = 1.05, 1.75
+    H = top_in + 0.62 * len(xm) + bot_in
+    fig, axes = plt.subplots(1, 3, figsize=(12.4, H), sharey=True,
+                             gridspec_kw=dict(left=0.15, right=0.985, top=1 - top_in / H, bottom=bot_in / H, wspace=0.14))
+    leg = lambda ax, hl, lab: ax.legend(hl, lab, loc="upper left", bbox_to_anchor=(-0.02, -0.2), ncol=1, fontsize=9.6,
+                                        handletextpad=0.3, borderaxespad=0, labelspacing=0.35)
+    # panel 1: per-token cosine between adjacent layers
+    ax = axes[0]
+    for y, m in enumerate(xm):
+        s = XR["summary"][m]
+        xs = [s["hidden"], s["k"], s["v"], s["v_aligned"], s["v_null"]]
+        ax.plot([min(xs), max(xs)], [y, y], color=GRID, lw=2, zorder=1)
+        ax.scatter([s["hidden"]], [y], s=54, color=MUTED, edgecolors=SURF, linewidths=1.2, zorder=3)
+        ax.scatter([s["k"]], [y + 0.13], marker="s", s=44, color=S2, edgecolors=SURF, linewidths=1.0, zorder=4)
+        ax.scatter([s["v"]], [y - 0.13], marker="D", s=44, color=S2, edgecolors=SURF, linewidths=1.0, zorder=4)
+        ax.scatter([s["v_null"]], [y], marker="D", s=50, facecolors=SURF, edgecolors=MUTED, linewidths=1.4, zorder=3)
+        ax.scatter([s["v_aligned"]], [y], marker="D", s=64, color=S1, edgecolors=SURF, linewidths=1.2, zorder=5)
+    ax.axvline(0, color=INK2, lw=1, zorder=0)
+    ax.set_xlim(-0.12, 1.02)
+    ax.set_xlabel("median over adjacent layer pairs", fontsize=10.5)
+    ax.set_title("Adjacent layers, per-token cosine", loc="left", fontsize=12, color=INK, pad=8)
+    leg(ax, [Line2D([], [], marker="o", ls="", ms=7, color=MUTED, mec=SURF), Line2D([], [], marker="s", ls="", ms=6.5, color=S2, mec=SURF),
+             Line2D([], [], marker="D", ls="", ms=6.5, color=S2, mec=SURF), Line2D([], [], marker="D", ls="", ms=7, color=S1, mec=SURF),
+             Line2D([], [], marker="D", ls="", ms=6.5, mfc=SURF, mec=MUTED, mew=1.4)],
+        ["residual stream", "keys, as cached", "values, as cached", "values, heads aligned", "alignment fitted to shuffled tokens"])
+    # panel 2: MiniCache merge damage from L/2
+    ax = axes[1]
+    hi2 = 0
+    for y, m in enumerate(xm):
+        d = XR["summary"][m]["merge_damage"][max(XR["summary"][m]["merge_damage"], key=int)]
+        rnd = [d[f"random{i}"] for i in range(3)]
+        xs = rnd + [d["trained"], d["aligned"]]
+        hi2 = max(hi2, *xs)
+        ax.plot([min(xs), max(xs)], [y, y], color=GRID, lw=2, zorder=1)
+        ax.scatter(rnd, [y] * 3, s=46, facecolors=SURF, edgecolors=MUTED, linewidths=1.5, zorder=3)
+        ax.scatter([d["trained"]], [y], s=70, color=S2, edgecolors=SURF, linewidths=1.4, zorder=4)
+        ax.scatter([d["aligned"]], [y], s=80, marker="D", color=S1, edgecolors=SURF, linewidths=1.4, zorder=5)
+    ax.axvline(0, color=INK2, lw=1, zorder=0)
+    ax.set_xlim(-0.05 * hi2, hi2 * 1.08)
+    ax.set_xlabel("extra loss after merging, nats per token", fontsize=10.5)
+    ax.set_title("MiniCache's merge from mid-depth", loc="left", fontsize=12, color=INK, pad=8)
+    leg(ax, [Line2D([], [], marker="o", ls="", ms=8, color=S2, mec=SURF), Line2D([], [], marker="o", ls="", ms=7, mfc=SURF, mec=MUTED, mew=1.5),
+             Line2D([], [], marker="D", ls="", ms=7.5, color=S1, mec=SURF)],
+        ["as published (trained basis)", "three random bases the model ignores", "heads matched and aligned first"])
+    # panel 3: XQuant's statistic against independence
+    ax = axes[2]
+    for y, m in enumerate(xm):
+        for k_, (off, mk) in {"k": (0.13, "s"), "v": (-0.13, "D")}.items():
+            c = XR["summary"][m][f"codes_{k_}"]
+            ax.scatter([c["independence_le1"]], [y + off], marker=mk, s=72, facecolors=SURF, edgecolors=MUTED, linewidths=1.5, zorder=3)
+            ax.scatter([c["adjacent_le1"]], [y + off], marker=mk, s=30, color=S2, zorder=4)
+    ax.set_xlim(0.6, 1.0)
+    ax.set_xlabel("share of 2-bit codes within one level", fontsize=10.5)
+    ax.set_title("XQuant's statistic", loc="left", fontsize=12, color=INK, pad=8)
+    leg(ax, [Line2D([], [], marker="s", ls="", ms=5.5, color=S2), Line2D([], [], marker="D", ls="", ms=5.5, color=S2),
+             Line2D([], [], marker="s", ls="", ms=8, mfc=SURF, mec=MUTED, mew=1.5)],
+        ["keys, adjacent layers", "values, adjacent layers", "if the two layers' codes were independent"])
+    for ax in axes:
+        ax.tick_params(length=0); ax.grid(axis="x", color=GRID, lw=0.8)
+        for sp in ("left", "bottom"): ax.spines[sp].set_color(GRID)
+    axes[0].set_yticks(range(len(xm))); axes[0].set_yticklabels([XNAMES.get(m, m) for m in xm], fontsize=11)
+    axes[0].set_ylim(-0.5, len(xm) - 0.5)
+    fig.text(0.008, 1 - 0.08 / H, "Cross-layer KV compression and its premises", fontsize=15, color=INK, va="top")
+    SUB24 = (f"Preregistration 25, four models. The cached keys and values of adjacent layers are uncorrelated token by token; the similarity is the residual stream's."
+             f" {XR['passes']} of {XR['of']} predictions held.")
+    fig.text(0.008, 1 - 0.45 / H, SUB24, fontsize=10.2, color=INK2, va="top")
+    fig.savefig(OUT + "fig24_cross_layer.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
 # ============ Figure 25: closed-form fusion of key and value heads (preregistration 26) ============
 FU_RESULTS = "alignment_study/fuse_results.json"
 if glob.glob(FU_RESULTS):

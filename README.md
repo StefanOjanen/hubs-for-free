@@ -396,6 +396,34 @@ Each instrument below exists because a finding above required it.
 <p align="center"><img src="figures/readme/fig25_kv_fusion.png" alt="Two-panel dot plot of perplexity, as a multiple of the unconverted model's, at half and at a quarter of the key-value heads, for averaging neighbouring heads, round 24's aligned averaging, the unweighted fusion and the fusion weighted by what the heads compute, in five models: the weighted fusion is lowest in every model, 1.6 to 2.1 times the unconverted perplexity at half the heads in four models" width="880"></p>
 <p align="center"><em>Fitting the shared head to what the heads compute, rather than to their weights, closes most of the gap that averaging leaves.</em></p>
 
+- **Cross-layer KV compression, against the same nulls.** Two published
+  methods compress the cache across layers on the premise that adjacent
+  layers' keys and values are similar. MiniCache (NeurIPS 2024) merges them
+  token by token and motivates this with a cross-layer similarity that rises
+  with depth to 0.8 to 0.9; XQuant (EMNLP 2025) lets a layer reuse the
+  previous layer's 2-bit codes, motivated by over 80 percent of positions
+  whose codes differ by at most one level. A preregistered round tested both
+  premises and both methods in four models (a LLaMA-2-7B derivative,
+  Mistral-7B-Instruct, Qwen2.5-7B, Phi-3-mini). The per-token cosine between
+  adjacent layers' cached keys and values is within 0.005 of zero in every
+  model; the similarity that rises with depth is the residual stream's (0.90
+  to 0.94). XQuant's statistic is 0.80 for keys and 0.82 for values, within
+  0.003 of what independent codes with the same frequencies give. Neither
+  method draws on the trained basis: MiniCache's merge does no better there
+  than in random bases that leave the model unchanged, and XQuant's sharing
+  does better there in only one of four models, so that registered
+  prediction failed. Aligning heads first exposes real shared structure
+  (aligned values reach cosine 0.25 to 0.35, against 0.03 to 0.12 for the
+  same fit to shuffled tokens) and cuts MiniCache's damage to 0.21 to 0.52
+  of the trained basis's in Mistral and Phi-3 at both depths and in
+  Qwen2.5-7B from mid-depth, but not enough across all four models for the
+  registered size, the second failure. Five of seven predictions held. The
+  LLaMA-2-7B derivative behaves as if misconfigured (perplexity 84 on this
+  test) and is reported as registered.
+
+<p align="center"><img src="figures/readme/fig24_cross_layer.png" alt="Three-panel dot plot for four 7B-scale models. Left: per-token cosine between adjacent layers, residual stream 0.90 to 0.94, cached keys and values about 0, values after aligning heads 0.25 to 0.35, alignment fitted to shuffled tokens 0.03 to 0.12. Middle: extra loss from MiniCache's merge from mid-depth in the trained basis, in three random bases and after aligning heads. Right: share of 2-bit codes within one level between adjacent layers, 0.80 for keys and 0.82 for values, on top of the share independent codes give" width="880"></p>
+<p align="center"><em>The cross-layer similarity behind both methods is not in the cache: adjacent layers' keys and values are uncorrelated token by token, and XQuant's statistic is what independent codes give.</em></p>
+
 - **What the sink does.** A fourth round edited the sink directly. Removing
   its contribution from every head costs 28 to 68 times as much as removing
   an ordinary token's, in all four models, so the sink is not the no-op the
@@ -524,10 +552,10 @@ Each instrument below exists because a finding above required it.
 
 ## Evidence standard
 
-Twenty-five preregistrations with numeric thresholds and falsification
+Twenty-six preregistrations with numeric thresholds and falsification
 clauses were frozen in git before their runs (`alignment_study/PREREGISTRATION.md`,
 `PREREGISTRATION2.md` to `PREREGISTRATION16.md`, `PREREGISTRATION20.md`
-to `PREREGISTRATION22.md`, `PREREGISTRATION24.md` and `PREREGISTRATION26.md`; `audits/PREREGISTRATION4.md`,
+to `PREREGISTRATION22.md` and `PREREGISTRATION24.md` to `PREREGISTRATION26.md`; `audits/PREREGISTRATION4.md`,
 `PREREGISTRATION17.md` to `PREREGISTRATION19.md` and
 `PREREGISTRATION23.md`; the second committed
 before the held-out models were downloaded, the third and all later ones
@@ -550,8 +578,10 @@ distance (V1, V4), the position scheme as what separates bias-like from
 gate-like sinks (G2), the size of GPT-2 medium's sink cost (G3), the
 constant virtual sink in TinyLlama (G6), the task-level advantage of the
 simulated merge at two pairs per layer (D2), the occupancy reading of
-Clark's top-5 count (F2), and the per-layer simulated cost as an ordering of
-whole-model conversion damage (P6). Out of sample, 7 of 8 registered clauses
+Clark's top-5 count (F2), the per-layer simulated cost as an ordering of
+whole-model conversion damage (P6), the registered size of aligned merging
+across layers (B2), and the trained basis's advantage for XQuant's code
+sharing (C3). Out of sample, 7 of 8 registered clauses
 passed in the sub-2B round, 3 of 4 in the 3B-to-7B round, 5 of 5 primary clauses in the
 training-dynamics round, 4 of 4 in 11 of 11 models in the
 fixed-instrument rerun, where the earlier failures on TinyLlama, OLMo-2
@@ -567,7 +597,8 @@ on six new claims, 3 of 5 for vision transformers' attention distance, 5 of
 5 for the merge benchmark, 3 of 6 for the sink across architectures, 6 of 7
 for the merge benchmark at larger scale and on LAMBADA, 4 of 5 for the
 weighting flip, 9 of 10 for converting heads to shared key-value heads
-without training, and 6 of 6 for fusing them by what they compute.
+without training, 6 of 6 for fusing them by what they compute, and 5 of 7
+for cross-layer KV compression under the convention null.
 Development
 calibration that shaped a preregistration is committed and labeled as
 such. A blind reimplementation from the written specification

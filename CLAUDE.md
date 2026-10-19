@@ -106,8 +106,14 @@ closed-form fusion of each group's key and value heads weighted by what the
 heads compute (keys by each head's query second moment, rotary planes as complex
 numbers; values by O_h^T O_h); basis-invariant, groups of one exact; beats round
 24's best in 10 of 10 cells (dlog ratio 0.55 at g = 2, +2.9 to +6.6 accuracy
-points) and the unweighted fit in 20 of 20; 6 of 6. Round 25 (cross-layer KV,
-frozen 809f6fb) runs after it. Untrained 7B initializations are built on the
+points) and the unweighted fit in 20 of 20; 6 of 6. 25 (alignment_study/
+PREREGISTRATION25.md, xlayer/; run with the device fix 82cadd2): cross-layer KV
+compression under the convention null; adjacent layers' cached K and V per-token
+cosine within 0.005 of zero in four models (residual stream 0.90 to 0.94);
+MiniCache's merge no better in the trained basis; XQuant's code statistic equals
+independence within 0.003; B2 (aligned merging's size) and C3 (XQuant's sharing
+better in the trained basis) fail; 5 of 7; the LLaMA-2-7B-80K derivative looks
+misconfigured (continuation perplexity 84). Untrained 7B initializations are built on the
 CPU and copied to the GPU; with two heavy runs the 65 W adapter and 32 GB
 memory saturate (swap up to 37 GB), so queue 7B runs one at a time. Keep the
 lid open during long GPU runs: closed, the GPU throttles to about a sixth of
