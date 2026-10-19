@@ -613,3 +613,21 @@ confirmatory pipeline was stopped before it started and is queued after round
 26's confirmatory runs, its preregistration and scripts unchanged. Development
 runs (fuse_round.py --dev, GPU): GPT-2 medium 1,499 s, Pythia-410m 1,427 s;
 architecture checks for Phi-1.5 (871 s) and OLMo-1B (705 s) on the CPU.
+
+Closed-form fusion round, confirmatory (alignment_study/PREREGISTRATION26.md,
+frozen at 16404cf; run from 2026-10-18 05:35 UTC to 2026-10-19 09:22 UTC with
+the round's scripts unchanged since the freeze): GPT-2 large 11,029 s,
+Pythia-1.4B 13,769 s, OLMo-1B 12,649 s, OPT-1.3B 12,794 s, Phi-2 34,726 s. The
+GPT-2 large run was restarted twice (07:18 and 09:46 UTC): evaluations ran 5
+to 8 times slower than round 24's (the unconverted model's took 4,838 s against
+555 s), and its fusion and check phases varied from 43 s to 991 s. The restart
+notes in fuse.log guessed memory compression, after CPU probes run alongside
+had filled memory; the cause found afterwards was heat. With the laptop's lid
+closed the GPU sustained 1.1 to 1.5 TFLOPS in a matrix-multiply loop against
+8.8 in a short burst, and with the lid opened (2026-10-18 about 11:20 UTC) it
+sustained 7.8 to 8.7 and evaluations returned to about 590 s. No result was
+written before the second restart except GPT-2 large's unconverted
+evaluation, which the partial file kept (it equals round 24's exactly).
+Evaluation (eval_fuse.py, unchanged since the freeze): 6 of 6 clauses pass
+(fuse_results.json, eval_fuse.log). Round 25's confirmatory pipeline started
+on completion (2026-10-19 09:22 UTC).

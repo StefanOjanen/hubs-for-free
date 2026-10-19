@@ -1190,3 +1190,44 @@ stays well short of the unconverted model (perplexity 2.0 to 4.8 times at half
 the heads in four models, 43 times in OLMo-1B; accuracy 0.08 to 0.23 lower),
 so it is a starting point for uptraining, not a finished model; whether the
 advantage survives uptraining was not tested.
+
+## Fusing key and value heads by what the heads compute (2026-10-18 to 19, preregistration 26)
+
+Frozen at 16404cf (`alignment_study/PREREGISTRATION26.md`). 6 of 6 clauses pass.
+- F1 passes in 10 of 10 cells: on round 24's groups, the closed-form fusion
+  weighted by each head's queries and output projection has a lower
+  WikiText-2 perplexity than round 24's best recipe (aligned mean pooling) in
+  every model and group size. Half of the key-value heads kept: OPT-1.3B 29.1
+  against 33.3 (unconverted 16.8), GPT-2 large 30.4 against 43.4 (19.4),
+  Phi-2 18.9 against 34.9 (11.0), Pythia-1.4B 27.3 against 63.9 (13.2),
+  OLMo-1B 87.4 against 580 (13.4). A quarter: 93.7 against 183, 117 against
+  238, 65.7 against 238, 71.2 against 472, 601 against 5,509.
+- F2 passes: at g = 2 its increase in log perplexity is 0.46 to 0.81 of round
+  24's best, geometric mean 0.55 (registered: at most 0.6). OPT-1.3B, the model
+  round 24 converted best, gains least (0.81).
+- F3 passes in 20 of 20: on the same groups the weighting gives a lower
+  perplexity than the unweighted fit in every comparison, by factors from 1.02
+  (OPT-1.3B, g = 2, round 24's groups: 29.1 against 29.6) to 3.05 (OLMo-1B,
+  g = 2, neighbouring heads: 98.2 against 299).
+- F4 passes: at g = 2 the average accuracy on the seven tasks is higher than
+  round 24's best in all five models (+0.029 to +0.066; mean +0.044, interval
+  0.041 to 0.048). At g = 4 it is higher in four (+0.020 to +0.067) and equal
+  in OLMo-1B (-0.001, interval -0.010 to 0.009).
+- F5 passes (9 of 10): neighbouring heads, fused with no search, beat round
+  24's searched and aligned best except OPT-1.3B at g = 2 (40.5 against 33.3).
+- F6 passes in 10 of 10: round 24's groups still beat neighbouring heads after
+  fusion. Jin et al.'s groups, fused (reported, not scored), were lower still in
+  7 of 10 cells.
+- Checks: groups of one reproduce every model to at most 1.8e-2 in any logit
+  (Phi-2, whose logits reach 34; at most 4.2e-3 in the others); fusing in a
+  random function-preserving basis gives the same converted model to at most
+  6.2e-2 (Phi-2) and 1.2e-2 elsewhere; the unconverted perplexity equals round
+  24's in all five models, and restoring the weights restores it.
+Reading: fitting the shared key and value head to what the heads compute,
+rather than to their weights or caches, is what makes training-free
+conversion work much better. At half the key-value heads the converted models
+reach 1.56 to 2.07 times the unconverted perplexity in four of the five models
+(round 24's best: 1.98 to 4.84) and lose 0.05 to 0.10 of accuracy; OLMo-1B
+remains hard (6.5 times, 0.20). Once the heads are fused, the choice of groups
+still matters but less, and the groups chosen for averaging are not the best
+groups for fusion.
