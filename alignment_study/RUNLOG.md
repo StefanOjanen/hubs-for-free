@@ -650,3 +650,23 @@ identical to the first attempt's), Mistral-7B-Instruct-v0.2 3,735 s,
 Qwen2.5-7B 3,783 s, Phi-3-mini 2,705 s. Evaluation (eval_xlayer.py, unchanged
 since the freeze): 5 of 7 clauses pass, B2 and C3 fail (xlayer_results.json,
 eval_xlayer.log).
+
+Fusion in models that already share key-value heads (preregistration 27),
+exploration and development, 2026-10-19. Exploratory CPU probe: Qwen2.5-0.5B
+with its two key-value heads merged into one, perplexity 9,506 with averaging,
+256 with the unweighted fit and 164 with the weighted fusion (16 windows). A
+dry run on Mistral-7B-v0.1 in bfloat16 that held the float64 second moments of
+all 32 layers (4.3 GB) and the weight snapshot (2.7 GB) in memory, alongside
+the user's applications, hung the machine at 17:07 local time (kernel panic,
+watchdog timeout); nothing in the repository was lost. The instrument now keeps
+second moments in float32, promoted per layer when fused (perplexities
+unchanged to four decimals on the development models), and the snapshot on
+disk; GPU jobs run under a memory watchdog that kills them if free memory falls
+below 12 percent or swap grows by 3 GB. The rotary step was vectorized
+(converted weights equal the per-plane loop's to 1e-9 relative) and two
+products reassociated, which brought a 7B conversion from over 17 minutes to
+about 10. The second dry run (fusekv_dryrun.py; log fusekv_dev_mistral_dryrun.log)
+held 15 to 16 GB on the GPU with the system at least 67 percent free.
+Development runs with the final code (fusekv_round.py --dev, GPU): Qwen2.5-0.5B
+636 s, Llama-160m 396 s; they reproduce the first development run's
+perplexities to the printed precision.

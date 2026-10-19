@@ -1,0 +1,11 @@
+[   29s] loaded mistralai/Mistral-7B-v0.1: n 32 nkv 8 hd 128 r 128 | GPU driver 15.1 GB, process peak RSS 0.5 GB, system free 50%
+[   64s] second moments from 8192 tokens | GPU driver 15.2 GB, process peak RSS 4.9 GB, system free 70%
+[   70s] snapshot on disk | GPU driver 15.2 GB, process peak RSS 5.0 GB, system free 79%
+[  780s] groups of one in 703s: max logit difference 0.312 (scale 28.1) | GPU driver 15.2 GB, process peak RSS 6.4 GB, system free 72%
+[  807s] base ppl (8 windows) 6.952 | GPU driver 16.2 GB, process peak RSS 6.4 GB, system free 71%
+[  832s] mean: converted in 0s, ppl 519.610 | GPU driver 16.2 GB, process peak RSS 6.4 GB, system free 71%
+[ 1443s] fuse_u: converted in 586s, ppl 49.744 | GPU driver 16.2 GB, process peak RSS 6.4 GB, system free 77%
+[ 2114s] fuse: converted in 643s, ppl 40.877 | GPU driver 16.2 GB, process peak RSS 6.4 GB, system free 72%
+[ 2263s] harness on 30 per task: 630 requests in 145s, avg 0.643 | GPU driver 16.2 GB, process peak RSS 6.4 GB, system free 67%
+[ 2263s] DRY_RUN_DONE | GPU driver 16.2 GB, process peak RSS 6.4 GB, system free 70%
+DRY_EXIT

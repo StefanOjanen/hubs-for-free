@@ -1,0 +1,196 @@
+{
+ "models": [
+  "Qwen/Qwen2.5-0.5B",
+  "JackFram/llama-160m"
+ ],
+ "cells": [
+  "Qwen/Qwen2.5-0.5B g2",
+  "JackFram/llama-160m g2",
+  "JackFram/llama-160m g4"
+ ],
+ "clauses": {
+  "K1": {
+   "what": "weighted fusion perplexity below mean pooling in >= 2 of 3 cells",
+   "value": {
+    "Qwen/Qwen2.5-0.5B g2": true,
+    "JackFram/llama-160m g2": true,
+    "JackFram/llama-160m g4": true
+   },
+   "count": 3,
+   "pass_": true
+  },
+  "K2": {
+   "what": "weighted fusion perplexity below unweighted fusion in >= 2 of 3 cells",
+   "value": {
+    "Qwen/Qwen2.5-0.5B g2": true,
+    "JackFram/llama-160m g2": true,
+    "JackFram/llama-160m g4": true
+   },
+   "count": 3,
+   "pass_": true
+  },
+  "K3": {
+   "what": "g=2: geometric mean over models of dlog(fuse)/dlog(mean) <= 0.5",
+   "value": {
+    "per_model": {
+     "Qwen/Qwen2.5-0.5B": 0.36562558392983113,
+     "JackFram/llama-160m": 0.2789526038611408
+    },
+    "geometric_mean": 0.3193621904287927
+   },
+   "pass_": true
+  },
+  "K4": {
+   "what": "g=2: weighted fusion accuracy above mean pooling in >= 1 of 2 models and pooled 95% interval above zero",
+   "value": {
+    "per_model": {
+     "Qwen/Qwen2.5-0.5B": 0.029142857142857144,
+     "JackFram/llama-160m": 0.04857142857142858
+    },
+    "pooled": [
+     0.03885714285714286,
+     0.026428571428571433,
+     0.05099999999999999
+    ]
+   },
+   "count": 2,
+   "pass_": true
+  }
+ },
+ "passes": 4,
+ "of": 4,
+ "table": {
+  "Qwen/Qwen2.5-0.5B g2": {
+   "mean": {
+    "ppl": 11167.305097426064,
+    "dlog": 6.636235277743952,
+    "acc": 0.3068571428571429
+   },
+   "fuse_u": {
+    "ppl": 254.12012362204965,
+    "dlog": 2.8532967601987544,
+    "acc": 0.33199999999999996
+   },
+   "fuse": {
+    "ppl": 165.81748925604515,
+    "dlog": 2.4263773985208776,
+    "acc": 0.33599999999999997
+   },
+   "base": {
+    "ppl": 14.651025348470643,
+    "acc": 0.5242857142857142
+   }
+  },
+  "JackFram/llama-160m g2": {
+   "mean": {
+    "ppl": 789.398780534432,
+    "dlog": 3.5546487352340423,
+    "acc": 0.3017142857142857
+   },
+   "fuse_u": {
+    "ppl": 84.64984692400338,
+    "dlog": 1.321900417044381,
+    "acc": 0.3462857142857142
+   },
+   "fuse": {
+    "ppl": 60.837197549469984,
+    "dlog": 0.9915785205052469,
+    "acc": 0.35028571428571426
+   },
+   "base": {
+    "ppl": 22.57002916866303,
+    "acc": 0.41085714285714287
+   }
+  },
+  "JackFram/llama-160m g4": {
+   "mean": {
+    "ppl": 17436.38547071856,
+    "dlog": 6.6496915376703685,
+    "acc": 0.30600000000000005
+   },
+   "fuse_u": {
+    "ppl": 275.8983481628671,
+    "dlog": 2.5034096109259916,
+    "acc": 0.3191428571428571
+   },
+   "fuse": {
+    "ppl": 219.32299762458223,
+    "dlog": 2.2739226350617483,
+    "acc": 0.31542857142857145
+   },
+   "base": {
+    "ppl": 22.57002916866303,
+    "acc": 0.41085714285714287
+   }
+  }
+ },
+ "reported": {
+  "Qwen/Qwen2.5-0.5B g2": {
+   "acc_diff_fuse_minus_mean": [
+    0.029142857142857144,
+    0.01285714285714286,
+    0.047428571428571424
+   ],
+   "acc_diff_fuse_minus_fuse_u": [
+    0.003999999999999999,
+    -0.009428571428571429,
+    0.018285714285714287
+   ],
+   "ppl_over_base": {
+    "mean": 762.2200379710468,
+    "fuse_u": 17.344869562223245,
+    "fuse": 11.317807819734208
+   }
+  },
+  "JackFram/llama-160m g2": {
+   "acc_diff_fuse_minus_mean": [
+    0.04857142857142858,
+    0.03171428571428571,
+    0.06485714285714285
+   ],
+   "acc_diff_fuse_minus_fuse_u": [
+    0.003999999999999999,
+    -0.006285714285714285,
+    0.014571428571428572
+   ],
+   "ppl_over_base": {
+    "mean": 34.97553213756849,
+    "fuse_u": 3.750542203176858,
+    "fuse": 2.6954859958239816
+   }
+  },
+  "JackFram/llama-160m g4": {
+   "acc_diff_fuse_minus_mean": [
+    0.009428571428571429,
+    -0.006571428571428569,
+    0.02628571428571428
+   ],
+   "acc_diff_fuse_minus_fuse_u": [
+    -0.0037142857142857147,
+    -0.01515,
+    0.007721428571428533
+   ],
+   "ppl_over_base": {
+    "mean": 772.5459874428435,
+    "fuse_u": 12.224102419235392,
+    "fuse": 9.717444137338443
+   }
+  }
+ },
+ "checks": {
+  "Qwen/Qwen2.5-0.5B": {
+   "groups_of_one_max_logit_diff": 0.00010836124420166016,
+   "logit_scale": 29.36781883239746,
+   "restore_check_ppl": 14.651025348470643,
+   "dtype": "torch.float32",
+   "base_ppl": 14.651025348470643
+  },
+  "JackFram/llama-160m": {
+   "groups_of_one_max_logit_diff": 0.00011873245239257812,
+   "logit_scale": 26.50380516052246,
+   "restore_check_ppl": 22.57002916866303,
+   "dtype": "torch.float32",
+   "base_ppl": 22.57002916866303
+  }
+ }
+}
