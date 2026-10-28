@@ -117,7 +117,12 @@ misconfigured (continuation perplexity 84). Untrained 7B initializations are bui
 CPU and copied to the GPU; with two heavy runs the 65 W adapter and 32 GB
 memory saturate (swap up to 37 GB), so queue 7B runs one at a time. Keep the
 lid open during long GPU runs: closed, the GPU throttles to about a sixth of
-its speed (2026-10-18). Do not run CPU probes alongside a GPU round.
+its speed (2026-10-18). Do not run CPU probes alongside a GPU round. On a 45 W
+adapter even one GPU job drains the battery (45 to 15 percent in two hours); the
+battery guard pauses the job at 15 percent and resumes it at 30 (2026-10-28). On
+MPS, never move a tensor to the host and to float64 in one call:
+.to("cpu", torch.float64) returns corrupted values for large tensors in torch
+2.13 (small ones raise); use .cpu().double() (2026-10-28).
 Drafts for a TMLR submission and a position paper are in private/drafts/
 (unpublished; the author decides on submission and posting).
 Instruments: functional_common.py, standard_common.py, audits/readings/readings_common.py.

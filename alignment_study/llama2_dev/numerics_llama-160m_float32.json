@@ -1,0 +1,54 @@
+{
+ "model": "JackFram/llama-160m",
+ "dtype": "torch.float32",
+ "calibration": [
+  16,
+  1024
+ ],
+ "windows": 16,
+ "base_ppl": 22.8963386922121,
+ "cases": {
+  "ones/fuse/as_round27": {
+   "max_logit_diff": 0.0002818107604980469,
+   "argmax_position": 0,
+   "median_position_max_diff": 2.574920654296875e-05,
+   "ppl": 22.896338009181022
+  },
+  "ones/fuse/host64": {
+   "max_logit_diff": 0.0002818107604980469,
+   "argmax_position": 0,
+   "median_position_max_diff": 2.574920654296875e-05,
+   "ppl": 22.896338009181022
+  },
+  "ones/fuse/gauge": {
+   "max_logit_diff": 0.0,
+   "argmax_position": 0,
+   "median_position_max_diff": 0.0,
+   "ppl": 22.8963386922121
+  },
+  "pairs/fuse/as_round27": {
+   "max_logit_diff": 12.607643127441406,
+   "argmax_position": 10,
+   "median_position_max_diff": 5.431514739990234,
+   "ppl": 62.14062214026048
+  },
+  "pairs/fuse/gauge": {
+   "max_logit_diff": 12.607595443725586,
+   "argmax_position": 10,
+   "median_position_max_diff": 5.431517601013184,
+   "ppl": 62.14058413849646
+  },
+  "pairs/fuse_u/as_round27": {
+   "max_logit_diff": 26.704774856567383,
+   "argmax_position": 0,
+   "median_position_max_diff": 5.955206871032715,
+   "ppl": 85.8221306878407
+  },
+  "pairs/fuse_u/gauge": {
+   "max_logit_diff": 26.704776763916016,
+   "argmax_position": 0,
+   "median_position_max_diff": 5.9553422927856445,
+   "ppl": 85.82216653063416
+  }
+ }
+}

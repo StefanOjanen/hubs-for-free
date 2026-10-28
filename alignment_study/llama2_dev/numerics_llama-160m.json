@@ -1,0 +1,53 @@
+{
+ "model": "JackFram/llama-160m",
+ "calibration": [
+  16,
+  1024
+ ],
+ "windows": 16,
+ "base_ppl": 22.906825961977965,
+ "cases": {
+  "ones/fuse/as_round27": {
+   "max_logit_diff": 1.75,
+   "argmax_position": 0,
+   "median_position_max_diff": 0.1875,
+   "ppl": 22.92175437261007
+  },
+  "ones/fuse/host64": {
+   "max_logit_diff": 1.75,
+   "argmax_position": 0,
+   "median_position_max_diff": 0.1875,
+   "ppl": 22.92175437261007
+  },
+  "ones/fuse/gauge": {
+   "max_logit_diff": 0.0,
+   "argmax_position": 0,
+   "median_position_max_diff": 0.0,
+   "ppl": 22.906825961977965
+  },
+  "pairs/fuse/as_round27": {
+   "max_logit_diff": 12.59375,
+   "argmax_position": 10,
+   "median_position_max_diff": 5.46875,
+   "ppl": 62.17279479805481
+  },
+  "pairs/fuse/gauge": {
+   "max_logit_diff": 12.9375,
+   "argmax_position": 10,
+   "median_position_max_diff": 5.57421875,
+   "ppl": 62.60856993767852
+  },
+  "pairs/fuse_u/as_round27": {
+   "max_logit_diff": 24.9375,
+   "argmax_position": 0,
+   "median_position_max_diff": 5.9375,
+   "ppl": 85.79272672018922
+  },
+  "pairs/fuse_u/gauge": {
+   "max_logit_diff": 23.375,
+   "argmax_position": 0,
+   "median_position_max_diff": 6.28125,
+   "ppl": 91.11829839468317
+  }
+ }
+}

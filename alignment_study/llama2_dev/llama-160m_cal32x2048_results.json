@@ -1,0 +1,299 @@
+{
+ "file": "alignment_study/llama2_dev/llama-160m_cal32x2048.json",
+ "dev": true,
+ "registered": null,
+ "clauses": {
+  "M1": {
+   "what": "fuse/paired perplexity below CAGA's published 25.1 at every evaluated length [1024, 2048]",
+   "value": {
+    "1024": 52.848020520537034,
+    "2048": 116.39874116727215
+   },
+   "pass_": false
+  },
+  "M2": {
+   "what": "fuse/paired ZS-7 above CAGA's published 0.443, the lower end of its 95% bootstrap interval included",
+   "value": {
+    "zs7": 0.43714285714285717,
+    "ci": [
+     0.4121428571428571,
+     0.4621428571428571
+    ]
+   },
+   "pass_": false
+  },
+  "M3": {
+   "what": "fuse perplexity below caga on the same pairs, both pairings, every length",
+   "value": {
+    "neighbour 1024": true,
+    "neighbour 2048": true,
+    "paired 1024": true,
+    "paired 2048": true
+   },
+   "count": 4,
+   "pass_": true
+  },
+  "M4": {
+   "what": "fuse ZS-7 above caga on both pairings, and the pooled paired 95% interval of the difference above zero",
+   "value": {
+    "per_pairing": {
+     "neighbour": 0.027857142857142803,
+     "paired": 0.05714285714285716
+    },
+    "pooled": [
+     0.0425,
+     0.019642857142857146,
+     0.06642857142857142
+    ]
+   },
+   "pass_": true
+  },
+  "M5": {
+   "what": "the matching lowers the fusion's perplexity against neighbour pairs at every length",
+   "value": {
+    "1024": [
+     52.848020520537034,
+     59.22798086422293
+    ],
+    "2048": [
+     116.39874116727215,
+     125.85070732184502
+    ]
+   },
+   "pass_": true
+  },
+  "M6": {
+   "what": "steering agreement (neuron directions) higher for fuse than for caga on both pairings and than for averaging",
+   "value": {
+    "tests": {
+     "fuse>caga neighbour": true,
+     "fuse>caga paired": true,
+     "fuse/paired>mean/neighbour": true
+    },
+    "overlap_neuron": {
+     "base": 1.0,
+     "fuse/paired": 0.4984374940395355,
+     "caga/paired": 0.29374998807907104,
+     "fuse/neighbour": 0.49843746423721313,
+     "caga/neighbour": 0.2953125238418579,
+     "mean/neighbour": 0.29218748211860657
+    }
+   },
+   "pass_": true
+  }
+ },
+ "passes": 4,
+ "of": 6,
+ "reported": {
+  "table": {
+   "base": {
+    "ppl_1024": 23.1799966800814,
+    "ppl_2048": 73.97899385430267,
+    "ppl_1024_over_base": 1.0,
+    "ppl_2048_over_base": 1.0,
+    "zs7": 0.44642857142857156,
+    "zs7_acc": 0.3921428571428572,
+    "per_task": {
+     "boolq": 0.635,
+     "rte": 0.545,
+     "hellaswag": 0.435,
+     "winogrande": 0.53,
+     "arc_easy": 0.365,
+     "arc_challenge": 0.28,
+     "openbookqa": 0.335
+    },
+    "steer": {
+     "overlap_neuron": 1.0,
+     "overlap_random": 1.0,
+     "cos_neuron": 1.0000057220458984,
+     "cos_random": 1.0000063180923462
+    }
+   },
+   "fuse/paired": {
+    "ppl_1024": 52.848020520537034,
+    "ppl_2048": 116.39874116727215,
+    "ppl_1024_over_base": 2.2798976742714294,
+    "ppl_2048_over_base": 1.57340259853375,
+    "zs7": 0.43714285714285717,
+    "zs7_acc": 0.38785714285714284,
+    "per_task": {
+     "boolq": 0.62,
+     "rte": 0.54,
+     "hellaswag": 0.405,
+     "winogrande": 0.545,
+     "arc_easy": 0.36,
+     "arc_challenge": 0.27,
+     "openbookqa": 0.32
+    },
+    "steer": {
+     "overlap_neuron": 0.4984374940395355,
+     "overlap_random": 0.47578126192092896,
+     "cos_neuron": 0.7419401407241821,
+     "cos_random": 0.730991542339325
+    }
+   },
+   "caga/paired": {
+    "ppl_1024": 286.786627275185,
+    "ppl_2048": 518.2770105237307,
+    "ppl_1024_over_base": 12.372159980575889,
+    "ppl_2048_over_base": 7.0057320804395795,
+    "zs7": 0.38,
+    "zs7_acc": 0.3535714285714286,
+    "per_task": {
+     "boolq": 0.465,
+     "rte": 0.53,
+     "hellaswag": 0.325,
+     "winogrande": 0.48,
+     "arc_easy": 0.335,
+     "arc_challenge": 0.23,
+     "openbookqa": 0.295
+    },
+    "steer": {
+     "overlap_neuron": 0.29374998807907104,
+     "overlap_random": 0.2984375059604645,
+     "cos_neuron": 0.3423333168029785,
+     "cos_random": 0.33838680386543274
+    }
+   },
+   "fuse/neighbour": {
+    "ppl_1024": 59.22798086422293,
+    "ppl_2048": 125.85070732184502,
+    "ppl_1024_over_base": 2.555133276404548,
+    "ppl_2048_over_base": 1.70116813929236,
+    "zs7": 0.44,
+    "zs7_acc": 0.38928571428571423,
+    "per_task": {
+     "boolq": 0.635,
+     "rte": 0.535,
+     "hellaswag": 0.38,
+     "winogrande": 0.555,
+     "arc_easy": 0.395,
+     "arc_challenge": 0.255,
+     "openbookqa": 0.325
+    },
+    "steer": {
+     "overlap_neuron": 0.49843746423721313,
+     "overlap_random": 0.48671871423721313,
+     "cos_neuron": 0.6409237384796143,
+     "cos_random": 0.6522025465965271
+    }
+   },
+   "caga/neighbour": {
+    "ppl_1024": 344.4019436578691,
+    "ppl_2048": 568.9636721787374,
+    "ppl_1024_over_base": 14.857721871626243,
+    "ppl_2048_over_base": 7.690881458854094,
+    "zs7": 0.4121428571428572,
+    "zs7_acc": 0.3821428571428572,
+    "per_task": {
+     "boolq": 0.515,
+     "rte": 0.53,
+     "hellaswag": 0.365,
+     "winogrande": 0.525,
+     "arc_easy": 0.395,
+     "arc_challenge": 0.23,
+     "openbookqa": 0.325
+    },
+    "steer": {
+     "overlap_neuron": 0.2953125238418579,
+     "overlap_random": 0.30390626192092896,
+     "cos_neuron": 0.3411652445793152,
+     "cos_random": 0.32763856649398804
+    }
+   },
+   "mean/neighbour": {
+    "ppl_1024": 727.1971245812911,
+    "ppl_2048": 886.1926472889,
+    "ppl_1024_over_base": 31.37175274948044,
+    "ppl_2048_over_base": 11.978976748916118,
+    "zs7": 0.375,
+    "zs7_acc": 0.33214285714285713,
+    "per_task": {
+     "boolq": 0.365,
+     "rte": 0.54,
+     "hellaswag": 0.295,
+     "winogrande": 0.5,
+     "arc_easy": 0.365,
+     "arc_challenge": 0.27,
+     "openbookqa": 0.29
+    },
+    "steer": {
+     "overlap_neuron": 0.29218748211860657,
+     "overlap_random": 0.27734375,
+     "cos_neuron": 0.28581464290618896,
+     "cos_random": 0.2702395021915436
+    }
+   }
+  },
+  "published": {
+   "caga": [
+    25.1,
+    0.443
+   ],
+   "direct averaging": [
+    926,
+    0.326
+   ],
+   "procrustes alignment": [
+    738,
+    0.353
+   ]
+  },
+  "zs7_ci": {
+   "base": [
+    0.4206964285714285,
+    0.47285714285714286
+   ],
+   "fuse/paired": [
+    0.4121428571428572,
+    0.4614285714285714
+   ],
+   "caga/paired": [
+    0.3556964285714286,
+    0.40499999999999997
+   ],
+   "fuse/neighbour": [
+    0.415,
+    0.4642857142857143
+   ],
+   "caga/neighbour": [
+    0.3885535714285714,
+    0.43642857142857144
+   ],
+   "mean/neighbour": [
+    0.35142857142857137,
+    0.3985714285714286
+   ]
+  },
+  "fuse_minus_mean_zs7": [
+   0.06500000000000002,
+   0.03569642857142857,
+   0.09785714285714286
+  ],
+  "fuse_minus_caga_by_pairing": {
+   "neighbour": [
+    0.027857142857142858,
+    -6.195440985631102e-21,
+    0.056428571428571425
+   ],
+   "paired": [
+    0.05714285714285715,
+    0.03,
+    0.08428571428571428
+   ]
+  },
+  "steering_overlap_vs_log_ppl_spearman": -0.8999999999999998,
+  "checks": {
+   "groups_of_one_max_logit_diff": 0.00016069412231445312,
+   "logit_scale": 27.514554977416992,
+   "restore_check_ppl": 23.1799966800814,
+   "dtype": "torch.float32",
+   "revision": null
+  },
+  "pairing": {
+   "cost_neighbour_total": 1.6354800180813458,
+   "cost_paired_total": 1.4798285706108296,
+   "neighbour_pairs_kept": 5
+  }
+ }
+}

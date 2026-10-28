@@ -670,3 +670,27 @@ held 15 to 16 GB on the GPU with the system at least 67 percent free.
 Development runs with the final code (fusekv_round.py --dev, GPU): Qwen2.5-0.5B
 636 s, Llama-160m 396 s; they reproduce the first development run's
 perplexities to the printed precision.
+
+Head-to-head with CAGA on Llama-2-7B (preregistration 28), development,
+2026-10-28. Llama-2-7B comes from the NousResearch/Llama-2-7b-hf copy at
+revision 8efe6c9b; both safetensors files have the SHA-256 hashes listed in the
+official meta-llama/Llama-2-7b-hf metadata. Development on Llama-160m (GPU,
+261 s) and OpenLLaMA-3B v2 with CAGA's calibration of 128 documents of 2,048
+tokens (second moments 543 s). On OpenLLaMA-3B the groups-of-one check gave a
+maximum logit difference of 12.5 at the first position (median over positions
+0.5), perplexity 7.6921 against 7.6865 on 16 windows: the bfloat16 rounding of
+the rewritten weights. The pass was stopped after its base evaluation to look
+at this (llama2_numerics_check.py). The first version of the check moved the
+weights from the GPU to the host with .to("cpu", torch.float64); in torch 2.13
+on MPS that call returns corrupted values for large tensors (errors of 5 to 11
+on unit-scale weights, from float32 sources as well) and raises an error for
+small ones, while .cpu().double() is exact, as is every host-to-GPU conversion
+tested. No committed script uses the one-step form (all scripts searched); the
+check now uses .cpu().double(). On Llama-160m the check found that bfloat16
+rounding costs the weighted fusion 0.07 percent of perplexity with groups of one
+and nothing measurable with pairs (62.17 in bfloat16, 62.14 in float32, against
+22.91 and 22.90 unconverted); a change of gauge that makes groups of one exact
+in bfloat16 leaves the function unchanged (identical perplexity in float32) but
+makes pairs slightly worse in bfloat16 (62.61 against 62.17 weighted, 91.1
+against 85.8 unweighted), so the round keeps round 27's conversion. The
+OpenLLaMA-3B pass was resumed from its partial result with three arms.

@@ -1,0 +1,74 @@
+=== Wed Oct 28 22:08:01 EET 2026 dev llama-160m, 32 x 2048 calibration
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+JackFram/llama-160m: torch.float32, layers 12, heads 12, KV heads 12, head dim 64, rotary 64 (3s)
+  second moments from 65536 tokens (9s)
+  groups of one reproduce the model: max logit difference 1.61e-04 of 27.5 (11s)
+  pairing: summed relative residual 1.635 for neighbours, 1.480 for the matching; 5 of 72 pairs are neighbour pairs (1s) (12s)
+  steering: layer 6, 64 neuron and 64 random directions, dose 61.7 (25s)
+  base: ppl 1024: 23.18, 2048: 73.98; ZS-7 0.4464; steering overlap neuron 1.000 random 1.000 (67s)
+  fuse/paired: converted in 2s (69s)
+  fuse/paired: ppl 1024: 52.85, 2048: 116.40; ZS-7 0.4371; steering overlap neuron 0.498 random 0.476 (105s)
+  caga/paired: converted in 3s (108s)
+  caga/paired: ppl 1024: 286.79, 2048: 518.28; ZS-7 0.3800; steering overlap neuron 0.294 random 0.298 (145s)
+  fuse/neighbour: converted in 2s (147s)
+  fuse/neighbour: ppl 1024: 59.23, 2048: 125.85; ZS-7 0.4400; steering overlap neuron 0.498 random 0.487 (185s)
+  caga/neighbour: converted in 3s (187s)
+  caga/neighbour: ppl 1024: 344.40, 2048: 568.96; ZS-7 0.4121; steering overlap neuron 0.295 random 0.304 (223s)
+  mean/neighbour: converted in 0s (223s)
+  mean/neighbour: ppl 1024: 727.20, 2048: 886.19; ZS-7 0.3750; steering overlap neuron 0.292 random 0.277 (259s)
+LLAMA2_ROUND_DONE (261s)
+=== Wed Oct 28 22:12:59 EET 2026 dev open_llama_3b_v2, 128 x 2048 calibration (CAGA's)
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+openlm-research/open_llama_3b_v2: torch.bfloat16, layers 26, heads 32, KV heads 32, head dim 100, rotary 100 (14s)
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2087 > 2048). Running this sequence through the model will result in indexing errors
+  second moments from 262144 tokens (543s)
+  groups of one reproduce the model: max logit difference 1.25e+01 of 87.0 (764s)
+  pairing: summed relative residual 4.658 for neighbours, 4.233 for the matching; 11 of 416 pairs are neighbour pairs (44s) (808s)
+  steering: layer 13, 64 neuron and 64 random directions, dose 8.7 (1201s)
+  base: ppl 1024: 8.50, 2048: 7.60; ZS-7 0.5529; steering overlap neuron 1.000 random 1.000 (2261s)
+stopped by hand at Wed Oct 28 22:54:38 EET 2026 after the base evaluation, to check the numerics of bfloat16 rewrites first (partial result kept as llama2_dev/open_llama_3b_v2_cal128x2048.json.partial)
+=== Wed Oct 28 22:55:08 EET 2026 numerics check, open_llama_3b_v2, 128 x 2048 calibration
+[  572s] openlm-research/open_llama_3b_v2: 262144 calibration tokens; unconverted perplexity 7.6865 (16 windows of 1,024)
+[  813s] ones/fuse/as_round27     max logit diff   12.500 (position 0, median over positions 0.500); ppl 7.6921 (241s)
+[ 1043s] ones/fuse/host64         max logit diff   86.812 (position 3, median over positions 67.094); ppl 82664.5474 (229s)
+Traceback (most recent call last):
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/alignment_study/llama2_numerics_check.py", line 122, in <module>
+    convert_host64(kv, S, groups, method, gauge=(how == "gauge"))
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/alignment_study/llama2_numerics_check.py", line 86, in convert_host64
+    gauge_fix_layer(kv, l, groups_by_layer[l], S64, orig)
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/alignment_study/llama2_numerics_check.py", line 59, in gauge_fix_layer
+    R = [orig["v"][i * hd:(i + 1) * hd] @ S @ CG.T @ torch.linalg.inv(Gm) for i in G]
+                                                     ^^^^^^^^^^^^^^^^^^^^
+torch._C._LinAlgError: linalg.inv: The diagonal element 1 is zero, the inversion could not be completed because the input matrix is singular.
+=== Wed Oct 28 23:16:00 EET 2026 numerics check, llama-160m, bfloat16 (after the host-transfer fix)
+base 22.906825961977965
+ones/fuse/as_round27 {'max_logit_diff': 1.75, 'argmax_position': 0, 'median_position_max_diff': 0.1875, 'ppl': 22.92175437261007}
+ones/fuse/host64 {'max_logit_diff': 1.75, 'argmax_position': 0, 'median_position_max_diff': 0.1875, 'ppl': 22.92175437261007}
+ones/fuse/gauge {'max_logit_diff': 0.0, 'argmax_position': 0, 'median_position_max_diff': 0.0, 'ppl': 22.906825961977965}
+pairs/fuse/as_round27 {'max_logit_diff': 12.59375, 'argmax_position': 10, 'median_position_max_diff': 5.46875, 'ppl': 62.17279479805481}
+pairs/fuse/gauge {'max_logit_diff': 12.9375, 'argmax_position': 10, 'median_position_max_diff': 5.57421875, 'ppl': 62.60856993767852}
+pairs/fuse_u/as_round27 {'max_logit_diff': 24.9375, 'argmax_position': 0, 'median_position_max_diff': 5.9375, 'ppl': 85.79272672018922}
+pairs/fuse_u/gauge {'max_logit_diff': 23.375, 'argmax_position': 0, 'median_position_max_diff': 6.28125, 'ppl': 91.11829839468317}
+=== Wed Oct 28 23:16:00 EET 2026 numerics check, llama-160m, float32
+[    5s] JackFram/llama-160m: 16384 calibration tokens; unconverted perplexity 22.8963 (16 windows of 1,024)
+[    8s] ones/fuse/as_round27     max logit diff    0.000 (position 0, median over positions 0.000); ppl 22.8963 (3s)
+[   11s] ones/fuse/host64         max logit diff    0.000 (position 0, median over positions 0.000); ppl 22.8963 (3s)
+[   14s] ones/fuse/gauge          max logit diff    0.000 (position 0, median over positions 0.000); ppl 22.8963 (3s)
+[   17s] pairs/fuse/as_round27    max logit diff   12.608 (position 10, median over positions 5.432); ppl 62.1406 (3s)
+[   20s] pairs/fuse/gauge         max logit diff   12.608 (position 10, median over positions 5.432); ppl 62.1406 (3s)
+[   23s] pairs/fuse_u/as_round27  max logit diff   26.705 (position 0, median over positions 5.955); ppl 85.8221 (3s)
+[   26s] pairs/fuse_u/gauge       max logit diff   26.705 (position 0, median over positions 5.955); ppl 85.8222 (3s)
+[   26s] NUMERICS_DONE
+=== Wed Oct 28 23:16:46 EET 2026 dev open_llama_3b_v2 resumed from the partial result (base, pairing and groups-of-one check cached); arms fuse/paired, caga/paired, fuse/neighbour
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+openlm-research/open_llama_3b_v2: torch.bfloat16, layers 26, heads 32, KV heads 32, head dim 100, rotary 100 (8s)
+  second moments from 262144 tokens (538s)
+  steering: layer 13, 64 neuron and 64 random directions, dose 8.7 (938s)
+  base: cached (942s)
+  fuse/paired: converted in 194s (1137s)
+  fuse/paired: ppl 1024: 26.27, 2048: 30.27; ZS-7 0.4600; steering overlap neuron 0.403 random 0.377 (2196s)
+  caga/paired: converted in 211s (2407s)
+  caga/paired: ppl 1024: 75.92, 2048: 141.02; ZS-7 0.4414; steering overlap neuron 0.178 random 0.162 (3467s)
+  fuse/neighbour: converted in 199s (3667s)
+  fuse/neighbour: ppl 1024: 29.30, 2048: 34.17; ZS-7 0.4571; steering overlap neuron 0.398 random 0.351 (6047s)
+LLAMA2_ROUND_DONE (6116s)
