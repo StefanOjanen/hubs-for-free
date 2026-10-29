@@ -113,7 +113,19 @@ cosine within 0.005 of zero in four models (residual stream 0.90 to 0.94);
 MiniCache's merge no better in the trained basis; XQuant's code statistic equals
 independence within 0.003; B2 (aligned merging's size) and C3 (XQuant's sharing
 better in the trained basis) fail; 5 of 7; the LLaMA-2-7B-80K derivative looks
-misconfigured (continuation perplexity 84). Untrained 7B initializations are built on the
+misconfigured (continuation perplexity 84). 27 (alignment_study/PREREGISTRATION27.md,
+fusekv/; instrument fuse_kv.py): the weighted fusion in models that already share
+key-value heads; four of five models done, Qwen2.5-7B rerunning (its first run
+ended without output). 28 (alignment_study/PREREGISTRATION28.md, llama2/,
+llama2_dev/; instrument llama2_round.py): the fusion against CAGA (Wang, Jiang and
+Liu, arXiv 2610.09476) on its own Llama-2-7B benchmark, 32 to 16 KV heads without
+training; pairs matched by the fusion's closed-form residual give 16.78 and 18.46
+at 2,048 and 4,096 tokens (unconverted 5.47, 5.12) against CAGA's published 25.1,
+ZS-7 0.504 against 0.443; CAGA's construction as the paper specifies it gives 323
+to 1,348 in our harness and its pairing cannot be reproduced from the paper, so
+compare constructions on identical pairs; steering agreement 0.30 against 0.05;
+6 of 6. The conversion command is alignment_study/kvfuse.py (export to a real
+grouped-query checkpoint: gqa_export.py). Untrained 7B initializations are built on the
 CPU and copied to the GPU; with two heavy runs the 65 W adapter and 32 GB
 memory saturate (swap up to 37 GB), so queue 7B runs one at a time. Keep the
 lid open during long GPU runs: closed, the GPU throttles to about a sixth of

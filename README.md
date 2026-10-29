@@ -11,7 +11,10 @@ from a null result to a one-parameter law that holds from 0.1B to 8B
 parameters across ten architecture families, three position schemes and
 three attention layouts, and along the training of two models, and turns
 the instruments built along the way into a toolkit that anyone analyzing
-attention can run.
+attention can run. The same instruments led to a way of halving a model's
+key-value cache without training, by fitting shared heads to what the heads
+compute; on the Llama-2-7B benchmark of the best published training-free
+method it reaches perplexity 16.8 to 18.5 against that method's 25.1.
 
 ## How the findings connect
 
@@ -223,6 +226,18 @@ Each instrument below exists because a finding above required it.
   and is ready to adopt.
 - **A reviewer's checklist** (paper.md, Section 6) for structure findings
   about attention, usable as is in peer review or internal model reports.
+- **Halving a model's KV cache without training.** Because fitting shared
+  key-value heads to what the heads compute beat every training-free
+  conversion tested, including the best published one on its own benchmark,
+  the conversion is one command: `python alignment_study/kvfuse.py --model
+  <Llama-layout model> --out <dir>` computes the attention inputs' second
+  moments on 128 C4 documents, pairs each layer's key-value heads by the
+  fusion's residual, fuses each pair, and saves a grouped-query checkpoint
+  with half the key-value heads that loads in transformers (checked to
+  reproduce the simulated conversion to 4e-4 in logits). On Llama-2-7B the
+  same steps gave the 16.8 above in about half an hour on a laptop. The
+  converted model is still well behind the original (three times its
+  perplexity), a starting point for uptraining rather than a finished model.
 
 ## Where the work goes next
 
@@ -382,9 +397,9 @@ Each instrument below exists because a finding above required it.
   Phi-2 (unconverted 11.0), 27.3 against 63.9 in Pythia-1.4B (13.2), 30.4
   against 43.4 in GPT-2 large (19.4) and 29.1 against 33.3 in OPT-1.3B
   (16.8), with average accuracy 2.9 to 6.6 points higher in all five models.
-  The weighting is what matters: the same fit without it, which is the
-  objective of weight-space fits with an input-covariance metric such as
-  CAGA (2026), did worse in all 20 comparisons, by up to a factor of three.
+  The weighting is what matters: the same fit without it, whose key half is
+  the key fit of CAGA (2026), did worse in all 20 comparisons, by up to a
+  factor of three.
   Even neighbouring heads, fused without any search, beat round 24's best in
   9 of 10 settings. All six registered predictions held. At half the heads,
   four of the five converted models reach 1.6 to 2.1 times the unconverted
@@ -395,6 +410,31 @@ Each instrument below exists because a finding above required it.
 
 <p align="center"><img src="figures/readme/fig25_kv_fusion.png" alt="Two-panel dot plot of perplexity, as a multiple of the unconverted model's, at half and at a quarter of the key-value heads, for averaging neighbouring heads, round 24's aligned averaging, the unweighted fusion and the fusion weighted by what the heads compute, in five models: the weighted fusion is lowest in every model, 1.6 to 2.1 times the unconverted perplexity at half the heads in four models" width="880"></p>
 <p align="center"><em>Fitting the shared head to what the heads compute, rather than to their weights, closes most of the gap that averaging leaves.</em></p>
+
+- **Against the best published training-free conversion, on its own
+  benchmark.** CAGA (Wang, Jiang and Liu, 2026) converts Llama-2-7B from 32
+  to 16 key-value heads without training and reports WikiText-2 perplexity
+  25.1 and a seven-task zero-shot average of 44.3, against 926 and 32.6 for
+  averaging, on its own pairing of heads. Its key fit is the unweighted fit
+  above; its values come from an SVD of the stacked value weights alone. A
+  preregistered round ran the weighted fusion on that benchmark, pairing each
+  layer's heads by the fusion's own residual, a minimum-cost matching computed
+  in closed form. The converted Llama-2-7B, with half the KV cache and no
+  training, reaches perplexity 16.8 at 2,048 tokens and 18.5 at 4,096
+  (unconverted 5.47 and 5.12) and a zero-shot average of 50.4 (interval 49.0
+  to 51.8), six points above CAGA's published result. On identical pairs,
+  CAGA's construction as its paper specifies it gives 323 and 845 at 2,048
+  tokens in the same harness, far from its published 25.1: it depends on a
+  pairing the paper does not specify fully enough to reproduce, while the
+  fusion stays at 16.8 to 19.7 on either pairing. A functional check in the manner of
+  steering-based neuron explorers separates them the same way: pushed along
+  MLP neurons' write directions, the fused model raises 30 percent of the
+  tokens the original raises most, CAGA's construction 4 to 5 percent. All
+  six registered predictions held. The damage of every conversion grows with
+  the context length, and the pairing matters most there.
+
+<p align="center"><img src="figures/readme/fig27_vs_caga.png" alt="Three-panel dot plot for Llama-2-7B converted from 32 to 16 key-value heads without training. WikiText-2 perplexity at 2,048 and 4,096 tokens: unconverted 5.47 and 5.12, the weighted fusion on matched pairs 16.8 and 18.5 and on neighbouring pairs 19.7 and 25.6, CAGA's construction 323 to 1,348, averaging about 1,090, with CAGA's published 25.1 marked. Seven-task zero-shot average with intervals: unconverted 64.1, fusion 50.4 and 48.2, CAGA's construction 38.8 and 35.7, averaging 35.2, with CAGA's published 44.3 marked" width="880"></p>
+<p align="center"><em>Fitting the shared heads to what the heads compute, with pairs chosen the same way, beats the best published training-free conversion on its own benchmark.</em></p>
 
 - **Cross-layer KV compression, against the same nulls.** Two published
   methods compress the cache across layers on the premise that adjacent
@@ -552,10 +592,10 @@ Each instrument below exists because a finding above required it.
 
 ## Evidence standard
 
-Twenty-six preregistrations with numeric thresholds and falsification
+Twenty-eight preregistrations with numeric thresholds and falsification
 clauses were frozen in git before their runs (`alignment_study/PREREGISTRATION.md`,
 `PREREGISTRATION2.md` to `PREREGISTRATION16.md`, `PREREGISTRATION20.md`
-to `PREREGISTRATION22.md` and `PREREGISTRATION24.md` to `PREREGISTRATION26.md`; `audits/PREREGISTRATION4.md`,
+to `PREREGISTRATION22.md` and `PREREGISTRATION24.md` to `PREREGISTRATION28.md`; `audits/PREREGISTRATION4.md`,
 `PREREGISTRATION17.md` to `PREREGISTRATION19.md` and
 `PREREGISTRATION23.md`; the second committed
 before the held-out models were downloaded, the third and all later ones
@@ -597,8 +637,11 @@ on six new claims, 3 of 5 for vision transformers' attention distance, 5 of
 5 for the merge benchmark, 3 of 6 for the sink across architectures, 6 of 7
 for the merge benchmark at larger scale and on LAMBADA, 4 of 5 for the
 weighting flip, 9 of 10 for converting heads to shared key-value heads
-without training, 6 of 6 for fusing them by what they compute, and 5 of 7
-for cross-layer KV compression under the convention null.
+without training, 6 of 6 for fusing them by what they compute, 5 of 7
+for cross-layer KV compression under the convention null, and 6 of 6
+against the best published training-free conversion on its own benchmark
+(the round on models that already share key-value heads is running its last
+model).
 Development
 calibration that shaped a preregistration is committed and labeled as
 such. A blind reimplementation from the written specification
@@ -638,7 +681,15 @@ prune heads that attend to the first token with little loss; Méloux et al.
 (2025) and Heap et al. (2025) show interpretability methods and metrics
 returning plausible results on random networks; Fesser et al. (2026)
 separate sinks that suppress a head's update from sinks that broadcast
-information.
+information. For converting attention to fewer key-value heads, the closest
+work is GQA's mean pooling (Ainslie et al. 2023), Jin et al.'s alignment before
+merging (2025), groupings by activation similarity (AsymGQA, 2024) and by
+clustering queries, including perfect matching (Zheng et al. 2026), CAGA's
+covariance-metric key fit with a weight-space value SVD (Wang, Jiang and Liu
+2026), and KQ-SVD's query-aware low-rank keys for a single head (2026); the
+fusion here differs in fitting both shared projections in closed form to what
+the heads compute, weighted by the queries and output projections of every
+head in the group.
 
 ## Repository map
 
@@ -655,10 +706,11 @@ information.
   `.github/workflows/regenerate.yml` verify it regenerates.
 - `make_readme_figures.py` - renders every chart and illustration on this
   page from the committed result files.
-- `alignment_study/` - the shared-operator studies: five
-  preregistrations, all scripts and result JSONs (per-checkpoint dynamics
-  results in `dynamics/`, per-model rerun results in `rerun/`), the run
-  log, and the study note with scorecards (`NOTE.md`).
+- `alignment_study/` - the shared-operator studies and the later rounds:
+  their preregistrations, all scripts and result JSONs (per-checkpoint
+  dynamics results in `dynamics/`, per-model rerun results in `rerun/`), the
+  run log, the study note with scorecards (`NOTE.md`), and the KV-head
+  conversion command (`kvfuse.py`).
 - `hubsfree/`, `tests/`, `pyproject.toml`, `docs/toolkit.md`, `examples/` -
   the toolkit (v0.1.0.dev0): statistics, null families including the
   dissociation controls, battery report, CLI, guide and two runnable

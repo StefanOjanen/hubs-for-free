@@ -1,0 +1,15 @@
+{
+ "model": "JackFram/llama-160m",
+ "max_cost_difference_vs_round28": 0.0,
+ "layers_with_identical_pairs": [
+  12,
+  12
+ ],
+ "tool_pairs_equal_round28_pairs": true,
+ "kv_heads": [
+  12,
+  6
+ ],
+ "max_abs_logit_diff_vs_simulated": 0.00038444995880126953,
+ "logit_scale": 22.682470321655273
+}

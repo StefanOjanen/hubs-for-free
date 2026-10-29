@@ -1028,4 +1028,101 @@ if glob.glob(FU_RESULTS):
     fig.supxlabel("perplexity, as a multiple of the unconverted model's (log scale)", fontsize=11.5, color=INK2, y=0.16 / H)
     fig.savefig(OUT + "fig25_kv_fusion.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
+# ============ Figure 26: fusing key-value heads in models that already share them (preregistration 27) ============
+FK_RESULTS = "alignment_study/fusekv_results.json"
+if glob.glob(FK_RESULTS):
+    from matplotlib.lines import Line2D
+    from matplotlib.ticker import FixedLocator, FixedFormatter, NullLocator
+    plt.rcParams["axes.grid"] = False
+    FK = json.load(open(FK_RESULTS))
+    KNAMES = {"TinyLlama/TinyLlama_v1.1": "TinyLlama 1.1B", "Qwen/Qwen2.5-1.5B": "Qwen2.5-1.5B", "openlm-research/open_llama_3b_v2": "OpenLLaMA-3B",
+              "mistralai/Mistral-7B-Instruct-v0.2": "Mistral-7B-Instruct", "Qwen/Qwen2.5-7B": "Qwen2.5-7B"}
+    km = FK["models"][::-1]
+    top_in, bot_in = 1.75, 0.85
+    H = top_in + 0.62 * len(km) + bot_in
+    fig, axes = plt.subplots(1, 2, figsize=(11.6, H), sharey=True,
+                             gridspec_kw=dict(left=0.17, right=0.98, top=1 - top_in / H, bottom=bot_in / H, wspace=0.07))
+    cell = lambda m, g: FK["table"].get(f"{m} g{g}")
+    rel = lambda m, g, a: cell(m, g)[a]["ppl"] / cell(m, g)["base"]["ppl"]
+    hi = max(rel(m, g, a) for m in km for g in (2, 4) if cell(m, g) for a in ("mean", "fuse_u", "fuse"))
+    FT = [1, 2, 5, 10, 20, 50, 100, 300, 1000, 3000, 10000, 30000]
+    for ax, g in zip(axes, (2, 4)):
+        for y, m in enumerate(km):
+            if not cell(m, g):
+                ax.text(1.05, y, "two key-value heads: no groups of 4", va="center", fontsize=9.5, color=MUTED); continue
+            xs = [rel(m, g, a) for a in ("mean", "fuse_u", "fuse")]
+            ax.plot([min(xs), max(xs)], [y, y], color=GRID, lw=2.5, zorder=1, solid_capstyle="round")
+            ax.scatter([rel(m, g, "mean")], [y], s=60, color=MUTED, edgecolors=SURF, linewidths=1.2, zorder=3)
+            ax.scatter([rel(m, g, "fuse_u")], [y], s=60, facecolors=SURF, edgecolors=S1, linewidths=1.6, zorder=4)
+            ax.scatter([rel(m, g, "fuse")], [y], s=110, marker="D", color=S1, edgecolors=SURF, linewidths=1.6, zorder=5)
+        t = [v for v in FT if v <= hi * 1.05]
+        ax.set_xscale("log"); ax.set_xlim(0.85, hi * 1.4)
+        ax.xaxis.set_major_locator(FixedLocator(t)); ax.xaxis.set_major_formatter(FixedFormatter([f"{v:g}" for v in t])); ax.xaxis.set_minor_locator(NullLocator())
+        ax.axvline(1, color=INK2, lw=1, zorder=0)
+        ax.set_title(f"{'half' if g == 2 else 'a quarter'} of the key-value heads kept (groups of {g})", loc="left", fontsize=12, color=INK, pad=8)
+        ax.tick_params(length=0); ax.grid(axis="x", color=GRID, lw=0.8)
+        for sp in ("left", "bottom"): ax.spines[sp].set_color(GRID)
+    axes[0].set_yticks(range(len(km))); axes[0].set_yticklabels([KNAMES.get(m, m) for m in km], fontsize=11.5)
+    hl = [Line2D([], [], marker="o", ls="", ms=8, color=MUTED, mec=SURF), Line2D([], [], marker="o", ls="", ms=8, mfc=SURF, mec=S1, mew=1.6),
+          Line2D([], [], marker="D", ls="", ms=9, color=S1, mec=SURF)]
+    fig.legend(hl, ["averaging neighbouring key-value heads", "fused, unweighted fit", "fused by what the heads compute"],
+               loc="upper left", bbox_to_anchor=(0.012, 1 - 0.78 / H), ncol=3, fontsize=9.8, handletextpad=0.3, columnspacing=1.0)
+    fig.text(0.012, 1 - 0.08 / H, "Fusing key-value heads in models that already share them", fontsize=15, color=INK, va="top")
+    k1, k2 = FK["clauses"]["K1"], FK["clauses"]["K2"]
+    SUB26 = (f"Preregistration 27, WikiText-2. The weighted fusion beats averaging in {k1['count']} of {len(k1['value'])} settings"
+             f" and the unweighted fit in {k2['count']} of {len(k2['value'])}.")
+    fig.text(0.012, 1 - 0.46 / H, SUB26, fontsize=10.5, color=INK2, va="top")
+    fig.supxlabel("perplexity, as a multiple of the unconverted model's (log scale)", fontsize=11.5, color=INK2, y=0.16 / H)
+    fig.savefig(OUT + "fig26_kv_fusion_gqa.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
+# ============ Figure 27: the fusion against CAGA on its own benchmark (preregistration 28) ============
+LL_RESULTS = "alignment_study/llama2_results.json"
+if glob.glob(LL_RESULTS):
+    from matplotlib.ticker import FixedLocator, FixedFormatter, NullLocator
+    plt.rcParams["axes.grid"] = False
+    LL = json.load(open(LL_RESULTS))
+    T = LL["reported"]["table"]
+    pub = LL["reported"]["published"]
+    ARMS27 = [("base", "unconverted Llama-2-7B", INK, "o", True), ("fuse/paired", "fused by what heads compute, matched pairs", S1, "D", True),
+              ("fuse/neighbour", "fused by what heads compute, neighbouring pairs", S1, "D", False),
+              ("caga/paired", "CAGA's construction (ours), matched pairs", S2, "s", True),
+              ("caga/neighbour", "CAGA's construction (ours), neighbouring pairs", S2, "s", False),
+              ("mean/neighbour", "averaging, neighbouring pairs", MUTED, "o", True)]
+    rows = ARMS27[::-1]
+    top_in, bot_in = 1.35, 0.95
+    H = top_in + 0.55 * len(rows) + bot_in
+    fig, axes = plt.subplots(1, 3, figsize=(14.2, H), sharey=True, gridspec_kw=dict(left=0.29, right=0.985, top=1 - top_in / H,
+                                                                                    bottom=bot_in / H, wspace=0.08, width_ratios=[1, 1, 1]))
+    allp = [T[a][f"ppl_{L}"] for a, *_ in ARMS27 for L in (2048, 4096)] + [pub["caga"][0]]
+    FT = [2, 5, 10, 20, 50, 100, 300, 1000, 3000]
+    t = [v for v in FT if min(allp) * 0.8 <= v <= max(allp) * 1.1]
+    dot = lambda ax, x, y, c, mk, filled: ax.scatter([x], [y], s=90, marker=mk, color=c if filled else SURF,
+                                                     edgecolors=SURF if filled else c, linewidths=1.6, zorder=4)
+    for ax, L in zip(axes[:2], (2048, 4096)):
+        for y, (a, label, c, mk, filled) in enumerate(rows):
+            dot(ax, T[a][f"ppl_{L}"], y, c, mk, filled)
+        ax.axvline(pub["caga"][0], color=S2, lw=1.4, ls=(0, (4, 3)), zorder=0)
+        ax.text(pub["caga"][0] * 1.06, len(rows) - 0.6, f"CAGA, published: {pub['caga'][0]:g}", color=S2, fontsize=9.5, va="bottom")
+        ax.set_xscale("log"); ax.set_xlim(min(allp) * 0.8, max(allp) * 1.5)
+        ax.xaxis.set_major_locator(FixedLocator(t)); ax.xaxis.set_major_formatter(FixedFormatter([f"{v:g}" for v in t])); ax.xaxis.set_minor_locator(NullLocator())
+        ax.set_title(f"WikiText-2 perplexity, {L:,} tokens", loc="left", fontsize=11.5, color=INK, pad=8)
+        ax.set_xlabel("log scale", fontsize=10.5, color=INK2)
+    for y, (a, label, c, mk, filled) in enumerate(rows):
+        lo, hi = LL["reported"]["zs7_ci"][a]
+        axes[2].plot([100 * lo, 100 * hi], [y, y], color=c, lw=2, alpha=0.45, zorder=2, solid_capstyle="round")
+        dot(axes[2], 100 * T[a]["zs7"], y, c, mk, filled)
+    axes[2].axvline(100 * pub["caga"][1], color=S2, lw=1.4, ls=(0, (4, 3)), zorder=0)
+    axes[2].text(100 * pub["caga"][1] + 0.4, len(rows) - 0.6, f"CAGA, published: {100 * pub['caga'][1]:.1f}", color=S2, fontsize=9.5, va="bottom")
+    axes[2].set_title("seven-task zero-shot average", loc="left", fontsize=11.5, color=INK, pad=8)
+    axes[2].set_xlabel("accuracy, percent (bar: 95% interval)", fontsize=10.5, color=INK2)
+    for ax in axes:
+        ax.tick_params(length=0); ax.grid(axis="x", color=GRID, lw=0.8); ax.set_ylim(-0.6, len(rows) - 0.1)
+        for sp in ("left", "bottom"): ax.spines[sp].set_color(GRID)
+    axes[0].set_yticks(range(len(rows))); axes[0].set_yticklabels([r[1] for r in rows], fontsize=10.5)
+    fig.text(0.012, 1 - 0.08 / H, "Against CAGA on its own benchmark: Llama-2-7B from 32 to 16 key-value heads, no training", fontsize=15, color=INK, va="top")
+    SUB27 = (f"Preregistration 28: {LL['passes']} of {LL['of']} registered clauses pass. Dashed: CAGA's published result (Wang et al. 2026, Table 2),"
+             f" on its own pairing of heads and its own evaluation, whose length the paper does not state.")
+    fig.text(0.012, 1 - 0.5 / H, SUB27, fontsize=10, color=INK2, va="top")
+    fig.savefig(OUT + "fig27_vs_caga.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
 print("FIGURES_DONE", sorted(glob.glob(OUT + "*")))

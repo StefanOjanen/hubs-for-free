@@ -1,0 +1,18 @@
+{
+ "model": "JackFram/llama-160m",
+ "pairs_not_neighbours": 69,
+ "num_key_value_heads": [
+  12,
+  6
+ ],
+ "kv_projection_params": [
+  14155776,
+  7077888
+ ],
+ "max_abs_logit_diff": 0.0002002716064453125,
+ "logit_scale": 22.682472229003906,
+ "kv_cache_bytes_per_token_float16": [
+  36864,
+  18432
+ ]
+}

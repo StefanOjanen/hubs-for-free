@@ -1,0 +1,22 @@
+{
+ "model": "Qwen/Qwen2.5-0.5B",
+ "dtype": "bfloat16",
+ "examples_per_task": 300,
+ "requests": 6298,
+ "max_abs_loglik_diff": 3.0517578125e-05,
+ "identical_loglik": 5278,
+ "greedy_identical": true,
+ "decisions_identical": {
+  "lambada_openai": true,
+  "hellaswag": true,
+  "piqa": true,
+  "winogrande": true,
+  "arc_easy": true,
+  "arc_challenge": true,
+  "openbookqa": true
+ },
+ "average": [
+  0.5157142857142857,
+  0.5157142857142857
+ ]
+}

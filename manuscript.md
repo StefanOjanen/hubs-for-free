@@ -61,7 +61,10 @@ size) settings, though still well above the unconverted model's. Fitting the
 shared head in closed form to what the heads compute, weighting keys by each
 head's queries and values by its output projection, does better in all ten
 settings and leaves four of five models at 1.6 to 2.1 times the unconverted
-perplexity with half of the key-value heads, without training. Two
+perplexity with half of the key-value heads, without training; on the
+Llama-2-7B benchmark of the best published training-free method, with heads
+paired by the fit's own residual, it reaches perplexity 16.8 to 18.5 against
+the published 25.1 and six points more zero-shot accuracy. Two
 cross-layer cache compressions rest on premises that fail their nulls: adjacent
 layers' cached keys and values are uncorrelated token by token, and the
 code agreement one of them reports is what independent codes give. Head confidence
@@ -1133,10 +1136,10 @@ eigenvector of the group's whitened key planes weighted by each head's query
 energy on the plane, and each query plane absorbs a complex scalar, which
 commutes with the embedding. The result does not depend on any head's basis,
 and groups of one head reproduce the model. Without the query and output
-weighting the same fit is the objective of weight-space fits with an
-input-covariance metric (CAGA; Wang et al. 2026); preserving query-key
-products rather than keys was shown for compressing one head's cache by KQ-SVD
-(Lesens et al. 2026).
+weighting, the key half of the same fit is CAGA's key fit (Wang, Jiang and Liu
+2026), whose values come from an SVD of the stacked value weights alone;
+preserving query-key products rather than keys was shown for compressing one
+head's cache by KQ-SVD (Lesens et al. 2026).
 
 Preregistration 26 applied the fusion to round 24's models and groups, with
 round 24's calibration documents and evaluation. All six clauses pass. On
@@ -1198,6 +1201,50 @@ against 4.6 to 6.1 for the other models, which suggests that its configuration
 does not match its long-context training; its results are reported as
 registered.
 
+### 6.8 The fusion against the best published training-free conversion
+
+CAGA (Wang, Jiang and Liu 2026) converts Llama-2-7B from 32 to 16 key-value
+heads without training and reports WikiText-2 perplexity 25.1 and a seven-task
+zero-shot average of 44.3, against 926 and 32.6 for direct averaging and 738
+and 35.3 for Procrustes alignment, all on its own pairing of heads. Its key fit
+is the unweighted key fit of Section 6.6; its shared value projection is the
+rank-d_h SVD of the group's stacked value projections, with no input metric and
+no output weighting. Preregistration 28 ran the weighted fusion on that
+benchmark with CAGA's calibration (128 C4 documents of 2,048 tokens), on
+neighbouring pairs and on pairs matched in each layer by the fusion's own
+residual (a minimum-cost perfect matching whose pair costs are the closed-form
+residuals of the weighted fit; perfect matching on query similarity was used
+by Zheng et al. 2026), against our implementation of CAGA's
+construction on the same pairs and against averaging, on CAGA's seven tasks
+and with a steering check. The check pushes the residual stream at the middle
+layer along the write directions of 64 MLP neurons and of 64 random directions
+and compares, between the converted and the unconverted model, the 20 tokens
+each push raises most.
+
+All six clauses pass. The unconverted model's perplexity is 5.47 at 2,048
+tokens and 5.12 at 4,096, the values usually reported. With matched pairs the
+fusion reaches 16.78 and 18.46 (3.07 and 3.61 times the unconverted model's),
+below CAGA's published 25.1 at both lengths (M1), and a seven-task average of
+0.504 (interval 0.490 to 0.518) against CAGA's 0.443 (M2). On identical pairs
+it is far below CAGA's construction: 16.78 against 323 at 2,048 tokens and 18.46
+against 378 at 4,096 on the matched pairs, 19.73 against 845 and 25.58 against
+1,348 on neighbouring pairs (M3), with 0.120 more accuracy (interval 0.104 to
+0.137; M4). The matching beats neighbouring pairs at both lengths (M5), most at
+4,096 tokens (18.46 against 25.58). The fused models' steering agreement is
+0.30 for neuron directions, against 0.04 to 0.05 for CAGA's construction and
+0.10 for averaging (M6); over the five converted arms, agreement and perplexity
+rank together (Spearman -0.70). Averaging neighbouring heads gives 1,081 (the
+paper's averaging, on its pairing: 926).
+
+CAGA's construction as specified lands far from its published result in this
+harness on both pairings tried. Its pairing combines percentile ranks of a
+channel-support overlap computed by another component of its method and of
+two similarity terms given without formulas, so it could not be reproduced;
+whether the gap is the pairing, an unstated detail or the evaluation is open.
+The comparison with the published numbers carries that caveat and the
+unstated evaluation length and subsets; the comparison on identical pairs
+does not.
+
 ## 7. Limitations
 
 Results cover seventeen models up to 8B parameters in ten families, three
@@ -1218,9 +1265,11 @@ The conversion of Section 6.5 was tested on five multi-head models up to 2.7B
 parameters and without uptraining; its best recipe still leaves perplexity at
 2 to 5 times the unconverted model's at half the key-value heads in four of
 them, and whether its advantage survives uptraining is untested. The fusion of
-Section 6.6 narrows that gap on the same five models but was not tested on
-models that already share key-value heads, above 2.7B parameters, or after
-uptraining. The cross-layer audit of Section 6.7 covers four 3.8B to 7B models,
+Section 6.6 narrows that gap on the same five models and, in Section 6.8, on
+Llama-2-7B against the best published training-free result, whose evaluation
+length, subsets and harness are not stated and whose pairing could not be
+reproduced; it was not tested after uptraining, and its test on models that
+already share key-value heads is running. The cross-layer audit of Section 6.7 covers four 3.8B to 7B models,
 one of them apparently misconfigured, and continuation loss after 1,536 tokens
 of context on WikiText-103. Where the sink sits on a mid-sequence, window-varying column
 (OLMo-2, late Qwen2.5-3B layers), the sink-operator identification weakens
@@ -1289,6 +1338,8 @@ against the norm of what each head writes.
 | 24 | 7f12472, pushed before execution | P1 to P8, C1, C2: converting multi-head to grouped-query attention without training, nine recipes, a convention null | 9 of 10; P6 fails |
 | 25 | 809f6fb, pushed before execution | A1, A2, B1, B2, C1 to C3: cross-layer KV compression (MiniCache, XQuant) under the convention null | 5 of 7; B2, C3 fail |
 | 26 | 16404cf, pushed before execution | F1 to F6: closed-form fusion of key and value heads weighted by what the heads compute | 6 of 6 |
+| 27 | 35249e6, pushed before execution | K1 to K4: the weighted fusion in models that already share key-value heads | running (four of five models done) |
+| 28 | 0abdd89, pushed before execution | M1 to M6: the weighted fusion against CAGA on its own Llama-2-7B benchmark, matched pairs, a steering check | 6 of 6 |
 
 ## Appendix B. Numbers ledger
 
@@ -1339,4 +1390,6 @@ against the norm of what each head writes.
 | conversion to grouped-query attention, P1 to P8, C1, C2 | alignment_study/gqa_results.json, gqa/, gqa_convention/, gqa_dev/, gqa_convention_dev/, gqa_check/ |
 | fused conversion, F1 to F6 | alignment_study/fuse_results.json, fuse/, fuse_dev/, fuse_dev_results.json |
 | cross-layer KV compression, A1 to C3 | alignment_study/xlayer_results.json, xlayer/, xlayer_dev/, xlayer_dev_results.json |
+| against CAGA, M1 to M6 | alignment_study/llama2_results.json, llama2/, llama2_dev/, llama2_dev.log |
+| conversion command and checkpoint export | alignment_study/llama2_dev/kvfuse_check_llama-160m.json, gqa_export_check_llama-160m.json |
 | shared energy against merge damage (post hoc) | alignment_study/posthoc/sharedE_vs_merge_kl.json |

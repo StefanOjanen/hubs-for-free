@@ -694,3 +694,46 @@ in bfloat16 leaves the function unchanged (identical perplexity in float32) but
 makes pairs slightly worse in bfloat16 (62.61 against 62.17 weighted, 91.1
 against 85.8 unweighted), so the round keeps round 27's conversion. The
 OpenLLaMA-3B pass was resumed from its partial result with three arms.
+
+Head-to-head with CAGA, confirmatory (frozen at 0abdd89; 2026-10-28 23:00 to
+2026-10-29 14:45 UTC, 56,700 s, one job on the GPU under the memory watchdog and
+the battery guard). On the 45 W adapter the job drained the battery even while
+charging, and the guard paused it at 15 percent and resumed it at 30 nine times
+(13 to 26 minutes each); three evaluations include pauses (base 11,458 s,
+fuse/paired 10,253 s, caga/neighbour 7,376 s), the other three ran without
+them (6,588 to 6,625 s).
+Second moments 929 s, groups-of-one check 705 s, pairing 116 s, each fused or
+CAGA conversion 654 to 710 s. Evaluation (eval_llama2.py, unchanged since the
+freeze): 6 of 6 clauses pass (llama2_results.json, eval_llama2.log). During the
+pauses, two checks of tools that are not part of the round ran on the CPU: the
+export to a real grouped-query checkpoint (gqa_export_check.py; Llama-160m, the
+exported checkpoint with 6 key-value heads reproduces the simulated conversion
+to 2e-4 in logits) and the conversion command (kvfuse_check.py; its pairing
+costs equal the frozen round's exactly and choose the same pairs in all 12
+layers, and its saved checkpoint reproduces the simulated conversion to 4e-4).
+Round 27's last model, Qwen2.5-7B, was then rerun from the start with the same
+instrument (the first run ended without output after its groups-of-one check).
+
+Round 27's Qwen2.5-7B, second attempt (2026-10-29 14:45 UTC): the memory watchdog
+killed the job at 14:58 UTC, after the groups-of-one check (maximum logit
+difference 0.97, as in the first attempt) and at the start of the base
+evaluation, with free memory at 6 percent and 12.3 GB of swap. A second 7B job
+was running alongside it: a parallel session of the assistant, opened by the
+author for questions, had queued the exploratory follow-up to round 28
+(llama2_caga_followup.py, Llama-2-7B) to start when round 27 finished, keyed on a
+line that round 27's first attempt had already written, so it started at 14:47
+UTC; the watchdog killed both. Two 7B models do not fit in 32 GB, so this
+explains the second attempt's end; the first attempt's watchdog log was lost with
+the reboot and its cause is not recorded. The sessions now coordinate before
+using the GPU. One further memory peak was found and removed: the zero-shot
+scorer projected all continuation rows of a batch onto the vocabulary at once,
+which with Qwen2.5's 152,064-token vocabulary comes to several GB of float32
+log-probabilities for a long-answer batch (by calculation), five times what
+Mistral's 32,000-token vocabulary needs. The scorer now projects the rows in
+chunks of 512 (zeroshot.py, HEAD_CHUNK). Checked on Qwen2.5-0.5B in bfloat16 on
+the GPU (zeroshot_head_chunk_check.py, 300 examples of each of the seven tasks):
+log-likelihoods differ by at most 3e-5, greedy matches and every per-example
+decision are identical, and the averages agree to every digit. Round 28's
+evaluations ran before this change. The pipeline's evaluator ran on the four
+finished models again (not the registered evaluation; it is regenerated when
+Qwen2.5-7B finishes). Qwen2.5-7B restarts from the beginning, alone.

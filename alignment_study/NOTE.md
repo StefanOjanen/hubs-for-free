@@ -1278,3 +1278,58 @@ there in only one of four models. Aligning heads first exposes real shared
 structure (A2, C2) and makes MiniCache's merge much cheaper in three of the
 four models, but not reliably enough for the registered B2, and not in the
 miscalibrated LLaMA-2-7B derivative.
+
+## The weighted fusion against CAGA on its own benchmark (2026-10-28 to 29, preregistration 28)
+
+Frozen at 0abdd89 (`alignment_study/PREREGISTRATION28.md`). 6 of 6 clauses pass.
+Llama-2-7B (the NousResearch copy, whose weight files are byte-identical to
+Meta's) converted from 32 to 16 key-value heads without training, CAGA's
+setting (Wang, Jiang and Liu, arXiv 2610.09476, Table 2). Unconverted: WikiText-2
+perplexity 5.47 at 2,048 tokens and 5.12 at 4,096, the values the literature
+reports; seven-task average (ZS-7) 0.641.
+- M1 passes: on heads paired by its own residual, the weighted fusion reaches
+  perplexity 16.78 at 2,048 tokens and 18.46 at 4,096 (3.07 and 3.61 times the
+  unconverted model's), below CAGA's published 25.1 at both lengths.
+- M2 passes: its ZS-7 is 0.504 (interval 0.490 to 0.518), above CAGA's
+  published 0.443.
+- M3 passes in 4 of 4: on identical pairs it is far below our implementation
+  of CAGA's construction, 16.78 against 323 at 2,048 tokens and 18.46 against
+  378 at 4,096 on the matched pairs, 19.73 against 845 and 25.58 against 1,348
+  on neighbouring pairs.
+- M4 passes: ZS-7 higher than CAGA's construction by 0.116 on the matched pairs
+  and 0.125 on neighbouring pairs (pooled 0.120, interval 0.104 to 0.137).
+- M5 passes: matched pairs beat neighbouring pairs, 16.78 against 19.73 at
+  2,048 tokens and 18.46 against 25.58 at 4,096. The matching keeps 11 of 512
+  neighbour pairs and lowers the summed relative residual from 5.98 to 5.35.
+- M6 passes: steering agreement for neuron directions is 0.30 for the fusion on
+  both pairings, against 0.05 and 0.04 for CAGA's construction and 0.10 for
+  averaging. The cosine of the steering signatures is 0.31 for the fusion and
+  about zero for CAGA's construction (-0.004 and -0.009); across the five
+  converted arms, agreement and perplexity rank together (Spearman -0.70).
+- Reported: averaging neighbouring heads gives 1,081 and 1,093 (the paper's
+  direct averaging on its own pairing: 926). CAGA's construction as the paper
+  specifies it (its key fit, which is our unweighted key fit, and the rank-d_h
+  SVD of the raw stacked value projections, both checked against the paper's
+  text) lands far from the paper's 25.1 in this harness on both pairings
+  tried, between the paper's averaging and our averaging on neighbouring pairs.
+  The paper's pairing combines percentile ranks of a channel-support overlap
+  from another component of its method and of two similarity terms it gives no
+  formula for, so it could not be reproduced; an exploratory follow-up asks
+  whether a pairing chosen for CAGA's own residual closes the gap. The
+  plain-accuracy averages order the arms the same way (0.464 for the fused
+  matched pairs, 0.356 and 0.323 for CAGA's construction, 0.317 for averaging;
+  unconverted 0.589). Checks: groups of one reproduce the model to 1.13 in
+  logits of up to 29.9 (bfloat16 rounding of the rewritten weights), and the
+  restored model gives 5.47 again.
+Reading: on CAGA's own benchmark, fitting each pair's shared key and value head
+to what the heads compute, with pairs chosen by the same criterion, gives a
+training-free conversion at perplexity 16.8 to 18.5 against the 25.1 published
+for the best training-free method, and 6 points more zero-shot accuracy. CAGA's
+construction, which shares the fusion's key fit but takes its values from the
+weights alone, depends on its pairing far more than the fusion does; on the
+pairs tried here its perplexity is 19 to 53 times the fusion's. The steering
+check separates the constructions as perplexity does: of the 20 tokens a push
+along an MLP neuron raises most in the original model, the fused models raise 30
+percent among their own 20, CAGA's construction 4 to 5 percent. The damage of
+every conversion grows with the context length, and the pairing matters most
+there (25.6 against 18.5 at 4,096 tokens).

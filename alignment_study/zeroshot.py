@@ -26,6 +26,7 @@ AVG_METRIC = {"lambada_openai": "acc", "hellaswag": "acc_norm", "piqa": "acc", "
               "arc_easy": "acc", "arc_challenge": "acc_norm", "openbookqa": "acc_norm"}
 TOKEN_BUDGET = 12288          # padded tokens per forward batch
 CACHE_EVERY = 1               # empty the MPS allocator cache after every batch (memory only; values unchanged)
+HEAD_CHUNK = 512              # continuation rows per vocabulary projection (memory only: 152k-token vocabularies at 7B)
 
 
 def _pq(repo, path):
@@ -134,9 +135,13 @@ def score_requests(model, reqs, device, pad_id):
         nr = len(rows); npad = int(np.ceil(nr / 512) * 512)
         rows += [0] * (npad - nr); pos += [0] * (npad - nr); tgt += [0] * (npad - nr)
         rows_t, pos_t, tgt_t = (torch.tensor(v, device=device) for v in (rows, pos, tgt))
-        logp = torch.log_softmax(head(h[rows_t, pos_t]).float(), -1)
-        lp = logp.gather(1, tgt_t[:, None])[:, 0].cpu().numpy()[:nr]
-        hit = (logp.argmax(-1) == tgt_t).cpu().numpy()[:nr]
+        lps, hits = [], []
+        for c in range(0, npad, HEAD_CHUNK):
+            logp = torch.log_softmax(head(h[rows_t[c:c + HEAD_CHUNK], pos_t[c:c + HEAD_CHUNK]]).float(), -1)
+            t = tgt_t[c:c + HEAD_CHUNK]
+            lps.append(logp.gather(1, t[:, None])[:, 0]); hits.append(logp.argmax(-1) == t)
+        lp = torch.cat(lps).cpu().numpy()[:nr]
+        hit = torch.cat(hits).cpu().numpy()[:nr]
         o = 0
         for r, j in enumerate(idx):
             k = reqs[j][4]
