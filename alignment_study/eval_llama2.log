@@ -1,0 +1,7 @@
+M1 PASS fuse/paired perplexity below CAGA's published 25.1 at every evaluated length [2048, 4096] | {"2048": 16.77955871488395, "4096": 18.455685158384767}
+M2 PASS fuse/paired ZS-7 above CAGA's published 0.443, the lower end of its 95% bootstrap interval included | {"zs7": 0.5035095410005157, "ci": [0.48961293192367206, 0.5176291258380609]}
+M3 PASS fuse perplexity below caga on the same pairs, both pairings, every length | {"neighbour 2048": true, "neighbour 4096": true, "paired 2048": true, "paired 4096": true}
+M4 PASS fuse ZS-7 above caga on both pairings, and the pooled paired 95% interval of the difference above zero | {"per_pairing": {"neighbour": 0.1249056214543579, "paired": 0.11595152140278492}, "pooled": [0.12042857142857143, 0.10443971119133576, 0.13678871841155232]}
+M5 PASS the matching lowers the fusion's perplexity against neighbour pairs at every length | {"2048": [16.77955871488395, 19.73410324503053], "4096": [18.455685158384767, 25.58290048526945]}
+M6 PASS steering agreement (neuron directions) higher for fuse than for caga on both pairings and than for averaging | {"tests": {"fuse>caga neighbour": true, "fuse>caga paired": true, "fuse/paired>mean/neighbour": true}, "overlap_neuron": {"base": 1.0, "fuse/paired": 0.3023437559604645, "caga/paired": 0.05234374850988388, "fuse/neighbour": 0.30156248807907104, "caga/neighbour": 0.0429687537252903, "mean/neighbour":
+6 of 6 clauses pass; written alignment_study/llama2_results.json

@@ -1,0 +1,299 @@
+{
+ "file": "alignment_study/llama2/Llama-2-7b-hf.json",
+ "dev": false,
+ "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/0abdd89/alignment_study/PREREGISTRATION28.md",
+ "clauses": {
+  "M1": {
+   "what": "fuse/paired perplexity below CAGA's published 25.1 at every evaluated length [2048, 4096]",
+   "value": {
+    "2048": 16.77955871488395,
+    "4096": 18.455685158384767
+   },
+   "pass_": true
+  },
+  "M2": {
+   "what": "fuse/paired ZS-7 above CAGA's published 0.443, the lower end of its 95% bootstrap interval included",
+   "value": {
+    "zs7": 0.5035095410005157,
+    "ci": [
+     0.48961293192367206,
+     0.5176291258380609
+    ]
+   },
+   "pass_": true
+  },
+  "M3": {
+   "what": "fuse perplexity below caga on the same pairs, both pairings, every length",
+   "value": {
+    "neighbour 2048": true,
+    "neighbour 4096": true,
+    "paired 2048": true,
+    "paired 4096": true
+   },
+   "count": 4,
+   "pass_": true
+  },
+  "M4": {
+   "what": "fuse ZS-7 above caga on both pairings, and the pooled paired 95% interval of the difference above zero",
+   "value": {
+    "per_pairing": {
+     "neighbour": 0.1249056214543579,
+     "paired": 0.11595152140278492
+    },
+    "pooled": [
+     0.12042857142857143,
+     0.10443971119133576,
+     0.13678871841155232
+    ]
+   },
+   "pass_": true
+  },
+  "M5": {
+   "what": "the matching lowers the fusion's perplexity against neighbour pairs at every length",
+   "value": {
+    "2048": [
+     16.77955871488395,
+     19.73410324503053
+    ],
+    "4096": [
+     18.455685158384767,
+     25.58290048526945
+    ]
+   },
+   "pass_": true
+  },
+  "M6": {
+   "what": "steering agreement (neuron directions) higher for fuse than for caga on both pairings and than for averaging",
+   "value": {
+    "tests": {
+     "fuse>caga neighbour": true,
+     "fuse>caga paired": true,
+     "fuse/paired>mean/neighbour": true
+    },
+    "overlap_neuron": {
+     "base": 1.0,
+     "fuse/paired": 0.3023437559604645,
+     "caga/paired": 0.05234374850988388,
+     "fuse/neighbour": 0.30156248807907104,
+     "caga/neighbour": 0.0429687537252903,
+     "mean/neighbour": 0.09687499701976776
+    }
+   },
+   "pass_": true
+  }
+ },
+ "passes": 6,
+ "of": 6,
+ "reported": {
+  "table": {
+   "base": {
+    "ppl_2048": 5.470339118144039,
+    "ppl_4096": 5.117553327125115,
+    "ppl_2048_over_base": 1.0,
+    "ppl_4096_over_base": 1.0,
+    "zs7": 0.6405384218669418,
+    "zs7_acc": 0.5886812790097988,
+    "per_task": {
+     "boolq": 0.761,
+     "rte": 0.631768953068592,
+     "hellaswag": 0.773,
+     "winogrande": 0.677,
+     "arc_easy": 0.738,
+     "arc_challenge": 0.463,
+     "openbookqa": 0.44
+    },
+    "steer": {
+     "overlap_neuron": 1.0,
+     "overlap_random": 1.0,
+     "cos_neuron": 1.000004529953003,
+     "cos_random": 1.0000044107437134
+    }
+   },
+   "fuse/paired": {
+    "ppl_2048": 16.77955871488395,
+    "ppl_4096": 18.455685158384767,
+    "ppl_2048_over_base": 3.0673708434691838,
+    "ppl_4096_over_base": 3.6063493585034334,
+    "zs7": 0.5035095410005157,
+    "zs7_acc": 0.46436668385765856,
+    "per_task": {
+     "boolq": 0.61,
+     "rte": 0.5595667870036101,
+     "hellaswag": 0.581,
+     "winogrande": 0.572,
+     "arc_easy": 0.526,
+     "arc_challenge": 0.314,
+     "openbookqa": 0.362
+    },
+    "steer": {
+     "overlap_neuron": 0.3023437559604645,
+     "overlap_random": 0.26171875,
+     "cos_neuron": 0.3088582754135132,
+     "cos_random": 0.2816704511642456
+    }
+   },
+   "caga/paired": {
+    "ppl_2048": 323.1557275357448,
+    "ppl_4096": 377.8713154901608,
+    "ppl_2048_over_base": 59.074167168887364,
+    "ppl_4096_over_base": 73.83827609324344,
+    "zs7": 0.3875580195977308,
+    "zs7_acc": 0.3558437338834451,
+    "per_task": {
+     "boolq": 0.485,
+     "rte": 0.5379061371841155,
+     "hellaswag": 0.368,
+     "winogrande": 0.507,
+     "arc_easy": 0.339,
+     "arc_challenge": 0.226,
+     "openbookqa": 0.25
+    },
+    "steer": {
+     "overlap_neuron": 0.05234374850988388,
+     "overlap_random": 0.0390625,
+     "cos_neuron": -0.004389138892292976,
+     "cos_random": -0.00560138002038002
+    }
+   },
+   "fuse/neighbour": {
+    "ppl_2048": 19.73410324503053,
+    "ppl_4096": 25.58290048526945,
+    "ppl_2048_over_base": 3.6074734708084897,
+    "ppl_4096_over_base": 4.999049125618227,
+    "zs7": 0.4819649303764827,
+    "zs7_acc": 0.44439350180505416,
+    "per_task": {
+     "boolq": 0.603,
+     "rte": 0.48375451263537905,
+     "hellaswag": 0.569,
+     "winogrande": 0.563,
+     "arc_easy": 0.5,
+     "arc_challenge": 0.303,
+     "openbookqa": 0.352
+    },
+    "steer": {
+     "overlap_neuron": 0.30156248807907104,
+     "overlap_random": 0.23984375596046448,
+     "cos_neuron": 0.31245285272598267,
+     "cos_random": 0.2863556444644928
+    }
+   },
+   "caga/neighbour": {
+    "ppl_2048": 844.9849019160391,
+    "ppl_4096": 1348.4466772218725,
+    "ppl_2048_over_base": 154.46663975792478,
+    "ppl_4096_over_base": 263.49440660922016,
+    "zs7": 0.3570593089221248,
+    "zs7_acc": 0.32291645177926764,
+    "per_task": {
+     "boolq": 0.403,
+     "rte": 0.5054151624548736,
+     "hellaswag": 0.306,
+     "winogrande": 0.5,
+     "arc_easy": 0.274,
+     "arc_challenge": 0.253,
+     "openbookqa": 0.258
+    },
+    "steer": {
+     "overlap_neuron": 0.0429687537252903,
+     "overlap_random": 0.02734375186264515,
+     "cos_neuron": -0.009488360956311226,
+     "cos_random": -0.01706578955054283
+    }
+   },
+   "mean/neighbour": {
+    "ppl_2048": 1081.0275929137752,
+    "ppl_4096": 1092.7089789334152,
+    "ppl_2048_over_base": 197.61619335960714,
+    "ppl_4096_over_base": 213.52175719237025,
+    "zs7": 0.352282104177411,
+    "zs7_acc": 0.3171392470345539,
+    "per_task": {
+     "boolq": 0.372,
+     "rte": 0.49097472924187724,
+     "hellaswag": 0.285,
+     "winogrande": 0.511,
+     "arc_easy": 0.265,
+     "arc_challenge": 0.264,
+     "openbookqa": 0.278
+    },
+    "steer": {
+     "overlap_neuron": 0.09687499701976776,
+     "overlap_random": 0.07421875,
+     "cos_neuron": 0.04888344183564186,
+     "cos_random": 0.02851131185889244
+    }
+   }
+  },
+  "published": {
+   "caga": [
+    25.1,
+    0.443
+   ],
+   "direct averaging": [
+    926,
+    0.326
+   ],
+   "procrustes alignment": [
+    738,
+    0.353
+   ]
+  },
+  "zs7_ci": {
+   "base": [
+    0.6271749226405364,
+    0.6537588834450748
+   ],
+   "fuse/paired": [
+    0.4890573104693141,
+    0.5186740587931924
+   ],
+   "caga/paired": [
+    0.373924793708097,
+    0.401549793708097
+   ],
+   "fuse/neighbour": [
+    0.4685811500773594,
+    0.4958646854048478
+   ],
+   "caga/neighbour": [
+    0.34327877772047444,
+    0.37012068076328
+   ],
+   "mean/neighbour": [
+    0.33838628158844763,
+    0.3655355337802992
+   ]
+  },
+  "fuse_minus_mean_zs7": [
+   0.1296828261990717,
+   0.11038662970603402,
+   0.14787358174316656
+  ],
+  "fuse_minus_caga_by_pairing": {
+   "neighbour": [
+    0.1249056214543579,
+    0.10596484012377515,
+    0.14384794997421352
+   ],
+   "paired": [
+    0.11595152140278493,
+    0.09827613460546675,
+    0.13352418772563177
+   ]
+  },
+  "steering_overlap_vs_log_ppl_spearman": -0.7,
+  "checks": {
+   "groups_of_one_max_logit_diff": 1.125,
+   "logit_scale": 29.875,
+   "restore_check_ppl": 5.470339118144039,
+   "dtype": "torch.bfloat16",
+   "revision": "8efe6c9b93655b934e27bd9981e3ec13e55aee9d"
+  },
+  "pairing": {
+   "cost_neighbour_total": 5.982826493480227,
+   "cost_paired_total": 5.351505103178366,
+   "neighbour_pairs_kept": 11
+  }
+ }
+}
