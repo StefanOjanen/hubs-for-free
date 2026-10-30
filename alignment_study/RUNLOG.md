@@ -858,3 +858,13 @@ projections rounded to 4 bits per output channel, perplexity is 138.3 against
 8 bits change little either way. Trained at 2e-5, the rebalanced fused TinyLlama
 falls steadily from 55.4 to 21.2 in 0.33M tokens (zero-shot 0.377) where the
 unbalanced one ends at 63.8 (0.329). Round 30's draft is redesigned around this.
+
+Rebalancing fused key-value heads (preregistration 30, frozen at ab9827e). The
+first registered attempt (21:51 UTC) finished Part Q for OLMo-1B and
+h2o-danube-1.8b and was killed by the memory watchdog at 22:21 UTC during
+OpenLLaMA-3B (free memory 12 percent): the rounding part held two copies of the
+attention weights at once (4.3 GB each in float32) beside the model. The
+instrument now keeps one copy at a time and computes the same quantities in the
+same way (balance_round.py, commit after ab9827e; the two finished models are
+kept). The evaluator's output from the killed pipeline, written on incomplete
+data, was deleted; the registered evaluation runs once every model is done.

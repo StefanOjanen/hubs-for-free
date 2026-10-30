@@ -1,0 +1,21 @@
+{
+ "model": "allenai/OLMo-1B-hf",
+ "params": 1176764416,
+ "dtype": "torch.float32",
+ "base": 12.015669273629518,
+ "pairing": "fusion-residual matching",
+ "fused": 54.70157037210392,
+ "balanced": 54.70155079974459,
+ "max_logit_change_relative": 7.438688953698147e-06,
+ "fused_w4": 138.60800047843188,
+ "fused_w3": 2787.0787305251574,
+ "balanced_w4": 135.0268151570283,
+ "balanced_w3": 1884.731371076668,
+ "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/ab9827e/alignment_study/PREREGISTRATION30.md",
+ "dev": false,
+ "calibration": [
+  128,
+  2048
+ ],
+ "ppl_windows": 8
+}

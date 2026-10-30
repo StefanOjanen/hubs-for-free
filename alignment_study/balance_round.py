@@ -93,14 +93,7 @@ def run_q(name, log):
     logits = lambda: model(input_ids=x).logits.float()
     snap = lambda: {l: [p.detach().clone() for p in kv.params(l)] for l in range(kv.L)}
     put = lambda s: [p.copy_(t) for l in range(kv.L) for p, t in zip(kv.params(l), s[l])]
-    L0 = logits(); fused = snap()
-    res["fused"] = ppl()
-    B.balance(kv, groups)
-    L1 = logits(); balanced = snap()
-    res["balanced"] = ppl()
-    res["max_logit_change_relative"] = float((L1 - L0).abs().max() / L0.abs().max())
-    del L0, L1
-    for key, s in (("fused", fused), ("balanced", balanced)):
+    def rounded(s, key):
         for bits in (4, 3):
             put(s)
             for l in range(kv.L):
@@ -108,10 +101,24 @@ def run_q(name, log):
                 for m in (a.q_proj, a.k_proj, a.v_proj, a.o_proj):
                     m.weight.copy_(P.rtn(m.weight, bits))
             res[f"{key}_w{bits}"] = ppl()
+    # one copy of the attention weights at a time (two float32 copies of OpenLLaMA-3B's, beside the model, exhausted
+    # memory in the first registered attempt); the quantities are those of the frozen version
+    L0 = logits().cpu(); s = snap()
+    res["fused"] = ppl()
+    rounded(s, "fused")
+    put(s)
+    B.balance(kv, groups)
+    del s; gc.collect()
+    L1 = logits().cpu(); s = snap()
+    res["balanced"] = ppl()
+    res["max_logit_change_relative"] = float((L1 - L0).abs().max() / L0.abs().max())
+    del L0, L1
+    rounded(s, "balanced")
+    del s
     log(f"  {name}: unconverted {res['base']:.3f}, fused {res['fused']:.3f}, rebalanced {res['balanced']:.3f} (logits within "
         f"{res['max_logit_change_relative']:.1e}); 4 bits {res['fused_w4']:.3f} against {res['balanced_w4']:.3f}; 3 bits "
         f"{res['fused_w3']:.3f} against {res['balanced_w3']:.3f} ({time.time() - t0:.0f}s)")
-    del model, kv, fused, balanced; gc.collect()
+    del model, kv; gc.collect()
     if DEV == "mps":
         torch.mps.empty_cache()
     return res

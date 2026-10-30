@@ -1,0 +1,21 @@
+{
+ "model": "h2oai/h2o-danube-1.8b-base",
+ "params": 1831201280,
+ "dtype": "torch.float32",
+ "base": 6.755763803659044,
+ "pairing": "fusion-residual matching",
+ "fused": 38.81452078200826,
+ "balanced": 38.8145184673524,
+ "max_logit_change_relative": 0.0003052916144952178,
+ "fused_w4": 53.31696382907536,
+ "fused_w3": 185.8639037620481,
+ "balanced_w4": 44.593604686702626,
+ "balanced_w3": 64.19050900712244,
+ "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/ab9827e/alignment_study/PREREGISTRATION30.md",
+ "dev": false,
+ "calibration": [
+  128,
+  2048
+ ],
+ "ppl_windows": 8
+}
