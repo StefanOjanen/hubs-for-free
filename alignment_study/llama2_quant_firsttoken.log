@@ -1,0 +1,8 @@
+first-token check starting Fri Oct 30 11:15:51 UTC 2026
+[    25s] unquantized: first position after layer 1 max 800 (dim 2533 800), after layer 30 236; attention to the first position, mean over heads: layer 2 0.340, layer 8 0.313, layer 16 0.314, layer 24 0.396, layer 31 0.344
+[    34s] w3_channel_all: first position after layer 1 max 340 (dim 2533 340), after layer 30 246; attention to the first position, mean over heads: layer 2 0.215, layer 8 0.476, layer 16 0.310, layer 24 0.410, layer 31 0.436
+[    61s] w3_channel_keep_layer1: first position after layer 1 max 344 (dim 2533 344), after layer 30 169; attention to the first position, mean over heads: layer 2 0.292, layer 8 0.343, layer 16 0.211, layer 24 0.346, layer 31 0.552
+[    89s] w3_channel_only_layers01: first position after layer 1 max 340 (dim 2533 340), after layer 30 306; attention to the first position, mean over heads: layer 2 0.258, layer 8 0.386, layer 16 0.397, layer 24 0.383, layer 31 0.259
+[   123s] w3_channel_keep_last: first position after layer 1 max 340 (dim 2533 340), after layer 30 246; attention to the first position, mean over heads: layer 2 0.215, layer 8 0.476, layer 16 0.310, layer 24 0.410, layer 31 0.538
+[   140s] FIRSTTOKEN_DONE
+PIPELINE_EXIT Fri Oct 30 11:18:17 UTC 2026

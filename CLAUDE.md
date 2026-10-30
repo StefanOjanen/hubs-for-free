@@ -127,7 +127,15 @@ ZS-7 0.504 against 0.443; CAGA's construction as the paper specifies it gives 32
 to 1,348 in our harness and its pairing cannot be reproduced from the paper, so
 compare constructions on identical pairs; steering agreement 0.30 against 0.05;
 6 of 6. The conversion command is alignment_study/kvfuse.py (export to a real
-grouped-query checkpoint: gqa_export.py). Untrained 7B initializations are built on the
+grouped-query checkpoint: gqa_export.py). Exploratory follow-up to 28, not
+preregistered (alignment_study/llama2_followup_*.py/.json/.log, llama2_quant_*,
+llama2_dev/prefix160m.*; Figure 28): on pairs matched by CAGA's residual both
+constructions collapse (12,142 and 11,398) through one merged pair, KV heads 8
+and 18 of layer 1 once layer 0 is converted, which switches on layer 1's
+super-weight neuron 7890 (down_proj[2533, 7890]) at ordinary tokens; per-layer
+residuals and single-layer conversions cannot see it, one calibration window
+can; averaging, CAGA's construction on other pairings and 3-bit round-to-nearest
+quantization collapse other ways. Untrained 7B initializations are built on the
 CPU and copied to the GPU; with two heavy runs the 65 W adapter and 32 GB
 memory saturate (swap up to 37 GB), so queue 7B runs one at a time. Keep the
 lid open during long GPU runs: closed, the GPU throttles to about a sixth of

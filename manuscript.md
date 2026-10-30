@@ -1247,6 +1247,34 @@ The comparison with the published numbers carries that caveat and the
 unstated evaluation length and subsets; the comparison on identical pairs
 does not.
 
+An exploratory follow-up, not preregistered, tried a third pairing: the
+minimum-cost matching under CAGA's own residual. On it both constructions
+collapse (perplexity 11,398 for CAGA's construction and 12,142 for the fusion
+at 2,048 tokens; a clean rerun reproduced both), although layer by layer the
+pairing is as good as the fusion's own: 1.4 percent worse in the fusion's
+residual in the median layer and at most 6.0 percent outside layer 0, and
+within 0.83 percent in perplexity when any single layer is converted alone.
+Converting layers cumulatively and swapping single layers between the two
+pairings locates the whole difference in layer 1, and testing its pairs one
+at a time locates it in one pair: merging key-value heads 8 and 18, once layer
+0 is converted, takes perplexity on four windows from 6.2 to 2,325 (layer 0 on
+round 28's pairs) or 6,008 (on CAGA's), while layer 1's other pairs, and the
+merge with layer 0 unconverted, stay at 6.4 to 6.5. The merge switches on neuron 7890 of layer
+1's MLP, whose down-projection weight [2533, 7890] is the super weight that
+Yu et al. (2024) identify in this model and that writes its massive
+activation (Sun et al. 2024) into the first position. At ordinary tokens the
+neuron's median activation rises from 0.05 to 48.6, against 380 at the first
+position, because head 8's contribution to its gate input turns from -1.3 to
++18.5 when the merge removes its attention to newline tokens. On round 28's
+matching (8 with 1, 18 with 11) head 8's push of +10.6 is offset by head 11's
+-11.7, and the neuron stays off. Averaging, CAGA's construction on the other
+two pairings and 3-bit round-to-nearest quantization of the same model
+collapse without this spike. A per-layer criterion therefore cannot certify a
+conversion. One calibration window separates the cases: the median token's
+residual norm after layer 1 is 0.99 to 1.22 times the unconverted model's in
+the five full conversions without the spike and 22 and 26 times in the two
+with it.
+
 ### 6.9 Key-value heads that already serve several query heads
 
 Most current models already share key-value heads between several query heads,
@@ -1300,7 +1328,12 @@ Llama-2-7B against the best published training-free result, whose evaluation
 length, subsets and harness are not stated and whose pairing could not be
 reproduced, and in Section 6.9 on five models that already share key-value
 heads or are multi-head, where its weighting fails in the two Qwen2.5 cells
-that merge every key-value head into one; it was not tested after uptraining. The cross-layer audit of Section 6.7 covers four 3.8B to 7B models,
+that merge every key-value head into one; it was not tested after uptraining.
+Its Llama-2-7B result also depends on the pairing in a way its own residual
+does not see: on a third pairing, matched by CAGA's residual, one merged pair
+in layer 1 switches on the super-weight neuron and the conversion collapses
+(Section 6.8, exploratory); the fusion's matching avoided that pair, but
+nothing in the matching protects against it. The cross-layer audit of Section 6.7 covers four 3.8B to 7B models,
 one of them apparently misconfigured, and continuation loss after 1,536 tokens
 of context on WikiText-103. Where the sink sits on a mid-sequence, window-varying column
 (OLMo-2, late Qwen2.5-3B layers), the sink-operator identification weakens

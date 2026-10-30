@@ -746,3 +746,32 @@ since the freeze) on all five models: 3 of 4 clauses pass, K2 fails
 the second and third attempts) gave perplexity above 9,000 for both CAGA's
 construction and the weighted fusion on pairs matched by CAGA's residual; it is
 not reported until a diagnostic (llama2_followup_diag.py) locates the damage.
+
+Exploratory follow-up to round 28 (not preregistered; 2026-10-29 to 30, every
+job alone on the GPU under the memory watchdog and the battery guard). The
+parallel session's follow-up (llama2_caga_followup.py, which kept the second
+moments on disk to save memory) ran between round 27's second and third
+Qwen2.5-7B attempts: second moments 2,563 s, CAGA's construction and the fusion
+on pairs matched by CAGA's residual 2,660 and 2,621 s (llama2_followup.json;
+log llama2_followup.log, which also holds the next two runs). A diagnostic
+(llama2_followup_diag.py, 2026-10-30 02:31 UTC, 7,972 s with battery pauses)
+measured both pairings layer by layer. A clean rerun (llama2_followup_rerun.py,
+04:44 UTC, 8,475 s with one pause) repeated the two full conversions with the
+second moments in memory through round 28's convert function and reproduced
+both perplexities to every printed digit, so the on-disk second moments were
+not the cause. The bisection (llama2_followup_bisect.py, 07:12 to 08:45 UTC,
+5,580 s) converted layers cumulatively and swapped single layers, restoring
+unconverted weights from the checkpoint files (checked identical to the loaded
+model; restored perplexity equal to the unconverted value both times). The
+mechanism check (llama2_followup_mechanism.py, 08:45 to 09:07, 1,319 s;
+second moments of layers 0 and 1 only, the forward pass stopped after layer
+1), the first-layers test (llama2_followup_firstlayers.py, 09:07 to 10:51,
+6,219 s; layers converted one at a time through round 28's frozen convert
+function on a one-layer view of the model), the neuron check
+(llama2_followup_neuron.py, 10:51 to 10:57, 306 s), the quantization probe
+(llama2_quant_sink_probe.py, 10:57 to 11:15, 1,043 s) and the first-token
+check (llama2_quant_firsttoken.py, 11:15 to 11:18, 140 s) followed, each
+started by a waiter keyed on the previous job's process ID. The parallel
+session also ran a CPU probe on Llama-160m (llama2_dev/prefix160m.py,
+prefix160m.json) while the GPU was free; it may have overlapped the
+bisection's start by a few minutes, which does not affect an exploratory run.

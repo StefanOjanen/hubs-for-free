@@ -1125,4 +1125,71 @@ if glob.glob(LL_RESULTS):
     fig.text(0.012, 1 - 0.5 / H, SUB27, fontsize=10, color=INK2, va="top")
     fig.savefig(OUT + "fig27_vs_caga.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
+# ============ Figure 28: one pair of heads switches on the super weight (exploratory follow-up to round 28) ============
+BI, NE = "alignment_study/llama2_followup_bisect.json", "alignment_study/llama2_followup_neuron.json"
+if glob.glob(BI) and glob.glob(NE):
+    from matplotlib.ticker import FixedLocator, FixedFormatter, NullLocator
+    plt.rcParams["axes.grid"] = False
+    B, NU = json.load(open(BI)), json.load(open(NE))
+    fig = plt.figure(figsize=(15.2, 5.8))
+    axes = [fig.add_axes([0.055, 0.13, 0.25, 0.64]), fig.add_axes([0.365, 0.13, 0.25, 0.64]), fig.add_axes([0.805, 0.13, 0.18, 0.64])]
+    TK = [5, 10, 20, 50, 100, 1000, 10000]
+    def logy(ax, lo=4, hi=3e4):
+        ax.set_yscale("log"); ax.set_ylim(lo, hi)
+        ax.yaxis.set_major_locator(FixedLocator(TK)); ax.yaxis.set_major_formatter(FixedFormatter([f"{v:,}" for v in TK])); ax.yaxis.set_minor_locator(NullLocator())
+    ax = axes[0]
+    k = np.arange(1, len(B["cumulative"]["fuse_matched"]) + 1)
+    for key, c, lab, f in (("fuse_matched", S1, "round 28's pairs", 1.9), ("caga_matched", S2, "pairs matched by CAGA's residual", 2.4)):
+        v = B["cumulative"][key]
+        ax.plot(k, v, color=c, lw=2.2, zorder=3)
+        ax.text(31.5, v[-2] * f, lab, color=INK2, fontsize=10, ha="right", va="center")
+    ax.axhline(B["base_ppl"], color=MUTED, lw=1.2, ls=(0, (4, 3)), zorder=1)
+    ax.text(31.5, B["base_ppl"] * 0.83, f"unconverted {B['base_ppl']:.1f}", color=MUTED, fontsize=9.5, ha="right", va="top")
+    ax.annotate("layer 1 added", xy=(2, B["cumulative"]["caga_matched"][1]), xytext=(6, 260), color=INK2, fontsize=10,
+                arrowprops=dict(arrowstyle="-", color=MUTED, lw=1))
+    logy(ax); ax.set_xlim(0.5, 32.5); ax.set_xticks([1, 8, 16, 24, 32])
+    ax.set_xlabel("layers converted (0 to k)", fontsize=10.5)
+    ax.set_ylabel("perplexity, 4 WikiText-2 windows (log)", fontsize=10.5)
+    ax.set_title("Converting layer by layer", loc="left", fontsize=12, color=INK, pad=8)
+    ax = axes[1]
+    L = np.arange(len(B["fuse_except_k_on_caga_pairs"]))
+    for key, c, lab in (("fuse_except_k_on_caga_pairs", S1, "round 28's pairs, layer k on CAGA's"),
+                        ("caga_except_k_on_fuse_pairs", S2, "CAGA's pairs, layer k on round 28's")):
+        ax.scatter(L, B[key], s=34, color=c, edgecolors=SURF, linewidths=1.2, zorder=3, label=lab)
+    ax.axvline(1, color=GRID, lw=7, zorder=0)
+    ax.text(1.9, 5.2, "layer 1", color=INK2, fontsize=10, va="center")
+    logy(ax); ax.set_xlim(-1, 32); ax.set_xticks([0, 1, 8, 16, 24, 31])
+    ax.set_xlabel("layer k swapped to the other pairing", fontsize=10.5)
+    ax.legend(loc="center right", bbox_to_anchor=(1.0, 0.4), fontsize=9.5, handletextpad=0.2, borderaxespad=0.2)
+    ax.set_title("Swapping one layer", loc="left", fontsize=12, color=INK, pad=8)
+    ax = axes[2]
+    C28 = [("unconverted", "unconverted"), ("pair_8_18_alone", "heads 8 and 18 merged only"),
+           ("layer0_caga", "layer 0 only"), ("layer0_caga_layer1_fuse", "layer 0, layer 1 on round 28's pairs"),
+           ("layer0_fuse_pair_8_18", "layer 0 (round 28's pairs), heads 8 and 18"),
+           ("layer0_caga_pair_8_18", "layer 0, heads 8 and 18 merged")]
+    rows = C28[::-1]
+    for y, (key, lab) in enumerate(rows):
+        r = NU["configs"][key]; bad = r["ppl_4_windows"] > 100
+        ax.scatter([r["neuron_abs_median_rest"]], [y], s=80, color=S2 if bad else S1, edgecolors=SURF, linewidths=1.4, zorder=3)
+        ax.text(r["neuron_abs_median_rest"] / 1.7 if bad else r["neuron_abs_median_rest"] * 1.7, y,
+                f"ppl {r['ppl_4_windows']:,.0f}" if bad else f"ppl {r['ppl_4_windows']:.1f}", color=INK2, fontsize=9.5, va="center",
+                ha="right" if bad else "left")
+    first = NU["configs"]["unconverted"]["neuron_first"]
+    ax.axvline(first, color=MUTED, lw=1.2, ls=(0, (4, 3)), zorder=1)
+    ax.text(first * 0.8, len(rows) - 0.45, f"first token: {first:.0f}", color=MUTED, fontsize=9.5, ha="right", va="bottom")
+    ax.set_xscale("log"); ax.set_xlim(3e-3, 1.5e3); ax.xaxis.set_minor_locator(NullLocator())
+    ax.set_yticks(range(len(rows))); ax.set_yticklabels([lab for _, lab in rows], fontsize=9.5)
+    ax.set_ylim(-0.6, len(rows) - 0.1)
+    ax.set_xlabel(f"neuron {NU['neurons'][0]}, median |activation|, ordinary tokens (log)", fontsize=10.5)
+    ax.set_title("Layer 1's super-weight neuron", loc="left", fontsize=12, color=INK, pad=8)
+    for ax in axes:
+        ax.tick_params(length=0); ax.grid(axis="y" if ax is not axes[2] else "x", color=GRID, lw=0.8)
+        for sp in ("left", "bottom"): ax.spines[sp].set_color(GRID)
+    fig.text(0.012, 0.985, "One pair of heads in layer 1 switches Llama-2-7B's super-weight neuron on at every token",
+             fontsize=15, color=INK, va="top")
+    fig.text(0.012, 0.915, "Exploratory follow-up to preregistration 28, not registered. Weighted fusion, 32 to 16 key-value heads, no training."
+             " Right: layer 0 on CAGA-matched pairs unless stated; neuron 7890 writes through down_proj[2533, 7890], the super weight of Yu et al. (2024).",
+             fontsize=10, color=INK2, va="top", wrap=True)
+    fig.savefig(OUT + "fig28_super_weight_pair.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
 print("FIGURES_DONE", sorted(glob.glob(OUT + "*")))

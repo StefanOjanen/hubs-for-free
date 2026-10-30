@@ -1327,7 +1327,10 @@ training-free conversion at perplexity 16.8 to 18.5 against the 25.1 published
 for the best training-free method, and 6 points more zero-shot accuracy. CAGA's
 construction, which shares the fusion's key fit but takes its values from the
 weights alone, depends on its pairing far more than the fusion does; on the
-pairs tried here its perplexity is 19 to 53 times the fusion's. The steering
+pairs tried here its perplexity is 19 to 53 times the fusion's. (Added
+2026-10-30: on a third pairing, matched by CAGA's own residual, both
+constructions collapse, through one merged pair in layer 1; see the
+exploratory follow-up at the end of this note.) The steering
 check separates the constructions as perplexity does: of the 20 tokens a push
 along an MLP neuron raises most in the original model, the fused models raise 30
 percent among their own 20, CAGA's construction 4 to 5 percent. The damage of
@@ -1372,3 +1375,102 @@ points of accuracy. The weighting, which helps in seven of nine cells, hurts in
 both Qwen2.5 cells where every key-value head merges into one. Both are models
 whose projections carry biases, handled here through the augmented second
 moment; whether the biases are the reason was not tested.
+
+## Exploratory follow-up to round 28: one pair of heads switches on the super weight (2026-10-29 to 30, not preregistered)
+
+Round 28 compared constructions on two pairings because CAGA's own pairing
+cannot be reproduced from its paper. A parallel session of the assistant asked
+whether CAGA's construction does better on pairs chosen for it, the minimum-cost
+matching under CAGA's own residual (`llama2_caga_followup.py`). On Llama-2-7B
+both constructions collapsed on those pairs: perplexity 11,398 for CAGA's
+construction and 12,142 for the weighted fusion at 2,048 tokens (9,665 and
+13,560 at 4,096), against 323 and 16.8 on round 28's matched pairs. A clean
+rerun through round 28's conversion function reproduced both to every printed
+digit (`llama2_followup_rerun.json`; the restored model gives 5.470). Nothing
+here was registered; the scripts and outputs are committed as they ran.
+- Layer by layer the two pairings look alike (`llama2_followup_diag.json`, 8
+  windows of 2,048 tokens). They share 185 of 512 pairs. In the fusion's own
+  residual CAGA's pairs are 1.4 percent worse in the median layer, at most 6.0
+  percent outside layer 0 (17.8 percent in layer 0), and converting any single
+  layer alone gives perplexities within 0.83 percent of each other.
+- The collapse comes from layer 1 (`llama2_followup_bisect.json`, 4 windows,
+  unconverted 6.20). Converting layers 0 to k on round 28's pairs raises
+  perplexity smoothly to 20.0 at all 32 layers; on CAGA's pairs it is 6.50
+  after layer 0 and 2,316 once layer 1 is added. Every layer on round 28's
+  pairs except layer 1 on CAGA's gives 2,231, and every other one-layer swap
+  19.5 to 20.6; every layer on CAGA's pairs except layer 1 on round 28's gives
+  21.8, and every other swap 1,969 to 17,524.
+- One pair is enough (`llama2_followup_mechanism.json`). With layer 0 converted
+  on CAGA's pairs, merging key-value heads 8 and 18 of layer 1 and nothing else
+  in that layer gives 6,008; each of layer 1's other 15 pairs gives 6.41 to
+  6.53. With layer 0 on round 28's pairs the same merge gives 2,325, and with
+  layer 0 unconverted 6.49 (`llama2_followup_neuron.json`). No single pair of
+  layer 0 is responsible: with layer 1 on CAGA's pairs, each of layer 0's pairs
+  alone gives 6.29 to 6.42.
+- The unit. Unconverted, the residual stream after layer 1 holds very large
+  values at two positions only, the first (800, in dimension 2533) and the
+  first newline (1,960); the median position's largest entry is 0.83 (the
+  massive activations of Sun et al. 2024). With layers 0 and 1 converted on
+  CAGA's pairs, 418 of 2,048 positions exceed 100 and the median position's
+  largest entry is 51, in dimension 2533. Dimension 2533 is written most
+  strongly by neuron 7890 of layer 1's MLP, whose down-projection weight
+  [2533, 7890] is the super weight Yu et al. (2024) identify in this model.
+  The neuron's activation at ordinary tokens has median 0.05 unconverted and
+  48.6 with layer 0 converted and heads 8 and 18 merged, with 1,760 of 2,046
+  ordinary positions above 10, against 380 at the first position.
+- Why the merge flips it (`llama2_followup_neuron.json`). At ordinary tokens the
+  neuron's gate input is the sum of the residual stream's and every head's
+  contributions, and a few heads hold it negative. Head 8 contributes -1.3
+  unconverted. Converting layer 0 on CAGA's pairs gives two later newline
+  tokens large activations as well (1,952 and 572), and head 8 then puts 82
+  percent of its attention on newline tokens (27 percent unconverted); merged
+  with head 18, it puts 8 percent there, and its contribution to the gate
+  becomes +18.5 against head 11's -5.1. On round 28's pairs (8 with 1, 18 with
+  11) head 8 contributes +10.6 and head 11 -11.7, and the neuron stays off
+  (median 0.007).
+- The other collapses of round 28 are not this (`llama2_followup_firstlayers.json`,
+  8 windows, unconverted 5.03; layers 2 to 31 converted, then layer 0, then
+  layer 1; in brackets the median position's norm after layer 1 relative to
+  the unconverted model's 2.7). Averaging on neighbouring pairs: 1,537, 777,
+  941 (1.22). CAGA's construction on round 28's pairs: 53.3, 79.3, 266 (1.19);
+  on neighbouring pairs 75.9, 327, 641 (1.06); on CAGA's pairs 97.3, 177,
+  12,324 (25.8). The weighted fusion on round 28's pairs: 13.1, 14.5, 16.0
+  (1.02); on neighbouring pairs 15.6, 15.9, 19.9 (0.99); on CAGA's pairs 13.3,
+  15.8, 12,933 (22.0). The spike appears with the one pairing that merges heads
+  8 and 18, under both constructions, and with no other. Leaving layers 0 and
+  1 unconverted divides CAGA's construction's perplexity by 5.0 to 8.4 on the
+  pairings without the spike and the fusion's by 1.2 to 1.3; for averaging it
+  makes perplexity worse (1,537 against 941).
+- At small scale it does not happen: on Llama-160m (the parallel session's CPU
+  probe, `llama2_dev/prefix160m.py` and `.json`, 16 windows of 512 tokens,
+  unconverted 33.7) the fusion grows smoothly with depth on both pairings, to
+  80.3 on the fusion's matching and 81.2 on CAGA's at all 12 layers.
+- Quantization fails differently (`llama2_quant_sink_probe.json`,
+  `llama2_quant_firsttoken.json`; 8 windows, unconverted 5.03). Round-to-nearest
+  weights, asymmetric, every linear layer of the decoder blocks: 4 bits per
+  output channel 5.67, 3 bits per output channel 399 (OmniQuant reports 539 on
+  the full test set), 3 bits in groups of 128 6.23, 2 bits in groups of 128
+  2,714. No configuration puts an ordinary position above 100 after layers 1
+  or 2. At 3 bits per channel, keeping layer 1 in bfloat16 gives 67.8 (its
+  attention alone 124, its MLP alone 92.7), keeping the last layer 106,
+  keeping layer 0 359, and quantizing only layers 0 and 1 gives 5.50.
+  Quantizing layer 0 lowers the first position's activation after layer 1 from
+  800 to about 340 in every configuration that quantizes it, including the one
+  that quantizes nothing else (perplexity 5.50), so neither a spread nor a
+  weakened first-token activation accounts for the 3-bit collapse.
+Reading: a per-layer criterion, ours or CAGA's, cannot see this failure. One
+merged pair in layer 1, harmless alone and within 6 percent of the best
+matching in the fusion's residual, switches Llama-2-7B's super-weight neuron on
+at ordinary tokens once layer 0 is converted, and later layers then treat those
+tokens as attention sinks. Round 28's matching avoided it by pairing heads 8 and
+18 elsewhere, not by anything in its criterion. A check on one calibration
+window separates the cases before any evaluation: after layer 1 the median
+position's largest entry, relative to the unconverted model's, is 0.84 to 0.97
+for the conversions of layers 0 and 1 that did not collapse and 21 and 62 for
+the two that did (perplexity 356 and 2,316), and in the full conversions the
+median position's norm is 0.99 to 1.22 times the unconverted model's for the
+five arms without the spike and 22 and 26 times for the two with it. Round 28's
+statement that CAGA's construction depends on its pairing far more than the
+fusion does holds for the two pairings round 28 tried, not for this third one,
+on which both collapse. Low-bit round-to-nearest quantization of the same model
+collapses through another route.

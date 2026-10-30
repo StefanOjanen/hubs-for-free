@@ -1,0 +1,135 @@
+bisection starting Fri Oct 30 07:12:11 UTC 2026
+[  1000s] second moments from 262144 tokens
+[  1035s] unconverted: ppl 6.197 on 4 windows
+[  1079s] fuse_matched: layers 0-0 converted, ppl 6.405 (44s)
+[  1122s] fuse_matched: layers 0-1 converted, ppl 6.880 (43s)
+[  1166s] fuse_matched: layers 0-2 converted, ppl 7.232 (43s)
+[  1211s] fuse_matched: layers 0-3 converted, ppl 7.555 (45s)
+[  1254s] fuse_matched: layers 0-4 converted, ppl 7.992 (43s)
+[  1297s] fuse_matched: layers 0-5 converted, ppl 8.193 (43s)
+[  1341s] fuse_matched: layers 0-6 converted, ppl 8.619 (44s)
+[  1387s] fuse_matched: layers 0-7 converted, ppl 9.118 (45s)
+[  1430s] fuse_matched: layers 0-8 converted, ppl 9.625 (44s)
+[  1476s] fuse_matched: layers 0-9 converted, ppl 10.288 (46s)
+[  1520s] fuse_matched: layers 0-10 converted, ppl 11.316 (44s)
+[  1563s] fuse_matched: layers 0-11 converted, ppl 11.967 (43s)
+[  1608s] fuse_matched: layers 0-12 converted, ppl 12.791 (45s)
+[  1651s] fuse_matched: layers 0-13 converted, ppl 13.255 (44s)
+[  1696s] fuse_matched: layers 0-14 converted, ppl 13.971 (44s)
+[  1740s] fuse_matched: layers 0-15 converted, ppl 14.694 (44s)
+[  1783s] fuse_matched: layers 0-16 converted, ppl 15.491 (43s)
+[  1829s] fuse_matched: layers 0-17 converted, ppl 15.830 (46s)
+[  1875s] fuse_matched: layers 0-18 converted, ppl 16.244 (46s)
+[  1919s] fuse_matched: layers 0-19 converted, ppl 16.644 (44s)
+[  1963s] fuse_matched: layers 0-20 converted, ppl 16.928 (44s)
+[  2011s] fuse_matched: layers 0-21 converted, ppl 16.998 (48s)
+[  2056s] fuse_matched: layers 0-22 converted, ppl 17.329 (45s)
+[  2102s] fuse_matched: layers 0-23 converted, ppl 17.332 (46s)
+[  2145s] fuse_matched: layers 0-24 converted, ppl 17.353 (43s)
+[  2190s] fuse_matched: layers 0-25 converted, ppl 17.644 (45s)
+[  2234s] fuse_matched: layers 0-26 converted, ppl 17.850 (45s)
+[  2277s] fuse_matched: layers 0-27 converted, ppl 18.161 (43s)
+[  2320s] fuse_matched: layers 0-28 converted, ppl 18.712 (43s)
+[  2365s] fuse_matched: layers 0-29 converted, ppl 19.164 (44s)
+[  2408s] fuse_matched: layers 0-30 converted, ppl 19.587 (44s)
+[  2451s] fuse_matched: layers 0-31 converted, ppl 20.016 (43s)
+[  2488s] restored: ppl 6.197
+[  2532s] caga_matched: layers 0-0 converted, ppl 6.501 (45s)
+[  2578s] caga_matched: layers 0-1 converted, ppl 2315.813 (46s)
+[  2620s] caga_matched: layers 0-2 converted, ppl 2222.899 (43s)
+[  2665s] caga_matched: layers 0-3 converted, ppl 2319.459 (45s)
+[  2708s] caga_matched: layers 0-4 converted, ppl 3443.084 (42s)
+[  2752s] caga_matched: layers 0-5 converted, ppl 4184.597 (44s)
+[  2796s] caga_matched: layers 0-6 converted, ppl 4189.280 (45s)
+[  2840s] caga_matched: layers 0-7 converted, ppl 4219.085 (44s)
+[  2885s] caga_matched: layers 0-8 converted, ppl 4889.053 (45s)
+[  2929s] caga_matched: layers 0-9 converted, ppl 4750.049 (44s)
+[  2973s] caga_matched: layers 0-10 converted, ppl 4977.886 (44s)
+[  3016s] caga_matched: layers 0-11 converted, ppl 5309.581 (43s)
+[  3059s] caga_matched: layers 0-12 converted, ppl 5130.471 (43s)
+[  3103s] caga_matched: layers 0-13 converted, ppl 5458.442 (43s)
+[  3145s] caga_matched: layers 0-14 converted, ppl 5783.997 (42s)
+[  3187s] caga_matched: layers 0-15 converted, ppl 6178.164 (42s)
+[  3232s] caga_matched: layers 0-16 converted, ppl 6892.042 (45s)
+[  3275s] caga_matched: layers 0-17 converted, ppl 6930.302 (43s)
+[  3322s] caga_matched: layers 0-18 converted, ppl 7061.198 (47s)
+[  3365s] caga_matched: layers 0-19 converted, ppl 7442.496 (43s)
+[  3409s] caga_matched: layers 0-20 converted, ppl 7749.427 (44s)
+[  3453s] caga_matched: layers 0-21 converted, ppl 7388.354 (44s)
+[  3497s] caga_matched: layers 0-22 converted, ppl 7896.431 (44s)
+[  3543s] caga_matched: layers 0-23 converted, ppl 7622.914 (46s)
+[  3587s] caga_matched: layers 0-24 converted, ppl 8175.186 (44s)
+[  3631s] caga_matched: layers 0-25 converted, ppl 8125.934 (44s)
+[  3677s] caga_matched: layers 0-26 converted, ppl 7729.605 (46s)
+[  3719s] caga_matched: layers 0-27 converted, ppl 7807.476 (42s)
+[  3761s] caga_matched: layers 0-28 converted, ppl 9837.765 (42s)
+[  3804s] caga_matched: layers 0-29 converted, ppl 9830.862 (43s)
+[  3847s] caga_matched: layers 0-30 converted, ppl 10097.432 (43s)
+[  3893s] caga_matched: layers 0-31 converted, ppl 15395.897 (45s)
+[  3931s] restored: ppl 6.197
+[  3998s] CAGA's pairs except layer 0 on round 28's: ppl 1969.316
+[  4022s] CAGA's pairs except layer 1 on round 28's: ppl 21.754
+[  4046s] CAGA's pairs except layer 2 on round 28's: ppl 15282.357
+[  4070s] CAGA's pairs except layer 3 on round 28's: ppl 15182.546
+[  4094s] CAGA's pairs except layer 4 on round 28's: ppl 15653.798
+[  4120s] CAGA's pairs except layer 5 on round 28's: ppl 15285.850
+[  4145s] CAGA's pairs except layer 6 on round 28's: ppl 15419.121
+[  4171s] CAGA's pairs except layer 7 on round 28's: ppl 15460.720
+[  4194s] CAGA's pairs except layer 8 on round 28's: ppl 15303.650
+[  4218s] CAGA's pairs except layer 9 on round 28's: ppl 15632.134
+[  4242s] CAGA's pairs except layer 10 on round 28's: ppl 16289.244
+[  4266s] CAGA's pairs except layer 11 on round 28's: ppl 15669.608
+[  4289s] CAGA's pairs except layer 12 on round 28's: ppl 15326.245
+[  4313s] CAGA's pairs except layer 13 on round 28's: ppl 15225.541
+[  4339s] CAGA's pairs except layer 14 on round 28's: ppl 15210.777
+[  4364s] CAGA's pairs except layer 15 on round 28's: ppl 15051.777
+[  4390s] CAGA's pairs except layer 16 on round 28's: ppl 14518.031
+[  4415s] CAGA's pairs except layer 17 on round 28's: ppl 15249.097
+[  4441s] CAGA's pairs except layer 18 on round 28's: ppl 15657.256
+[  4467s] CAGA's pairs except layer 19 on round 28's: ppl 15349.316
+[  4491s] CAGA's pairs except layer 20 on round 28's: ppl 14863.131
+[  4516s] CAGA's pairs except layer 21 on round 28's: ppl 17524.268
+[  4541s] CAGA's pairs except layer 22 on round 28's: ppl 14625.187
+[  4565s] CAGA's pairs except layer 23 on round 28's: ppl 14483.327
+[  4590s] CAGA's pairs except layer 24 on round 28's: ppl 15418.437
+[  4615s] CAGA's pairs except layer 25 on round 28's: ppl 14986.184
+[  4640s] CAGA's pairs except layer 26 on round 28's: ppl 15433.950
+[  4665s] CAGA's pairs except layer 27 on round 28's: ppl 14088.298
+[  4693s] CAGA's pairs except layer 28 on round 28's: ppl 16834.856
+[  4718s] CAGA's pairs except layer 29 on round 28's: ppl 16225.967
+[  4742s] CAGA's pairs except layer 30 on round 28's: ppl 15031.479
+[  4767s] CAGA's pairs except layer 31 on round 28's: ppl 14339.878
+[  4830s] round 28's pairs except layer 0 on CAGA's: ppl 20.582
+[  4855s] round 28's pairs except layer 1 on CAGA's: ppl 2230.622
+[  4879s] round 28's pairs except layer 2 on CAGA's: ppl 20.251
+[  4902s] round 28's pairs except layer 3 on CAGA's: ppl 20.099
+[  4926s] round 28's pairs except layer 4 on CAGA's: ppl 19.945
+[  4950s] round 28's pairs except layer 5 on CAGA's: ppl 20.099
+[  4974s] round 28's pairs except layer 6 on CAGA's: ppl 19.537
+[  4997s] round 28's pairs except layer 7 on CAGA's: ppl 20.208
+[  5021s] round 28's pairs except layer 8 on CAGA's: ppl 20.054
+[  5045s] round 28's pairs except layer 9 on CAGA's: ppl 20.551
+[  5069s] round 28's pairs except layer 10 on CAGA's: ppl 20.041
+[  5092s] round 28's pairs except layer 11 on CAGA's: ppl 19.741
+[  5116s] round 28's pairs except layer 12 on CAGA's: ppl 20.208
+[  5140s] round 28's pairs except layer 13 on CAGA's: ppl 19.808
+[  5164s] round 28's pairs except layer 14 on CAGA's: ppl 19.766
+[  5188s] round 28's pairs except layer 15 on CAGA's: ppl 19.876
+[  5211s] round 28's pairs except layer 16 on CAGA's: ppl 20.313
+[  5235s] round 28's pairs except layer 17 on CAGA's: ppl 20.093
+[  5259s] round 28's pairs except layer 18 on CAGA's: ppl 19.969
+[  5283s] round 28's pairs except layer 19 on CAGA's: ppl 19.975
+[  5307s] round 28's pairs except layer 20 on CAGA's: ppl 19.916
+[  5331s] round 28's pairs except layer 21 on CAGA's: ppl 20.004
+[  5356s] round 28's pairs except layer 22 on CAGA's: ppl 20.002
+[  5380s] round 28's pairs except layer 23 on CAGA's: ppl 19.967
+[  5404s] round 28's pairs except layer 24 on CAGA's: ppl 20.154
+[  5428s] round 28's pairs except layer 25 on CAGA's: ppl 20.249
+[  5453s] round 28's pairs except layer 26 on CAGA's: ppl 20.001
+[  5477s] round 28's pairs except layer 27 on CAGA's: ppl 19.978
+[  5501s] round 28's pairs except layer 28 on CAGA's: ppl 19.871
+[  5526s] round 28's pairs except layer 29 on CAGA's: ppl 20.113
+[  5550s] round 28's pairs except layer 30 on CAGA's: ppl 20.043
+[  5574s] round 28's pairs except layer 31 on CAGA's: ppl 20.041
+[  5580s] BISECT_DONE
+BISECT_PIPELINE_EXIT Fri Oct 30 08:45:15 UTC 2026

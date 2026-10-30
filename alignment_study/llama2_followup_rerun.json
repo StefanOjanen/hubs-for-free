@@ -1,0 +1,17 @@
+{
+ "model": "NousResearch/Llama-2-7b-hf",
+ "revision": "8efe6c9b93655b934e27bd9981e3ec13e55aee9d",
+ "exploratory": true,
+ "groups_from": "alignment_study/llama2_followup.json",
+ "evals": {
+  "fuse/caga_matched": {
+   "ppl_2048": 12141.613686474004,
+   "ppl_4096": 13560.35423951369
+  },
+  "caga/caga_matched": {
+   "ppl_2048": 11398.304640383802,
+   "ppl_4096": 9665.31997283296
+  }
+ },
+ "restore_check_ppl_2048": 5.470339118144039
+}

@@ -238,6 +238,11 @@ Each instrument below exists because a finding above required it.
   same steps gave the 16.8 above in about half an hour on a laptop. The
   converted model is still well behind the original (three times its
   perplexity), a starting point for uptraining rather than a finished model.
+  One caution: on Llama-2-7B a different but equally good-looking pairing
+  collapsed, because one merged pair in layer 1 switched on the model's
+  super-weight neuron at every token (below). No per-layer criterion sees
+  this, so compare the converted model's residual stream after the first
+  layers with the original's on one calibration window before relying on it.
 
 ## Where the work goes next
 
@@ -443,7 +448,8 @@ Each instrument below exists because a finding above required it.
   CAGA's construction as its paper specifies it gives 323 and 845 at 2,048
   tokens in the same harness, far from its published 25.1: it depends on a
   pairing the paper does not specify fully enough to reproduce, while the
-  fusion stays at 16.8 to 19.7 on either pairing. A functional check in the manner of
+  fusion stays at 16.8 to 19.7 on both pairings tried (a third pairing,
+  below, breaks both). A functional check in the manner of
   steering-based neuron explorers separates them the same way: pushed along
   MLP neurons' write directions, the fused model raises 30 percent of the
   tokens the original raises most, CAGA's construction 4 to 5 percent. All
@@ -452,6 +458,34 @@ Each instrument below exists because a finding above required it.
 
 <p align="center"><img src="figures/readme/fig27_vs_caga.png" alt="Three-panel dot plot for Llama-2-7B converted from 32 to 16 key-value heads without training. WikiText-2 perplexity at 2,048 and 4,096 tokens: unconverted 5.47 and 5.12, the weighted fusion on matched pairs 16.8 and 18.5 and on neighbouring pairs 19.7 and 25.6, CAGA's construction 323 to 1,348, averaging about 1,090, with CAGA's published 25.1 marked. Seven-task zero-shot average with intervals: unconverted 64.1, fusion 50.4 and 48.2, CAGA's construction 38.8 and 35.7, averaging 35.2, with CAGA's published 44.3 marked" width="880"></p>
 <p align="center"><em>Fitting the shared heads to what the heads compute, with pairs chosen the same way, beats the best published training-free conversion on its own benchmark.</em></p>
+
+- **One pair of heads can switch on the super weight.** Since CAGA's pairing
+  cannot be reproduced, an exploratory follow-up (not preregistered) paired
+  Llama-2-7B's heads by CAGA's own residual instead. On those pairs both
+  constructions collapsed, the fusion to perplexity 12,142 and CAGA's
+  construction to 11,398, although layer by layer the pairs are as good as the
+  fusion's own: within 6 percent in the fusion's residual outside layer 0, and
+  within 1 percent in perplexity when any one layer is converted alone. A
+  bisection traced the whole difference to one merged pair, key-value heads 8
+  and 18 of layer 1, harmless on its own and ruinous once layer 0 is converted
+  too. The unit it flips is the super weight (Yu et al. 2024): neuron 7890 of
+  layer 1's MLP, which writes Llama-2-7B's largest massive activation (Sun et
+  al. 2024) into the first position and nowhere else. At ordinary tokens a few
+  heads hold that neuron's input negative. Merged with head 18, head 8 stops
+  attending to newline tokens and pushes the input positive instead; the neuron
+  then fires at 86 percent of ordinary tokens, and later layers treat them all
+  as attention sinks. Round 28's matching avoided this by pairing heads 8 and
+  18 elsewhere, not by anything in its criterion. The other collapses seen so
+  far take other routes: averaging, CAGA's construction on the other pairings,
+  and 3-bit quantization of the same model. The practical lesson is that no
+  per-layer criterion certifies a conversion, while one calibration window
+  can flag this failure: in the seven full conversions measured, the median
+  token's residual norm after layer 1 is 0.99 to 1.22 times the unconverted
+  model's in the five without the spike and 22 and 26 times in the two with
+  it.
+
+<p align="center"><img src="figures/readme/fig28_super_weight_pair.png" alt="Three-panel figure for Llama-2-7B converted from 32 to 16 key-value heads by the weighted fusion. Left: perplexity as layers 0 to k are converted; on round 28's pairs it rises smoothly to 20, on pairs matched by CAGA's residual it jumps to about 2,300 when layer 1 is added and reaches 15,400. Middle: swapping one layer to the other pairing changes nothing except at layer 1, which alone breaks round 28's pairing (2,231) and alone rescues CAGA's (21.8). Right: the median activation of layer 1's neuron 7890 at ordinary tokens is about 0.01 to 0.4 in every benign configuration and 15 to 49 when heads 8 and 18 are merged after layer 0 is converted, against 380 at the first token" width="880"></p>
+<p align="center"><em>Per-layer criteria cannot see it: one merged pair in layer 1, harmless alone, turns the super-weight neuron on at every token once layer 0 is converted.</em></p>
 
 - **Cross-layer KV compression, against the same nulls.** Two published
   methods compress the cache across layers on the premise that adjacent
@@ -706,7 +740,9 @@ covariance-metric key fit with a weight-space value SVD (Wang, Jiang and Liu
 2026), and KQ-SVD's query-aware low-rank keys for a single head (2026); the
 fusion here differs in fitting both shared projections in closed form to what
 the heads compute, weighted by the queries and output projections of every
-head in the group.
+head in the group. The super weight that one merged pair switches on is Yu et
+al.'s (2024), who show that removing it destroys the model; the failure here is
+its opposite, the same neuron firing where it should not.
 
 ## Repository map
 

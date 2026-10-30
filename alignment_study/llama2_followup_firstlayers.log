@@ -1,0 +1,27 @@
+firstlayers starting Fri Oct 30 09:07:35 UTC 2026
+[   906s] second moments from 262144 tokens
+[   957s] unconverted: ppl 5.027, median norm after layer 1 2.7
+[  1008s] mean/neighbour, layers_2_to_31: ppl 1536.675; after layer 1 median norm 2.7, 1 positions above 100 (51s)
+[  1058s] mean/neighbour, plus_layer_0: ppl 776.969; after layer 1 median norm 3.1, 4 positions above 100 (101s)
+[  1108s] mean/neighbour, all_layers: ppl 941.040; after layer 1 median norm 3.3, 8 positions above 100 (151s)
+[  1840s] caga/neighbour, layers_2_to_31: ppl 75.915; after layer 1 median norm 2.7, 1 positions above 100 (722s)
+[  1914s] caga/neighbour, plus_layer_0: ppl 327.248; after layer 1 median norm 2.8, 1 positions above 100 (797s)
+[  1987s] caga/neighbour, all_layers: ppl 641.157; after layer 1 median norm 2.9, 2 positions above 100 (869s)
+[  2710s] caga/paired, layers_2_to_31: ppl 53.311; after layer 1 median norm 2.7, 1 positions above 100 (712s)
+[  2781s] caga/paired, plus_layer_0: ppl 79.281; after layer 1 median norm 3.0, 4 positions above 100 (783s)
+[  2849s] caga/paired, all_layers: ppl 265.634; after layer 1 median norm 3.2, 5 positions above 100 (851s)
+[  3571s] caga/caga_matched, layers_2_to_31: ppl 97.256; after layer 1 median norm 2.7, 1 positions above 100 (714s)
+[  3644s] caga/caga_matched, plus_layer_0: ppl 177.416; after layer 1 median norm 3.0, 4 positions above 100 (787s)
+[  3714s] caga/caga_matched, all_layers: ppl 12323.606; after layer 1 median norm 69.5, 128 positions above 100 (857s)
+[  4387s] fuse/neighbour, layers_2_to_31: ppl 15.628; after layer 1 median norm 2.7, 1 positions above 100 (667s)
+[  4455s] fuse/neighbour, plus_layer_0: ppl 15.858; after layer 1 median norm 2.8, 1 positions above 100 (735s)
+[  4525s] fuse/neighbour, all_layers: ppl 19.877; after layer 1 median norm 2.7, 1 positions above 100 (805s)
+[  5199s] fuse/paired, layers_2_to_31: ppl 13.088; after layer 1 median norm 2.7, 1 positions above 100 (661s)
+[  5271s] fuse/paired, plus_layer_0: ppl 14.543; after layer 1 median norm 2.8, 2 positions above 100 (734s)
+[  5339s] fuse/paired, all_layers: ppl 16.000; after layer 1 median norm 2.7, 2 positions above 100 (802s)
+[  6017s] fuse/caga_matched, layers_2_to_31: ppl 13.267; after layer 1 median norm 2.7, 1 positions above 100 (667s)
+[  6084s] fuse/caga_matched, plus_layer_0: ppl 15.789; after layer 1 median norm 2.8, 3 positions above 100 (734s)
+[  6157s] fuse/caga_matched, all_layers: ppl 12932.833; after layer 1 median norm 59.2, 191 positions above 100 (807s)
+[  6219s] restored: ppl 5.027
+[  6219s] FIRSTLAYERS_DONE
+PIPELINE_EXIT Fri Oct 30 10:51:20 UTC 2026

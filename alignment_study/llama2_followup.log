@@ -1,0 +1,46 @@
+[  2563s] second moments from 262144 tokens
+[  2665s] CAGA-residual matching chosen; 185 of 512 pairs also in the fusion-residual matching
+[  5354s] caga on pairs matched by CAGA's residual: ppl 2048 11398.30, 4096 9665.32 (2660s)
+[  7989s] fuse on pairs matched by CAGA's residual: ppl 2048 12141.61, 4096 13560.35 (2621s)
+[  8013s] FOLLOWUP_DONE
+=== Fri Oct 30 04:31:03 EET 2026 diagnostic of the exploratory follow-up (per-layer residuals and single-layer conversions)
+[  2378s] second moments from 262144 tokens
+[  2587s] layer  0: residual caga 0.019 fuse 0.016; ppl converting only this layer: caga pairs 5.20, fuse pairs 5.15
+[  2722s] layer  1: residual caga 0.021 fuse 0.019; ppl converting only this layer: caga pairs 5.13, fuse pairs 5.10
+[  2859s] layer  2: residual caga 0.084 fuse 0.082; ppl converting only this layer: caga pairs 5.15, fuse pairs 5.14
+[  2997s] layer  3: residual caga 0.124 fuse 0.122; ppl converting only this layer: caga pairs 5.12, fuse pairs 5.11
+[  3132s] layer  4: residual caga 0.140 fuse 0.138; ppl converting only this layer: caga pairs 5.08, fuse pairs 5.09
+[  3272s] layer  5: residual caga 0.156 fuse 0.154; ppl converting only this layer: caga pairs 5.08, fuse pairs 5.09
+[  3409s] layer  6: residual caga 0.123 fuse 0.121; ppl converting only this layer: caga pairs 5.08, fuse pairs 5.10
+[  3545s] layer  7: residual caga 0.133 fuse 0.132; ppl converting only this layer: caga pairs 5.08, fuse pairs 5.07
+[  3681s] layer  8: residual caga 0.133 fuse 0.133; ppl converting only this layer: caga pairs 5.10, fuse pairs 5.10
+[  3818s] layer  9: residual caga 0.143 fuse 0.141; ppl converting only this layer: caga pairs 5.10, fuse pairs 5.10
+[  3958s] layer 10: residual caga 0.136 fuse 0.133; ppl converting only this layer: caga pairs 5.14, fuse pairs 5.14
+[  4094s] layer 11: residual caga 0.144 fuse 0.139; ppl converting only this layer: caga pairs 5.07, fuse pairs 5.08
+[  4230s] layer 12: residual caga 0.150 fuse 0.149; ppl converting only this layer: caga pairs 5.10, fuse pairs 5.09
+[  4364s] layer 13: residual caga 0.166 fuse 0.164; ppl converting only this layer: caga pairs 5.13, fuse pairs 5.13
+[  4501s] layer 14: residual caga 0.175 fuse 0.173; ppl converting only this layer: caga pairs 5.08, fuse pairs 5.09
+[  4642s] layer 15: residual caga 0.170 fuse 0.168; ppl converting only this layer: caga pairs 5.11, fuse pairs 5.12
+[  4779s] layer 16: residual caga 0.189 fuse 0.185; ppl converting only this layer: caga pairs 5.10, fuse pairs 5.10
+[  4918s] layer 17: residual caga 0.197 fuse 0.193; ppl converting only this layer: caga pairs 5.11, fuse pairs 5.13
+[  5055s] layer 18: residual caga 0.192 fuse 0.190; ppl converting only this layer: caga pairs 5.07, fuse pairs 5.07
+[  5193s] layer 19: residual caga 0.209 fuse 0.206; ppl converting only this layer: caga pairs 5.09, fuse pairs 5.09
+[  5328s] layer 20: residual caga 0.212 fuse 0.208; ppl converting only this layer: caga pairs 5.04, fuse pairs 5.05
+[  5463s] layer 21: residual caga 0.246 fuse 0.242; ppl converting only this layer: caga pairs 5.06, fuse pairs 5.06
+[  5599s] layer 22: residual caga 0.196 fuse 0.194; ppl converting only this layer: caga pairs 5.07, fuse pairs 5.07
+[  5734s] layer 23: residual caga 0.241 fuse 0.237; ppl converting only this layer: caga pairs 5.05, fuse pairs 5.05
+[  5869s] layer 24: residual caga 0.235 fuse 0.232; ppl converting only this layer: caga pairs 5.02, fuse pairs 5.03
+[  6005s] layer 25: residual caga 0.242 fuse 0.241; ppl converting only this layer: caga pairs 5.12, fuse pairs 5.09
+[  7283s] layer 26: residual caga 0.215 fuse 0.214; ppl converting only this layer: caga pairs 5.08, fuse pairs 5.07
+[  7420s] layer 27: residual caga 0.241 fuse 0.240; ppl converting only this layer: caga pairs 5.04, fuse pairs 5.04
+[  7557s] layer 28: residual caga 0.217 fuse 0.214; ppl converting only this layer: caga pairs 5.12, fuse pairs 5.14
+[  7696s] layer 29: residual caga 0.232 fuse 0.229; ppl converting only this layer: caga pairs 5.09, fuse pairs 5.09
+[  7832s] layer 30: residual caga 0.196 fuse 0.194; ppl converting only this layer: caga pairs 5.09, fuse pairs 5.10
+[  7968s] layer 31: residual caga 0.155 fuse 0.151; ppl converting only this layer: caga pairs 5.08, fuse pairs 5.07
+[  7972s] DIAG_DONE
+=== Fri Oct 30 06:44:19 EET 2026 clean rerun of the follow-up's full conversions
+[   859s] second moments from 262144 tokens
+[  4789s] fuse on pairs matched by CAGA's residual (clean rerun): ppl 2048 12141.61, 4096 13560.35 (3899s)
+[  7475s] caga on pairs matched by CAGA's residual (clean rerun): ppl 2048 11398.30, 4096 9665.32 (2671s)
+[  8475s] restored model: ppl 2048 5.470
+[  8475s] RERUN_DONE
