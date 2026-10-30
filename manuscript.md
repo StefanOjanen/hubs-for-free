@@ -64,7 +64,9 @@ settings and leaves four of five models at 1.6 to 2.1 times the unconverted
 perplexity with half of the key-value heads, without training; on the
 Llama-2-7B benchmark of the best published training-free method, with heads
 paired by the fit's own residual, it reaches perplexity 16.8 to 18.5 against
-the published 25.1 and six points more zero-shot accuracy. Two
+the published 25.1 and six points more zero-shot accuracy, and it carries over
+to models that already share key-value heads, though there its weighting loses
+to the unweighted fit where every key-value head merges into one. Two
 cross-layer cache compressions rest on premises that fail their nulls: adjacent
 layers' cached keys and values are uncorrelated token by token, and the
 code agreement one of them reports is what independent codes give. Head confidence
@@ -1245,6 +1247,34 @@ The comparison with the published numbers carries that caveat and the
 unstated evaluation length and subsets; the comparison on identical pairs
 does not.
 
+### 6.9 Key-value heads that already serve several query heads
+
+Most current models already share key-value heads between several query heads,
+and their cache can be halved again by merging neighbouring key-value heads, so
+that every query head attached to either reads one shared head. The fusion
+generalizes directly: a key-value head's value weighting is the sum of O_h^T O_h
+over the query heads that read it and its key weighting the sum of their query
+second moments; each query head absorbs its key-value head's key transform and
+each output slice the value transform. Preregistration 27 applied it, against
+averaging and the unweighted fit, to TinyLlama 1.1B (32 query and 4 key-value
+heads), Qwen2.5-1.5B (12 and 2), OpenLLaMA-3B (32 and 32), Mistral-7B-Instruct-v0.2
+(32 and 8) and Qwen2.5-7B (28 and 4), in groups of 2 and, where the count allows,
+4: nine cells.
+
+Three of four clauses pass. The weighted fusion is below averaging in all nine
+cells (K1); with half the key-value heads, 37.6 against 4,717 in Qwen2.5-7B
+(unconverted 7.64), 19.6 against 277 in Mistral (6.72), 31.8 against 1,344 in
+OpenLLaMA-3B (8.06), 70.9 against 587 in TinyLlama (8.58) and 173 against
+155,351 in Qwen2.5-1.5B (10.40). Its increase in log perplexity is 0.25 to 0.50
+of averaging's (geometric mean 0.31; K3), and its average accuracy is higher in
+all five models (+0.055 to +0.164, pooled +0.112, interval 0.106 to 0.117; K4).
+K2 fails: the weighting beats the unweighted fit in seven of nine cells, losing
+in the two Qwen2.5 cells that merge every key-value head into one (173 against
+73.5 in Qwen2.5-1.5B, 1,908 against 1,008 in Qwen2.5-7B at a quarter of its
+heads), while TinyLlama merged to one head the same way is not an exception.
+Both failing models' projections carry biases, handled through the augmented
+second moment; whether the biases are the reason was not tested.
+
 ## 7. Limitations
 
 Results cover seventeen models up to 8B parameters in ten families, three
@@ -1268,8 +1298,9 @@ them, and whether its advantage survives uptraining is untested. The fusion of
 Section 6.6 narrows that gap on the same five models and, in Section 6.8, on
 Llama-2-7B against the best published training-free result, whose evaluation
 length, subsets and harness are not stated and whose pairing could not be
-reproduced; it was not tested after uptraining, and its test on models that
-already share key-value heads is running. The cross-layer audit of Section 6.7 covers four 3.8B to 7B models,
+reproduced, and in Section 6.9 on five models that already share key-value
+heads or are multi-head, where its weighting fails in the two Qwen2.5 cells
+that merge every key-value head into one; it was not tested after uptraining. The cross-layer audit of Section 6.7 covers four 3.8B to 7B models,
 one of them apparently misconfigured, and continuation loss after 1,536 tokens
 of context on WikiText-103. Where the sink sits on a mid-sequence, window-varying column
 (OLMo-2, late Qwen2.5-3B layers), the sink-operator identification weakens
@@ -1338,7 +1369,7 @@ against the norm of what each head writes.
 | 24 | 7f12472, pushed before execution | P1 to P8, C1, C2: converting multi-head to grouped-query attention without training, nine recipes, a convention null | 9 of 10; P6 fails |
 | 25 | 809f6fb, pushed before execution | A1, A2, B1, B2, C1 to C3: cross-layer KV compression (MiniCache, XQuant) under the convention null | 5 of 7; B2, C3 fail |
 | 26 | 16404cf, pushed before execution | F1 to F6: closed-form fusion of key and value heads weighted by what the heads compute | 6 of 6 |
-| 27 | 35249e6, pushed before execution | K1 to K4: the weighted fusion in models that already share key-value heads | running (four of five models done) |
+| 27 | 35249e6, pushed before execution | K1 to K4: the weighted fusion in models that already share key-value heads | 3 of 4; K2 fails |
 | 28 | 0abdd89, pushed before execution | M1 to M6: the weighted fusion against CAGA on its own Llama-2-7B benchmark, matched pairs, a steering check | 6 of 6 |
 
 ## Appendix B. Numbers ledger
@@ -1391,5 +1422,7 @@ against the norm of what each head writes.
 | fused conversion, F1 to F6 | alignment_study/fuse_results.json, fuse/, fuse_dev/, fuse_dev_results.json |
 | cross-layer KV compression, A1 to C3 | alignment_study/xlayer_results.json, xlayer/, xlayer_dev/, xlayer_dev_results.json |
 | against CAGA, M1 to M6 | alignment_study/llama2_results.json, llama2/, llama2_dev/, llama2_dev.log |
+| key-value heads that already serve several query heads, K1 to K4 | alignment_study/fusekv_results.json, fusekv/, fusekv_dev/, fusekv_dev_results.json |
+| scorer with the vocabulary projected in chunks | alignment_study/zeroshot_head_chunk_check.json |
 | conversion command and checkpoint export | alignment_study/llama2_dev/kvfuse_check_llama-160m.json, gqa_export_check_llama-160m.json |
 | shared energy against merge damage (post hoc) | alignment_study/posthoc/sharedE_vs_merge_kl.json |

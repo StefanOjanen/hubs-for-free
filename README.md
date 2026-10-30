@@ -411,6 +411,23 @@ Each instrument below exists because a finding above required it.
 <p align="center"><img src="figures/readme/fig25_kv_fusion.png" alt="Two-panel dot plot of perplexity, as a multiple of the unconverted model's, at half and at a quarter of the key-value heads, for averaging neighbouring heads, round 24's aligned averaging, the unweighted fusion and the fusion weighted by what the heads compute, in five models: the weighted fusion is lowest in every model, 1.6 to 2.1 times the unconverted perplexity at half the heads in four models" width="880"></p>
 <p align="center"><em>Fitting the shared head to what the heads compute, rather than to their weights, closes most of the gap that averaging leaves.</em></p>
 
+- **Models that already share key-value heads.** Most current models already
+  let several query heads read one key-value head, and their cache can be
+  halved again by merging neighbouring key-value heads. A preregistered round
+  generalized the fusion to key-value heads that serve several query heads,
+  weighting each by the queries of every head that reads it, and applied it to
+  five models from 1.1B to 7B parameters. It beat averaging in all nine
+  settings: with half the key-value heads, perplexity 37.6 against 4,717 in
+  Qwen2.5-7B (unconverted 7.64), 19.6 against 277 in Mistral-7B-Instruct (6.72)
+  and 31.8 against 1,344 in OpenLLaMA-3B (8.06), with 5 to 16 points more
+  accuracy in every model. One registered prediction failed: the weighting beat
+  the unweighted fit in seven of nine settings, losing in the two Qwen2.5
+  settings that merge every key-value head into one. Three of four predictions
+  held.
+
+<p align="center"><img src="figures/readme/fig26_kv_fusion_gqa.png" alt="Two-panel dot plot of perplexity, as a multiple of the unconverted model's, at half and at a quarter of the key-value heads in five models that already share key-value heads or are multi-head: averaging is highest everywhere, the weighted fusion lowest in seven of nine settings and the unweighted fit lowest in the two Qwen2.5 settings that merge every key-value head into one" width="880"></p>
+<p align="center"><em>Fitting shared key-value heads to what the heads compute also works when each key-value head already serves several query heads.</em></p>
+
 - **Against the best published training-free conversion, on its own
   benchmark.** CAGA (Wang, Jiang and Liu, 2026) converts Llama-2-7B from 32
   to 16 key-value heads without training and reports WikiText-2 perplexity
@@ -620,8 +637,9 @@ constant virtual sink in TinyLlama (G6), the task-level advantage of the
 simulated merge at two pairs per layer (D2), the occupancy reading of
 Clark's top-5 count (F2), the per-layer simulated cost as an ordering of
 whole-model conversion damage (P6), the registered size of aligned merging
-across layers (B2), and the trained basis's advantage for XQuant's code
-sharing (C3). Out of sample, 7 of 8 registered clauses
+across layers (B2), the trained basis's advantage for XQuant's code
+sharing (C3), and the weighting's advantage over the unweighted fit where
+every key-value head merges into one (K2). Out of sample, 7 of 8 registered clauses
 passed in the sub-2B round, 3 of 4 in the 3B-to-7B round, 5 of 5 primary clauses in the
 training-dynamics round, 4 of 4 in 11 of 11 models in the
 fixed-instrument rerun, where the earlier failures on TinyLlama, OLMo-2
@@ -638,10 +656,9 @@ on six new claims, 3 of 5 for vision transformers' attention distance, 5 of
 for the merge benchmark at larger scale and on LAMBADA, 4 of 5 for the
 weighting flip, 9 of 10 for converting heads to shared key-value heads
 without training, 6 of 6 for fusing them by what they compute, 5 of 7
-for cross-layer KV compression under the convention null, and 6 of 6
-against the best published training-free conversion on its own benchmark
-(the round on models that already share key-value heads is running its last
-model).
+for cross-layer KV compression under the convention null, 6 of 6 against
+the best published training-free conversion on its own benchmark, and 3 of 4
+for fusing key-value heads in models that already share them.
 Development
 calibration that shaped a preregistration is committed and labeled as
 such. A blind reimplementation from the written specification

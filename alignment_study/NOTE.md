@@ -1333,3 +1333,42 @@ along an MLP neuron raises most in the original model, the fused models raise 30
 percent among their own 20, CAGA's construction 4 to 5 percent. The damage of
 every conversion grows with the context length, and the pairing matters most
 there (25.6 against 18.5 at 4,096 tokens).
+
+## Fusing key-value heads in models that already share them (2026-10-19 to 30, preregistration 27)
+
+Frozen at 35249e6 (`alignment_study/PREREGISTRATION27.md`). 3 of 4 clauses pass.
+Neighbouring key-value heads merged in groups of 2, and of 4 where the count
+allows, in five models: TinyLlama 1.1B (32 query and 4 key-value heads),
+Qwen2.5-1.5B (12 and 2), OpenLLaMA-3B (32 and 32, multi-head),
+Mistral-7B-Instruct-v0.2 (32 and 8) and Qwen2.5-7B (28 and 4). WikiText-2
+perplexity over 1,024-token windows; the seven tasks of `zeroshot.py`.
+- K1 passes in 9 of 9 cells: the weighted fusion is below averaging everywhere.
+  Half of the key-value heads kept: TinyLlama 70.9 against 587 (unconverted
+  8.58), Qwen2.5-1.5B 173 against 155,351 (10.40), OpenLLaMA-3B 31.8 against
+  1,344 (8.06), Mistral 19.6 against 277 (6.72), Qwen2.5-7B 37.6 against 4,717
+  (7.64). A quarter: TinyLlama 341 against 2,049, OpenLLaMA-3B 237 against
+  3,579, Mistral 122 against 637, Qwen2.5-7B 1,908 against 93,059.
+- K2 FAILS (7 of 9): the weighting beats the unweighted fit except in the two
+  Qwen2.5 cells that merge all key-value heads into one: Qwen2.5-1.5B with its two
+  heads (173 against 73.5) and Qwen2.5-7B at a quarter of its four (1,908 against
+  1,008). TinyLlama merged to one head the same way is not an exception (341
+  against 375).
+- K3 passes: at half the heads the fusion's increase in log perplexity is 0.25
+  to 0.50 of averaging's (geometric mean 0.31; registered: at most 0.5).
+- K4 passes: at half the heads its average accuracy exceeds averaging's in all
+  five models (+0.055 to +0.164; pooled +0.112, interval 0.106 to 0.117).
+- Reported: at a quarter of the heads every construction leaves Qwen2.5-7B at
+  chance accuracy (0.294). Groups of one reproduce the float32 models to 1.3e-4
+  in any logit and the bfloat16 models to 0.97 to 1.78 (rounding of rewritten
+  weights); restoring the weights restores every unconverted perplexity. The
+  last model needed three attempts (run log): the first ended without output
+  after its groups-of-one check, the second was killed by the memory watchdog
+  while a second 7B job ran alongside it, and the third ran alone with the
+  scorer projecting the vocabulary in chunks (per-example decisions unchanged).
+Reading: the fusion carries its advantage over averaging to models that already
+share key-value heads and to 7B scale: at half the key-value heads it removes
+50 to 75 percent of averaging's damage in log perplexity and recovers 5 to 16
+points of accuracy. The weighting, which helps in seven of nine cells, hurts in
+both Qwen2.5 cells where every key-value head merges into one. Both are models
+whose projections carry biases, handled here through the augmented second
+moment; whether the biases are the reason was not tested.

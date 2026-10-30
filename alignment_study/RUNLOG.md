@@ -737,3 +737,12 @@ decision are identical, and the averages agree to every digit. Round 28's
 evaluations ran before this change. The pipeline's evaluator ran on the four
 finished models again (not the registered evaluation; it is regenerated when
 Qwen2.5-7B finishes). Qwen2.5-7B restarts from the beginning, alone.
+
+Round 27's Qwen2.5-7B, third attempt (2026-10-29 17:22 to 2026-10-30 02:30 UTC,
+alone on the GPU, scorer chunked): completed. Evaluation (eval_fusekv.py, unchanged
+since the freeze) on all five models: 3 of 4 clauses pass, K2 fails
+(fusekv_results.json, eval_fusekv.log). The exploratory follow-up to round 28
+(llama2_caga_followup.py, started by the parallel session and run alone between
+the second and third attempts) gave perplexity above 9,000 for both CAGA's
+construction and the weighted fusion on pairs matched by CAGA's residual; it is
+not reported until a diagnostic (llama2_followup_diag.py) locates the damage.

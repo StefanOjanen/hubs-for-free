@@ -115,8 +115,10 @@ independence within 0.003; B2 (aligned merging's size) and C3 (XQuant's sharing
 better in the trained basis) fail; 5 of 7; the LLaMA-2-7B-80K derivative looks
 misconfigured (continuation perplexity 84). 27 (alignment_study/PREREGISTRATION27.md,
 fusekv/; instrument fuse_kv.py): the weighted fusion in models that already share
-key-value heads; four of five models done, Qwen2.5-7B rerunning (its first run
-ended without output). 28 (alignment_study/PREREGISTRATION28.md, llama2/,
+key-value heads, five models (TinyLlama, Qwen2.5-1.5B, OpenLLaMA-3B, Mistral-7B-
+Instruct, Qwen2.5-7B); below averaging in 9 of 9 cells, dlog ratio 0.31, accuracy
++0.112; K2 fails (7 of 9): the weighting loses to the unweighted fit in the two
+Qwen2.5 cells that merge every KV head into one; 3 of 4. 28 (alignment_study/PREREGISTRATION28.md, llama2/,
 llama2_dev/; instrument llama2_round.py): the fusion against CAGA (Wang, Jiang and
 Liu, arXiv 2610.09476) on its own Llama-2-7B benchmark, 32 to 16 KV heads without
 training; pairs matched by the fusion's closed-form residual give 16.78 and 18.46
@@ -134,7 +136,11 @@ adapter even one GPU job drains the battery (45 to 15 percent in two hours); the
 battery guard pauses the job at 15 percent and resumes it at 30 (2026-10-28). On
 MPS, never move a tensor to the host and to float64 in one call:
 .to("cpu", torch.float64) returns corrupted values for large tensors in torch
-2.13 (small ones raise); use .cpu().double() (2026-10-28).
+2.13 (small ones raise); use .cpu().double() (2026-10-28). Another assistant
+session may share this repository and GPU (2026-10-29: a parallel session's job
+ran beside a 7B round and the watchdog killed both): before a GPU job or a
+commit, check for running research jobs and coordinate; key waiters on process
+IDs or new files, never on log lines that may already exist.
 Drafts for a TMLR submission and a position paper are in private/drafts/
 (unpublished; the author decides on submission and posting).
 Instruments: functional_common.py, standard_common.py, audits/readings/readings_common.py.
