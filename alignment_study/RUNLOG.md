@@ -775,3 +775,29 @@ started by a waiter keyed on the previous job's process ID. The parallel
 session also ran a CPU probe on Llama-160m (llama2_dev/prefix160m.py,
 prefix160m.json) while the GPU was free; it may have overlapped the
 bisection's start by a few minutes, which does not affect an exploratory run.
+
+Sequential conversion, development (exploratory, labelled; 2026-10-30;
+fuse_seq.py, seqfuse_dev.py, alignment_study/seqfuse_dev/). The weighted fusion
+fitted layer by layer on the inputs the converted layers below produce, with and
+without a QEP-style correction of each layer's projections toward the
+unconverted model's inputs. The layer-by-layer stream reproduces the model
+exactly (largest difference 0). On Llama-160m (float32, 128 C4 documents of
+1,024 tokens, 40 WikiText-2 windows of 2,048 tokens, unconverted 73.98) the
+one-shot fit gives 113.1 on matched pairs and 123.3 on neighbouring pairs; the
+sequential fit 120.9 and 130.9 (119.8 on the one-shot pairs), the correction
+123.9 (alpha 0.5) and 136.2 (alpha 1.0): worse in every arm
+(seqfuse_dev_160m.log). On OpenLLaMA-3B (float32, 128 documents of 2,048
+tokens, unconverted 7.60) the one-shot fit gives 30.28 on matched pairs
+(seqfuse_dev_3b.log). The machine then panicked (watchdog timeout, 11:56 UTC,
+the same failure as on 2026-10-19): between arms the script dropped its
+reference to the model but its key-value view still held it, so the next copy
+was loaded beside the old one (two float32 3B models, 27 GB, plus the 3.4 GB
+calibration stream), and the script's name did not match the memory
+watchdog's pattern. Nothing in the repository was lost. The development
+scripts now free the model and its views before loading another (also
+uptrain_round.py and guard_round.py), the sequential stream is updated in
+place, and both guards live in private/guards/ (gitignored, so a reboot no
+longer deletes them) and match every alignment_study/*.py process. The
+OpenLLaMA-3B sequential arms, rerun after the reboot, give 33.27 on pairs
+re-matched on the converted stream and 33.68 on the one-shot pairs, against
+30.28 one-shot: worse here too. The sequential fit is not pursued.

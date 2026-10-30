@@ -1,0 +1,10 @@
+[     5s] stream check: largest difference relative to the largest activation 0.00e+00
+[     9s] JackFram/llama-160m: unconverted ppl 73.979 on 40 windows
+[    29s] oneshot/matched: ppl 113.126 (20s)
+[    55s] seq/matched: ppl 120.871 (25s)
+[    80s] seq/oneshot_pairs: ppl 119.776 (24s)
+[   125s] qep0.5/matched: ppl 123.901 (44s)
+[   169s] qep1.0/matched: ppl 136.248 (44s)
+[   189s] oneshot/neighbour: ppl 123.264 (19s)
+[   214s] seq/neighbour: ppl 130.910 (25s)
+[   215s] SEQFUSE_DEV_DONE

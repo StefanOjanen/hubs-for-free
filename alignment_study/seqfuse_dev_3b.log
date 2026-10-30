@@ -1,0 +1,9 @@
+[    52s] stream check: largest difference relative to the largest activation 0.00e+00
+[   213s] openlm-research/open_llama_3b_v2: unconverted ppl 7.596 on 40 windows
+[  1349s] oneshot/matched: ppl 30.284 (1135s)
+=== Fri Oct 30 12:57:16 UTC 2026 resumed after the machine's panic (seq arms; the one-shot arm is cached)
+[    26s] oneshot/matched: cached ppl 30.284
+[   937s] seq/matched: ppl 33.274 (911s)
+[  1795s] seq/oneshot_pairs: ppl 33.675 (848s)
+[  1806s] SEQFUSE_DEV_DONE
+SEQ3B_EXIT
