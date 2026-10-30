@@ -148,7 +148,13 @@ MPS, never move a tensor to the host and to float64 in one call:
 session may share this repository and GPU (2026-10-29: a parallel session's job
 ran beside a 7B round and the watchdog killed both): before a GPU job or a
 commit, check for running research jobs and coordinate; key waiters on process
-IDs or new files, never on log lines that may already exist.
+IDs or new files, never on log lines that may already exist. The memory watchdog
+and the battery guard are private/guards/mem_watchdog.sh and battery_guard.sh
+(gitignored, so a reboot keeps them; the scratchpad does not survive one); start
+both before any GPU job; they match every alignment_study/*.py process. A script
+that loads several models must drop every reference, including views such as
+fuse_kv.KV, before loading the next: on 2026-10-30 two float32 3B copies at once
+panicked the machine.
 Drafts for a TMLR submission and a position paper are in private/drafts/
 (unpublished; the author decides on submission and posting).
 Instruments: functional_common.py, standard_common.py, audits/readings/readings_common.py.
