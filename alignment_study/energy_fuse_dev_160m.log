@@ -1,0 +1,8 @@
+[     9s] JackFram/llama-160m: unconverted ppl 73.979
+[    27s] fuse: ppl 113.126; fused heads keep 0.885 of their output energy (median), 0.524 at least (7s)
+[    36s] fuse_energy: ppl 122.731; fused heads keep 0.885 of their output energy (median), 0.524 at least (7s)
+[    36s] ENERGY_DEV_DONE
+[     8s] JackFram/llama-160m: unconverted ppl 73.979
+[    26s] fuse: ppl 113.126; fused heads keep 0.885 of their output energy (median), 0.524 at least (7s)
+[    34s] fuse_energy: ppl 116.620; fused heads keep 0.885 of their output energy (median), 0.524 at least (7s)
+[    35s] ENERGY_DEV_DONE

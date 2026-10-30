@@ -817,3 +817,14 @@ on AC power under both guards, no pauses): Mistral-7B-Instruct-v0.2 4,356 s,
 OpenLLaMA-3B 2,662 s, OLMo-1B 754 s, Qwen2.5-7B 1,861 s. Evaluation
 (eval_guard.py, unchanged since the freeze): the gate fails, G1 to G5 untested,
 0 of 6 (guard_results.json, eval_guard.log).
+
+Energy-preserving fusion, development (exploratory, labelled, not pursued;
+2026-10-30; energy_fuse_dev.py, energy_fuse_dev/, energy_fuse_dev_160m.log).
+The fused heads' least-squares fit keeps less output energy than the original
+heads (median 0.885, at least 0.524, of E|O_h C_h x|^2 under the calibration
+second moment on Llama-160m), and the converted Llama-2-7B's residual stream
+runs 4 to 11 percent below the unconverted model's through layers 2 to 30. On
+Llama-160m (float32, 128 C4 documents of 1,024 tokens, 40 windows of 2,048,
+unconverted 73.98, the fusion on matched pairs 113.13) rescaling every fused
+query head's output slice to restore the energy gives 122.73, and restoring half
+of it in log scale 116.62: worse both ways. Not pursued.
