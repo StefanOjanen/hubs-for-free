@@ -1,0 +1,132 @@
+=== Fri Oct 30 13:29:03 UTC 2026 development survey on Llama-2-7B: 16 forced pairs per layer in layers 0-4 and the follow-up's layer-1 pair 8-18, tau 3 (development value)
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+NousResearch/Llama-2-7b-hf: 6.74B parameters, torch.bfloat16, layers 32, query heads 32, KV heads 32, biases False (17s)
+=== Fri Oct 30 14:30:38 UTC 2026 stopped by hand at 8 percent battery while paused (laptop on battery; nothing written yet); to be restarted from the beginning on AC
+GUARD_DEV_EXIT
+=== Fri Oct 30 15:25:27 UTC 2026 restarted on AC power (30 percent)
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+NousResearch/Llama-2-7b-hf: 6.74B parameters, torch.bfloat16, layers 32, query heads 32, KV heads 32, biases False (16s)
+  unconverted: ppl 6.197; check [0.875, 0.84, 1.047, 1.555, 1.672, 1.711]; second moments from 262144 tokens (884s) 
+Traceback (most recent call last):
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/alignment_study/guard_round.py", line 312, in <module>
+    res = run_model(name, log, path)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/alignment_study/guard_round.py", line 194, in run_model
+    ref_check = check(); ref_ppl = ppl()
+                ^^^^^^^
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/alignment_study/guard_round.py", line 134, in check
+    body(input_ids=gw, use_cache=False)
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/.venv/lib/python3.12/site-packages/transformers/utils/generic.py", line 1068, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/.venv/lib/python3.12/site-packages/transformers/utils/output_capturing.py", line 262, in wrapper
+    outputs = func(self, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/.venv/lib/python3.12/site-packages/transformers/models/llama/modeling_llama.py", line 381, in forward
+    inputs_embeds: torch.Tensor = self.embed_tokens(input_ids)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/.venv/lib/python3.12/site-packages/torch/nn/modules/sparse.py", line 189, in forward
+    return F.embedding(
+           ^^^^^^^^^^^^
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/.venv/lib/python3.12/site-packages/torch/nn/functional.py", line 2615, in embedding
+    return torch.embedding(weight, input, padding_idx, scale_grad_by_freq, sparse)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected tensor for argument #1 'indices' to have one of the following scalar types: Long, Int; but got MPSFloatType instead (while checking arguments for embedding)
+GUARD_DEV_EXIT
+=== Fri Oct 30 15:54:30 UTC 2026 rerun after fixing a name clash (the writers' gate vector overwrote the check's window; the run failed at the reference check)
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+NousResearch/Llama-2-7b-hf: 6.74B parameters, torch.bfloat16, layers 32, query heads 32, KV heads 32, biases False (15s)
+  unconverted: ppl 6.197; check [0.875, 0.84, 1.047, 1.555, 1.672, 1.711]; second moments from 262144 tokens (884s) 
+  reference (fusion-residual matching): ppl 20.016; check ratios [0.98, 0.83, 0.97, 0.61, 0.66, 0.73] (1736s) 
+  layer 0 forced 10-26: ppl 25.92 (1.29x reference), largest check ratio 0.99 (29s) 
+  layer 0 forced 1-9: ppl 44.70 (2.23x reference), largest check ratio 1.52 (29s) 
+  layer 0 forced 6-13: ppl 20.88 (1.04x reference), largest check ratio 1.32 (29s) 
+  layer 0 forced 12-13: ppl 18.10 (0.90x reference), largest check ratio 0.98 (29s) 
+  layer 0 forced 20-23: ppl 21.08 (1.05x reference), largest check ratio 0.99 (29s) 
+  layer 0 forced 12-17: ppl 20.48 (1.02x reference), largest check ratio 0.98 (29s) 
+  layer 0 forced 5-8: ppl 18.45 (0.92x reference), largest check ratio 1.04 (29s) 
+  layer 0 forced 1-15: ppl 22.55 (1.13x reference), largest check ratio 1.01 (29s) 
+  layer 0 forced 9-28: ppl 21.03 (1.05x reference), largest check ratio 1.00 (29s) 
+  layer 0 forced 24-31: ppl 18.22 (0.91x reference), largest check ratio 1.86 (30s) 
+  layer 0 forced 6-12: ppl 18.15 (0.91x reference), largest check ratio 0.99 (29s) 
+  layer 0 forced 7-13: ppl 25.67 (1.28x reference), largest check ratio 1.09 (30s) 
+  layer 0 forced 7-24: ppl 19.06 (0.95x reference), largest check ratio 1.60 (29s) 
+  layer 0 forced 0-10: ppl 17.56 (0.88x reference), largest check ratio 0.98 (29s) 
+  layer 0 forced 0-17: ppl 21.50 (1.07x reference), largest check ratio 1.03 (29s) 
+  layer 0 forced 1-24: ppl 25.75 (1.29x reference), largest check ratio 1.10 (29s) 
+  layer 1 forced 20-24: ppl 20.56 (1.03x reference), largest check ratio 1.01 (29s) 
+  layer 1 forced 8-16: ppl 17.13 (0.86x reference), largest check ratio 0.98 (29s) 
+  layer 1 forced 13-22: ppl 20.15 (1.01x reference), largest check ratio 1.07 (29s) 
+  layer 1 forced 3-29: ppl 178.81 (8.93x reference), largest check ratio 3.85 FLAGGED, repaired ppl 30.09 (95s) 
+  layer 1 forced 18-25: ppl 20.79 (1.04x reference), largest check ratio 0.98 (29s) 
+  layer 1 forced 6-14: ppl 135.21 (6.75x reference), largest check ratio 3.29 FLAGGED, repaired ppl 30.39 (96s) 
+  layer 1 forced 1-14: ppl 121.71 (6.08x reference), largest check ratio 2.98 (29s) 
+  layer 1 forced 9-21: ppl 149.54 (7.47x reference), largest check ratio 3.93 FLAGGED, repaired ppl 27.94 (95s) 
+  layer 1 forced 5-29: ppl 164.73 (8.23x reference), largest check ratio 3.55 FLAGGED, repaired ppl 28.90 (95s) 
+  layer 1 forced 24-26: ppl 20.95 (1.05x reference), largest check ratio 0.98 (29s) 
+  layer 1 forced 12-18: ppl 21.86 (1.09x reference), largest check ratio 0.98 (29s) 
+  layer 1 forced 10-23: ppl 20.85 (1.04x reference), largest check ratio 1.00 (29s) 
+  layer 1 forced 19-30: ppl 20.74 (1.04x reference), largest check ratio 1.00 (29s) 
+  layer 1 forced 15-29: ppl 19.52 (0.98x reference), largest check ratio 1.02 (29s) 
+  layer 1 forced 3-16: ppl 163.32 (8.16x reference), largest check ratio 3.46 FLAGGED, repaired ppl 30.41 (95s) 
+  layer 1 forced 8-18: ppl 90.04 (4.50x reference), largest check ratio 1.69 (29s) 
+  layer 2 forced 8-17: ppl 20.14 (1.01x reference), largest check ratio 0.99 (29s) 
+  layer 2 forced 2-29: ppl 20.06 (1.00x reference), largest check ratio 0.99 (29s) 
+  layer 2 forced 3-26: ppl 20.05 (1.00x reference), largest check ratio 0.98 (29s) 
+  layer 2 forced 8-11: ppl 19.98 (1.00x reference), largest check ratio 0.98 (29s) 
+  layer 2 forced 17-28: ppl 20.18 (1.01x reference), largest check ratio 0.98 (29s) 
+  layer 2 forced 7-20: ppl 20.01 (1.00x reference), largest check ratio 0.99 (29s) 
+  layer 2 forced 14-17: ppl 20.27 (1.01x reference), largest check ratio 0.98 (29s) 
+  layer 2 forced 18-19: ppl 19.76 (0.99x reference), largest check ratio 0.98 (29s) 
+  layer 2 forced 14-22: ppl 19.85 (0.99x reference), largest check ratio 0.98 (29s) 
+  layer 2 forced 11-14: ppl 19.93 (1.00x reference), largest check ratio 0.98 (29s) 
+  layer 2 forced 10-14: ppl 20.01 (1.00x reference), largest check ratio 0.98 (29s) 
+  layer 2 forced 3-14: ppl 20.03 (1.00x reference), largest check ratio 0.98 (29s) 
+  layer 2 forced 10-24: ppl 19.97 (1.00x reference), largest check ratio 0.98 (29s) 
+  layer 2 forced 7-28: ppl 19.92 (1.00x reference), largest check ratio 0.98 (29s) 
+  layer 2 forced 5-13: ppl 19.73 (0.99x reference), largest check ratio 0.98 (29s) 
+  layer 2 forced 4-29: ppl 20.09 (1.00x reference), largest check ratio 0.98 (29s) 
+  layer 3 forced 9-29: ppl 20.05 (1.00x reference), largest check ratio 0.98 (29s) 
+  layer 3 forced 16-25: ppl 20.06 (1.00x reference), largest check ratio 0.98 (29s) 
+  layer 3 forced 3-26: ppl 20.06 (1.00x reference), largest check ratio 0.98 (29s) 
+  layer 3 forced 19-21: ppl 19.99 (1.00x reference), largest check ratio 0.98 (29s) 
+  layer 3 forced 7-22: ppl 20.10 (1.00x reference), largest check ratio 0.98 (29s) 
+  layer 3 forced 28-29: ppl 19.95 (1.00x reference), largest check ratio 0.98 (29s) 
+  layer 3 forced 8-30: ppl 20.23 (1.01x reference), largest check ratio 0.98 (29s) 
+  layer 3 forced 9-31: ppl 20.81 (1.04x reference), largest check ratio 0.98 (29s) 
+  layer 3 forced 2-15: ppl 20.06 (1.00x reference), largest check ratio 0.98 (29s) 
+  layer 3 forced 16-26: ppl 20.27 (1.01x reference), largest check ratio 0.98 (29s) 
+  layer 3 forced 16-28: ppl 20.03 (1.00x reference), largest check ratio 0.98 (29s) 
+  layer 3 forced 5-14: ppl 20.01 (1.00x reference), largest check ratio 0.98 (29s) 
+  layer 3 forced 11-26: ppl 20.21 (1.01x reference), largest check ratio 0.98 (29s) 
+  layer 3 forced 15-18: ppl 20.06 (1.00x reference), largest check ratio 0.98 (29s) 
+  layer 4 forced 13-19: ppl 20.11 (1.00x reference), largest check ratio 0.98 (29s) 
+  layer 4 forced 8-30: ppl 20.13 (1.01x reference), largest check ratio 0.98 (29s) 
+  layer 4 forced 7-15: ppl 20.15 (1.01x reference), largest check ratio 0.98 (29s) 
+  layer 4 forced 19-22: ppl 20.25 (1.01x reference), largest check ratio 0.98 (29s) 
+  layer 4 forced 12-23: ppl 20.24 (1.01x reference), largest check ratio 0.98 (29s) 
+  layer 4 forced 20-25: ppl 20.35 (1.02x reference), largest check ratio 0.98 (29s) 
+  layer 4 forced 17-24: ppl 20.15 (1.01x reference), largest check ratio 0.98 (29s) 
+  layer 4 forced 22-30: ppl 20.18 (1.01x reference), largest check ratio 0.98 (29s) 
+  layer 4 forced 1-21: ppl 20.07 (1.00x reference), largest check ratio 0.98 (29s) 
+  layer 4 forced 15-30: ppl 20.15 (1.01x reference), largest check ratio 0.98 (29s) 
+  layer 4 forced 25-31: ppl 20.18 (1.01x reference), largest check ratio 0.98 (29s) 
+  layer 4 forced 22-27: ppl 20.23 (1.01x reference), largest check ratio 0.98 (29s) 
+  layer 4 forced 6-24: ppl 20.22 (1.01x reference), largest check ratio 0.98 (29s) 
+  layer 4 forced 20-30: ppl 20.23 (1.01x reference), largest check ratio 0.98 (29s) 
+  layer 4 forced 2-13: ppl 20.10 (1.00x reference), largest check ratio 0.98 (29s) 
+  layer 4 forced 4-22: ppl 20.02 (1.00x reference), largest check ratio 0.98 (29s) 
+GUARD_ROUND_DONE (4317s)
+GUARD_DEV_EXIT
