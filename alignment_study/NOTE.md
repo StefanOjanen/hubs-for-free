@@ -1474,3 +1474,43 @@ statement that CAGA's construction depends on its pairing far more than the
 fusion does holds for the two pairings round 28 tried, not for this third one,
 on which both collapse. Low-bit round-to-nearest quantization of the same model
 collapses through another route.
+
+## Does one merged pair switch on a super weight in other models? (2026-10-30, preregistration 29)
+
+Frozen at 4d02534 (`alignment_study/PREREGISTRATION29.md`). The gate FAILS, so
+G1 to G5 are untested: 0 of 6. In four models, conversions to half the
+key-value heads that differ from the fusion's reference matching only in one
+of layers 0 to 4 (the minimum-cost matching forced to contain one pair, or for
+Qwen2.5-7B the other perfect matchings), with perplexity on 4 WikiText-2
+windows relative to the reference conversion (`guard/*.json`,
+`guard_results.json`, `guard.log`, `eval_guard.log`).
+- Gate FAILS: no member is severely damaged (5 times or more) in any of the
+  four models. Mistral-7B-Instruct-v0.2: 98 members, 0.87 to 1.39 times the
+  reference (reference 19.9, unconverted 6.98). OpenLLaMA-3B: 117 members, 0.84
+  to 1.05 (31.4, 8.46). OLMo-1B: 117 members, 0.97 to 1.13 (57.1, 13.3).
+  Qwen2.5-7B: 10 members, 0.97 to 2.21, the largest a different matching of
+  layer 0 (29.9 on neighbouring pairs, 6.10).
+- G1 to G5 untested. The check flagged none of the 341 benign members: its
+  largest ratio was 0.89 to 1.04 everywhere, against the frozen threshold 2.35
+  and 2.98 to 3.93 for Llama-2-7B's severe members in development.
+- Reported: the weights locate each model's massive activation as the
+  preregistration defines it. Mistral: layer 1, dimension 2070, neuron 7310,
+  the super weight Yu et al. (2024) report for this model. OpenLLaMA-3B: layer
+  2, dimension 2448, neuron 6987. OLMo-1B: layer 2, dimension 1786, neuron 2281.
+  Qwen2.5-7B: layer 3, dimension 458, neuron 11223. The strongest key-value
+  head's write strength onto that neuron's gate is 1.4 times the layer's median
+  in Mistral, 5.9 in OpenLLaMA-3B, 4.9 in OLMo-1B and 2.2 in Qwen2.5-7B, against
+  14.2 for head 8 in Llama-2-7B. Members that give the strongest writer a new
+  partner in the massive-activation layer stay within 0.98 to 1.05 times the
+  reference (12 in Mistral, 5 in OpenLLaMA-3B, 8 in OLMo-1B). The check took
+  0.5 to 1.6 seconds per member against 3.6 to 26 seconds for the 4-window
+  evaluation; the round ran 9,636 seconds.
+Reading: the failure found in Llama-2-7B did not appear in 342 near-optimal
+conversions of four other models, so it is not a general hazard of merging
+early-layer heads at this population; within this round it remains a property
+of Llama-2-7B. The check stayed silent on every harmless conversion, which
+says it is cheap and does not cry wolf, but its recall outside Llama-2-7B could
+not be tested. Post hoc, and from five models only: the one model with a
+dominant writer onto its super neuron's gate (14 times the median, against at
+most 6 in the others) is the one where moving that writer breaks the model.
+That pattern is a hypothesis for a later test, not a result of this round.

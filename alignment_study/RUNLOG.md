@@ -801,3 +801,19 @@ longer deletes them) and match every alignment_study/*.py process. The
 OpenLLaMA-3B sequential arms, rerun after the reboot, give 33.27 on pairs
 re-matched on the converted stream and 33.68 on the one-shot pairs, against
 30.28 one-shot: worse here too. The sequential fit is not pursued.
+
+Spurious massive activations after key-value head merging (preregistration 29).
+Development on Llama-2-7B (guard_round.py --dev, 2026-10-30): the first
+attempt was paused by the battery guard at 20 percent with the laptop off AC,
+then stopped by hand at 8 percent before it had written anything, so that the
+machine could sleep without a 20 GB job in memory; a waiter in private/guards/
+restarted it on AC at 30 percent. That run failed at the reference check: the
+writers' gate vector reused the name of the check's window (gw), so the window
+became a float tensor; renamed and checked end to end on Llama-160m, the
+survey ran 15:54 to 17:06 UTC (4,317 s, 78 members). Frozen at 4d02534 with the
+development values (threshold 2.35, severe at 5 times, the strongest-writer
+rule for G5). Confirmatory run 17:08 to 19:49 UTC (9,636 s, one job on the GPU
+on AC power under both guards, no pauses): Mistral-7B-Instruct-v0.2 4,356 s,
+OpenLLaMA-3B 2,662 s, OLMo-1B 754 s, Qwen2.5-7B 1,861 s. Evaluation
+(eval_guard.py, unchanged since the freeze): the gate fails, G1 to G5 untested,
+0 of 6 (guard_results.json, eval_guard.log).

@@ -135,7 +135,16 @@ and 18 of layer 1 once layer 0 is converted, which switches on layer 1's
 super-weight neuron 7890 (down_proj[2533, 7890]) at ordinary tokens; per-layer
 residuals and single-layer conversions cannot see it, one calibration window
 can; averaging, CAGA's construction on other pairings and 3-bit round-to-nearest
-quantization collapse other ways. Untrained 7B initializations are built on the
+quantization collapse other ways. 29 (alignment_study/PREREGISTRATION29.md, guard/,
+guard_dev/; instrument guard_round.py): the same failure looked for in
+Mistral-7B-Instruct, OpenLLaMA-3B, OLMo-1B and Qwen2.5-7B among conversions that
+differ from the fusion's matching in one of layers 0 to 4 (forced-pair matchings);
+gate FAILED (no member reached 5 times the reference; worst 2.21), G1 to G5
+untested, 0 of 6; the one-window check (threshold 2.35) flagged none of 341
+benign members; Llama-2-7B development: 7 damaged members, all pairing heads 8
+and 18; post hoc, only Llama-2-7B has a dominant writer onto its super neuron's
+gate (14.2 times the median; others 1.4 to 5.9), a hypothesis, not a result.
+Untrained 7B initializations are built on the
 CPU and copied to the GPU; with two heavy runs the 65 W adapter and 32 GB
 memory saturate (swap up to 37 GB), so queue 7B runs one at a time. Keep the
 lid open during long GPU runs: closed, the GPU throttles to about a sixth of

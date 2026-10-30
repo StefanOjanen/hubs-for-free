@@ -241,7 +241,8 @@ Each instrument below exists because a finding above required it.
   One caution: on Llama-2-7B a different but equally good-looking pairing
   collapsed, because one merged pair in layer 1 switched on the model's
   super-weight neuron at every token (below). No per-layer criterion sees
-  this, so compare the converted model's residual stream after the first
+  this, and although a preregistered search did not find it in four other
+  models, compare the converted model's residual stream after the first
   layers with the original's on one calibration window before relying on it.
 
 ## Where the work goes next
@@ -486,6 +487,26 @@ Each instrument below exists because a finding above required it.
 
 <p align="center"><img src="figures/readme/fig28_super_weight_pair.png" alt="Three-panel figure for Llama-2-7B converted from 32 to 16 key-value heads by the weighted fusion. Left: perplexity as layers 0 to k are converted; on round 28's pairs it rises smoothly to 20, on pairs matched by CAGA's residual it jumps to about 2,300 when layer 1 is added and reaches 15,400. Middle: swapping one layer to the other pairing changes nothing except at layer 1, which alone breaks round 28's pairing (2,231) and alone rescues CAGA's (21.8). Right: the median activation of layer 1's neuron 7890 at ordinary tokens is about 0.01 to 0.4 in every benign configuration and 15 to 49 when heads 8 and 18 are merged after layer 0 is converted, against 380 at the first token" width="880"></p>
 <p align="center"><em>Per-layer criteria cannot see it: one merged pair in layer 1, harmless alone, turns the super-weight neuron on at every token once layer 0 is converted.</em></p>
+
+- **The same failure, looked for in four other models.** A preregistered
+  round asked whether the failure is general. It also tested a one-window
+  check against it. In Llama-2-7B, used for development, changing the pairs of
+  one early layer away from the fusion's own matching damaged the model 4.5 to
+  8.9 times in layer 1, every time by pairing heads 8 and 18. The check then
+  read 3 to 4 times its unconverted value, against at most 1.9 for every
+  harmless change. In Mistral-7B-Instruct, OpenLLaMA-3B, OLMo-1B and
+  Qwen2.5-7B, none of 342 such changes came near: the worst was 2.2 times the
+  reference, and the check never rose above 1.04. The registered gate required
+  severe damage in at least two models, so it failed and the check's recall is
+  untested; it raised no false alarm in 341 harmless conversions. The weights
+  locate each model's massive activation, Mistral's at Yu et al.'s super
+  weight. But only Llama-2-7B has one head writing far more onto that neuron's
+  gate than the rest: 14 times the median, against at most 6 elsewhere. That
+  pattern, seen in five models, is a hypothesis, not a result. Within these
+  tests, the hazard of merging early-layer heads is a property of Llama-2-7B.
+
+<p align="center"><img src="figures/readme/fig29_guard_round.png" alt="Two-panel figure. Left: for every conversion that differs from the fusion's matching in one early layer, perplexity relative to the reference conversion against the one-window check's largest ratio, log scales. Llama-2-7B's development conversions include a cluster at ratios 3 to 4 and 6 to 9 times the reference, right of the threshold 2.35; all conversions of Mistral-7B-Instruct, OpenLLaMA-3B, OLMo-1B and Qwen2.5-7B sit near ratio 1 and damage 1, the worst at 2.2 times. Right: the strongest head's write onto the super neuron's gate as a multiple of the layer's median: Llama-2-7B 14, OpenLLaMA-3B 5.9, OLMo-1B 4.9, Qwen2.5-7B 2.2, Mistral 1.4, with each model's worst damage" width="880"></p>
+<p align="center"><em>The failure found in Llama-2-7B did not appear in four other models; the check stayed silent on all of their conversions.</em></p>
 
 - **Cross-layer KV compression, against the same nulls.** Two published
   methods compress the cache across layers on the premise that adjacent

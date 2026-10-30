@@ -1,0 +1,33 @@
+{
+ "gate": {
+  "pass": false,
+  "models_with_collapse": [],
+  "missing_models": []
+ },
+ "G1": {
+  "pass": false,
+  "untested": true
+ },
+ "G2": {
+  "pass": false,
+  "untested": true
+ },
+ "G3": {
+  "pass": false,
+  "untested": true
+ },
+ "G4": {
+  "pass": false,
+  "untested": true
+ },
+ "G5": {
+  "pass": false,
+  "untested": true
+ },
+ "passes": 0,
+ "of": 6
+}
+Mistral-7B-Instruct-v0.2 {'members': 98, 'collapses': 0, 'benign': 98, 'flagged': 0, 'collapses_flagged': 0, 'benign_flagged': 0, 'benign_flag_rate': 0.0, 'reference_ppl': 19.89770508061888, 'base_ppl': 6.983596889360632, 'tau': 2.35, 'collapses_by_layer': {'0': 0, '1': 0, '2': 0, '3': 0, '4': 0}}
+open_llama_3b_v2 {'members': 117, 'collapses': 0, 'benign': 117, 'flagged': 0, 'collapses_flagged': 0, 'benign_flagged': 0, 'benign_flag_rate': 0.0, 'reference_ppl': 31.37881367027214, 'base_ppl': 8.458086368940412, 'tau': 2.35, 'collapses_by_layer': {'0': 0, '1': 0, '2': 0, '3': 0, '4': 0}}
+OLMo-1B-hf {'members': 117, 'collapses': 0, 'benign': 117, 'flagged': 0, 'collapses_flagged': 0, 'benign_flagged': 0, 'benign_flag_rate': 0.0, 'reference_ppl': 57.12130515592081, 'base_ppl': 13.29258851962561, 'tau': 2.35, 'collapses_by_layer': {'0': 0, '1': 0, '2': 0, '3': 0, '4': 0}}
+Qwen2.5-7B {'members': 10, 'collapses': 0, 'benign': 9, 'flagged': 0, 'collapses_flagged': 0, 'benign_flagged': 0, 'benign_flag_rate': 0.0, 'reference_ppl': 29.866877876546578, 'base_ppl': 6.100070460840582, 'tau': 2.35, 'collapses_by_layer': {'0': 0, '1': 0, '2': 0, '3': 0, '4': 0}}

@@ -1275,6 +1275,26 @@ residual norm after layer 1 is 0.99 to 1.22 times the unconverted model's in
 the five full conversions without the spike and 22 and 26 times in the two
 with it.
 
+Preregistration 29 then asked whether the failure is general. The population
+for each model was the set of conversions identical to the fusion's reference
+except in one of layers 0 to 4, where the minimum-cost matching is forced to
+contain one given pair. Ground truth was perplexity on four WikiText-2 windows
+relative to the reference. In development on Llama-2-7B, 7 of 78 such
+conversions were damaged, 4.5 to 8.9 times the reference, all in layer 1 and
+all pairing heads 8 and 18. A check on one calibration window read 2.98 to
+3.93 on the severe ones (5 times or more) and at most 1.86 on the 70 harmless
+ones; the threshold was frozen at 2.35. In Mistral-7B-Instruct-v0.2,
+OpenLLaMA-3B, OLMo-1B and Qwen2.5-7B, none of 342 conversions reached 5 times
+the reference (the worst 2.21, Qwen2.5-7B's alternative matching of layer 0).
+The gate, which required severe damage in two models, failed, so the check's
+recall and the weight-based prediction are untested (0 of 6); the check
+flagged none of the 341 harmless conversions. The weights locate each model's
+massive-activation layer and super neuron (Mistral's at the super weight Yu et
+al. report). The strongest head's write onto that neuron's gate is 1.4 to 5.9
+times the layer's median in the four test models and 14.2 in Llama-2-7B;
+whether such a dominant writer is what makes a model fragile is a hypothesis
+from five models, not a result.
+
 ### 6.9 Key-value heads that already serve several query heads
 
 Most current models already share key-value heads between several query heads,
@@ -1333,7 +1353,9 @@ Its Llama-2-7B result also depends on the pairing in a way its own residual
 does not see: on a third pairing, matched by CAGA's residual, one merged pair
 in layer 1 switches on the super-weight neuron and the conversion collapses
 (Section 6.8, exploratory); the fusion's matching avoided that pair, but
-nothing in the matching protects against it. The cross-layer audit of Section 6.7 covers four 3.8B to 7B models,
+nothing in the matching protects against it. A preregistered search for the
+same failure in four other models found no severe damage (Section 6.8), so its
+generality and the recall of the one-window check remain untested. The cross-layer audit of Section 6.7 covers four 3.8B to 7B models,
 one of them apparently misconfigured, and continuation loss after 1,536 tokens
 of context on WikiText-103. Where the sink sits on a mid-sequence, window-varying column
 (OLMo-2, late Qwen2.5-3B layers), the sink-operator identification weakens

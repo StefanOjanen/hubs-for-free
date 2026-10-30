@@ -1192,4 +1192,52 @@ if glob.glob(BI) and glob.glob(NE):
              fontsize=10, color=INK2, va="top", wrap=True)
     fig.savefig(OUT + "fig28_super_weight_pair.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
+# ============ Figure 29: the one-window check in five models (preregistration 29; Llama-2-7B is development) ============
+GR, GD = "alignment_study/guard_results.json", "alignment_study/guard_dev/Llama-2-7b-hf.json"
+if glob.glob(GR) and glob.glob(GD):
+    from matplotlib.ticker import FixedLocator, FixedFormatter, NullLocator
+    plt.rcParams["axes.grid"] = False
+    GRES = json.load(open(GR))
+    MOD29 = [("Llama-2-7B (development)", GD, S2), ("Mistral-7B-Instruct", "alignment_study/guard/Mistral-7B-Instruct-v0.2.json", S1),
+             ("OpenLLaMA-3B", "alignment_study/guard/open_llama_3b_v2.json", S3), ("OLMo-1B", "alignment_study/guard/OLMo-1B-hf.json", "#7a5cc7"),
+             ("Qwen2.5-7B", "alignment_study/guard/Qwen2.5-7B.json", MUTED)]
+    D29 = [(lab, json.load(open(f)), c) for lab, f, c in MOD29]
+    fig = plt.figure(figsize=(14.6, 5.6))
+    ax = fig.add_axes([0.06, 0.13, 0.50, 0.66]); ax2 = fig.add_axes([0.73, 0.13, 0.25, 0.66])
+    tau = D29[1][1]["tau"]
+    for lab, d, c in D29[::-1]:
+        x = [m["max_ratio"] for m in d["members"]]; y = [m["ppl_over_reference"] for m in d["members"]]
+        ax.scatter(x, y, s=28 if "Llama" in lab else 18, color=c, alpha=0.85, edgecolors=SURF, linewidths=0.6, zorder=3 if "Llama" in lab else 2, label=lab)
+    ax.axvline(tau, color=INK2, lw=1.2, ls=(0, (4, 3)), zorder=1)
+    ax.text(tau * 1.03, 12, f"threshold {tau:g}", color=INK2, fontsize=9.5, va="bottom")
+    ax.axhline(5, color=GRID, lw=1.2, zorder=0)
+    ax.text(0.83, 5 * 1.07, "severe: 5 times the reference", color=MUTED, fontsize=9.5, va="bottom")
+    ax.set_xscale("log"); ax.set_yscale("log"); ax.set_xlim(0.8, 5); ax.set_ylim(0.7, 15)
+    for a_, ticks in ((ax.xaxis, [1, 2, 3, 4]), (ax.yaxis, [1, 2, 5, 10])):
+        a_.set_major_locator(FixedLocator(ticks)); a_.set_major_formatter(FixedFormatter([f"{t:g}" for t in ticks])); a_.set_minor_locator(NullLocator())
+    ax.set_xlabel("check: largest ratio after layers 0 to 5, one calibration window (log)", fontsize=10.5)
+    ax.set_ylabel("perplexity / reference conversion's (log)", fontsize=10.5)
+    ax.legend(loc="upper left", fontsize=9.5, handletextpad=0.2, borderaxespad=0.3)
+    ax.set_title("Every conversion that differs in one early layer's pairs", loc="left", fontsize=12, color=INK, pad=8)
+    rows = [(lab, d["writers"], c, max(m["ppl_over_reference"] for m in d["members"])) for lab, d, c in D29]
+    rows = sorted(rows, key=lambda r: r[1]["strength"] and max(r[1]["strength"]) / r[1]["median"])
+    for y, (lab, w, c, worst) in enumerate(rows):
+        v = max(w["strength"]) / w["median"]
+        ax2.scatter([v], [y], s=80, color=c, edgecolors=SURF, linewidths=1.4, zorder=3)
+        ax2.text(v * 1.12, y, f"worst {worst:.2f}x", color=INK2, fontsize=9.5, va="center")
+    ax2.set_xscale("log"); ax2.set_xlim(1, 60); ax2.xaxis.set_minor_locator(NullLocator())
+    ax2.xaxis.set_major_locator(FixedLocator([1, 2, 5, 10, 20])); ax2.xaxis.set_major_formatter(FixedFormatter(["1", "2", "5", "10", "20"]))
+    ax2.set_yticks(range(len(rows))); ax2.set_yticklabels([r[0].replace(" (development)", "") for r in rows], fontsize=10)
+    ax2.set_ylim(-0.6, len(rows) - 0.4)
+    ax2.set_xlabel("strongest head's write onto the super neuron's gate,\nas a multiple of the layer's median (log)", fontsize=10)
+    ax2.set_title("From the weights alone (post hoc)", loc="left", fontsize=12, color=INK, pad=8)
+    for a_ in (ax, ax2):
+        a_.tick_params(length=0); a_.grid(axis="both" if a_ is ax else "x", color=GRID, lw=0.8)
+        for sp in ("left", "bottom"): a_.spines[sp].set_color(GRID)
+    fig.text(0.012, 0.985, "The super-weight failure did not appear in four other models", fontsize=15, color=INK, va="top")
+    fig.text(0.012, 0.915, f"Preregistration 29: gate failed ({GRES['passes']} of {GRES['of']}); no member of Mistral-7B-Instruct, OpenLLaMA-3B, OLMo-1B or Qwen2.5-7B"
+             " reached 5 times its reference, so the check's recall is untested. Llama-2-7B, where the failure was found, is development data.",
+             fontsize=10, color=INK2, va="top")
+    fig.savefig(OUT + "fig29_guard_round.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
 print("FIGURES_DONE", sorted(glob.glob(OUT + "*")))
