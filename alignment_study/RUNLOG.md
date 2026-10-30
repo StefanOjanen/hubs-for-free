@@ -827,4 +827,34 @@ runs 4 to 11 percent below the unconverted model's through layers 2 to 30. On
 Llama-160m (float32, 128 C4 documents of 1,024 tokens, 40 windows of 2,048,
 unconverted 73.98, the fusion on matched pairs 113.13) rescaling every fused
 query head's output slice to restore the energy gives 122.73, and restoring half
-of it in log scale 116.62: worse both ways. Not pursued.
+of it in log scale 116.62: worse both ways. Not pursued. Rescaling merged
+units' statistics after merging is prior work (REPAIR, Jordan et al. 2023; bias
+correction after quantization, Nagel et al. 2019); the test here was only
+whether a closed-form per-head rescale inside the weighted fusion helps.
+
+Uptraining and rebalancing, development (exploratory, labelled; 2026-10-30;
+uptrain_round.py --dev, fuse_balance.py, balance_dev.py; uptrain_dev/,
+balance_dev/, uptrain_dev_*.log). Uptraining trains the attention projections
+on C4 text after document 10,000 (AdamW, 16 sequences of 1,024 tokens a step).
+On Llama-160m at learning rate 1e-4 and 0.2M tokens: the unconverted model
+23.18 to 23.90 on WikiText-2, averaging 727 to 285, the weighted fusion 50.6 to
+38.4. On TinyLlama (4 to 2 key-value heads) the fusion diverged at 1e-4 with a
+one-step warmup (55.4 to 39,009 in two steps); with at least 10 warmup steps at
+2e-5 the unconverted model stayed at 8.38 while the fusion fell to 38.8 and then
+rose to 63.8 over 0.33M tokens. The fused weights are badly scaled: the fusion
+builds the shared value in a whitened basis and the output projection absorbs
+the inverse, so in TinyLlama the value rows grow to median norm 2.72 (largest
+49.6) and the output columns shrink to 0.106 (smallest 0.0008), against 0.46
+and 0.51 before, and the query planes reach 31.6. fuse_balance.py rescales,
+without changing the function, every shared value row against the matching
+output columns and every rotary plane of the shared key against the same plane
+of the queries, to equal norms (the minimum-norm factorization of each product;
+the same kind of function-preserving rescaling as cross-layer equalization in
+data-free quantization, Nagel et al. 2019). Logits change by at most 5.6e-6
+(Llama-160m) and 4.9e-6 (TinyLlama) of the largest logit. With the attention
+projections rounded to 4 bits per output channel, perplexity is 138.3 against
+144.1 unbalanced on Llama-160m (fused 113.7) and 62.0 against 71.8 on TinyLlama
+(fused 54.5); at 3 bits 189.6 against 204.1 and 217.4 against 226.7; bfloat16 and
+8 bits change little either way. Trained at 2e-5, the rebalanced fused TinyLlama
+falls steadily from 55.4 to 21.2 in 0.33M tokens (zero-shot 0.377) where the
+unbalanced one ends at 63.8 (0.329). Round 30's draft is redesigned around this.
