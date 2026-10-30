@@ -1,0 +1,472 @@
+{
+ "models": [
+  "mistralai/Mistral-7B-Instruct-v0.2",
+  "Qwen/Qwen2.5-1.5B",
+  "Qwen/Qwen2.5-7B",
+  "TinyLlama/TinyLlama_v1.1",
+  "openlm-research/open_llama_3b_v2"
+ ],
+ "cells": [
+  "mistralai/Mistral-7B-Instruct-v0.2 g2",
+  "mistralai/Mistral-7B-Instruct-v0.2 g4",
+  "Qwen/Qwen2.5-1.5B g2",
+  "Qwen/Qwen2.5-7B g2",
+  "Qwen/Qwen2.5-7B g4",
+  "TinyLlama/TinyLlama_v1.1 g2",
+  "TinyLlama/TinyLlama_v1.1 g4",
+  "openlm-research/open_llama_3b_v2 g2",
+  "openlm-research/open_llama_3b_v2 g4"
+ ],
+ "clauses": {
+  "K1": {
+   "what": "weighted fusion perplexity below mean pooling in >= 8 of 9 cells",
+   "value": {
+    "mistralai/Mistral-7B-Instruct-v0.2 g2": true,
+    "mistralai/Mistral-7B-Instruct-v0.2 g4": true,
+    "Qwen/Qwen2.5-1.5B g2": true,
+    "Qwen/Qwen2.5-7B g2": true,
+    "Qwen/Qwen2.5-7B g4": true,
+    "TinyLlama/TinyLlama_v1.1 g2": true,
+    "TinyLlama/TinyLlama_v1.1 g4": true,
+    "openlm-research/open_llama_3b_v2 g2": true,
+    "openlm-research/open_llama_3b_v2 g4": true
+   },
+   "count": 9,
+   "pass_": true
+  },
+  "K2": {
+   "what": "weighted fusion perplexity below unweighted fusion in >= 8 of 9 cells",
+   "value": {
+    "mistralai/Mistral-7B-Instruct-v0.2 g2": true,
+    "mistralai/Mistral-7B-Instruct-v0.2 g4": true,
+    "Qwen/Qwen2.5-1.5B g2": false,
+    "Qwen/Qwen2.5-7B g2": true,
+    "Qwen/Qwen2.5-7B g4": false,
+    "TinyLlama/TinyLlama_v1.1 g2": true,
+    "TinyLlama/TinyLlama_v1.1 g4": true,
+    "openlm-research/open_llama_3b_v2 g2": true,
+    "openlm-research/open_llama_3b_v2 g4": true
+   },
+   "count": 7,
+   "pass_": false
+  },
+  "K3": {
+   "what": "g=2: geometric mean over models of dlog(fuse)/dlog(mean) <= 0.5",
+   "value": {
+    "per_model": {
+     "mistralai/Mistral-7B-Instruct-v0.2": 0.2882643227462755,
+     "Qwen/Qwen2.5-1.5B": 0.29255365015962637,
+     "Qwen/Qwen2.5-7B": 0.24808106673879077,
+     "TinyLlama/TinyLlama_v1.1": 0.4995849328643238,
+     "openlm-research/open_llama_3b_v2": 0.26833446844668524
+    },
+    "geometric_mean": 0.3087273934838527
+   },
+   "pass_": true
+  },
+  "K4": {
+   "what": "g=2: weighted fusion accuracy above mean pooling in >= 4 of 5 models and pooled 95% interval above zero",
+   "value": {
+    "per_model": {
+     "mistralai/Mistral-7B-Instruct-v0.2": 0.16,
+     "Qwen/Qwen2.5-1.5B": 0.05457142857142857,
+     "Qwen/Qwen2.5-7B": 0.164,
+     "TinyLlama/TinyLlama_v1.1": 0.071,
+     "openlm-research/open_llama_3b_v2": 0.10942857142857143
+    },
+    "pooled": [
+     0.11179999999999998,
+     0.10562642857142858,
+     0.11728642857142858
+    ]
+   },
+   "count": 5,
+   "pass_": true
+  }
+ },
+ "passes": 3,
+ "of": 4,
+ "table": {
+  "mistralai/Mistral-7B-Instruct-v0.2 g2": {
+   "mean": {
+    "ppl": 277.055064528661,
+    "dlog": 3.719747218311654,
+    "acc": 0.3202857142857143
+   },
+   "fuse_u": {
+    "ppl": 22.641782921628607,
+    "dlog": 1.2153279441576956,
+    "acc": 0.4848571428571429
+   },
+   "fuse": {
+    "ppl": 19.62372845967847,
+    "dlog": 1.072270412673951,
+    "acc": 0.4802857142857143
+   },
+   "base": {
+    "ppl": 6.7158409523397635,
+    "acc": 0.7051428571428572
+   }
+  },
+  "mistralai/Mistral-7B-Instruct-v0.2 g4": {
+   "mean": {
+    "ppl": 636.6471971045044,
+    "dlog": 4.551746594408924,
+    "acc": 0.2991428571428571
+   },
+   "fuse_u": {
+    "ppl": 143.77271551444534,
+    "dlog": 3.063764631131596,
+    "acc": 0.329
+   },
+   "fuse": {
+    "ppl": 121.85937403590032,
+    "dlog": 2.89839865102733,
+    "acc": 0.3375714285714286
+   },
+   "base": {
+    "ppl": 6.7158409523397635,
+    "acc": 0.7051428571428572
+   }
+  },
+  "Qwen/Qwen2.5-1.5B g2": {
+   "mean": {
+    "ppl": 155350.65147844827,
+    "dlog": 9.611383964579337,
+    "acc": 0.30428571428571427
+   },
+   "fuse_u": {
+    "ppl": 73.50467168974879,
+    "dlog": 1.9552928207532925,
+    "acc": 0.3650000000000001
+   },
+   "fuse": {
+    "ppl": 173.1055641451295,
+    "dlog": 2.811845461923386,
+    "acc": 0.3588571428571428
+   },
+   "base": {
+    "ppl": 10.402603838017432,
+    "acc": 0.6174285714285714
+   }
+  },
+  "Qwen/Qwen2.5-7B g2": {
+   "mean": {
+    "ppl": 4716.57682737669,
+    "dlog": 6.42537304945113,
+    "acc": 0.2978571428571429
+   },
+   "fuse_u": {
+    "ppl": 44.95061955157149,
+    "dlog": 1.7720990263784726,
+    "acc": 0.4517142857142858
+   },
+   "fuse": {
+    "ppl": 37.61785925723195,
+    "dlog": 1.5940134003025133,
+    "acc": 0.4618571428571428
+   },
+   "base": {
+    "ppl": 7.640518883582358,
+    "acc": 0.6877142857142857
+   }
+  },
+  "Qwen/Qwen2.5-7B g4": {
+   "mean": {
+    "ppl": 93059.35224787501,
+    "dlog": 9.407527247217047,
+    "acc": 0.29357142857142854
+   },
+   "fuse_u": {
+    "ppl": 1007.863540129213,
+    "dlog": 4.882122545039644,
+    "acc": 0.29414285714285715
+   },
+   "fuse": {
+    "ppl": 1908.1342643954517,
+    "dlog": 5.520415701140988,
+    "acc": 0.2942857142857143
+   },
+   "base": {
+    "ppl": 7.640518883582358,
+    "acc": 0.6877142857142857
+   }
+  },
+  "TinyLlama/TinyLlama_v1.1 g2": {
+   "mean": {
+    "ppl": 587.4584770116066,
+    "dlog": 4.226228905861277,
+    "acc": 0.28985714285714287
+   },
+   "fuse_u": {
+    "ppl": 76.11266764106111,
+    "dlog": 2.182638051243142,
+    "acc": 0.3445714285714286
+   },
+   "fuse": {
+    "ppl": 70.87635956480858,
+    "dlog": 2.111360284203971,
+    "acc": 0.3608571428571428
+   },
+   "base": {
+    "ppl": 8.58122485438343,
+    "acc": 0.5434285714285714
+   }
+  },
+  "TinyLlama/TinyLlama_v1.1 g4": {
+   "mean": {
+    "ppl": 2048.8820417850297,
+    "dlog": 5.475472917674594,
+    "acc": 0.29442857142857143
+   },
+   "fuse_u": {
+    "ppl": 375.3215061290842,
+    "dlog": 3.7782063481014463,
+    "acc": 0.30757142857142866
+   },
+   "fuse": {
+    "ppl": 340.7362069440118,
+    "dlog": 3.6815319310042725,
+    "acc": 0.30142857142857143
+   },
+   "base": {
+    "ppl": 8.58122485438343,
+    "acc": 0.5434285714285714
+   }
+  },
+  "openlm-research/open_llama_3b_v2 g2": {
+   "mean": {
+    "ppl": 1344.4013735927992,
+    "dlog": 5.1167440376761855,
+    "acc": 0.30371428571428577
+   },
+   "fuse_u": {
+    "ppl": 47.83743686820331,
+    "dlog": 1.7808484511487919,
+    "acc": 0.38985714285714285
+   },
+   "fuse": {
+    "ppl": 31.8156679543926,
+    "dlog": 1.3729987915275852,
+    "acc": 0.41314285714285715
+   },
+   "base": {
+    "ppl": 8.06037498708558,
+    "acc": 0.5971428571428572
+   }
+  },
+  "openlm-research/open_llama_3b_v2 g4": {
+   "mean": {
+    "ppl": 3579.0123001704465,
+    "dlog": 6.095882067633297,
+    "acc": 0.2997142857142857
+   },
+   "fuse_u": {
+    "ppl": 302.28519620188075,
+    "dlog": 3.6244108501448764,
+    "acc": 0.31071428571428567
+   },
+   "fuse": {
+    "ppl": 237.4712973983471,
+    "dlog": 3.383086683223172,
+    "acc": 0.31042857142857144
+   },
+   "base": {
+    "ppl": 8.06037498708558,
+    "acc": 0.5971428571428572
+   }
+  }
+ },
+ "reported": {
+  "mistralai/Mistral-7B-Instruct-v0.2 g2": {
+   "acc_diff_fuse_minus_mean": [
+    0.16,
+    0.14685357142857142,
+    0.17271428571428574
+   ],
+   "acc_diff_fuse_minus_fuse_u": [
+    -0.004571428571428572,
+    -0.011857142857142856,
+    0.002428571428571429
+   ],
+   "ppl_over_base": {
+    "mean": 41.25396454365651,
+    "fuse_u": 3.371399513822663,
+    "fuse": 2.9220061342938246
+   }
+  },
+  "mistralai/Mistral-7B-Instruct-v0.2 g4": {
+   "acc_diff_fuse_minus_mean": [
+    0.03842857142857143,
+    0.026285714285714284,
+    0.049857142857142864
+   ],
+   "acc_diff_fuse_minus_fuse_u": [
+    0.008571428571428572,
+    0.0008571428571428574,
+    0.016860714285714267
+   ],
+   "ppl_over_base": {
+    "mean": 94.79783717669785,
+    "fuse_u": 21.407998869353165,
+    "fuse": 18.14506551014213
+   }
+  },
+  "Qwen/Qwen2.5-1.5B g2": {
+   "acc_diff_fuse_minus_mean": [
+    0.05457142857142857,
+    0.04171071428571429,
+    0.06886071428571426
+   ],
+   "acc_diff_fuse_minus_fuse_u": [
+    -0.006142857142857138,
+    -0.016714285714285713,
+    0.0050071428571428185
+   ],
+   "ppl_over_base": {
+    "mean": 14933.823675059377,
+    "fuse_u": 7.065987788664803,
+    "fuse": 16.640599492263334
+   }
+  },
+  "Qwen/Qwen2.5-7B g2": {
+   "acc_diff_fuse_minus_mean": [
+    0.164,
+    0.14971428571428572,
+    0.1771464285714286
+   ],
+   "acc_diff_fuse_minus_fuse_u": [
+    0.01014285714285714,
+    0.0008571428571428574,
+    0.019146428571428554
+   ],
+   "ppl_over_base": {
+    "mean": 617.3110621467715,
+    "fuse_u": 5.88318937973697,
+    "fuse": 4.923469181924765
+   }
+  },
+  "Qwen/Qwen2.5-7B g4": {
+   "acc_diff_fuse_minus_mean": [
+    0.0007142857142857149,
+    -0.012432142857142857,
+    0.013
+   ],
+   "acc_diff_fuse_minus_fuse_u": [
+    0.00014285714285714298,
+    -0.010289285714285716,
+    0.011003571428571408
+   ],
+   "ppl_over_base": {
+    "mean": 12179.716281813953,
+    "fuse_u": 131.91035261948898,
+    "fuse": 249.7388323318688
+   }
+  },
+  "TinyLlama/TinyLlama_v1.1 g2": {
+   "acc_diff_fuse_minus_mean": [
+    0.071,
+    0.05856785714285713,
+    0.08328571428571428
+   ],
+   "acc_diff_fuse_minus_fuse_u": [
+    0.016285714285714285,
+    0.008285714285714287,
+    0.024
+   ],
+   "ppl_over_base": {
+    "mean": 68.45858102780318,
+    "fuse_u": 8.869674077143138,
+    "fuse": 8.259468871580003
+   }
+  },
+  "TinyLlama/TinyLlama_v1.1 g4": {
+   "acc_diff_fuse_minus_mean": [
+    0.006999999999999999,
+    -0.004428571428571428,
+    0.01842857142857143
+   ],
+   "acc_diff_fuse_minus_fuse_u": [
+    -0.006142857142857143,
+    -0.01500357142857143,
+    0.0032892857142856956
+   ],
+   "ppl_over_base": {
+    "mean": 238.76335564595155,
+    "fuse_u": 43.73752144920941,
+    "fuse": 39.70717615795351
+   }
+  },
+  "openlm-research/open_llama_3b_v2 g2": {
+   "acc_diff_fuse_minus_mean": [
+    0.10942857142857143,
+    0.09685357142857143,
+    0.12200357142857142
+   ],
+   "acc_diff_fuse_minus_fuse_u": [
+    0.023285714285714288,
+    0.01557142857142857,
+    0.030857142857142857
+   ],
+   "ppl_over_base": {
+    "mean": 166.79141798574057,
+    "fuse_u": 5.93488974704638,
+    "fuse": 3.9471697043087954
+   }
+  },
+  "openlm-research/open_llama_3b_v2 g4": {
+   "acc_diff_fuse_minus_mean": [
+    0.010714285714285718,
+    -0.0007178571428571432,
+    0.022574999999999984
+   ],
+   "acc_diff_fuse_minus_fuse_u": [
+    -0.00028571428571428595,
+    -0.007999999999999998,
+    0.007289285714285695
+   ],
+   "ppl_over_base": {
+    "mean": 444.0255330434103,
+    "fuse_u": 37.502621985479,
+    "fuse": 29.461569440482133
+   }
+  }
+ },
+ "checks": {
+  "mistralai/Mistral-7B-Instruct-v0.2": {
+   "groups_of_one_max_logit_diff": 1.78125,
+   "logit_scale": 31.125,
+   "restore_check_ppl": 6.7158409523397635,
+   "dtype": "torch.bfloat16",
+   "base_ppl": 6.7158409523397635
+  },
+  "Qwen/Qwen2.5-1.5B": {
+   "groups_of_one_max_logit_diff": 9.560585021972656e-05,
+   "logit_scale": 29.18610954284668,
+   "restore_check_ppl": 10.402603838017432,
+   "dtype": "torch.float32",
+   "base_ppl": 10.402603838017432
+  },
+  "Qwen/Qwen2.5-7B": {
+   "groups_of_one_max_logit_diff": 0.96875,
+   "logit_scale": 31.375,
+   "restore_check_ppl": 7.640518883582358,
+   "dtype": "torch.bfloat16",
+   "base_ppl": 7.640518883582358
+  },
+  "TinyLlama/TinyLlama_v1.1": {
+   "groups_of_one_max_logit_diff": 0.00012934207916259766,
+   "logit_scale": 34.598655700683594,
+   "restore_check_ppl": 8.58122485438343,
+   "dtype": "torch.float32",
+   "base_ppl": 8.58122485438343
+  },
+  "openlm-research/open_llama_3b_v2": {
+   "groups_of_one_max_logit_diff": 1.0,
+   "logit_scale": 91.0,
+   "restore_check_ppl": 8.06037498708558,
+   "dtype": "torch.bfloat16",
+   "base_ppl": 8.06037498708558
+  }
+ }
+}
