@@ -1,0 +1,21 @@
+{
+ "model": "JackFram/llama-160m",
+ "params": 162417408,
+ "dtype": "torch.float32",
+ "base": 84.78056068801378,
+ "pairing": "fusion-residual matching",
+ "fused": 140.78276622427646,
+ "balanced": 140.7827326426561,
+ "max_logit_change_relative": 8.400004844588693e-06,
+ "fused_w4": 164.81529472505514,
+ "fused_w3": 234.5556671383956,
+ "balanced_w4": 159.76029446557578,
+ "balanced_w3": 220.59456403662375,
+ "registered": null,
+ "dev": true,
+ "calibration": [
+  16,
+  1024
+ ],
+ "ppl_windows": 4
+}

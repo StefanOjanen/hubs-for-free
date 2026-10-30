@@ -1,0 +1,143 @@
+{
+ "model": "JackFram/llama-160m",
+ "runs": [
+  {
+   "start": "mean",
+   "lr": 0.0001,
+   "steps": 4,
+   "curve": [
+    {
+     "step": 0,
+     "tokens": 0,
+     "ppl": 728.2998865120521,
+     "seconds": 2.1
+    },
+    {
+     "step": 1,
+     "tokens": 16384,
+     "ppl": 679.8355671048402,
+     "seconds": 9.3
+    },
+    {
+     "step": 2,
+     "tokens": 32768,
+     "ppl": 605.9217752485564,
+     "seconds": 16.5
+    },
+    {
+     "step": 3,
+     "tokens": 49152,
+     "ppl": 542.1740916854213,
+     "seconds": 23.7
+    },
+    {
+     "step": 4,
+     "tokens": 65536,
+     "ppl": 496.15990967682615,
+     "seconds": 30.8
+    }
+   ],
+   "final": 496.15990967682615
+  },
+  {
+   "start": "fuse",
+   "lr": 0.0001,
+   "steps": 4,
+   "curve": [
+    {
+     "step": 0,
+     "tokens": 0,
+     "ppl": 50.678472261732544,
+     "seconds": 2.1
+    },
+    {
+     "step": 1,
+     "tokens": 16384,
+     "ppl": 49.38169691898938,
+     "seconds": 9.4
+    },
+    {
+     "step": 2,
+     "tokens": 32768,
+     "ppl": 47.340645829080664,
+     "seconds": 16.6
+    },
+    {
+     "step": 3,
+     "tokens": 49152,
+     "ppl": 45.24548596727942,
+     "seconds": 23.8
+    },
+    {
+     "step": 4,
+     "tokens": 65536,
+     "ppl": 43.49066775680165,
+     "seconds": 31.0
+    }
+   ],
+   "final": 43.49066775680165
+  },
+  {
+   "start": "fuse_balanced",
+   "lr": 0.0001,
+   "steps": 4,
+   "curve": [
+    {
+     "step": 0,
+     "tokens": 0,
+     "ppl": 50.678478006620566,
+     "seconds": 2.2
+    },
+    {
+     "step": 1,
+     "tokens": 16384,
+     "ppl": 49.79143769818906,
+     "seconds": 9.4
+    },
+    {
+     "step": 2,
+     "tokens": 32768,
+     "ppl": 48.2349444474981,
+     "seconds": 16.5
+    },
+    {
+     "step": 3,
+     "tokens": 49152,
+     "ppl": 46.419990556167484,
+     "seconds": 23.8
+    },
+    {
+     "step": 4,
+     "tokens": 65536,
+     "ppl": 44.67998684932791,
+     "seconds": 30.9
+    }
+   ],
+   "final": 44.67998684932791
+  }
+ ],
+ "base": 23.184903203970986,
+ "registered": null,
+ "dev": true,
+ "tokens": 66000,
+ "lrs": [
+  0.0001
+ ],
+ "seq": 1024,
+ "batch_sequences": 16,
+ "warmup": [
+  0.02,
+  10
+ ],
+ "lr_floor": 0.1,
+ "checkpoints": [
+  0,
+  0.1,
+  0.2,
+  0.4,
+  0.6,
+  0.8,
+  1.0
+ ],
+ "ppl_windows": 40
+}
