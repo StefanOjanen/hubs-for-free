@@ -1576,3 +1576,64 @@ moves faster; what it buys is stability: the unbalanced start degrades at 8e-5
 and diverges at 2e-4 in both models, while the rebalanced one stays usable
 across the grid and gives the best run of the twelve in each model. All
 training clauses are about the first 327,680 tokens.
+
+## Fitting the shared heads where attention looks (2026-10-31, preregistration 31)
+
+Frozen at 207a5ec (`alignment_study/PREREGISTRATION31.md`; the weighting chosen
+by the rule committed at 5f061e1). 0 of 3 clauses pass. The weighted fusion fits
+each group's shared key and value head in the metric of the attention input's
+second moment S = E[x x^T], every token alike. This round replaced S by S_att,
+which weights each token by the attention it receives (averaged over the layer's
+query heads and every 8th query position), for the keys, the values and the
+query energies alike, with the pairs fixed at the fusion's matching under S.
+Five models not used in the method's development were each converted to half
+their key-value heads with S and with S_att; WikiText-2 perplexity on 8 windows
+of 2,048 tokens, for Llama-2-7B also on the whole test set (`attnw/*.json`,
+`attnw_results.json`, `attnw.log`, `eval_attnw.log`).
+- A1 FAILS (lower in 3 of 5): OLMo-1B 44.18 against 54.70 (unconverted 12.02),
+  h2o-danube-1.8b 28.82 against 38.81 (6.76), Mistral-7B-Instruct 15.70 against
+  16.68 (5.54); higher in Llama-2-7B, 16.62 against 16.00 (5.03), and in
+  Qwen2.5-7B, whose two arms are invalid (below).
+- A2 FAILS: the attention arm keeps 1.28 of the plain arm's increase in log
+  perplexity, pooled (registered: at most 0.90); per model 0.86, 0.83, 0.95,
+  1.03 and, invalid, 1.52 for Qwen2.5-7B. Over the four valid models alone the
+  pooled ratio is 0.903, also above 0.90 (`attnw_correction/summary.json`).
+- A3 FAILS: on the whole test set, Llama-2-7B's attention arm gives 17.235
+  against round 28's registered 16.78; the plain arm reproduces round 28
+  (16.780).
+- Instrument defect, found after the run. The round's moment routine
+  (`attnw_round.moments`) accumulates S and S_att without the ones column that
+  `fuse_kv.second_moments` appends when a layer's projections carry biases, so
+  `fuse_kv_group` treated Qwen2.5-7B as a model without biases: it fitted the
+  weights and left every query, key and value bias in the old basis. Its plain
+  arm gave 39,381 against round 30's 23.87 with the same pairs, calibration and
+  windows, while the plain arms of the four models without biases reproduce
+  round 30's fused values to four decimals. Both Qwen2.5-7B arms are invalid as
+  computed. A post hoc rerun with the column appended (`attnw_biasfix.py`,
+  `attnw_correction/`, `attnw_biasfix.log`; not preregistered, not scored) gives
+  23.873 for the plain arm, round 30's value, and 27.776 for the attention arm,
+  higher again. With it, A1 would still read 3 of 5 and A2 0.945; the defect
+  changed no clause's outcome, and the registered result stays 0 of 3.
+- Reported: the layer means of the first position's share of the received
+  attention and of the received attention's entropy over log T are 0.066 and
+  0.606 (OLMo-1B), 0.306 and 0.647 (h2o-danube-1.8b), 0.043 and 0.544
+  (Mistral), 0.334 and 0.449 (Llama-2-7B), 0.345 and 0.686 (Qwen2.5-7B).
+  Neither orders the gains: h2o-danube-1.8b gains most with a first-position
+  share close to Llama-2-7B's, where the weighting hurts. Run times 284 s
+  (OLMo-1B), 488 s, 2,519 s, 4,705 s and 1,835 s; the correction 2,394 s.
+- Post hoc (`attnw_correction/summary.json`): over the five models of the round
+  (Qwen2.5-7B corrected) and the three development models, the weighting's
+  change in log perplexity tends to fall as the plain fusion's cost rises,
+  Spearman -0.69 over 8 models: it helps most in TinyLlama, h2o-danube-1.8b and
+  OLMo-1B, where the plain fusion loses most (2.09, 1.75 and 1.52 in log
+  perplexity), and hurts in Llama-160m (0.45, the lowest) and Llama-2-7B (1.16),
+  but also in Qwen2.5-7B (1.49; weighting +16 percent). A pattern seen after
+  the fact, not a test.
+Reading: weighting each token by the attention it receives is not a safe
+replacement for the plain second moment. It helps a lot in some models and
+hurts in others, and the registered pooled gain is not there with or without
+the defect. In development two of three models gained and the minimax rule
+chose the full weighting, which was already worse than the plain fusion on the
+third; on the new models three gained and two lost. Round 32's draft rule
+(`PREREGISTRATION32_rule.md`) asks instead for an arm that beats the plain
+fusion on every development model.

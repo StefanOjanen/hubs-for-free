@@ -543,6 +543,28 @@ Each instrument below exists because a finding above required it.
 <p align="center"><img src="figures/readme/fig30_rebalancing.png" alt="Four panels. Left two: for six models converted to half their key-value heads, perplexity after rounding the attention weights to 4 and to 3 bits divided by the unrounded perplexity, for the fused model as computed and rebalanced; rebalanced is lower in every model, most in Qwen2.5-7B, least in OLMo-1B. Right two: final perplexity after 327,680 training tokens against the learning rate for OLMo-1B and h2o-danube-1.8b, starting from averaging, the fused model as computed and the rebalanced fused model; averaging stays far above, the fused model as computed rises sharply at the two highest learning rates, the rebalanced one stays flat and low" width="880"></p>
 <p align="center"><em>Rebalancing changes no prediction of the fused model, yet it rounds far better and trains stably where the original parameterization diverges.</em></p>
 
+- **Fitting where attention looks: a development gain that did not hold.** The
+  fusion fits each shared head to every token alike, yet an error at a token
+  matters only through the attention that token receives. Weighting each token
+  by the attention it receives cut the converted perplexity of TinyLlama from
+  58.5 to 36.5 in development, and a rule fixed in advance chose the full
+  weighting. A preregistered round on five new models did not bear it out:
+  lower in OLMo-1B (54.7 to 44.2), h2o-danube-1.8b (38.8 to 28.8) and
+  Mistral-7B-Instruct (16.7 to 15.7), higher in Llama-2-7B (16.0 to 16.6, and
+  17.2 against round 28's 16.8 on the whole test set). Qwen2.5-7B's numbers
+  were invalid: the round's instrument dropped the bias column that the fusion
+  needs for models with biased projections, a defect that showed because the
+  plain arm no longer reproduced round 30. Rerun with the column, after the fact and
+  unscored, Qwen2.5-7B gives 23.9 plain, round 30's value, and 27.8 weighted:
+  worse again, so the defect changed no outcome. None of the three registered
+  predictions held, with or without it. Across all eight models seen, the
+  weighting tended to help where the plain fusion lost most and to hurt where
+  it lost least, but only loosely (Spearman -0.69, after the fact), with
+  Qwen2.5-7B against the trend.
+
+<p align="center"><img src="figures/readme/fig31_attention_weighted.png" alt="Two panels. Left: for five test models and three development models converted to half their key-value heads, converted perplexity relative to the unconverted model with the plain fit and with the fit weighted by received attention; the weighted fit is lower for OLMo-1B, h2o-danube-1.8b, Mistral-7B-Instruct, TinyLlama and OpenLLaMA-3B and higher for Llama-2-7B, Qwen2.5-7B (corrected) and Llama-160m. Right: the change from weighting against the cost of the plain fusion; the change tends to fall as the cost rises, with Qwen2.5-7B above the trend" width="880"></p>
+<p align="center"><em>Weighting by received attention helped three of five new models and hurt two; all three registered predictions failed.</em></p>
+
 - **Cross-layer KV compression, against the same nulls.** Two published
   methods compress the cache across layers on the premise that adjacent
   layers' keys and values are similar. MiniCache (NeurIPS 2024) merges them

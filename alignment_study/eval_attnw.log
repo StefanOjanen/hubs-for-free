@@ -1,0 +1,9 @@
+A1 FAIL {'lower_in': 3, 'of': 5}
+A2 FAIL {'pooled_ratio': 1.282001498068413, 'per_model_ratio': {'OLMo-1B-hf': 0.859004283774291, 'h2o-danube-1.8b-base': 0.8296196268660445, 'Mistral-7B-Instruct-v0.2': 0.9451755695733186, 'Llama-2-7b-hf': 1.0329164395285089, 'Qwen2.5-7B': 1.5171422141628612}}
+A3 FAIL {'round28': 16.78, 'attention_full_2048': 17.235228090369088, 'plain_full_2048': 16.77955871488395}
+OLMo-1B-hf {'base': 12.015669273629518, 'plain': 54.70157037210392, 'attention': 44.17627636798041, 'lower': True, 'pairing': 'fusion-residual matching', 'first_position_share': 0.06606253182283695, 'received_entropy': 0.6062975447348435}
+h2o-danube-1.8b-base {'base': 6.755763803659044, 'plain': 38.81452078200826, 'attention': 28.815160478573986, 'lower': True, 'pairing': 'fusion-residual matching', 'first_position_share': 0.30611257743405434, 'received_entropy': 0.6472948943119263}
+Mistral-7B-Instruct-v0.2 {'base': 5.540459194776044, 'plain': 16.678713727737772, 'attention': 15.7008318115762, 'lower': True, 'pairing': 'fusion-residual matching', 'first_position_share': 0.04319228482715687, 'received_entropy': 0.5439838633174077}
+Llama-2-7b-hf {'base': 5.026648043692182, 'plain': 15.99973968846477, 'attention': 16.621278876071212, 'lower': False, 'pairing': 'fusion-residual matching', 'first_position_share': 0.33357460917730464, 'received_entropy': 0.4486464213114232}
+Qwen2.5-7B {'base': 5.395888849333053, 'plain': 39380.64616785788, 'attention': 3918473.384239179, 'lower': False, 'pairing': 'neighbour', 'first_position_share': 0.34493026970307433, 'received_entropy': 0.685951678631162}
+passes 0 of 3 missing []

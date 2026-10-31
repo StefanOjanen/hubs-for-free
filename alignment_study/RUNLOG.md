@@ -938,3 +938,26 @@ Equalization on the original models (cle_original_dev.py; fuse_balance.py with
 every KV head alone): no gain, Llama-160m 76.6 against 76.9 at 4 bits and 157
 against 160 at 3, TinyLlama 7.54 against 7.53 and 10.84 against 10.86, so round
 30's rebalancing gain comes from the fusion's imbalance.
+
+Fitting the shared heads where attention looks (preregistration 31, frozen at
+207a5ec and pushed before the run). Ran 07:40 to 10:24 UTC on AC power, one GPU
+job under both guards, no pauses or kills (attnw_round.py; attnw.log): OLMo-1B
+284 s, h2o-danube-1.8b 488 s, Mistral-7B-Instruct-v0.2 2,519 s, Llama-2-7B 4,705 s
+(with the whole test set twice), Qwen2.5-7B 1,835 s. Evaluation (eval_attnw.py,
+unchanged since the freeze): 0 of 3 (attnw_results.json, eval_attnw.log). The
+plain arm reproduced round 30's fused perplexity to four decimals in OLMo-1B,
+h2o-danube-1.8b, Mistral-7B-Instruct and Llama-2-7B (54.7016, 38.8145, 16.6787,
+15.9997) and round 28's whole-test 16.78 on Llama-2-7B (16.7796), but gave
+39,380.6 for Qwen2.5-7B against round 30's 23.8729 on the same pairs, calibration
+and windows. Cause: attnw_round.moments accumulates S and S_att of x alone,
+while fuse_kv.second_moments appends a ones column for layers whose projections
+carry biases and fuse_kv.fuse_kv_group reads the bias only when the moment has
+that column; with a d x d moment it fitted Qwen2.5-7B's weights and left every
+query, key and value bias in the old basis. Both Qwen2.5-7B arms are invalid as
+computed; the evaluator ran as frozen and its output stands. Post hoc
+correction, not preregistered and not scored (attnw_biasfix.py, which reuses
+attnw_round.run_model with the column appended to both moments, the attention
+weight multiplying it as every other entry; attnw_correction/,
+attnw_biasfix.log), 10:31 to 11:11 UTC (2,394 s): plain 23.8729 (round 30:
+23.8729), weighted 27.7764. Any routine that builds second moments for the fusion must append the
+ones column when kv.has_bias(l), as fuse_kv.second_moments does.

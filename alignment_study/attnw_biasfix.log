@@ -1,0 +1,8 @@
+round 31 bias correction starting Sat Oct 31 10:30:57 UTC 2026
+  Qwen/Qwen2.5-7B: unconverted 5.396; moments (1054s); first-position share, layer mean 0.345; received-attention entropy 0.686 (1054s)
+  Qwen/Qwen2.5-7B, plain: ppl 23.873 (671s) (1725s)
+  Qwen/Qwen2.5-7B, attention: ppl 27.776 (639s) (2394s)
+  corrected plain arm 23.8729 against round 30's 23.8729 (same pairs, calibration and windows) (2394s)
+  {'post_hoc': True, 'registered_result': 'alignment_study/attnw_results.json', 'qwen_corrected': {'base': 5.395888849333053, 'plain': 23.872870084076432, 'attention': 27.776350785191834}, 'qwen_plain_reproduces_round30': True, 'A2_pooled_ratio_with_corrected_qwen': 0.9454485755950075, 'A2_pooled_ratio_four_unbiased_models': 0.9033472109918071, 'lower_with_corrected_qwen': 3, 'per_model_ratio': {'OLMo-1B-hf': 0.859004283774291, 'h2o-danube-1.8b-base': 0.8296196268660445, 'Mistral-7B-Instruct-v0.2': 0.9451755695733186, 'Llama-2-7b-hf': 1.0329164395285089, 'Qwen2.5-7B': 1.1018369667452037}} (2394s)
+ATTNW_BIASFIX_DONE (2394s)
+BIASFIX_PIPELINE_DONE

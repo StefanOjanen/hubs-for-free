@@ -1,0 +1,44 @@
+{
+ "post_hoc": true,
+ "registered_result": "alignment_study/attnw_results.json",
+ "qwen_corrected": {
+  "base": 5.395888849333053,
+  "plain": 23.872870084076432,
+  "attention": 27.776350785191834
+ },
+ "qwen_plain_reproduces_round30": true,
+ "A2_pooled_ratio_with_corrected_qwen": 0.9454485755950075,
+ "A2_pooled_ratio_four_unbiased_models": 0.9033472109918071,
+ "lower_with_corrected_qwen": 3,
+ "per_model_ratio": {
+  "OLMo-1B-hf": 0.859004283774291,
+  "h2o-danube-1.8b-base": 0.8296196268660445,
+  "Mistral-7B-Instruct-v0.2": 0.9451755695733186,
+  "Llama-2-7b-hf": 1.0329164395285089,
+  "Qwen2.5-7B": 1.1018369667452037
+ },
+ "posthoc_gain_against_cost": {
+  "cost_ln_plain_over_base": {
+   "OLMo-1B-hf": 1.5156808470188843,
+   "h2o-danube-1.8b-base": 1.748398386214964,
+   "Mistral-7B-Instruct-v0.2": 1.102055894845162,
+   "Llama-2-7b-hf": 1.1578190835674154,
+   "Qwen2.5-7B": 1.4871053318308805,
+   "llama-160m": 0.44945435107016346,
+   "TinyLlama_v1.1": 2.090116022852612,
+   "open_llama_3b_v2": 1.4346491483344528
+  },
+  "gain_ln_attention_over_plain": {
+   "OLMo-1B-hf": -0.21370450659501694,
+   "h2o-danube-1.8b-base": -0.2978927694301112,
+   "Mistral-7B-Instruct-v0.2": -0.06041958673325252,
+   "Llama-2-7b-hf": 0.03811128184920036,
+   "Qwen2.5-7B": 0.1514422962242767,
+   "llama-160m": 0.02442796909349024,
+   "TinyLlama_v1.1": -0.47292674874816815,
+   "open_llama_3b_v2": -0.13461472176317463
+  },
+  "spearman": -0.6904761904761905,
+  "models": 8
+ }
+}

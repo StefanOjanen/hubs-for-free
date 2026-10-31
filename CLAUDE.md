@@ -155,6 +155,22 @@ tokens, learning rates 5e-6 to 2e-4); 4 of 6: Q2 (4-bit lower in 6 of 6), Q3
 weights rounds twice: 0.7 and 4.2 percent in Llama-2-7B and Qwen2.5-7B; h2o
 logits 3.1e-4) and T2 fails (at 5e-6 the unbalanced start ends lower). kvfuse.py
 now fuses and rebalances in float32 and rounds once (--no-balance to skip).
+31 (alignment_study/PREREGISTRATION31.md, PREREGISTRATION31_lambda_rule.md,
+attnw/, attnw_fuse_dev/; instrument attnw_round.py): the fusion fitted in S_att
+(each token weighted by the attention it receives) for keys, values and query
+energies, five models; 0 of 3: A1 lower in 3 of 5 (OLMo-1B 54.7 to 44.2,
+h2o-danube 38.8 to 28.8, Mistral 16.7 to 15.7; Llama-2-7B 16.0 to 16.6), A2
+pooled 1.28 (0.903 over the four valid models), A3 Llama-2-7B whole test 17.235
+against 16.78. Instrument defect: attnw_round.moments omits the ones column the
+fusion needs for biased projections, so both Qwen2.5-7B arms are invalid
+(plain 39,381 against round 30's 23.87); post hoc rerun attnw_biasfix.py
+(attnw_correction/): plain 23.873 (round 30's value), weighted 27.776, so A1
+still 3 of 5 and A2 0.945; post hoc, the gain tends to grow with the plain
+fusion's cost (Spearman -0.69 over 8 models, Qwen2.5-7B against it). Any routine that builds second moments for the
+fusion must append the ones column when kv.has_bias(l), as
+fuse_kv.second_moments does. Round 32 draft: PREREGISTRATION32_rule.md
+(maximin over three development models) with attnw_mix_dev.py, committed
+before its values were read.
 Untrained 7B initializations are built on the
 CPU and copied to the GPU; with two heavy runs the 65 W adapter and 32 GB
 memory saturate (swap up to 37 GB), so queue 7B runs one at a time. Keep the

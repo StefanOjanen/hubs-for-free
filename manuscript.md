@@ -1356,6 +1356,41 @@ of h2o-danube-1.8b in float32 move by 3.1e-4 of the largest logit, beyond the
 registered tolerances (Q1). The conversion command now fuses and rebalances
 each layer in float32 and rounds once.
 
+### 6.11 Fitting the shared heads where attention looks
+
+The fusion fits each group's shared heads in the metric of S = E[x x^T], every
+token counted alike, but a key or value error at token s reaches the output
+only through the attention s receives. Replacing S by S_att, which weights each
+token by the attention it receives (averaged over the layer's query heads and
+every 8th query position, scaled so that uniform attention would give S), for
+the keys, the values and the query energies alike, lowered the converted
+perplexity of TinyLlama from 58.5 to 36.5 and of OpenLLaMA-3B from 28.4 to 24.8
+in development, and raised Llama-160m's from 105.0 to 107.6; a rule committed
+before the last development value chose the full weighting. Preregistration 31
+tested it on five other models, with the pairs fixed at the fusion's matching
+under S; 0 of 3 clauses pass. The weighted arm is lower in OLMo-1B (44.2 against
+54.7), h2o-danube-1.8b (28.8 against 38.8) and Mistral-7B-Instruct (15.7 against
+16.7) and higher in Llama-2-7B (16.6 against 16.0; A1), where it also misses
+round 28's whole-test 16.78 (17.24; A3). Pooled, it keeps 1.28 of the plain
+arm's increase in log perplexity (A2, registered at most 0.90), a figure that
+includes an instrument defect: the round's moment routine left out the
+constant column that the fusion appends for biased projections, so both of
+Qwen2.5-7B's arms left its biases in the old basis (plain arm 39,381 against
+round 30's 23.87 on the same pairs, calibration and windows; the other four
+plain arms reproduce round 30 to four decimals). Rerun with the column, post hoc
+and unscored, Qwen2.5-7B gives 23.87 plain (round 30's value) and 27.78
+weighted, so A1 would still read 3 of 5 and A2 0.945; over the four models
+without biases the pooled ratio is 0.903. The defect changed no outcome.
+Across the five models of the round (Qwen2.5-7B corrected) and the three
+development models, the weighting's change in log perplexity tends to fall
+as the plain fusion's cost rises (Spearman -0.69, post hoc): it helps most
+where the fusion loses most, but Qwen2.5-7B, which loses much, is hurt as
+well. Neither the first position's share of the received attention nor its
+entropy orders the gains. The attention-aware Hessians of BoA (Kim et al.
+2025), built for quantization, are the closest prior work; this round only
+asked whether the simplest such weighting improves closed-form head fusion,
+and on new models it did not do so reliably.
+
 ## 7. Limitations
 
 Results cover seventeen models up to 8B parameters in ten families, three
@@ -1459,6 +1494,9 @@ against the norm of what each head writes.
 | 26 | 16404cf, pushed before execution | F1 to F6: closed-form fusion of key and value heads weighted by what the heads compute | 6 of 6 |
 | 27 | 35249e6, pushed before execution | K1 to K4: the weighted fusion in models that already share key-value heads | 3 of 4; K2 fails |
 | 28 | 0abdd89, pushed before execution | M1 to M6: the weighted fusion against CAGA on its own Llama-2-7B benchmark, matched pairs, a steering check | 6 of 6 |
+| 29 | 4d02534, pushed before execution | gate and G1 to G5: does one merged early-layer pair switch on a super weight in four other models, and does one calibration window flag it | gate fails (no severe damage among 342 conversions); 0 of 6 |
+| 30 | ab9827e, pushed before execution | Q1 to Q3, T1 to T3: rebalancing the fused heads, for 4- and 3-bit rounding in six models and uptraining in two | 4 of 6; Q1, T2 fail |
+| 31 | 207a5ec, pushed before execution | A1 to A3: the fusion fitted in the received-attention metric, five models | 0 of 3; Qwen2.5-7B's arms invalid (instrument defect), rerun post hoc |
 
 ## Appendix B. Numbers ledger
 
@@ -1511,6 +1549,10 @@ against the norm of what each head writes.
 | cross-layer KV compression, A1 to C3 | alignment_study/xlayer_results.json, xlayer/, xlayer_dev/, xlayer_dev_results.json |
 | against CAGA, M1 to M6 | alignment_study/llama2_results.json, llama2/, llama2_dev/, llama2_dev.log |
 | key-value heads that already serve several query heads, K1 to K4 | alignment_study/fusekv_results.json, fusekv/, fusekv_dev/, fusekv_dev_results.json |
+| super-weight follow-up to round 28 (exploratory) | alignment_study/llama2_followup_*.json, llama2_quant_*.json, llama2_dev/prefix160m.json |
+| one-window guard, gate and G1 to G5 | alignment_study/guard_results.json, guard/, guard_dev/ |
+| rebalancing, Q1 to Q3 and T1 to T3 | alignment_study/balance_results.json, balance/, balance_dev/ |
+| received-attention metric, A1 to A3; Qwen2.5-7B corrected and the gain-cost pattern (post hoc) | alignment_study/attnw_results.json, attnw/, attnw_fuse_dev/, attnw_correction/ |
 | scorer with the vocabulary projected in chunks | alignment_study/zeroshot_head_chunk_check.json |
 | conversion command and checkpoint export | alignment_study/llama2_dev/kvfuse_check_llama-160m.json, gqa_export_check_llama-160m.json |
 | shared energy against merge damage (post hoc) | alignment_study/posthoc/sharedE_vs_merge_kl.json |

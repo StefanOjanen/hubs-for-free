@@ -1298,4 +1298,61 @@ if glob.glob(BR):
              " rebalancing rescales each shared value row against its output columns and each key plane against its query planes.", fontsize=10, color=INK2, va="top")
     fig.savefig(OUT + "fig30_rebalancing.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
+# ============ Figure 31: fitting the shared heads where attention looks (preregistration 31; Qwen2.5-7B corrected post hoc) ============
+AR, AC = "alignment_study/attnw_results.json", "alignment_study/attnw_correction/summary.json"
+if glob.glob(AR) and glob.glob(AC):
+    from matplotlib.ticker import FixedLocator, FixedFormatter, NullLocator
+    plt.rcParams["axes.grid"] = False
+    ARES, ACOR = json.load(open(AR)), json.load(open(AC))
+    TEST = [("OLMo-1B-hf", "OLMo-1B"), ("h2o-danube-1.8b-base", "h2o-danube-1.8b"), ("Mistral-7B-Instruct-v0.2", "Mistral-7B-Instruct"),
+            ("Llama-2-7b-hf", "Llama-2-7B"), ("Qwen2.5-7B", "Qwen2.5-7B, corrected*")]
+    DEVM = [("llama-160m", "Llama-160m"), ("TinyLlama_v1.1", "TinyLlama"), ("open_llama_3b_v2", "OpenLLaMA-3B")]
+    rows = []
+    for k, lab in TEST:
+        v = ACOR["qwen_corrected"] if k == "Qwen2.5-7B" else ARES["per_model"][k]
+        rows.append((lab, v["base"], v["plain"], v["attention"], "test"))
+    for k, lab in DEVM:
+        r = json.load(open(f"alignment_study/attnw_fuse_dev/{k}.json"))
+        rows.append((lab, r["base"], r["arms"]["0.0"], r["arms"]["1.0"], "dev"))
+    fig = plt.figure(figsize=(14.0, 6.2))
+    ax = fig.add_axes([0.16, 0.12, 0.36, 0.66]); bx = fig.add_axes([0.62, 0.12, 0.35, 0.66])
+    ys = list(range(len(rows)))[::-1]
+    ys = [y + (0.6 if r[4] == "test" else 0) for y, r in zip(ys, rows)]
+    for y, (lab, b, p, a, kind) in zip(ys, rows):
+        ax.plot([p / b, a / b], [y, y], color=GRID, lw=3, zorder=1, solid_capstyle="round")
+        ax.scatter([p / b], [y], s=70, color=S2, edgecolors=SURF, linewidths=1.2, zorder=3, label="every token alike (S)" if y == ys[0] else None)
+        ax.scatter([a / b], [y], s=70, color=S1, edgecolors=SURF, linewidths=1.2, zorder=3, label="by attention received (S_att)" if y == ys[0] else None)
+    ax.set_yticks(ys); ax.set_yticklabels([r[0] for r in rows], fontsize=10)
+    ax.set_xscale("log")
+    TK = [1.5, 2, 3, 5, 10]
+    ax.xaxis.set_major_locator(FixedLocator(TK)); ax.xaxis.set_major_formatter(FixedFormatter([f"{t:g}" for t in TK])); ax.xaxis.set_minor_locator(NullLocator())
+    ax.set_xlim(1.3, 11)
+    ax.set_xlabel("converted / unconverted perplexity (log)", fontsize=10)
+    ax.text(1.32, ys[len(TEST)] + 0.5, "development models", color=INK2, fontsize=9.5, va="center")
+    ax.text(1.32, ys[0] + 0.5, "round 31 models", color=INK2, fontsize=9.5, va="center")
+    ax.set_ylim(min(ys) - 0.6, max(ys) + 0.9)
+    ax.set_title("Each model at half its key-value heads", loc="left", fontsize=12, color=INK, pad=8)
+    ax.legend(loc="lower left", fontsize=9.5, handletextpad=0.2, borderaxespad=0.2)
+    G = ACOR["posthoc_gain_against_cost"]
+    names = {k: lab for k, lab in TEST + DEVM}
+    for k in G["cost_ln_plain_over_base"]:
+        c, g = G["cost_ln_plain_over_base"][k], G["gain_ln_attention_over_plain"][k]
+        isdev = k in dict(DEVM)
+        bx.scatter([c], [100 * (np.exp(g) - 1)], s=80, color=S3 if isdev else S1, edgecolors=SURF, linewidths=1.4, zorder=3,
+                   marker="D" if isdev else "o")
+        bx.text(c + 0.03, 100 * (np.exp(g) - 1) + 1.2, names[k].replace(", corrected*", "*"), fontsize=9, color=INK2)
+    bx.axhline(0, color=INK2, lw=1.0, ls=(0, (4, 3)), zorder=1)
+    bx.set_xlabel("cost of the plain fusion, ln(converted / unconverted perplexity)", fontsize=10)
+    bx.set_ylabel("change from weighting by attention (percent)", fontsize=10)
+    bx.scatter([], [], s=60, color=S1, marker="o", label="round 31 models"); bx.scatter([], [], s=60, color=S3, marker="D", label="development models")
+    bx.legend(loc="lower left", fontsize=9.5, handletextpad=0.2)
+    bx.set_title(f"Gain against the fusion's cost (post hoc, Spearman {G['spearman']:.2f})", loc="left", fontsize=12, color=INK, pad=8)
+    for a_ in (ax, bx):
+        a_.tick_params(length=0); a_.grid(axis="x" if a_ is ax else "both", color=GRID, lw=0.8)
+        for sp in ("left", "bottom"): a_.spines[sp].set_color(GRID)
+    fig.text(0.012, 0.985, "Fitting the shared heads where attention looks: a development gain that did not hold", fontsize=15, color=INK, va="top")
+    fig.text(0.012, 0.915, f"Preregistration 31: {ARES['passes']} of {ARES['of']} registered clauses pass. *Qwen2.5-7B's registered arms were invalid (bias defect);"
+             " shown corrected, post hoc. Development models: other calibration and windows.", fontsize=10, color=INK2, va="top")
+    fig.savefig(OUT + "fig31_attention_weighted.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
 print("FIGURES_DONE", sorted(glob.glob(OUT + "*")))
