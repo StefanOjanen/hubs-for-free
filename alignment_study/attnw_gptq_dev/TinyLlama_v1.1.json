@@ -1,0 +1,77 @@
+{
+ "model": "TinyLlama/TinyLlama_v1.1",
+ "exploratory": true,
+ "calibration": [
+  32,
+  1024
+ ],
+ "ppl_windows": 8,
+ "query_stride": 8,
+ "base": 7.236327714769145,
+ "arms": {
+  "plain_w4": {
+   "hessians_qkv": [
+    "S",
+    "S",
+    "S"
+   ],
+   "ppl": 7.784495485277314
+  },
+  "boa_w4": {
+   "hessians_qkv": [
+    "S",
+    "S",
+    "Sbar"
+   ],
+   "ppl": 7.495240451504147
+  },
+  "sens_w4": {
+   "hessians_qkv": [
+    "Su",
+    "Sw",
+    "Sbar"
+   ],
+   "ppl": 7.517257025401192
+  },
+  "sensqk_w4": {
+   "hessians_qkv": [
+    "Su",
+    "Sw",
+    "S"
+   ],
+   "ppl": 7.801925726807225
+  },
+  "plain_w3": {
+   "hessians_qkv": [
+    "S",
+    "S",
+    "S"
+   ],
+   "ppl": 10.75655488144701
+  },
+  "boa_w3": {
+   "hessians_qkv": [
+    "S",
+    "S",
+    "Sbar"
+   ],
+   "ppl": 8.62698135407564
+  },
+  "sens_w3": {
+   "hessians_qkv": [
+    "Su",
+    "Sw",
+    "Sbar"
+   ],
+   "ppl": 8.783047387376287
+  },
+  "sensqk_w3": {
+   "hessians_qkv": [
+    "Su",
+    "Sw",
+    "S"
+   ],
+   "ppl": 11.197632965166054
+  }
+ }
+}

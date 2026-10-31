@@ -1,0 +1,77 @@
+{
+ "model": "JackFram/llama-160m",
+ "exploratory": true,
+ "calibration": [
+  32,
+  1024
+ ],
+ "ppl_windows": 20,
+ "query_stride": 8,
+ "base": 66.9873601608633,
+ "arms": {
+  "plain_w4": {
+   "hessians_qkv": [
+    "S",
+    "S",
+    "S"
+   ],
+   "ppl": 68.49717771670964
+  },
+  "boa_w4": {
+   "hessians_qkv": [
+    "S",
+    "S",
+    "Sbar"
+   ],
+   "ppl": 69.497797184809
+  },
+  "sens_w4": {
+   "hessians_qkv": [
+    "Su",
+    "Sw",
+    "Sbar"
+   ],
+   "ppl": 69.089416671865
+  },
+  "sensqk_w4": {
+   "hessians_qkv": [
+    "Su",
+    "Sw",
+    "S"
+   ],
+   "ppl": 68.17900337849849
+  },
+  "plain_w3": {
+   "hessians_qkv": [
+    "S",
+    "S",
+    "S"
+   ],
+   "ppl": 88.17861522366559
+  },
+  "boa_w3": {
+   "hessians_qkv": [
+    "S",
+    "S",
+    "Sbar"
+   ],
+   "ppl": 73.73292095352502
+  },
+  "sens_w3": {
+   "hessians_qkv": [
+    "Su",
+    "Sw",
+    "Sbar"
+   ],
+   "ppl": 73.68692188043575
+  },
+  "sensqk_w3": {
+   "hessians_qkv": [
+    "Su",
+    "Sw",
+    "S"
+   ],
+   "ppl": 88.91754516485388
+  }
+ }
+}

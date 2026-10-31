@@ -168,9 +168,13 @@ fusion needs for biased projections, so both Qwen2.5-7B arms are invalid
 still 3 of 5 and A2 0.945; post hoc, the gain tends to grow with the plain
 fusion's cost (Spearman -0.69 over 8 models, Qwen2.5-7B against it). Any routine that builds second moments for the
 fusion must append the ones column when kv.has_bias(l), as
-fuse_kv.second_moments does. Round 32 draft: PREREGISTRATION32_rule.md
-(maximin over three development models) with attnw_mix_dev.py, committed
-before its values were read.
+fuse_kv.second_moments does. 32 (alignment_study/PREREGISTRATION32.md, frozen at bcdcd9d; rule
+PREREGISTRATION32_rule.md, 9c17ad1; development attnw_mix_dev/, rule_result.json;
+instruments attnw2_common.py, attnw2_round.py, eval_attnw2.py, checked by
+attnw2_check.py): keys in S_w (first-order output sensitivity per token), query
+energies weighted the same way, values in S_bar (BoA's value Hessian); eight
+models (SmolLM2-1.7B, Llama-3.2-1B, Mistral-7B-v0.1 new; round 31's five); D1 to
+D4 and a gate on the plain arms; results pending.
 Untrained 7B initializations are built on the
 CPU and copied to the GPU; with two heavy runs the 65 W adapter and 32 GB
 memory saturate (swap up to 37 GB), so queue 7B runs one at a time. Keep the
@@ -184,7 +188,10 @@ MPS, never move a tensor to the host and to float64 in one call:
 session may share this repository and GPU (2026-10-29: a parallel session's job
 ran beside a 7B round and the watchdog killed both): before a GPU job or a
 commit, check for running research jobs and coordinate; key waiters on process
-IDs or new files, never on log lines that may already exist. The memory watchdog
+IDs or new files, never on log lines that may already exist. A waiter whose own
+command line contains its pgrep -f pattern matches itself and never exits (two
+waiters deadlocked this way on 2026-10-31): wait on a PID, or bracket the pattern
+(pgrep -f "[a]lignment_study/..."). The memory watchdog
 and the battery guard are private/guards/mem_watchdog.sh and battery_guard.sh
 (gitignored, so a reboot keeps them; the scratchpad does not survive one); start
 both before any GPU job; they match every alignment_study/*.py process. A script

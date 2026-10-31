@@ -1,0 +1,23 @@
+== JackFram/llama-160m Sat Oct 31 12:42:03 UTC 2026
+[    22s] 4 bits, plain (S/S/S): ppl 68.497
+[    30s] 4 bits, boa (S/S/Sbar): ppl 69.498
+[    38s] 4 bits, sens (Su/Sw/Sbar): ppl 69.089
+[    45s] 4 bits, sensqk (Su/Sw/S): ppl 68.179
+[    53s] 3 bits, plain (S/S/S): ppl 88.179
+[    60s] 3 bits, boa (S/S/Sbar): ppl 73.733
+[    68s] 3 bits, sens (Su/Sw/Sbar): ppl 73.687
+[    76s] 3 bits, sensqk (Su/Sw/S): ppl 88.918
+[    76s] unconverted 66.987
+[    76s] ATTNW_GPTQ_DEV_DONE
+== TinyLlama/TinyLlama_v1.1 Sat Oct 31 12:43:23 UTC 2026
+[   111s] 4 bits, plain (S/S/S): ppl 7.784
+[   169s] 4 bits, boa (S/S/Sbar): ppl 7.495
+[   230s] 4 bits, sens (Su/Sw/Sbar): ppl 7.517
+[   294s] 4 bits, sensqk (Su/Sw/S): ppl 7.802
+[   358s] 3 bits, plain (S/S/S): ppl 10.757
+[   418s] 3 bits, boa (S/S/Sbar): ppl 8.627
+[   481s] 3 bits, sens (Su/Sw/Sbar): ppl 8.783
+[   542s] 3 bits, sensqk (Su/Sw/S): ppl 11.198
+[   542s] unconverted 7.236
+[   542s] ATTNW_GPTQ_DEV_DONE
+GPTQ_DEV_PIPELINE_DONE

@@ -1012,3 +1012,18 @@ o_proj columns 410.1; writers and super weight 401.0; three random head triples
 nor the super weight alone rescues per-channel 3-bit RTN, and the writers are no
 better than random heads; the 3-bit failure is diffuse, as the earlier probe's
 layer ablations suggested (llama2_quant_sink_probe.json). Not pursued.
+
+Attention-derived Hessians for GPTQ, development (exploratory, labelled, not
+pursued; attnw_gptq_dev.py, attnw_gptq_dev/, attnw_gptq_dev.log; 32 C4 documents
+of 1,024 tokens). The unconverted model's attention projections quantized per
+output row by GPTQ (quant_balance_dev.gptq; Hessians from the unquantized model),
+with the input Hessians of q_proj / k_proj / v_proj as plain S/S/S, BoA's
+S/S/S_bar, sensitivity S_u/S_w/S_bar, and S_u/S_w/S (o_proj always its own input's
+second moment). Llama-160m (20 windows, unquantized 66.99), 4 bits: 68.50, 69.50,
+69.09, 68.18; 3 bits: 88.18, 73.73, 73.69, 88.92. TinyLlama (8 windows, 7.24), 4
+bits: 7.78, 7.50, 7.52, 7.80; 3 bits: 10.76, 8.63, 8.78, 11.20. The value Hessian
+S_bar (Kim et al.'s, ICML 2025) removes most of the 3-bit cost in both models, a
+replication of their result in plain GPTQ; the key and query sensitivity weights
+add nothing to it and alone are slightly worse than plain. For quantization the
+gain sits on the value side; for the fusion (round 32's development) it sits on the
+key side. Not pursued as a quantization method: the part that works is BoA's.
