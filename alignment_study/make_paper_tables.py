@@ -122,6 +122,85 @@ if os.path.exists("alignment_study/xlayer_results.json"):
             for k, v in S8.items() if isinstance(v, dict) and "k" in v]
     table(["Model", "keys", "values", "residual stream", "normed input", "keys aligned", "keys null", "values aligned", "values null"], rows)
 
+# ---- Table 9: the single-weighting ablation (development), beside round 26's rows ----
+AB = sorted(glob.glob("alignment_study/fuse_ablation_dev/*.json"))
+if AB:
+    w("## Table 9. The fit's weightings, one at a time (round 26's rows and the development ablation)\n")
+    w("WikiText-2 perplexity on round 24's simulated-merge groups; the queries-only and outputs-only columns are a labelled development run (perplexity only), the others round 26.\n")
+    rows = []
+    for fpath in AB:
+        r = json.load(open(fpath))["evals"]; m = short(os.path.basename(fpath)[:-5])
+        for g in (2, 4):
+            rows.append([m, g, f(r["base"]["wikitext2_ppl"]), f(r[f"g{g}/fuse_u/sim_align"]["wikitext2_ppl"]), f(r.get(f"g{g}/fuse_q/sim_align", {}).get("wikitext2_ppl")),
+                         f(r.get(f"g{g}/fuse_o/sim_align", {}).get("wikitext2_ppl")), f(r[f"g{g}/fuse/sim_align"]["wikitext2_ppl"])])
+    table(["Model", "g", "unconverted", "unweighted", "queries only", "outputs only", "both (fusion)"], rows)
+
+# ---- Table 10: a quarter of the heads at 7B (development) ----
+QD = sorted(glob.glob("alignment_study/quad_dev/*.json"))
+if QD:
+    w("## Table 10. 7B models at a quarter of their key-value heads, no training (development)\n")
+    w("WikiText-2 perplexity on the whole test set at 2,048 tokens; ZS-7 on 500 examples per task; the one-window check of Section 6 (largest ratio over layers 0 to 5).\n")
+    lab = {"base": "unconverted", "fuse/paired": "fusion, 2x (pairs by the residual)", "fuse/quad": "fusion, 4x (pairs of pairs by the residual)",
+           "fuse/neighbour": "fusion, 4x, neighbouring groups", "mean/neighbour": "averaging, 4x, neighbouring groups"}
+    for fpath in QD:
+        r = json.load(open(fpath)); m = short(os.path.basename(fpath)[:-5])
+        w(f"{m} (summed four-head residual: matched {sum(r['cost_quad']):.2f}, neighbouring {sum(r['cost_neighbour4']):.2f}):\n")
+        table(["Conversion", "ppl 2,048", "ZS-7", "one-window check"], [[lab.get(k, k), f(v["ppl_2048"]), f(v["zs7"], 3), f(v.get("check_max_ratio"))] for k, v in r["evals"].items()])
+
+# ---- Table 11: calibration size (development) ----
+CD = sorted(glob.glob("alignment_study/calib_dev/*.json"))
+if CD:
+    w("## Table 11. How much calibration the fusion needs (development)\n")
+    w("Perplexity of the fusion at half the key-value heads from the first n C4 documents of 2,048 tokens, with the pairs matched on the same moment and with the 128-document pairs; layers whose matching agrees with the 128-document one.\n")
+    rows = []
+    for fpath in CD:
+        r = json.load(open(fpath)); m = short(os.path.basename(fpath)[:-5])
+        for n, v in sorted(r["sizes"].items(), key=lambda kv: int(kv[0])):
+            rows.append([m, n, v["tokens"], f(v["ppl_own_pairs"]), f(v["ppl_full_pairs"]), f"{v['layers_agreeing_with_full']} of {v['layers']}"])
+    table(["Model", "documents", "tokens", "ppl, own pairs", "ppl, 128-document pairs", "layers agreeing"], rows)
+
+# ---- Table 12: pairs by the residual in Qwen2.5-7B, and whole-test perplexities (development) ----
+if os.path.exists("alignment_study/qwen_pairs_dev.json"):
+    r = json.load(open("alignment_study/qwen_pairs_dev.json"))
+    w("## Table 12a. Qwen2.5-7B with pairs matched by the residual against neighbouring pairs (development)\n")
+    table(["Pairing", "ppl, 8 windows", "summed residual", "layers equal to neighbours"],
+          [["neighbouring (rounds 27 to 32)", f(r["neighbour"]["ppl"]), f(sum(r["cost_neighbour"]), 3), ""],
+           ["matched by the residual", f(r["matched"]["ppl"]), f(sum(r["cost_matched"]), 3), f"{r['layers_where_matched_is_neighbour']} of {r['layers']}"]])
+FT = sorted(glob.glob("alignment_study/fulltest_dev/*.json"))
+if FT:
+    w("## Table 12b. The plain fusion on the whole WikiText-2 test set at 2,048 tokens (development), beside the registered 8-window values\n")
+    rows = [[short(os.path.basename(fp)[:-5]), (lambda r: f"{r['windows']}")(json.load(open(fp)))] + [f(json.load(open(fp))[k]) for k in ("base_8_windows", "base_full_2048", "plain_8_windows", "plain_full_2048")] for fp in FT]
+    table(["Model", "windows", "unconverted, 8", "unconverted, whole", "fusion, 8", "fusion, whole"], rows)
+
+# ---- Table 13: the fusion's residual against merge damage at 7B scale (development) ----
+if os.path.exists("alignment_study/residual_damage/summary.json"):
+    R13 = json.load(open("alignment_study/residual_damage/summary.json"))
+    w("## Table 13. The fusion's own residual against round 29's merge damage (development)\n")
+    w("Spearman correlation, within each model, between a forced-pair conversion's damage (perplexity over the reference conversion) and its matching's cost increase, its forced pair's cost, and the one-window check.\n")
+    table(["Model", "members", "cost increase", "forced pair's cost", "one-window check"],
+          [[short(m), v["members"], f(v["cost_increase"]), f(v["forced_pair_cost"]), f(v["one_window_check"]) if v.get("one_window_check") is not None else ""] for m, v in R13.items()])
+
+# ---- Table 14: retrieval of a planted fact (development) and the benchmark ----
+ND = sorted(glob.glob("alignment_study/needle_dev/*.json"))
+if ND:
+    w("## Table 14. Retrieval of a planted fact from a 2,048-token haystack, three depths, five facts (development)\n")
+    rows = []
+    for fp in ND:
+        r = json.load(open(fp)); m = short(os.path.basename(fp)[:-5])
+        for arm, v in r["arms"].items():
+            rows.append([m, arm, f"{v['hits']} of {v['of']}"] + [str(v["by_depth"][str(d)]) for d in r["depths"]])
+    table(["Model", "arm", "retrieved"] + [f"depth {d}%" for d in json.load(open(ND[0]))["depths"]], rows)
+KB = sorted(glob.glob("alignment_study/kvfuse_bench/*.json"))
+if KB:
+    w("## Table 15. The exported checkpoint's cache and decode speed (one laptop, MPS)\n")
+    rows = []
+    for fp in KB:
+        r = json.load(open(fp)); m = short(os.path.basename(fp)[:-5])
+        for arm, v in r["arms"].items():
+            rows.append([m, arm, v["kv_heads"], f"{v['cache_bytes_at_prefill_plus_decode'] / 2**20:.0f} MiB", f(v["prefill_seconds"], 2), f(v["decode_tokens_per_second"], 1)])
+        rows.append([m, "ratio", "", f(r["cache_ratio"], 3), "", f"{r['decode_speedup']:.2f}x"])
+    table(["Model", "checkpoint", "KV heads", f"cache at {json.load(open(KB[0]))['prefill'] + json.load(open(KB[0]))['decode']} tokens", "prefill s", "decode tok/s"], rows)
+
 os.makedirs(os.path.dirname(OUT), exist_ok=True)
 open(OUT, "w").write("\n".join(L))
 print(f"wrote {OUT}: {sum(1 for l in L if l.startswith('## '))} tables")
