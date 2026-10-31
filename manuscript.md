@@ -1391,6 +1391,31 @@ entropy orders the gains. The attention-aware Hessians of BoA (Kim et al.
 asked whether the simplest such weighting improves closed-form head fusion,
 and on new models it did not do so reliably.
 
+### 6.12 The metrics the attention computation implies
+
+With the attention pattern held fixed, the value error of a shared head is
+exactly its error in S_bar = E_t[x_bar_t x_bar_t^T], the second moment of the
+attention-mixed inputs (BoA's value Hessian), and a logit error at (t, s) moves
+the output to first order by p_ts d_ts (z_s - z_bar_t), so a key error at token
+s weighs w_s = sum_t p_ts |z_s - z_bar_t|^2 and a query at position t weighs
+u_t = sum_s p_ts |z_s - z_bar_t|^2, with z the value seen through the output
+projection. Preregistration 32 fitted the keys in S_w, the query energies with
+u, and the values in S_bar, the arm a rule committed before the development
+values picked (Llama-160m 105.0 to 102.8, TinyLlama 58.5 to 40.6, OpenLLaMA-3B
+28.4 to 26.6), on eight models: three new to this work and round 31's five; 2
+of 4 clauses pass, and every plain arm reproduces round 31 to four decimals
+(gate). The arm is lower in the three new models (SmolLM2-1.7B 43.9 to 38.1,
+Llama-3.2-1B 94.6 to 80.6, Mistral-7B-v0.1 28.7 to 22.9; D2), and pooled over
+the eight keeps 0.929 of the plain fusion's increase in log perplexity
+(registered at most 0.94; bootstrap over models 0.88 to 0.99; D3). It is higher
+in Llama-2-7B (16.0 to 18.4, whole test 19.31 against round 28's 16.78; D1 and
+D4 fail) and in Qwen2.5-7B (23.87 to 24.09). Against round 31's weighting it is
+lower in OLMo-1B and Qwen2.5-7B and higher in the other three shared models.
+For GPTQ the division of labour is the reverse (development): the value Hessian
+S_bar removes most of the 3-bit cost on Llama-160m and TinyLlama, a replication
+of Kim et al., and the key and query weights add nothing. The plain fit remains
+the conversion command's default until the Llama-2-7B failure has a reason.
+
 ## 7. Limitations
 
 Results cover seventeen models up to 8B parameters in ten families, three
@@ -1497,6 +1522,7 @@ against the norm of what each head writes.
 | 29 | 4d02534, pushed before execution | gate and G1 to G5: does one merged early-layer pair switch on a super weight in four other models, and does one calibration window flag it | gate fails (no severe damage among 342 conversions); 0 of 6 |
 | 30 | ab9827e, pushed before execution | Q1 to Q3, T1 to T3: rebalancing the fused heads, for 4- and 3-bit rounding in six models and uptraining in two | 4 of 6; Q1, T2 fail |
 | 31 | 207a5ec, pushed before execution | A1 to A3: the fusion fitted in the received-attention metric, five models | 0 of 3; Qwen2.5-7B's arms invalid (instrument defect), rerun post hoc |
+| 32 | bcdcd9d, pushed before execution | gate, D1 to D4: the fusion fitted in the sensitivity and attention-mixed metrics, eight models | 2 of 4; D1, D4 fail (Llama-2-7B, Qwen2.5-7B higher) |
 
 ## Appendix B. Numbers ledger
 
@@ -1553,6 +1579,7 @@ against the norm of what each head writes.
 | one-window guard, gate and G1 to G5 | alignment_study/guard_results.json, guard/, guard_dev/ |
 | rebalancing, Q1 to Q3 and T1 to T3 | alignment_study/balance_results.json, balance/, balance_dev/ |
 | received-attention metric, A1 to A3; Qwen2.5-7B corrected and the gain-cost pattern (post hoc) | alignment_study/attnw_results.json, attnw/, attnw_fuse_dev/, attnw_correction/ |
+| attention-derived metrics, gate and D1 to D4; bootstrap intervals over models | alignment_study/attnw2_results.json, attnw2/, attnw_mix_dev/, attnw2_check/, paper_stats.json |
 | scorer with the vocabulary projected in chunks | alignment_study/zeroshot_head_chunk_check.json |
 | conversion command and checkpoint export | alignment_study/llama2_dev/kvfuse_check_llama-160m.json, gqa_export_check_llama-160m.json |
 | shared energy against merge damage (post hoc) | alignment_study/posthoc/sharedE_vs_merge_kl.json |

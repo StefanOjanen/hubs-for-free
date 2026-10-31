@@ -270,5 +270,63 @@
    0.8579837882042072,
    1.04985799743467
   ]
+ },
+ "round32_sensitivity_metrics_vs_plain": {
+  "baseline": "plain fusion (S)",
+  "models": [
+   "Llama-2-7b-hf",
+   "Llama-3.2-1B",
+   "Mistral-7B-Instruct-v0.2",
+   "Mistral-7B-v0.1",
+   "OLMo-1B-hf",
+   "Qwen2.5-7B",
+   "SmolLM2-1.7B",
+   "h2o-danube-1.8b-base"
+  ],
+  "per_model_ratio": {
+   "Llama-2-7b-hf": 1.1194564640532494,
+   "Llama-3.2-1B": 0.9316321253551397,
+   "Mistral-7B-Instruct-v0.2": 0.9600156690316541,
+   "Mistral-7B-v0.1": 0.8737973967793761,
+   "OLMo-1B-hf": 0.8221780715302196,
+   "Qwen2.5-7B": 1.0061626547054705,
+   "SmolLM2-1.7B": 0.919810937166312,
+   "h2o-danube-1.8b-base": 0.8749020023220831
+  },
+  "pooled_ratio": 0.9293574553558784,
+  "geometric_mean_ratio": 0.934660952375531,
+  "lower_in": [
+   6,
+   8
+  ],
+  "sign_test_p": 0.2890625,
+  "bootstrap_pooled_2.5_97.5": [
+   0.8837343155952716,
+   0.9852580257440348
+  ]
+ },
+ "round32_sensitivity_metrics_vs_plain_new_models": {
+  "baseline": "plain fusion (S), models new to this work",
+  "models": [
+   "Llama-3.2-1B",
+   "Mistral-7B-v0.1",
+   "SmolLM2-1.7B"
+  ],
+  "per_model_ratio": {
+   "Llama-3.2-1B": 0.9316321253551397,
+   "Mistral-7B-v0.1": 0.8737973967793761,
+   "SmolLM2-1.7B": 0.919810937166312
+  },
+  "pooled_ratio": 0.9106892955657557,
+  "geometric_mean_ratio": 0.908067063978498,
+  "lower_in": [
+   3,
+   3
+  ],
+  "sign_test_p": 0.25,
+  "bootstrap_pooled_2.5_97.5": [
+   0.8737973967793762,
+   0.9316321253551397
+  ]
  }
 }

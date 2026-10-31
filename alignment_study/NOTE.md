@@ -1637,3 +1637,55 @@ chose the full weighting, which was already worse than the plain fusion on the
 third; on the new models three gained and two lost. Round 32's draft rule
 (`PREREGISTRATION32_rule.md`) asks instead for an arm that beats the plain
 fusion on every development model.
+
+## Fitting the fusion in the metrics the attention computation implies (2026-10-31, preregistration 32)
+
+Frozen at bcdcd9d (`alignment_study/PREREGISTRATION32.md`; the arm picked by the
+rule committed at 9c17ad1, `attnw_mix_dev/rule_result.json`). 2 of 4 clauses
+pass; the gate passes (every plain arm reproduces round 31's value to four
+decimals, Qwen2.5-7B's the corrected one). The keys are fitted in S_w, each token
+weighted by w_s = sum_t p_ts |z_s - z_bar_t|^2, the first-order effect of its
+logits on the output; the query energies are weighted the same way per position;
+the values are fitted in S_bar, the second moment of the attention-mixed inputs
+(BoA's value Hessian). Eight models, each converted to half its key-value heads
+with S throughout and with these metrics, pairs fixed at the fusion's matching
+under S (neighbouring pairs for Qwen2.5-7B); WikiText-2 perplexity on 8 windows
+of 2,048 tokens (`attnw2/*.json`, `attnw2_results.json`, `attnw2.log`,
+`eval_attnw2.log`).
+
+| Model | Tier | Unconverted | Plain | Sensitivity | Change |
+|---|---|---|---|---|---|
+| SmolLM2-1.7B | new | 7.30 | 43.94 | 38.05 | -13.4% |
+| Llama-3.2-1B | new | 9.06 | 94.58 | 80.57 | -14.8% |
+| Mistral-7B-v0.1 | new | 4.86 | 28.68 | 22.93 | -20.1% |
+| OLMo-1B | round 31 | 12.02 | 54.70 | 41.78 | -23.6% |
+| h2o-danube-1.8b | round 31 | 6.76 | 38.82 | 31.19 | -19.6% |
+| Mistral-7B-Instruct | round 31 | 5.54 | 16.68 | 15.96 | -4.3% |
+| Llama-2-7B | round 31 | 5.03 | 16.00 | 18.37 | +14.8% |
+| Qwen2.5-7B | round 31 | 5.40 | 23.87 | 24.09 | +0.9% |
+
+- D1 FAILS (lower in 6 of 8): Llama-2-7B is higher by 14.8 percent (16.00 to
+  18.37) and Qwen2.5-7B by 0.9 percent (23.87 to 24.09).
+- D2 passes (3 of 3): every model new to this work is lower, by 13 to 20 percent.
+- D3 passes: pooled over the eight models, the sensitivity arm keeps 0.929 of the
+  plain arm's increase in log perplexity (registered at most 0.94; bootstrap over
+  models 0.88 to 0.99, `paper_stats.json`); 0.911 over the three new models,
+  0.945 over round 31's five.
+- D4 FAILS: Llama-2-7B's whole-test perplexity at 2,048 tokens is 19.310 against
+  round 28's 16.78 (plain arm 16.780, reproducing round 28).
+- Reported: against round 31's received-attention arm on its five models, the
+  sensitivity arm is lower in OLMo-1B (41.78 against 44.18) and Qwen2.5-7B (24.09
+  against 27.78), higher in h2o-danube-1.8b (31.19 against 28.82),
+  Mistral-7B-Instruct (15.96 against 15.70) and Llama-2-7B (18.37 against 16.62).
+  Run times: SmolLM2-1.7B 736 s, Llama-3.2-1B 446 s, Mistral-7B-v0.1 4,081 s,
+  OLMo-1B 466 s, h2o-danube-1.8b 837 s, Mistral-7B-Instruct 4,052 s, Llama-2-7B
+  6,242 s (with the whole test set twice), Qwen2.5-7B 5,177 s; the metrics pass
+  170 to 2,305 s, the split fusion 2 to 5 times the plain one.
+Reading: the metrics the attention computation implies improve the fusion in
+every model it was not developed on and in six of eight overall, with a pooled
+gain just inside the registered ceiling, and they hurt the one model round 31's
+weighting also hurt, Llama-2-7B, by more. Two passes do not make the arm a
+default: a fit that loses 15 percent on one model of eight needs a reason, and
+the diagnostic that follows (post hoc, `attnw2_llama2_diag.py`) asks whether the
+damage sits in layers 0 and 1, where round 28's super-weight mechanism lives.
+Until then the plain fusion remains the conversion command's default.

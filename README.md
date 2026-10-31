@@ -565,6 +565,24 @@ Each instrument below exists because a finding above required it.
 <p align="center"><img src="figures/readme/fig31_attention_weighted.png" alt="Two panels. Left: for five test models and three development models converted to half their key-value heads, converted perplexity relative to the unconverted model with the plain fit and with the fit weighted by received attention; the weighted fit is lower for OLMo-1B, h2o-danube-1.8b, Mistral-7B-Instruct, TinyLlama and OpenLLaMA-3B and higher for Llama-2-7B, Qwen2.5-7B (corrected) and Llama-160m. Right: the change from weighting against the cost of the plain fusion; the change tends to fall as the cost rises, with Qwen2.5-7B above the trend" width="880"></p>
 <p align="center"><em>Weighting by received attention helped three of five new models and hurt two; all three registered predictions failed.</em></p>
 
+- **Fitting the fusion in the metrics the attention computation implies.**
+  With the attention pattern held fixed, the value error is exactly the error
+  in the second moment of the attention-mixed inputs, and a key error at a
+  token matters in proportion to how much changing that token's logits would
+  move the output. A preregistered round fitted the fusion in those two metrics
+  on eight models. It lowered the converted perplexity in all three models new
+  to this work (SmolLM2-1.7B 43.9 to 38.1, Llama-3.2-1B 94.6 to 80.6,
+  Mistral-7B-v0.1 28.7 to 22.9) and in three of the five from the previous
+  round, keeping 0.93 of the plain fusion's cost pooled, against a registered
+  ceiling of 0.94. It raised Llama-2-7B again, from 16.0 to 18.4, and
+  Qwen2.5-7B by 1 percent. Two of four predictions held. The one model that two
+  different token weightings both hurt is the one whose super weight a single
+  merged pair can switch on; whether that is the reason is the next question,
+  and until it is answered the plain fit stays the default.
+
+<p align="center"><img src="figures/readme/fig32_attention_metrics.png" alt="One panel: for eight models converted to half their key-value heads, converted perplexity relative to the unconverted model with every token counted alike and with the metrics the attention computation implies, plus round 31's received-attention fit as hollow diamonds on its five models; the new metrics are lower for SmolLM2-1.7B, Llama-3.2-1B, Mistral-7B-v0.1, OLMo-1B, h2o-danube-1.8b and Mistral-7B-Instruct and higher for Llama-2-7B and Qwen2.5-7B" width="880"></p>
+<p align="center"><em>The attention-derived metrics help every model they were not developed on and hurt Llama-2-7B; two of four registered predictions held.</em></p>
+
 - **Cross-layer KV compression, against the same nulls.** Two published
   methods compress the cache across layers on the premise that adjacent
   layers' keys and values are similar. MiniCache (NeurIPS 2024) merges them

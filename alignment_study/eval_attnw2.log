@@ -1,0 +1,14 @@
+gate PASS {'OLMo-1B-hf': 0.0, 'h2o-danube-1.8b-base': 0.0, 'Mistral-7B-Instruct-v0.2': 0.0, 'Llama-2-7b-hf': 0.0, 'Qwen2.5-7B': 0.0}
+D1 FAIL {'lower_in': 6, 'of': 8}
+D2 PASS {'lower_in': 3, 'of': 3}
+D3 PASS {'pooled_ratio': 0.9293574553558784, 'ceiling': 0.94, 'pooled_new': 0.9106892955657558, 'pooled_round31_models': 0.9451104496728373}
+D4 FAIL {'round28': 16.78, 'sens_full_2048': 19.30999114835099, 'plain_full_2048': 16.77955871488395}
+SmolLM2-1.7B {'base': 7.301206540319662, 'plain': 43.940189093342475, 'sens': 38.050219835830845, 'lower': True, 'tier': 'new', 'pairing': 'fusion-residual matching'}
+Llama-3.2-1B {'base': 9.05690610866501, 'plain': 94.58143382573644, 'sens': 80.56583699754404, 'lower': True, 'tier': 'new', 'pairing': 'fusion-residual matching'}
+Mistral-7B-v0.1 {'base': 4.858766172190064, 'plain': 28.682697071521382, 'sens': 22.92481911958565, 'lower': True, 'tier': 'new', 'pairing': 'fusion-residual matching'}
+OLMo-1B-hf {'base': 12.015669273629518, 'plain': 54.70157037210392, 'sens': 41.77805186655742, 'lower': True, 'tier': 'round 31', 'pairing': 'fusion-residual matching'}
+h2o-danube-1.8b-base {'base': 6.755763803659044, 'plain': 38.81452078200826, 'sens': 31.189243829348797, 'lower': True, 'tier': 'round 31', 'pairing': 'fusion-residual matching'}
+Mistral-7B-Instruct-v0.2 {'base': 5.540459194776044, 'plain': 16.678713727737772, 'sens': 15.95972420793828, 'lower': True, 'tier': 'round 31', 'pairing': 'fusion-residual matching'}
+Llama-2-7b-hf {'base': 5.026648043692182, 'plain': 15.99973968846477, 'sens': 18.37298586630362, 'lower': False, 'tier': 'round 31', 'pairing': 'fusion-residual matching'}
+Qwen2.5-7B {'base': 5.395888849333053, 'plain': 23.872870084076432, 'sens': 24.092658991184823, 'lower': False, 'tier': 'round 31', 'pairing': 'neighbour'}
+passes 2 of 4 scored True missing []

@@ -177,8 +177,14 @@ PREREGISTRATION32_rule.md, 9c17ad1; development attnw_mix_dev/, rule_result.json
 instruments attnw2_common.py, attnw2_round.py, eval_attnw2.py, checked by
 attnw2_check.py): keys in S_w (first-order output sensitivity per token), query
 energies weighted the same way, values in S_bar (BoA's value Hessian); eight
-models (SmolLM2-1.7B, Llama-3.2-1B, Mistral-7B-v0.1 new; round 31's five); D1 to
-D4 and a gate on the plain arms; results pending.
+models (SmolLM2-1.7B, Llama-3.2-1B, Mistral-7B-v0.1 new; round 31's five); gate
+passes (plain arms reproduce round 31 to four decimals), 2 of 4: D2 (new models
+3 of 3 lower: 43.9 to 38.1, 94.6 to 80.6, 28.7 to 22.9) and D3 (pooled 0.929,
+ceiling 0.94) pass; D1 fails (6 of 8; Llama-2-7B 16.0 to 18.4, Qwen2.5-7B 23.87
+to 24.09) and D4 fails (whole test 19.31 against 16.78). The plain fusion stays
+kvfuse.py's default. Post hoc diagnostic attnw2_llama2_diag.py (attnw2_diag/):
+the sensitivity fit in layers 0-1 only, 2+ only, everywhere, with round 29's
+one-window check.
 Untrained 7B initializations are built on the
 CPU and copied to the GPU; with two heavy runs the 65 W adapter and 32 GB
 memory saturate (swap up to 37 GB), so queue 7B runs one at a time. Keep the
@@ -205,7 +211,12 @@ panicked the machine.
 Drafts for a TMLR submission and a position paper are in private/drafts/
 (unpublished; the author decides on submission and posting); the scope for a
 third, practical paper on the consumer-metric KV-head fusion (rounds 20 to 32)
-is private/drafts/SCOPE_kvfusion_paper.md (2026-10-31), with its gap list.
+is private/drafts/SCOPE_kvfusion_paper.md (2026-10-31); the gap and weakness
+analysis with the plan for each is private/drafts/PLAN_kvfusion_gaps.md (B11:
+training-free latent compression, TransMLA and GQLA, beats head merging on
+published metrics; the author decides whether to extend the metric to latents);
+the draft is private/drafts/paper_kvfusion/main.md with tables.md rendered by
+alignment_study/make_paper_tables.py and intervals by paper_stats.py.
 Instruments: functional_common.py, standard_common.py, audits/readings/readings_common.py.
 Closest prior and concurrent work to cite: Papamichalis and Ruane (arXiv
 2608.14712, sink convention and BERT clustering), Sandoval-Segura et al.

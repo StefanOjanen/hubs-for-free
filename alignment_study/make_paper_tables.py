@@ -13,7 +13,7 @@ SHORT = {"allenai/OLMo-1B-hf": "OLMo-1B", "gpt2-large": "GPT-2 large", "facebook
          "openlm-research/open_llama_3b_v2": "OpenLLaMA-3B", "mistralai/Mistral-7B-Instruct-v0.2": "Mistral-7B-Instruct", "Qwen/Qwen2.5-7B": "Qwen2.5-7B",
          "OLMo-1B-hf": "OLMo-1B", "h2o-danube-1.8b-base": "h2o-danube-1.8b", "open_llama_3b_v2": "OpenLLaMA-3B", "Llama-2-7b-hf": "Llama-2-7B",
          "Mistral-7B-Instruct-v0.2": "Mistral-7B-Instruct", "Qwen2.5-7B": "Qwen2.5-7B", "SmolLM2-1.7B": "SmolLM2-1.7B", "Llama-3.2-1B": "Llama-3.2-1B",
-         "Mistral-7B-v0.1": "Mistral-7B-v0.1"}
+         "Mistral-7B-v0.1": "Mistral-7B-v0.1", "microsoft/Phi-3-mini-4k-instruct": "Phi-3-mini", "yaofu/llama-2-7b-80k": "LLaMA-2-7B-80K"}
 short = lambda k: SHORT.get(k, k)
 L = []
 w = L.append
@@ -101,8 +101,8 @@ if not P32:
 
 # ---- Table 7: merge criteria against merge damage (rounds 20 and 22) ----
 NAMES = {"out_pert": "simulated output perturbation (consumer side)", "js": "attention-map Jensen-Shannon (Clark et al.)", "cos_map": "attention-map cosine",
-         "corr_rows": "every-row map correlation (CHAI-style)", "corr_last": "last-row map correlation", "cos_k": "key cosine", "cos_v": "value cosine",
-         "cos_kv": "key-value weight cosine", "cos_qk": "query-key weight cosine"}
+         "corr_rows": "every-row map correlation (CHAI-style)", "corr_last": "last-row map correlation", "k_act": "key cosine (cached activations)", "v_act": "value cosine (cached activations)",
+         "kv_wcos": "key-value weight cosine", "qk_wcos": "query-key weight cosine"}
 for rnd, path, desc in (("20", "alignment_study/merge_bench_results.json", "Pythia-160m, Pythia-410m, GPT-2 medium (6,552 merges)"),
                         ("22", "alignment_study/merge_bench2_results.json", "Pythia-1.4B, OPT-1.3B, GPT-2 large (21,624 merges)")):
     if not os.path.exists(path):

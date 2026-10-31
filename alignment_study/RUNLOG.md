@@ -1040,3 +1040,18 @@ and reload with logits within 2.4e-7 of the simulated conversion (scale 0.7);
 the Qwen2 model with biases within 1.8e-7. Real-model checks queued after the
 GPU chain: kvfuse_bias_check.py (Qwen2.5-0.5B) and kvfuse_quad_check.py
 (Llama-160m, matched against neighbouring quads).
+
+Fitting the fusion in the metrics the attention computation implies
+(preregistration 32, frozen at bcdcd9d and pushed before the run). Ran 12:52 to
+19:00 UTC on AC power, one GPU job under both guards, no pauses or kills
+(attnw2_round.py; attnw2.log): SmolLM2-1.7B 736 s, Llama-3.2-1B 446 s,
+Mistral-7B-v0.1 4,081 s, OLMo-1B 466 s, h2o-danube-1.8b 837 s,
+Mistral-7B-Instruct 4,052 s, Llama-2-7B 6,242 s (whole test set twice),
+Qwen2.5-7B 5,177 s; 22,037 s in all. Evaluation (eval_attnw2.py, unchanged since
+the freeze): gate passes, 2 of 4 (attnw2_results.json, eval_attnw2.log). The
+plain arms reproduce round 31's values to four decimals in all five shared
+models, Qwen2.5-7B's the corrected 23.873 (attnw2_common.metrics carries the
+bias column). The 7B models' metrics pass takes 1,100 to 2,300 s and the split
+fusion, two closed-form passes per group, 2 to 5 times the plain fusion's time;
+Qwen2.5-7B's sensitivity arm ran 3,539 s against an estimate of 2,300, which is
+why its log was quiet for an hour.
