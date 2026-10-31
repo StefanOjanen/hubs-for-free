@@ -983,3 +983,32 @@ per-layer fusion reproduce the development values on Llama-160m (plain identical
 sensitivity 102.7752 against 102.7752, relative 2.4e-8). The check's runner first
 waited on the parallel session's waiter, whose command line contains the pattern
 both used with pgrep -f, and was started by hand; waiters now key on process IDs.
+
+Quantization-aware value scaling for the fused model, development (exploratory,
+labelled, negative; qscale_dev.py, qscale_dev.log, balance_dev/qscale_*.json).
+After the fusion and rebalancing, a row scale of q_proj, k_proj or v_proj is
+absorbed by per-output-channel rounding, so only the value-row factors act, through
+the o_proj columns they divide. Each value row was scaled by its root mean square
+o_proj input to the power alpha, alpha chosen per layer from {-0.5, ..., 1} to
+minimize the o_proj rounding error weighted by its input second moment (AWQ's scale
+search, Lin et al. 2024, applied to the fused value/output pair). Perplexity,
+rebalanced against scaled: Llama-160m 4 bits RTN 137.7 / 134.8, GPTQ 119.8 / 121.0;
+3 bits RTN 186.7 / 177.4, GPTQ 143.5 / 143.2. TinyLlama 4 bits RTN 67.6 / 65.0,
+GPTQ 67.2 / 66.7; 3 bits RTN 251.3 / 150.0, GPTQ 80.7 / 81.9. The scaling helps
+round-to-nearest only; GPTQ already absorbs what it buys. The search picks alpha 0
+to -0.5, the opposite sign to AWQ: the fused value rows with high activation energy
+already carry their scale in the whitened basis, so shrinking their o_proj columns
+is what equalizes o_proj's rows. Not pursued.
+
+Writer heads kept in high precision under 3-bit RTN, development (exploratory,
+labelled, negative; writer_guard_dev.py, writer_guard_dev.json/.log; Llama-2-7B,
+8 WikiText-2 windows, unquantized 5.027). Every decoder linear layer at 3 bits per
+output channel; kept entries excluded from their row's range and left in bfloat16.
+The weight-only writer statistic of round 29 again gives KV heads 8, 11 and 25
+(14.2, 11.1, 7.5 times the median) in layer 1. Perplexity: nothing kept 399.2;
+super weight down_proj[2533, 7890] kept (Yu et al. 2024) 389.3; writer heads'
+o_proj columns 410.1; writers and super weight 401.0; three random head triples
+409.8, 414.7, 406.7, with the super weight 400.2, 406.4, 394.4. Neither the writers
+nor the super weight alone rescues per-channel 3-bit RTN, and the writers are no
+better than random heads; the 3-bit failure is diffuse, as the earlier probe's
+layer ablations suggested (llama2_quant_sink_probe.json). Not pursued.
