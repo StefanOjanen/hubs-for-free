@@ -1082,3 +1082,16 @@ is still falling where the fused curves are flat from 3M tokens on; the round 32
 start stays below the plain fused start at every checkpoint, by 1 to 3 percent.
 The rule committed at e2c9852 (uptrain_rule.py, uptrain_dev/rule_result.json)
 gives F = 0.1 for round 33's U3 (retained lead 0.194, rounded down to a tenth).
+
+Bias-path check and benchmark of the conversion command (2026-10-31, 21:50 to
+22:00 UTC, the gap chain under the guards). kvfuse_bias_check.py on Qwen2.5-0.5B
+(CPU, float32; llama2_dev/kvfuse_bias_check_Qwen2.5-0.5B.json): the pair costs on
+the moment of [x, 1] are finite, the command's pairs equal the check's, the saved
+checkpoint keeps the key and value biases, loads as a 1-KV-head Qwen2 model and
+gives the simulated conversion's logits exactly (difference 0.0 of scale 22.5).
+kvfuse_bench.py on TinyLlama (4 to 2 KV heads, bfloat16, MPS, batch 1, a
+2,048-token prefill then 128 decode steps, median of 3; kvfuse_bench/
+TinyLlama_v1.1.json): cache 47 to 23 MiB at 2,176 tokens (ratio 0.500, by
+construction), decode 78.0 to 84.3 tokens per second (1.08 times), prefill 1.0 s
+both. One laptop's numbers, not a serving benchmark; a 1.1B model's cache is
+not its bottleneck at batch 1.

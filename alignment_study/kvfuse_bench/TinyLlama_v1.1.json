@@ -1,0 +1,53 @@
+{
+ "model": "TinyLlama/TinyLlama_v1.1",
+ "exported": "/private/tmp/claude-501/-Users-stefanojanen-Documents-The-Emergent-Coordinator-Hypothesis/29d2a60f-5423-4601-9108-e586ff2b2a8c/scratchpad/tinyllama-kv2",
+ "device": "mps",
+ "dtype": "bfloat16",
+ "prefill": 2048,
+ "decode": 128,
+ "repeats": 3,
+ "arms": {
+  "original": {
+   "kv_heads": 4,
+   "cache_bytes_at_prefill_plus_decode": 49020928,
+   "prefill_seconds": 1.004882749999524,
+   "decode_tokens_per_second": 77.95794242010565,
+   "runs": [
+    {
+     "prefill_seconds": 1.0056916670000646,
+     "decode_seconds": 1.6551221669942606
+    },
+    {
+     "prefill_seconds": 1.0015937499993015,
+     "decode_seconds": 1.6254297909908928
+    },
+    {
+     "prefill_seconds": 1.004882749999524,
+     "decode_seconds": 1.6419109589915024
+    }
+   ]
+  },
+  "exported": {
+   "kv_heads": 2,
+   "cache_bytes_at_prefill_plus_decode": 24510464,
+   "prefill_seconds": 0.992288292007288,
+   "decode_tokens_per_second": 84.27159783175546,
+   "runs": [
+    {
+     "prefill_seconds": 0.9852607500070008,
+     "decode_seconds": 1.515818624990061
+    },
+    {
+     "prefill_seconds": 0.992288292007288,
+     "decode_seconds": 1.518898458001786
+    },
+    {
+     "prefill_seconds": 0.9942027500073891,
+     "decode_seconds": 1.519564582995372
+    }
+   ]
+  }
+ },
+ "cache_ratio": 0.5,
+ "decode_speedup": 1.0809879688412798
+}

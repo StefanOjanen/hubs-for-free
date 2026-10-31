@@ -1,0 +1,13 @@
+{
+ "model": "Qwen/Qwen2.5-0.5B",
+ "balanced": true,
+ "pair_costs_finite": true,
+ "tool_pairs_equal_pairs_here": true,
+ "kv_heads": [
+  2,
+  1
+ ],
+ "k_proj_bias_kept": true,
+ "max_abs_logit_diff_vs_simulated": 0.0,
+ "logit_scale": 22.474140167236328
+}
