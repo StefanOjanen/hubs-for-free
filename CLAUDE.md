@@ -183,8 +183,14 @@ passes (plain arms reproduce round 31 to four decimals), 2 of 4: D2 (new models
 ceiling 0.94) pass; D1 fails (6 of 8; Llama-2-7B 16.0 to 18.4, Qwen2.5-7B 23.87
 to 24.09) and D4 fails (whole test 19.31 against 16.78). The plain fusion stays
 kvfuse.py's default. Post hoc diagnostic attnw2_llama2_diag.py (attnw2_diag/):
-the sensitivity fit in layers 0-1 only, 2+ only, everywhere, with round 29's
-one-window check.
+the sensitivity fit in layers 0-1 only gives 16.31 (plain 16.00; one-window check
+1.01), so the early layers carry little of the loss and the super-weight check
+sees nothing; the layers-2-and-up and everywhere variants rerun at the end of
+the gap chain after the memory watchdog killed the first run. Watchdog lesson
+(2026-10-31): its swap baseline is taken at start and goes stale as swap drifts;
+a 4,000 MB growth limit killed a healthy 7B metrics job at 29 percent free
+memory. Keep SWAPMAX at 8,000 and restart the watchdog (fresh baseline) before a
+long chain; the 15 percent free-memory floor is the real protection.
 Untrained 7B initializations are built on the
 CPU and copied to the GPU; with two heavy runs the 65 W adapter and 32 GB
 memory saturate (swap up to 37 GB), so queue 7B runs one at a time. Keep the
