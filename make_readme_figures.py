@@ -1355,4 +1355,51 @@ if glob.glob(AR) and glob.glob(AC):
              " shown corrected, post hoc. Development models: other calibration and windows.", fontsize=10, color=INK2, va="top")
     fig.savefig(OUT + "fig31_attention_weighted.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
+# ============ Figure 32: the fusion fitted in the metrics the attention computation implies (preregistration 32) ============
+SR = "alignment_study/attnw2_results.json"
+if glob.glob(SR):
+    from matplotlib.ticker import FixedLocator, FixedFormatter, NullLocator
+    plt.rcParams["axes.grid"] = False
+    SRES = json.load(open(SR))
+    R31 = json.load(open("alignment_study/attnw_results.json"))["per_model"]
+    Q31 = json.load(open("alignment_study/attnw_correction/summary.json"))["qwen_corrected"]
+    LAB = {"SmolLM2-1.7B": "SmolLM2-1.7B", "Llama-3.2-1B": "Llama-3.2-1B", "Mistral-7B-v0.1": "Mistral-7B-v0.1",
+           "OLMo-1B-hf": "OLMo-1B", "h2o-danube-1.8b-base": "h2o-danube-1.8b", "Mistral-7B-Instruct-v0.2": "Mistral-7B-Instruct",
+           "Llama-2-7b-hf": "Llama-2-7B", "Qwen2.5-7B": "Qwen2.5-7B"}
+    order = [m for m in LAB if m in SRES["per_model"]]
+    fig = plt.figure(figsize=(12.5, 6.4))
+    ax = fig.add_axes([0.2, 0.12, 0.75, 0.68])
+    ys, y = {}, 0.0
+    for m in order[::-1]:
+        ys[m] = y; y += 1.0
+        if m == "OLMo-1B-hf":
+            y += 0.6
+    for m in order:
+        v = SRES["per_model"][m]; b = v["base"]
+        p, sv = v["plain"] / b, v["sens"] / b
+        ax.plot([sv, p], [ys[m], ys[m]], color=GRID, lw=3, zorder=1, solid_capstyle="round")
+        ax.scatter([p], [ys[m]], s=75, color=S2, edgecolors=SURF, linewidths=1.2, zorder=3, label="every token alike (S)" if m == order[0] else None)
+        ax.scatter([sv], [ys[m]], s=75, color=S1, edgecolors=SURF, linewidths=1.2, zorder=4, label="metrics from the attention computation" if m == order[0] else None)
+        if m in R31:
+            a31 = (Q31["attention"] if m == "Qwen2.5-7B" else R31[m]["attention"]) / b
+            ax.scatter([a31], [ys[m]], s=55, facecolors="none", edgecolors=INK2, linewidths=1.4, zorder=2, marker="D",
+                       label="round 31: by attention received" if m == "OLMo-1B-hf" else None)
+    ax.set_yticks([ys[m] for m in order]); ax.set_yticklabels([LAB[m] for m in order], fontsize=10.5)
+    ax.set_xscale("log")
+    TK = [2, 3, 4, 5, 7, 10]
+    ax.xaxis.set_major_locator(FixedLocator(TK)); ax.xaxis.set_major_formatter(FixedFormatter([f"{t:g}" for t in TK])); ax.xaxis.set_minor_locator(NullLocator())
+    lo = min(min(SRES["per_model"][m]["sens"] / SRES["per_model"][m]["base"] for m in order), 2.0)
+    ax.set_xlim(lo * 0.9, 12)
+    ax.set_ylim(-0.7, max(ys.values()) + 0.9)
+    ax.text(lo * 0.92, max(ys[m] for m in order if m in ("SmolLM2-1.7B", "Llama-3.2-1B", "Mistral-7B-v0.1")) + 0.5, "new to this work", color=INK2, fontsize=9.5)
+    ax.text(lo * 0.92, max(ys[m] for m in order if m in R31) + 0.5, "round 31's models", color=INK2, fontsize=9.5)
+    ax.set_xlabel("converted / unconverted perplexity at half the key-value heads (log)", fontsize=10)
+    ax.legend(loc="lower right", fontsize=9.5, handletextpad=0.3, borderaxespad=0.3)
+    ax.tick_params(length=0); ax.grid(axis="x", color=GRID, lw=0.8)
+    for sp in ("left", "bottom"): ax.spines[sp].set_color(GRID)
+    fig.text(0.012, 0.985, "Fitting the fusion in the metrics the attention computation implies", fontsize=15, color=INK, va="top")
+    fig.text(0.012, 0.925, f"Preregistration 32: {SRES['passes']} of {SRES['of']} registered clauses pass. Keys weighted by each token's first-order effect on the output,"
+             " values in the second moment of the attention-mixed inputs; pooled ratio " + f"{SRES['D3']['pooled_ratio']:.2f}.", fontsize=10, color=INK2, va="top")
+    fig.savefig(OUT + "fig32_attention_metrics.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
 print("FIGURES_DONE", sorted(glob.glob(OUT + "*")))

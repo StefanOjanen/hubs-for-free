@@ -5,6 +5,8 @@
 #   base           the unconverted model, trained the same way (what the training alone does on this text)
 #   mean           neighbouring heads averaged (Ainslie et al. 2023, the standard GQA uptraining start)
 #   fuse           the query- and output-weighted fusion on pairs matched by its own residual (round 28's best)
+#   fuse_sens      the same pairs fitted in round 32's metrics (attnw2_common.py: keys in S_w, sensitivity-weighted
+#                  query energies, values in S_bar); development option, added after round 30
 # Training: the attention projections only (q, k, v, o; the shared k and v of a group are one tensor after the
 # export), AdamW, linear warmup then cosine decay, gradient clipping 1.0, float32 on the GPU, gradient
 # checkpointing; sequences of 1,024 tokens packed from C4 validation shard 0 documents after the 10,000th (the
@@ -26,6 +28,7 @@ import gqa_common as C
 import fuse_kv as K
 import fuse_balance as B
 import kvfuse
+import attnw2_common as W
 import zeroshot as Z
 from gqa_export import export_gqa
 from scale_round_v2 import DEV
@@ -73,7 +76,7 @@ def c4_stream(tok, n_tokens, skip=SKIP_DOCS):
     return torch.tensor(ids[:n * SEQ]).view(n, SEQ)
 
 
-def convert_arm(model, kv, S, arm):
+def convert_arm(model, kv, S, arm, cal=None):
     neighbour = [[[i, i + 1] for i in range(0, kv.nkv, 2)] for _ in range(kv.L)]
     if arm == "base":
         return None
@@ -81,8 +84,13 @@ def convert_arm(model, kv, S, arm):
         groups = neighbour
     else:
         groups = [kvfuse.min_cost_pairs(kvfuse.pair_costs(kv, l, S[l].double())) for l in range(kv.L)]
-    K.convert(kv, S, groups, "mean" if arm == "mean" else "fuse")
-    if arm == "fuse" and BALANCE:
+    if arm == "fuse_sens":
+        Sw, Sb, E = W.metrics(model, kv, cal, list(range(kv.L)), DEV)
+        for l in range(kv.L):
+            W.fuse_layer(kv, l, groups[l], Sw.pop(l), E.pop(l), Sb.pop(l))
+    else:
+        K.convert(kv, S, groups, "mean" if arm == "mean" else "fuse")
+    if arm in ("fuse", "fuse_sens") and BALANCE:
         B.balance(kv, groups)                         # same function, scales a per-parameter optimizer can train
     export_gqa(model, groups, inplace=True)
     return groups
@@ -170,7 +178,7 @@ def run(log, path):
             cal = C.windows_c4(tok, N_CAL, T_CAL)
             with torch.no_grad():
                 S, _ = K.second_moments(model, kv, cal, DEV)
-                groups = convert_arm(model, kv, S, arm)
+                groups = convert_arm(model, kv, S, arm, cal)
             del S
         log(f"  {arm}: {model.config.num_key_value_heads} key-value heads per layer ({time.time() - t0:.0f}s)")
         curve, steps = train_and_eval(model, data, win, log, arm)
