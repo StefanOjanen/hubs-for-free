@@ -1,0 +1,20 @@
+{
+ "model": "openlm-research/open_llama_3b_v2",
+ "exploratory": true,
+ "calibration": [
+  32,
+  1024
+ ],
+ "ppl_windows": 8,
+ "first_included": true,
+ "weighting": "attention",
+ "query_energy_plain": false,
+ "rematched": false,
+ "first_position_share_layer0": 0.004136822521104477,
+ "base": 6.765936106627514,
+ "arms": {
+  "0.0": 28.404562263535805,
+  "0.5": 25.620471107558668,
+  "1.0": 24.827081505951934
+ }
+}

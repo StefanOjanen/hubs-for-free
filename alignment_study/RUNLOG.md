@@ -913,3 +913,28 @@ square root of its singular value, which gives the important components the
 most rounding precision, and equal norms undo that. The rebalancing of round 30
 is specific to the fusion's whitened construction, not a rule for whitened
 factorizations in general.
+
+Attention-weighted calibration for the fusion, development (exploratory,
+labelled; attnw_fuse_dev.py, attnw_fuse_dev/; 32 C4 documents of 1,024 tokens,
+pairs fixed at the fusion's matching under the plain second moment). The fusion
+fits its shared heads in the metric of S = E[x x^T], every token alike; here S is
+mixed with S_att, which weights each token by the attention it receives
+(averaged over the layer's heads and query positions, scaled so that uniform
+attention gives S), as (1 - lambda) S + lambda S_att, used for keys, values and
+query energies alike. WikiText-2 perplexity at lambda 0, 0.25, 0.5 and 1:
+Llama-160m (20 windows, unconverted 67.0) 105.00, 103.51, 104.24, 107.60;
+TinyLlama (8 windows, 7.24) 58.51, 47.17, 40.53, 36.46; OpenLLaMA-3B (8 windows,
+6.77) 28.40, -, 25.62, 24.83. Controls on TinyLlama at lambda 1: the first
+position left out of the weighting 36.56; a position-only weighting (the
+attention uniform causal attention would give) 59.89 at 0.5 and 61.26 at 1;
+query energies from the plain moment 39.39, and pairs re-matched under the mixed
+moment as well 39.44; the received attention estimated from every 8th query
+position 36.40. The rule for round 31's lambda (minimax relative loss over the
+three development models on {0, 0.5, 1}) was committed before OpenLLaMA-3B's
+lambda-1 value was read (5f061e1) and picks lambda 1 (worst loss 3.2 percent,
+Llama-160m, against 11.2 percent for 0.5). Closest prior work: the
+attention-aware Hessians of BoA (Kim et al., ICML 2025) for quantization.
+Equalization on the original models (cle_original_dev.py; fuse_balance.py with
+every KV head alone): no gain, Llama-160m 76.6 against 76.9 at 4 bits and 157
+against 160 at 3, TinyLlama 7.54 against 7.53 and 10.84 against 10.86, so round
+30's rebalancing gain comes from the fusion's imbalance.

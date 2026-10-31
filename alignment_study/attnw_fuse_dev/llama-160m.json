@@ -1,0 +1,18 @@
+{
+ "model": "JackFram/llama-160m",
+ "exploratory": true,
+ "calibration": [
+  32,
+  1024
+ ],
+ "ppl_windows": 20,
+ "first_included": true,
+ "first_position_share_layer0": 0.004576641236781143,
+ "base": 66.9873601608633,
+ "arms": {
+  "0.0": 104.9997845602413,
+  "0.25": 103.50941828437666,
+  "0.5": 104.23890335141726,
+  "1.0": 107.59630074481736
+ }
+}

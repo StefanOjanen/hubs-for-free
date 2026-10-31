@@ -1,0 +1,19 @@
+{
+ "model": "TinyLlama/TinyLlama_v1.1",
+ "exploratory": true,
+ "calibration": [
+  32,
+  1024
+ ],
+ "ppl_windows": 8,
+ "first_included": true,
+ "weighting": "attention",
+ "query_energy_plain": true,
+ "rematched": false,
+ "first_position_share_layer0": 0.005094118299894035,
+ "base": 7.236327714769145,
+ "arms": {
+  "0.0": 58.51187876297773,
+  "1.0": 39.38669511752071
+ }
+}
