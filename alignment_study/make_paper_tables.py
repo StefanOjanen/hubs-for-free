@@ -56,8 +56,8 @@ table(["Conversion", "ppl 2,048", "ppl 4,096", "ZS-7"], rows)
 
 # ---- Table 3: models that already share KV heads (round 27) ----
 T = json.load(open("alignment_study/fusekv_results.json"))["table"]
-w("## Table 3. Models that already share key-value heads, converted to fewer (round 27)\n")
-w("WikiText-2 perplexity and seven-task accuracy; g is the number of KV heads merged into one.\n")
+w("## Table 3. Four models that already share key-value heads, and the multi-head OpenLLaMA-3B, converted to fewer (round 27)\n")
+w("WikiText-2 perplexity and seven-task accuracy; g is the number of KV heads merged into one (TinyLlama 4 heads, Qwen2.5-1.5B 2, Mistral-7B-Instruct 8, Qwen2.5-7B 4, OpenLLaMA-3B 32).\n")
 rows = [[short(k.rsplit(" ", 1)[0]), k.rsplit(" ", 1)[1], f(v["base"]["ppl"]), f(v["mean"]["ppl"]), f(v["fuse_u"]["ppl"]), f(v["fuse"]["ppl"]), f(v["base"]["acc"], 3), f(v["mean"]["acc"], 3), f(v["fuse"]["acc"], 3)]
         for k, v in sorted(T.items(), key=lambda kv: (short(kv[0].rsplit(" ", 1)[0]), kv[0]))]
 table(["Model", "g", "ppl unconverted", "averaging", "unweighted fit", "fusion", "acc unconverted", "averaging", "fusion"], rows)

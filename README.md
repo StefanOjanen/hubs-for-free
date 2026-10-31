@@ -13,7 +13,7 @@ three attention layouts, and along the training of two models, and turns
 the instruments built along the way into a toolkit that anyone analyzing
 attention can run. The same instruments led to a way of halving a model's
 key-value cache without training, by fitting shared heads to what the heads
-compute; on the Llama-2-7B benchmark of the best published training-free
+compute; on the Llama-2-7B benchmark of the best published training-free head-merging
 method it reaches perplexity 16.8 to 18.5 against that method's 25.1.
 
 ## How the findings connect
@@ -228,7 +228,7 @@ Each instrument below exists because a finding above required it.
   about attention, usable as is in peer review or internal model reports.
 - **Halving a model's KV cache without training.** Because fitting shared
   key-value heads to what the heads compute beat every training-free
-  conversion tested, including the best published one on its own benchmark,
+  conversion tested, including the best published head-merging one on its own benchmark,
   the conversion is one command: `python alignment_study/kvfuse.py --model
   <Llama-layout model> --out <dir>` computes the attention inputs' second
   moments on 128 C4 documents, pairs each layer's key-value heads by the
@@ -436,7 +436,7 @@ Each instrument below exists because a finding above required it.
 <p align="center"><img src="figures/readme/fig26_kv_fusion_gqa.png" alt="Two-panel dot plot of perplexity, as a multiple of the unconverted model's, at half and at a quarter of the key-value heads in five models that already share key-value heads or are multi-head: averaging is highest everywhere, the weighted fusion lowest in seven of nine settings and the unweighted fit lowest in the two Qwen2.5 settings that merge every key-value head into one" width="880"></p>
 <p align="center"><em>Fitting shared key-value heads to what the heads compute also works when each key-value head already serves several query heads.</em></p>
 
-- **Against the best published training-free conversion, on its own
+- **Against the best published training-free head-merging conversion, on its own
   benchmark.** CAGA (Wang, Jiang and Liu, 2026) converts Llama-2-7B from 32
   to 16 key-value heads without training and reports WikiText-2 perplexity
   25.1 and a seven-task zero-shot average of 44.3, against 926 and 32.6 for
@@ -460,7 +460,7 @@ Each instrument below exists because a finding above required it.
   the context length, and the pairing matters most there.
 
 <p align="center"><img src="figures/readme/fig27_vs_caga.png" alt="Three-panel dot plot for Llama-2-7B converted from 32 to 16 key-value heads without training. WikiText-2 perplexity at 2,048 and 4,096 tokens: unconverted 5.47 and 5.12, the weighted fusion on matched pairs 16.8 and 18.5 and on neighbouring pairs 19.7 and 25.6, CAGA's construction 323 to 1,348, averaging about 1,090, with CAGA's published 25.1 marked. Seven-task zero-shot average with intervals: unconverted 64.1, fusion 50.4 and 48.2, CAGA's construction 38.8 and 35.7, averaging 35.2, with CAGA's published 44.3 marked" width="880"></p>
-<p align="center"><em>Fitting the shared heads to what the heads compute, with pairs chosen the same way, beats the best published training-free conversion on its own benchmark.</em></p>
+<p align="center"><em>Fitting the shared heads to what the heads compute, with pairs chosen the same way, beats the best published training-free head-merging conversion on its own benchmark.</em></p>
 
 - **One pair of heads can switch on the super weight.** Since CAGA's pairing
   cannot be reproduced, an exploratory follow-up (not preregistered) paired
@@ -526,7 +526,7 @@ Each instrument below exists because a finding above required it.
   preregistered round tested what this buys. Rounding the attention weights to
   4 bits, the rebalanced model is better in all six models tried, and pooled it
   keeps under half of the rounding cost; at 3 bits it turns several collapses
-  into usable models, for example Qwen2.5-7B at 88 against 2,423. Uptraining
+  into recoverable models, for example Qwen2.5-7B at 88 against 2,423 (from 24 unrounded). Uptraining
   OLMo-1B and h2o-danube-1.8b briefly at four learning rates, the fused model
   as computed degrades at the higher rates and diverges at the highest, to 176
   and 2,455, while the rebalanced one stays stable. It gives the best run of the
@@ -787,7 +787,7 @@ for the merge benchmark at larger scale and on LAMBADA, 4 of 5 for the
 weighting flip, 9 of 10 for converting heads to shared key-value heads
 without training, 6 of 6 for fusing them by what they compute, 5 of 7
 for cross-layer KV compression under the convention null, 6 of 6 against
-the best published training-free conversion on its own benchmark, and 3 of 4
+the best published training-free head-merging conversion on its own benchmark, and 3 of 4
 for fusing key-value heads in models that already share them.
 Development
 calibration that shaped a preregistration is committed and labeled as
@@ -913,4 +913,8 @@ residual deviation directions carry structure the three-number summary
 does not capture, and one low-dispersion layer is ill-conditioned for the
 correlation statistic (diagnosed and flagged). Models above 8B
 parameters, input in other languages, and contexts beyond 2,048 tokens are
-untested.
+untested. Latent-cache conversions (TransMLA, Meng et al. 2025; GQLA, Meng
+and Pan 2026) report, without training, smaller losses at larger cache
+reductions than head fusion on their own task sets; head fusion keeps the
+grouped-query form that serving stacks run unchanged, and a comparison at
+matched cache size in one harness has not been run.

@@ -62,7 +62,7 @@ shared head in closed form to what the heads compute, weighting keys by each
 head's queries and values by its output projection, does better in all ten
 settings and leaves four of five models at 1.6 to 2.1 times the unconverted
 perplexity with half of the key-value heads, without training; on the
-Llama-2-7B benchmark of the best published training-free method, with heads
+Llama-2-7B benchmark of the best published training-free head-merging method, with heads
 paired by the fit's own residual, it reaches perplexity 16.8 to 18.5 against
 the published 25.1 and six points more zero-shot accuracy, and it carries over
 to models that already share key-value heads, though there its weighting loses
@@ -1203,7 +1203,14 @@ against 4.6 to 6.1 for the other models, which suggests that its configuration
 does not match its long-context training; its results are reported as
 registered.
 
-### 6.8 The fusion against the best published training-free conversion
+### 6.8 The fusion against the best published training-free head-merging conversion
+
+Scope of the comparison: CAGA is the best published training-free conversion
+that merges heads and keeps the grouped-query form. Latent-cache conversions
+(TransMLA, Meng et al. 2025; GQLA, Meng and Pan 2026) report, without training,
+smaller losses at larger cache reductions on their own task sets (TransMLA:
+LLaMA-2-7B at 31 percent of the cache, a six-task average of 58.20 against
+59.85); they change the attention form and are not compared here.
 
 CAGA (Wang, Jiang and Liu 2026) converts Llama-2-7B from 32 to 16 key-value
 heads without training and reports WikiText-2 perplexity 25.1 and a seven-task
@@ -1437,7 +1444,7 @@ parameters and without uptraining; its best recipe still leaves perplexity at
 2 to 5 times the unconverted model's at half the key-value heads in four of
 them, and whether its advantage survives uptraining is untested. The fusion of
 Section 6.6 narrows that gap on the same five models and, in Section 6.8, on
-Llama-2-7B against the best published training-free result, whose evaluation
+Llama-2-7B against the best published training-free head-merging result, whose evaluation
 length, subsets and harness are not stated and whose pairing could not be
 reproduced, and in Section 6.9 on five models that already share key-value
 heads or are multi-head, where its weighting fails in the two Qwen2.5 cells
