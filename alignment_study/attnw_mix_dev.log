@@ -1,0 +1,31 @@
+== JackFram/llama-160m Sat Oct 31 11:11:11 UTC 2026
+[    10s] JackFram/llama-160m: moments
+[    18s] plain (S/S/S): ppl 105.000
+[    24s] round31 (Sa/Sa/Sa): ppl 107.343
+[    31s] mixv (Sa/Sa/Sbar): ppl 108.619
+[    38s] plainmixv (S/S/Sbar): ppl 103.828
+[    45s] sens (Sw/Su/Sbar): ppl 102.775
+[    52s] sensk (Sw/Su/S): ppl 104.032
+[    53s] unconverted 66.987
+[    53s] ATTNW_MIX_DEV_DONE
+== TinyLlama/TinyLlama_v1.1 Sat Oct 31 11:12:08 UTC 2026
+[    40s] TinyLlama/TinyLlama_v1.1: moments
+[   157s] plain (S/S/S): ppl 58.512
+[   269s] round31 (Sa/Sa/Sa): ppl 36.403
+[   389s] mixv (Sa/Sa/Sbar): ppl 38.873
+[   510s] plainmixv (S/S/Sbar): ppl 55.824
+[   630s] sens (Sw/Su/Sbar): ppl 40.558
+[   749s] sensk (Sw/Su/S): ppl 41.247
+[   751s] unconverted 7.236
+[   751s] ATTNW_MIX_DEV_DONE
+== openlm-research/open_llama_3b_v2 Sat Oct 31 11:24:42 UTC 2026
+[   128s] openlm-research/open_llama_3b_v2: moments
+[   608s] plain (S/S/S): ppl 28.405
+[  1032s] round31 (Sa/Sa/Sa): ppl 24.855
+[  1486s] mixv (Sa/Sa/Sbar): ppl 26.095
+[  1936s] plainmixv (S/S/Sbar): ppl 28.604
+[  2384s] sens (Sw/Su/Sbar): ppl 26.558
+[  2834s] sensk (Sw/Su/S): ppl 25.681
+[  2844s] unconverted 6.766
+[  2844s] ATTNW_MIX_DEV_DONE
+MIX_DEV_PIPELINE_DONE

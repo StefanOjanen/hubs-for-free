@@ -1,0 +1,61 @@
+{
+ "model": "openlm-research/open_llama_3b_v2",
+ "exploratory": true,
+ "calibration": [
+  32,
+  1024
+ ],
+ "ppl_windows": 8,
+ "query_stride": 8,
+ "base": 6.765936106627514,
+ "arms": {
+  "plain": {
+   "metrics": [
+    "S",
+    "S",
+    "S"
+   ],
+   "ppl": 28.40456311047128
+  },
+  "round31": {
+   "metrics": [
+    "Sa",
+    "Sa",
+    "Sa"
+   ],
+   "ppl": 24.854535378998087
+  },
+  "mixv": {
+   "metrics": [
+    "Sa",
+    "Sa",
+    "Sbar"
+   ],
+   "ppl": 26.094779327441536
+  },
+  "plainmixv": {
+   "metrics": [
+    "S",
+    "S",
+    "Sbar"
+   ],
+   "ppl": 28.604025779172055
+  },
+  "sens": {
+   "metrics": [
+    "Sw",
+    "Su",
+    "Sbar"
+   ],
+   "ppl": 26.558494788434135
+  },
+  "sensk": {
+   "metrics": [
+    "Sw",
+    "Su",
+    "S"
+   ],
+   "ppl": 25.681440387156396
+  }
+ }
+}

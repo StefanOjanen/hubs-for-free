@@ -1,0 +1,61 @@
+{
+ "model": "JackFram/llama-160m",
+ "exploratory": true,
+ "calibration": [
+  32,
+  1024
+ ],
+ "ppl_windows": 20,
+ "query_stride": 8,
+ "base": 66.9873601608633,
+ "arms": {
+  "plain": {
+   "metrics": [
+    "S",
+    "S",
+    "S"
+   ],
+   "ppl": 104.9997845602413
+  },
+  "round31": {
+   "metrics": [
+    "Sa",
+    "Sa",
+    "Sa"
+   ],
+   "ppl": 107.34279639630421
+  },
+  "mixv": {
+   "metrics": [
+    "Sa",
+    "Sa",
+    "Sbar"
+   ],
+   "ppl": 108.61921318946206
+  },
+  "plainmixv": {
+   "metrics": [
+    "S",
+    "S",
+    "Sbar"
+   ],
+   "ppl": 103.82761544608054
+  },
+  "sens": {
+   "metrics": [
+    "Sw",
+    "Su",
+    "Sbar"
+   ],
+   "ppl": 102.77524634574551
+  },
+  "sensk": {
+   "metrics": [
+    "Sw",
+    "Su",
+    "S"
+   ],
+   "ppl": 104.03172604503172
+  }
+ }
+}

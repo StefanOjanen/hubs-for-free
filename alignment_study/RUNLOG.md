@@ -961,3 +961,25 @@ weight multiplying it as every other entry; attnw_correction/,
 attnw_biasfix.log), 10:31 to 11:11 UTC (2,394 s): plain 23.8729 (round 30:
 23.8729), weighted 27.7764. Any routine that builds second moments for the fusion must append the
 ones column when kv.has_bias(l), as fuse_kv.second_moments does.
+
+Attention-derived metrics for the fusion, development (exploratory, labelled;
+attnw_mix_dev.py, committed with the rule that reads it at 9c17ad1;
+attnw_mix_dev/, attnw_mix_dev.log; 32 C4 documents of 1,024 tokens, queries every
+8th position, pairs fixed at the fusion's matching under S). Arms (key metric /
+query energies / value metric) and WikiText-2 perplexity on Llama-160m (20
+windows), TinyLlama and OpenLLaMA-3B (8 windows): plain S/S/S 105.00, 58.51,
+28.40; round 31's S_att throughout 107.34, 36.40, 24.85; S_att/S_att/S_bar 108.62,
+38.87, 26.09; BoA's metrics S/S/S_bar 103.83, 55.82, 28.60; sensitivity
+S_w/S_u/S_bar 102.78, 40.56, 26.56; S_w/S_u/S 104.03, 41.25, 25.68. The rule
+(attnw_mix_rule.py; attnw_mix_dev/rule_result.json) picks the sensitivity arm,
+smallest improvement over plain 2.12 percent (Llama-160m); every other arm but
+S_w/S_u/S (0.92) loses on at least one model. In TinyLlama and OpenLLaMA-3B most
+of the gain comes from the key side; the exact value metric S_bar alone helps
+little and loses to plain on OpenLLaMA-3B. Run times: Llama-160m 53 s, TinyLlama
+751 s, OpenLLaMA-3B 2,844 s (each split arm fuses twice). Instrument check
+(attnw2_check.py; attnw2_check/llama-160m.json): attnw2_common's metrics, with the
+query energies computed per head and rotary plane instead of a d x d S_u, and its
+per-layer fusion reproduce the development values on Llama-160m (plain identical,
+sensitivity 102.7752 against 102.7752, relative 2.4e-8). The check's runner first
+waited on the parallel session's waiter, whose command line contains the pattern
+both used with pgrep -f, and was started by hand; waiters now key on process IDs.

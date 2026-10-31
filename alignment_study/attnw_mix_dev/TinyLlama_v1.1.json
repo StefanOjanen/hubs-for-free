@@ -1,0 +1,61 @@
+{
+ "model": "TinyLlama/TinyLlama_v1.1",
+ "exploratory": true,
+ "calibration": [
+  32,
+  1024
+ ],
+ "ppl_windows": 8,
+ "query_stride": 8,
+ "base": 7.236327714769145,
+ "arms": {
+  "plain": {
+   "metrics": [
+    "S",
+    "S",
+    "S"
+   ],
+   "ppl": 58.51188399690321
+  },
+  "round31": {
+   "metrics": [
+    "Sa",
+    "Sa",
+    "Sa"
+   ],
+   "ppl": 36.402628662949795
+  },
+  "mixv": {
+   "metrics": [
+    "Sa",
+    "Sa",
+    "Sbar"
+   ],
+   "ppl": 38.87258912731179
+  },
+  "plainmixv": {
+   "metrics": [
+    "S",
+    "S",
+    "Sbar"
+   ],
+   "ppl": 55.824251435771245
+  },
+  "sens": {
+   "metrics": [
+    "Sw",
+    "Su",
+    "Sbar"
+   ],
+   "ppl": 40.55844296350944
+  },
+  "sensk": {
+   "metrics": [
+    "Sw",
+    "Su",
+    "S"
+   ],
+   "ppl": 41.247330409479595
+  }
+ }
+}
