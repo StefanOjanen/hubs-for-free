@@ -517,7 +517,12 @@ Each instrument below exists because a finding above required it.
   norms near 50 while output columns shrink to 0.001. Two families of
   rescalings change nothing the model computes, a value row against the output
   columns that read it and a rotary key plane against the query planes that
-  meet it. Setting each pair to equal norms rebalances the model at no cost. A
+  meet it. Setting each pair to equal norms rebalances the model at no cost:
+  this is cross-layer equalization from data-free quantization (Nagel et al.
+  2019), the same move AWQ and SmoothQuant make between activations and
+  weights, applied to the value-output and query-key pairs. What is new here
+  is narrower: the closed-form fusion creates a severe imbalance, which
+  standard equalization repairs. A
   preregistered round tested what this buys. Rounding the attention weights to
   4 bits, the rebalanced model is better in all six models tried, and pooled it
   keeps under half of the rounding cost; at 3 bits it turns several collapses

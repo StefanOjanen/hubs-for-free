@@ -1334,9 +1334,11 @@ unchanged: value row r times d_r with column r of every output slice of the
 group divided by d_r, and rotary plane p of the shared key times c_p with the
 same plane of every query of the group divided by c_p (a real factor commutes
 with the rotation). Choosing d_r and c_p as the square root of the ratio of the
-two sides' norms gives the minimum-norm factorization of each product, the
-same kind of function-preserving rescaling as cross-layer equalization in
-data-free quantization (Nagel et al. 2019). Preregistration 30 tested its effect
+two sides' norms gives the minimum-norm factorization of each product. This is
+cross-layer equalization from data-free quantization (Nagel et al. 2019), the
+move AWQ and SmoothQuant make between activations and weights, applied to the
+value-output and query-key pairs; what is new is only that the closed-form
+fusion creates a severe imbalance, which standard equalization repairs. Preregistration 30 tested its effect
 on rounding in six models and on uptraining in two; 4 of 6 clauses pass. With
 the attention projections rounded to 4 bits per output channel, the rebalanced
 model is lower in all six (Q2) and keeps 0.48 of the rounding cost in log
