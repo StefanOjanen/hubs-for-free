@@ -1,0 +1,340 @@
+{
+ "model": "TinyLlama/TinyLlama_v1.1",
+ "exploratory": true,
+ "calibration": [
+  32,
+  1024
+ ],
+ "pairs": [
+  {
+   "layers": [
+    0,
+    1
+   ],
+   "within_key": 0.015032931686203373,
+   "within_value": 0.18825479700743994,
+   "across_key": 0.02762801918343676,
+   "across_value": 0.1408037741273478,
+   "across_irreducible_key": 0.011329018848991542,
+   "across_irreducible_value": 0.1113531556933388,
+   "matching": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     3,
+     0
+    ]
+   ]
+  },
+  {
+   "layers": [
+    2,
+    3
+   ],
+   "within_key": 0.013859567976203833,
+   "within_value": 0.2179739600197764,
+   "across_key": 0.017278844730076008,
+   "across_value": 0.31695994053639276,
+   "across_irreducible_key": 0.0021820193131626992,
+   "across_irreducible_value": 0.1530157788226722,
+   "matching": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     2
+    ]
+   ]
+  },
+  {
+   "layers": [
+    4,
+    5
+   ],
+   "within_key": 0.011764905326828168,
+   "within_value": 0.2194921958674125,
+   "across_key": 0.013638774154212522,
+   "across_value": 0.2615093284476479,
+   "across_irreducible_key": 0.0021514340439804836,
+   "across_irreducible_value": 0.0904590144589479,
+   "matching": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     1
+    ]
+   ]
+  },
+  {
+   "layers": [
+    6,
+    7
+   ],
+   "within_key": 0.00821473060591732,
+   "within_value": 0.19076149472008758,
+   "across_key": 0.009080758990664132,
+   "across_value": 0.22596791947703695,
+   "across_irreducible_key": 0.0017575254241787254,
+   "across_irreducible_value": 0.07448517055455058,
+   "matching": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     2
+    ]
+   ]
+  },
+  {
+   "layers": [
+    8,
+    9
+   ],
+   "within_key": 0.005691423003005505,
+   "within_value": 0.1596548380600905,
+   "across_key": 0.007663894243245477,
+   "across_value": 0.21579656552350449,
+   "across_irreducible_key": 0.0010604480918214303,
+   "across_irreducible_value": 0.08199664446558043,
+   "matching": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     3,
+     0
+    ]
+   ]
+  },
+  {
+   "layers": [
+    10,
+    11
+   ],
+   "within_key": 0.024837139361197347,
+   "within_value": 0.17940892569819175,
+   "across_key": 0.016994696549515485,
+   "across_value": 0.23576616373517845,
+   "across_irreducible_key": 0.001425941964772343,
+   "across_irreducible_value": 0.08876459925222464,
+   "matching": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     1
+    ]
+   ]
+  },
+  {
+   "layers": [
+    12,
+    13
+   ],
+   "within_key": 0.009595239422484034,
+   "within_value": 0.2015430455628975,
+   "across_key": 0.008763806845873945,
+   "across_value": 0.2315867552896015,
+   "across_irreducible_key": 0.0017877490341173404,
+   "across_irreducible_value": 0.07504486244577539,
+   "matching": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     3
+    ]
+   ]
+  },
+  {
+   "layers": [
+    14,
+    15
+   ],
+   "within_key": 0.023377464959204362,
+   "within_value": 0.22583044531791807,
+   "across_key": 0.02549491260450657,
+   "across_value": 0.2253073959977555,
+   "across_irreducible_key": 0.0021291969703068825,
+   "across_irreducible_value": 0.05602567268788504,
+   "matching": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     3,
+     0
+    ]
+   ]
+  },
+  {
+   "layers": [
+    16,
+    17
+   ],
+   "within_key": 0.015530154720786504,
+   "within_value": 0.282358559860879,
+   "across_key": 0.01581367858449717,
+   "across_value": 0.2940420560018545,
+   "across_irreducible_key": 0.0012254715004822313,
+   "across_irreducible_value": 0.06292145236149913,
+   "matching": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     1
+    ]
+   ]
+  },
+  {
+   "layers": [
+    18,
+    19
+   ],
+   "within_key": 0.008673458301998655,
+   "within_value": 0.23446180183685753,
+   "across_key": 0.009204822555292818,
+   "across_value": 0.25274726116717655,
+   "across_irreducible_key": 0.0009677918057762666,
+   "across_irreducible_value": 0.037090496176336155,
+   "matching": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     3,
+     1
+    ]
+   ]
+  },
+  {
+   "layers": [
+    20,
+    21
+   ],
+   "within_key": 0.010696976593973572,
+   "within_value": 0.1500115095051298,
+   "across_key": 0.010961816904040477,
+   "across_value": 0.18772754179490583,
+   "across_irreducible_key": 0.001099421913892196,
+   "across_irreducible_value": 0.029592918545002934,
+   "matching": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     1
+    ]
+   ]
+  }
+ ]
+}

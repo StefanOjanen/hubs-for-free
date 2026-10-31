@@ -1,0 +1,47 @@
+{
+ "model": "JackFram/llama-160m",
+ "exploratory": true,
+ "calibration": [
+  32,
+  1024
+ ],
+ "keep": 0.5,
+ "ppl_windows": 20,
+ "base": 66.9873601608633,
+ "norm_examples": [
+  {
+   "layer": 0,
+   "proj": "gate_proj",
+   "A_col_norm_median": 10.328471635889422,
+   "B_row_norm_median": 0.28518423655135106,
+   "B_row_norm_max": 0.30591621337774955,
+   "A_col_norm_max": 51.14741856677721
+  },
+  {
+   "layer": 0,
+   "proj": "up_proj",
+   "A_col_norm_median": 10.434171691878854,
+   "B_row_norm_median": 0.28626762472652567,
+   "B_row_norm_max": 0.30859219530444304,
+   "A_col_norm_max": 42.88924306275028
+  },
+  {
+   "layer": 0,
+   "proj": "down_proj",
+   "A_col_norm_median": 8.129820167604244,
+   "B_row_norm_median": 0.3515354335491244,
+   "B_row_norm_max": 0.42627974763187604,
+   "A_col_norm_max": 64.3879460906652
+  }
+ ],
+ "svdllm": {
+  "fp32": 2356.0010721949384,
+  "w4": 1983.302489447794,
+  "w3": 3319.6089047775176
+ },
+ "balanced": {
+  "fp32": 2356.0009597971743,
+  "w4": 3334.226267650168,
+  "w3": 26096.646968956735
+ }
+}

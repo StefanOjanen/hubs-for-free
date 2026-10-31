@@ -895,3 +895,21 @@ head 112.0 against 108.9, at 2 bits 268.5 against 279.3. TinyLlama (8 windows;
 (GPTQ); 3 bits 235.8 against 251.3 and 101.2 against 80.7; cache at 4 bits 58.0
 against 53.3, at 2 bits 312 against 425. Rebalancing keeps helping under GPTQ
 and for a 4-bit cache, and hurts a 2-bit cache.
+
+Cross-layer sharing and SVD-LLM rebalancing, development (exploratory,
+labelled; xlayer_fuse_probe.py, xlayer_cost_probe.py, svdllm_balance_dev.py;
+xlayer_fuse_dev/, balance_dev/svdllm_*.json). A layer's keys are 93 to 98
+percent (Llama-160m) and 98 to 99 percent (TinyLlama) linearly predictable from
+the previous layer's attention input, its values (output weighted) 73 to 87 and
+81 to 96 percent. In the fusion's own weighted residual, sharing one cache
+between adjacent layers of TinyLlama costs 0.008 to 0.028 of key energy and 0.14
+to 0.32 of value energy, against 0.006 to 0.025 and 0.15 to 0.28 for pairing
+heads within each layer at the same saving; the prediction residual alone is
+0.03 to 0.15 of the value energy. Not pursued. Rebalancing SVD-LLM's factors (the
+MLP projections of Llama-160m at half their parameters, perplexity 2,356 against
+67.0 unconverted) makes rounding worse, 3,334 against 1,983 at 4 bits and 26,097
+against 3,320 at 3 bits: SVD-LLM's split already scales each component by the
+square root of its singular value, which gives the important components the
+most rounding precision, and equal norms undo that. The rebalancing of round 30
+is specific to the fusion's whitened construction, not a rule for whitened
+factorizations in general.
