@@ -158,7 +158,11 @@ now fuses and rebalances in float32 and rounds once (--no-balance to skip); sinc
 2026-10-31 it also matches groups of four (quad_groups: minimum-cost pairs, then
 pairs of pairs by the four-head residual, group_cost) and handles projections
 with biases (the Qwen2 layout; pair costs on the moment of [x, 1], the export
-keeps the biases), unit-checked on tiny random models (kvfuse_tiny_check.py).
+keeps the biases), unit-checked on tiny random models (kvfuse_tiny_check.py) and
+on real ones (kvfuse_bias_check.py: Qwen2.5-0.5B exact; kvfuse_quad_check.py:
+Llama-160m groups of four 265.6 against 339.7 neighbouring, checkpoint to 1.7e-4;
+kvfuse_check.py: pair costs still equal round 28's). kvfuse_bench.py measures
+an exported checkpoint's cache and decode speed (TinyLlama: 1.08x at batch 1).
 31 (alignment_study/PREREGISTRATION31.md, PREREGISTRATION31_lambda_rule.md,
 attnw/, attnw_fuse_dev/; instrument attnw_round.py): the fusion fitted in S_att
 (each token weighted by the attention it receives) for keys, values and query
