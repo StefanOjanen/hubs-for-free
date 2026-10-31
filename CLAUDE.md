@@ -228,7 +228,18 @@ Closest prior and concurrent work to cite: Papamichalis and Ruane (arXiv
 2608.14712, sink convention and BERT clustering), Sandoval-Segura et al.
 (ICLR 2026, output-norm head scores), Sok et al. (EMNLP 2026, BOS sink
 heads), Méloux et al. (arXiv 2512.18792), Heap et al. (arXiv 2501.17727),
-Fesser et al. (arXiv 2606.08105). Audit base results: audits/clark2019/, audits/chai/ (Mistral-7B
+Fesser et al. (arXiv 2606.08105). For the KV-fusion line (rounds 20 to 33):
+Ainslie et al. 2023 (GQA), Jin et al. (EMNLP 2025 Findings, aligned pooling with
+distillation), CAGA (Wang, Jiang and Liu, arXiv 2610.09476; its code pairing not
+reproducible), KQ-SVD, BoA (Kim et al., ICML 2025, attention-aware Hessians),
+Nagel et al. 2019 (equalization), Yu et al. 2024 (super weights), and the
+latent-cache family that reports smaller training-free losses at larger
+reductions on its own task sets: TransMLA (Meng et al., arXiv 2502.07864; its
+repository fxmeng/TransMLA no longer resolves, copies and an MLX port exist),
+MHA2MLA (Ji et al. 2025), GQLA (Meng and Pan, arXiv 2605.15250), Palu (Chang et
+al., arXiv 2407.21118), Eigen Attention (Saxena et al., arXiv 2408.05646), LoRC
+(Zhang et al., arXiv 2410.03111). Never call CAGA "the best published
+training-free conversion" without "head-merging". Audit base results: audits/clark2019/, audits/chai/ (Mistral-7B
 and OPT-6.7B), audits/dewage2026/ (Mistral-7B), audits/retrieval_heads/
 (Qwen2.5-7B, Mistral-7B-Instruct-v0.2 reproduced; Llama-2-7B-80K not
 reproduced under our haystack and excluded); criteria in
