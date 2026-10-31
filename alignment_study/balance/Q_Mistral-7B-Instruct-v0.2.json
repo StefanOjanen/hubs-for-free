@@ -1,0 +1,21 @@
+{
+ "model": "mistralai/Mistral-7B-Instruct-v0.2",
+ "params": 7241732096,
+ "dtype": "torch.bfloat16",
+ "base": 5.540459194776044,
+ "pairing": "fusion-residual matching",
+ "fused": 16.678713727737772,
+ "fused_w4": 20.56783572367207,
+ "fused_w3": 175.1947071274086,
+ "balanced": 16.655409795443997,
+ "max_logit_change_relative": 0.08836206793785095,
+ "balanced_w4": 17.396645732462325,
+ "balanced_w3": 30.250834604011157,
+ "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/ab9827e/alignment_study/PREREGISTRATION30.md",
+ "dev": false,
+ "calibration": [
+  128,
+  2048
+ ],
+ "ppl_windows": 8
+}

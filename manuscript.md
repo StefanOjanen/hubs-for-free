@@ -1323,6 +1323,37 @@ heads), while TinyLlama merged to one head the same way is not an exception.
 Both failing models' projections carry biases, handled through the augmented
 second moment; whether the biases are the reason was not tested.
 
+### 6.10 Rebalancing the fused heads
+
+The fusion builds each group's shared value as P^T L^-1 and each shared key
+plane at unit norm in the whitened metric, and the output and query
+projections absorb the inverse. The function is exact, but the factors end up
+far apart in scale (in TinyLlama, value-row norms up to 49.6 against output-
+column norms down to 0.0008). Two families of rescalings leave the function
+unchanged: value row r times d_r with column r of every output slice of the
+group divided by d_r, and rotary plane p of the shared key times c_p with the
+same plane of every query of the group divided by c_p (a real factor commutes
+with the rotation). Choosing d_r and c_p as the square root of the ratio of the
+two sides' norms gives the minimum-norm factorization of each product, the
+same kind of function-preserving rescaling as cross-layer equalization in
+data-free quantization (Nagel et al. 2019). Preregistration 30 tested its effect
+on rounding in six models and on uptraining in two; 4 of 6 clauses pass. With
+the attention projections rounded to 4 bits per output channel, the rebalanced
+model is lower in all six (Q2) and keeps 0.48 of the rounding cost in log
+perplexity, pooled (Q3; per model 0.11 to 0.97); at 3 bits it is lower by up to
+a factor of 27 (Qwen2.5-7B, 88 against 2,423). Uptraining OLMo-1B and
+h2o-danube-1.8b for 327,680 tokens at learning rates 5e-6 to 2e-4, the
+rebalanced start's best run is below the unbalanced start's best (25.9 against
+27.0 and 15.4 against 16.6; T1) and below averaging's best at every checkpoint
+(T3). The unbalanced start degrades at 8e-5 and diverges at 2e-4 (to 176 and
+2,455) where the rebalanced one stays at 26.9 to 36.2 and 15.4 to 16.7. Two
+clauses fail. At 5e-6 the unbalanced start ends lower in both models (T2). And
+rebalancing weights already stored in bfloat16 rounds them twice: perplexity
+moves by 0.7 percent in Llama-2-7B and 4.2 percent in Qwen2.5-7B, and the logits
+of h2o-danube-1.8b in float32 move by 3.1e-4 of the largest logit, beyond the
+registered tolerances (Q1). The conversion command now fuses and rebalances
+each layer in float32 and rounds once.
+
 ## 7. Limitations
 
 Results cover seventeen models up to 8B parameters in ten families, three

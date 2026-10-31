@@ -1,0 +1,21 @@
+{
+ "model": "openlm-research/open_llama_3b_v2",
+ "params": 3426473600,
+ "dtype": "torch.float32",
+ "base": 6.765936106627514,
+ "pairing": "fusion-residual matching",
+ "fused": 27.562768199747975,
+ "fused_w4": 38.20358190687674,
+ "fused_w3": 241.13263856931852,
+ "balanced": 27.56282079728876,
+ "max_logit_change_relative": 7.475759957742412e-06,
+ "balanced_w4": 29.84028403525747,
+ "balanced_w3": 45.98025500388756,
+ "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/ab9827e/alignment_study/PREREGISTRATION30.md",
+ "dev": false,
+ "calibration": [
+  128,
+  2048
+ ],
+ "ppl_windows": 8
+}

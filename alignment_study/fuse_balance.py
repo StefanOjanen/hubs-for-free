@@ -21,9 +21,10 @@ def _scale_rows(mod, rows, f):
         mod.bias[rows] = (mod.bias[rows].float() * f).to(mod.bias.dtype)
 
 
-def balance(kv, groups_by_layer):
-    """Rebalance every group of every layer in place; groups_by_layer[l] lists the KV heads that share one head."""
-    for l in range(kv.L):
+def balance(kv, groups_by_layer, layers=None):
+    """Rebalance every group of every layer (or of the given layers) in place; groups_by_layer[l] lists the KV heads
+    that share one head."""
+    for l in (range(kv.L) if layers is None else layers):
         a, hd, half = kv.attn(l), kv.hd, kv.r // 2
         dev = a.v_proj.weight.device
         for G in groups_by_layer[l]:

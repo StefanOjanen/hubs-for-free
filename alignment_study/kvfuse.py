@@ -28,6 +28,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gqa_common as C
 import fuse_common as F
 import fuse_kv as K
+import fuse_balance as B
 from gqa_export import export_gqa
 
 torch.set_grad_enabled(False)
@@ -83,6 +84,8 @@ def main():
     ap.add_argument("--dtype", choices=("bfloat16", "float32"), default="bfloat16")
     ap.add_argument("--device", default=None, help="default: the GPU if there is one, else the CPU")
     ap.add_argument("--revision", default=None)
+    ap.add_argument("--no-balance", action="store_true",
+                    help="skip rebalancing (fuse_balance.py; on by default: same function, weights that round and train well)")
     args = ap.parse_args()
     if args.pairing == "matched" and args.group != 2:
         sys.exit("matched pairing is for groups of 2; use --pairing neighbour for larger groups")
@@ -104,15 +107,30 @@ def main():
     else:
         groups = [[list(range(s, s + args.group)) for s in range(0, kv.nkv, args.group)] for _ in range(kv.L)]
     log(f"{args.pairing} groups chosen")
-    K.convert(kv, S, groups, "fuse")
-    log("fused")
+    # fuse and rebalance each layer in float32, rounding to the model's dtype once (rebalancing weights that are
+    # already in bfloat16 rounds them twice: preregistration 30)
+    for l in range(kv.L):
+        a = kv.attn(l)
+        mods = (a.q_proj, a.k_proj, a.v_proj, a.o_proj)
+        for m in mods:
+            m.float()
+        S64 = S[l].double(); roots = F.layer_roots(S64, kv.d)
+        Lsq = roots[0] @ roots[0]
+        for G in groups[l]:
+            K.fuse_kv_group(kv, l, list(G), S64, roots, qw=True, ow=True, Lsq=Lsq)
+        if not args.no_balance:
+            B.balance(kv, groups, layers=[l])
+        for m in mods:
+            m.to(getattr(torch, args.dtype))
+        del S64, roots, Lsq
+    log("fused" + ("" if args.no_balance else " and rebalanced"))
     del S
     export_gqa(model, groups, inplace=True)
     model.save_pretrained(args.out)
     tok.save_pretrained(args.out)
     json.dump({"source": args.model, "revision": args.revision, "group": args.group, "pairing": args.pairing,
                "calibration": {"source": "allenai/c4 en validation shard 0", "documents": args.calib, "tokens": args.calib_len},
-               "kv_heads": [kv.nkv, kv.nkv // args.group], "groups": groups}, open(os.path.join(args.out, "kvfuse.json"), "w"), indent=1)
+               "kv_heads": [kv.nkv, kv.nkv // args.group], "balanced": not args.no_balance, "groups": groups}, open(os.path.join(args.out, "kvfuse.json"), "w"), indent=1)
     log(f"saved {args.out} ({kv.nkv // args.group} KV heads per layer)")
 
 

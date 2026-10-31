@@ -868,3 +868,18 @@ instrument now keeps one copy at a time and computes the same quantities in the
 same way (balance_round.py, commit after ab9827e; the two finished models are
 kept). The evaluator's output from the killed pipeline, written on incomplete
 data, was deleted; the registered evaluation runs once every model is done.
+Resumed at 22:21 UTC with that fix; Part Q finished 00:13 UTC (OpenLLaMA-3B
+923 s, Llama-2-7B 1,993 s, Mistral-7B-Instruct 1,910 s, Qwen2.5-7B 1,865 s) and
+Part T ran 00:13 to 06:38 UTC (each OLMo-1B run about 607 s, each
+h2o-danube-1.8b run about 990 s; the fused starts recompute the second moments
+in every run), on AC power with no pauses. Evaluation (eval_balance.py,
+unchanged since the freeze): 4 of 6 (balance_results.json, eval_balance.log).
+After the round, kvfuse.py fuses and rebalances each layer in float32 and
+rounds to the model's dtype once (--no-balance skips the rebalancing;
+fuse_balance.balance takes a list of layers). Checks: kvfuse_check.py on
+Llama-160m (CPU, float32): the rebalanced checkpoint reproduces the simulated
+unbalanced fusion to 3.5e-4 in logits of up to 22.7, pairing unchanged
+(llama2_dev/kvfuse_check_llama-160m_balanced.json); kvfuse_balance_check.py on
+TinyLlama (bfloat16 checkpoints, 8 windows): 58.93 rebalanced against 58.63
+unbalanced as saved, 66.4 against 76.8 with the attention projections at 4 bits
+(balance_dev/kvfuse_balance_check_TinyLlama_v1.1.json).

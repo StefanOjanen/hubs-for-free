@@ -1240,4 +1240,62 @@ if glob.glob(GR) and glob.glob(GD):
              fontsize=10, color=INK2, va="top")
     fig.savefig(OUT + "fig29_guard_round.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
+# ============ Figure 30: rebalancing fused heads, for rounding and for uptraining (preregistration 30) ============
+BR = "alignment_study/balance_results.json"
+if glob.glob(BR):
+    from matplotlib.ticker import FixedLocator, FixedFormatter, NullLocator
+    plt.rcParams["axes.grid"] = False
+    BRES = json.load(open(BR))
+    QN = [("Qwen2.5-7B", "Qwen2.5-7B"), ("Llama-2-7b-hf", "Llama-2-7B"), ("OLMo-1B-hf", "OLMo-1B"), ("h2o-danube-1.8b-base", "h2o-danube-1.8b"),
+          ("open_llama_3b_v2", "OpenLLaMA-3B"), ("Mistral-7B-Instruct-v0.2", "Mistral-7B-Instruct")]
+    QD = {k: json.load(open(f"alignment_study/balance/Q_{k}.json")) for k, _ in QN}
+    fig = plt.figure(figsize=(15.0, 6.0))
+    axq = [fig.add_axes([0.13, 0.12, 0.17, 0.66]), fig.add_axes([0.33, 0.12, 0.17, 0.66])]
+    axt = [fig.add_axes([0.58, 0.12, 0.18, 0.66]), fig.add_axes([0.81, 0.12, 0.18, 0.66])]
+    for ax, bits in zip(axq, (4, 3)):
+        for y, (k, lab) in enumerate(QN):
+            r = QD[k]
+            u, b = r[f"fused_w{bits}"] / r["fused"], r[f"balanced_w{bits}"] / r["balanced"]
+            ax.plot([b, u], [y, y], color=GRID, lw=3, zorder=1, solid_capstyle="round")
+            ax.scatter([u], [y], s=70, color=S2, edgecolors=SURF, linewidths=1.2, zorder=3, label="fused as computed" if y == 0 else None)
+            ax.scatter([b], [y], s=70, color=S1, edgecolors=SURF, linewidths=1.2, zorder=3, label="rebalanced" if y == 0 else None)
+        ax.set_xscale("log")
+        TK = [1, 1.5, 2, 3, 5] if bits == 4 else [1, 3, 10, 30, 100]
+        ax.xaxis.set_major_locator(FixedLocator(TK)); ax.xaxis.set_major_formatter(FixedFormatter([f"{t:g}" for t in TK])); ax.xaxis.set_minor_locator(NullLocator())
+        ax.set_xlim(0.95, 5 if bits == 4 else 200)
+        ax.set_yticks(range(len(QN))); ax.set_yticklabels([lab for _, lab in QN] if bits == 4 else [], fontsize=10)
+        ax.set_ylim(-0.6, len(QN) - 0.4)
+        ax.set_xlabel("rounded / unrounded perplexity (log)", fontsize=10)
+        ax.set_title(f"Attention weights at {bits} bits", loc="left", fontsize=12, color=INK, pad=8)
+    axq[0].legend(loc="upper right", fontsize=9.5, handletextpad=0.2, borderaxespad=0.2)
+    TN = [("OLMo-1B-hf", "OLMo-1B"), ("h2o-danube-1.8b-base", "h2o-danube-1.8b")]
+    for ax, (k, lab) in zip(axt, TN):
+        T = json.load(open(f"alignment_study/balance/T_{k}.json"))
+        lrs = T["lrs"]
+        for start, c, name, mk in (("mean", MUTED, "averaging", "o"), ("fuse", S2, "fused as computed", "s"), ("fuse_balanced", S1, "rebalanced", "D")):
+            y = [next(r["final"] for r in T["runs"] if r["start"] == start and r["lr"] == lr) for lr in lrs]
+            ax.plot(lrs, y, color=c, lw=2, zorder=3, marker=mk, markersize=6, markeredgecolor=SURF, markeredgewidth=1, label=name)
+        start_ppl = T["runs"][0]["curve"][0]["ppl"]
+        ax.axhline(T["base"], color=INK2, lw=1.2, ls=(0, (4, 3)), zorder=1)
+        ax.text(lrs[0], T["base"] * 0.9, f"unconverted {T['base']:.1f}", color=INK2, fontsize=9.5, va="top")
+        fstart = next(r for r in T["runs"] if r["start"] == "fuse")["curve"][0]["ppl"]
+        ax.axhline(fstart, color=S2, lw=1, ls=(0, (1, 2)), zorder=1, alpha=0.8)
+        ax.text(lrs[-1], fstart * 1.1, f"fused, before training {fstart:.1f}", color=INK2, fontsize=9, ha="right", va="bottom")
+        ax.set_xscale("log"); ax.set_yscale("log"); ax.xaxis.set_minor_locator(NullLocator()); ax.yaxis.set_minor_locator(NullLocator())
+        ax.xaxis.set_major_locator(FixedLocator(lrs)); ax.xaxis.set_major_formatter(FixedFormatter([f"{x:g}" for x in lrs]))
+        yt = [5, 10, 20, 50, 100, 200, 500, 1000, 2000]
+        ax.yaxis.set_major_locator(FixedLocator(yt)); ax.yaxis.set_major_formatter(FixedFormatter([f"{t:g}" for t in yt]))
+        ax.set_ylim(T["base"] * 0.6, 3500)
+        ax.set_xlabel("learning rate (log)", fontsize=10)
+        ax.set_title(f"Uptraining {lab}, 327,680 tokens", loc="left", fontsize=12, color=INK, pad=8)
+        ax.legend(loc="upper left", fontsize=9, handletextpad=0.3, borderaxespad=0.2)
+    axt[0].set_ylabel("perplexity at the end of training (log)", fontsize=10)
+    for ax in axq + axt:
+        ax.tick_params(length=0); ax.grid(axis="x" if ax in axq else "y", color=GRID, lw=0.8)
+        for sp in ("left", "bottom"): ax.spines[sp].set_color(GRID)
+    fig.text(0.012, 0.985, "Rebalancing the fused heads: the same function, easier to round and to train", fontsize=15, color=INK, va="top")
+    fig.text(0.012, 0.915, f"Preregistration 30: {BRES['passes']} of {BRES['of']} registered clauses pass. Each model converted to half its key-value heads by the weighted fusion;"
+             " rebalancing rescales each shared value row against its output columns and each key plane against its query planes.", fontsize=10, color=INK2, va="top")
+    fig.savefig(OUT + "fig30_rebalancing.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
 print("FIGURES_DONE", sorted(glob.glob(OUT + "*")))

@@ -1,0 +1,21 @@
+{
+ "model": "NousResearch/Llama-2-7b-hf",
+ "params": 6738415616,
+ "dtype": "torch.bfloat16",
+ "base": 5.026648043692182,
+ "pairing": "fusion-residual matching",
+ "fused": 15.99973968846477,
+ "fused_w4": 59.98118708508464,
+ "fused_w3": 2883.62010579268,
+ "balanced": 16.109823353975983,
+ "max_logit_change_relative": 0.03504673019051552,
+ "balanced_w4": 36.98727397963416,
+ "balanced_w3": 417.2607241934512,
+ "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/ab9827e/alignment_study/PREREGISTRATION30.md",
+ "dev": false,
+ "calibration": [
+  128,
+  2048
+ ],
+ "ppl_windows": 8
+}

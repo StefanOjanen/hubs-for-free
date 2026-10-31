@@ -1,0 +1,15 @@
+{
+ "model": "TinyLlama/TinyLlama_v1.1",
+ "windows": 8,
+ "balanced": {
+  "kv_heads": 2,
+  "ppl": 58.92737495960702,
+  "ppl_w4": 66.41906608305456
+ },
+ "unbalanced": {
+  "kv_heads": 2,
+  "ppl": 58.627400704276624,
+  "ppl_w4": 76.83367723550857
+ },
+ "ppl_change_from_rebalancing": 0.005116622120832304
+}

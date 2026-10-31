@@ -1514,3 +1514,65 @@ not be tested. Post hoc, and from five models only: the one model with a
 dominant writer onto its super neuron's gate (14 times the median, against at
 most 6 in the others) is the one where moving that writer breaks the model.
 That pattern is a hypothesis for a later test, not a result of this round.
+
+## Rebalancing fused key-value heads, for rounding and for uptraining (2026-10-30 to 31, preregistration 30)
+
+Frozen at ab9827e (`alignment_study/PREREGISTRATION30.md`). 4 of 6 clauses pass.
+The weighted fusion builds each group's shared heads in a whitened basis and
+lets the query and output projections absorb the inverse, so its weights are
+far apart in scale; `fuse_balance.py` rescales every shared value row against
+the matching output columns, and every rotary plane of the shared key against
+the same plane of the queries, to equal norms without changing the function.
+Part Q: six models converted to half their key-value heads, perplexity on 8
+WikiText-2 windows of 2,048 tokens with the attention projections rounded per
+output channel. Part T: two models uptrained for 327,680 tokens from three
+starts at four learning rates, perplexity on 40 windows of 1,024 tokens
+(`balance/*.json`, `balance_results.json`, `balance.log`, `eval_balance.log`).
+- Q1 FAILS: the function is not unchanged to the registered tolerance in three
+  models. In h2o-danube-1.8b (float32) logits move by 3.1e-4 of the largest
+  logit (registered at most 1e-4; perplexity 38.815 both ways); in the two
+  bfloat16 models with the largest shifts, rebalancing weights that are already
+  in bfloat16 rounds them a second time, and perplexity moves from 16.00 to
+  16.11 in Llama-2-7B (0.7 percent) and from 23.87 to 24.88 in Qwen2.5-7B (4.2
+  percent; registered at most 0.5). OLMo-1B and OpenLLaMA-3B move by at most
+  7.5e-6 of the largest logit, Mistral-7B-Instruct by 0.14 percent in perplexity.
+- Q2 passes in 6 of 6: at 4 bits the rebalanced model is below the fused one in
+  every model. OLMo-1B 135.0 against 138.6 (fused 54.7), h2o-danube-1.8b 44.6
+  against 53.3 (38.8), OpenLLaMA-3B 29.8 against 38.2 (27.6), Llama-2-7B 37.0
+  against 60.0 (16.0 and 16.1), Mistral-7B-Instruct 17.4 against 20.6 (16.7),
+  Qwen2.5-7B 29.0 against 96.9 (23.9 and 24.9).
+- Q3 passes: pooled, rebalancing leaves 0.48 of the 4-bit cost in log
+  perplexity (registered: at most 0.75); per model 0.97, 0.44, 0.24, 0.63, 0.21
+  and 0.11 in the order above.
+- T1 passes: the rebalanced start's best run ends below the unbalanced start's
+  best in both models, OLMo-1B 25.9 (at 2e-5) against 27.0 (2e-5) and
+  h2o-danube-1.8b 15.4 (8e-5) against 16.6 (2e-5).
+- T2 FAILS (6 of 8): at the smallest learning rate, 5e-6, the unbalanced start
+  ends lower in both models (OLMo-1B 30.4 against 31.9, h2o-danube-1.8b 20.6
+  against 23.5); at every other learning rate the rebalanced start ends lower.
+- T3 passes: the rebalanced start's best run is below averaging's best at all 7
+  checkpoints in both models; averaging ends at 98.2 (OLMo-1B, from 9,774) and
+  29.2 (h2o-danube-1.8b, from 430).
+- Reported: at 3 bits the rebalanced model is lower in every model (OLMo-1B
+  1,885 against 2,787; h2o-danube-1.8b 64.2 against 186; OpenLLaMA-3B 46.0
+  against 241; Llama-2-7B 417 against 2,884; Mistral 30.3 against 175; Qwen2.5-7B
+  88.3 against 2,423). Uptraining, final perplexity at learning rates 5e-6, 2e-5,
+  8e-5 and 2e-4 (unconverted 14.6 and 8.6; fused starts 60.5 and 38.4). OLMo-1B:
+  unbalanced 30.4, 27.0, 43.6, 176; rebalanced 31.9, 25.9, 26.9, 36.2; averaging
+  657, 206, 98.2, 147. h2o-danube-1.8b: unbalanced 20.6, 16.6, 31.3, 2,455;
+  rebalanced 23.5, 16.2, 15.4, 16.7; averaging 197, 88.6, 38.6, 29.2. The
+  unbalanced start improves and then worsens within the run at 8e-5 in both
+  models (OLMo-1B 60.5, 36.9, 32.6, then up to 47.4; h2o-danube-1.8b down to 19.2,
+  then up to 36.5) and diverges at 2e-4.
+Reading: rebalancing is free and changes what the fused model computes only
+through rounding, so it should be done in float32 before the weights are
+stored in bfloat16 (the frozen instrument rebalanced bfloat16 weights, which is
+why Q1 failed in two of the 7B models). It removes about half of the cost of
+rounding the attention projections to 4 bits, pooled over six models, and much
+more at 3 bits, from 3 percent of the 4-bit cost in OLMo-1B to 89 percent in
+Qwen2.5-7B. For uptraining it does not make the fused start better at the
+smallest learning rate, where the unbalanced start, with its tiny weights,
+moves faster; what it buys is stability: the unbalanced start degrades at 8e-5
+and diverges at 2e-4 in both models, while the rebalanced one stays usable
+across the grid and gives the best run of the twelve in each model. All
+training clauses are about the first 327,680 tokens.

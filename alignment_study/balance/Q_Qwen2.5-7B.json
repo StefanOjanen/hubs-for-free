@@ -1,0 +1,21 @@
+{
+ "model": "Qwen/Qwen2.5-7B",
+ "params": 7615616512,
+ "dtype": "torch.bfloat16",
+ "base": 5.395888849333053,
+ "pairing": "neighbour",
+ "fused": 23.872870084076432,
+ "fused_w4": 96.93943699961638,
+ "fused_w3": 2423.4123703669084,
+ "balanced": 24.877717679944283,
+ "max_logit_change_relative": 0.7468927502632141,
+ "balanced_w4": 29.017591237073773,
+ "balanced_w3": 88.31344740448036,
+ "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/ab9827e/alignment_study/PREREGISTRATION30.md",
+ "dev": false,
+ "calibration": [
+  128,
+  2048
+ ],
+ "ppl_windows": 8
+}

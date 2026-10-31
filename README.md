@@ -232,9 +232,11 @@ Each instrument below exists because a finding above required it.
   the conversion is one command: `python alignment_study/kvfuse.py --model
   <Llama-layout model> --out <dir>` computes the attention inputs' second
   moments on 128 C4 documents, pairs each layer's key-value heads by the
-  fusion's residual, fuses each pair, and saves a grouped-query checkpoint
-  with half the key-value heads that loads in transformers (checked to
-  reproduce the simulated conversion to 4e-4 in logits). On Llama-2-7B the
+  fusion's residual, fuses each pair, rebalances the fused weights in float32
+  (same function, weights that round and train well; below), and saves a
+  grouped-query checkpoint with half the key-value heads that loads in
+  transformers (checked to reproduce the simulated conversion to 4e-4 in
+  logits). On Llama-2-7B the
   same steps gave the 16.8 above in about half an hour on a laptop. The
   converted model is still well behind the original (three times its
   perplexity), a starting point for uptraining rather than a finished model.
@@ -507,6 +509,34 @@ Each instrument below exists because a finding above required it.
 
 <p align="center"><img src="figures/readme/fig29_guard_round.png" alt="Two-panel figure. Left: for every conversion that differs from the fusion's matching in one early layer, perplexity relative to the reference conversion against the one-window check's largest ratio, log scales. Llama-2-7B's development conversions include a cluster at ratios 3 to 4 and 6 to 9 times the reference, right of the threshold 2.35; all conversions of Mistral-7B-Instruct, OpenLLaMA-3B, OLMo-1B and Qwen2.5-7B sit near ratio 1 and damage 1, the worst at 2.2 times. Right: the strongest head's write onto the super neuron's gate as a multiple of the layer's median: Llama-2-7B 14, OpenLLaMA-3B 5.9, OLMo-1B 4.9, Qwen2.5-7B 2.2, Mistral 1.4, with each model's worst damage" width="880"></p>
 <p align="center"><em>The failure found in Llama-2-7B did not appear in four other models; the check stayed silent on all of their conversions.</em></p>
+
+- **The same function, easier to round and to train.** The fusion builds each
+  shared head in a whitened basis and lets the query and output projections
+  absorb the inverse. The converted model computes exactly what the fit says,
+  but its weights end up far apart in scale: in TinyLlama, value rows grow to
+  norms near 50 while output columns shrink to 0.001. Two families of
+  rescalings change nothing the model computes, a value row against the output
+  columns that read it and a rotary key plane against the query planes that
+  meet it. Setting each pair to equal norms rebalances the model at no cost. A
+  preregistered round tested what this buys. Rounding the attention weights to
+  4 bits, the rebalanced model is better in all six models tried, and pooled it
+  keeps under half of the rounding cost; at 3 bits it turns several collapses
+  into usable models, for example Qwen2.5-7B at 88 against 2,423. Uptraining
+  OLMo-1B and h2o-danube-1.8b briefly at four learning rates, the fused model
+  as computed degrades at the higher rates and diverges at the highest, to 176
+  and 2,455, while the rebalanced one stays stable. It gives the best run of the
+  twelve in each model and beats averaging by a wide margin at every point.
+  Two registered predictions failed. At the smallest learning rate the
+  unbalanced model ends lower in both models, since tiny weights move fast
+  under a fixed step size. And rebalancing weights already stored in bfloat16
+  rounds them twice, shifting two 7B models by 0.7 and 4.2 percent. The
+  conversion command now rebalances in float32 and stores once; on TinyLlama
+  (a development check) the remaining difference is 0.5 percent, the size of
+  bfloat16 storage noise, and the 4-bit benefit holds (66.4 against 76.8).
+  Four of six predictions held.
+
+<p align="center"><img src="figures/readme/fig30_rebalancing.png" alt="Four panels. Left two: for six models converted to half their key-value heads, perplexity after rounding the attention weights to 4 and to 3 bits divided by the unrounded perplexity, for the fused model as computed and rebalanced; rebalanced is lower in every model, most in Qwen2.5-7B, least in OLMo-1B. Right two: final perplexity after 327,680 training tokens against the learning rate for OLMo-1B and h2o-danube-1.8b, starting from averaging, the fused model as computed and the rebalanced fused model; averaging stays far above, the fused model as computed rises sharply at the two highest learning rates, the rebalanced one stays flat and low" width="880"></p>
+<p align="center"><em>Rebalancing changes no prediction of the fused model, yet it rounds far better and trains stably where the original parameterization diverges.</em></p>
 
 - **Cross-layer KV compression, against the same nulls.** Two published
   methods compress the cache across layers on the premise that adjacent

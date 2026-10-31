@@ -144,6 +144,17 @@ untested, 0 of 6; the one-window check (threshold 2.35) flagged none of 341
 benign members; Llama-2-7B development: 7 damaged members, all pairing heads 8
 and 18; post hoc, only Llama-2-7B has a dominant writer onto its super neuron's
 gate (14.2 times the median; others 1.4 to 5.9), a hypothesis, not a result.
+30 (alignment_study/PREREGISTRATION30.md, balance/, balance_dev/; instruments
+balance_round.py, fuse_balance.py): rebalancing the fused weights (each shared
+value row against its output columns, each key plane against its query planes,
+to equal norms; same function) in six models for 4- and 3-bit rounding of the
+attention projections and in OLMo-1B and h2o-danube-1.8b for uptraining (327,680
+tokens, learning rates 5e-6 to 2e-4); 4 of 6: Q2 (4-bit lower in 6 of 6), Q3
+(pooled 4-bit cost 0.48), T1 (best rebalanced run below best unbalanced) and T3
+(below averaging at every checkpoint) pass; Q1 fails (rebalancing bfloat16
+weights rounds twice: 0.7 and 4.2 percent in Llama-2-7B and Qwen2.5-7B; h2o
+logits 3.1e-4) and T2 fails (at 5e-6 the unbalanced start ends lower). kvfuse.py
+now fuses and rebalances in float32 and rounds once (--no-balance to skip).
 Untrained 7B initializations are built on the
 CPU and copied to the GPU; with two heavy runs the 65 W adapter and 32 GB
 memory saturate (swap up to 37 GB), so queue 7B runs one at a time. Keep the

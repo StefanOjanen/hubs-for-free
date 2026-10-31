@@ -1,5 +1,6 @@
 # Check of kvfuse.py (CPU, float32): its pairing costs equal the frozen round 28 instrument's, and the checkpoint it
-# saves loads with transformers as a grouped-query model whose logits equal the simulated conversion's.
+# saves loads with transformers as a grouped-query model whose logits equal the simulated conversion's (rebalanced
+# by default since preregistration 30: the same function, so the same logits).
 #   python alignment_study/kvfuse_check.py [model]
 import json
 import os
@@ -45,10 +46,10 @@ x = cal[:2, :256]
 ref = model(input_ids=x).logits
 new = AutoModelForCausalLM.from_pretrained(out, dtype=torch.float32, attn_implementation="sdpa").eval()
 got = new(input_ids=x).logits
-res = {"model": name, "max_cost_difference_vs_round28": max(diffs), "layers_with_identical_pairs": [same, kv.L],
+res = {"model": name, "balanced": saved.get("balanced", False), "max_cost_difference_vs_round28": max(diffs), "layers_with_identical_pairs": [same, kv.L],
        "tool_pairs_equal_round28_pairs": saved["groups"] == groups,
        "kv_heads": [kv.nkv, new.config.num_key_value_heads], "max_abs_logit_diff_vs_simulated": float((got - ref).abs().max()),
        "logit_scale": float(ref.abs().max())}
 print(json.dumps(res, indent=1))
-json.dump(res, open(f"alignment_study/llama2_dev/kvfuse_check_{name.split('/')[-1]}.json", "w"), indent=1)
+json.dump(res, open(f"alignment_study/llama2_dev/kvfuse_check_{name.split('/')[-1]}{'_balanced' if res['balanced'] else ''}.json", "w"), indent=1)
 __import__("shutil").rmtree(out, ignore_errors=True)
