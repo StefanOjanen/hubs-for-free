@@ -76,11 +76,17 @@ if __name__ == "__main__":
     cal = C.windows_c4(tok, N_CAL, T_CAL)
     gw = C.windows_c4(tok, N_CAL + 1, T_CAL)[-1:].to(DEV)            # round 29's check window
     model = load(); kv = K.KV(model)
-    res = {"model": NAME, "exploratory": True, "post_hoc_for": "PREREGISTRATION32", "ppl_windows": N_PPL, "early_layers": EARLY,
-           "base": Z.perplexity(model, win, DEV, bs=2), "base_check": check(model, kv, gw), "variants": {}}
+    if os.path.exists(OUT):                                                # resume: variants already recorded are kept
+        res = json.load(open(OUT))
+        log(f"resuming with {list(res['variants'])}")
+    else:
+        res = {"model": NAME, "exploratory": True, "post_hoc_for": "PREREGISTRATION32", "ppl_windows": N_PPL, "early_layers": EARLY,
+               "base": Z.perplexity(model, win, DEV, bs=2), "base_check": check(model, kv, gw), "variants": {}}
     ratio = lambda c: [a / b for a, b in zip(c, res["base_check"])]
 
     def record(key, model, kv):
+        if key in res["variants"]:
+            log(f"{key}: recorded earlier"); return
         c = check(model, kv, gw)
         res["variants"][key] = {"ppl": Z.perplexity(model, win, DEV, bs=2), "check": c, "check_ratio": ratio(c), "max_ratio": max(ratio(c))}
         log(f"{key}: ppl {res['variants'][key]['ppl']:.3f}, one-window check largest ratio {res['variants'][key]['max_ratio']:.2f}")
@@ -92,14 +98,15 @@ if __name__ == "__main__":
     # plain everywhere, then layers 0 and 1 refitted with the sensitivity metrics (from the original weights)
     Sw0, Sb0, E0 = W.metrics(model, kv, cal, early, DEV)                 # unconverted model, layers 0 and 1 only
     orig_early = {l: [p.detach().cpu().clone() for p in kv.params(l)] for l in early}
-    for l in range(kv.L):
-        fuse_plain_layer(kv, l, groups[l], S[l])
-    record("plain everywhere", model, kv)
-    for l in early:
-        for p, t in zip(kv.params(l), orig_early[l]):
-            p.copy_(t.to(p.device))
-        W.fuse_layer(kv, l, groups[l], Sw0[l], E0[l], Sb0[l])
-    record("sensitivity in layers 0-1 only", model, kv)
+    if not all(k in res["variants"] for k in ("plain everywhere", "sensitivity in layers 0-1 only")):
+        for l in range(kv.L):
+            fuse_plain_layer(kv, l, groups[l], S[l])
+        record("plain everywhere", model, kv)
+        for l in early:
+            for p, t in zip(kv.params(l), orig_early[l]):
+                p.copy_(t.to(p.device))
+            W.fuse_layer(kv, l, groups[l], Sw0[l], E0[l], Sb0[l])
+        record("sensitivity in layers 0-1 only", model, kv)
     S = {l: S[l] for l in early}; free()
     del model, kv; free()
     # sensitivity in layers 2 and up, plain in 0 and 1

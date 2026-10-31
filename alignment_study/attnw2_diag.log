@@ -1,0 +1,4 @@
+[    71s] unconverted 5.027
+[  1811s] plain everywhere: ppl 16.000, one-window check largest ratio 0.98
+[  1949s] sensitivity in layers 0-1 only: ppl 16.307, one-window check largest ratio 1.01
+DIAG_PIPELINE_DONE

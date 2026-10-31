@@ -1055,3 +1055,16 @@ bias column). The 7B models' metrics pass takes 1,100 to 2,300 s and the split
 fusion, two closed-form passes per group, 2 to 5 times the plain fusion's time;
 Qwen2.5-7B's sensitivity arm ran 3,539 s against an estimate of 2,300, which is
 why its log was quiet for an hour.
+
+Round 32's Llama-2-7B diagnostic (attnw2_llama2_diag.py, post hoc; attnw2_diag/,
+attnw2_diag.log) ran 19:01 to 19:53 UTC and was killed by the memory watchdog at
+its third variant: swap had grown 4,111 MB over the baseline the watchdog took at
+14:30 while free memory stood at 29 percent, and the watchdog had been restarted
+at 14:30 with a 4,000 MB swap-growth limit instead of the usual 8,000 (round 32
+held the same per-layer metrics under the usual limit without trouble). The two
+finished variants are kept: the plain fusion everywhere reproduces 16.000 with
+the one-window check at 0.98, and the sensitivity fit in layers 0 and 1 only
+gives 16.307 with the check at 1.01, so the early layers carry a small part of
+the 16.0 to 18.4 loss and the super-weight check sees nothing. The watchdog is
+back at the 8,000 MB limit with a fresh baseline; the script resumes from its
+saved variants and the two missing ones are queued at the end of the gap chain.
