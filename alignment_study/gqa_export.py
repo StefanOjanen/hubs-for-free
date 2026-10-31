@@ -3,7 +3,8 @@
 # export keeps one key and one value head per group, permutes each layer's query heads (and the matching columns
 # of the output projection) so that the heads of a group are adjacent, and sets num_key_value_heads; the function
 # is unchanged, and the check compares the exported model's logits with the simulated conversion's.
-# Llama layout (q_proj, k_proj, v_proj, o_proj without biases), groups of equal size, multi-head or grouped source.
+# Llama layout (q_proj, k_proj, v_proj, o_proj), with or without biases on q, k and v (the Qwen2 layout; biases
+# follow their rows), groups of equal size, multi-head or grouped source.
 #   from gqa_export import export_gqa
 #   new_model = export_gqa(model, groups_by_layer)        # groups_by_layer[l]: list of groups of KV heads
 #   export_gqa(model, groups_by_layer, inplace=True)       # no copy (a 7B model does not fit twice in 32 GB)
@@ -34,15 +35,21 @@ def export_gqa(model, groups_by_layer, inplace=False):
         for G in groups:
             for i in G[1:]:
                 for m in (a.k_proj, a.v_proj):
-                    assert torch.equal(m.weight[i * hd:(i + 1) * hd], m.weight[G[0] * hd:(G[0] + 1) * hd]), \
-                        f"layer {l}: KV heads {G} are not merged"
+                    same = torch.equal(m.weight[i * hd:(i + 1) * hd], m.weight[G[0] * hd:(G[0] + 1) * hd])
+                    if m.bias is not None:
+                        same = same and torch.equal(m.bias[i * hd:(i + 1) * hd], m.bias[G[0] * hd:(G[0] + 1) * hd])
+                    assert same, f"layer {l}: KV heads {G} are not merged"
         dev, dt = a.q_proj.weight.device, a.q_proj.weight.dtype
         a.q_proj.weight.data = a.q_proj.weight.data[qrows.to(dev)].clone()
+        if a.q_proj.bias is not None:                                              # Qwen2 layout: q, k, v carry biases
+            a.q_proj.bias.data = a.q_proj.bias.data[qrows.to(dev)].clone()
         a.o_proj.weight.data = a.o_proj.weight.data[:, qrows.to(dev)].clone()
         for name in ("k_proj", "v_proj"):
             old = getattr(a, name)
-            lin = torch.nn.Linear(d, new_nkv * hd, bias=False, device=dev, dtype=dt)
+            lin = torch.nn.Linear(d, new_nkv * hd, bias=old.bias is not None, device=dev, dtype=dt)
             lin.weight.data = old.weight.data[kvrows.to(dev)].clone()
+            if old.bias is not None:
+                lin.bias.data = old.bias.data[kvrows.to(dev)].clone()
             setattr(a, name, lin)
         if hasattr(a, "num_key_value_groups"):
             a.num_key_value_groups = n // new_nkv

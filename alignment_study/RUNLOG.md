@@ -1027,3 +1027,16 @@ replication of their result in plain GPTQ; the key and query sensitivity weights
 add nothing to it and alone are slightly worse than plain. For quantization the
 gain sits on the value side; for the fusion (round 32's development) it sits on the
 key side. Not pursued as a quantization method: the part that works is BoA's.
+
+Conversion command extended (2026-10-31; kvfuse.py, gqa_export.py): matched
+groups of four (quad_groups: the minimum-cost pairs, then the minimum-cost
+matching of those pairs by the four-head residual, group_cost, which
+generalizes pair_costs to any group size) and projections with biases (the
+Qwen2 layout: pair costs on the second moment of [x, 1], as fuse_kv builds it;
+the export keeps q, k and v biases with their rows). Unit check on two-layer
+random models (kvfuse_tiny_check.py, llama2_dev/kvfuse_tiny_check.json):
+group_cost equals pair_costs on every pair to 5.6e-17; quads and pairs export
+and reload with logits within 2.4e-7 of the simulated conversion (scale 0.7);
+the Qwen2 model with biases within 1.8e-7. Real-model checks queued after the
+GPU chain: kvfuse_bias_check.py (Qwen2.5-0.5B) and kvfuse_quad_check.py
+(Llama-160m, matched against neighbouring quads).

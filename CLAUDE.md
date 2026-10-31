@@ -154,7 +154,11 @@ tokens, learning rates 5e-6 to 2e-4); 4 of 6: Q2 (4-bit lower in 6 of 6), Q3
 (below averaging at every checkpoint) pass; Q1 fails (rebalancing bfloat16
 weights rounds twice: 0.7 and 4.2 percent in Llama-2-7B and Qwen2.5-7B; h2o
 logits 3.1e-4) and T2 fails (at 5e-6 the unbalanced start ends lower). kvfuse.py
-now fuses and rebalances in float32 and rounds once (--no-balance to skip).
+now fuses and rebalances in float32 and rounds once (--no-balance to skip); since
+2026-10-31 it also matches groups of four (quad_groups: minimum-cost pairs, then
+pairs of pairs by the four-head residual, group_cost) and handles projections
+with biases (the Qwen2 layout; pair costs on the moment of [x, 1], the export
+keeps the biases), unit-checked on tiny random models (kvfuse_tiny_check.py).
 31 (alignment_study/PREREGISTRATION31.md, PREREGISTRATION31_lambda_rule.md,
 attnw/, attnw_fuse_dev/; instrument attnw_round.py): the fusion fitted in S_att
 (each token weighted by the attention it receives) for keys, values and query
@@ -199,7 +203,9 @@ that loads several models must drop every reference, including views such as
 fuse_kv.KV, before loading the next: on 2026-10-30 two float32 3B copies at once
 panicked the machine.
 Drafts for a TMLR submission and a position paper are in private/drafts/
-(unpublished; the author decides on submission and posting).
+(unpublished; the author decides on submission and posting); the scope for a
+third, practical paper on the consumer-metric KV-head fusion (rounds 20 to 32)
+is private/drafts/SCOPE_kvfusion_paper.md (2026-10-31), with its gap list.
 Instruments: functional_common.py, standard_common.py, audits/readings/readings_common.py.
 Closest prior and concurrent work to cite: Papamichalis and Ruane (arXiv
 2608.14712, sink convention and BERT clustering), Sandoval-Segura et al.

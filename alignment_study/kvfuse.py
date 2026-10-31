@@ -2,7 +2,7 @@
 # a real grouped-query checkpoint whose KV cache is smaller by the same factor.
 #
 #   python alignment_study/kvfuse.py --model meta-llama/Llama-2-7b-hf --out llama2-7b-kv16
-#       [--group 2] [--pairing matched|neighbour] [--calib 128] [--calib-len 2048] [--dtype bfloat16]
+#       [--group 2|4] [--pairing matched|neighbour] [--calib 128] [--calib-len 2048] [--dtype bfloat16]
 #
 # What it does (rounds 26 to 28 of alignment_study/NOTE.md):
 # 1. the second moment of every layer's attention input over C4 calibration documents (CAGA's setting: 128
@@ -36,10 +36,13 @@ torch.set_grad_enabled(False)
 
 def pair_costs(kv, l, S):
     """Relative residual of the weighted fusion for every pair of KV heads of layer l (as in llama2_round.py)."""
-    assert kv.r == kv.hd and not kv.has_bias(l), "full rotary embedding and no biases (the llama layout)"
+    assert kv.r == kv.hd, "full rotary embedding (the llama layout)"
+    aug = S.shape[0] == kv.d + 1                   # projections with biases: S of [x, 1], as fuse_kv.second_moments builds it
+    assert aug == kv.has_bias(l), "S carries the ones column exactly when the projections carry biases"
     a, hd, half, n = kv.attn(l), kv.hd, kv.hd // 2, kv.nkv
     Q = [list(range(i * kv.rep, (i + 1) * kv.rep)) for i in range(n)]
-    Wk, Wv, Wq = (F.host64(m.weight) for m in (a.k_proj, a.v_proj, a.q_proj))
+    rows = lambda m: torch.cat([F.host64(m.weight), F.host64(m.bias)[:, None]], 1) if aug else F.host64(m.weight)
+    Wk, Wv, Wq = (rows(m) for m in (a.k_proj, a.v_proj, a.q_proj))
     Wo = F.host64(a.o_proj.weight)
     GK, GV = Wk @ S @ Wk.T, Wv @ S @ Wv.T
     qe = ((Wq @ S) * Wq).sum(1).view(kv.n, hd)
@@ -73,6 +76,60 @@ def min_cost_pairs(cost):
     return sorted(sorted(e) for e in nx.min_weight_matching(g))
 
 
+def layer_stats(kv, l, S):
+    """The quantities pair_costs builds, computed once per layer, for the cost of groups of any size."""
+    assert kv.r == kv.hd, "full rotary embedding (the llama layout)"
+    aug = S.shape[0] == kv.d + 1
+    assert aug == kv.has_bias(l), "S carries the ones column exactly when the projections carry biases"
+    a, hd, half, n = kv.attn(l), kv.hd, kv.hd // 2, kv.nkv
+    Q = [list(range(i * kv.rep, (i + 1) * kv.rep)) for i in range(n)]
+    rows = lambda m: torch.cat([F.host64(m.weight), F.host64(m.bias)[:, None]], 1) if aug else F.host64(m.weight)
+    Wk, Wv, Wq = (rows(m) for m in (a.k_proj, a.v_proj, a.q_proj))
+    Wo = F.host64(a.o_proj.weight)
+    GK, GV = Wk @ S @ Wk.T, Wv @ S @ Wv.T
+    qe = ((Wq @ S) * Wq).sum(1).view(kv.n, hd)
+    w = torch.stack([qe[Q[i]].sum(0)[:half] + qe[Q[i]].sum(0)[half:] for i in range(n)])
+    x = lambda i: torch.arange(i * hd, i * hd + half)
+    y = lambda i: torch.arange(i * hd + half, (i + 1) * hd)
+    kdiag = torch.stack([GK[x(i), x(i)] + GK[y(i), y(i)] for i in range(n)])
+    OO = [sum(Wo[:, h * hd:(h + 1) * hd].T @ Wo[:, h * hd:(h + 1) * hd] for h in Q[i]) for i in range(n)]
+    Oh = [F.psd_sqrt(o + 1e-12 * torch.eye(hd, dtype=o.dtype) * o.trace())[0] for o in OO]
+    ev = torch.tensor([float((OO[i] * GV[i * hd:(i + 1) * hd, i * hd:(i + 1) * hd]).sum()) for i in range(n)])
+    return {"GK": GK, "GV": GV, "w": w, "Oh": Oh, "hd": hd, "half": half, "Ek": float((w * kdiag).sum()), "Ev": float(ev.sum())}
+
+
+def group_cost(st, G):
+    """Relative residual of the weighted fusion for one group of KV heads, from layer_stats: for the keys, per
+    rotary plane, the query-weighted plane energy left after the top eigenvector; for the values, the output-weighted
+    energy left after the top hd eigenvectors; each over the layer's total. For a pair it equals pair_costs' entry."""
+    GK, GV, w, hd, half, m = st["GK"], st["GV"], st["w"], st["hd"], st["half"], len(G)
+    x = lambda i: torch.arange(i * hd, i * hd + half)
+    y = lambda i: torch.arange(i * hd + half, (i + 1) * hd)
+    M = torch.zeros(half, m, m, dtype=torch.complex128)
+    for ai, i in enumerate(G):
+        for bj, j in enumerate(G):
+            re = GK[x(i), x(j)] + GK[y(i), y(j)]; im = GK[y(i), x(j)] - GK[x(i), y(j)]
+            M[:, ai, bj] = torch.sqrt(w[i] * w[j]) * torch.complex(re, im)
+    lam = torch.linalg.eigvalsh(M)                                          # (half, m), ascending
+    rk = float(lam[:, :-1].clamp_min(0).sum())
+    idx = torch.cat([torch.arange(i * hd, (i + 1) * hd) for i in G])
+    Ob = torch.block_diag(*[st["Oh"][i] for i in G])
+    rv = float(torch.linalg.eigvalsh(Ob @ GV[idx][:, idx] @ Ob)[:-hd].clamp_min(0).sum())
+    return rk / st["Ek"] + rv / st["Ev"]
+
+
+def quad_groups(kv, l, S):
+    """Groups of four: the minimum-cost pairs, then the minimum-cost matching of those pairs by the cost of their
+    union (two levels; the second sees the four-head residual directly)."""
+    st = layer_stats(kv, l, S)
+    pairs = min_cost_pairs(pair_costs(kv, l, S))
+    cost = torch.zeros(len(pairs), len(pairs), dtype=torch.float64)
+    for p in range(len(pairs)):
+        for q in range(p + 1, len(pairs)):
+            cost[p, q] = cost[q, p] = group_cost(st, pairs[p] + pairs[q])
+    return sorted(sorted(pairs[p] + pairs[q]) for p, q in min_cost_pairs(cost))
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--model", required=True)
@@ -87,8 +144,8 @@ def main():
     ap.add_argument("--no-balance", action="store_true",
                     help="skip rebalancing (fuse_balance.py; on by default: same function, weights that round and train well)")
     args = ap.parse_args()
-    if args.pairing == "matched" and args.group != 2:
-        sys.exit("matched pairing is for groups of 2; use --pairing neighbour for larger groups")
+    if args.pairing == "matched" and args.group not in (2, 4):
+        sys.exit("matched pairing is for groups of 2 or 4; use --pairing neighbour for other sizes")
     dev = args.device or ("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
     t0 = time.time(); log = lambda s: print(f"[{time.time() - t0:6.0f}s] {s}", flush=True)
     from transformers import AutoTokenizer, AutoModelForCausalLM
@@ -103,7 +160,8 @@ def main():
     S, ntok = K.second_moments(model, kv, cal, dev)
     log(f"second moments from {ntok} calibration tokens")
     if args.pairing == "matched":
-        groups = [min_cost_pairs(pair_costs(kv, l, S[l].double())) for l in range(kv.L)]
+        groups = [min_cost_pairs(pair_costs(kv, l, S[l].double())) if args.group == 2 else quad_groups(kv, l, S[l].double())
+                  for l in range(kv.L)]
     else:
         groups = [[list(range(s, s + args.group)) for s in range(0, kv.nkv, args.group)] for _ in range(kv.L)]
     log(f"{args.pairing} groups chosen")
