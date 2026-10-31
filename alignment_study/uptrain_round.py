@@ -43,7 +43,7 @@ def arg(name, default=None):
 REGISTERED, DEV_MODEL = arg("registered"), arg("dev")
 if not REGISTERED and not DEV_MODEL:
     sys.exit("refusing to run without --registered=<freeze permalink of alignment_study/PREREGISTRATION30.md>; use --dev=<model>")
-NAME = DEV_MODEL or "allenai/OLMo-1B-hf"
+NAME = DEV_MODEL or arg("model", "allenai/OLMo-1B-hf")          # registered runs name their model with --model=
 OUT = "alignment_study/uptrain_dev" if DEV_MODEL else "alignment_study/uptrain"
 TOKENS = int(float(arg("tokens", "5e6" if not DEV_MODEL else "2e5")))
 SEQ, MICRO, ACCUM = 1024, int(arg("micro", 4)), int(arg("accum", 4))          # 16 sequences of 1,024 tokens per step
