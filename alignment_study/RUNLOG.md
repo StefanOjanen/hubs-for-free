@@ -1095,3 +1095,18 @@ TinyLlama_v1.1.json): cache 47 to 23 MiB at 2,176 tokens (ratio 0.500, by
 construction), decode 78.0 to 84.3 tokens per second (1.08 times), prefill 1.0 s
 both. One laptop's numbers, not a serving benchmark; a 1.1B model's cache is
 not its bottleneck at batch 1.
+
+Checks of the conversion command's extensions on Llama-160m (2026-10-31, 22:00
+to 22:15 UTC, CPU, float32, in the gap chain). kvfuse_check.py (llama2_dev/
+kvfuse_check_llama-160m_balanced.json): after the extension, the command's pair
+costs still equal the frozen round 28 instrument's (largest difference 0.0),
+its pairs equal round 28's in every layer, and the saved checkpoint reproduces
+the simulated conversion to 3.5e-4 in logits of 22.7. kvfuse_quad_check.py
+(llama2_dev/kvfuse_quad_check_llama-160m.json): group_cost on every pair equals
+pair_costs' entry to 2.5e-16; the two-level matching's groups of four (12 to 3
+KV heads) give WikiText-2 perplexity 265.6 on 8 windows of 2,048 tokens against
+339.7 for neighbouring groups of four (unconverted 67.8), the command's
+--group 4 --pairing matched groups equal the check's, and its checkpoint
+reproduces the simulation to 1.7e-4. Groups of four cost this small model 3.9
+times the unconverted perplexity against 1.55 for pairs (round 26's protocol
+differs; the ratio is indicative).

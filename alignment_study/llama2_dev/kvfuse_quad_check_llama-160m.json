@@ -1,0 +1,34 @@
+{
+ "model": "JackFram/llama-160m",
+ "max_pair_cost_difference": 2.5326962749261384e-16,
+ "quads_layer0": [
+  [
+   0,
+   2,
+   3,
+   4
+  ],
+  [
+   1,
+   6,
+   7,
+   11
+  ],
+  [
+   5,
+   8,
+   9,
+   10
+  ]
+ ],
+ "base_ppl": 67.80888081811723,
+ "matched_quads_ppl": 265.57150687278136,
+ "neighbour_quads_ppl": 339.67260824173593,
+ "tool_groups_equal_quads_here": true,
+ "kv_heads": [
+  12,
+  3
+ ],
+ "max_abs_logit_diff_vs_simulated": 0.0001659393310546875,
+ "logit_scale": 23.996116638183594
+}
