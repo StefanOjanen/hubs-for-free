@@ -883,3 +883,15 @@ unbalanced fusion to 3.5e-4 in logits of up to 22.7, pairing unchanged
 TinyLlama (bfloat16 checkpoints, 8 windows): 58.93 rebalanced against 58.63
 unbalanced as saved, 66.4 against 76.8 with the attention projections at 4 bits
 (balance_dev/kvfuse_balance_check_TinyLlama_v1.1.json).
+
+Rebalancing under GPTQ and for the key-value cache, development (exploratory,
+labelled; quant_balance_dev.py, balance_dev/quant_*.json; 32 C4 documents of
+1,024 tokens). Fused model on matched pairs, unbalanced against rebalanced.
+Llama-160m (20 windows; fused 105.0): attention projections at 4 bits by round
+to nearest 130.7 against 125.5, by GPTQ 114.0 against 110.3; at 3 bits 182.1
+against 171.0 and 155.5 against 132.4; key-value cache at 4 bits per token and
+head 112.0 against 108.9, at 2 bits 268.5 against 279.3. TinyLlama (8 windows;
+58.5): 4 bits 77.1 against 67.6 (round to nearest) and 71.0 against 67.2
+(GPTQ); 3 bits 235.8 against 251.3 and 101.2 against 80.7; cache at 4 bits 58.0
+against 53.3, at 2 bits 312 against 425. Rebalancing keeps helping under GPTQ
+and for a 4-bit cache, and hurts a 2-bit cache.
