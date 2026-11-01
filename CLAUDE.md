@@ -214,7 +214,10 @@ waiters deadlocked this way on 2026-10-31): wait on a PID, or bracket the patter
 (pgrep -f "[a]lignment_study/..."). The memory watchdog
 and the battery guard are private/guards/mem_watchdog.sh and battery_guard.sh
 (gitignored, so a reboot keeps them; the scratchpad does not survive one); start
-both before any GPU job; they match every alignment_study/*.py process. A script
+both before any GPU job; they match every alignment_study/*.py process. A third
+guard, private/guards/disk_guard.sh, kills the job below 1.5 GB of free disk
+(swap lives on the same volume; the disk was at 5 GB on 2026-11-01 with 7B runs
+queued); start it too, and keep the model cache from filling the volume. A script
 that loads several models must drop every reference, including views such as
 fuse_kv.KV, before loading the next: on 2026-10-30 two float32 3B copies at once
 panicked the machine.
