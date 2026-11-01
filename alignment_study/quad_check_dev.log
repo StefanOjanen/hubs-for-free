@@ -1,0 +1,21 @@
+round 34 development test starting Sun Nov  1 23:15:43 UTC 2026
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+  JackFram/llama-160m: unconverted 67.798; moments from 16384 tokens (9s) (9s)
+  JackFram/llama-160m, half, layer 0 pairs, layer 1 pairs: ppl 114.120, check 1.06 (13s)
+  JackFram/llama-160m, neighbour quarter, layer 0 quads, layer 1 quads: ppl 309.081, check 1.08 (17s)
+  JackFram/llama-160m, member, layer 0 none, layer 1 none: ppl 218.083, check 1.00 (21s)
+  JackFram/llama-160m, member, layer 0 none, layer 1 pairs: ppl 222.482, check 1.00 (25s)
+  JackFram/llama-160m, member, layer 0 none, layer 1 quads: ppl 232.916, check 1.00 (29s)
+  JackFram/llama-160m, member, layer 0 pairs, layer 1 none: ppl 213.892, check 1.06 (33s)
+  JackFram/llama-160m, member, layer 0 pairs, layer 1 pairs: ppl 219.475, check 1.06 (37s)
+  JackFram/llama-160m, member, layer 0 pairs, layer 1 quads: ppl 227.664, check 1.06 (40s)
+  JackFram/llama-160m, member, layer 0 quads, layer 1 none: ppl 229.007, check 1.08 (44s)
+  JackFram/llama-160m, member, layer 0 quads, layer 1 pairs: ppl 231.918, check 1.08 (48s)
+  JackFram/llama-160m, member, layer 0 quads, layer 1 quads: ppl 246.447, check 1.08 (52s)
+QUAD_CHECK_ROUND_DONE (52s)
+R1 FAIL {'recall_testable': False, 'recall_pass': False, 'false_alarm_pass': False, 'severe_members': 0, 'benign_members': 0}
+R2 FAIL {'chosen': {}, 'chosen_relative': {}}
+R3 UNTESTABLE {'testable': False, 'cheaper_on': [], 'perplexity_cost_of_the_check_over_the_fixed_rule': {}}
+llama-160m development reference 218.08 chosen ('quads', 'quads') severe [] benign flagged []
+passes 0 of 3 missing ['open_llama_3b_v2', 'Mistral-7B-v0.1', 'Mistral-7B-Instruct-v0.2', 'Qwen2.5-7B']
+QUAD_CHECK_DEV_DONE

@@ -9,6 +9,7 @@ import os
 import sys
 
 DIR = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--dir=")), "alignment_study/quad_check")
+OUT = "alignment_study/quad_check_results.json" if DIR.rstrip("/") == "alignment_study/quad_check" else DIR.rstrip("/") + "_results.json"   # development runs write beside their directory
 SCORED = ["open_llama_3b_v2", "Mistral-7B-v0.1", "Mistral-7B-Instruct-v0.2", "Qwen2.5-7B"]
 TAU, SEVERE, BENIGN = 2.35, 5.0, 2.0
 FIXED = ("pairs", "quads")                               # the fixed rule: layer 0 at pairs, every other layer at the target ratio
@@ -50,7 +51,7 @@ if __name__ == "__main__":
     res["R3"] = {"testable": bool(cheaper), "pass": complete and bool(cheaper) and all(not a["chosen_severe"] for a in cheaper.values()), "cheaper_on": list(cheaper),
                  "perplexity_cost_of_the_check_over_the_fixed_rule": {m: a["chosen_ppl"] / a["fixed_ppl"] for m, a in cheaper.items()}}
     res["passes"] = sum(bool(res[k]["pass"]) for k in ("R1", "R2", "R3")); res["of"] = 3
-    json.dump(res, open("alignment_study/quad_check_results.json", "w"), indent=1)
+    json.dump(res, open(OUT, "w"), indent=1)
     for k in ("R1", "R2", "R3"):
         print(k, "PASS" if res[k]["pass"] else ("UNTESTABLE" if res[k].get("testable") is False else "FAIL"), {kk: vv for kk, vv in res[k].items() if kk != "pass"})
     for m, a in A.items():
