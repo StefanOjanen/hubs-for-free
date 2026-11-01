@@ -1,0 +1,278 @@
+{
+ "model": "mistralai/Mistral-7B-Instruct-v0.2",
+ "exploratory": true,
+ "context_tokens": 2048,
+ "facts": 5,
+ "depths": [
+  10,
+  50,
+  90
+ ],
+ "max_new_tokens": 24,
+ "arms": {
+  "unconverted": {
+   "instances": [
+    {
+     "colour": "blue",
+     "code": "48213",
+     "depth": 10,
+     "tokens": 2040,
+     "answer": "48213.</s>",
+     "hit": true
+    },
+    {
+     "colour": "blue",
+     "code": "48213",
+     "depth": 50,
+     "tokens": 2040,
+     "answer": "48213.</s>",
+     "hit": true
+    },
+    {
+     "colour": "blue",
+     "code": "48213",
+     "depth": 90,
+     "tokens": 2040,
+     "answer": "48213.</s>",
+     "hit": true
+    },
+    {
+     "colour": "green",
+     "code": "90457",
+     "depth": 10,
+     "tokens": 2040,
+     "answer": "90457.</s>",
+     "hit": true
+    },
+    {
+     "colour": "green",
+     "code": "90457",
+     "depth": 50,
+     "tokens": 2040,
+     "answer": "90457.</s>",
+     "hit": true
+    },
+    {
+     "colour": "green",
+     "code": "90457",
+     "depth": 90,
+     "tokens": 2040,
+     "answer": "90457.\n",
+     "hit": true
+    },
+    {
+     "colour": "red",
+     "code": "27365",
+     "depth": 10,
+     "tokens": 2040,
+     "answer": "27365.</s>",
+     "hit": true
+    },
+    {
+     "colour": "red",
+     "code": "27365",
+     "depth": 50,
+     "tokens": 2040,
+     "answer": "27365.</s>",
+     "hit": true
+    },
+    {
+     "colour": "red",
+     "code": "27365",
+     "depth": 90,
+     "tokens": 2040,
+     "answer": "27365.\n",
+     "hit": true
+    },
+    {
+     "colour": "yellow",
+     "code": "61928",
+     "depth": 10,
+     "tokens": 2040,
+     "answer": "61928.</s>",
+     "hit": true
+    },
+    {
+     "colour": "yellow",
+     "code": "61928",
+     "depth": 50,
+     "tokens": 2040,
+     "answer": "61928.</s>",
+     "hit": true
+    },
+    {
+     "colour": "yellow",
+     "code": "61928",
+     "depth": 90,
+     "tokens": 2040,
+     "answer": "61928.\n",
+     "hit": true
+    },
+    {
+     "colour": "white",
+     "code": "35074",
+     "depth": 10,
+     "tokens": 2040,
+     "answer": "35074.</s>",
+     "hit": true
+    },
+    {
+     "colour": "white",
+     "code": "35074",
+     "depth": 50,
+     "tokens": 2040,
+     "answer": "35074.</s>",
+     "hit": true
+    },
+    {
+     "colour": "white",
+     "code": "35074",
+     "depth": 90,
+     "tokens": 2040,
+     "answer": "35074.</s>",
+     "hit": true
+    }
+   ],
+   "hits": 15,
+   "of": 15,
+   "by_depth": {
+    "10": 5,
+    "50": 5,
+    "90": 5
+   },
+   "seconds": 133.5
+  },
+  "fusion": {
+   "instances": [
+    {
+     "colour": "blue",
+     "code": "48213",
+     "depth": 10,
+     "tokens": 2040,
+     "answer": "The secret code for the blue door is 1111.</s>",
+     "hit": false
+    },
+    {
+     "colour": "blue",
+     "code": "48213",
+     "depth": 50,
+     "tokens": 2040,
+     "answer": "The secret code for the blue door is 1. The secret code for the blue door is 1. The secret",
+     "hit": false
+    },
+    {
+     "colour": "blue",
+     "code": "48213",
+     "depth": 90,
+     "tokens": 2040,
+     "answer": "The secret code for the blue door is 48213.</s>",
+     "hit": true
+    },
+    {
+     "colour": "green",
+     "code": "90457",
+     "depth": 10,
+     "tokens": 2040,
+     "answer": "The secret code for the green door is 1111.</s>",
+     "hit": false
+    },
+    {
+     "colour": "green",
+     "code": "90457",
+     "depth": 50,
+     "tokens": 2040,
+     "answer": "The secret code for the green door is 1111.</s>",
+     "hit": false
+    },
+    {
+     "colour": "green",
+     "code": "90457",
+     "depth": 90,
+     "tokens": 2040,
+     "answer": "The secret code for the green door is 1111.\n",
+     "hit": false
+    },
+    {
+     "colour": "red",
+     "code": "27365",
+     "depth": 10,
+     "tokens": 2040,
+     "answer": "The secret code for the red door is 2736.</s>",
+     "hit": false
+    },
+    {
+     "colour": "red",
+     "code": "27365",
+     "depth": 50,
+     "tokens": 2040,
+     "answer": "The secret code for the red door is 2736.</s>",
+     "hit": false
+    },
+    {
+     "colour": "red",
+     "code": "27365",
+     "depth": 90,
+     "tokens": 2040,
+     "answer": "The secret code for the red door is 10110101.</s>",
+     "hit": false
+    },
+    {
+     "colour": "yellow",
+     "code": "61928",
+     "depth": 10,
+     "tokens": 2040,
+     "answer": "The secret code for the yellow door is 10110101.</s>",
+     "hit": false
+    },
+    {
+     "colour": "yellow",
+     "code": "61928",
+     "depth": 50,
+     "tokens": 2040,
+     "answer": "The secret code for the yellow door is 10110101.</s>",
+     "hit": false
+    },
+    {
+     "colour": "yellow",
+     "code": "61928",
+     "depth": 90,
+     "tokens": 2040,
+     "answer": "The secret code for the yellow door is 10110101.</s>",
+     "hit": false
+    },
+    {
+     "colour": "white",
+     "code": "35074",
+     "depth": 10,
+     "tokens": 2040,
+     "answer": "The secret code for the white door is 1111.</s>",
+     "hit": false
+    },
+    {
+     "colour": "white",
+     "code": "35074",
+     "depth": 50,
+     "tokens": 2040,
+     "answer": "The secret code for the white door is 35074.</s>",
+     "hit": true
+    },
+    {
+     "colour": "white",
+     "code": "35074",
+     "depth": 90,
+     "tokens": 2040,
+     "answer": "The secret code for the white door is 1111.\n",
+     "hit": false
+    }
+   ],
+   "hits": 2,
+   "of": 15,
+   "by_depth": {
+    "10": 0,
+    "50": 1,
+    "90": 1
+   },
+   "seconds": 2083.5
+  }
+ }
+}

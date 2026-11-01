@@ -1316,3 +1316,21 @@ fused-to-unconverted ratio is lower on the whole test than on the 8 windows
 8-window ratios overstate the relative damage by a quarter, a quarter and a
 tenth. The whole-test values are the ones to quote beside CAGA's and Llama-2-7B's
 (16.78, the same protocol).
+
+Retrieval of a planted fact, development (labelled; needle_dev.py, 22:08 to
+22:42 UTC in chain 2 under the three guards, no pauses;
+needle_dev/Mistral-7B-Instruct-v0.2.json, plan_chain2.log). Five codes at
+three depths in a 2,048-token C4 haystack, greedy decoding of 24 tokens.
+Unconverted: 15 of 15 (133 s). The plain fusion at half the key-value heads
+(round 28's calibration, the residual's pairs): 2 of 15 (0, 1 and 1 by depth),
+every answer in the right form with the wrong digits (1111, 10110101, 2736 for
+27365). The same conversion's perplexity is 16.68 on 8 windows and 14.51 on the
+whole test against 5.54 and 5.95: the loss of copying from context is far
+larger than the perplexity ratio suggests. The repository's retrieval-head
+scores for this model (audits/retrieval_heads, Wu et al.'s protocol) give 35
+query heads at 0.1 or more and 15 at 0.2, on 24 and 9 of the 256 key-value
+heads. A repair is drafted, retrieval_protect_dev.py (helpers checked on a
+synthetic layer; not yet run on a model): those key-value heads stay unmerged
+and the rest are matched by the residual, against the same count protected at
+random and by the fusion's cheapest-pairing cost; per arm the 15 instances,
+8-window perplexity and the cache fraction.

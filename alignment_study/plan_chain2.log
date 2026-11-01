@@ -1,0 +1,36 @@
+plan chain 2 starting Sun Nov  1 16:44:05 UTC 2026
+[   208s] allenai/OLMo-1B-hf: 128 documents (262144 tokens): ppl 54.697 with its pairs, 54.697 with the 128-document pairs; 16 of 16 layers agree
+[   390s] allenai/OLMo-1B-hf: 64 documents (131072 tokens): ppl 54.061 with its pairs, 54.061 with the 128-document pairs; 16 of 16 layers agree
+[   539s] allenai/OLMo-1B-hf: 32 documents (65536 tokens): ppl 56.604 with its pairs, 57.983 with the 128-document pairs; 12 of 16 layers agree
+[   672s] allenai/OLMo-1B-hf: 16 documents (32768 tokens): ppl 57.870 with its pairs, 59.500 with the 128-document pairs; 11 of 16 layers agree
+[   679s] unconverted 12.016, restore check 12.016
+[   679s] CALIB_SENS_DONE
+[   336s] h2oai/h2o-danube-1.8b-base: 128 documents (262144 tokens): ppl 38.815 with its pairs, 38.815 with the 128-document pairs; 24 of 24 layers agree
+[   663s] h2oai/h2o-danube-1.8b-base: 64 documents (131072 tokens): ppl 34.426 with its pairs, 36.921 with the 128-document pairs; 21 of 24 layers agree
+[   954s] h2oai/h2o-danube-1.8b-base: 32 documents (65536 tokens): ppl 36.496 with its pairs, 39.141 with the 128-document pairs; 21 of 24 layers agree
+[  1207s] h2oai/h2o-danube-1.8b-base: 16 documents (32768 tokens): ppl 40.366 with its pairs, 39.950 with the 128-document pairs; 23 of 24 layers agree
+[  1218s] unconverted 6.756, restore check 6.756
+[  1218s] CALIB_SENS_DONE
+[  1354s] moments from 262144 tokens; matched pairing equals neighbours in 13 of 28 layers; summed residual 4.362 against 4.718
+[  2005s] matched: ppl 70.102
+[  2697s] neighbour: ppl 23.873
+[  2698s] QWEN_PAIRS_DONE
+mistralai/Mistral-7B-Instruct-v0.2: 98 members; Spearman with damage: matching cost increase -0.210, forced pair's cost -0.115, one-window check -0.137 (916s)
+openlm-research/open_llama_3b_v2: 117 members; Spearman with damage: matching cost increase -0.136, forced pair's cost 0.392, one-window check -0.156 (1529s)
+allenai/OLMo-1B-hf: 117 members; Spearman with damage: matching cost increase 0.158, forced pair's cost 0.180, one-window check 0.152 (1659s)
+Traceback (most recent call last):
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/alignment_study/residual_damage_dev.py", line 82, in <module>
+    i, j = (int(t) for t in m["label"].split(" ")[1].split("-"))
+    ^^^^
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/alignment_study/residual_damage_dev.py", line 82, in <genexpr>
+    i, j = (int(t) for t in m["label"].split(" ")[1].split("-"))
+            ^^^^^^
+ValueError: invalid literal for int() with base 10: '[[0,'
+mistralai/Mistral-7B-v0.1: unconverted 5.254 (8 windows 4.859); plain fusion 24.581 (8 windows 28.683) on 163 windows (3865s)
+mistralai/Mistral-7B-Instruct-v0.2: unconverted 5.950 (8 windows 5.540); plain fusion 14.507 (8 windows 16.679) on 163 windows (8242s)
+Qwen/Qwen2.5-7B: unconverted 6.850 (8 windows 5.396); plain fusion 27.835 (8 windows 23.873) on 146 windows (12112s)
+FULLTEST_DONE (12113s)
+mistralai/Mistral-7B-Instruct-v0.2, unconverted: 15 of 15 retrieved; by depth {'10': 5, '50': 5, '90': 5} (133s)
+mistralai/Mistral-7B-Instruct-v0.2, fusion: 2 of 15 retrieved; by depth {'10': 0, '50': 1, '90': 1} (2084s)
+NEEDLE_DEV_DONE (2084s)
+PLAN_CHAIN2_DONE
