@@ -1254,3 +1254,32 @@ unweighted fit in the two Qwen2.5 cells that merge every key-value head into
 one. Which of the 15 layers carry the difference was not measured. The
 neighbouring pairs remain the reported setting for Qwen2.5-7B; the paper
 states the exception.
+
+The fusion's residual against round 29's merge damage, development (labelled;
+residual_damage_dev.py, 18:01 to 18:51 UTC in chain 2 under the three guards,
+no pauses; residual_damage/Mistral-7B-Instruct-v0.2.json, open_llama_3b_v2.json,
+OLMo-1B-hf.json; plan_chain2.log). For each of round 29's forced-pair
+conversions (one of layers 0 to 4 forced to contain a given pair, every other
+layer at the fusion's matching) the pair costs of those layers were recomputed
+from the same calibration and each member given its matching's cost increase
+over the reference matching and its forced pair's own cost, against its damage
+(round 29's perplexity on 4 windows of 2,048 tokens over the reference
+conversion's). Pooled Spearman with damage: Mistral-7B-Instruct, 98 members,
+cost increase -0.21, forced pair's cost -0.12, one-window check -0.14;
+OpenLLaMA-3B, 117 members, -0.14, 0.39, -0.16; OLMo-1B, 117 members, 0.16,
+0.18, 0.15. The populations hold almost no damage: relative perplexity has sd
+0.014 across Mistral's layers 1 to 4 (0.98 to 1.04), at most 0.005 in
+OpenLLaMA's layers 2 to 4 and 0.02 to 0.05 in OLMo's five layers; only
+Mistral's layer 0 spans more (0.87 to 1.39), and there the cost increase
+correlates at -0.38 over 20 pairs. OpenLLaMA's pooled 0.39 is a between-layer
+artefact (the forced pair's cost rises with the layer at 0.73 and damage at
+0.51; within layers -0.12 to 0.27). In Mistral and OpenLLaMA several forced
+pairs in layer 0 give 10 to 16 percent lower perplexity than the residual's own
+matching. The script failed on Qwen2.5-7B, whose members are labelled by their
+whole matching (four heads) rather than a forced pair, before reaching the
+Llama-2-7B development population; the parser now reads both labels, and the
+two populations rerun after chain 2 (run_a10_rerun.sh, residual_damage_rerun.log),
+before round 33's pipeline. Read: this population cannot test whether the
+residual orders merge damage; a within-layer test over every matching of one
+layer with KL as ground truth is drafted (residual_select_dev.py, unchecked;
+PLAN_kvfusion_gaps.md, A10b).
