@@ -1,0 +1,17 @@
+{
+ "model": "mistralai/Mistral-7B-v0.1",
+ "revision": "27d67f1b5f57dc0953326b2601d68371d40ea8da",
+ "exploratory": true,
+ "calibration": [
+  128,
+  2048
+ ],
+ "windows": 163,
+ "tokens_per_window": 2048,
+ "base_full_2048": 5.253826059538191,
+ "base_8_windows": 4.858766172190064,
+ "pairing": "fusion-residual matching",
+ "plain_8_windows": 28.682697071521382,
+ "plain_full_2048": 24.580853717474046,
+ "seconds": 3865.0
+}
