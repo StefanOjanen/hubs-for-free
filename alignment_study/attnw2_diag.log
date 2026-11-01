@@ -2,3 +2,9 @@
 [  1811s] plain everywhere: ppl 16.000, one-window check largest ratio 0.98
 [  1949s] sensitivity in layers 0-1 only: ppl 16.307, one-window check largest ratio 1.01
 DIAG_PIPELINE_DONE
+[    23s] resuming with ['plain everywhere', 'sensitivity in layers 0-1 only']
+[    23s] unconverted 5.027
+[  3508s] sensitivity in layers 2 and up only: ppl 17.868, one-window check largest ratio 1.01
+[  4858s] sensitivity everywhere: ppl 18.373, one-window check largest ratio 1.06
+[  4858s] ATTNW2_DIAG_DONE
+DIAG_PIPELINE_DONE

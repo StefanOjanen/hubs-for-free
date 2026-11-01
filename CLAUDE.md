@@ -189,8 +189,8 @@ to 24.09) and D4 fails (whole test 19.31 against 16.78). The plain fusion stays
 kvfuse.py's default. Post hoc diagnostic attnw2_llama2_diag.py (attnw2_diag/):
 the sensitivity fit in layers 0-1 only gives 16.31 (plain 16.00; one-window check
 1.01), so the early layers carry little of the loss and the super-weight check
-sees nothing; the layers-2-and-up and everywhere variants rerun at the end of
-the gap chain after the memory watchdog killed the first run. Watchdog lesson
+sees nothing; layers 2 and up only 17.87, everywhere 18.37 (reproducing round 32), check at
+most 1.06: the loss is in the deeper layers, not a super-weight event. Watchdog lesson
 (2026-10-31): its swap baseline is taken at start and goes stale as swap drifts;
 a 4,000 MB growth limit killed a healthy 7B metrics job at 29 percent free
 memory. Keep SWAPMAX at 8,000 and restart the watchdog (fresh baseline) before a

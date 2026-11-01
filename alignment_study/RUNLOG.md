@@ -1129,3 +1129,16 @@ GPT-2 large at g = 4) and within 0.8 to 3.8 percent of the better single
 weighting where it is easy (OPT-1.3B at both sizes, Pythia-1.4B and GPT-2 large
 at g = 2, Phi-2 at g = 4). Neither weighting is the whole effect and the two add
 where it matters; the query weighting is the more reliable one on its own.
+
+Round 32's Llama-2-7B diagnostic, resumed (post hoc; attnw2_llama2_diag.py from
+its saved variants; 01:26 to 02:48 UTC in the gap chain, 4,858 s, under the
+memory, battery and disk guards, no kills; attnw2_diag/Llama-2-7b-hf.json,
+attnw2_diag.log). The four variants, WikiText-2 perplexity on 8 windows of
+2,048 tokens and round 29's one-window check (largest ratio over layers 0 to
+5): the plain fusion everywhere 16.000 (0.98); the sensitivity fit in layers 0
+and 1 only 16.307 (1.01); in layers 2 and up only 17.868 (1.01); everywhere
+18.373 (1.06), which reproduces round 32's registered value. In log perplexity
+the early layers add 0.019 and the deeper layers 0.110 of the 0.138 total; the
+check never approaches its threshold of 2.35. The loss is spread through the
+deeper layers, and the super-weight mechanism of round 28's follow-up does not
+explain it.

@@ -1689,3 +1689,8 @@ default: a fit that loses 15 percent on one model of eight needs a reason, and
 the diagnostic that follows (post hoc, `attnw2_llama2_diag.py`) asks whether the
 damage sits in layers 0 and 1, where round 28's super-weight mechanism lives.
 Until then the plain fusion remains the conversion command's default.
+Post hoc diagnostic (`attnw2_diag/`, run log): with the sensitivity fit in
+layers 0 and 1 only Llama-2-7B gives 16.31, in layers 2 and up only 17.87,
+everywhere 18.37 (plain 16.00); round 29's one-window check reads at most 1.06
+against its threshold of 2.35. The loss sits in the deeper layers, not in the
+super-weight layers of round 28's follow-up; the plain fusion stays the default.
