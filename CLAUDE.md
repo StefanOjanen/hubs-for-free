@@ -221,11 +221,25 @@ and benchmark (private/guards/run_pr33.sh). The author approved the run and
 the deletion of the OPT-6.7B and Phi-3-mini caches on 2026-11-01; results
 pending (uptrain/, uptrain33_results.json). 34 (draft, not frozen; instruments
 quad_check_round.py and eval_quad_check.py committed; preregistration text in
-the session scratchpad until the Llama-160m test, quad_check_dev/, passes):
+alignment_study/PREREGISTRATION34.md, untracked until the Llama-160m test, quad_check_dev/, passes):
 round 29's design at a quarter of the heads, layers 0 and 1 each unmerged, at
 pairs or at groups of four with the rest quartered, damage relative to the
 both-unmerged member; scored OpenLLaMA-3B, Mistral-7B-v0.1, Mistral-7B-Instruct,
-Qwen2.5-7B; Llama-2-7B development; R1 to R3; runs after round 33. Watchdog lesson
+Qwen2.5-7B; Llama-2-7B development; R1 to R3; runs after round 33 (runner
+private/guards/run_pr34.sh <freeze permalink>). Development on 2026-11-01 (chain
+2, labelled): calibration size (calib_dev/: 64 documents match 128), Qwen2.5-7B
+pairs matched by the residual 70.1 against neighbours 23.9 (qwen_pairs_dev.json),
+the residual against round 29's damage (residual_damage/: the populations hold
+almost no damage; the parser now reads Qwen's matching labels), whole-test
+perplexity for three 7B models (fulltest_dev/: the 8 windows overstate the
+fused-to-unconverted ratio by a tenth to a quarter), and the needle test
+(needle_dev/: Mistral-7B-Instruct retrieves a planted code 15 of 15 unconverted
+and 2 of 15 after the plain fusion at half the heads, right form, wrong digits;
+retrieval_pairs_check.py: the residual pairs each of the five strongest retrieval
+key-value heads with a near-zero partner). The repair, retrieval_protect_dev.py
+(the retrieval heads' key-value heads kept unmerged; random and residual-chosen
+controls), runs before round 33 on the author's decision; never state the
+fusion's quality from perplexity and ZS-7 alone. Watchdog lesson
 (2026-10-31): its swap baseline is taken at start and goes stale as swap drifts;
 a 4,000 MB growth limit killed a healthy 7B metrics job at 29 percent free
 memory. Keep SWAPMAX at 8,000 and restart the watchdog (fresh baseline) before a
