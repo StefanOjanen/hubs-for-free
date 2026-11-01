@@ -1283,3 +1283,16 @@ before round 33's pipeline. Read: this population cannot test whether the
 residual orders merge damage; a within-layer test over every matching of one
 layer with KL as ground truth is drafted (residual_select_dev.py, unchecked;
 PLAN_kvfusion_gaps.md, A10b).
+
+Guards, 2026-11-01 evening (operational). The whole-test script (fulltest_dev.py)
+ran under paging from about 18:50 UTC: swap 6.8 of 8 GB, then 9.5 of 10 GB, the
+7B model's 16 to 18 GB footprint beside the author's applications, the process
+inside MPS linear ops with the GPU at 98 percent; Mistral-7B-v0.1 took 64
+minutes and Mistral-7B-Instruct 137. The battery guard paused the job at 20
+percent (20:45 UTC; the adapter had reported "not charging" since 19:48) and
+resumed it at 30 percent (20:53 UTC) once power was back. At 21:20 UTC the
+memory watchdog, a day-old instance with its swap baseline at 3,549 MB against
+9,490 MB in use (growth 5,941 MB, free memory 39 percent and falling toward the
+30 percent half of its kill rule), was restarted with a fresh baseline (9,563
+MB; watchdog.log), as CLAUDE.md prescribes before a long chain; the 15 percent
+floor is unchanged.
