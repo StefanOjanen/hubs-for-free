@@ -246,7 +246,10 @@ commit, check for running research jobs and coordinate; key waiters on process
 IDs or new files, never on log lines that may already exist. A waiter whose own
 command line contains its pgrep -f pattern matches itself and never exits (two
 waiters deadlocked this way on 2026-10-31): wait on a PID, or bracket the pattern
-(pgrep -f "[a]lignment_study/..."). The memory watchdog
+(pgrep -f "[a]lignment_study/..."). Queue one waiter per stage, each keyed on
+the previous stage's process: a waiter that hard-wires several stages cannot
+take an insertion and had to be killed and replaced on 2026-11-01 (its running
+child survived a SIGKILL of the waiter). The memory watchdog
 and the battery guard are private/guards/mem_watchdog.sh and battery_guard.sh
 (gitignored, so a reboot keeps them; the scratchpad does not survive one); start
 both before any GPU job; they match every alignment_study/*.py process. A third
