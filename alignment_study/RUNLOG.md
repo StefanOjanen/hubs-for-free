@@ -1335,7 +1335,7 @@ and the rest are matched by the residual, against the same count protected at
 random and by the fusion's cheapest-pairing cost; per arm the 15 instances,
 8-window perplexity and the cache fraction.
 
-Queue, 2026-11-01 23:05 UTC (operational). On the author's decision the
+Queue, 2026-11-01 22:48 UTC (operational). On the author's decision the
 retrieval-protection development run (A11, retrieval_protect_dev.py) is
 inserted before round 33: after the A10 rerun come round 34's development test
 and the Llama-2-7B export and benchmark (run_pr33a.sh), then A11 (run_a11.sh),
@@ -1344,7 +1344,7 @@ three guards.
 
 Where the residual pairs the retrieval heads, CPU check from committed
 artifacts (retrieval_pairs_check.py, retrieval_pairs_Mistral-7B-Instruct-v0.2.json;
-2026-11-01 23:05 UTC; a parallel session found the same pattern independently).
+2026-11-01 22:52 UTC; a parallel session found the same pattern independently).
 With a key-value head's score the largest over the four query heads it serves,
 the five heads at 0.3 or more (layer 2 head 5 at 0.44, 12/1 at 0.61, 18/0 at
 0.60, 19/2 at 0.33, 30/2 at 0.35) are each paired by round 29's reference
