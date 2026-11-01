@@ -1,0 +1,42 @@
+{
+ "model": "allenai/OLMo-1B-hf",
+ "exploratory": true,
+ "ppl_windows": 8,
+ "calibration_tokens": 2048,
+ "base": 12.016182685200937,
+ "sizes": {
+  "128": {
+   "tokens": 262144,
+   "layers_agreeing_with_full": 16,
+   "layers": 16,
+   "ppl_own_pairs": 54.697393463145985,
+   "ppl_full_pairs": 54.697393463145985,
+   "seconds": 185.0
+  },
+  "64": {
+   "tokens": 131072,
+   "layers_agreeing_with_full": 16,
+   "layers": 16,
+   "ppl_own_pairs": 54.06065727982825,
+   "ppl_full_pairs": 54.06065727982825,
+   "seconds": 182.1
+  },
+  "32": {
+   "tokens": 65536,
+   "layers_agreeing_with_full": 12,
+   "layers": 16,
+   "ppl_own_pairs": 56.604431778767825,
+   "ppl_full_pairs": 57.98340969134855,
+   "seconds": 148.3
+  },
+  "16": {
+   "tokens": 32768,
+   "layers_agreeing_with_full": 11,
+   "layers": 16,
+   "ppl_own_pairs": 57.86999010929322,
+   "ppl_full_pairs": 59.49973264799642,
+   "seconds": 133.6
+  }
+ },
+ "restore_check_ppl": 12.016182685200937
+}

@@ -1220,3 +1220,20 @@ fraction 0.258 against 0.25 for the full quartering): whole-test perplexity
 conversion 686 s, evaluation about 3,100 s. A checkpoint with one layer at a
 different ratio is not expressible in a Hugging Face config, which holds one
 num_key_value_heads; exporting it needs a per-layer head count in the loader.
+
+Calibration size, development (labelled; calib_sens_dev.py, 16:44 to 17:20 UTC
+in chain 2; calib_dev/OLMo-1B-hf.json, calib_dev/h2o-danube-1.8b-base.json,
+plan_chain2.log). The fusion at half the key-value heads from the first 128,
+64, 32 and 16 C4 validation documents of 2,048 tokens, perplexity on 8
+WikiText-2 windows with the pairs matched on the same moment and with the
+128-document pairs. OLMo-1B (unconverted 12.02): 54.70, 54.06 (the same pairs in
+all 16 layers), 56.60 with its own pairs and 57.98 with the 128-document pairs
+(12 of 16 layers agree), 57.87 and 59.50 (11 of 16). h2o-danube-1.8b (6.76):
+38.82, 34.43 and 36.92 (21 of 24), 36.50 and 39.14 (21 of 24), 40.37 and 39.95
+(23 of 24). The 128-document values reproduce rounds 30 to 32's to three
+decimals. Sixty-four documents (131,072 tokens) are as good as 128 on both
+models; sixteen cost 4 to 6 percent; on h2o-danube the values move by about 10
+percent either way between sizes, which is the variance of the calibration
+sample itself, so an absolute fused perplexity at this scale carries that
+uncertainty while the paired comparisons of rounds 30 to 32, which share the
+calibration between arms, do not.

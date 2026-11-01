@@ -1,0 +1,42 @@
+{
+ "model": "h2oai/h2o-danube-1.8b-base",
+ "exploratory": true,
+ "ppl_windows": 8,
+ "calibration_tokens": 2048,
+ "base": 6.755763803659044,
+ "sizes": {
+  "128": {
+   "tokens": 262144,
+   "layers_agreeing_with_full": 24,
+   "layers": 24,
+   "ppl_own_pairs": 38.81452078200826,
+   "ppl_full_pairs": 38.81452078200826,
+   "seconds": 312.8
+  },
+  "64": {
+   "tokens": 131072,
+   "layers_agreeing_with_full": 21,
+   "layers": 24,
+   "ppl_own_pairs": 34.425953980074354,
+   "ppl_full_pairs": 36.921374894037164,
+   "seconds": 327.3
+  },
+  "32": {
+   "tokens": 65536,
+   "layers_agreeing_with_full": 21,
+   "layers": 24,
+   "ppl_own_pairs": 36.49590025309539,
+   "ppl_full_pairs": 39.14103428774881,
+   "seconds": 291.0
+  },
+  "16": {
+   "tokens": 32768,
+   "layers_agreeing_with_full": 23,
+   "layers": 24,
+   "ppl_own_pairs": 40.36606030150864,
+   "ppl_full_pairs": 39.95027943517297,
+   "seconds": 252.9
+  }
+ },
+ "restore_check_ppl": 6.755763803659044
+}
