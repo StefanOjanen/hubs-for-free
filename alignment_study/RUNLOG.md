@@ -1217,3 +1217,19 @@ fraction 0.258 against 0.25 for the full quartering): whole-test perplexity
 conversion 686 s, evaluation about 3,100 s. A checkpoint with one layer at a
 different ratio is not expressible in a Hugging Face config, which holds one
 num_key_value_heads; exporting it needs a per-layer head count in the loader.
+
+Early layers at pairs, the rest quartered, Llama-2-7B, development (labelled;
+quad_fallback_dev.py, 15:10 to 16:44 UTC under the three guards, no pauses;
+quad_dev/Llama-2-7b-hf_fallback.json, quad_fallback.log). With layers 0 to 5
+converted, the first k layers at the matched pairs and the rest at the matched
+groups of four: k = 0 reproduces the collapse (576 at layer 1); k = 1 to 6 all
+pass, largest ratios 0.98, 0.98, 0.98, 0.98, 0.98, 0.98 (layer 1's ratio 0.92 at
+k = 1). The trigger is layer 0's quartering, not layer 1's grouping: with layer 0
+at pairs, layer 1's own groups of four, head 8's and the 11-and-18 group
+included, do not fire. Evaluated at k = 1 (layer 0 at 16 KV heads, layers 1 to
+31 at 8; cache fraction 0.258 against 0.25): whole-test perplexity 105.5, ZS-7
+0.408, check 0.98, against 14,918 and 0.405 for the full quartering and 4,066 and
+0.363 for averaging. The check chose the layer, and every check reading agreed
+with the outcome (above 2.35: collapse; below: sound) in all 23 conversions of
+Llama-2-7B measured today. Run time 5,604 s (moments 867, seven trials about 130
+each, conversion 686, evaluation about 3,100).
