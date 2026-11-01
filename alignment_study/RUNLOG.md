@@ -1391,3 +1391,15 @@ PREREGISTRATION34.md frozen at c3cc48c (permalink
 https://github.com/StefanOjanen/hubs-for-free/blob/c3cc48c/alignment_study/PREREGISTRATION34.md),
 pushed before execution; the confirmatory run (run_pr34.sh with that permalink,
 about 11 GPU hours) is queued after round 33's pipeline.
+
+Llama-2-7B export and benchmark, first attempt (2026-11-01 23:16 to 23:46 UTC;
+kvfuse_bench.log). kvfuse.py converted the model to 16 key-value heads (moments
+884 s, matching at 1,002 s, fused and rebalanced in float32 at 1,705 s, the
+bfloat16 checkpoint saved at 1,762 s, 29 minutes under paging). kvfuse_bench.py
+then loaded its two models and the memory watchdog killed it at 23:46 UTC
+(free 11 percent, swap 10,731 MB); the runner's cleanup removed the checkpoint
+and the pipeline moved on to A11 (retrieval_protect_dev.py, started 23:46:57
+UTC). The benchmark already loads one model at a time; the kill came while it
+loaded its first, with the machine's other consumers holding about 10 GB. The
+retry (run_export_bench.sh, unchanged code) is queued between A11 and round
+33, the approved order, with round 34 after round 33 in the same waiter.
