@@ -601,7 +601,7 @@ Each instrument below exists because a finding above required it.
   has not seen.
 
 <p align="center"><img src="figures/readme/fig33_quarter_heads.png" alt="Two panels. Left: WikiText-2 perplexity on a log axis for Llama-2-7B and Mistral-7B-v0.1 unconverted, at half the key-value heads and at a quarter with three groupings, each point marked by whether the one-window check exceeds 2.35; Llama-2-7B's two fused quarter conversions are flagged and sit near 15,000 and 19,000, averaging is unflagged at 4,066, and the conversion with layer 0 at half and the rest at a quarter is unflagged at 105; Mistral's quarter conversions are unflagged at 146 to 813. Right: the check on Llama-2-7B against the number of early layers kept at half, 576 at zero and 0.98 from one onward, with the threshold line" width="880"></p>
-<p align="center"><em>The check flags the quarter conversions that collapse, and keeping the first layer at half, which it also chooses, recovers the model.</em></p>
+<p align="center"><em>The check flags the quarter conversions that collapse through the super weight, not the ones that fail the ordinary way, and keeping the first layer at half, which it also chooses, recovers the model.</em></p>
 
 - **Cross-layer KV compression, against the same nulls.** Two published
   methods compress the cache across layers on the premise that adjacent

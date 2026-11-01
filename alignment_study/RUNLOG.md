@@ -1197,7 +1197,10 @@ check reads 491, 422 and 386. The fallback, layer 1 at its matched pairs (the
 groups that gave 16.78 at half the heads) with every other layer quartered,
 reads 360 on the check and the full conversion gives 5,344 (ZS-7 0.413): once
 layer 0 is quartered, layer 1's safe pairs fire too. Every reading above the
-threshold went with a collapse and every reading below with a sound model. A
+threshold went with a super-weight collapse and every reading below with its
+absence; the check does not see collapses of the other kind (averaging at
+4,066 reads 0.93, Mistral's fused quarterings at 146 and 176 read 1.11 and
+2.12). A
 sweep of how many early layers must stay at pairs (quad_fallback_dev.py) runs
 next.
 
