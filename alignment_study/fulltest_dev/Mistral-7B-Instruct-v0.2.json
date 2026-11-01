@@ -1,0 +1,17 @@
+{
+ "model": "mistralai/Mistral-7B-Instruct-v0.2",
+ "revision": "63a8b081895390a26e140280378bc85ec8bce07a",
+ "exploratory": true,
+ "calibration": [
+  128,
+  2048
+ ],
+ "windows": 163,
+ "tokens_per_window": 2048,
+ "base_full_2048": 5.9502866011100854,
+ "base_8_windows": 5.540459194776044,
+ "pairing": "fusion-residual matching",
+ "plain_8_windows": 16.678713727737772,
+ "plain_full_2048": 14.507259704046188,
+ "seconds": 8242.1
+}
