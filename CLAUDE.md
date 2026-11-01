@@ -219,7 +219,13 @@ the quad run, its repair, chain 2 (calibration sizes, Qwen pairs, residual
 against damage, whole-test values, the needle test) and a Llama-2-7B export
 and benchmark (private/guards/run_pr33.sh). The author approved the run and
 the deletion of the OPT-6.7B and Phi-3-mini caches on 2026-11-01; results
-pending (uptrain/, uptrain33_results.json). Watchdog lesson
+pending (uptrain/, uptrain33_results.json). 34 (draft, not frozen; instruments
+quad_check_round.py and eval_quad_check.py committed; preregistration text in
+the session scratchpad until the Llama-160m test, quad_check_dev/, passes):
+round 29's design at a quarter of the heads, layers 0 and 1 each unmerged, at
+pairs or at groups of four with the rest quartered, damage relative to the
+both-unmerged member; scored OpenLLaMA-3B, Mistral-7B-v0.1, Mistral-7B-Instruct,
+Qwen2.5-7B; Llama-2-7B development; R1 to R3; runs after round 33. Watchdog lesson
 (2026-10-31): its swap baseline is taken at start and goes stale as swap drifts;
 a 4,000 MB growth limit killed a healthy 7B metrics job at 29 percent free
 memory. Keep SWAPMAX at 8,000 and restart the watchdog (fresh baseline) before a
