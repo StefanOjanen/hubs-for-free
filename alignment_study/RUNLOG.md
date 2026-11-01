@@ -1341,3 +1341,16 @@ inserted before round 33: after the A10 rerun come round 34's development test
 and the Llama-2-7B export and benchmark (run_pr33a.sh), then A11 (run_a11.sh),
 then round 33 and its evaluator (run_pr33b.sh); one GPU job at a time under the
 three guards.
+
+Where the residual pairs the retrieval heads, CPU check from committed
+artifacts (retrieval_pairs_check.py, retrieval_pairs_Mistral-7B-Instruct-v0.2.json;
+2026-11-01 23:05 UTC; a parallel session found the same pattern independently).
+With a key-value head's score the largest over the four query heads it serves,
+the five heads at 0.3 or more (layer 2 head 5 at 0.44, 12/1 at 0.61, 18/0 at
+0.60, 19/2 at 0.33, 30/2 at 0.35) are each paired by round 29's reference
+matching (the fusion's residual at half the heads) with a head scoring at most
+0.21, four of them at 0.00; at 0.1 or more, 20 of 24 are paired with a head
+below the threshold. The residual does not see retrieval function.
+retrieval_protect_dev.py now runs four arms by default (protect at 0.1 and at
+0.3, random and residual-chosen protection at the 0.1 count), the base arms
+on request, after needle_dev's fused arm took about 27 minutes under paging.

@@ -1,0 +1,450 @@
+{
+ "model": "Mistral-7B-Instruct-v0.2",
+ "layers": 32,
+ "kv_heads": 8,
+ "queries_per_kv": 4,
+ "thresholds": {
+  "0.3": {
+   "kv_heads": 5,
+   "paired_with_a_head_below_threshold": 5,
+   "paired_with_another_above": 0,
+   "largest_partner_score": 0.214,
+   "rows": [
+    {
+     "layer": 2,
+     "kv": 5,
+     "score": 0.438,
+     "partners": [
+      6
+     ],
+     "partner_scores": [
+      0.0
+     ]
+    },
+    {
+     "layer": 12,
+     "kv": 1,
+     "score": 0.606,
+     "partners": [
+      0
+     ],
+     "partner_scores": [
+      0.0
+     ]
+    },
+    {
+     "layer": 18,
+     "kv": 0,
+     "score": 0.602,
+     "partners": [
+      1
+     ],
+     "partner_scores": [
+      0.002
+     ]
+    },
+    {
+     "layer": 19,
+     "kv": 2,
+     "score": 0.33,
+     "partners": [
+      4
+     ],
+     "partner_scores": [
+      0.214
+     ]
+    },
+    {
+     "layer": 30,
+     "kv": 2,
+     "score": 0.346,
+     "partners": [
+      5
+     ],
+     "partner_scores": [
+      0.0
+     ]
+    }
+   ]
+  },
+  "0.2": {
+   "kv_heads": 9,
+   "paired_with_a_head_below_threshold": 7,
+   "paired_with_another_above": 2,
+   "largest_partner_score": 0.33,
+   "rows": [
+    {
+     "layer": 2,
+     "kv": 5,
+     "score": 0.438,
+     "partners": [
+      6
+     ],
+     "partner_scores": [
+      0.0
+     ]
+    },
+    {
+     "layer": 12,
+     "kv": 1,
+     "score": 0.606,
+     "partners": [
+      0
+     ],
+     "partner_scores": [
+      0.0
+     ]
+    },
+    {
+     "layer": 18,
+     "kv": 0,
+     "score": 0.602,
+     "partners": [
+      1
+     ],
+     "partner_scores": [
+      0.002
+     ]
+    },
+    {
+     "layer": 19,
+     "kv": 2,
+     "score": 0.33,
+     "partners": [
+      4
+     ],
+     "partner_scores": [
+      0.214
+     ]
+    },
+    {
+     "layer": 19,
+     "kv": 4,
+     "score": 0.214,
+     "partners": [
+      2
+     ],
+     "partner_scores": [
+      0.33
+     ]
+    },
+    {
+     "layer": 28,
+     "kv": 0,
+     "score": 0.298,
+     "partners": [
+      6
+     ],
+     "partner_scores": [
+      0.006
+     ]
+    },
+    {
+     "layer": 29,
+     "kv": 2,
+     "score": 0.2,
+     "partners": [
+      5
+     ],
+     "partner_scores": [
+      0.054
+     ]
+    },
+    {
+     "layer": 30,
+     "kv": 2,
+     "score": 0.346,
+     "partners": [
+      5
+     ],
+     "partner_scores": [
+      0.0
+     ]
+    },
+    {
+     "layer": 31,
+     "kv": 7,
+     "score": 0.268,
+     "partners": [
+      0
+     ],
+     "partner_scores": [
+      0.0
+     ]
+    }
+   ]
+  },
+  "0.1": {
+   "kv_heads": 24,
+   "paired_with_a_head_below_threshold": 20,
+   "paired_with_another_above": 4,
+   "largest_partner_score": 0.33,
+   "rows": [
+    {
+     "layer": 2,
+     "kv": 5,
+     "score": 0.438,
+     "partners": [
+      6
+     ],
+     "partner_scores": [
+      0.0
+     ]
+    },
+    {
+     "layer": 9,
+     "kv": 6,
+     "score": 0.1,
+     "partners": [
+      7
+     ],
+     "partner_scores": [
+      0.064
+     ]
+    },
+    {
+     "layer": 12,
+     "kv": 1,
+     "score": 0.606,
+     "partners": [
+      0
+     ],
+     "partner_scores": [
+      0.0
+     ]
+    },
+    {
+     "layer": 13,
+     "kv": 1,
+     "score": 0.11,
+     "partners": [
+      7
+     ],
+     "partner_scores": [
+      0.002
+     ]
+    },
+    {
+     "layer": 15,
+     "kv": 2,
+     "score": 0.17,
+     "partners": [
+      7
+     ],
+     "partner_scores": [
+      0.04
+     ]
+    },
+    {
+     "layer": 17,
+     "kv": 6,
+     "score": 0.178,
+     "partners": [
+      4
+     ],
+     "partner_scores": [
+      0.0
+     ]
+    },
+    {
+     "layer": 18,
+     "kv": 0,
+     "score": 0.602,
+     "partners": [
+      1
+     ],
+     "partner_scores": [
+      0.002
+     ]
+    },
+    {
+     "layer": 19,
+     "kv": 2,
+     "score": 0.33,
+     "partners": [
+      4
+     ],
+     "partner_scores": [
+      0.214
+     ]
+    },
+    {
+     "layer": 19,
+     "kv": 4,
+     "score": 0.214,
+     "partners": [
+      2
+     ],
+     "partner_scores": [
+      0.33
+     ]
+    },
+    {
+     "layer": 20,
+     "kv": 1,
+     "score": 0.146,
+     "partners": [
+      2
+     ],
+     "partner_scores": [
+      0.024
+     ]
+    },
+    {
+     "layer": 20,
+     "kv": 7,
+     "score": 0.152,
+     "partners": [
+      3
+     ],
+     "partner_scores": [
+      0.004
+     ]
+    },
+    {
+     "layer": 21,
+     "kv": 2,
+     "score": 0.112,
+     "partners": [
+      1
+     ],
+     "partner_scores": [
+      0.004
+     ]
+    },
+    {
+     "layer": 21,
+     "kv": 4,
+     "score": 0.118,
+     "partners": [
+      0
+     ],
+     "partner_scores": [
+      0.08
+     ]
+    },
+    {
+     "layer": 22,
+     "kv": 1,
+     "score": 0.182,
+     "partners": [
+      0
+     ],
+     "partner_scores": [
+      0.0
+     ]
+    },
+    {
+     "layer": 22,
+     "kv": 2,
+     "score": 0.11,
+     "partners": [
+      7
+     ],
+     "partner_scores": [
+      0.086
+     ]
+    },
+    {
+     "layer": 24,
+     "kv": 1,
+     "score": 0.124,
+     "partners": [
+      4
+     ],
+     "partner_scores": [
+      0.0
+     ]
+    },
+    {
+     "layer": 26,
+     "kv": 1,
+     "score": 0.116,
+     "partners": [
+      4
+     ],
+     "partner_scores": [
+      0.016
+     ]
+    },
+    {
+     "layer": 28,
+     "kv": 0,
+     "score": 0.298,
+     "partners": [
+      6
+     ],
+     "partner_scores": [
+      0.006
+     ]
+    },
+    {
+     "layer": 29,
+     "kv": 2,
+     "score": 0.2,
+     "partners": [
+      5
+     ],
+     "partner_scores": [
+      0.054
+     ]
+    },
+    {
+     "layer": 30,
+     "kv": 0,
+     "score": 0.138,
+     "partners": [
+      6
+     ],
+     "partner_scores": [
+      0.0
+     ]
+    },
+    {
+     "layer": 30,
+     "kv": 2,
+     "score": 0.346,
+     "partners": [
+      5
+     ],
+     "partner_scores": [
+      0.0
+     ]
+    },
+    {
+     "layer": 31,
+     "kv": 1,
+     "score": 0.198,
+     "partners": [
+      4
+     ],
+     "partner_scores": [
+      0.104
+     ]
+    },
+    {
+     "layer": 31,
+     "kv": 4,
+     "score": 0.104,
+     "partners": [
+      1
+     ],
+     "partner_scores": [
+      0.198
+     ]
+    },
+    {
+     "layer": 31,
+     "kv": 7,
+     "score": 0.268,
+     "partners": [
+      0
+     ],
+     "partner_scores": [
+      0.0
+     ]
+    }
+   ]
+  }
+ }
+}

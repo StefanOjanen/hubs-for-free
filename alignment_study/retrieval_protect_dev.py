@@ -11,7 +11,9 @@
 # costs most). Per arm: needle_dev's 15 instances (five codes at three depths in a 2,048-token haystack), perplexity
 # on the first 8 WikiText-2 windows of 2,048 tokens, the cache fraction, the protected heads. Writes
 # alignment_study/retrieval_protect_dev/<model>.json after every arm.
-#   python alignment_study/retrieval_protect_dev.py [--model=mistralai/Mistral-7B-Instruct-v0.2] [--thresholds=0.1,0.2] [--seed=0]
+# The two base arms (unconverted 15 of 15, plain fusion 2 of 15 in needle_dev.py, same haystack) run only with
+# --with-base; the controls are drawn at the first threshold's count. Under paging an arm takes about 30 minutes.
+#   python alignment_study/retrieval_protect_dev.py [--model=mistralai/Mistral-7B-Instruct-v0.2] [--thresholds=0.1,0.3] [--seed=0] [--with-base]
 import gc
 import json
 import os
@@ -40,7 +42,8 @@ def arg(name, default=None):
 
 NAME = arg("model", "mistralai/Mistral-7B-Instruct-v0.2")
 REV = ND.REVISIONS.get(NAME)
-THRESHOLDS = [float(t) for t in arg("thresholds", "0.1,0.2").split(",")]
+THRESHOLDS = [float(t) for t in arg("thresholds", "0.1,0.3").split(",")]
+WITH_BASE = "--with-base" in sys.argv
 SEED, N_PPL = int(arg("seed", 0)), 8
 SCORES = f"audits/retrieval_heads/{NAME.split('/')[-1]}_scores.npy"
 OUT = f"alignment_study/retrieval_protect_dev/{NAME.split('/')[-1]}.json"
@@ -113,11 +116,13 @@ if __name__ == "__main__":
     log(f"{NAME}: {L} layers, {kv.n} query heads over {n} key-value heads; moments from {ntok} tokens; retrieval scores from {SCORES}")
     res = {"model": NAME, "revision": REV, "exploratory": True, "scores": SCORES, "thresholds": THRESHOLDS, "seed": SEED, "calibration": [ND.N_CAL, ND.T_CAL],
            "needle": {"context_tokens": ND.CTX, "facts": len(ND.FACTS), "depths": list(ND.DEPTHS)}, "ppl_windows": N_PPL, "kv_heads_total": L * n, "arms": {}}
-    arms = [("unconverted", None), ("fusion", set())]
+    arms = [("unconverted", None), ("fusion", set())] if WITH_BASE else []
     for th in THRESHOLDS:
         P = sorted({(int(l), int(h) // rep) for l, h in np.argwhere(scores >= th)})
         arms.append((f"protect_retrieval_{th}", set(P)))
         k = len(P)
+        if th != THRESHOLDS[0]:
+            continue
         allheads = [(l, i) for l in range(L) for i in range(n)]
         arms.append((f"protect_random_{k}", set(rng.sample(allheads, k))))
         cheapest = {(l, i): float(min(costs[l][i, j] for j in range(n) if j != i)) for l in range(L) for i in range(n)}
@@ -125,7 +130,8 @@ if __name__ == "__main__":
     for name, protected in arms:
         t1 = time.time()
         if name != "unconverted":
-            del model, kv; free(); model = load(); kv = K.KV(model)
+            if name != arms[0][0]:                              # the first arm converts the model already loaded for the moments
+                del model, kv; free(); model = load(); kv = K.KV(model)
             groups = groups_with(kv, costs, protected)
             K.convert(kv, S, groups, "fuse")
             kept = sum(len(g) for g in groups)
