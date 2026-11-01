@@ -196,12 +196,19 @@ if FT:
     table(["Model", "windows", "unconverted, 8", "unconverted, whole", "fusion, 8", "fusion, whole"], rows)
 
 # ---- Table 13: the fusion's residual against merge damage at 7B scale (development) ----
-if os.path.exists("alignment_study/residual_damage/summary.json"):
-    R13 = json.load(open("alignment_study/residual_damage/summary.json"))
+RD = [fp for fp in sorted(glob.glob("alignment_study/residual_damage/*.json")) if not fp.endswith("summary.json")]
+if RD:
+    R13 = {(lambda r: r["model"])(json.load(open(fp))): json.load(open(fp))["spearman"] for fp in RD}
     w("## Table 13. The fusion's own residual against round 29's merge damage (development)\n")
-    w("Spearman correlation, within each model, between a forced-pair conversion's damage (perplexity over the reference conversion) and its matching's cost increase, its forced pair's cost, and the one-window check.\n")
-    table(["Model", "members", "cost increase", "forced pair's cost", "one-window check"],
-          [[short(m), v["members"], f(v["cost_increase"]), f(v["forced_pair_cost"]), f(v["one_window_check"]) if v.get("one_window_check") is not None else ""] for m, v in R13.items()])
+    w("Spearman correlation, within each model, between a forced-pair conversion's damage (perplexity over the reference conversion, round 29's 4 windows) and its matching's cost increase, its forced pair's cost, and the one-window check; then the damage's spread by layer (layer 0 against layers 1 to 4) and the cost increase's correlation within layer 0.\n")
+    rows13 = []
+    for m, v in R13.items():
+        mem = json.load(open(f"alignment_study/residual_damage/{m.split('/')[-1]}.json"))["members"]
+        d0 = [x["damage"] for x in mem if x["layer"] == 0]; d1 = [x["damage"] for x in mem if x["layer"] > 0]
+        sd = lambda a: (sum((y - sum(a) / len(a)) ** 2 for y in a) / len(a)) ** 0.5 if len(a) > 1 else float("nan")
+        rows13.append([short(m), v["members"], f(v["cost_increase"]), f(v["forced_pair_cost"]), f(v["one_window_check"]) if v.get("one_window_check") is not None else "",
+                       f"{min(d0):.2f} to {max(d0):.2f}" if d0 else "", f"{min(d1):.2f} to {max(d1):.2f} (sd {sd(d1):.3f})" if d1 else "", f(v["per_layer_cost_increase"]["0"]) if "0" in v.get("per_layer_cost_increase", {}) else ""])
+    table(["Model", "members", "cost increase", "forced pair's cost", "one-window check", "damage, layer 0", "damage, layers 1 to 4", "cost increase, layer 0"], rows13)
 
 # ---- Table 14: retrieval of a planted fact (development) and the benchmark ----
 ND = sorted(glob.glob("alignment_study/needle_dev/*.json"))

@@ -1,0 +1,1307 @@
+{
+ "model": "mistralai/Mistral-7B-Instruct-v0.2",
+ "source": "alignment_study/guard/Mistral-7B-Instruct-v0.2.json",
+ "dev_population": false,
+ "calibration": [
+  128,
+  2048
+ ],
+ "tokens": 262144,
+ "reference_cost": {
+  "0": 0.013359556562701401,
+  "1": 0.07426322799582752,
+  "2": 0.11789491764006721,
+  "3": 0.16802148640006245,
+  "4": 0.16747542929037998
+ },
+ "members": [
+  {
+   "layer": 0,
+   "forced_pair": [
+    0,
+    1
+   ],
+   "forced_pair_cost": 0.003326294575806981,
+   "matching_cost": 0.013934800908944802,
+   "reference_cost": 0.013359556562701401,
+   "damage": 1.0459390315961967,
+   "check_max_ratio": 0.9920634920634921,
+   "cost_increase": 0.0005752443462434011
+  },
+  {
+   "layer": 0,
+   "forced_pair": [
+    0,
+    2
+   ],
+   "forced_pair_cost": 0.011305805881904269,
+   "matching_cost": 0.018984905017597704,
+   "reference_cost": 0.013359556562701401,
+   "damage": 0.9791242242915499,
+   "check_max_ratio": 0.9710982658959537,
+   "cost_increase": 0.005625348454896303
+  },
+  {
+   "layer": 0,
+   "forced_pair": [
+    0,
+    3
+   ],
+   "forced_pair_cost": 0.003509645561302789,
+   "matching_cost": 0.01368245519179926,
+   "reference_cost": 0.013359556562701401,
+   "damage": 1.1646788292138424,
+   "check_max_ratio": 0.9880952380952381,
+   "cost_increase": 0.00032289862909785916
+  },
+  {
+   "layer": 0,
+   "forced_pair": [
+    0,
+    4
+   ],
+   "forced_pair_cost": 0.004040629445081004,
+   "matching_cost": 0.014609370581753293,
+   "reference_cost": 0.013359556562701401,
+   "damage": 1.0353426480510142,
+   "check_max_ratio": 1.007936507936508,
+   "cost_increase": 0.0012498140190518921
+  },
+  {
+   "layer": 0,
+   "forced_pair": [
+    0,
+    6
+   ],
+   "forced_pair_cost": 0.031702457335581115,
+   "matching_cost": 0.037986798130315566,
+   "reference_cost": 0.013359556562701401,
+   "damage": 1.020567380558465,
+   "check_max_ratio": 0.9826589595375722,
+   "cost_increase": 0.024627241567614165
+  },
+  {
+   "layer": 0,
+   "forced_pair": [
+    0,
+    7
+   ],
+   "forced_pair_cost": 0.03266736865547435,
+   "matching_cost": 0.03900140846526677,
+   "reference_cost": 0.013359556562701401,
+   "damage": 0.8812885815474358,
+   "check_max_ratio": 0.9523809523809523,
+   "cost_increase": 0.02564185190256537
+  },
+  {
+   "layer": 0,
+   "forced_pair": [
+    1,
+    2
+   ],
+   "forced_pair_cost": 0.0015244707750160403,
+   "matching_cost": 0.013660430359906411,
+   "reference_cost": 0.013359556562701401,
+   "damage": 0.9976466435263872,
+   "check_max_ratio": 0.9523809523809523,
+   "cost_increase": 0.00030087379720501045
+  },
+  {
+   "layer": 0,
+   "forced_pair": [
+    1,
+    3
+   ],
+   "forced_pair_cost": 0.001303554137775579,
+   "matching_cost": 0.017462104675139853,
+   "reference_cost": 0.013359556562701401,
+   "damage": 0.8982113365054409,
+   "check_max_ratio": 0.9603174603174603,
+   "cost_increase": 0.004102548112438452
+  },
+  {
+   "layer": 0,
+   "forced_pair": [
+    1,
+    4
+   ],
+   "forced_pair_cost": 0.001287024563295992,
+   "matching_cost": 0.01784150660683609,
+   "reference_cost": 0.013359556562701401,
+   "damage": 0.8713207572732748,
+   "check_max_ratio": 1.0,
+   "cost_increase": 0.004481950044134687
+  },
+  {
+   "layer": 0,
+   "forced_pair": [
+    1,
+    5
+   ],
+   "forced_pair_cost": 0.002882626112728358,
+   "matching_cost": 0.01700161267011729,
+   "reference_cost": 0.013359556562701401,
+   "damage": 1.3893703838418492,
+   "check_max_ratio": 0.9523809523809523,
+   "cost_increase": 0.00364205610741589
+  },
+  {
+   "layer": 0,
+   "forced_pair": [
+    1,
+    6
+   ],
+   "forced_pair_cost": 0.0044274463696901845,
+   "matching_cost": 0.01516864761362157,
+   "reference_cost": 0.013359556562701401,
+   "damage": 0.9757309518317546,
+   "check_max_ratio": 0.9710982658959537,
+   "cost_increase": 0.0018090910509201696
+  },
+  {
+   "layer": 0,
+   "forced_pair": [
+    2,
+    4
+   ],
+   "forced_pair_cost": 0.0018867648990948517,
+   "matching_cost": 0.013982959287519695,
+   "reference_cost": 0.013359556562701401,
+   "damage": 1.1238397383396383,
+   "check_max_ratio": 0.9523809523809523,
+   "cost_increase": 0.0006234027248182943
+  },
+  {
+   "layer": 0,
+   "forced_pair": [
+    2,
+    6
+   ],
+   "forced_pair_cost": 0.008128624891296414,
+   "matching_cost": 0.016566830232017014,
+   "reference_cost": 0.013359556562701401,
+   "damage": 1.023256071286008,
+   "check_max_ratio": 0.9826589595375722,
+   "cost_increase": 0.0032072736693156134
+  },
+  {
+   "layer": 0,
+   "forced_pair": [
+    2,
+    7
+   ],
+   "forced_pair_cost": 0.007327817756032306,
+   "matching_cost": 0.01546368136661567,
+   "reference_cost": 0.013359556562701401,
+   "damage": 1.0756000157782504,
+   "check_max_ratio": 0.9710982658959537,
+   "cost_increase": 0.002104124803914269
+  },
+  {
+   "layer": 0,
+   "forced_pair": [
+    3,
+    4
+   ],
+   "forced_pair_cost": 0.0015293268773466805,
+   "matching_cost": 0.01807669141083828,
+   "reference_cost": 0.013359556562701401,
+   "damage": 0.9979498680833115,
+   "check_max_ratio": 0.9479768786127167,
+   "cost_increase": 0.004717134848136878
+  },
+  {
+   "layer": 0,
+   "forced_pair": [
+    4,
+    5
+   ],
+   "forced_pair_cost": 0.0020711093733112042,
+   "matching_cost": 0.01640267645138015,
+   "reference_cost": 0.013359556562701401,
+   "damage": 1.196127712665481,
+   "check_max_ratio": 0.9682539682539683,
+   "cost_increase": 0.003043119888678749
+  },
+  {
+   "layer": 0,
+   "forced_pair": [
+    4,
+    7
+   ],
+   "forced_pair_cost": 0.0037948325502416367,
+   "matching_cost": 0.014545967612765467,
+   "reference_cost": 0.013359556562701401,
+   "damage": 1.0321408852677008,
+   "check_max_ratio": 0.9642857142857143,
+   "cost_increase": 0.0011864110500640658
+  },
+  {
+   "layer": 0,
+   "forced_pair": [
+    5,
+    6
+   ],
+   "forced_pair_cost": 0.0068306523619969285,
+   "matching_cost": 0.015096592923311622,
+   "reference_cost": 0.013359556562701401,
+   "damage": 1.3571159711047294,
+   "check_max_ratio": 0.9365079365079365,
+   "cost_increase": 0.0017370363606102213
+  },
+  {
+   "layer": 0,
+   "forced_pair": [
+    5,
+    7
+   ],
+   "forced_pair_cost": 0.006091506455372446,
+   "matching_cost": 0.014358617951685644,
+   "reference_cost": 0.013359556562701401,
+   "damage": 1.053489180109497,
+   "check_max_ratio": 1.007936507936508,
+   "cost_increase": 0.0009990613889842431
+  },
+  {
+   "layer": 0,
+   "forced_pair": [
+    6,
+    7
+   ],
+   "forced_pair_cost": 0.03068260415980289,
+   "matching_cost": 0.037423709429427264,
+   "reference_cost": 0.013359556562701401,
+   "damage": 1.096209475753613,
+   "check_max_ratio": 0.9248554913294798,
+   "cost_increase": 0.024064152866725863
+  },
+  {
+   "layer": 1,
+   "forced_pair": [
+    0,
+    1
+   ],
+   "forced_pair_cost": 0.009472624768309944,
+   "matching_cost": 0.07752071127537111,
+   "reference_cost": 0.07426322799582752,
+   "damage": 0.9897551030950927,
+   "check_max_ratio": 1.0,
+   "cost_increase": 0.003257483279543588
+  },
+  {
+   "layer": 1,
+   "forced_pair": [
+    0,
+    3
+   ],
+   "forced_pair_cost": 0.015117390193020594,
+   "matching_cost": 0.07808706276088577,
+   "reference_cost": 0.07426322799582752,
+   "damage": 0.9942113530763688,
+   "check_max_ratio": 1.0115606936416186,
+   "cost_increase": 0.003823834765058251
+  },
+  {
+   "layer": 1,
+   "forced_pair": [
+    0,
+    4
+   ],
+   "forced_pair_cost": 0.016669899839610116,
+   "matching_cost": 0.07823058545803499,
+   "reference_cost": 0.07426322799582752,
+   "damage": 0.9999926054407496,
+   "check_max_ratio": 0.9826589595375722,
+   "cost_increase": 0.003967357462207471
+  },
+  {
+   "layer": 1,
+   "forced_pair": [
+    0,
+    5
+   ],
+   "forced_pair_cost": 0.024210633959672528,
+   "matching_cost": 0.0766569252933081,
+   "reference_cost": 0.07426322799582752,
+   "damage": 0.9861223799203773,
+   "check_max_ratio": 1.0,
+   "cost_increase": 0.002393697297480582
+  },
+  {
+   "layer": 1,
+   "forced_pair": [
+    0,
+    6
+   ],
+   "forced_pair_cost": 0.018452929526116397,
+   "matching_cost": 0.07933366262704919,
+   "reference_cost": 0.07426322799582752,
+   "damage": 1.0125384902885086,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.005070434631221671
+  },
+  {
+   "layer": 1,
+   "forced_pair": [
+    0,
+    7
+   ],
+   "forced_pair_cost": 0.01864970308424445,
+   "matching_cost": 0.07910821735256812,
+   "reference_cost": 0.07426322799582752,
+   "damage": 0.9773754649253258,
+   "check_max_ratio": 0.9826589595375722,
+   "cost_increase": 0.004844989356740603
+  },
+  {
+   "layer": 1,
+   "forced_pair": [
+    1,
+    2
+   ],
+   "forced_pair_cost": 0.019094472049654927,
+   "matching_cost": 0.08029622201283647,
+   "reference_cost": 0.07426322799582752,
+   "damage": 0.9883690971780108,
+   "check_max_ratio": 0.9710982658959537,
+   "cost_increase": 0.00603299401700895
+  },
+  {
+   "layer": 1,
+   "forced_pair": [
+    1,
+    3
+   ],
+   "forced_pair_cost": 0.01131118539124432,
+   "matching_cost": 0.0755981066059855,
+   "reference_cost": 0.07426322799582752,
+   "damage": 0.9888650262522825,
+   "check_max_ratio": 1.0,
+   "cost_increase": 0.0013348786101579774
+  },
+  {
+   "layer": 1,
+   "forced_pair": [
+    1,
+    4
+   ],
+   "forced_pair_cost": 0.014529069829377387,
+   "matching_cost": 0.08069160724216622,
+   "reference_cost": 0.07426322799582752,
+   "damage": 1.0055446169274698,
+   "check_max_ratio": 1.023121387283237,
+   "cost_increase": 0.006428379246338697
+  },
+  {
+   "layer": 1,
+   "forced_pair": [
+    1,
+    5
+   ],
+   "forced_pair_cost": 0.023003693033010947,
+   "matching_cost": 0.08027734376010515,
+   "reference_cost": 0.07426322799582752,
+   "damage": 0.990667780360022,
+   "check_max_ratio": 0.9884393063583815,
+   "cost_increase": 0.006014115764277628
+  },
+  {
+   "layer": 1,
+   "forced_pair": [
+    1,
+    6
+   ],
+   "forced_pair_cost": 0.014650275463771165,
+   "matching_cost": 0.07537172947303264,
+   "reference_cost": 0.07426322799582752,
+   "damage": 1.0091426671561012,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.0011085014772051205
+  },
+  {
+   "layer": 1,
+   "forced_pair": [
+    2,
+    3
+   ],
+   "forced_pair_cost": 0.024079481881844535,
+   "matching_cost": 0.07995019043879105,
+   "reference_cost": 0.07426322799582752,
+   "damage": 0.9939473761517362,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.005686962442963531
+  },
+  {
+   "layer": 1,
+   "forced_pair": [
+    2,
+    7
+   ],
+   "forced_pair_cost": 0.029743237670259326,
+   "matching_cost": 0.08176790931750635,
+   "reference_cost": 0.07426322799582752,
+   "damage": 0.9954028179533442,
+   "check_max_ratio": 0.9826589595375722,
+   "cost_increase": 0.0075046813216788355
+  },
+  {
+   "layer": 1,
+   "forced_pair": [
+    3,
+    4
+   ],
+   "forced_pair_cost": 0.019943367970329154,
+   "matching_cost": 0.08100037157597763,
+   "reference_cost": 0.07426322799582752,
+   "damage": 0.9829498430282438,
+   "check_max_ratio": 0.9884393063583815,
+   "cost_increase": 0.0067371435801501095
+  },
+  {
+   "layer": 1,
+   "forced_pair": [
+    3,
+    5
+   ],
+   "forced_pair_cost": 0.027054629693059287,
+   "matching_cost": 0.07899723901391846,
+   "reference_cost": 0.07426322799582752,
+   "damage": 0.9912855664522999,
+   "check_max_ratio": 1.0115606936416186,
+   "cost_increase": 0.004734011018090942
+  },
+  {
+   "layer": 1,
+   "forced_pair": [
+    4,
+    6
+   ],
+   "forced_pair_cost": 0.02189171241289451,
+   "matching_cost": 0.07938324881306327,
+   "reference_cost": 0.07426322799582752,
+   "damage": 0.9951626779202324,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.005120020817235754
+  },
+  {
+   "layer": 1,
+   "forced_pair": [
+    4,
+    7
+   ],
+   "forced_pair_cost": 0.023670031558079285,
+   "matching_cost": 0.08088099825402828,
+   "reference_cost": 0.07426322799582752,
+   "damage": 0.9836256947879076,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.006617770258200761
+  },
+  {
+   "layer": 1,
+   "forced_pair": [
+    5,
+    6
+   ],
+   "forced_pair_cost": 0.029372942356702392,
+   "matching_cost": 0.07775008447208184,
+   "reference_cost": 0.07426322799582752,
+   "damage": 0.9984178572390602,
+   "check_max_ratio": 1.0057803468208093,
+   "cost_increase": 0.003486856476254324
+  },
+  {
+   "layer": 1,
+   "forced_pair": [
+    5,
+    7
+   ],
+   "forced_pair_cost": 0.03498236381786274,
+   "matching_cost": 0.08307893622902243,
+   "reference_cost": 0.07426322799582752,
+   "damage": 0.9954363567011443,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.008815708233194913
+  },
+  {
+   "layer": 2,
+   "forced_pair": [
+    0,
+    2
+   ],
+   "forced_pair_cost": 0.028595832545579118,
+   "matching_cost": 0.11949461843678794,
+   "reference_cost": 0.11789491764006721,
+   "damage": 1.0353588244183975,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.0015997007967207266
+  },
+  {
+   "layer": 2,
+   "forced_pair": [
+    0,
+    3
+   ],
+   "forced_pair_cost": 0.028661606956771092,
+   "matching_cost": 0.11808719971127188,
+   "reference_cost": 0.11789491764006721,
+   "damage": 0.9926443474701263,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.00019228207120466911
+  },
+  {
+   "layer": 2,
+   "forced_pair": [
+    0,
+    4
+   ],
+   "forced_pair_cost": 0.030001438169595274,
+   "matching_cost": 0.12242752638502667,
+   "reference_cost": 0.11789491764006721,
+   "damage": 1.034260887220171,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.004532608744959463
+  },
+  {
+   "layer": 2,
+   "forced_pair": [
+    0,
+    5
+   ],
+   "forced_pair_cost": 0.014743514234491197,
+   "matching_cost": 0.1303628381068826,
+   "reference_cost": 0.11789491764006721,
+   "damage": 0.9922602454899656,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.012467920466815385
+  },
+  {
+   "layer": 2,
+   "forced_pair": [
+    0,
+    6
+   ],
+   "forced_pair_cost": 0.0325721990602068,
+   "matching_cost": 0.11839301530711402,
+   "reference_cost": 0.11789491764006721,
+   "damage": 1.0294244903603043,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.0004980976670468096
+  },
+  {
+   "layer": 2,
+   "forced_pair": [
+    0,
+    7
+   ],
+   "forced_pair_cost": 0.030889691812527122,
+   "matching_cost": 0.12028658531419759,
+   "reference_cost": 0.11789491764006721,
+   "damage": 1.0378434726971033,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.0023916676741303766
+  },
+  {
+   "layer": 2,
+   "forced_pair": [
+    1,
+    2
+   ],
+   "forced_pair_cost": 0.04109219715895956,
+   "matching_cost": 0.12244962277027541,
+   "reference_cost": 0.11789491764006721,
+   "damage": 0.992694487000979,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.0045547051302081976
+  },
+  {
+   "layer": 2,
+   "forced_pair": [
+    1,
+    3
+   ],
+   "forced_pair_cost": 0.046749583600896503,
+   "matching_cost": 0.127012232446898,
+   "reference_cost": 0.11789491764006721,
+   "damage": 0.9972600112127403,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.009117314806830784
+  },
+  {
+   "layer": 2,
+   "forced_pair": [
+    1,
+    6
+   ],
+   "forced_pair_cost": 0.04635262180642016,
+   "matching_cost": 0.12645653678607074,
+   "reference_cost": 0.11789491764006721,
+   "damage": 1.000962474743703,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.008561619146003535
+  },
+  {
+   "layer": 2,
+   "forced_pair": [
+    1,
+    7
+   ],
+   "forced_pair_cost": 0.04121077450288722,
+   "matching_cost": 0.12077058212351083,
+   "reference_cost": 0.11789491764006721,
+   "damage": 0.9988485391426329,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.0028756644834436185
+  },
+  {
+   "layer": 2,
+   "forced_pair": [
+    2,
+    3
+   ],
+   "forced_pair_cost": 0.03941051144305346,
+   "matching_cost": 0.1239724188045696,
+   "reference_cost": 0.11789491764006721,
+   "damage": 1.0064916607844754,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.006077501164502397
+  },
+  {
+   "layer": 2,
+   "forced_pair": [
+    2,
+    4
+   ],
+   "forced_pair_cost": 0.0365556192354114,
+   "matching_cost": 0.1203483938267017,
+   "reference_cost": 0.11789491764006721,
+   "damage": 1.028586204168363,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.0024534761866344956
+  },
+  {
+   "layer": 2,
+   "forced_pair": [
+    2,
+    5
+   ],
+   "forced_pair_cost": 0.014204796728785508,
+   "matching_cost": 0.12198132719479943,
+   "reference_cost": 0.11789491764006721,
+   "damage": 1.0142587087227108,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.004086409554732218
+  },
+  {
+   "layer": 2,
+   "forced_pair": [
+    2,
+    6
+   ],
+   "forced_pair_cost": 0.03864093111281455,
+   "matching_cost": 0.11979034403794181,
+   "reference_cost": 0.11789491764006721,
+   "damage": 1.0321646440128212,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.0018954263978746
+  },
+  {
+   "layer": 2,
+   "forced_pair": [
+    3,
+    5
+   ],
+   "forced_pair_cost": 0.015062661365891704,
+   "matching_cost": 0.12186409636224443,
+   "reference_cost": 0.11789491764006721,
+   "damage": 0.9809075240311558,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.0039691787221772246
+  },
+  {
+   "layer": 2,
+   "forced_pair": [
+    3,
+    6
+   ],
+   "forced_pair_cost": 0.04667423815526489,
+   "matching_cost": 0.1267288743150778,
+   "reference_cost": 0.11789491764006721,
+   "damage": 1.036724415200978,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.008833956675010579
+  },
+  {
+   "layer": 2,
+   "forced_pair": [
+    3,
+    7
+   ],
+   "forced_pair_cost": 0.03879681297045055,
+   "matching_cost": 0.12175338441247914,
+   "reference_cost": 0.11789491764006721,
+   "damage": 1.0016838037249756,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.003858466772411931
+  },
+  {
+   "layer": 2,
+   "forced_pair": [
+    4,
+    5
+   ],
+   "forced_pair_cost": 0.01746433738564362,
+   "matching_cost": 0.12597764995811647,
+   "reference_cost": 0.11789491764006721,
+   "damage": 1.001750409543745,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.008082732318049263
+  },
+  {
+   "layer": 2,
+   "forced_pair": [
+    4,
+    6
+   ],
+   "forced_pair_cost": 0.04109684001799648,
+   "matching_cost": 0.1198116449649852,
+   "reference_cost": 0.11789491764006721,
+   "damage": 1.0264261717896652,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.0019167273249179884
+  },
+  {
+   "layer": 2,
+   "forced_pair": [
+    5,
+    7
+   ],
+   "forced_pair_cost": 0.01574046417738183,
+   "matching_cost": 0.12201510225385738,
+   "reference_cost": 0.11789491764006721,
+   "damage": 1.0111203384132104,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.00412018461379017
+  },
+  {
+   "layer": 3,
+   "forced_pair": [
+    0,
+    1
+   ],
+   "forced_pair_cost": 0.04487838844457741,
+   "matching_cost": 0.17198644643991598,
+   "reference_cost": 0.16802148640006245,
+   "damage": 1.0019950671244777,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.003964960039853527
+  },
+  {
+   "layer": 3,
+   "forced_pair": [
+    0,
+    3
+   ],
+   "forced_pair_cost": 0.044113489553390235,
+   "matching_cost": 0.17441098030037455,
+   "reference_cost": 0.16802148640006245,
+   "damage": 1.0065181303428061,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.006389493900312099
+  },
+  {
+   "layer": 3,
+   "forced_pair": [
+    0,
+    4
+   ],
+   "forced_pair_cost": 0.047632420541854806,
+   "matching_cost": 0.16879539113980835,
+   "reference_cost": 0.16802148640006245,
+   "damage": 0.9976483093436312,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.0007739047397458954
+  },
+  {
+   "layer": 3,
+   "forced_pair": [
+    0,
+    5
+   ],
+   "forced_pair_cost": 0.04597032204052974,
+   "matching_cost": 0.17240176580416788,
+   "reference_cost": 0.16802148640006245,
+   "damage": 0.9963946173096976,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.0043802794041054305
+  },
+  {
+   "layer": 3,
+   "forced_pair": [
+    0,
+    6
+   ],
+   "forced_pair_cost": 0.04245121646789936,
+   "matching_cost": 0.16945645316980495,
+   "reference_cost": 0.16802148640006245,
+   "damage": 0.9976308184012976,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.0014349667697425017
+  },
+  {
+   "layer": 3,
+   "forced_pair": [
+    0,
+    7
+   ],
+   "forced_pair_cost": 0.045393855959493454,
+   "matching_cost": 0.17151052765737226,
+   "reference_cost": 0.16802148640006245,
+   "damage": 0.9961759802629132,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.0034890412573098106
+  },
+  {
+   "layer": 3,
+   "forced_pair": [
+    1,
+    2
+   ],
+   "forced_pair_cost": 0.04069327726968343,
+   "matching_cost": 0.17049942601837814,
+   "reference_cost": 0.16802148640006245,
+   "damage": 1.002269728337387,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.0024779396183156888
+  },
+  {
+   "layer": 3,
+   "forced_pair": [
+    1,
+    3
+   ],
+   "forced_pair_cost": 0.04489221974237473,
+   "matching_cost": 0.17726318423410464,
+   "reference_cost": 0.16802148640006245,
+   "damage": 1.0137728356883717,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.00924169783404219
+  },
+  {
+   "layer": 3,
+   "forced_pair": [
+    1,
+    4
+   ],
+   "forced_pair_cost": 0.04547634880440335,
+   "matching_cost": 0.17031964438358432,
+   "reference_cost": 0.16802148640006245,
+   "damage": 1.0041066202331348,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.00229815798352187
+  },
+  {
+   "layer": 3,
+   "forced_pair": [
+    1,
+    5
+   ],
+   "forced_pair_cost": 0.046781115560342514,
+   "matching_cost": 0.17623182227521153,
+   "reference_cost": 0.16802148640006245,
+   "damage": 0.9972384237031796,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.008210335875149077
+  },
+  {
+   "layer": 3,
+   "forced_pair": [
+    1,
+    6
+   ],
+   "forced_pair_cost": 0.04105057783619869,
+   "matching_cost": 0.1710750774893351,
+   "reference_cost": 0.16802148640006245,
+   "damage": 0.9922557484120339,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.0030535910892726392
+  },
+  {
+   "layer": 3,
+   "forced_pair": [
+    2,
+    3
+   ],
+   "forced_pair_cost": 0.04296938930788351,
+   "matching_cost": 0.17356492654595643,
+   "reference_cost": 0.16802148640006245,
+   "damage": 1.0130707117188475,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.005543440145893974
+  },
+  {
+   "layer": 3,
+   "forced_pair": [
+    2,
+    5
+   ],
+   "forced_pair_cost": 0.046056313178792656,
+   "matching_cost": 0.1737315926400047,
+   "reference_cost": 0.16802148640006245,
+   "damage": 1.0017590118737523,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.005710106239942253
+  },
+  {
+   "layer": 3,
+   "forced_pair": [
+    3,
+    4
+   ],
+   "forced_pair_cost": 0.05025357594720566,
+   "matching_cost": 0.17667945304155055,
+   "reference_cost": 0.16802148640006245,
+   "damage": 1.0124086784280577,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.008657966641488102
+  },
+  {
+   "layer": 3,
+   "forced_pair": [
+    3,
+    7
+   ],
+   "forced_pair_cost": 0.046236877832438926,
+   "matching_cost": 0.17761645602670906,
+   "reference_cost": 0.16802148640006245,
+   "damage": 1.012236326075473,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.009594969626646604
+  },
+  {
+   "layer": 3,
+   "forced_pair": [
+    4,
+    5
+   ],
+   "forced_pair_cost": 0.049867838016347026,
+   "matching_cost": 0.17259955259408513,
+   "reference_cost": 0.16802148640006245,
+   "damage": 0.9961629704947176,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.0045780661940226786
+  },
+  {
+   "layer": 3,
+   "forced_pair": [
+    4,
+    7
+   ],
+   "forced_pair_cost": 0.04882831300163375,
+   "matching_cost": 0.17268022228335494,
+   "reference_cost": 0.16802148640006245,
+   "damage": 1.0007063727494032,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.004658735883292492
+  },
+  {
+   "layer": 3,
+   "forced_pair": [
+    5,
+    7
+   ],
+   "forced_pair_cost": 0.04892652327567675,
+   "matching_cost": 0.17722535034433196,
+   "reference_cost": 0.16802148640006245,
+   "damage": 0.9975619879769371,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.009203863944269502
+  },
+  {
+   "layer": 3,
+   "forced_pair": [
+    6,
+    7
+   ],
+   "forced_pair_cost": 0.041466312662701524,
+   "matching_cost": 0.17033893266962413,
+   "reference_cost": 0.16802148640006245,
+   "damage": 1.0061121602716991,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.0023174462695616793
+  },
+  {
+   "layer": 4,
+   "forced_pair": [
+    0,
+    1
+   ],
+   "forced_pair_cost": 0.05122508279811166,
+   "matching_cost": 0.1755657767136872,
+   "reference_cost": 0.16747542929037998,
+   "damage": 0.9966168088245838,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.00809034742330722
+  },
+  {
+   "layer": 4,
+   "forced_pair": [
+    0,
+    2
+   ],
+   "forced_pair_cost": 0.051914394213999744,
+   "matching_cost": 0.17248050204260784,
+   "reference_cost": 0.16747542929037998,
+   "damage": 1.004973378390813,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.005005072752227863
+  },
+  {
+   "layer": 4,
+   "forced_pair": [
+    0,
+    3
+   ],
+   "forced_pair_cost": 0.04616937893856689,
+   "matching_cost": 0.17227308105556027,
+   "reference_cost": 0.16747542929037998,
+   "damage": 0.9915493686100175,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.004797651765180294
+  },
+  {
+   "layer": 4,
+   "forced_pair": [
+    0,
+    4
+   ],
+   "forced_pair_cost": 0.0538595436792635,
+   "matching_cost": 0.1752654382751334,
+   "reference_cost": 0.16747542929037998,
+   "damage": 0.9904609725058917,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.007790008984753433
+  },
+  {
+   "layer": 4,
+   "forced_pair": [
+    0,
+    5
+   ],
+   "forced_pair_cost": 0.04300414724396549,
+   "matching_cost": 0.16787348839774294,
+   "reference_cost": 0.16747542929037998,
+   "damage": 0.9982043122022568,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.000398059107362958
+  },
+  {
+   "layer": 4,
+   "forced_pair": [
+    0,
+    7
+   ],
+   "forced_pair_cost": 0.04593623437587355,
+   "matching_cost": 0.16961504861679821,
+   "reference_cost": 0.16747542929037998,
+   "damage": 0.9801749697590804,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.002139619326418235
+  },
+  {
+   "layer": 4,
+   "forced_pair": [
+    1,
+    2
+   ],
+   "forced_pair_cost": 0.04588766966615213,
+   "matching_cost": 0.17342286790106853,
+   "reference_cost": 0.16747542929037998,
+   "damage": 0.9984654303639626,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.005947438610688555
+  },
+  {
+   "layer": 4,
+   "forced_pair": [
+    1,
+    3
+   ],
+   "forced_pair_cost": 0.03830744876412971,
+   "matching_cost": 0.17239832106183942,
+   "reference_cost": 0.16747542929037998,
+   "damage": 0.9909941177355377,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.004922891771459437
+  },
+  {
+   "layer": 4,
+   "forced_pair": [
+    1,
+    4
+   ],
+   "forced_pair_cost": 0.04022198384021197,
+   "matching_cost": 0.16831683448470014,
+   "reference_cost": 0.16747542929037998,
+   "damage": 0.9915844332131921,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.0008414051943201606
+  },
+  {
+   "layer": 4,
+   "forced_pair": [
+    1,
+    5
+   ],
+   "forced_pair_cost": 0.03735680342666806,
+   "matching_cost": 0.17021331476116183,
+   "reference_cost": 0.16747542929037998,
+   "damage": 0.9921364649433801,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.0027378854707818534
+  },
+  {
+   "layer": 4,
+   "forced_pair": [
+    1,
+    6
+   ],
+   "forced_pair_cost": 0.05286253891882826,
+   "matching_cost": 0.17608378968673805,
+   "reference_cost": 0.16747542929037998,
+   "damage": 0.9954920988188504,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.008608360396358067
+  },
+  {
+   "layer": 4,
+   "forced_pair": [
+    2,
+    3
+   ],
+   "forced_pair_cost": 0.041517817742900115,
+   "matching_cost": 0.17081602417923433,
+   "reference_cost": 0.16747542929037998,
+   "damage": 0.9926358826044037,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.0033405948888543535
+  },
+  {
+   "layer": 4,
+   "forced_pair": [
+    2,
+    4
+   ],
+   "forced_pair_cost": 0.04731704884571711,
+   "matching_cost": 0.17191744776092782,
+   "reference_cost": 0.16747542929037998,
+   "damage": 0.9850670798811678,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.004442018470547843
+  },
+  {
+   "layer": 4,
+   "forced_pair": [
+    2,
+    7
+   ],
+   "forced_pair_cost": 0.04347501230712894,
+   "matching_cost": 0.17034833086739443,
+   "reference_cost": 0.16747542929037998,
+   "damage": 0.9848018897799341,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.0028729015770144473
+  },
+  {
+   "layer": 4,
+   "forced_pair": [
+    3,
+    6
+   ],
+   "forced_pair_cost": 0.04840275457561148,
+   "matching_cost": 0.17397255660895872,
+   "reference_cost": 0.16747542929037998,
+   "damage": 1.0008048428065455,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.006497127318578738
+  },
+  {
+   "layer": 4,
+   "forced_pair": [
+    4,
+    6
+   ],
+   "forced_pair_cost": 0.054840816354705314,
+   "matching_cost": 0.17731184553672813,
+   "reference_cost": 0.16747542929037998,
+   "damage": 0.9957321402058559,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.00983641624634815
+  },
+  {
+   "layer": 4,
+   "forced_pair": [
+    4,
+    7
+   ],
+   "forced_pair_cost": 0.0425616620486078,
+   "matching_cost": 0.17252204333318572,
+   "reference_cost": 0.16747542929037998,
+   "damage": 0.9956859442176634,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.005046614042805736
+  },
+  {
+   "layer": 4,
+   "forced_pair": [
+    5,
+    6
+   ],
+   "forced_pair_cost": 0.044743611058676365,
+   "matching_cost": 0.172419647017662,
+   "reference_cost": 0.16747542929037998,
+   "damage": 0.9926587319879219,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.004944217727282013
+  },
+  {
+   "layer": 4,
+   "forced_pair": [
+    5,
+    7
+   ],
+   "forced_pair_cost": 0.03742041695695534,
+   "matching_cost": 0.17140156724325395,
+   "reference_cost": 0.16747542929037998,
+   "damage": 0.9894794458917113,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.00392613795287397
+  },
+  {
+   "layer": 4,
+   "forced_pair": [
+    6,
+    7
+   ],
+   "forced_pair_cost": 0.050610218783207185,
+   "matching_cost": 0.17535416761028477,
+   "reference_cost": 0.16747542929037998,
+   "damage": 0.9888239841632779,
+   "check_max_ratio": 0.9942196531791907,
+   "cost_increase": 0.007878738319904793
+  }
+ ],
+ "spearman": {
+  "cost_increase": -0.2098642643561642,
+  "forced_pair_cost": -0.11544224062633486,
+  "one_window_check": -0.13675912110785457,
+  "members": 98,
+  "per_layer_cost_increase": {
+   "0": -0.3804511278195489,
+   "1": -0.07543859649122807,
+   "2": -0.3157894736842105,
+   "3": 0.3473684210526316,
+   "4": 0.3609022556390977
+  }
+ },
+ "seconds": 916.1
+}

@@ -79,8 +79,11 @@ if __name__ == "__main__":
         rows = []
         for m in G["members"]:
             l = m["layer"]
-            i, j = (int(t) for t in m["label"].split(" ")[1].split("-"))
-            rows.append({"layer": l, "forced_pair": [i, j], "forced_pair_cost": float(costs[l][i, j]),
+            if m["label"].startswith("forced"):                     # "forced i-j": one pair forced into the matching
+                i, j = (int(t) for t in m["label"].split(" ")[1].split("-")); forced, fcost = [i, j], float(costs[l][i, j])
+            else:                                                   # "matching [[...]]" (4 heads: the pair fixes the matching); its new pairs
+                new = m["new_pairs"]; forced, fcost = (new[0] if len(new) == 1 else None), float(sum(costs[l][a, b] for a, b in new) / len(new))
+            rows.append({"layer": l, "forced_pair": forced, "forced_pair_cost": fcost,
                          "matching_cost": float(sum(costs[l][a, b] for a, b in m["groups"])), "reference_cost": ref_cost[l],
                          "damage": m["ppl_over_reference"], "check_max_ratio": m.get("max_ratio")})
             rows[-1]["cost_increase"] = rows[-1]["matching_cost"] - ref_cost[l]
