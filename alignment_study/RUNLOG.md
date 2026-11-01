@@ -1180,3 +1180,23 @@ and the hazard that collapses Llama-2-7B at the same ratio does not appear.
 Run times: moments 902 s, groups 100 s, conversions 599 to 630 s, evaluations
 3,180 to 3,210 s (the last one 7,974 s including the pause); restore check 4.859
 on 8 windows.
+
+Repair of the quarter-heads conversion of Llama-2-7B, development (labelled;
+quad_repair_dev.py, 13:36 to 15:10 UTC under the three guards, no pauses;
+quad_dev/Llama-2-7b-hf_repair.json, quad_repair.log). With layers 0 to 5
+converted by the matched groups of four, the one-window check reproduces the
+full conversion's reading at layer 1 (576). Leaving each group of layer 1
+unmerged in turn: the check falls to 0.71 without [1, 8, 15, 20] and to 0.83
+without [7, 11, 18, 26], and stays at 426 to 586 without any other group;
+[1, 8, 15, 20] merged alone reads 0.83. The event needs both merges, head 8's
+group and the group of heads 11 and 18, as round 28's follow-up found for the
+pair 8-18 with head 11 as the counterweight. Round 29's repair at the four-head
+level fails three times: forbidding the group holding head 8 re-matches it with
+other heads ([1, 8, 14, 24], then [1, 3, 8, 28], then [1, 8, 9, 17]) and the
+check reads 491, 422 and 386. The fallback, layer 1 at its matched pairs (the
+groups that gave 16.78 at half the heads) with every other layer quartered,
+reads 360 on the check and the full conversion gives 5,344 (ZS-7 0.413): once
+layer 0 is quartered, layer 1's safe pairs fire too. Every reading above the
+threshold went with a collapse and every reading below with a sound model. A
+sweep of how many early layers must stay at pairs (quad_fallback_dev.py) runs
+next.

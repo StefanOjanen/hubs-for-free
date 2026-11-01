@@ -198,7 +198,12 @@ one-window check at 576 and 543 although heads 8 and 18 are apart; averaging
 4,066 with the check at 0.93. The check's first true positives outside its
 development population. Repair at the four-head level: quad_repair_dev.py
 (forbid the flagged group, re-match, re-fuse; fallback: layer 1 at its matched
-pairs). Mistral-7B-v0.1's quad run and the repair ran on 2026-11-01.
+pairs). Mistral-7B-v0.1 at a quarter: 146 matched, 176 neighbouring, 813
+averaging, check at most 2.1 (no hazard); at half 24.6. The repair on
+Llama-2-7B failed: the event needs both head 8's group and the 11-and-18 group
+merged; forbidding and re-matching three times fails; layer 1 at pairs with
+layer 0 quartered still fires (check 360, 5,344). quad_fallback_dev.py sweeps
+how many early layers must stay at pairs.
 33 (alignment_study/PREREGISTRATION33.md, frozen at 9d73960; rule
 PREREGISTRATION33_rule.md; instruments uptrain_round.py --registered --model,
 eval_uptrain33.py, uptrain_rule.py; development uptrain_dev/llama-160m_5M.json:
