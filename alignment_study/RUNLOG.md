@@ -1073,7 +1073,9 @@ saved variants and the two missing ones are queued at the end of the gap chain.
 Uptraining at 5M tokens, development (labelled; uptrain_round.py --dev on
 Llama-160m, learning rate 1e-4, warmup 10 steps, 16 sequences of 1,024 tokens a
 step, 305 steps per arm; uptrain_dev/llama-160m_5M.json, uptrain_dev_5M.log; ran
-19:54 to 21:50 UTC on AC power, no pauses or kills). Arms: the unconverted model
+19:54 to 21:50 UTC; the battery guard paused it from 20:27 to 20:38 UTC while the
+laptop was off AC power at 20 percent, a stop and continue that leaves the
+computation unchanged; no kills). Arms: the unconverted model
 trained the same way, averaging, the fusion rebalanced, round 32's fusion
 rebalanced (all at half the key-value heads, 12 to 6); WikiText-2 perplexity on
 40 windows of 1,024 tokens. Final perplexity base 23.76 (from 23.18), averaging 51.61 (from 727.2), fusion rebalanced 30.78 (from 50.63), round 32 fusion rebalanced 30.36 (from 47.35); zero-shot averages after training base 0.410, mean 0.359, fuse 0.383, fuse_sens 0.370; the fusion's lead over averaging in log perplexity 2.66 at the start and 0.52 at the end, retained 0.194; checkpoints at 0, 0.5, 1, 2, 3, 4 and 5M tokens: averaging 727.2, 163.1, 92.0, 64.4, 55.2, 53.5, 51.6; fusion 50.6, 33.6, 32.4, 31.2, 30.8, 30.9, 30.8; round 32 fusion 47.4, 33.1, 31.9, 30.9, 30.5, 30.5, 30.4. Averaging catches up
