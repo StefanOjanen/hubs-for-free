@@ -1376,3 +1376,18 @@ larger damage, as in the matched-pairs result on that model; where there is
 none, the correlations are noise. The residual is the fit criterion, not a
 selector; the within-layer test with KL as ground truth (residual_select_dev.py,
 A10b) remains the proper test of selection.
+
+Round 34, development test and freeze (2026-11-01 23:15 to 23:30 UTC).
+quad_check_round.py --dev=JackFram/llama-160m ran its eleven conversions
+(16 calibration documents of 1,024 tokens, 8 evaluation windows) in 52 s
+under the three guards: unconverted 67.80; half the heads 114.12; the nine
+members 213.89 to 246.45 (both early layers unmerged 218.08), the neighbouring
+quartering 309.08; the one-window check 1.00 to 1.08 everywhere (no hazard in
+this model, as expected). The evaluator ran end to end (quad_check_dev.log,
+quad_check_dev/llama-160m.json, quad_check_dev_results.json; R1 and R2 read
+FAIL only because no scored model is present) and now writes development
+output beside its directory instead of the registered results path.
+PREREGISTRATION34.md frozen at c3cc48c (permalink
+https://github.com/StefanOjanen/hubs-for-free/blob/c3cc48c/alignment_study/PREREGISTRATION34.md),
+pushed before execution; the confirmatory run (run_pr34.sh with that permalink,
+about 11 GPU hours) is queued after round 33's pipeline.

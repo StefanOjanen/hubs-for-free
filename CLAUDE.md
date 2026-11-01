@@ -219,9 +219,9 @@ the quad run, its repair, chain 2 (calibration sizes, Qwen pairs, residual
 against damage, whole-test values, the needle test) and a Llama-2-7B export
 and benchmark (private/guards/run_pr33.sh). The author approved the run and
 the deletion of the OPT-6.7B and Phi-3-mini caches on 2026-11-01; results
-pending (uptrain/, uptrain33_results.json). 34 (draft, not frozen; instruments
-quad_check_round.py and eval_quad_check.py committed; preregistration text in
-alignment_study/PREREGISTRATION34.md, untracked until the Llama-160m test, quad_check_dev/, passes):
+pending (uptrain/, uptrain33_results.json). 34 (alignment_study/PREREGISTRATION34.md, frozen at c3cc48c after the Llama-160m
+development test, quad_check_dev/; instruments quad_check_round.py and
+eval_quad_check.py; results pending in quad_check/, quad_check_results.json):
 round 29's design at a quarter of the heads, layers 0 and 1 each unmerged, at
 pairs or at groups of four with the rest quartered, damage relative to the
 both-unmerged member; scored OpenLLaMA-3B, Mistral-7B-v0.1, Mistral-7B-Instruct,
