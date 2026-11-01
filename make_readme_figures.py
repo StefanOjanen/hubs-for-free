@@ -1402,4 +1402,47 @@ if glob.glob(SR):
              " values in the second moment of the attention-mixed inputs; pooled ratio " + f"{SRES['D3']['pooled_ratio']:.2f}.", fontsize=10, color=INK2, va="top")
     fig.savefig(OUT + "fig32_attention_metrics.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
+# ============ Figure 33: a quarter of the heads at 7B, the hazard and the check-chosen ratio (exploratory) ============
+QL, QM, QF = "alignment_study/quad_dev/Llama-2-7b-hf.json", "alignment_study/quad_dev/Mistral-7B-v0.1.json", "alignment_study/quad_dev/Llama-2-7b-hf_fallback.json"
+if glob.glob(QL) and glob.glob(QM) and glob.glob(QF):
+    from matplotlib.ticker import FixedLocator, FixedFormatter, NullLocator
+    plt.rcParams["axes.grid"] = False
+    L2, MI, FB = json.load(open(QL)), json.load(open(QM)), json.load(open(QF))
+    R28 = json.load(open("alignment_study/llama2/Llama-2-7b-hf.json"))["evals"]["fuse/paired"]          # half the heads, round 28
+    G29 = json.load(open("alignment_study/guard_dev/Llama-2-7b-hf.json"))                                 # its one-window check, round 29's development
+    HALF = {"ppl_2048": R28["ppl_2048"], "zs7": R28["zs7"], "check_max_ratio": max(c / b for c, b in zip(G29["reference_check"], G29["base_check"]))}
+    fig = plt.figure(figsize=(14.5, 6.2))
+    ax = fig.add_axes([0.2, 0.13, 0.46, 0.66]); bx = fig.add_axes([0.74, 0.13, 0.24, 0.66])
+    rows = [("Llama-2-7B, unconverted", L2["evals"]["base"]), ("Llama-2-7B, half (pairs)", HALF),
+            ("Llama-2-7B, quarter (residual's groups)", L2["evals"]["fuse/quad"]), ("Llama-2-7B, quarter (neighbouring)", L2["evals"]["fuse/neighbour"]),
+            ("Llama-2-7B, quarter (averaging)", L2["evals"]["mean/neighbour"]), ("Llama-2-7B, layer 0 at half, rest quarter", list(FB["evals"].values())[0]),
+            ("Mistral-7B-v0.1, unconverted", MI["evals"]["base"]), ("Mistral-7B-v0.1, half (pairs)", MI["evals"]["fuse/paired"]),
+            ("Mistral-7B-v0.1, quarter (residual's groups)", MI["evals"]["fuse/quad"]), ("Mistral-7B-v0.1, quarter (neighbouring)", MI["evals"]["fuse/neighbour"]),
+            ("Mistral-7B-v0.1, quarter (averaging)", MI["evals"]["mean/neighbour"])]
+    ys = list(range(len(rows)))[::-1]; ys = [y + (0.7 if i < 6 else 0) for i, y in enumerate(ys)]
+    for y, (lab, v) in zip(ys, rows):
+        flagged = v["check_max_ratio"] > 2.35
+        ax.scatter([v["ppl_2048"]], [y], s=85, color=S2 if flagged else S1, marker="X" if flagged else "o", edgecolors=SURF, linewidths=1.2, zorder=3)
+        ax.text(v["ppl_2048"] * 1.25, y, f"check {v['check_max_ratio']:.2f}" if v["check_max_ratio"] < 10 else f"check {v['check_max_ratio']:.0f}", fontsize=9, color=INK2, va="center")
+    ax.set_yticks(ys); ax.set_yticklabels([r[0] for r in rows], fontsize=9.5)
+    ax.set_xscale("log"); TK = [5, 10, 30, 100, 300, 1000, 3000, 10000]
+    ax.xaxis.set_major_locator(FixedLocator(TK)); ax.xaxis.set_major_formatter(FixedFormatter([f"{t:,}" for t in TK])); ax.xaxis.set_minor_locator(NullLocator())
+    ax.set_xlim(4, 60000); ax.set_ylim(-0.7, max(ys) + 0.8)
+    ax.set_xlabel("WikiText-2 perplexity, whole test set at 2,048 tokens (log)", fontsize=10)
+    ax.scatter([], [], s=70, color=S1, marker="o", label="one-window check under 2.35"); ax.scatter([], [], s=70, color=S2, marker="X", label="check above 2.35 (flagged)")
+    ax.legend(loc="upper right", fontsize=9.5, handletextpad=0.3)
+    ax.set_title("Two 7B models at half and a quarter of their key-value heads, no training", loc="left", fontsize=12, color=INK, pad=8)
+    ks = [x["layers_at_pairs"] for x in FB["sweep"]]; mr = [x["max_ratio"] for x in FB["sweep"]]
+    bx.plot(ks, mr, color=S1, lw=2, marker="o", markersize=7, markeredgecolor=SURF, markeredgewidth=1, zorder=3)
+    bx.axhline(2.35, color=S2, lw=1.2, ls=(0, (4, 3)), zorder=1); bx.text(6.0, 2.35 * 1.4, "threshold 2.35", color=S2, fontsize=9, ha="right")
+    bx.set_yscale("log"); bx.yaxis.set_major_locator(FixedLocator([1, 3, 10, 30, 100, 300, 1000])); bx.yaxis.set_major_formatter(FixedFormatter(["1", "3", "10", "30", "100", "300", "1,000"])); bx.yaxis.set_minor_locator(NullLocator())
+    bx.set_xticks(ks); bx.set_xlabel("early layers kept at half (the rest at a quarter)", fontsize=10); bx.set_ylabel("one-window check, largest ratio (log)", fontsize=10)
+    bx.set_title("Llama-2-7B: the check against layers at half", loc="left", fontsize=12, color=INK, pad=8)
+    for a_ in (ax, bx):
+        a_.tick_params(length=0); a_.grid(axis="x" if a_ is ax else "y", color=GRID, lw=0.8)
+        for sp in ("left", "bottom"): a_.spines[sp].set_color(GRID)
+    fig.text(0.012, 0.985, "A quarter of the heads at 7B: the hazard, the check, and the ratio the check chooses", fontsize=15, color=INK, va="top")
+    fig.text(0.012, 0.925, "Exploratory (quad_dev.py, quad_repair_dev.py, quad_fallback_dev.py). Llama-2-7B collapses at a quarter under any grouping tried, flagged by the check; with its first layer kept at half the model recovers.", fontsize=10, color=INK2, va="top")
+    fig.savefig(OUT + "fig33_quarter_heads.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
 print("FIGURES_DONE", sorted(glob.glob(OUT + "*")))

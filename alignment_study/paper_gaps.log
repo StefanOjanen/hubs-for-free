@@ -1,0 +1,141 @@
+paper gaps starting Sat Oct 31 21:50:04 UTC 2026
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:02<00:00,  2.97s/it]Writing model shards: 100%|██████████| 1/1 [00:02<00:00,  2.97s/it]
+{
+ "model": "Qwen/Qwen2.5-0.5B",
+ "balanced": true,
+ "pair_costs_finite": true,
+ "tool_pairs_equal_pairs_here": true,
+ "kv_heads": [
+  2,
+  1
+ ],
+ "k_proj_bias_kept": true,
+ "max_abs_logit_diff_vs_simulated": 0.0,
+ "logit_scale": 22.474140167236328
+}
+KVFUSE_BIAS_CHECK_DONE
+[     4s] TinyLlama/TinyLlama_v1.1: 22 layers, 32 query heads, 4 KV heads -> 2
+[   149s] second moments from 262144 calibration tokens
+[   152s] matched groups chosen
+[   207s] fused and rebalanced
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:02<00:00,  2.25s/it]Writing model shards: 100%|██████████| 1/1 [00:02<00:00,  2.25s/it]
+[   210s] saved /private/tmp/claude-501/-Users-stefanojanen-Documents-The-Emergent-Coordinator-Hypothesis/29d2a60f-5423-4601-9108-e586ff2b2a8c/scratchpad/tinyllama-kv2 (2 KV heads per layer)
+original {'kv_heads': 4, 'cache_bytes_at_prefill_plus_decode': 49020928, 'prefill_seconds': 1.004882749999524, 'decode_tokens_per_second': 77.95794242010565, 'runs': [{'prefill_seconds': 1.0056916670000646, 'decode_seconds': 1.6551221669942606}, {'prefill_seconds': 1.0015937499993015, 'decode_seconds': 1.6254297909908928}, {'prefill_seconds': 1.004882749999524, 'decode_seconds': 1.6419109589915024}]}
+exported {'kv_heads': 2, 'cache_bytes_at_prefill_plus_decode': 24510464, 'prefill_seconds': 0.992288292007288, 'decode_tokens_per_second': 84.27159783175546, 'runs': [{'prefill_seconds': 0.9852607500070008, 'decode_seconds': 1.515818624990061}, {'prefill_seconds': 0.992288292007288, 'decode_seconds': 1.518898458001786}, {'prefill_seconds': 0.9942027500073891, 'decode_seconds': 1.519564582995372}]}
+cache ratio 0.500, decode speedup 1.081
+KVFUSE_BENCH_DONE
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.24s/it]Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.24s/it]
+{
+ "model": "JackFram/llama-160m",
+ "balanced": true,
+ "max_cost_difference_vs_round28": 0.0,
+ "layers_with_identical_pairs": [
+  12,
+  12
+ ],
+ "tool_pairs_equal_round28_pairs": true,
+ "kv_heads": [
+  12,
+  6
+ ],
+ "max_abs_logit_diff_vs_simulated": 0.0003535747528076172,
+ "logit_scale": 22.682470321655273
+}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.30it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.30it/s]
+{
+ "model": "JackFram/llama-160m",
+ "max_pair_cost_difference": 2.5326962749261384e-16,
+ "quads_layer0": [
+  [
+   0,
+   2,
+   3,
+   4
+  ],
+  [
+   1,
+   6,
+   7,
+   11
+  ],
+  [
+   5,
+   8,
+   9,
+   10
+  ]
+ ],
+ "base_ppl": 67.80888081811723,
+ "matched_quads_ppl": 265.57150687278136,
+ "neighbour_quads_ppl": 339.67260824173593,
+ "tool_groups_equal_quads_here": true,
+ "kv_heads": [
+  12,
+  3
+ ],
+ "max_abs_logit_diff_vs_simulated": 0.0001659393310546875,
+ "logit_scale": 23.996116638183594
+}
+KVFUSE_QUAD_CHECK_DONE
+facebook/opt-1.3b: kind opt layers 24 heads 32 head dim 64 rotary dims 0 (4s)
+  second moments from 8192 tokens; groups of one reproduce the model: max logit difference 1.07e-03 (154s) (163s)
+  random basis leaves the model unchanged to 4.94e-04; fused in it, the converted model differs from the trained-basis fusion by 2.90e-03 (476s)
+  base: cached (477s)
+  g2/fuse_q/sim_align: fused in 152s (629s)
+  g2/fuse_q/sim_align: ppl 29.63 avg nan (763s)
+  g2/fuse_o/sim_align: fused in 149s (912s)
+  g2/fuse_o/sim_align: ppl 28.84 avg nan (1044s)
+  g4/fuse_q/sim_align: fused in 153s (1198s)
+  g4/fuse_q/sim_align: ppl 92.89 avg nan (1330s)
+  g4/fuse_o/sim_align: fused in 152s (1482s)
+  g4/fuse_o/sim_align: ppl 105.27 avg nan (1614s)
+EleutherAI/pythia-1.4b: kind neox layers 24 heads 16 head dim 128 rotary dims 32 (1757s)
+  second moments from 8192 tokens; groups of one reproduce the model: max logit difference 4.17e-03 (204s) (1967s)
+  random basis leaves the model unchanged to 1.53e-03; fused in it, the converted model differs from the trained-basis fusion by 1.22e-02 (2351s)
+  base: cached (2353s)
+  g2/fuse_q/sim_align: fused in 190s (2543s)
+  g2/fuse_q/sim_align: ppl 26.93 avg nan (2684s)
+  g2/fuse_o/sim_align: fused in 189s (2873s)
+  g2/fuse_o/sim_align: ppl 26.97 avg nan (3013s)
+  g4/fuse_q/sim_align: fused in 186s (3199s)
+  g4/fuse_q/sim_align: ppl 79.73 avg nan (3339s)
+  g4/fuse_o/sim_align: fused in 185s (3524s)
+  g4/fuse_o/sim_align: ppl 101.12 avg nan (3665s)
+gpt2-large: kind gpt2 layers 36 heads 20 head dim 64 rotary dims 0 (3814s)
+  second moments from 8192 tokens; groups of one reproduce the model: max logit difference 8.77e-05 (47s) (3865s)
+  random basis leaves the model unchanged to 9.54e-05; fused in it, the converted model differs from the trained-basis fusion by 7.44e-05 (3960s)
+  base: cached (3961s)
+  g2/fuse_q/sim_align: fused in 46s (4006s)
+  g2/fuse_q/sim_align: ppl 29.84 avg nan (4092s)
+  g2/fuse_o/sim_align: fused in 43s (4134s)
+  g2/fuse_o/sim_align: ppl 31.82 avg nan (4216s)
+  g4/fuse_q/sim_align: fused in 44s (4260s)
+  g4/fuse_q/sim_align: ppl 154.72 avg nan (4342s)
+  g4/fuse_o/sim_align: fused in 44s (4386s)
+  g4/fuse_o/sim_align: ppl 134.22 avg nan (4468s)
+allenai/OLMo-1B-hf: kind llama layers 16 heads 16 head dim 128 rotary dims 128 (4564s)
+  second moments from 8192 tokens; groups of one reproduce the model: max logit difference 1.34e-04 (252s) (4821s)
+  random basis leaves the model unchanged to 1.46e-04; fused in it, the converted model differs from the trained-basis fusion by 1.30e-04 (5281s)
+  base: cached (5282s)
+  g2/fuse_q/sim_align: fused in 227s (5510s)
+  g2/fuse_q/sim_align: ppl 140.56 avg nan (5633s)
+  g2/fuse_o/sim_align: fused in 228s (5861s)
+  g2/fuse_o/sim_align: ppl 106.00 avg nan (5983s)
+  g4/fuse_q/sim_align: fused in 206s (6189s)
+  g4/fuse_q/sim_align: ppl 911.33 avg nan (6311s)
+  g4/fuse_o/sim_align: fused in 206s (6518s)
+  g4/fuse_o/sim_align: ppl 648.40 avg nan (6640s)
+microsoft/phi-2: kind phi layers 32 heads 32 head dim 80 rotary dims 32 (6796s)
+  second moments from 8192 tokens; groups of one reproduce the model: max logit difference 1.83e-02 (683s) (7504s)
+  random basis leaves the model unchanged to 8.26e-03; fused in it, the converted model differs from the trained-basis fusion by 6.17e-02 (8771s)
+  base: cached (8773s)
+  g2/fuse_q/sim_align: fused in 603s (9375s)
+  g2/fuse_q/sim_align: ppl 19.29 avg nan (9718s)
+  g2/fuse_o/sim_align: fused in 607s (10325s)
+  g2/fuse_o/sim_align: ppl 23.00 avg nan (10656s)
+  g4/fuse_q/sim_align: fused in 579s (11235s)
+  g4/fuse_q/sim_align: ppl 63.23 avg nan (11562s)
+  g4/fuse_o/sim_align: fused in 573s (12135s)
+  g4/fuse_o/sim_align: ppl 88.66 avg nan (12460s)
+FUSE_ABLATION_DONE (12781s)
+PAPER_GAPS_DONE

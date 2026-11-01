@@ -583,6 +583,26 @@ Each instrument below exists because a finding above required it.
 <p align="center"><img src="figures/readme/fig32_attention_metrics.png" alt="One panel: for eight models converted to half their key-value heads, converted perplexity relative to the unconverted model with every token counted alike and with the metrics the attention computation implies, plus round 31's received-attention fit as hollow diamonds on its five models; the new metrics are lower for SmolLM2-1.7B, Llama-3.2-1B, Mistral-7B-v0.1, OLMo-1B, h2o-danube-1.8b and Mistral-7B-Instruct and higher for Llama-2-7B and Qwen2.5-7B" width="880"></p>
 <p align="center"><em>The attention-derived metrics help every model they were not developed on and hurt Llama-2-7B; two of four registered predictions held.</em></p>
 
+- **A quarter of the heads at 7B, and the check doing its job.** Converting
+  Llama-2-7B from 32 to 8 key-value heads without training collapses the model
+  whichever way the heads are grouped, 14,918 with the residual's groups of four
+  and 18,953 with neighbouring ones, and the one-window check of the hazard
+  above reads 576 and 543 against its threshold of 2.35, its first severe cases
+  outside the model it was set on. Averaging fails the ordinary way (4,066,
+  check 0.93). The event is the same interaction in a new form: it needs both
+  the group holding head 8 and the group holding heads 11 and 18 merged, and
+  forbidding one group and re-matching only moves head 8 into another group
+  that fires. What matters is the first layer. With layer 0 kept at its pairs
+  and every other layer quartered, 25.8 percent of the cache instead of 25, the
+  check reads 0.98 and the model gives 105.5 and ZS-7 0.408, where
+  Mistral-7B-v0.1, which has no such hazard, gives 146 at a full quarter and
+  24.6 at half. Exploratory and not preregistered: the check chose the ratio,
+  and the registered question still open is whether it does so on models it
+  has not seen.
+
+<p align="center"><img src="figures/readme/fig33_quarter_heads.png" alt="Two panels. Left: WikiText-2 perplexity on a log axis for Llama-2-7B and Mistral-7B-v0.1 unconverted, at half the key-value heads and at a quarter with three groupings, each point marked by whether the one-window check exceeds 2.35; Llama-2-7B's two fused quarter conversions are flagged and sit near 15,000 and 19,000, averaging is unflagged at 4,066, and the conversion with layer 0 at half and the rest at a quarter is unflagged at 105; Mistral's quarter conversions are unflagged at 146 to 813. Right: the check on Llama-2-7B against the number of early layers kept at half, 576 at zero and 0.98 from one onward, with the threshold line" width="880"></p>
+<p align="center"><em>The check flags the quarter conversions that collapse, and keeping the first layer at half, which it also chooses, recovers the model.</em></p>
+
 - **Cross-layer KV compression, against the same nulls.** Two published
   methods compress the cache across layers on the premise that adjacent
   layers' keys and values are similar. MiniCache (NeurIPS 2024) merges them

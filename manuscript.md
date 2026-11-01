@@ -1423,6 +1423,28 @@ S_bar removes most of the 3-bit cost on Llama-160m and TinyLlama, a replication
 of Kim et al., and the key and query weights add nothing. The plain fit remains
 the conversion command's default until the Llama-2-7B failure has a reason.
 
+### 6.13 A quarter of the heads at 7B (exploratory, not preregistered)
+
+Groups of four, chosen by matching the residual's pairs and then the pairs by
+the four-head residual, convert Mistral-7B-v0.1 to a quarter of its key-value
+heads at whole-test perplexity 146 (neighbouring groups 176, averaging 813;
+unconverted 5.25; half the heads 24.6) and Llama-2-7B to 14,918 (neighbouring
+18,953, averaging 4,066; unconverted 5.47). Round 29's one-window check reads
+576 and 543 on the two Llama-2-7B collapses and 0.93 on the averaged model,
+which has no spike, and at most 2.1 on Mistral: its first severe cases outside
+the population its threshold was set on, all true. The event is Section 6.8's
+interaction in another form: with layers 0 to 5 converted, leaving either the
+group holding head 8 or the group holding heads 11 and 18 unmerged brings the
+check to 0.7 or 0.8, and either merged alone leaves it there. The repair of
+round 29, forbidding the flagged group and re-matching, fails three times, since
+head 8 lands in another group that fires, and layer 1 at its matched pairs with
+layer 0 quartered still reads 360 and gives 5,344. What decides is layer 0: with
+it at its pairs and every other layer quartered (cache fraction 0.258), the
+check reads 0.98 and the model gives 105.5 with ZS-7 0.408 (quad_dev/,
+quad_repair_dev.py, quad_fallback_dev.py). On this model the check, not the
+residual, sets the first layer's ratio; whether it does so on models it has not
+seen is a registered question still to be asked.
+
 ## 7. Limitations
 
 Results cover seventeen models up to 8B parameters in ten families, three
@@ -1587,6 +1609,7 @@ against the norm of what each head writes.
 | rebalancing, Q1 to Q3 and T1 to T3 | alignment_study/balance_results.json, balance/, balance_dev/ |
 | received-attention metric, A1 to A3; Qwen2.5-7B corrected and the gain-cost pattern (post hoc) | alignment_study/attnw_results.json, attnw/, attnw_fuse_dev/, attnw_correction/ |
 | attention-derived metrics, gate and D1 to D4; bootstrap intervals over models | alignment_study/attnw2_results.json, attnw2/, attnw_mix_dev/, attnw2_check/, paper_stats.json |
+| a quarter of the heads at 7B, the hazard, the repair and the check-chosen ratio (exploratory) | alignment_study/quad_dev/, quad_dev.log, quad_repair.log, quad_fallback.log |
 | scorer with the vocabulary projected in chunks | alignment_study/zeroshot_head_chunk_check.json |
 | conversion command and checkpoint export | alignment_study/llama2_dev/kvfuse_check_llama-160m.json, gqa_export_check_llama-160m.json |
 | shared energy against merge damage (post hoc) | alignment_study/posthoc/sharedE_vs_merge_kl.json |
