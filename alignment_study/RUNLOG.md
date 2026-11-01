@@ -1299,7 +1299,7 @@ MB; watchdog.log), as CLAUDE.md prescribes before a long chain; the 15 percent
 floor is unchanged.
 
 Whole-test perplexity at 2,048 tokens for the 7B entries, development
-(labelled; fulltest_dev.py, 2026-11-01 18:51 UTC to 2026-11-02 00:14 UTC in
+(labelled; fulltest_dev.py, 2026-11-01 18:46 to 22:08 UTC in
 chain 2 under the three guards, one battery pause of 8 minutes, the run under
 paging throughout; fulltest_dev/Mistral-7B-v0.1.json,
 Mistral-7B-Instruct-v0.2.json, Qwen2.5-7B.json; plan_chain2.log). The plain
