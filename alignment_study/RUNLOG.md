@@ -1164,3 +1164,19 @@ read 0.93 on the one that fails the other way. Run times: moments 855 s, groups
 435 s, each conversion 644 to 678 s, each evaluation about 3,050 s; restore
 check 5.027 on 8 windows. The repair at the four-head level (quad_repair_dev.py)
 is queued after Mistral-7B-v0.1's arms.
+
+Mistral-7B-v0.1 at half and a quarter of the key-value heads, development
+(labelled; quad_dev.py, 06:59 to 13:35 UTC under the three guards; paused by the
+battery guard from 11:44 to 12:59 UTC while the laptop was off AC power, a stop
+and continue; quad_dev/Mistral-7B-v0.1.json, quad_dev.log; the protocol of the
+Llama-2-7B entry). Unconverted 5.254, ZS-7 0.681, check 1.00. Half the heads
+(8 to 4) with pairs by the residual: 24.581, ZS-7 0.481, check 1.02 (round 32's
+8-window value 28.68). A quarter (8 to 2) with the two-level matching (summed
+residual 10.63 against 11.25 neighbouring): 146.4, ZS-7 0.387, check 1.11;
+neighbouring groups of four 176.1, ZS-7 0.385, check 2.12; averaging 812.9,
+ZS-7 0.355, check 1.45. No collapse and no spike on this model: the fusion at a
+quarter loses 28 times the unconverted perplexity where averaging loses 155,
+and the hazard that collapses Llama-2-7B at the same ratio does not appear.
+Run times: moments 902 s, groups 100 s, conversions 599 to 630 s, evaluations
+3,180 to 3,210 s (the last one 7,974 s including the pause); restore check 4.859
+on 8 windows.
