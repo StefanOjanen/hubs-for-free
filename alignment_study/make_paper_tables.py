@@ -123,7 +123,7 @@ if os.path.exists("alignment_study/xlayer_results.json"):
     table(["Model", "keys", "values", "residual stream", "normed input", "keys aligned", "keys null", "values aligned", "values null"], rows)
 
 # ---- Table 9: the single-weighting ablation (development), beside round 26's rows ----
-AB = sorted(glob.glob("alignment_study/fuse_ablation_dev/*.json"))
+AB = sorted(f for f in glob.glob("alignment_study/fuse_ablation_dev/*.json") if not f.endswith("summary.json"))
 if AB:
     w("## Table 9. The fit's weightings, one at a time (round 26's rows and the development ablation)\n")
     w("WikiText-2 perplexity on round 24's simulated-merge groups; the queries-only and outputs-only columns are a labelled development run (perplexity only), the others round 26.\n")

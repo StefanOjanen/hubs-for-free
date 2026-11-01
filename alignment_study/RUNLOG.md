@@ -1123,7 +1123,7 @@ Pythia-1.4B 29.95 / 26.93 / 26.97 / 27.30, GPT-2 large 31.48 / 29.84 / 31.82 /
 79.73 / 101.12 / 71.21, GPT-2 large 177.95 / 154.72 / 134.22 / 116.79, OLMo-1B
 989.59 / 911.33 / 648.40 / 601.45, Phi-2 83.56 / 63.23 / 88.66 / 65.73. The query
 weighting alone is below the unweighted fit in 9 of 10 cells, the output
-weighting alone in 7 of 10, and both together are lowest in 5 of 10: by a wide
+weighting alone in 8 of 10, and both together are lowest in 5 of 10: by a wide
 margin where the conversion is hard (OLMo-1B at both sizes, Pythia-1.4B and
 GPT-2 large at g = 4) and within 0.8 to 3.8 percent of the better single
 weighting where it is easy (OPT-1.3B at both sizes, Pythia-1.4B and GPT-2 large
