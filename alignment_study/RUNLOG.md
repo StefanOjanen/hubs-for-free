@@ -1334,3 +1334,10 @@ synthetic layer; not yet run on a model): those key-value heads stay unmerged
 and the rest are matched by the residual, against the same count protected at
 random and by the fusion's cheapest-pairing cost; per arm the 15 instances,
 8-window perplexity and the cache fraction.
+
+Queue, 2026-11-01 23:05 UTC (operational). On the author's decision the
+retrieval-protection development run (A11, retrieval_protect_dev.py) is
+inserted before round 33: after the A10 rerun come round 34's development test
+and the Llama-2-7B export and benchmark (run_pr33a.sh), then A11 (run_a11.sh),
+then round 33 and its evaluator (run_pr33b.sh); one GPU job at a time under the
+three guards.

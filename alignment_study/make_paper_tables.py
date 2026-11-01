@@ -220,6 +220,15 @@ if ND:
         for arm, v in r["arms"].items():
             rows.append([m, arm, f"{v['hits']} of {v['of']}"] + [str(v["by_depth"][str(d)]) for d in r["depths"]])
     table(["Model", "arm", "retrieved"] + [f"depth {d}%" for d in json.load(open(ND[0]))["depths"]], rows)
+RP = sorted(glob.glob("alignment_study/retrieval_protect_dev/*.json"))
+if RP:
+    w("## Table 14b. Retrieval protection: the retrieval heads' key-value heads kept unmerged, against random and residual-chosen protection (development)\n")
+    rows = []
+    for fp in RP:
+        r = json.load(open(fp)); m = short(os.path.basename(fp)[:-5])
+        for arm, v in r["arms"].items():
+            rows.append([m, arm, v["n_protected"], f"{v['cache_fraction']:.3f}", f(v["ppl_8_windows"]), f"{v['needle']['hits']} of {v['needle']['of']}"] + [str(v["needle"]["by_depth"][str(d)]) for d in r["needle"]["depths"]])
+    table(["Model", "arm", "protected", "cache fraction", "ppl, 8 windows", "retrieved"] + [f"depth {d}%" for d in json.load(open(RP[0]))["needle"]["depths"]], rows)
 KB = sorted(glob.glob("alignment_study/kvfuse_bench/*.json"))
 if KB:
     w("## Table 15. The exported checkpoint's cache and decode speed (one laptop, MPS)\n")
