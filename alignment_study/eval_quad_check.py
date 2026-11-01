@@ -9,7 +9,7 @@ import os
 import sys
 
 DIR = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--dir=")), "alignment_study/quad_check")
-SCORED = ["Mistral-7B-v0.1", "Mistral-7B-Instruct-v0.2", "Qwen2.5-7B"]
+SCORED = ["open_llama_3b_v2", "Mistral-7B-v0.1", "Mistral-7B-Instruct-v0.2", "Qwen2.5-7B"]
 TAU, SEVERE, BENIGN = 2.35, 5.0, 2.0
 FIXED = ("pairs", "quads")                               # the fixed rule: layer 0 at pairs, every other layer at the target ratio
 HEADS = {"none": 1.0, "pairs": 0.5, "quads": 0.25}      # key-value heads kept in a layer, as a fraction
@@ -23,7 +23,7 @@ def analyse(r):
         m["severe"], m["benign"] = m["relative"] >= SEVERE, m["relative"] <= BENIGN
         m["cache"] = HEADS[m["layer0"]] + HEADS[m["layer1"]]                # the two early layers' share, in layer-equivalents
     unflagged = [m for m in mem if not m["flag"]]
-    chosen = min(unflagged, key=lambda m: (m["cache"], m["ppl"])) if unflagged else None
+    chosen = min(unflagged, key=lambda m: (m["cache"], -HEADS[m["layer0"]])) if unflagged else None     # ties: keep layer 0 larger; never the outcome
     fixed = next(m for m in mem if (m["layer0"], m["layer1"]) == FIXED)
     key = lambda m: (m["layer0"], m["layer1"])
     return {"reference_ppl": ref, "severe": [key(m) for m in mem if m["severe"]], "benign": [key(m) for m in mem if m["benign"]],
@@ -38,7 +38,7 @@ if __name__ == "__main__":
     R = {os.path.basename(f)[:-5]: json.load(open(f)) for f in glob.glob(f"{DIR}/*.json")}
     A = {m: analyse(r) for m, r in R.items()}
     scored = {m: a for m, a in A.items() if m in SCORED}
-    complete = len(scored) == len(SCORED)
+    complete = len(scored) == len(SCORED)                                   # four scored models
     res = {"missing": [m for m in SCORED if m not in R], "per_model": A, "development_model": [m for m in R if m not in SCORED]}
     n_severe, n_benign = sum(len(a["severe"]) for a in scored.values()), sum(len(a["benign"]) for a in scored.values())
     res["R1"] = {"recall_testable": n_severe > 0, "recall_pass": complete and n_severe > 0 and all(not a["severe_unflagged"] for a in scored.values()),

@@ -33,10 +33,11 @@ def arg(name, default=None):
 REGISTERED, DEV_MODEL = arg("registered"), arg("dev")
 if not REGISTERED and not DEV_MODEL:
     sys.exit("refusing to run without --registered=<freeze permalink of alignment_study/PREREGISTRATION34.md>; use --dev=<model>")
-MODELS = [DEV_MODEL] if DEV_MODEL else ["NousResearch/Llama-2-7b-hf", "mistralai/Mistral-7B-v0.1", "mistralai/Mistral-7B-Instruct-v0.2", "Qwen/Qwen2.5-7B"]
+MODELS = [DEV_MODEL] if DEV_MODEL else ["openlm-research/open_llama_3b_v2", "NousResearch/Llama-2-7b-hf", "mistralai/Mistral-7B-v0.1", "mistralai/Mistral-7B-Instruct-v0.2", "Qwen/Qwen2.5-7B"]
 DEVELOPMENT = {"NousResearch/Llama-2-7b-hf"}             # the model the threshold and the fixed rule came from: reported, not scored
 REVISIONS = {"NousResearch/Llama-2-7b-hf": "8efe6c9b93655b934e27bd9981e3ec13e55aee9d", "mistralai/Mistral-7B-v0.1": "27d67f1b5f57dc0953326b2601d68371d40ea8da",
-             "mistralai/Mistral-7B-Instruct-v0.2": "63a8b081895390a26e140280378bc85ec8bce07a", "Qwen/Qwen2.5-7B": "d149729398750b98c0af14eb82c78cfe92750796"}
+             "mistralai/Mistral-7B-Instruct-v0.2": "63a8b081895390a26e140280378bc85ec8bce07a", "Qwen/Qwen2.5-7B": "d149729398750b98c0af14eb82c78cfe92750796",
+             "openlm-research/open_llama_3b_v2": "bce5d60d3b0c68318862270ec4e794d83308d80a"}
 OUT = "alignment_study/quad_check_dev" if DEV_MODEL else "alignment_study/quad_check"
 N_CAL, T_CAL = (int(arg("ncal", 16)), 1024) if DEV_MODEL else (128, 2048)
 N_PPL, CHECK, TAU, BF16_ABOVE = 8, 6, 2.35, 4e9
