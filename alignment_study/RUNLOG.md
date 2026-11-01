@@ -1354,3 +1354,25 @@ below the threshold. The residual does not see retrieval function.
 retrieval_protect_dev.py now runs four arms by default (protect at 0.1 and at
 0.3, random and residual-chosen protection at the 0.1 count), the base arms
 on request, after needle_dev's fused arm took about 27 minutes under paging.
+
+The fusion's residual against round 29's merge damage, the two remaining
+populations, development (labelled; residual_damage_dev.py after the parser
+fix, 22:42 to 23:15 UTC under the three guards, no pauses;
+residual_damage/Qwen2.5-7B.json, Llama-2-7b-hf.json, summary.json;
+residual_damage_rerun.log). Qwen2.5-7B, 10 members (four key-value heads a
+layer, so each layer has two alternatives to its neighbouring reference
+pairs): pooled Spearman with damage, cost increase -0.52, forced pair's cost
+-0.29, check -0.25; the two alternatives in layer 0 cost less than the
+reference by the residual (-0.027 and -0.008) and damage more (2.21 and 1.15
+times), the other eight lie between 0.97 and 1.09. Llama-2-7B's development
+population, 78 members with the six severe ones (6.1 to 8.9 times) all in
+layer 1: cost increase -0.04, forced pair's cost -0.38, one-window check 0.46
+(0.73 within layer 1); the severe members' cost increases are 0.0002 to 0.001
+of the layer's energy and rank 20th to 65th of 78, among the benign ones
+(median 0.0005, largest 0.0042). Read, over the five populations: where there
+is damage to predict, the residual does not predict it, the check does (the
+super-weight event) and, in Qwen's layer 0, the lower residual goes with the
+larger damage, as in the matched-pairs result on that model; where there is
+none, the correlations are noise. The residual is the fit criterion, not a
+selector; the within-layer test with KL as ground truth (residual_select_dev.py,
+A10b) remains the proper test of selection.

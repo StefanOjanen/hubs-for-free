@@ -1,0 +1,5 @@
+A10 rerun starting Sun Nov  1 22:42:30 UTC 2026
+Qwen/Qwen2.5-7B: 10 members; Spearman with damage: matching cost increase -0.515, forced pair's cost -0.285, one-window check -0.253 (1041s)
+NousResearch/Llama-2-7b-hf: 78 members; Spearman with damage: matching cost increase -0.043, forced pair's cost -0.383, one-window check 0.457 (1980s)
+RESIDUAL_DAMAGE_DONE (1980s)
+A10_RERUN_DONE

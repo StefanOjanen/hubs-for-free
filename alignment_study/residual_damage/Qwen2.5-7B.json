@@ -1,0 +1,133 @@
+{
+ "model": "Qwen/Qwen2.5-7B",
+ "source": "alignment_study/guard/Qwen2.5-7B.json",
+ "dev_population": false,
+ "calibration": [
+  128,
+  2048
+ ],
+ "tokens": 262144,
+ "reference_cost": {
+  "0": 0.13942084306671093,
+  "1": 0.08252144363812661,
+  "2": 0.11571730584917517,
+  "3": 0.15708838177179563,
+  "4": 0.10977924878963305
+ },
+ "members": [
+  {
+   "layer": 0,
+   "forced_pair": null,
+   "forced_pair_cost": 0.056284789100463334,
+   "matching_cost": 0.11256957820092667,
+   "reference_cost": 0.13942084306671093,
+   "damage": 2.2072884222944973,
+   "check_max_ratio": 0.9711538461538461,
+   "cost_increase": -0.026851264865784263
+  },
+  {
+   "layer": 0,
+   "forced_pair": null,
+   "forced_pair_cost": 0.06550594117404734,
+   "matching_cost": 0.1310118823480947,
+   "reference_cost": 0.13942084306671093,
+   "damage": 1.1529769192273074,
+   "check_max_ratio": 0.9615384615384616,
+   "cost_increase": -0.008408960718616243
+  },
+  {
+   "layer": 1,
+   "forced_pair": null,
+   "forced_pair_cost": 0.045626606722740846,
+   "matching_cost": 0.09125321344548169,
+   "reference_cost": 0.08252144363812661,
+   "damage": 1.0647054867211512,
+   "check_max_ratio": 0.9824561403508771,
+   "cost_increase": 0.008731769807355086
+  },
+  {
+   "layer": 1,
+   "forced_pair": null,
+   "forced_pair_cost": 0.04418725851585394,
+   "matching_cost": 0.08837451703170789,
+   "reference_cost": 0.08252144363812661,
+   "damage": 1.0897817584854892,
+   "check_max_ratio": 0.9711538461538461,
+   "cost_increase": 0.005853073393581279
+  },
+  {
+   "layer": 2,
+   "forced_pair": null,
+   "forced_pair_cost": 0.060070703972691264,
+   "matching_cost": 0.12014140794538253,
+   "reference_cost": 0.11571730584917517,
+   "damage": 0.9830192480038347,
+   "check_max_ratio": 0.9711538461538461,
+   "cost_increase": 0.004424102096207361
+  },
+  {
+   "layer": 2,
+   "forced_pair": null,
+   "forced_pair_cost": 0.06232064889579029,
+   "matching_cost": 0.12464129779158058,
+   "reference_cost": 0.11571730584917517,
+   "damage": 0.9659717599761498,
+   "check_max_ratio": 0.9766081871345029,
+   "cost_increase": 0.00892399194240541
+  },
+  {
+   "layer": 3,
+   "forced_pair": null,
+   "forced_pair_cost": 0.08838377498320377,
+   "matching_cost": 0.17676754996640753,
+   "reference_cost": 0.15708838177179563,
+   "damage": 1.00615883999611,
+   "check_max_ratio": 0.9711538461538461,
+   "cost_increase": 0.019679168194611907
+  },
+  {
+   "layer": 3,
+   "forced_pair": null,
+   "forced_pair_cost": 0.08261473961398878,
+   "matching_cost": 0.16522947922797757,
+   "reference_cost": 0.15708838177179563,
+   "damage": 1.021338832504466,
+   "check_max_ratio": 0.9941520467836257,
+   "cost_increase": 0.00814109745618194
+  },
+  {
+   "layer": 4,
+   "forced_pair": null,
+   "forced_pair_cost": 0.06105114159990187,
+   "matching_cost": 0.12210228319980374,
+   "reference_cost": 0.10977924878963305,
+   "damage": 1.0015305972852755,
+   "check_max_ratio": 0.9711538461538461,
+   "cost_increase": 0.012323034410170686
+  },
+  {
+   "layer": 4,
+   "forced_pair": null,
+   "forced_pair_cost": 0.057328352347946344,
+   "matching_cost": 0.11465670469589269,
+   "reference_cost": 0.10977924878963305,
+   "damage": 1.004196801538593,
+   "check_max_ratio": 0.9711538461538461,
+   "cost_increase": 0.0048774559062596395
+  }
+ ],
+ "spearman": {
+  "cost_increase": -0.5151515151515151,
+  "forced_pair_cost": -0.28484848484848485,
+  "one_window_check": -0.2526318345396,
+  "members": 10,
+  "per_layer_cost_increase": {
+   "0": NaN,
+   "1": NaN,
+   "2": NaN,
+   "3": NaN,
+   "4": NaN
+  }
+ },
+ "seconds": 1041.5
+}
