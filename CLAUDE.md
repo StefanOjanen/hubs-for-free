@@ -198,7 +198,19 @@ one-window check at 576 and 543 although heads 8 and 18 are apart; averaging
 4,066 with the check at 0.93. The check's first true positives outside its
 development population. Repair at the four-head level: quad_repair_dev.py
 (forbid the flagged group, re-match, re-fuse; fallback: layer 1 at its matched
-pairs). Mistral-7B-v0.1's quad run and the repair ran on 2026-11-01. Watchdog lesson
+pairs). Mistral-7B-v0.1's quad run and the repair ran on 2026-11-01.
+33 (alignment_study/PREREGISTRATION33.md, frozen at 9d73960; rule
+PREREGISTRATION33_rule.md; instruments uptrain_round.py --registered --model,
+eval_uptrain33.py, uptrain_rule.py; development uptrain_dev/llama-160m_5M.json:
+averaging 51.6, fusion 30.8, round 32 fusion 30.4, trained unconverted 23.8 at
+5M tokens, F = 0.1): uptraining at 5M tokens on OLMo-1B and h2o-danube-1.8b from
+averaging, the rebalanced fusion and the rebalanced round 32 fusion, learning
+rate 2e-5; U1 to U4; about 20 GPU hours, queued for 2026-11-01 to 02 behind
+the quad run, its repair, chain 2 (calibration sizes, Qwen pairs, residual
+against damage, whole-test values, the needle test) and a Llama-2-7B export
+and benchmark (private/guards/run_pr33.sh). The author approved the run and
+the deletion of the OPT-6.7B and Phi-3-mini caches on 2026-11-01; results
+pending (uptrain/, uptrain33_results.json). Watchdog lesson
 (2026-10-31): its swap baseline is taken at start and goes stale as swap drifts;
 a 4,000 MB growth limit killed a healthy 7B metrics job at 29 percent free
 memory. Keep SWAPMAX at 8,000 and restart the watchdog (fresh baseline) before a
