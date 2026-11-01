@@ -1,0 +1,14 @@
+== NousResearch/Llama-2-7b-hf Sun Nov  1 02:50:33 UTC 2026
+DEVICE mps:Apple M1 Max (21.3 GB working set)
+NousResearch/Llama-2-7b-hf: second moments from 262144 tokens (855s)
+  groups of four: summed relative residual 9.605 matched against 10.313 neighbouring (435s) (1294s)
+  base: ppl 5.470; ZS-7 0.6360; one-window check 1.00 (3054s) (4353s)
+  fuse/quad: converted in 644s (4996s)
+  fuse/quad: ppl 14917.925; ZS-7 0.4051; one-window check 576.30 (3046s) (8043s)
+  fuse/neighbour: converted in 678s (8738s)
+  fuse/neighbour: ppl 18952.643; ZS-7 0.4023; one-window check 542.96 (3046s) (11785s)
+  mean/neighbour: converted in 0s (11804s)
+  mean/neighbour: ppl 4065.949; ZS-7 0.3634; one-window check 0.93 (3050s) (14854s)
+QUAD_DEV_DONE (14920s)
+== mistralai/Mistral-7B-v0.1 Sun Nov  1 06:59:19 UTC 2026
+DEVICE mps:Apple M1 Max (21.3 GB working set)

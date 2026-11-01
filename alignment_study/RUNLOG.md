@@ -1142,3 +1142,23 @@ the early layers add 0.019 and the deeper layers 0.110 of the 0.138 total; the
 check never approaches its threshold of 2.35. The loss is spread through the
 deeper layers, and the super-weight mechanism of round 28's follow-up does not
 explain it.
+
+Llama-2-7B at a quarter of the key-value heads, development (labelled;
+quad_dev.py, 02:50 to 06:58 UTC under the three guards; quad_dev/
+Llama-2-7b-hf.json, quad_dev.log; round 28's calibration, whole-test WikiText-2
+perplexity at 2,048 tokens, ZS-7 on 500 examples per task, round 29's one-window
+check over layers 0 to 5; bfloat16; the model reloaded between arms). Unconverted
+5.470, ZS-7 0.636, check 1.00. Groups of four by the two-level matching
+(summed four-head residual 9.61 against 10.31 for neighbouring groups): 14,918,
+ZS-7 0.405, check 576 at layer 1 (then 466, 314, 297, 290 through layer 5);
+neighbouring groups of four: 18,953, ZS-7 0.402, check 543; averaging over
+neighbouring groups: 4,066, ZS-7 0.363, check 0.93. Both fused groupings
+collapse through layer 1 although heads 8 and 18 of that layer are in different
+groups ([1, 8, 15, 20] and [7, 11, 18, 26] in the matching), so a four-head
+merge switches the layer on by another combination; averaging collapses without
+it, as at half the heads in round 28. The check flagged both fused collapses,
+its first severe cases outside the development population it was set on, and
+read 0.93 on the one that fails the other way. Run times: moments 855 s, groups
+435 s, each conversion 644 to 678 s, each evaluation about 3,050 s; restore
+check 5.027 on 8 windows. The repair at the four-head level (quad_repair_dev.py)
+is queued after Mistral-7B-v0.1's arms.
