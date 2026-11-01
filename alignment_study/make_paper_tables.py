@@ -136,7 +136,7 @@ if AB:
     table(["Model", "g", "unconverted", "unweighted", "queries only", "outputs only", "both (fusion)"], rows)
 
 # ---- Table 10: a quarter of the heads at 7B (development) ----
-QD = sorted(glob.glob("alignment_study/quad_dev/*.json"))
+QD = sorted(f for f in glob.glob("alignment_study/quad_dev/*.json") if "_repair" not in f and "_fallback" not in f)
 if QD:
     w("## Table 10. 7B models at a quarter of their key-value heads, no training (development)\n")
     w("WikiText-2 perplexity on the whole test set at 2,048 tokens; ZS-7 on 500 examples per task; the one-window check of Section 6 (largest ratio over layers 0 to 5).\n")
@@ -146,6 +146,29 @@ if QD:
         r = json.load(open(fpath)); m = short(os.path.basename(fpath)[:-5])
         w(f"{m} (summed four-head residual: matched {sum(r['cost_quad']):.2f}, neighbouring {sum(r['cost_neighbour4']):.2f}):\n")
         table(["Conversion", "ppl 2,048", "ZS-7", "one-window check"], [[lab.get(k, k), f(v["ppl_2048"]), f(v["zs7"], 3), f(v.get("check_max_ratio"))] for k, v in r["evals"].items()])
+
+# ---- Table 10b: the hazard at a quarter of the heads on Llama-2-7B: trials, repair steps and the per-layer sweep ----
+RP, FB = "alignment_study/quad_dev/Llama-2-7b-hf_repair.json", "alignment_study/quad_dev/Llama-2-7b-hf_fallback.json"
+if os.path.exists(RP):
+    r = json.load(open(RP))
+    w("## Table 10b. Llama-2-7B at a quarter of the heads: which groups of layer 1 carry the event, and the repair (development)\n")
+    w("Round 29's one-window check (largest ratio over layers 1 to 5) with layers 0 to 5 converted; each group of layer 1 left unmerged in turn; then the repair's steps.\n")
+    table(["Group of layer 1 left unmerged", "check"], [[str(t["group_left_unmerged"]), f(t["max_ratio"])] for t in r["layer1_trials"]]
+          + [[f"{r['worst_group']} merged alone", f(max(r["worst_group_alone_ratios"][1:]))]])
+    table(["Repair step", "forbidden groups", "check"], [[i + 1, "; ".join(str(g) for g in st["forbidden"]), f(st["max_ratio"])] for i, st in enumerate(r["repair_steps"])]
+          + ([["fallback: layer 1 at its pairs", "", f(max(r["fallback_layer1_pairs_ratios"][1:]))]] if "fallback_layer1_pairs_ratios" in r else []))
+    for k, v in r.get("evals", {}).items():
+        w(f"Evaluated ({k}): perplexity {v['ppl_2048']:.1f}, ZS-7 {v['zs7']:.3f}, check {v['check_max_ratio']:.1f}.\n")
+if os.path.exists(FB):
+    r = json.load(open(FB))
+    w("## Table 10c. Llama-2-7B: early layers kept at pairs, the rest quartered (development)\n")
+    w("The check with layers 0 to 5 converted, for the first k layers at the matched pairs and layers k to 5 at groups of four; the smallest k under 2.35 is evaluated in full.\n")
+    table(["layers at pairs (k)", "check ratios, layers 0 to 5", "largest"], [[x["layers_at_pairs"], ", ".join(f"{v:.2f}" for v in x["ratios"]), f(x["max_ratio"])] for x in r["sweep"]])
+    if r.get("evals"):
+        for k, v in r["evals"].items():
+            w(f"Chosen k = {r['chosen_layers_at_pairs']} (cache fraction {r['cache_fraction']:.3f}): perplexity {v['ppl_2048']:.2f}, ZS-7 {v['zs7']:.3f}, check {v['check_max_ratio']:.2f}.\n")
+    elif r.get("chosen_layers_at_pairs") is None:
+        w("No k up to 6 passed the check.\n")
 
 # ---- Table 11: calibration size (development) ----
 CD = sorted(glob.glob("alignment_study/calib_dev/*.json"))
