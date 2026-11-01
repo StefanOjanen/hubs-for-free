@@ -1237,3 +1237,20 @@ percent either way between sizes, which is the variance of the calibration
 sample itself, so an absolute fused perplexity at this scale carries that
 uncertainty while the paired comparisons of rounds 30 to 32, which share the
 calibration between arms, do not.
+
+Qwen2.5-7B with pairs matched by the residual, development (labelled;
+qwen_pairs_dev.py, 17:16 to 18:01 UTC in chain 2 under the three guards, no
+pauses; qwen_pairs_dev.json, plan_chain2.log). Rounds 27 to 32 converted
+Qwen2.5-7B (4 key-value heads a layer) with neighbouring pairs because the pair
+cost did not accept biased projections; it does now (the ones column of the
+bias fix). Under the 128-document moment the matching lowers the summed
+residual over the 28 layers from 4.718 to 4.362 and differs from the
+neighbouring pairs in 15 of 28 layers (each layer has three pairings of its
+four heads); perplexity on the 8 WikiText-2 windows is 70.10 with the matched
+pairs against 23.87 with the neighbouring pairs (unconverted 5.40; the
+neighbouring arm reproduces round 30's 23.873). On this model the residual
+chooses the worse pairing, as in round 27's K2, where its weighting lost to the
+unweighted fit in the two Qwen2.5 cells that merge every key-value head into
+one. Which of the 15 layers carry the difference was not measured. The
+neighbouring pairs remain the reported setting for Qwen2.5-7B; the paper
+states the exception.
