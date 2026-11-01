@@ -1110,3 +1110,22 @@ KV heads) give WikiText-2 perplexity 265.6 on 8 windows of 2,048 tokens against
 reproduces the simulation to 1.7e-4. Groups of four cost this small model 3.9
 times the unconverted perplexity against 1.55 for pairs (round 26's protocol
 differs; the ratio is indicative).
+
+Single-weighting ablation of the fusion, development (labelled; 2026-10-31 22:00
+to 2026-11-01 01:25 UTC in the gap chain; fuse_ablation_dev.py, which runs round
+26's instrument with two added arms, perplexity only; fuse_ablation_dev/*.json,
+summary.json; round 26's base, unweighted and both-weighted rows copied). On
+round 24's simulated-merge groups, WikiText-2 perplexity unweighted / queries
+only / outputs only / both: g = 2, OPT-1.3B 29.59 / 29.63 / 28.84 / 29.13,
+Pythia-1.4B 29.95 / 26.93 / 26.97 / 27.30, GPT-2 large 31.48 / 29.84 / 31.82 /
+30.41, OLMo-1B 169.14 / 140.56 / 106.00 / 87.36, Phi-2 23.32 / 19.29 / 23.00 /
+18.92; g = 4, OPT-1.3B 105.43 / 92.89 / 105.27 / 93.66, Pythia-1.4B 116.37 /
+79.73 / 101.12 / 71.21, GPT-2 large 177.95 / 154.72 / 134.22 / 116.79, OLMo-1B
+989.59 / 911.33 / 648.40 / 601.45, Phi-2 83.56 / 63.23 / 88.66 / 65.73. The query
+weighting alone is below the unweighted fit in 9 of 10 cells, the output
+weighting alone in 7 of 10, and both together are lowest in 5 of 10: by a wide
+margin where the conversion is hard (OLMo-1B at both sizes, Pythia-1.4B and
+GPT-2 large at g = 4) and within 0.8 to 3.8 percent of the better single
+weighting where it is easy (OPT-1.3B at both sizes, Pythia-1.4B and GPT-2 large
+at g = 2, Phi-2 at g = 4). Neither weighting is the whole effect and the two add
+where it matters; the query weighting is the more reliable one on its own.
