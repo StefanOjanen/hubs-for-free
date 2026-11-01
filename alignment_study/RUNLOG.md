@@ -1288,7 +1288,8 @@ Guards, 2026-11-01 evening (operational). The whole-test script (fulltest_dev.py
 ran under paging from about 18:50 UTC: swap 6.8 of 8 GB, then 9.5 of 10 GB, the
 7B model's 16 to 18 GB footprint beside the author's applications, the process
 inside MPS linear ops with the GPU at 98 percent; Mistral-7B-v0.1 took 64
-minutes and Mistral-7B-Instruct 137. The battery guard paused the job at 20
+minutes and Mistral-7B-Instruct 73 (the script prints cumulative seconds; a
+first reading of this entry said 137). The battery guard paused the job at 20
 percent (20:45 UTC; the adapter had reported "not charging" since 19:48) and
 resumed it at 30 percent (20:53 UTC) once power was back. At 21:20 UTC the
 memory watchdog, a day-old instance with its swap baseline at 3,549 MB against
@@ -1296,3 +1297,22 @@ memory watchdog, a day-old instance with its swap baseline at 3,549 MB against
 30 percent half of its kill rule), was restarted with a fresh baseline (9,563
 MB; watchdog.log), as CLAUDE.md prescribes before a long chain; the 15 percent
 floor is unchanged.
+
+Whole-test perplexity at 2,048 tokens for the 7B entries, development
+(labelled; fulltest_dev.py, 2026-11-01 18:51 UTC to 2026-11-02 00:14 UTC in
+chain 2 under the three guards, one battery pause of 8 minutes, the run under
+paging throughout; fulltest_dev/Mistral-7B-v0.1.json,
+Mistral-7B-Instruct-v0.2.json, Qwen2.5-7B.json; plan_chain2.log). The plain
+fusion at half the key-value heads (round 28's calibration; the residual's
+matching for the Mistral models, neighbouring pairs for Qwen2.5-7B as in the
+registered rounds) on the whole WikiText-2 test set beside the registered 8
+windows: Mistral-7B-v0.1 24.581 against 28.683 (unconverted 5.254 against
+4.859; 163 windows; 64 minutes), Mistral-7B-Instruct 14.507 against 16.679
+(5.950 against 5.540; 163; 73 minutes), Qwen2.5-7B 27.835 against 23.873
+(6.850 against 5.396; 146; 64 minutes). The 8 windows are harder than the test
+set's average for the Mistral models and easier for Qwen; in all three the
+fused-to-unconverted ratio is lower on the whole test than on the 8 windows
+(4.68 against 5.90, 2.44 against 3.01, 4.06 against 4.42), so the registered
+8-window ratios overstate the relative damage by a quarter, a quarter and a
+tenth. The whole-test values are the ones to quote beside CAGA's and Llama-2-7B's
+(16.78, the same protocol).

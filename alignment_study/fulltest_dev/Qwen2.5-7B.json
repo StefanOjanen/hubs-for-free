@@ -1,0 +1,17 @@
+{
+ "model": "Qwen/Qwen2.5-7B",
+ "revision": "d149729398750b98c0af14eb82c78cfe92750796",
+ "exploratory": true,
+ "calibration": [
+  128,
+  2048
+ ],
+ "windows": 146,
+ "tokens_per_window": 2048,
+ "base_full_2048": 6.85010598621732,
+ "base_8_windows": 5.395888849333053,
+ "pairing": "neighbour",
+ "plain_8_windows": 23.872870084076432,
+ "plain_full_2048": 27.834500912695912,
+ "seconds": 12111.5
+}
