@@ -190,7 +190,15 @@ kvfuse.py's default. Post hoc diagnostic attnw2_llama2_diag.py (attnw2_diag/):
 the sensitivity fit in layers 0-1 only gives 16.31 (plain 16.00; one-window check
 1.01), so the early layers carry little of the loss and the super-weight check
 sees nothing; layers 2 and up only 17.87, everywhere 18.37 (reproducing round 32), check at
-most 1.06: the loss is in the deeper layers, not a super-weight event. Watchdog lesson
+most 1.06: the loss is in the deeper layers, not a super-weight event.
+Quarter of the heads, development (quad_dev.py, quad_dev/): Llama-2-7B 32 to 8
+KV heads collapses under the residual's groups of four (14,918, ZS-7 0.405) and
+under neighbouring groups (18,953), both through layer 1 with round 29's
+one-window check at 576 and 543 although heads 8 and 18 are apart; averaging
+4,066 with the check at 0.93. The check's first true positives outside its
+development population. Repair at the four-head level: quad_repair_dev.py
+(forbid the flagged group, re-match, re-fuse; fallback: layer 1 at its matched
+pairs). Mistral-7B-v0.1's quad run and the repair ran on 2026-11-01. Watchdog lesson
 (2026-10-31): its swap baseline is taken at start and goes stale as swap drifts;
 a 4,000 MB growth limit killed a healthy 7B metrics job at 29 percent free
 memory. Keep SWAPMAX at 8,000 and restart the watchdog (fresh baseline) before a
