@@ -65,7 +65,7 @@ def quads_avoiding(kv, l, S64, forbidden):
 if __name__ == "__main__":
     t0 = time.time(); log = lambda s: print(f"[{time.time() - t0:6.0f}s] {s}", flush=True)
     src = SRC if os.path.exists(SRC) else SRC + ".partial"
-    quads = json.load(open(src))["quads"]
+    srcj = json.load(open(src)); quads, pairs_all = srcj["quads"], srcj["pairs"]
     tok = AutoTokenizer.from_pretrained(NAME, revision=REV)
     cal = C.windows_c4(tok, Q.N_CAL, Q.T_CAL)
     gw = C.windows_c4(tok, Q.N_CAL + 1, Q.T_CAL)[-1:].to(DEV)
@@ -126,6 +126,13 @@ if __name__ == "__main__":
             put(1); fuse_plain_layer(kv, 1, [g for g in quads1 if g != G], S[1]); trials2.append((max(ratios(check())[1:]), G))
         forbidden.add(tuple(min(trials2)[1]))
     res["repair_steps"] = steps; res["repaired_layer1_groups"] = quads1; res["repaired"] = steps[-1]["max_ratio"] <= TAU
+    if not res["repaired"]:                                 # fallback: layer 1 kept at its matched pairs (round 28's groups)
+        put(1); fuse_plain_layer(kv, 1, pairs_all[1], S[1]); r = ratios(check())
+        res["fallback_layer1_pairs_ratios"] = r
+        log(f"  no grouping of four passed within {REPAIR_STEPS} steps; layer 1 at its matched pairs: largest ratio {max(r[1:]):.2f}")
+        quads1 = pairs_all[1]; res["evaluated_layer1_groups"] = "matched pairs (fallback)"
+    else:
+        res["evaluated_layer1_groups"] = "repaired groups of four"
     json.dump(res, open(OUT, "w"), indent=1)
     # (4) the full conversion with the repaired layer 1, evaluated as quad_dev
     del model, kv, orig; gc.collect()
@@ -141,7 +148,7 @@ if __name__ == "__main__":
     ev["zs7"] = float(np.mean([ev[t][m] for t, m in Q.R.ZS7.items()]))
     ev["ppl_2048"] = Z.perplexity(model, Z.wikitext2_windows(tok, T=2048), DEV, bs=2)
     ev["check"] = r; ev["check_max_ratio"] = max(r)
-    res["evals"] = {"fuse/quad_repaired": ev}; res["seconds"] = round(time.time() - t0, 1)
+    res["evals"] = {"fuse/quad_repaired" if res["repaired"] else "fuse/quad_layer1_pairs": ev}; res["seconds"] = round(time.time() - t0, 1)
     json.dump(res, open(OUT, "w"), indent=1)
     log(f"repaired conversion: ppl {ev['ppl_2048']:.3f}; ZS-7 {ev['zs7']:.4f}; one-window check {max(r):.2f}")
     log("QUAD_REPAIR_DONE")
