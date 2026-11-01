@@ -1200,3 +1200,20 @@ layer 0 is quartered, layer 1's safe pairs fire too. Every reading above the
 threshold went with a collapse and every reading below with a sound model. A
 sweep of how many early layers must stay at pairs (quad_fallback_dev.py) runs
 next.
+
+A per-layer ratio for Llama-2-7B chosen by the one-window check, development
+(labelled; quad_fallback_dev.py, 15:10 to 16:44 UTC under the three guards, no
+pauses; quad_dev/Llama-2-7b-hf_fallback.json, quad_fallback.log). With layers 0
+to 5 converted, the first k layers at the matched pairs and the rest at the
+matched groups of four: k = 0 reproduces the full quartering's check (576 at
+layer 1); k = 1 reads at most 0.98, and k = 2 to 6 at most 0.98 as well. Layer
+0's quartering is what makes layer 1 fire; with layer 0 at half its heads, layer
+1 takes its groups of four without the spike. The smallest passing k, 1, was
+converted in full (layer 0 at 16 key-value heads, layers 1 to 31 at 8; cache
+fraction 0.258 against 0.25 for the full quartering): whole-test perplexity
+105.5 at 2,048 tokens, ZS-7 0.408 (unconverted 5.47 and 0.636; half the heads
+16.78 and 0.504), the check 0.98; the full quartering gave 14,918 and averaging
+4,066 (ZS-7 0.363). Run times: moments 867 s, each sweep point about 130 s,
+conversion 686 s, evaluation about 3,100 s. A checkpoint with one layer at a
+different ratio is not expressible in a Hugging Face config, which holds one
+num_key_value_heads; exporting it needs a per-layer head count in the loader.

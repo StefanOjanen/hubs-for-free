@@ -203,7 +203,11 @@ averaging, check at most 2.1 (no hazard); at half 24.6. The repair on
 Llama-2-7B failed: the event needs both head 8's group and the 11-and-18 group
 merged; forbidding and re-matching three times fails; layer 1 at pairs with
 layer 0 quartered still fires (check 360, 5,344). quad_fallback_dev.py sweeps
-how many early layers must stay at pairs.
+how many early layers must stay at pairs: one (layer 0 at pairs, the rest at
+quads) passes the check at 0.98 and gives 105.5, ZS-7 0.408 at cache fraction
+0.258 (quad_dev/Llama-2-7b-hf_fallback.json); layer 0's quartering is what
+makes layer 1 fire. A per-layer ratio cannot be exported to a standard
+Hugging Face config (one num_key_value_heads).
 33 (alignment_study/PREREGISTRATION33.md, frozen at 9d73960; rule
 PREREGISTRATION33_rule.md; instruments uptrain_round.py --registered --model,
 eval_uptrain33.py, uptrain_rule.py; development uptrain_dev/llama-160m_5M.json:

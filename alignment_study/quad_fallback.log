@@ -1,0 +1,14 @@
+quad fallback starting Sun Nov  1 15:10:26 UTC 2026
+[   867s] NousResearch/Llama-2-7b-hf: moments from 262144 tokens
+[   997s] first 0 layers at pairs, layers 0-5 at quads: check ratios [0.92, 576.3, 466.15, 313.89, 296.67, 289.9]
+[  1128s] first 1 layers at pairs, layers 1-5 at quads: check ratios [0.98, 0.92, 0.76, 0.53, 0.63, 0.7]
+[  1258s] first 2 layers at pairs, layers 2-5 at quads: check ratios [0.98, 0.83, 0.93, 0.55, 0.6, 0.68]
+[  1388s] first 3 layers at pairs, layers 3-5 at quads: check ratios [0.98, 0.83, 0.97, 0.59, 0.63, 0.69]
+[  1523s] first 4 layers at pairs, layers 4-5 at quads: check ratios [0.98, 0.83, 0.97, 0.61, 0.64, 0.69]
+[  1651s] first 5 layers at pairs, layers 5-5 at quads: check ratios [0.98, 0.83, 0.97, 0.61, 0.66, 0.72]
+[  1782s] first 6 layers at pairs, layers 6-5 at quads: check ratios [0.98, 0.83, 0.97, 0.61, 0.66, 0.73]
+[  1782s] evaluating the first 1 layers at pairs and the rest at quads: cache fraction 0.2578
+[  2485s] converted in 686s
+[  5604s] mixed ratio: ppl 105.496; ZS-7 0.4075; one-window check 0.98
+[  5604s] QUAD_FALLBACK_DONE
+QUAD_FALLBACK_PIPELINE_DONE
