@@ -1463,10 +1463,13 @@ Five random heads drawn from those below 0.1, with the odd layers' leftovers
 held below it, give 7 of 15 at 16.0; twenty-four give 13 of 15 at 12.9; the 24
 heads whose cheapest pairing costs most give 5 of 15 at 14.0. The effect is
 graded rather than carried by a few heads, the retrieval heads are where a
-small exemption buys most (five of them do what twenty-four random heads do),
-and the residual's own choice does least, in line with Section 6.8's finding
-that the local residual does not see what matters globally. One model, fifteen
-instances per arm (`needle_dev.py`, `retrieval_protect_dev.py`,
+small exemption buys most (five of them do what twenty-four random heads do,
+on one clean draw of five), and the residual's own choice does least, in line
+with Section 6.8's finding that the local residual does not see what matters
+globally; the retrieval heads are not where perplexity is won, since random
+draws that include early-layer heads reach 11.1 to 12.9 against the retrieval
+24's 12.5. One model, fifteen instances per arm, underpowered for the
+five-head contrast (`needle_dev.py`, `retrieval_protect_dev.py`,
 `retrieval_pairs_check.py`); a random control in this design must restrict the
 leftover head of an odd layer, which the cheapest-matching rule twice made a
 retrieval head.

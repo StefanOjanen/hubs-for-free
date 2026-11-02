@@ -613,12 +613,16 @@ Each instrument below exists because a finding above required it.
   this repository's audit) with a near-zero partner. Keeping those five
   key-value heads unmerged, two percent of the cache above half, restores 14 of
   15 at perplexity 13.9; the 24 at a lower score restore 15 of 15 at 12.5
-  (seven percent). Five random non-retrieval heads restore 7, twenty-four
-  restore 13, and the 24 heads the residual itself would exempt restore 5: the
-  effect is graded, the retrieval heads are where a small budget buys most, and
-  the residual does not know which heads matter. Development, one model,
-  fifteen instances per arm; the preregistered test on two more models is the
-  next round. A random control in this design must also restrict the leftover
+  (seven percent). Five random non-retrieval heads restore 7 in the one clean draw
+  (a draw whose odd-layer leftover happened to be a strong retrieval head
+  reached 13), twenty-four restore 13, and the 24 heads the residual itself
+  would exempt restore 5: the effect is graded, the retrieval heads are where
+  a small budget buys most, and the residual does not know which heads matter.
+  The retrieval heads are not where perplexity is won: random draws that
+  include early-layer heads reach 11.1 to 12.9 against the retrieval 24's
+  12.5. Development, one model, fifteen instances per arm, underpowered for
+  the five-head contrast; the preregistered test on two more models with fifty
+  instances is the next round. A random control in this design must also restrict the leftover
   of an odd layer, which the cheapest-matching rule twice made a retrieval
   head.
 

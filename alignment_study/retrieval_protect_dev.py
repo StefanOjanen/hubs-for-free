@@ -181,16 +181,13 @@ def run_registered(name, rev, log):
     ND.FACTS, ND.DEPTHS = REG_FACTS, REG_DEPTHS
     scores_path = f"audits/retrieval_heads/{name.split('/')[-1]}_scores.npy"
     out = f"alignment_study/retrieval_round/{name.split('/')[-1]}.json"
-    if not os.path.exists(scores_path):
-        log(f"{name}: no retrieval scores at {scores_path}; skipped"); return None
-    scores = np.load(scores_path)
+    scores = np.load(scores_path)                                           # checked before the round starts (main)
     tok = AutoTokenizer.from_pretrained(name, revision=rev)
     context_ids = tok.encode(ND.haystack_text(3 * ND.CTX), add_special_tokens=False)
     win = Z.wikitext2_windows(tok, T=2048)[:N_PPL]
     cal = C.windows_c4(tok, ND.N_CAL, ND.T_CAL)
     model = AutoModelForCausalLM.from_pretrained(name, revision=rev, dtype=torch.bfloat16, attn_implementation="sdpa").eval().to(DEV)
     kv = K.KV(model); n, L, rep = kv.nkv, kv.L, kv.rep
-    assert scores.shape == (L, kv.n), f"{scores_path}: {scores.shape} against {L} layers and {kv.n} heads"
     res = {"model": name, "revision": rev, "registered": REGISTERED, "development": name == "mistralai/Mistral-7B-Instruct-v0.2", "scores": scores_path,
            "needle": {"context_tokens": ND.CTX, "facts": len(REG_FACTS), "depths": list(REG_DEPTHS)}, "ppl_windows": N_PPL, "kv_heads_total": L * n, "arms": {}}
     ne = needle_eval(model, tok, context_ids); ppl = Z.perplexity(model, win, DEV, bs=2)
@@ -229,6 +226,14 @@ if __name__ == "__main__":
         os.makedirs("alignment_study/retrieval_round", exist_ok=True)
         t0 = time.time(); log = lambda s: print(s, f"({time.time() - t0:.0f}s)", flush=True)
         only = arg("only")
+        from transformers import AutoConfig
+        for name in REG_MODELS:                                             # refuse to start unless every model's scores exist and fit its config
+            sp = f"audits/retrieval_heads/{name.split('/')[-1]}_scores.npy"
+            if not os.path.exists(sp):
+                sys.exit(f"refusing to run: no retrieval scores for {name} at {sp}; compute them (audits/retrieval_heads/reproduce.py) before the freeze")
+            cfg = AutoConfig.from_pretrained(name, revision=REG_REVISIONS[name]); sh = np.load(sp).shape
+            if sh != (cfg.num_hidden_layers, cfg.num_attention_heads):
+                sys.exit(f"refusing to run: {sp} has shape {sh}, the config has {cfg.num_hidden_layers} layers and {cfg.num_attention_heads} heads")
         for name in REG_MODELS:
             if (only and name != only) or os.path.exists(f"alignment_study/retrieval_round/{name.split('/')[-1]}.json"):
                 continue

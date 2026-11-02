@@ -1717,6 +1717,9 @@ by the draw and once because the leftover rule chooses the head whose
 exclusion makes the layer's matching cheapest, which in layer 19 is the
 retrieval head; they are in the table and not counted. The effect is graded;
 the retrieval heads are where a small exemption buys most; the residual's
-choice is worst. One model, fifteen instances per arm, labelled development;
+choice is worst; and the retrieval heads are not where perplexity is won
+(random draws that include early-layer heads reach 11.1 to 12.9 against the
+retrieval 24's 12.5). One model, fifteen instances per arm, one clean random
+draw at five heads, underpowered for that contrast; labelled development;
 the draft paper makes the exemption part of the method and the preregistered
 test on Qwen2.5-7B and Mistral-7B-v0.1 is proposed.

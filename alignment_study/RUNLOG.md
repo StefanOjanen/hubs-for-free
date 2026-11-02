@@ -1495,3 +1495,18 @@ of 0.1 and the sensitivity start ends 0.4 percent above the plain one, so U3
 and U4, which require both models, cannot pass whatever h2o-danube gives. Each
 arm took about 2 h 25 min. h2o-danube-1.8b started at 10:23 UTC; the
 evaluator runs after it.
+
+Correction after a review (2026-11-02 15:40 UTC; a parallel session's review of
+retrieval_protect_dev.py and the retrieval texts). The README, NOTE and
+manuscript 6.14 said "five random heads restore 7 of 15"; that is the one
+clean draw (seed 2, leftovers restricted), and a draw whose odd-layer leftover
+was a strong retrieval head reached 13, so the five-head contrast rests on one
+draw each and is underpowered at fifteen instances; the texts now say so, add
+that random draws including early-layer heads reach lower perplexity (11.1 to
+12.9) than the retrieval 24 (12.5), and that the residual arm keeps 142 heads
+because some of its heads are each other's partners. The registered mode now
+refuses to start unless every scored model's retrieval scores exist and match
+its configuration (Mistral-7B-v0.1's do not exist yet), instead of skipping
+the model. The related-work sentence now says no head-merging conversion we
+know of reports retrieval from context, the latent family reporting
+LongBench-style suites.

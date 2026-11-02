@@ -222,7 +222,7 @@ if ND:
     table(["Model", "arm", "retrieved"] + [f"depth {d}%" for d in json.load(open(ND[0]))["depths"]], rows)
 RP = sorted(glob.glob("alignment_study/retrieval_protect_dev/*.json"))
 if RP:
-    w("## Table 14b. Retrieval protection: the retrieval heads' key-value heads kept unmerged, against random and residual-chosen protection (development)\n")
+    w("## Table 14b. Retrieval protection: the retrieval heads' key-value heads kept unmerged, against random and residual-chosen protection (development). protect_random_24 (the first file) draws from all heads; the seed-1 arms draw from heads below 0.1 but their odd-layer leftovers were unrestricted; the seed-2 arms are the clean controls\n")
     rows = []
     for fp in RP:
         r = json.load(open(fp)); m = short(os.path.basename(fp)[:-5])
