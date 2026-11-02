@@ -16,7 +16,11 @@
 # Follow-up arms: --protect=NAME:l-i,l-i;NAME2:... keeps the listed key-value heads unmerged; --random=K:SEED:EXCL;...
 # protects K random heads drawn from those whose retrieval score is below EXCL (a control that cannot touch the
 # retrieval heads); --thresholds= (empty) skips the threshold arms; --tag=NAME writes <model>_NAME.json.
+# Registered mode (PREREGISTRATION35, draft): --registered=<freeze permalink> runs the registered population (ten codes at
+# five depths, the arms of the preregistration, the unconverted model once, the exclusion rule) on the listed models and
+# writes alignment_study/retrieval_round/<model>.json; --only=<model> restricts it.
 #   python alignment_study/retrieval_protect_dev.py [--model=mistralai/Mistral-7B-Instruct-v0.2] [--thresholds=0.1,0.3] [--seed=0] [--with-base]
+#   python alignment_study/retrieval_protect_dev.py --registered=<permalink> [--only=<model>]
 import gc
 import json
 import os
@@ -43,6 +47,13 @@ def arg(name, default=None):
     return next((a.split("=", 1)[1] for a in sys.argv if a.startswith(f"--{name}=")), default)
 
 
+REGISTERED = arg("registered")
+REG_MODELS = ["Qwen/Qwen2.5-7B", "mistralai/Mistral-7B-v0.1", "mistralai/Mistral-7B-Instruct-v0.2"]      # the third is the development model, reported
+REG_REVISIONS = {"Qwen/Qwen2.5-7B": "d149729398750b98c0af14eb82c78cfe92750796", "mistralai/Mistral-7B-v0.1": "27d67f1b5f57dc0953326b2601d68371d40ea8da",
+                 "mistralai/Mistral-7B-Instruct-v0.2": "63a8b081895390a26e140280378bc85ec8bce07a"}
+REG_FACTS = [("blue", "48213"), ("green", "90457"), ("red", "27365"), ("yellow", "61928"), ("white", "35074"),
+             ("black", "73506"), ("orange", "18649"), ("purple", "52937"), ("grey", "84071"), ("brown", "39615")]
+REG_DEPTHS, REG_MIN_BASE = (10, 30, 50, 70, 90), 45
 NAME = arg("model", "mistralai/Mistral-7B-Instruct-v0.2")
 REV = ND.REVISIONS.get(NAME)
 THRESHOLDS = [float(t) for t in arg("thresholds", "0.1,0.3").split(",") if t]
@@ -107,7 +118,7 @@ def needle_eval(model, tok, context_ids):
             "by_depth": {str(d): sum(i["hit"] for i in inst if i["depth"] == d) for d in ND.DEPTHS}}
 
 
-if __name__ == "__main__":
+def main_dev():
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     t0 = time.time(); log = lambda s: print(s, f"({time.time() - t0:.0f}s)", flush=True)
     rng = random.Random(SEED)
@@ -163,3 +174,65 @@ if __name__ == "__main__":
     res["seconds"] = round(time.time() - t0, 1)
     json.dump(res, open(OUT, "w"), indent=1)
     log("RETRIEVAL_PROTECT_DONE")
+
+
+def run_registered(name, rev, log):
+    """PREREGISTRATION35's population on one model: the unconverted model, then the arms (a) to (f), 50 instances each."""
+    ND.FACTS, ND.DEPTHS = REG_FACTS, REG_DEPTHS
+    scores_path = f"audits/retrieval_heads/{name.split('/')[-1]}_scores.npy"
+    out = f"alignment_study/retrieval_round/{name.split('/')[-1]}.json"
+    if not os.path.exists(scores_path):
+        log(f"{name}: no retrieval scores at {scores_path}; skipped"); return None
+    scores = np.load(scores_path)
+    tok = AutoTokenizer.from_pretrained(name, revision=rev)
+    context_ids = tok.encode(ND.haystack_text(3 * ND.CTX), add_special_tokens=False)
+    win = Z.wikitext2_windows(tok, T=2048)[:N_PPL]
+    cal = C.windows_c4(tok, ND.N_CAL, ND.T_CAL)
+    model = AutoModelForCausalLM.from_pretrained(name, revision=rev, dtype=torch.bfloat16, attn_implementation="sdpa").eval().to(DEV)
+    kv = K.KV(model); n, L, rep = kv.nkv, kv.L, kv.rep
+    assert scores.shape == (L, kv.n), f"{scores_path}: {scores.shape} against {L} layers and {kv.n} heads"
+    res = {"model": name, "revision": rev, "registered": REGISTERED, "development": name == "mistralai/Mistral-7B-Instruct-v0.2", "scores": scores_path,
+           "needle": {"context_tokens": ND.CTX, "facts": len(REG_FACTS), "depths": list(REG_DEPTHS)}, "ppl_windows": N_PPL, "kv_heads_total": L * n, "arms": {}}
+    ne = needle_eval(model, tok, context_ids); ppl = Z.perplexity(model, win, DEV, bs=2)
+    res["arms"]["unconverted"] = {"n_protected": 0, "kv_heads_kept": L * n, "cache_fraction": 1.0, "ppl_8_windows": ppl, "needle": ne}
+    log(f"{name}, unconverted: {ne['hits']} of {ne['of']} retrieved; ppl {ppl:.3f}")
+    res["excluded"] = ne["hits"] < REG_MIN_BASE
+    json.dump(res, open(out, "w"), indent=1)
+    if res["excluded"]:
+        log(f"{name}: unconverted retrieval {ne['hits']} of {ne['of']} is below {REG_MIN_BASE}; excluded before any converted arm"); return res
+    S, ntok = K.second_moments(model, kv, cal, DEV)
+    costs = {l: kvfuse.pair_costs(kv, l, S[l].double()) for l in range(L)}
+    P3 = sorted({(int(l), int(h) // rep) for l, h in np.argwhere(scores >= 0.3)}); P1 = sorted({(int(l), int(h) // rep) for l, h in np.argwhere(scores >= 0.1)})
+    pool = [(l, i) for l in range(L) for i in range(n) if scores[l, i * rep:(i + 1) * rep].max() < 0.1]
+    cheapest = {(l, i): float(min(costs[l][i, j] for j in range(n) if j != i)) for l in range(L) for i in range(n)}
+    arms = [("a_fusion", set(), None), ("b_retrieval_0.3", set(P3), None), ("c_retrieval_0.1", set(P1), None)]
+    for sd in (0, 1):
+        arms.append((f"d_random_{len(P3)}_seed{sd}", set(random.Random(sd).sample(pool, min(len(P3), len(pool)))), set(pool)))
+        arms.append((f"e_random_{len(P1)}_seed{sd}", set(random.Random(100 + sd).sample(pool, min(len(P1), len(pool)))), set(pool)))
+    arms.append(("f_residual", set(sorted(cheapest, key=lambda x: -cheapest[x])[:len(P3)]), None))
+    res["counts"] = {"retrieval_0.3": len(P3), "retrieval_0.1": len(P1), "pool_below_0.1": len(pool)}
+    for aname, protected, allowed in arms:
+        t1 = time.time()
+        del model, kv; free(); model = AutoModelForCausalLM.from_pretrained(name, revision=rev, dtype=torch.bfloat16, attn_implementation="sdpa").eval().to(DEV); kv = K.KV(model)
+        groups = groups_with(kv, costs, protected, allowed); K.convert(kv, S, groups, "fuse"); kept = sum(len(g) for g in groups)
+        ne = needle_eval(model, tok, context_ids); ppl = Z.perplexity(model, win, DEV, bs=2)
+        res["arms"][aname] = {"protected": sorted(protected), "n_protected": len(protected), "kv_heads_kept": kept, "cache_fraction": kept / (L * n), "groups": groups,
+                              "ppl_8_windows": ppl, "needle": ne, "seconds": round(time.time() - t1, 1)}
+        json.dump(res, open(out, "w"), indent=1)
+        log(f"{name}, {aname}: {ne['hits']} of {ne['of']} retrieved; by depth {ne['by_depth']}; ppl {ppl:.3f}; cache {kept / (L * n):.3f}")
+    del model, kv, S; free()
+    return res
+
+
+if __name__ == "__main__":
+    if REGISTERED:
+        os.makedirs("alignment_study/retrieval_round", exist_ok=True)
+        t0 = time.time(); log = lambda s: print(s, f"({time.time() - t0:.0f}s)", flush=True)
+        only = arg("only")
+        for name in REG_MODELS:
+            if (only and name != only) or os.path.exists(f"alignment_study/retrieval_round/{name.split('/')[-1]}.json"):
+                continue
+            run_registered(name, REG_REVISIONS[name], log)
+        log("RETRIEVAL_ROUND_DONE")
+    else:
+        main_dev()
