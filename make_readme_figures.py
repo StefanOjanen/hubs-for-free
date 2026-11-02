@@ -1550,3 +1550,37 @@ if glob.glob(Q34) and not json.load(open(Q34)).get("missing"):
     fig.text(0.012, 0.925, "Nine members per model (layer 0 left to right: unmerged, pairs, groups of four; within each, layer 1 the same), every other layer at the residual's groups of four; damage relative to the both-unmerged member\n"
              "(PREREGISTRATION34.md, frozen at c3cc48c; quad_check_round.py, eval_quad_check.py). Llama-2-7B set the threshold and the fixed rule and is reported, not scored.", fontsize=9.5, color=INK2, va="top")
     fig.savefig(OUT + "fig36_quad_check.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
+# ============ Figure 37: A10b, which local statistic selects a layer's pairing (development) ============
+RS = sorted(glob.glob("alignment_study/residual_select_dev/*.json"))
+RS = [p for p in RS if "llama-160m" not in p]
+if RS:
+    plt.rcParams["axes.grid"] = False
+    fig = plt.figure(figsize=(14.5, 6.0))
+    ax = fig.add_axes([0.07, 0.14, 0.42, 0.62]); bx = fig.add_axes([0.56, 0.14, 0.42, 0.62])
+    LABS = {"Mistral-7B-v0.1": "Mistral-7B-v0.1", "Mistral-7B-Instruct-v0.2": "Mistral-7B-Instruct", "Qwen2.5-7B": "Qwen2.5-7B", "open_llama_3b_v2": "OpenLLaMA-3B", "Llama-2-7b-hf": "Llama-2-7B"}
+    rows = []
+    for fp in RS:
+        r = json.load(open(fp)); m = LABS.get(os.path.basename(fp)[:-5], os.path.basename(fp)[:-5])
+        for l, v in r["per_layer"].items():
+            st = v["stats"]; rows.append((m, int(l), st))
+    rows.sort(key=lambda x: (x[0], x[1]))
+    ys = list(range(len(rows)))[::-1]
+    for y, (m, l, st) in zip(ys, rows):
+        ax.scatter([st["spearman_residual_kl"]], [y], s=80, color=S2, marker="X", edgecolors=SURF, linewidths=1.1, zorder=3)
+        ax.scatter([st["spearman_perturbation_kl"]], [y], s=80, color=S1, marker="o", edgecolors=SURF, linewidths=1.1, zorder=3)
+        n = st["candidates"]
+        bx.scatter([st["kl_rank_residual_choice"] / n], [y], s=80, color=S2, marker="X", edgecolors=SURF, linewidths=1.1, zorder=3)
+        bx.scatter([st["kl_rank_perturbation_choice"] / n], [y], s=80, color=S1, marker="o", edgecolors=SURF, linewidths=1.1, zorder=3)
+    ax.set_yticks(ys); ax.set_yticklabels([f"{m}, layer {l}" for m, l, _ in rows], fontsize=9); bx.set_yticks(ys); bx.set_yticklabels([])
+    ax.axvline(0, color=GRID, lw=1.0); ax.set_xlim(-1.05, 1.05); ax.set_xlabel("Spearman with the whole model's KL over the layer's matchings", fontsize=10)
+    bx.set_xlim(-0.02, 1.02); bx.set_xlabel("KL rank of the selector's choice, as a fraction of the layer's matchings (smaller is better)", fontsize=10)
+    ax.scatter([], [], s=70, color=S2, marker="X", label="the fusion's residual (no forward pass)"); ax.scatter([], [], s=70, color=S1, marker="o", label="one-layer output perturbation (one layer forward)")
+    ax.legend(loc="lower left", bbox_to_anchor=(0.0, 1.01), ncol=2, fontsize=9.5, handletextpad=0.4, frameon=False)
+    for a_ in (ax, bx):
+        a_.set_ylim(-0.7, max(ys) + 0.7); a_.tick_params(length=0); a_.grid(axis="x", color=GRID, lw=0.8)
+        for sp in ("left", "bottom"): a_.spines[sp].set_color(GRID)
+    fig.text(0.012, 0.985, "Which local statistic selects a layer's pairing: the residual against a one-layer perturbation, with KL as ground truth (A10b)", fontsize=15, color=INK, va="top")
+    fig.text(0.012, 0.925, "Every matching of one layer's key-value heads (all 105 for 8 heads, 3 for 4; a sample of swaps and random matchings above 8), the layer fused alone, scored by the summed residual and by the fused layer's\n"
+             "output change on one held-out window, against KL(unconverted || converted) on held-out WikiText-2 windows through the whole model (residual_select_dev.py, development).", fontsize=9.5, color=INK2, va="top")
+    fig.savefig(OUT + "fig37_selector.png", dpi=200, bbox_inches="tight"); plt.close(fig)
