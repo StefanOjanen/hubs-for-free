@@ -1403,3 +1403,24 @@ UTC). The benchmark already loads one model at a time; the kill came while it
 loaded its first, with the machine's other consumers holding about 10 GB. The
 retry (run_export_bench.sh, unchanged code) is queued between A11 and round
 33, the approved order, with round 34 after round 33 in the same waiter.
+
+Retrieval protection, development, the four preplanned arms (labelled;
+retrieval_protect_dev.py, 2026-11-01 23:47 to 2026-11-02 00:56 UTC under the
+three guards, no pauses; retrieval_protect_dev/Mistral-7B-Instruct-v0.2.json,
+retrieval_protect.log). Mistral-7B-Instruct-v0.2 at half the key-value heads
+with the listed heads kept unmerged and the rest matched by the residual;
+needle_dev's 15 instances (same haystack: unconverted 15 of 15, plain fusion 2
+of 15 at ppl 16.68); 8-window perplexity; heads kept of 256. The 24 key-value
+heads serving retrieval heads at score 0.1 or more: 15 of 15, ppl 12.47, 146
+kept (0.570). The 5 at 0.3 or more: 14 of 15 (4 of 5 at depth 90), ppl 13.93,
+133 kept (0.520). Controls at 24: random heads (seed 0), 14 of 15, ppl 11.45,
+146 kept, the draw including the strongest retrieval head (layer 18 head 0,
+0.602) and two layer-1 heads; the 24 heads whose cheapest pairing costs most
+(the residual's own choice), 5 of 15, ppl 13.95, 142 kept, none of the strong
+heads. Reading: retrieval returns when the strong retrieval heads are exempt
+(5 heads, two percent of the cache above half) and not when heads of equal
+perplexity cost are exempt instead (13.93 against 13.95 in perplexity, 14
+against 5 retrieved), so the loss is specific to which heads are merged;
+the random control is confounded by its draw. Follow-up controls queued
+(run_a11b.sh): layer 18 head 0 alone, and 5 and 24 random heads drawn from
+heads below score 0.1.
