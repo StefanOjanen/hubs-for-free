@@ -610,7 +610,9 @@ Each instrument below exists because a finding above required it.
   retrieves a planted five-digit code 2 times in 15 (unconverted 15 of 15),
   answering in the right form with the wrong digits. The fusion's residual
   pairs each of the five strongest retrieval heads (Wu et al.'s scores from
-  this repository's audit) with a near-zero partner. Keeping those five
+  this repository's audit) with a near-zero partner; the loss is the merging
+  counterpart of Wu et al.'s masking experiment, where masking those heads
+  removes needle retrieval and masking random heads does not. Keeping those five
   key-value heads unmerged, two percent of the cache above half, restores 14 of
   15 at perplexity 13.9; the 24 at a lower score restore 15 of 15 at 12.5
   (seven percent). Five random non-retrieval heads restore 7 in the one clean draw
