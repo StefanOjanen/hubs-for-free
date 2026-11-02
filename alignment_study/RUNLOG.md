@@ -1537,3 +1537,16 @@ h2o-danube): 2 of 4. The head start narrows from 170 and 13.5 times at the
 start to 1.63 and 1.37 times after 5M tokens; the averaged curve is still
 falling on OLMo-1B (31.3 to 30.4 over the last million) and flat on
 h2o-danube. Round 34 started at 22:49 UTC.
+
+Round 34, OpenLLaMA-3B complete (2026-11-02 22:49 to 23:48 UTC under the three
+guards, no pauses; quad_check/open_llama_3b_v2.json; quad_check.log;
+registered at c3cc48c). Unconverted 6.77; half the heads 27.56 (check 1.02);
+the neighbouring quartering 203.7 (1.07). The nine members, every layer from 2
+at the residual's groups of four: layers 0 and 1 unmerged 82.3 (the reference),
+layer 1 at pairs 90.1, at groups of four 100.6; layer 0 at pairs with layer 1
+unmerged 85.6, at pairs 108.0, at groups of four 143.3 (the fixed rule's
+member); layer 0 at groups of four with layer 1 unmerged 86.8, at pairs 135.0,
+at groups of four 155.2; checks 1.00 to 1.07, no flag, every member benign
+(at most 1.89 times the reference). The check's choice is the cheapest
+unflagged member, the full quartering, at 1.89, cheaper than the fixed rule;
+R3 is testable on this model. Mistral-7B-v0.1 started at 23:48 UTC.
