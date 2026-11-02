@@ -1,0 +1,1632 @@
+{
+ "model": "mistralai/Mistral-7B-Instruct-v0.2",
+ "revision": "63a8b081895390a26e140280378bc85ec8bce07a",
+ "exploratory": true,
+ "scores": "audits/retrieval_heads/Mistral-7B-Instruct-v0.2_scores.npy",
+ "thresholds": [],
+ "seed": 0,
+ "calibration": [
+  128,
+  2048
+ ],
+ "needle": {
+  "context_tokens": 2048,
+  "facts": 5,
+  "depths": [
+   10,
+   50,
+   90
+  ]
+ },
+ "ppl_windows": 8,
+ "kv_heads_total": 256,
+ "arms": {
+  "protect_random_5_below0.1_seed2": {
+   "protected": [
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     29,
+     4
+    ],
+    [
+     29,
+     7
+    ]
+   ],
+   "n_protected": 5,
+   "kv_heads_kept": 132,
+   "cache_fraction": 0.515625,
+   "groups": [
+    [
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      5
+     ],
+     [
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      4
+     ],
+     [
+      6
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      3,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      7
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      4
+     ],
+     [
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      7
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      5,
+      6
+     ]
+    ]
+   ],
+   "ppl_8_windows": 16.00381765989555,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 1234.</s>",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 1111.</s>",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 10110101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 1234.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 1234.</s>",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 10110101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 1234.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 1234. The secret code for the white door is 1",
+      "hit": false
+     }
+    ],
+    "hits": 7,
+    "of": 15,
+    "by_depth": {
+     "10": 2,
+     "50": 4,
+     "90": 1
+    }
+   },
+   "seconds": 794.0
+  },
+  "protect_random_24_below0.1_seed2": {
+   "protected": [
+    [
+     1,
+     1
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     8,
+     1
+    ],
+    [
+     10,
+     0
+    ],
+    [
+     11,
+     6
+    ],
+    [
+     12,
+     7
+    ],
+    [
+     14,
+     2
+    ],
+    [
+     19,
+     5
+    ],
+    [
+     20,
+     5
+    ],
+    [
+     22,
+     0
+    ],
+    [
+     23,
+     2
+    ],
+    [
+     23,
+     5
+    ],
+    [
+     25,
+     4
+    ],
+    [
+     28,
+     1
+    ],
+    [
+     28,
+     7
+    ],
+    [
+     29,
+     4
+    ],
+    [
+     29,
+     5
+    ],
+    [
+     29,
+     7
+    ],
+    [
+     31,
+     5
+    ]
+   ],
+   "n_protected": 24,
+   "kv_heads_kept": 147,
+   "cache_fraction": 0.57421875,
+   "groups": [
+    [
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      4
+     ],
+     [
+      6
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      6
+     ],
+     [
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      7
+     ],
+     [
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      5,
+      7
+     ],
+     [
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      3
+     ],
+     [
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4
+     ],
+     [
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      6
+     ],
+     [
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      7
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      4
+     ],
+     [
+      5
+     ],
+     [
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      7
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3
+     ],
+     [
+      5
+     ]
+    ]
+   ],
+   "ppl_8_windows": 12.878145216333033,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 2736.</s>",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 2736.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     }
+    ],
+    "hits": 13,
+    "of": 15,
+    "by_depth": {
+     "10": 4,
+     "50": 5,
+     "90": 4
+    }
+   },
+   "seconds": 775.9
+  }
+ },
+ "arm_specs": {
+  "protect": "",
+  "random": "5:2:0.1;24:2:0.1",
+  "leftovers_restricted_for": [
+   "protect_random_24_below0.1_seed2",
+   "protect_random_5_below0.1_seed2"
+  ]
+ },
+ "seconds": 2502.8
+}

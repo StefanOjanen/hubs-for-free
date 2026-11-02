@@ -1444,3 +1444,21 @@ score, and two clean controls (5 and 24, seed 2) run next. That 19/2 is the
 head whose exclusion makes its layer's matching cheapest, twice, suggests the
 retrieval head is the hardest to pair within its layer (a hypothesis for the
 within-layer selector test, not a result).
+
+Retrieval protection, clean controls, development (labelled;
+retrieval_protect_dev.py --random with leftovers restricted, 2026-11-02 01:54
+to 02:35 UTC under the three guards, no pauses;
+retrieval_protect_dev/Mistral-7B-Instruct-v0.2_clean.json). Random heads drawn
+from those below retrieval score 0.1 with the odd remainders restricted to
+such heads (seed 2; the largest score among the unmerged heads 0.00 and 0.06;
+both draws also exempt six heads of layers 1 to 3). Five heads: 7 of 15, ppl
+16.00, 132 of 256 kept (0.516). Twenty-four: 13 of 15, ppl 12.88, 147 kept
+(0.574). Against the retrieval arms at the same counts: the five strongest
+retrieval heads 14 of 15 at 13.93 (133 kept), the 24 at 15 of 15 at 12.47
+(146 kept). Reading of the whole set (plain fusion 2 of 15 at 16.68; the
+strongest head alone 7 at 15.83; the residual's 24 costliest-to-pair heads 5
+at 13.95): retrieval under head merging is graded, not carried by a few
+heads alone; at a small exemption budget the retrieval heads are where it
+buys most (five of them equal about twenty-four random heads, one of them
+about five), at a tenth of the cache the choice matters little, and the
+residual's own choice is the worst. One model, 15 instances, development.

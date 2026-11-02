@@ -236,10 +236,19 @@ fused-to-unconverted ratio by a tenth to a quarter), and the needle test
 (needle_dev/: Mistral-7B-Instruct retrieves a planted code 15 of 15 unconverted
 and 2 of 15 after the plain fusion at half the heads, right form, wrong digits;
 retrieval_pairs_check.py: the residual pairs each of the five strongest retrieval
-key-value heads with a near-zero partner). The repair, retrieval_protect_dev.py
-(the retrieval heads' key-value heads kept unmerged; random and residual-chosen
-controls), runs before round 33 on the author's decision; never state the
-fusion's quality from perplexity and ZS-7 alone. Watchdog lesson
+key-value heads with a near-zero partner). The repair (retrieval_protect_dev.py,
+retrieval_protect_dev/; run before round 33 on the author's decision): the
+24 key-value heads serving retrieval heads at score 0.1 kept unmerged restore
+15 of 15 at ppl 12.47 (cache 0.570), the 5 at 0.3 restore 14 of 15 at 13.93
+(0.520), the strongest alone 7; clean random controls (heads and leftovers below
+0.1) give 7 of 15 at five heads and 13 at 24; the residual's 24 costliest-to-pair
+heads give 5. Retrieval under merging is graded; the retrieval heads are the
+efficient exemption at small budgets; the paper's default (draft 3.8) exempts
+them and reports retrieval beside perplexity. Never state a head-merging
+conversion's quality from perplexity and ZS-7 alone. Random controls in
+this design must restrict the odd-remainder leftover too (the leftover rule
+picks the head whose exclusion makes the matching cheapest, which in layer 19
+is the retrieval head). Watchdog lesson
 (2026-10-31): its swap baseline is taken at start and goes stale as swap drifts;
 a 4,000 MB growth limit killed a healthy 7B metrics job at 29 percent free
 memory. Keep SWAPMAX at 8,000 and restart the watchdog (fresh baseline) before a
