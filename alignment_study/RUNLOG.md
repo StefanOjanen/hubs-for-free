@@ -1480,3 +1480,18 @@ Round 33 started 2026-11-02 03:03:37 UTC (run_pr33b.sh; registered at
 https://github.com/StefanOjanen/hubs-for-free/blob/9d73960/alignment_study/PREREGISTRATION33.md;
 OLMo-1B then h2o-danube-1.8b, arms mean, fuse, fuse_sens at 5M tokens and
 learning rate 2e-5; about 20 hours under the three guards; uptrain33.log).
+
+Round 33, OLMo-1B complete (2026-11-02 03:03 to 10:23 UTC under the three
+guards, no pauses; uptrain/OLMo-1B-hf.json; uptrain33.log). Uptraining from
+three starts at half the key-value heads, 5.00M tokens, learning rate 2e-5,
+perplexity at the seven checkpoints (0, 0.49, 1, 2, 3, 4, 5M tokens):
+averaging 9,939, 90.8, 52.3, 37.8, 32.6, 31.3, 30.39 (zero-shot average after
+training 0.444); the rebalanced fusion 58.5, 22.0, 20.6, 20.0, 19.2, 18.8,
+18.67 (0.503); the rebalanced fusion in the sensitivity metric 43.5, 22.0,
+20.7, 20.1, 19.2, 18.9, 18.74 (0.497). The fused start leads averaging at
+every checkpoint (log-lead 5.14 at the start, 0.49 at the end), so U1 and U2
+hold on this model; the retained lead is 0.0949 against the registered floor
+of 0.1 and the sensitivity start ends 0.4 percent above the plain one, so U3
+and U4, which require both models, cannot pass whatever h2o-danube gives. Each
+arm took about 2 h 25 min. h2o-danube-1.8b started at 10:23 UTC; the
+evaluator runs after it.
