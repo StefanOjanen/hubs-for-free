@@ -1484,7 +1484,7 @@ if all(glob.glob(p) for p in (RP0, RP1, RP2, NDJ, FTJ)):
     ax.set_title("Retrieval", loc="left", fontsize=12, color=INK, pad=8); bx.set_title("Perplexity", loc="left", fontsize=12, color=INK, pad=8)
     fig.text(0.012, 0.985, "Merging key-value heads loses copying from context; exempting the retrieval heads brings it back", fontsize=15, color=INK, va="top")
     fig.text(0.012, 0.925, "Mistral-7B-Instruct-v0.2 at half the key-value heads, development (needle_dev.py, retrieval_protect_dev.py). Perplexity stays within 3 times while retrieval of a planted code falls from 15 to 2 of 15;\n"
-             "five exempt retrieval heads (two percent of the cache above half) restore 14, five random heads 7, and the heads the fusion's own residual would exempt 5.", fontsize=9.5, color=INK2, va="top")
+             "five exempt retrieval heads (two percent of the cache above half) restore 14, five random non-retrieval heads 7 (one clean draw; fifteen instances), and the heads the fusion's own residual would exempt 5.", fontsize=9.5, color=INK2, va="top")
     fig.savefig(OUT + "fig34_retrieval_exemption.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
 # ============ Figure 35: round 33, uptraining from three starts at 5M tokens (registered) ============
