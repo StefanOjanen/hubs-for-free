@@ -603,6 +603,28 @@ Each instrument below exists because a finding above required it.
 <p align="center"><img src="figures/readme/fig33_quarter_heads.png" alt="Two panels. Left: WikiText-2 perplexity on a log axis for Llama-2-7B and Mistral-7B-v0.1 unconverted, at half the key-value heads and at a quarter with three groupings, each point marked by whether the one-window check exceeds 2.35; Llama-2-7B's two fused quarter conversions are flagged and sit near 15,000 and 19,000, averaging is unflagged at 4,066, and the conversion with layer 0 at half and the rest at a quarter is unflagged at 105; Mistral's quarter conversions are unflagged at 146 to 813. Right: the check on Llama-2-7B against the number of early layers kept at half, 576 at zero and 0.98 from one onward, with the threshold line" width="880"></p>
 <p align="center"><em>The check flags the quarter conversions that collapse through the super weight, not the ones that fail the ordinary way, and keeping the first layer at half, which it also chooses, recovers the model.</em></p>
 
+- **Merging key-value heads loses copying from context, and the retrieval
+  heads are the cheap repair.** Perplexity and the seven zero-shot tasks did
+  not see it: at half the key-value heads, the plain fusion of
+  Mistral-7B-Instruct keeps perplexity within 2.4 times on the whole test and
+  retrieves a planted five-digit code 2 times in 15 (unconverted 15 of 15),
+  answering in the right form with the wrong digits. The fusion's residual
+  pairs each of the five strongest retrieval heads (Wu et al.'s scores from
+  this repository's audit) with a near-zero partner. Keeping those five
+  key-value heads unmerged, two percent of the cache above half, restores 14 of
+  15 at perplexity 13.9; the 24 at a lower score restore 15 of 15 at 12.5
+  (seven percent). Five random non-retrieval heads restore 7, twenty-four
+  restore 13, and the 24 heads the residual itself would exempt restore 5: the
+  effect is graded, the retrieval heads are where a small budget buys most, and
+  the residual does not know which heads matter. Development, one model,
+  fifteen instances per arm; the preregistered test on two more models is the
+  next round. A random control in this design must also restrict the leftover
+  of an odd layer, which the cheapest-matching rule twice made a retrieval
+  head.
+
+<p align="center"><img src="figures/readme/fig34_retrieval_exemption.png" alt="Two panels of dot plots for Mistral-7B-Instruct at half the key-value heads. Left: planted codes retrieved of 15 for the unconverted model (15), the plain fusion (2), the strongest retrieval head exempt (7), the five retrieval heads exempt (14), the 24 exempt (15), five and 24 random non-retrieval heads exempt (7 and 13), and the residual's 24 costliest-to-pair heads exempt (5). Right: 8-window perplexity for the same arms, 5.5 to 16.7." width="100%"></p>
+<p align="center"><em>Retrieval under head merging is graded: five exempt retrieval heads do what twenty-four random heads do, and the heads the residual would protect do least.</em></p>
+
 - **Cross-layer KV compression, against the same nulls.** Two published
   methods compress the cache across layers on the premise that adjacent
   layers' keys and values are similar. MiniCache (NeurIPS 2024) merges them

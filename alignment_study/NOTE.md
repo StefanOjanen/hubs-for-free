@@ -1694,3 +1694,29 @@ layers 0 and 1 only Llama-2-7B gives 16.31, in layers 2 and up only 17.87,
 everywhere 18.37 (plain 16.00); round 29's one-window check reads at most 1.06
 against its threshold of 2.35. The loss sits in the deeper layers, not in the
 super-weight layers of round 28's follow-up; the plain fusion stays the default.
+
+## Merging key-value heads loses copying from context; exempting the retrieval heads brings it back (2026-11-01 to 02, development)
+
+A planted fact ("the secret code for the <colour> door is <five digits>") at
+three depths of a 2,048-token haystack, five codes, greedy decoding
+(`needle_dev.py`). Mistral-7B-Instruct-v0.2 retrieves 15 of 15 unconverted and
+2 of 15 after the plain fusion at half the key-value heads, in the right form
+with the wrong digits, while the same conversion's perplexity is 16.7 on the
+registered 8 windows and 14.5 on the whole test against 5.5 and 6.0. The
+residual's matching pairs each of the five key-value heads scored 0.3 or more
+by Wu et al.'s retrieval-head protocol (`audits/retrieval_heads`) with a head
+scoring at most 0.21 (`retrieval_pairs_check.py`). Keeping heads unmerged and
+matching the rest (`retrieval_protect_dev.py`): the five, 133 of 256 heads
+kept, 14 of 15 at 13.9; the 24 at 0.1 or more, 146 kept, 15 of 15 at 12.5; the
+strongest alone, 7 at 15.8. Controls at the same counts, drawn from heads below
+0.1 with the odd layers' leftovers held below it too: 7 of 15 at 16.0 and 13
+of 15 at 12.9; the 24 heads whose cheapest pairing costs most, the residual's
+own idea of what to protect, 5 of 15 at 14.0. Two earlier random draws that
+reached 13 and 14 had a strong retrieval head among their unmerged heads, once
+by the draw and once because the leftover rule chooses the head whose
+exclusion makes the layer's matching cheapest, which in layer 19 is the
+retrieval head; they are in the table and not counted. The effect is graded;
+the retrieval heads are where a small exemption buys most; the residual's
+choice is worst. One model, fifteen instances per arm, labelled development;
+the draft paper makes the exemption part of the method and the preregistered
+test on Qwen2.5-7B and Mistral-7B-v0.1 is proposed.

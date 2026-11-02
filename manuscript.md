@@ -1445,6 +1445,32 @@ quad_repair_dev.py, quad_fallback_dev.py). On this model the check, not the
 residual, sets the first layer's ratio; whether it does so on models it has not
 seen is a registered question still to be asked.
 
+### 6.14 Retrieval from context under head merging (development, not preregistered)
+
+A planted five-digit code at 10, 50 and 90 percent of a 2,048-token C4
+haystack, five codes, greedy decoding of 24 tokens. Mistral-7B-Instruct-v0.2
+retrieves 15 of 15 unconverted and 2 of 15 after the plain fusion at half the
+key-value heads, in the right form with the wrong digits, while that
+conversion's perplexity is 16.7 on 8 windows and 14.5 on the whole test
+(unconverted 5.5 and 6.0): a loss the perplexity and task numbers of Sections
+6.9 to 6.13 do not show. Wu et al.'s retrieval heads, scored for this model in
+the audit of Section 4, serve 5 key-value heads at 0.3 or more and 24 at 0.1 or
+more, and the residual's matching pairs each of the five with a head scoring
+at most 0.21. With the five kept unmerged and the rest matched (133 of 256
+heads, 0.520 of the full cache) the model retrieves 14 of 15 at 13.9; with the
+24 (146 heads, 0.570), 15 of 15 at 12.5; with the strongest alone, 7 at 15.8.
+Five random heads drawn from those below 0.1, with the odd layers' leftovers
+held below it, give 7 of 15 at 16.0; twenty-four give 13 of 15 at 12.9; the 24
+heads whose cheapest pairing costs most give 5 of 15 at 14.0. The effect is
+graded rather than carried by a few heads, the retrieval heads are where a
+small exemption buys most (five of them do what twenty-four random heads do),
+and the residual's own choice does least, in line with Section 6.8's finding
+that the local residual does not see what matters globally. One model, fifteen
+instances per arm (`needle_dev.py`, `retrieval_protect_dev.py`,
+`retrieval_pairs_check.py`); a random control in this design must restrict the
+leftover head of an odd layer, which the cheapest-matching rule twice made a
+retrieval head.
+
 ## 7. Limitations
 
 Results cover seventeen models up to 8B parameters in ten families, three

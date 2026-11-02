@@ -1446,3 +1446,43 @@ if glob.glob(QL) and glob.glob(QM) and glob.glob(QF):
     fig.savefig(OUT + "fig33_quarter_heads.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
 print("FIGURES_DONE", sorted(glob.glob(OUT + "*")))
+
+# ============ Figure 34: retrieval from context under head merging, and the exemption of the retrieval heads (development) ============
+RP0, RP1, RP2, NDJ, FTJ = ("alignment_study/retrieval_protect_dev/Mistral-7B-Instruct-v0.2.json", "alignment_study/retrieval_protect_dev/Mistral-7B-Instruct-v0.2_controls.json",
+                           "alignment_study/retrieval_protect_dev/Mistral-7B-Instruct-v0.2_clean.json", "alignment_study/needle_dev/Mistral-7B-Instruct-v0.2.json",
+                           "alignment_study/fulltest_dev/Mistral-7B-Instruct-v0.2.json")
+if all(glob.glob(p) for p in (RP0, RP1, RP2, NDJ, FTJ)):
+    plt.rcParams["axes.grid"] = False
+    A = {**json.load(open(RP0))["arms"], **json.load(open(RP1))["arms"], **json.load(open(RP2))["arms"]}
+    ND, FT = json.load(open(NDJ))["arms"], json.load(open(FTJ))
+    rows = [("unconverted", ND["unconverted"]["hits"], FT["base_8_windows"], 1.0, "base"),
+            ("plain fusion, half the heads", ND["fusion"]["hits"], FT["plain_8_windows"], 0.5, "base"),
+            ("+ the strongest retrieval head exempt", A["protect_single18_0"]["needle"]["hits"], A["protect_single18_0"]["ppl_8_windows"], A["protect_single18_0"]["cache_fraction"], "ret"),
+            ("+ the 5 retrieval heads at 0.3 exempt", A["protect_retrieval_0.3"]["needle"]["hits"], A["protect_retrieval_0.3"]["ppl_8_windows"], A["protect_retrieval_0.3"]["cache_fraction"], "ret"),
+            ("+ the 24 retrieval heads at 0.1 exempt", A["protect_retrieval_0.1"]["needle"]["hits"], A["protect_retrieval_0.1"]["ppl_8_windows"], A["protect_retrieval_0.1"]["cache_fraction"], "ret"),
+            ("+ 5 random non-retrieval heads exempt", A["protect_random_5_below0.1_seed2"]["needle"]["hits"], A["protect_random_5_below0.1_seed2"]["ppl_8_windows"], A["protect_random_5_below0.1_seed2"]["cache_fraction"], "rnd"),
+            ("+ 24 random non-retrieval heads exempt", A["protect_random_24_below0.1_seed2"]["needle"]["hits"], A["protect_random_24_below0.1_seed2"]["ppl_8_windows"], A["protect_random_24_below0.1_seed2"]["cache_fraction"], "rnd"),
+            ("+ the residual's 24 costliest-to-pair heads exempt", A["protect_residual_24"]["needle"]["hits"], A["protect_residual_24"]["ppl_8_windows"], A["protect_residual_24"]["cache_fraction"], "res")]
+    fig = plt.figure(figsize=(14.5, 5.6))
+    ax = fig.add_axes([0.30, 0.14, 0.30, 0.64]); bx = fig.add_axes([0.68, 0.14, 0.30, 0.64])
+    ys = list(range(len(rows)))[::-1]
+    COLR = {"base": INK2, "ret": S1, "rnd": INK2, "res": S2}; MARK = {"base": "o", "ret": "o", "rnd": "s", "res": "X"}
+    for y, (lab, hits, ppl, cache, kind) in zip(ys, rows):
+        ax.scatter([hits], [y], s=90, color=COLR[kind], marker=MARK[kind], edgecolors=SURF, linewidths=1.2, zorder=3)
+        ax.text(hits + 0.45, y, f"{hits} of 15", fontsize=9, color=INK2, va="center")
+        bx.scatter([ppl], [y], s=90, color=COLR[kind], marker=MARK[kind], edgecolors=SURF, linewidths=1.2, zorder=3)
+        bx.text(ppl + 0.35, y, f"{ppl:.1f}", fontsize=9, color=INK2, va="center")
+    ax.set_yticks(ys); ax.set_yticklabels([f"{r[0]}  (cache {r[3]:.3f})" if r[3] < 1 else r[0] for r in rows], fontsize=9.5)
+    bx.set_yticks(ys); bx.set_yticklabels([])
+    ax.set_xlim(-0.5, 18.5); ax.set_xticks([0, 5, 10, 15]); ax.set_xlabel("planted codes retrieved, of 15 (five codes at three depths)", fontsize=10)
+    bx.set_xlim(4, 19.5); bx.set_xticks([5, 10, 15]); bx.set_xlabel("WikiText-2 perplexity, 8 windows of 2,048 tokens", fontsize=10)
+    for a_ in (ax, bx):
+        a_.set_ylim(-0.7, max(ys) + 0.7); a_.tick_params(length=0); a_.grid(axis="x", color=GRID, lw=0.8)
+        for sp in ("left", "bottom"): a_.spines[sp].set_color(GRID)
+    bx.scatter([], [], s=70, color=S1, marker="o", label="retrieval heads exempt"); bx.scatter([], [], s=70, color=INK2, marker="s", label="random non-retrieval heads exempt")
+    bx.scatter([], [], s=70, color=S2, marker="X", label="the residual's choice exempt"); bx.legend(loc="upper center", bbox_to_anchor=(0.56, 1.0), fontsize=9, handletextpad=0.3)
+    ax.set_title("Retrieval", loc="left", fontsize=12, color=INK, pad=8); bx.set_title("Perplexity", loc="left", fontsize=12, color=INK, pad=8)
+    fig.text(0.012, 0.985, "Merging key-value heads loses copying from context; exempting the retrieval heads brings it back", fontsize=15, color=INK, va="top")
+    fig.text(0.012, 0.925, "Mistral-7B-Instruct-v0.2 at half the key-value heads, development (needle_dev.py, retrieval_protect_dev.py). Perplexity stays within 3 times while retrieval of a planted code falls from 15 to 2 of 15;\n"
+             "five exempt retrieval heads (two percent of the cache above half) restore 14, five random heads 7, and the heads the fusion's own residual would exempt 5.", fontsize=9.5, color=INK2, va="top")
+    fig.savefig(OUT + "fig34_retrieval_exemption.png", dpi=200, bbox_inches="tight"); plt.close(fig)
