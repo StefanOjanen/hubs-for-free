@@ -13,6 +13,9 @@
 # alignment_study/retrieval_protect_dev/<model>.json after every arm.
 # The two base arms (unconverted 15 of 15, plain fusion 2 of 15 in needle_dev.py, same haystack) run only with
 # --with-base; the controls are drawn at the first threshold's count. Under paging an arm takes about 30 minutes.
+# Follow-up arms: --protect=NAME:l-i,l-i;NAME2:... keeps the listed key-value heads unmerged; --random=K:SEED:EXCL;...
+# protects K random heads drawn from those whose retrieval score is below EXCL (a control that cannot touch the
+# retrieval heads); --thresholds= (empty) skips the threshold arms; --tag=NAME writes <model>_NAME.json.
 #   python alignment_study/retrieval_protect_dev.py [--model=mistralai/Mistral-7B-Instruct-v0.2] [--thresholds=0.1,0.3] [--seed=0] [--with-base]
 import gc
 import json
@@ -42,11 +45,12 @@ def arg(name, default=None):
 
 NAME = arg("model", "mistralai/Mistral-7B-Instruct-v0.2")
 REV = ND.REVISIONS.get(NAME)
-THRESHOLDS = [float(t) for t in arg("thresholds", "0.1,0.3").split(",")]
+THRESHOLDS = [float(t) for t in arg("thresholds", "0.1,0.3").split(",") if t]
+PROTECT, RANDOM, TAG = arg("protect", ""), arg("random", ""), arg("tag", "")
 WITH_BASE = "--with-base" in sys.argv
 SEED, N_PPL = int(arg("seed", 0)), 8
 SCORES = f"audits/retrieval_heads/{NAME.split('/')[-1]}_scores.npy"
-OUT = f"alignment_study/retrieval_protect_dev/{NAME.split('/')[-1]}.json"
+OUT = f"alignment_study/retrieval_protect_dev/{NAME.split('/')[-1]}{'_' + TAG if TAG else ''}.json"
 torch.set_grad_enabled(False)
 
 
@@ -127,6 +131,14 @@ if __name__ == "__main__":
         arms.append((f"protect_random_{k}", set(rng.sample(allheads, k))))
         cheapest = {(l, i): float(min(costs[l][i, j] for j in range(n) if j != i)) for l in range(L) for i in range(n)}
         arms.append((f"protect_residual_{k}", set(sorted(cheapest, key=lambda x: -cheapest[x])[:k])))
+    for spec in [x for x in PROTECT.split(";") if x]:
+        nm, heads = spec.split(":")
+        arms.append((f"protect_{nm}", {(int(h.split("-")[0]), int(h.split("-")[1])) for h in heads.split(",")}))
+    for spec in [x for x in RANDOM.split(";") if x]:
+        k, sd, ex = int(spec.split(":")[0]), int(spec.split(":")[1]), float(spec.split(":")[2])
+        pool = [(l, i) for l in range(L) for i in range(n) if scores[l, i * rep:(i + 1) * rep].max() < ex]
+        arms.append((f"protect_random_{k}_below{ex}_seed{sd}", set(random.Random(sd).sample(pool, k))))
+    res["arm_specs"] = {"protect": PROTECT, "random": RANDOM}
     for name, protected in arms:
         t1 = time.time()
         if name != "unconverted":
