@@ -1424,3 +1424,23 @@ against 5 retrieved), so the loss is specific to which heads are merged;
 the random control is confounded by its draw. Follow-up controls queued
 (run_a11b.sh): layer 18 head 0 alone, and 5 and 24 random heads drawn from
 heads below score 0.1.
+
+Retrieval protection, follow-up controls, development (labelled;
+retrieval_protect_dev.py --protect/--random, 2026-11-02 00:56 to 01:53 UTC
+under the three guards, no pauses;
+retrieval_protect_dev/Mistral-7B-Instruct-v0.2_controls.json). Layer 18 head
+0 alone (the strongest retrieval key-value head, 0.60; its layer's leftover
+scores 0.05): 7 of 15, ppl 15.83, 129 of 256 kept (0.504). Five random heads
+drawn from heads below score 0.1 (seed 1): 13 of 15, ppl 15.05, 133 kept; but
+the odd-remainder rule, which leaves out the head whose exclusion gives the
+cheapest matching, left layer 19 head 2 (0.33, one of the five strong
+retrieval heads) and layer 26 head 1 (0.12) unmerged. Twenty-four such heads
+(seed 1): 14 of 15, ppl 11.07, 146 kept, with 19/2, 31/7 (0.27) and 26/1 among
+the leftovers and six heads of layers 0 to 3 unmerged. Every random arm so far
+has exempted a strong retrieval head, by the draw (seed 0: 18/0) or by the
+leftover rule (seed 1: 19/2), so none is a clean control; the script now
+restricts the leftovers of score-excluded random arms to heads below the
+score, and two clean controls (5 and 24, seed 2) run next. That 19/2 is the
+head whose exclusion makes its layer's matching cheapest, twice, suggests the
+retrieval head is the hardest to pair within its layer (a hypothesis for the
+within-layer selector test, not a result).
