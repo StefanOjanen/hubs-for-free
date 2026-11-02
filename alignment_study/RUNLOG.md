@@ -1510,3 +1510,9 @@ its configuration (Mistral-7B-v0.1's do not exist yet), instead of skipping
 the model. The related-work sentence now says no head-merging conversion we
 know of reports retrieval from context, the latent family reporting
 LongBench-style suites.
+
+Decision, 2026-11-02 17:20 UTC (author): round 35 (the retrieval-head
+exemption on Qwen2.5-7B and Mistral-7B-v0.1) runs after A10b (the within-layer
+selector test); both after round 34 and the deferred benchmark already queued.
+retrieval_protect_dev.py gained --dev=<model> for the registered population on
+one model without the all-models guard (retrieval_round_dev/).

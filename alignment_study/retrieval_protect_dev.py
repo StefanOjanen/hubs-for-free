@@ -47,7 +47,7 @@ def arg(name, default=None):
     return next((a.split("=", 1)[1] for a in sys.argv if a.startswith(f"--{name}=")), default)
 
 
-REGISTERED = arg("registered")
+REGISTERED, REG_DEV = arg("registered"), arg("dev")                    # --dev=<model>: the registered population on one model, development, no guard
 REG_MODELS = ["Qwen/Qwen2.5-7B", "mistralai/Mistral-7B-v0.1", "mistralai/Mistral-7B-Instruct-v0.2"]      # the third is the development model, reported
 REG_REVISIONS = {"Qwen/Qwen2.5-7B": "d149729398750b98c0af14eb82c78cfe92750796", "mistralai/Mistral-7B-v0.1": "27d67f1b5f57dc0953326b2601d68371d40ea8da",
                  "mistralai/Mistral-7B-Instruct-v0.2": "63a8b081895390a26e140280378bc85ec8bce07a"}
@@ -180,7 +180,7 @@ def run_registered(name, rev, log):
     """PREREGISTRATION35's population on one model: the unconverted model, then the arms (a) to (f), 50 instances each."""
     ND.FACTS, ND.DEPTHS = REG_FACTS, REG_DEPTHS
     scores_path = f"audits/retrieval_heads/{name.split('/')[-1]}_scores.npy"
-    out = f"alignment_study/retrieval_round/{name.split('/')[-1]}.json"
+    out = f"alignment_study/{'retrieval_round_dev' if REG_DEV else 'retrieval_round'}/{name.split('/')[-1]}.json"
     scores = np.load(scores_path)                                           # checked before the round starts (main)
     tok = AutoTokenizer.from_pretrained(name, revision=rev)
     context_ids = tok.encode(ND.haystack_text(3 * ND.CTX), add_special_tokens=False)
@@ -188,7 +188,7 @@ def run_registered(name, rev, log):
     cal = C.windows_c4(tok, ND.N_CAL, ND.T_CAL)
     model = AutoModelForCausalLM.from_pretrained(name, revision=rev, dtype=torch.bfloat16, attn_implementation="sdpa").eval().to(DEV)
     kv = K.KV(model); n, L, rep = kv.nkv, kv.L, kv.rep
-    res = {"model": name, "revision": rev, "registered": REGISTERED, "development": name == "mistralai/Mistral-7B-Instruct-v0.2", "scores": scores_path,
+    res = {"model": name, "revision": rev, "registered": REGISTERED, "dev": bool(REG_DEV), "development": name == "mistralai/Mistral-7B-Instruct-v0.2", "scores": scores_path,
            "needle": {"context_tokens": ND.CTX, "facts": len(REG_FACTS), "depths": list(REG_DEPTHS)}, "ppl_windows": N_PPL, "kv_heads_total": L * n, "arms": {}}
     ne = needle_eval(model, tok, context_ids); ppl = Z.perplexity(model, win, DEV, bs=2)
     res["arms"]["unconverted"] = {"n_protected": 0, "kv_heads_kept": L * n, "cache_fraction": 1.0, "ppl_8_windows": ppl, "needle": ne}
@@ -222,7 +222,12 @@ def run_registered(name, rev, log):
 
 
 if __name__ == "__main__":
-    if REGISTERED:
+    if REG_DEV:
+        os.makedirs("alignment_study/retrieval_round_dev", exist_ok=True)
+        t0 = time.time(); log = lambda s: print(s, f"({time.time() - t0:.0f}s)", flush=True)
+        run_registered(REG_DEV, REG_REVISIONS.get(REG_DEV), log)
+        log("RETRIEVAL_ROUND_DEV_DONE")
+    elif REGISTERED:
         os.makedirs("alignment_study/retrieval_round", exist_ok=True)
         t0 = time.time(); log = lambda s: print(s, f"({time.time() - t0:.0f}s)", flush=True)
         only = arg("only")

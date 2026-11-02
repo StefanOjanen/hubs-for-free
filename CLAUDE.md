@@ -248,7 +248,16 @@ them and reports retrieval beside perplexity. Never state a head-merging
 conversion's quality from perplexity and ZS-7 alone. Random controls in
 this design must restrict the odd-remainder leftover too (the leftover rule
 picks the head whose exclusion makes the matching cheapest, which in layer 19
-is the retrieval head). Watchdog lesson
+is the retrieval head). A10b (development, author's go 2026-11-02; residual_select_dev.py, run_a10b.sh,
+queued after round 34 and the 7B benchmark): every matching of one layer's
+key-value heads fused alone, the summed residual and a one-layer output
+perturbation against whole-model KL, five models. 35 (draft in
+private/drafts/PREREGISTRATION35_draft.md; instruments retrieval_protect_dev.py
+--registered and eval_retrieval35.py committed as drafts; author's go
+2026-11-02, after A10b): the retrieval-head exemption on Qwen2.5-7B and
+Mistral-7B-v0.1, 50 instances per arm, E1 to E5; prerequisites run_pr35_prep.sh
+(Mistral-7B-v0.1's scores, the population on the development model via --dev),
+then the freeze by hand, then run_pr35.sh. Watchdog lesson
 (2026-10-31): its swap baseline is taken at start and goes stale as swap drifts;
 a 4,000 MB growth limit killed a healthy 7B metrics job at 29 percent free
 memory. Keep SWAPMAX at 8,000 and restart the watchdog (fresh baseline) before a
