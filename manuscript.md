@@ -1455,7 +1455,10 @@ conversion's perplexity is 16.7 on 8 windows and 14.5 on the whole test
 (unconverted 5.5 and 6.0): a loss the perplexity and task numbers of Sections
 6.9 to 6.13 do not show, and the merging counterpart of Wu et al.'s masking
 experiment, in which masking the top retrieval heads drops needle accuracy
-below half while masking random heads does not. Wu et al.'s retrieval heads, scored for this model in
+below half while masking random heads does not; Zhang et al. (arXiv
+2506.09944) score heads by attention to the query-relevant span and find
+masking their top 32 in Llama-3.1-8B ends needle retrieval where Wu et al.'s
+top 32 only lowers it, so which scoring picks the cheapest exemption is open. Wu et al.'s retrieval heads, scored for this model in
 the audit of Section 4, serve 5 key-value heads at 0.3 or more and 24 at 0.1 or
 more, and the residual's matching pairs each of the five with a head scoring
 at most 0.21. With the five kept unmerged and the rest matched (133 of 256
