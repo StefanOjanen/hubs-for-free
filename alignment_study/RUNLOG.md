@@ -1462,3 +1462,21 @@ heads alone; at a small exemption budget the retrieval heads are where it
 buys most (five of them equal about twenty-four random heads, one of them
 about five), at a tenth of the cache the choice matters little, and the
 residual's own choice is the worst. One model, 15 instances, development.
+
+Llama-2-7B export and benchmark, second attempt (2026-11-02 02:35 to 03:03 UTC;
+kvfuse_bench.log). The export saved again (moments at 851 s, fused and
+rebalanced at 1,575 s, the checkpoint at 1,626 s, 27 minutes). The memory
+watchdog killed the benchmark again while it loaded its first model (03:03
+UTC, free 8 percent, swap 9,215 MB), two minutes after the 13 GB write; the
+runner's cleanup removed the checkpoint and the waiter started round 33 at
+03:03:37 UTC. Free memory read 90 percent a minute later: the kill is a
+transient of loading 13 GB right after writing 13 GB on a machine whose other
+consumers hold about 10 GB. Deferred: the next attempt (run_export_bench2.sh)
+waits for free memory above 50 percent between the export and the load and
+keeps the checkpoint if the benchmark dies. The paper's Table 15 keeps the
+TinyLlama benchmark; the 7B decode benchmark awaits a quieter machine.
+
+Round 33 started 2026-11-02 03:03:37 UTC (run_pr33b.sh; registered at
+https://github.com/StefanOjanen/hubs-for-free/blob/9d73960/alignment_study/PREREGISTRATION33.md;
+OLMo-1B then h2o-danube-1.8b, arms mean, fuse, fuse_sens at 5M tokens and
+learning rate 2e-5; about 20 hours under the three guards; uptrain33.log).
