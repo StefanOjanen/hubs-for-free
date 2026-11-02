@@ -64,15 +64,17 @@ def free():
         torch.mps.empty_cache()
 
 
-def match_rest(cost, rest):
-    """Minimum-cost pairs among the heads in rest; an odd count leaves out the head whose exclusion is cheapest."""
+def match_rest(cost, rest, allowed_single=None):
+    """Minimum-cost pairs among the heads in rest; an odd count leaves out the head whose exclusion is cheapest,
+    chosen among allowed_single when given (the score-excluded random arms keep retrieval heads out of the leftovers)."""
     if len(rest) < 2:
         return [], list(rest)
     if len(rest) % 2 == 0:
         sub = cost[rest][:, rest]
         return [[rest[a], rest[b]] for a, b in kvfuse.min_cost_pairs(sub)], []
     best = None
-    for out in rest:
+    cands = [i for i in rest if allowed_single is None or i in allowed_single] or list(rest)
+    for out in cands:
         keep = [i for i in rest if i != out]; sub = cost[keep][:, keep]
         pairs = kvfuse.min_cost_pairs(sub); total = float(sum(sub[a, b] for a, b in pairs))
         if best is None or total < best[0]:
@@ -80,13 +82,14 @@ def match_rest(cost, rest):
     return best[1], best[2]
 
 
-def groups_with(kv, costs, protected):
-    """Per layer: the protected heads as groups of one, the rest matched by the residual."""
+def groups_with(kv, costs, protected, allowed_single=None):
+    """Per layer: the protected heads as groups of one, the rest matched by the residual; allowed_single, when given,
+    is the set of (layer, head) that may be left unmerged by an odd remainder."""
     groups, n = [], kv.nkv
     for l in range(kv.L):
         prot = sorted(i for (ll, i) in protected if ll == l)
         rest = [i for i in range(n) if i not in prot]
-        pairs, left = match_rest(costs[l], rest)
+        pairs, left = match_rest(costs[l], rest, None if allowed_single is None else {i for (ll, i) in allowed_single if ll == l})
         groups.append(sorted([[i] for i in prot + left] + [sorted(p) for p in pairs]))
     return groups
 
@@ -121,6 +124,7 @@ if __name__ == "__main__":
     res = {"model": NAME, "revision": REV, "exploratory": True, "scores": SCORES, "thresholds": THRESHOLDS, "seed": SEED, "calibration": [ND.N_CAL, ND.T_CAL],
            "needle": {"context_tokens": ND.CTX, "facts": len(ND.FACTS), "depths": list(ND.DEPTHS)}, "ppl_windows": N_PPL, "kv_heads_total": L * n, "arms": {}}
     arms = [("unconverted", None), ("fusion", set())] if WITH_BASE else []
+    ALLOWED = {}
     for th in THRESHOLDS:
         P = sorted({(int(l), int(h) // rep) for l, h in np.argwhere(scores >= th)})
         arms.append((f"protect_retrieval_{th}", set(P)))
@@ -138,13 +142,14 @@ if __name__ == "__main__":
         k, sd, ex = int(spec.split(":")[0]), int(spec.split(":")[1]), float(spec.split(":")[2])
         pool = [(l, i) for l in range(L) for i in range(n) if scores[l, i * rep:(i + 1) * rep].max() < ex]
         arms.append((f"protect_random_{k}_below{ex}_seed{sd}", set(random.Random(sd).sample(pool, k))))
-    res["arm_specs"] = {"protect": PROTECT, "random": RANDOM}
+        ALLOWED[f"protect_random_{k}_below{ex}_seed{sd}"] = set(pool)                   # leftovers below the score too
+    res["arm_specs"] = {"protect": PROTECT, "random": RANDOM, "leftovers_restricted_for": sorted(ALLOWED)}
     for name, protected in arms:
         t1 = time.time()
         if name != "unconverted":
             if name != arms[0][0]:                              # the first arm converts the model already loaded for the moments
                 del model, kv; free(); model = load(); kv = K.KV(model)
-            groups = groups_with(kv, costs, protected)
+            groups = groups_with(kv, costs, protected, ALLOWED.get(name))
             K.convert(kv, S, groups, "fuse")
             kept = sum(len(g) for g in groups)
         else:
