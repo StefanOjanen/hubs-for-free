@@ -1486,3 +1486,31 @@ if all(glob.glob(p) for p in (RP0, RP1, RP2, NDJ, FTJ)):
     fig.text(0.012, 0.925, "Mistral-7B-Instruct-v0.2 at half the key-value heads, development (needle_dev.py, retrieval_protect_dev.py). Perplexity stays within 3 times while retrieval of a planted code falls from 15 to 2 of 15;\n"
              "five exempt retrieval heads (two percent of the cache above half) restore 14, five random heads 7, and the heads the fusion's own residual would exempt 5.", fontsize=9.5, color=INK2, va="top")
     fig.savefig(OUT + "fig34_retrieval_exemption.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
+# ============ Figure 35: round 33, uptraining from three starts at 5M tokens (registered) ============
+U33 = {"OLMo-1B": "alignment_study/uptrain/OLMo-1B-hf.json", "h2o-danube-1.8b": "alignment_study/uptrain/h2o-danube-1.8b-base.json"}
+if all(glob.glob(p) for p in U33.values()):
+    from matplotlib.ticker import FixedLocator, FixedFormatter, NullLocator
+    plt.rcParams["axes.grid"] = False
+    fig = plt.figure(figsize=(14.5, 5.8))
+    axes = [fig.add_axes([0.07, 0.14, 0.40, 0.62]), fig.add_axes([0.56, 0.14, 0.40, 0.62])]
+    ARMS = [("mean", "averaging", S2, "X"), ("fuse", "fusion, rebalanced", S1, "o"), ("fuse_sens", "fusion in the sensitivity metric, rebalanced", S3, "s")]
+    for ax, (mname, path) in zip(axes, U33.items()):
+        R = json.load(open(path))
+        for arm, lab, col, mk in ARMS:
+            if arm not in R["arms"]:
+                continue
+            c = R["arms"][arm]["curve"]; xs = [p["tokens"] / 1e6 for p in c]; ys = [p["ppl"] for p in c]
+            ax.plot(xs, ys, color=col, lw=2, marker=mk, markersize=6, markeredgecolor=SURF, markeredgewidth=1, zorder=3, label=lab)
+            ax.text(xs[-1] + 0.08, ys[-1], f"{ys[-1]:.1f}", fontsize=9, color=col, va="center")
+        ax.set_yscale("log"); TK = [10, 20, 30, 50, 100, 200, 500, 1000, 3000, 10000]
+        ax.yaxis.set_major_locator(FixedLocator(TK)); ax.yaxis.set_major_formatter(FixedFormatter([f"{t:,}" for t in TK])); ax.yaxis.set_minor_locator(NullLocator())
+        ax.set_xlim(-0.1, 5.6); ax.set_xlabel("training tokens (millions), learning rate 2e-5", fontsize=10); ax.set_ylabel("WikiText-2 perplexity (log)", fontsize=10)
+        ax.set_title(f"{mname}, half the key-value heads", loc="left", fontsize=12, color=INK, pad=8)
+        ax.tick_params(length=0); ax.grid(axis="y", color=GRID, lw=0.8)
+        for sp in ("left", "bottom"): ax.spines[sp].set_color(GRID)
+    axes[0].legend(loc="upper right", fontsize=9.5, handletextpad=0.4)
+    fig.text(0.012, 0.985, "Uptraining from three starts: the fused start stays below the averaged one (round 33, registered)", fontsize=15, color=INK, va="top")
+    fig.text(0.012, 0.925, "Two models converted to half their key-value heads without training, then uptrained for 5M tokens from the averaged start, the rebalanced fusion and the rebalanced fusion in the sensitivity metric\n"
+             "(PREREGISTRATION33.md, frozen at 9d73960; uptrain_round.py, eval_uptrain33.py). Each curve is the perplexity at the evaluation checkpoints.", fontsize=9.5, color=INK2, va="top")
+    fig.savefig(OUT + "fig35_uptraining.png", dpi=200, bbox_inches="tight"); plt.close(fig)
