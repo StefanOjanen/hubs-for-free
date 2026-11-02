@@ -195,6 +195,21 @@ if FT:
     rows = [[short(os.path.basename(fp)[:-5]), (lambda r: f"{r['windows']}")(json.load(open(fp)))] + [f(json.load(open(fp))[k]) for k in ("base_8_windows", "base_full_2048", "plain_8_windows", "plain_full_2048")] for fp in FT]
     table(["Model", "windows", "unconverted, 8", "unconverted, whole", "fusion, 8", "fusion, whole"], rows)
 
+# ---- Table 5b: round 33, uptraining from three starts at 5M tokens (registered) ----
+U33 = sorted(glob.glob("alignment_study/uptrain/*.json"))
+if U33 and os.path.exists("alignment_study/uptrain33_results.json"):
+    R33 = json.load(open("alignment_study/uptrain33_results.json"))
+    w("## Table 5b. Uptraining from three starts at 5M tokens, learning rate 2e-5, half the key-value heads (round 33, registered at 9d73960)\n")
+    w("Perplexity on the evaluation windows at the start and after 5M tokens, the zero-shot average after training, and the retained lead (the fused start's log-lead over averaging at the end as a fraction of its lead at the start; registered floor 0.1). " + f"U1 {'pass' if R33['U1']['pass'] else 'fail'}, U2 {'pass' if R33['U2']['pass'] else 'fail'}, U3 {'pass' if R33['U3']['pass'] else 'fail'}, U4 {'pass' if R33['U4']['pass'] else 'fail'}; {R33['passes']} of {R33['of']}.\n")
+    rows = []
+    for fp in U33:
+        r = json.load(open(fp)); m = short(os.path.basename(fp)[:-5]); per = R33["per_model"].get(os.path.basename(fp)[:-5], {})
+        for arm, lab in (("mean", "averaging"), ("fuse", "fusion, rebalanced"), ("fuse_sens", "fusion in the sensitivity metric, rebalanced")):
+            if arm in r["arms"]:
+                c = r["arms"][arm]["curve"]; zs = r["arms"][arm].get("zeroshot_after", {}).get("average")
+                rows.append([m, lab, f(c[0]["ppl"]), f(c[-1]["ppl"]), f(zs, 3) if zs is not None else "", f(per["retained"], 3) if arm == "fuse" and per.get("retained") is not None else ""])
+    table(["Model", "start", "ppl at 0", "ppl at 5M", "zero-shot after", "retained lead"], rows)
+
 # ---- Table 13: the fusion's residual against merge damage at 7B scale (development) ----
 RD = [fp for fp in sorted(glob.glob("alignment_study/residual_damage/*.json")) if not fp.endswith("summary.json")]
 if RD:
