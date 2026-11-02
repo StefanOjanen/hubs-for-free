@@ -1479,6 +1479,22 @@ five-head contrast (`needle_dev.py`, `retrieval_protect_dev.py`,
 leftover head of an odd layer, which the cheapest-matching rule twice made a
 retrieval head.
 
+### 6.15 Uptraining from three starts at 5M tokens (preregistration 33)
+
+OLMo-1B and h2o-danube-1.8b at half their key-value heads, uptrained for 5M
+tokens at learning rate 2e-5 from the averaged start, the rebalanced fusion and
+the rebalanced fusion in Section 6.12's sensitivity metric (frozen at 9d73960).
+The fused start ends at 18.67 against averaging's 30.39 and at 12.06 against
+16.47, below the averaged curve at every checkpoint (U1, U2); zero-shot
+averages after training 0.503 and 0.512 against 0.444 and 0.456. The retained
+lead, a tenth of the initial log-lead, is 0.095 on OLMo-1B against the
+registered 0.1 and 0.120 on h2o-danube (U3 fails); the sensitivity-metric start
+ends at 18.74 against the plain fused 18.67 on OLMo-1B and at 11.99 against
+12.06 on h2o-danube (U4 fails). 2 of 4. The head start narrows from 170 and
+13.5 times to 1.63 and 1.37 after 5M tokens, with the averaged curve still
+falling on OLMo-1B; what a larger budget closes is not measured
+(`uptrain_round.py`, `eval_uptrain33.py`, `uptrain/`).
+
 ## 7. Limitations
 
 Results cover seventeen models up to 8B parameters in ten families, three
@@ -1586,6 +1602,7 @@ against the norm of what each head writes.
 | 30 | ab9827e, pushed before execution | Q1 to Q3, T1 to T3: rebalancing the fused heads, for 4- and 3-bit rounding in six models and uptraining in two | 4 of 6; Q1, T2 fail |
 | 31 | 207a5ec, pushed before execution | A1 to A3: the fusion fitted in the received-attention metric, five models | 0 of 3; Qwen2.5-7B's arms invalid (instrument defect), rerun post hoc |
 | 32 | bcdcd9d, pushed before execution | gate, D1 to D4: the fusion fitted in the sensitivity and attention-mixed metrics, eight models | 2 of 4; D1, D4 fail (Llama-2-7B, Qwen2.5-7B higher) |
+| 33 | 9d73960, pushed before execution | U1 to U4: uptraining from the averaged, the rebalanced fused and the sensitivity-metric starts at 5M tokens, OLMo-1B and h2o-danube-1.8b | 2 of 4; U3 (retained lead 0.095 on OLMo-1B against 0.1), U4 (the sensitivity start above the plain one on OLMo-1B) fail |
 
 ## Appendix B. Numbers ledger
 

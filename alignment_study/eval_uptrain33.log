@@ -1,0 +1,7 @@
+U1 PASS {}
+U2 PASS {}
+U3 FAIL {'retained': {'OLMo-1B-hf': 0.0949070745405399, 'h2o-danube-1.8b-base': 0.11981785771565025}}
+U4 FAIL {}
+OLMo-1B-hf final {'mean': 30.39, 'fuse': 18.67, 'fuse_sens': 18.74} retained 0.095
+h2o-danube-1.8b-base final {'mean': 16.47, 'fuse': 12.06, 'fuse_sens': 11.99} retained 0.12
+passes 2 of 4 missing []

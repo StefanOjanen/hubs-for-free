@@ -217,9 +217,13 @@ averaging, the rebalanced fusion and the rebalanced round 32 fusion, learning
 rate 2e-5; U1 to U4; about 20 GPU hours, queued for 2026-11-01 to 02 behind
 the quad run, its repair, chain 2 (calibration sizes, Qwen pairs, residual
 against damage, whole-test values, the needle test) and a Llama-2-7B export
-and benchmark (private/guards/run_pr33.sh). The author approved the run and
-the deletion of the OPT-6.7B and Phi-3-mini caches on 2026-11-01; results
-pending (uptrain/, uptrain33_results.json). 34 (alignment_study/PREREGISTRATION34.md, frozen at c3cc48c after the Llama-160m
+and benchmark (private/guards/run_pr33.sh). Run 2026-11-02 (uptrain/,
+uptrain33_results.json): 2 of 4; U1 and U2 pass (the rebalanced fusion ends at
+18.67 and 12.06 against averaging's 30.39 and 16.47 on OLMo-1B and h2o-danube,
+leading at every checkpoint; zero-shot 0.503 and 0.512 against 0.444 and
+0.456), U3 fails (retained log-lead 0.095 on OLMo-1B against 0.1; 0.120 on
+h2o-danube), U4 fails (the sensitivity start 18.74 against the plain 18.67 on
+OLMo-1B; 11.99 against 12.06 on h2o-danube). 34 (alignment_study/PREREGISTRATION34.md, frozen at c3cc48c after the Llama-160m
 development test, quad_check_dev/; instruments quad_check_round.py and
 eval_quad_check.py; results pending in quad_check/, quad_check_results.json):
 round 29's design at a quarter of the heads, layers 0 and 1 each unmerged, at

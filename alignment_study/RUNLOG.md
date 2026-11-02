@@ -1516,3 +1516,24 @@ exemption on Qwen2.5-7B and Mistral-7B-v0.1) runs after A10b (the within-layer
 selector test); both after round 34 and the deferred benchmark already queued.
 retrieval_protect_dev.py gained --dev=<model> for the registered population on
 one model without the all-models guard (retrieval_round_dev/).
+
+Round 33 complete (2026-11-02 03:03 to 22:49 UTC under the three guards; no
+pauses, the battery dipped to 44 percent discharging at 19:19 UTC and power
+returned before the guard's threshold; free memory 22 to 53 percent with the
+author's applications open; uptrain/OLMo-1B-hf.json,
+uptrain/h2o-danube-1.8b-base.json, uptrain33_results.json, uptrain33.log,
+eval_uptrain33.log; registered at
+https://github.com/StefanOjanen/hubs-for-free/blob/9d73960/alignment_study/PREREGISTRATION33.md).
+h2o-danube-1.8b (10:23 to 22:49 UTC, about 4 h 8 min per arm): averaging 487,
+54.4, 24.9, 18.3, 17.4, 16.5, 16.47 (zero-shot 0.456); the rebalanced fusion
+36.1, 13.7, 13.0, 12.3, 12.2, 12.1, 12.06 (0.512); the rebalanced fusion in
+the sensitivity metric 30.9, 13.6, 12.7, 12.2, 12.1, 12.0, 11.99 (0.515);
+retained log-lead 0.120. With OLMo-1B's entry above: U1 passes (18.67 against
+30.39, 12.06 against 16.47), U2 passes (the fused start leads at every
+checkpoint on both models), U3 fails (retained lead 0.095 on OLMo-1B against
+the registered 0.1; 0.120 on h2o-danube), U4 fails (the sensitivity start
+ends at 18.74 against the plain 18.67 on OLMo-1B; 11.99 against 12.06 on
+h2o-danube): 2 of 4. The head start narrows from 170 and 13.5 times at the
+start to 1.63 and 1.37 times after 5M tokens; the averaged curve is still
+falling on OLMo-1B (31.3 to 30.4 over the last million) and flat on
+h2o-danube. Round 34 started at 22:49 UTC.

@@ -631,6 +631,22 @@ Each instrument below exists because a finding above required it.
 <p align="center"><img src="figures/readme/fig34_retrieval_exemption.png" alt="Two panels of dot plots for Mistral-7B-Instruct at half the key-value heads. Left: planted codes retrieved of 15 for the unconverted model (15), the plain fusion (2), the strongest retrieval head exempt (7), the five retrieval heads exempt (14), the 24 exempt (15), five and 24 random non-retrieval heads exempt (7 and 13), and the residual's 24 costliest-to-pair heads exempt (5). Right: 8-window perplexity for the same arms, 5.5 to 16.7." width="100%"></p>
 <p align="center"><em>Retrieval under head merging is graded: five exempt retrieval heads do what twenty-four random heads do, and the heads the residual would protect do least.</em></p>
 
+- **Uptraining from the fused start: a head start that narrows and holds at
+  5M tokens.** Round 33 (registered) uptrained OLMo-1B and h2o-danube-1.8b at
+  half their key-value heads for 5M tokens from three starts. The rebalanced
+  fusion ends at 18.67 against averaging's 30.39 and at 12.06 against 16.47,
+  below the averaged curve at every checkpoint, with zero-shot averages of
+  0.503 and 0.512 against 0.444 and 0.456. Two registered clauses fail: the
+  retained lead, a tenth of the initial log-lead, is 0.095 on OLMo-1B against
+  the floor of 0.1 (0.120 on h2o-danube), and the sensitivity-metric start
+  ends above the plain fused one on OLMo-1B (18.74 against 18.67) though below
+  it on h2o-danube (11.99 against 12.06). 2 of 4. The head start narrows from
+  170 and 13.5 times to 1.63 and 1.37; the averaged curve is still falling on
+  OLMo-1B, so what a larger budget closes is not measured.
+
+<p align="center"><img src="figures/readme/fig35_uptraining.png" alt="Two panels of perplexity against training tokens on a log axis, OLMo-1B and h2o-danube-1.8b at half their key-value heads, three curves each: averaging from 9,939 and 487 to 30.39 and 16.47, the rebalanced fusion from 58.5 and 36.1 to 18.67 and 12.06, the sensitivity-metric fusion from 43.5 and 30.9 to 18.74 and 11.99." width="100%"></p>
+<p align="center"><em>The fused start stays below the averaged one through 5M tokens on both models; the lead narrows from two orders of magnitude to about half a log unit.</em></p>
+
 - **Cross-layer KV compression, against the same nulls.** Two published
   methods compress the cache across layers on the premise that adjacent
   layers' keys and values are similar. MiniCache (NeurIPS 2024) merges them

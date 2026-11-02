@@ -1497,12 +1497,17 @@ if all(glob.glob(p) for p in U33.values()):
     ARMS = [("mean", "averaging", S2, "X"), ("fuse", "fusion, rebalanced", S1, "o"), ("fuse_sens", "fusion in the sensitivity metric, rebalanced", S3, "s")]
     for ax, (mname, path) in zip(axes, U33.items()):
         R = json.load(open(path))
+        placed = []
         for arm, lab, col, mk in ARMS:
             if arm not in R["arms"]:
                 continue
             c = R["arms"][arm]["curve"]; xs = [p["tokens"] / 1e6 for p in c]; ys = [p["ppl"] for p in c]
             ax.plot(xs, ys, color=col, lw=2, marker=mk, markersize=6, markeredgecolor=SURF, markeredgewidth=1, zorder=3, label=lab)
-            ax.text(xs[-1] + 0.08, ys[-1], f"{ys[-1]:.1f}", fontsize=9, color=col, va="center")
+            yl = ys[-1]
+            while any(abs(np.log(yl) - np.log(q)) < 0.09 for q in placed):      # stagger end labels that would overlap on the log axis
+                yl = yl * 0.88
+            placed.append(yl)
+            ax.text(xs[-1] + 0.08, yl, f"{ys[-1]:.2f}", fontsize=9, color=col, va="center")
         ax.set_yscale("log"); TK = [10, 20, 30, 50, 100, 200, 500, 1000, 3000, 10000]
         ax.yaxis.set_major_locator(FixedLocator(TK)); ax.yaxis.set_major_formatter(FixedFormatter([f"{t:,}" for t in TK])); ax.yaxis.set_minor_locator(NullLocator())
         ax.set_xlim(-0.1, 5.6); ax.set_xlabel("training tokens (millions), learning rate 2e-5", fontsize=10); ax.set_ylabel("WikiText-2 perplexity (log)", fontsize=10)

@@ -1723,3 +1723,20 @@ retrieval 24's 12.5). One model, fifteen instances per arm, one clean random
 draw at five heads, underpowered for that contrast; labelled development;
 the draft paper makes the exemption part of the method and the preregistered
 test on Qwen2.5-7B and Mistral-7B-v0.1 is proposed.
+
+## Uptraining from three starts at 5M tokens (2026-11-02, preregistration 33)
+
+Two models at half their key-value heads, uptrained for 5M tokens at learning
+rate 2e-5 from the averaged start, the rebalanced fusion and the rebalanced
+fusion in round 32's sensitivity metric (`uptrain_round.py`,
+`eval_uptrain33.py`, frozen at 9d73960). The fused start ends at 18.67 against
+averaging's 30.39 on OLMo-1B and 12.06 against 16.47 on h2o-danube-1.8b, and
+leads at every checkpoint (U1 and U2 pass); zero-shot averages after training
+0.503 and 0.512 against 0.444 and 0.456. The registered floor on the retained
+lead, a tenth of the initial log-lead, is missed on OLMo-1B (0.095) and met on
+h2o-danube (0.120), so U3 fails; the sensitivity-metric start ends below the
+plain fused one on h2o-danube (11.99 against 12.06) and above it on OLMo-1B
+(18.74 against 18.67), so U4 fails. 2 of 4, both failures narrow and reported
+as failures. The head start narrows from 170 and 13.5 times to 1.63 and 1.37
+after 5M tokens, with the averaged curve still falling on OLMo-1B; what a larger
+budget closes is not measured.
