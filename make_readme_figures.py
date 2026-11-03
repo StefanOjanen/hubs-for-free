@@ -1589,3 +1589,44 @@ if RS:
     fig.text(0.012, 0.925, "Every matching of one layer's key-value heads (all 105 for 8 heads, 3 for 4; a sample of swaps and random matchings above 8), the layer fused alone, scored by the summed residual and by the fused layer's\n"
              "output change on one held-out window, against KL(unconverted || converted) on held-out WikiText-2 windows through the whole model (residual_select_dev.py, development).", fontsize=9.5, color=INK2, va="top")
     fig.savefig(OUT + "fig37_selector.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
+# ============ Figure 38: round 35, the retrieval-head exemption on models it was not tuned on (registered) ============
+RR = sorted(glob.glob("alignment_study/retrieval_round/*.json"))
+if RR and os.path.exists("alignment_study/retrieval_round_results.json"):
+    plt.rcParams["axes.grid"] = False
+    ARMS35 = [("unconverted", "unconverted", INK2, "o"), ("a_fusion", "plain fusion, half the heads", INK2, "o"), ("b_retrieval_0.3", "retrieval heads at 0.3 exempt", S1, "o"),
+              ("c_retrieval_0.1", "retrieval heads at 0.1 exempt", S1, "D"), ("d_random", "random non-retrieval heads, the 0.3 count (two draws)", INK2, "s"),
+              ("e_random", "random non-retrieval heads, the 0.1 count (two draws)", INK2, "^"), ("f_residual", "the residual's choice, the 0.3 count", S2, "X")]
+    LAB35 = {"Qwen2.5-7B": "Qwen2.5-7B", "Mistral-7B-v0.1": "Mistral-7B-v0.1", "Mistral-7B-Instruct-v0.2": "Mistral-7B-Instruct (development)"}
+    models = [os.path.basename(fp)[:-5] for fp in RR]
+    fig = plt.figure(figsize=(14.5, 2.4 + 1.9 * len(models)))
+    ax = fig.add_axes([0.30, 0.12, 0.31, 0.66]); bx = fig.add_axes([0.67, 0.12, 0.31, 0.66])
+    rows, y = [], 0
+    for fp in RR:
+        r = json.load(open(fp)); m = LAB35.get(os.path.basename(fp)[:-5], os.path.basename(fp)[:-5])
+        for key, lab, col, mk in ARMS35:
+            arms = [k for k in r["arms"] if k == key or k.startswith(key + "_")]
+            for k in arms:
+                v = r["arms"][k]; rows.append((f"{m}: {lab}" if k == arms[0] else "", v["needle"]["hits"], v["needle"]["of"], v["ppl_8_windows"], v["cache_fraction"], col, mk))
+        rows.append(None)
+    rows = rows[:-1]
+    ys = list(range(len(rows)))[::-1]
+    for yy, row in zip(ys, rows):
+        if row is None:
+            continue
+        lab, hits, of, ppl, cache, col, mk = row
+        ax.scatter([hits], [yy], s=80, color=col, marker=mk, edgecolors=SURF, linewidths=1.1, zorder=3); ax.text(hits + 1.0, yy, f"{hits} of {of}", fontsize=8.5, color=INK2, va="center")
+        bx.scatter([ppl], [yy], s=80, color=col, marker=mk, edgecolors=SURF, linewidths=1.1, zorder=3); bx.text(ppl * 1.04, yy, f"{ppl:.1f}", fontsize=8.5, color=INK2, va="center")
+    ax.set_yticks([yy for yy, row in zip(ys, rows) if row is not None]); ax.set_yticklabels([f"{row[0]}  (cache {row[4]:.3f})" if row[0] and row[4] < 1 else row[0] for row in rows if row is not None], fontsize=8.5)
+    bx.set_yticks(ax.get_yticks()); bx.set_yticklabels([])
+    of = max(r[2] for r in rows if r is not None); ax.set_xlim(-1, of * 1.25); ax.set_xlabel(f"planted codes retrieved, of {of}", fontsize=10)
+    from matplotlib.ticker import FixedLocator, FixedFormatter, NullLocator
+    bx.set_xscale("log"); TKX = [3, 5, 10, 20, 50, 100, 200]; bx.xaxis.set_major_locator(FixedLocator(TKX)); bx.xaxis.set_major_formatter(FixedFormatter([str(t) for t in TKX])); bx.xaxis.set_minor_locator(NullLocator())
+    bx.set_xlabel("WikiText-2 perplexity, 8 windows of 2,048 tokens (log)", fontsize=10)
+    for a_ in (ax, bx):
+        a_.set_ylim(-0.7, max(ys) + 0.7); a_.tick_params(length=0); a_.grid(axis="x", color=GRID, lw=0.8)
+        for sp in ("left", "bottom"): a_.spines[sp].set_color(GRID)
+    fig.text(0.012, 0.985, "Exempting the retrieval heads from merging on models the rule was not tuned on (round 35, registered)", fontsize=15, color=INK, va="top")
+    fig.text(0.012, 0.93, "Half the key-value heads, ten planted codes at five depths; the exempt key-value heads serve a retrieval head scored at or above the threshold (Wu et al.'s protocol, this repository's audit); random controls draw from heads below 0.1 with their\n"
+             "odd-layer leftovers held below it (PREREGISTRATION35.md; retrieval_protect_dev.py --registered, eval_retrieval35.py).", fontsize=9.5, color=INK2, va="top")
+    fig.savefig(OUT + "fig38_retrieval_round.png", dpi=200, bbox_inches="tight"); plt.close(fig)
