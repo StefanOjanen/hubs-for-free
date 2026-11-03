@@ -1852,3 +1852,24 @@ ranked 1 of 3 (0.0350 against the best 0.0350; the residual's 3, the
 perturbation's 1). Commit 2b7ac00 carried this file with three layers under a
 message saying complete; this commit carries the complete file. The in-sample
 pass is complete on three models; the out-of-sample pass runs next.
+
+A10c out of sample, Mistral-7B-v0.1 complete (2026-11-03 21:03 to 21:57 UTC
+under the three guards; the battery guard paused the job at 16 percent
+discharging from 21:35 to 21:45 UTC and resumed it at 30 percent charging;
+residual_select_dev/Mistral-7B-v0.1_pairs_c4.json). The pairs measured on two
+held-out C4 validation windows after the calibration and check documents, the
+matching ranked by KL on the two WikiText windows of the enumerated matchings:
+layer 0: the measured matching ranked 1 of 105 (0.0059 against the best
+0.0059; the residual's 58, the perturbation's 28); single-pair KLs against the
+residual's pair costs -0.24; layer 1: the measured matching ranked 1 of 105
+(0.0086 against the best 0.0086; the residual's 64, the perturbation's 10);
+single-pair KLs against the residual's pair costs 0.80; layer 2: the measured
+matching ranked 48 of 105 (0.0146 against the best 0.0118; the residual's 66,
+the perturbation's 1); single-pair KLs against the residual's pair costs
+-0.52; layer 16: the measured matching ranked 8 of 105 (0.0076 against the
+best 0.0074; the residual's 64, the perturbation's 5); single-pair KLs against
+the residual's pair costs 0.01. Read: out of sample the measured-pair matching
+is the best of 105 in layers 0 and 1, 8th in layer 16 and 48th in layer 2
+(1.24 times the best, where the in-sample pass had it first); it beats the
+residual's choice in every layer and the one-layer perturbation in all but
+layer 2.
