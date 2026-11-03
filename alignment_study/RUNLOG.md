@@ -1550,3 +1550,37 @@ at groups of four 155.2; checks 1.00 to 1.07, no flag, every member benign
 (at most 1.89 times the reference). The check's choice is the cheapest
 unflagged member, the full quartering, at 1.89, cheaper than the fixed rule;
 R3 is testable on this model. Mistral-7B-v0.1 started at 23:48 UTC.
+
+Round 34, Llama-2-7B (development model, reported, not scored) complete
+(2026-11-02 23:48 UTC start; 2.7 h; quad_check/Llama-2-7b-hf.json).
+Unconverted 5.027; half the heads 16.00 (check 0.98); the neighbouring
+quartering 16640.7 (check 542.96, FLAG). The nine members, every layer from 2
+at the residual's groups of four, relative to layers 0 and 1 unmerged (60.7):
+layer 0 unmerged, layer 1 unmerged: 60.7 (1.00 times, check 1.00); layer 0
+unmerged, layer 1 at pairs: 65.2 (1.07 times, check 1.00); layer 0 unmerged,
+layer 1 at groups of four: 85.8 (1.41 times, check 1.00); layer 0 at pairs,
+layer 1 unmerged: 67.6 (1.11 times, check 0.98); layer 0 at pairs, layer 1 at
+pairs: 74.5 (1.23 times, check 0.98); layer 0 at pairs, layer 1 at groups of
+four: 103.8 (1.71 times, check 0.98); layer 0 at groups of four, layer 1
+unmerged: 158.8 (2.62 times, check 0.92); layer 0 at groups of four, layer 1
+at pairs: 5816.5 (95.85 times, check 359.59, FLAG); layer 0 at groups of four,
+layer 1 at groups of four: 14264.5 (235.06 times, check 576.30, FLAG). Flagged
+2, severe 2, benign 6 of 9; the check's choice (cheapest unflagged, layer 0
+kept larger on ties): layer 0 at pairs, layer 1 at groups of four at 1.71
+times the reference.
+Round 34, Mistral-7B-v0.1 (scored) complete (2026-11-03 02:30 UTC start; 2.5
+h; quad_check/Mistral-7B-v0.1.json). Unconverted 4.859; half the heads 28.68
+(check 1.02); the neighbouring quartering 190.1 (check 2.12). The nine
+members, every layer from 2 at the residual's groups of four, relative to
+layers 0 and 1 unmerged (92.1): layer 0 unmerged, layer 1 unmerged: 92.1 (1.00
+times, check 1.00); layer 0 unmerged, layer 1 at pairs: 104.6 (1.14 times,
+check 1.00); layer 0 unmerged, layer 1 at groups of four: 111.5 (1.21 times,
+check 1.00); layer 0 at pairs, layer 1 unmerged: 152.2 (1.65 times, check
+0.98); layer 0 at pairs, layer 1 at pairs: 144.1 (1.56 times, check 1.02);
+layer 0 at pairs, layer 1 at groups of four: 153.4 (1.67 times, check 1.03);
+layer 0 at groups of four, layer 1 unmerged: 121.4 (1.32 times, check 1.11);
+layer 0 at groups of four, layer 1 at pairs: 152.0 (1.65 times, check 1.11);
+layer 0 at groups of four, layer 1 at groups of four: 166.6 (1.81 times, check
+1.11). Flagged 0, severe 0, benign 9 of 9; the check's choice (cheapest
+unflagged, layer 0 kept larger on ties): layer 0 at groups of four, layer 1 at
+groups of four at 1.81 times the reference.
