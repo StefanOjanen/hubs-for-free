@@ -7,7 +7,9 @@
 # whole-model KL is read from residual_select_dev's enumerated matchings (identical conversions: same calibration,
 # same windows), which gives its rank without a further run, and the measured pair KLs are compared with the additive
 # fit's pair effects. Writes alignment_study/residual_select_dev/<model>_pairs.json.
-#   python alignment_study/residual_pairs_dev.py --model=<name> [--layers=0,1,2,16] [--windows=2]
+# --measure=c4 measures the pairs on two held-out C4 validation windows (after the calibration and check documents)
+# instead of the WikiText windows that rank the matchings, so the selector is scored out of sample; output <model>_pairs_c4.json.
+#   python alignment_study/residual_pairs_dev.py --model=<name> [--layers=0,1,2,16] [--windows=2] [--measure=c4]
 import gc
 import itertools
 import json
@@ -35,8 +37,9 @@ if not NAME:
     sys.exit("--model=<name>")
 LAYERS = [int(x) for x in arg("layers", "0,1,2,16").split(",")]
 N_WIN, N_CAL, T_CAL = int(arg("windows", 2)), 128, 2048
+MEASURE = arg("measure", "wikitext")
 SRC = f"alignment_study/residual_select_dev/{NAME.split('/')[-1]}.json"
-OUT = f"alignment_study/residual_select_dev/{NAME.split('/')[-1]}_pairs.json"
+OUT = f"alignment_study/residual_select_dev/{NAME.split('/')[-1]}_pairs{'_c4' if MEASURE == 'c4' else ''}.json"
 torch.set_grad_enabled(False)
 
 
@@ -57,11 +60,11 @@ if __name__ == "__main__":
     tok = QC.AutoTokenizer.from_pretrained(NAME, revision=QC.REVISIONS.get(NAME))
     model = QC.load(NAME); kv = K.KV(model); n = kv.nkv
     cal = C.windows_c4(tok, N_CAL, T_CAL)
-    X = Z.wikitext2_windows(tok, T=2048)[:N_WIN]
+    X = C.windows_c4(tok, N_CAL + 1 + N_WIN, T_CAL)[-N_WIN:] if MEASURE == "c4" else Z.wikitext2_windows(tok, T=2048)[:N_WIN]   # c4: documents after the calibration and the check window
     S, ntok = K.second_moments(model, kv, cal, DEV)
     base = FC.base_cache(model, X)
     log(f"{NAME}: {kv.L} layers, {n} KV heads; moments from {ntok} tokens; {N_WIN} held-out windows; enumerated matchings from {SRC if src else 'none'}")
-    res = {"model": NAME, "revision": QC.REVISIONS.get(NAME), "exploratory": True, "kv_heads": n, "layers": LAYERS, "windows": N_WIN, "source": SRC if src else None, "per_layer": {}}
+    res = {"model": NAME, "revision": QC.REVISIONS.get(NAME), "exploratory": True, "kv_heads": n, "layers": LAYERS, "windows": N_WIN, "measure": MEASURE, "source": SRC if src else None, "per_layer": {}}
     for l in LAYERS:
         t1 = time.time()
         S64 = S[l].double(); cost = kvfuse.pair_costs(kv, l, S64); roots = F.layer_roots(S64, kv.d); Lsq = roots[0] @ roots[0]

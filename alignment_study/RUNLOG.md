@@ -1812,3 +1812,12 @@ anticorrelate with the residual's pair costs in layers 0 and 2, so the pairs
 the residual calls cheap are the ones that hurt, and they correlate only
 weakly with the additive effects, the ranking being carried by a few
 catastrophic pairs.
+
+A10c caveat (2026-11-03 20:30 UTC). The pairs were measured on the same two
+WikiText-2 windows that rank the enumerated matchings, so the measured-pair
+selector's ranks are in sample. A second pass (run_a10cp.sh,
+residual_pairs_dev.py --measure=c4) measures the pairs on two held-out C4
+validation windows after the calibration and check documents and keeps the
+WikiText ranking; it runs after the current pass and before round 35's
+prerequisites, about an hour. The method's option in kvfuse.py, if it comes,
+measures on C4 windows for the same reason.
