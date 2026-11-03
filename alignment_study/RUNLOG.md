@@ -1840,3 +1840,15 @@ the best matching's KL in every layer and the best outright in layer 0, where
 the residual ranked 57th and the perturbation 84th; the single-pair KLs
 anticorrelate with the residual's pair costs in layers 0 and 2 again. The out-
 of-sample pass follows.
+
+A10c, Qwen2.5-7B complete, in sample (2026-11-03 20:40 to 21:06 UTC;
+residual_select_dev/Qwen2.5-7B_pairs.json; six pairs a layer): layer 0: the
+measured matching ranked 1 of 3 (0.3758 against the best 0.3758; the
+residual's 3, the perturbation's 1); layer 1: the measured matching ranked 1
+of 3 (0.0081 against the best 0.0081; the residual's 1, the perturbation's 1);
+layer 2: the measured matching ranked 2 of 3 (0.0300 against the best 0.0275;
+the residual's 3, the perturbation's 1); layer 14: the measured matching
+ranked 1 of 3 (0.0350 against the best 0.0350; the residual's 3, the
+perturbation's 1). Commit 2b7ac00 carried this file with three layers under a
+message saying complete; this commit carries the complete file. The in-sample
+pass is complete on three models; the out-of-sample pass runs next.
