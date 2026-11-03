@@ -1762,3 +1762,27 @@ better; in layer 1 the one-layer perturbation finds that best matching; in the
 middle layer every sampled matching lies within 13 percent of the best. With
 496 pairs and 152 samples the additive fit is not estimable here; the
 measured-pair selector is a tool for models with few key-value heads.
+
+A10b, Llama-2-7B complete (2026-11-03 16:16 to 19:13 UTC;
+residual_select_dev/Llama-2-7b-hf.json); the five models done, 19 layers,
+about 9 GPU hours under the three guards with no pause. Thirty-two key-value
+heads, a sample of 152 matchings as for OpenLLaMA-3B: layer 0: Spearman with
+KL residual 0.15 and perturbation 0.33, the residual's choice ranked 52 and
+the perturbation's 53 of 152 (residual's 0.0304, perturbation's 0.0306,
+neighbours 0.0179, best 0.0095, median 0.0340); layer 1: Spearman with KL
+residual 0.46 and perturbation 0.68, the residual's choice ranked 50 and the
+perturbation's 1 of 152 (residual's 0.0145, perturbation's 0.0082, neighbours
+0.0172, best 0.0082, median 0.0163); layer 2: Spearman with KL residual 0.74
+and perturbation 0.68, the residual's choice ranked 9 and the perturbation's
+70 of 152 (residual's 0.0160, perturbation's 0.0199, neighbours 0.0210, best
+0.0154, median 0.0205); layer 16: Spearman with KL residual 0.20 and
+perturbation 0.61, the residual's choice ranked 43 and the perturbation's 4 of
+152 (residual's 0.0137, perturbation's 0.0129, neighbours 0.0130, best 0.0126,
+median 0.0141). Read: in layer 0 both selectors' choices are three times the
+best sampled matching's KL and the neighbouring pairs beat both; in layer 1
+the perturbation finds the best sampled matching; layer 2 is the one early
+layer in five models where the residual's choice is near the best (9th of 152,
+1.04 times); the middle layer is immaterial. Over the five models' 15 early-
+layer cases the residual's choice is in the better half 8 times with a median
+KL of 1.77 times the best, the perturbation's 14 times at 1.02 times, and
+layer 0 is the hard case for both.
