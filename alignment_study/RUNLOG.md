@@ -1700,3 +1700,26 @@ measures each pair alone and matches on the measurement is implied;
 residual_pairs_dev.py (committed with this entry, unchecked on a model) runs it
 after A10b on the two Mistral models and Qwen2.5-7B, ranking its choice among
 the enumerated matchings without a further run.
+
+A10b, Mistral-7B-Instruct-v0.2 complete (2026-11-03 12:25 to 14:23 UTC under
+the three guards, no pauses;
+residual_select_dev/Mistral-7B-Instruct-v0.2.json). layer 0: Spearman with KL
+residual -0.46 and perturbation 0.10, the residual's choice ranked 57 and the
+perturbation's 84 of 105 (residual's 0.1178, perturbation's 0.1541, neighbours
+0.1616, best 0.0067, median 0.1135); additive fit R^2 0.958, the additive
+matching ranked 1; layer 1: Spearman with KL residual -0.35 and perturbation
+0.19, the residual's choice ranked 93 and the perturbation's 4 of 105
+(residual's 0.0236, perturbation's 0.0136, neighbours 0.0186, best 0.0133,
+median 0.0200); additive fit R^2 0.990, the additive matching ranked 2; layer
+2: Spearman with KL residual -0.04 and perturbation 0.79, the residual's
+choice ranked 50 and the perturbation's 2 of 105 (residual's 0.0187,
+perturbation's 0.0162, neighbours 0.0228, best 0.0161, median 0.0189);
+additive fit R^2 0.990, the additive matching ranked 1; layer 16: Spearman
+with KL residual 0.22 and perturbation 0.52, the residual's choice ranked 73
+and the perturbation's 18 of 105 (residual's 0.0099, perturbation's 0.0096,
+neighbours 0.0103, best 0.0092, median 0.0099); additive fit R^2 0.981, the
+additive matching ranked 1. Read: in layers 0 and 1 the residual is anti-
+informative (its choice 57th and 93rd of 105, the latter 1.8 times the best);
+the one-layer perturbation fails in layer 0 (84th; one matching there is 17
+times better than the median) and selects well elsewhere; the additive
+matching ranks 1st, 2nd, 1st and 1st.
