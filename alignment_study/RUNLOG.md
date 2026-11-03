@@ -1640,3 +1640,17 @@ event, which occurs in one of five models, and sees nothing of Qwen2.5-7B's
 damage, whose layer 0 at pairs alone costs 4.3 times with the check at 0.97; a
 ratio chosen by the check alone is unsafe, and a damage measure on a held-out
 window is the missing ingredient.
+
+Llama-2-7B export and benchmark, third attempt (2026-11-03 09:53 to 10:22 UTC;
+kvfuse_bench.log). The export saved at 1,698 s (28 minutes). The runner then
+waited for free memory, found 88 percent at 10:21:44 UTC and started the
+benchmark; the memory watchdog killed it 45 seconds later at 14 percent free
+with swap at 12,393 MB. The benchmark's own first model load is the peak, not
+the machine's prior state, and with the author's applications holding their
+share of the 32 GB it cannot run here; two earlier attempts died the same way
+at 11 and 8 percent. The checkpoint is kept at the scratchpad path
+(llama2-7b-kv16, 13 GB; the scratchpad does not survive a reboot) for a run on
+a quiet machine (kvfuse_bench.py --model NousResearch/Llama-2-7b-hf --exported
+<that path> --dtype bfloat16); the paper's Table 15 keeps the TinyLlama
+benchmark and says the 7B decode benchmark was not obtained. The waiter moved
+on to A10b.
