@@ -1916,3 +1916,14 @@ ranked 2 of 3 (0.0356 against the best 0.0350; by the largest KL over windows
 on three models; the selector test (A10b, 19 layers of five models; A10c, 12
 layers of three models in sample and out of sample) closes here, with the
 eight-window pass to follow round 35.
+
+Round 35 prerequisites, Mistral-7B-v0.1's retrieval-head scores (2026-11-03
+23:03 to 23:08 UTC; audits/retrieval_heads/Mistral-7B-v0.1_scores.npy and
+_base_result.json; retrieval_round_prep.log). The audit's reproduction at the
+Mistral-7B-Instruct protocol (contexts 1,024 and 2,048, five depths, twenty
+instances, bfloat16): retrieval accuracy 1.0, 29 of 1,024 query heads at 0.1
+or more (2.8 percent), 7 at 0.3, largest 0.616; on key-value heads (the
+largest over the four queries each serves) 21 at 0.1 and 3 at 0.3, layer 12
+head 1 (0.62), layer 18 head 0 (0.61) and layer 30 head 2 (0.31), the same
+three heads that lead Mistral-7B-Instruct's list. The development population
+on Mistral-7B-Instruct runs next.
