@@ -1873,3 +1873,18 @@ is the best of 105 in layers 0 and 1, 8th in layer 16 and 48th in layer 2
 (1.24 times the best, where the in-sample pass had it first); it beats the
 residual's choice in every layer and the one-layer perturbation in all but
 layer 2.
+
+A10c, pair damage across texts (CPU, 2026-11-03 22:15 UTC, from the in-sample
+and out-of-sample files). The single-pair KLs measured on the two WikiText
+windows and on the two held-out C4 windows correlate at Spearman 0.90, 0.90,
+0.58 and 0.89 over Mistral-7B-v0.1's layers 0, 1, 2 and 16 (the five worst
+pairs overlap in 4, 4, 4 and 5 of 5) and at 0.69 and 0.87 over
+Mistral-7B-Instruct's layers 0 and 1 (2 and 3 of 5). In Mistral-7B-Instruct's
+layer 0 the C4 windows did not place pair (1, 5), the most damaging pair on
+WikiText (0.112 against a median near 0.01), among their five worst, and the
+matching chosen on them contains it, which is why that choice ranks 67th of
+105 out of sample where the in-sample choice ranked 1st. One rare catastrophe
+decides a layer, so the measurement needs more windows and a conservative
+aggregate; residual_pairs_dev.py now stores per-window KLs and ranks a second
+matching on each pair's largest KL over the windows, and run_a10cw.sh measures
+on eight C4 windows for the two Mistral models after round 35.
