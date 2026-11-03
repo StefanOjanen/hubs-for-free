@@ -225,7 +225,12 @@ leading at every checkpoint; zero-shot 0.503 and 0.512 against 0.444 and
 h2o-danube), U4 fails (the sensitivity start 18.74 against the plain 18.67 on
 OLMo-1B; 11.99 against 12.06 on h2o-danube). 34 (alignment_study/PREREGISTRATION34.md, frozen at c3cc48c after the Llama-160m
 development test, quad_check_dev/; instruments quad_check_round.py and
-eval_quad_check.py; results pending in quad_check/, quad_check_results.json):
+eval_quad_check.py; run 2026-11-02 to 03, quad_check/, quad_check_results.json;
+0 of 3: no false alarm in 29 benign scored members, no flag on Qwen2.5-7B's
+four severe ones (layer 0 at pairs alone 4.3 times, quartered 10 times, check
+0.97 to 0.98), the check's choice severe there and cheaper than the fixed rule
+everywhere; Llama-2-7B reproduced its two collapses at 360 and 576; the check
+detects the super-weight event only, never let it choose a ratio alone):
 round 29's design at a quarter of the heads, layers 0 and 1 each unmerged, at
 pairs or at groups of four with the rest quartered, damage relative to the
 both-unmerged member; scored OpenLLaMA-3B, Mistral-7B-v0.1, Mistral-7B-Instruct,

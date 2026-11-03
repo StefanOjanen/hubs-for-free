@@ -1740,3 +1740,27 @@ plain fused one on h2o-danube (11.99 against 12.06) and above it on OLMo-1B
 as failures. The head start narrows from 170 and 13.5 times to 1.63 and 1.37
 after 5M tokens, with the averaged curve still falling on OLMo-1B; what a larger
 budget closes is not measured.
+
+## Does the one-window check choose the early layers' ratio on models it has not seen? (2026-11-02 to 03, preregistration 34)
+
+Round 29's design at a quarter of the key-value heads: every layer from 2 at
+the residual's groups of four, layers 0 and 1 each unmerged, at pairs or at
+groups of four, nine members per model, damage relative to the member with
+both early layers unmerged, round 29's one-window check on each
+(`quad_check_round.py`, `eval_quad_check.py`, frozen at c3cc48c). Scored:
+OpenLLaMA-3B, Mistral-7B-v0.1, Mistral-7B-Instruct and Qwen2.5-7B; Llama-2-7B,
+which set the threshold and the fixed rule, reported. 0 of 3. The check
+flags none of the 29 benign scored members and none of the 4 severe ones,
+all on Qwen2.5-7B, whose layer 0 at pairs alone costs 4.3 times and whose
+members with layer 0 quartered cost 10.2 to 10.7 times with the check at 0.97
+to 0.98 (R1 fails on recall). Its choice, the cheapest unflagged member, is
+the full quartering on every scored model, severe on Qwen2.5-7B and 1.8 to 2.0
+times on the other three (R2 fails), and cheaper than the fixed rule
+everywhere (R3 fails). Llama-2-7B reproduces its development result exactly:
+the two members with layer 0 quartered and layer 1 merged collapse at 96 and
+235 times with the check at 360 and 576, everything else is under 2.7 times
+with the check under 1, and the check's choice is the fixed rule's member.
+Read: the check detects the super-weight event, which one model in five has,
+and nothing else; Qwen2.5-7B's early-layer damage has another cause the check
+cannot see, so a ratio chosen by the check alone is unsafe and a damage
+measure on a held-out window is the missing ingredient. Reported as a failure.

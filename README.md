@@ -647,6 +647,23 @@ Each instrument below exists because a finding above required it.
 <p align="center"><img src="figures/readme/fig35_uptraining.png" alt="Two panels of perplexity against training tokens on a log axis, OLMo-1B and h2o-danube-1.8b at half their key-value heads, three curves each: averaging from 9,939 and 487 to 30.39 and 16.47, the rebalanced fusion from 58.5 and 36.1 to 18.67 and 12.06, the sensitivity-metric fusion from 43.5 and 30.9 to 18.74 and 11.99." width="100%"></p>
 <p align="center"><em>The fused start stays below the averaged one through 5M tokens on both models; the lead narrows from two orders of magnitude to about half a log unit.</em></p>
 
+- **The check chooses a ratio only where the hazard is the super weight.**
+  Round 34 (registered) asked whether the one-window check, which flagged
+  Llama-2-7B's quarter-heads collapses, chooses the early layers' ratio on
+  models it had not seen: nine members per model with layers 0 and 1 each
+  unmerged, at pairs or at groups of four and every other layer quartered.
+  0 of 3. The check flags none of 29 benign members and none of the 4 severe
+  ones, all on Qwen2.5-7B, where layer 0 at pairs alone costs 4.3 times the
+  reference and layer 0 quartered 10 times, with the check at 0.98; so the
+  cheapest unflagged member, the full quartering, is the check's choice on
+  every model and severe on Qwen. Llama-2-7B reproduced its collapses at 360
+  and 576 and nothing else. The check is a super-weight detector, true on the
+  one model in five that has the event, blind to damage of other kinds; the
+  ratio needs a damage measure, not the check alone.
+
+<p align="center"><img src="figures/readme/fig36_quad_check.png" alt="Dot plot of nine members per model on a log axis of perplexity relative to the member with layers 0 and 1 unmerged, for OpenLLaMA-3B, Mistral-7B-v0.1, Mistral-7B-Instruct, Qwen2.5-7B and Llama-2-7B, with the severe and benign thresholds, flagged members as crosses (Llama-2-7B's two collapses only) and the check's choice circled (the full quartering on the four scored models, severe on Qwen2.5-7B)." width="100%"></p>
+<p align="center"><em>Flags only where the super weight fires; Qwen2.5-7B's tenfold damage passes the check unseen.</em></p>
+
 - **Cross-layer KV compression, against the same nulls.** Two published
   methods compress the cache across layers on the premise that adjacent
   layers' keys and values are similar. MiniCache (NeurIPS 2024) merges them

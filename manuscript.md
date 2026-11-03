@@ -1495,6 +1495,28 @@ ends at 18.74 against the plain fused 18.67 on OLMo-1B and at 11.99 against
 falling on OLMo-1B; what a larger budget closes is not measured
 (`uptrain_round.py`, `eval_uptrain33.py`, `uptrain/`).
 
+### 6.16 Does the check choose the early layers' ratio on models it has not seen? (preregistration 34)
+
+Section 6.13's design made registered: every layer from 2 at the residual's
+groups of four, layers 0 and 1 each unmerged, at pairs or at groups of four,
+nine members per model, damage relative to the both-unmerged member, round
+29's one-window check on each (frozen at c3cc48c; OpenLLaMA-3B,
+Mistral-7B-v0.1, Mistral-7B-Instruct and Qwen2.5-7B scored, Llama-2-7B
+reported). 0 of 3. The check flags none of the 29 benign scored members and
+none of the 4 severe ones, all on Qwen2.5-7B, whose layer 0 at pairs alone
+costs 4.3 times and whose quartered layer 0 costs 10.2 to 10.7 times with the
+check at 0.97 to 0.98 (R1 fails on recall; its false-alarm half holds); the
+check's choice, the cheapest unflagged member, is the full quartering on every
+scored model, severe on Qwen2.5-7B and 1.8 to 2.0 times elsewhere (R2 fails),
+and cheaper than the fixed rule everywhere (R3 fails). Llama-2-7B reproduces
+Section 6.13 exactly: the two members with layer 0 quartered and layer 1
+merged collapse at 96 and 235 times with the check at 360 and 576, nothing
+else exceeds 2.7 times, and the check's choice is the fixed rule's member.
+The check detects the super-weight event, present in one model of five, and
+nothing else; the early layers' ratio needs a damage measure on a held-out
+window, which the check is not (`quad_check_round.py`, `eval_quad_check.py`,
+`quad_check/`).
+
 ## 7. Limitations
 
 Results cover seventeen models up to 8B parameters in ten families, three
@@ -1603,6 +1625,7 @@ against the norm of what each head writes.
 | 31 | 207a5ec, pushed before execution | A1 to A3: the fusion fitted in the received-attention metric, five models | 0 of 3; Qwen2.5-7B's arms invalid (instrument defect), rerun post hoc |
 | 32 | bcdcd9d, pushed before execution | gate, D1 to D4: the fusion fitted in the sensitivity and attention-mixed metrics, eight models | 2 of 4; D1, D4 fail (Llama-2-7B, Qwen2.5-7B higher) |
 | 33 | 9d73960, pushed before execution | U1 to U4: uptraining from the averaged, the rebalanced fused and the sensitivity-metric starts at 5M tokens, OLMo-1B and h2o-danube-1.8b | 2 of 4; U3 (retained lead 0.095 on OLMo-1B against 0.1), U4 (the sensitivity start above the plain one on OLMo-1B) fail |
+| 34 | c3cc48c, pushed before execution | R1 to R3: the one-window check flagging and choosing the early layers' ratio at a quarter of the heads, four scored models | 0 of 3; no false alarm in 29 benign members, no flag on Qwen2.5-7B's four severe ones, the check's choice severe there |
 
 ## Appendix B. Numbers ledger
 

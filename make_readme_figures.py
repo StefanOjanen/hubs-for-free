@@ -1528,7 +1528,7 @@ if glob.glob(Q34) and not json.load(open(Q34)).get("missing"):
     R34 = json.load(open(Q34)); per = R34["per_model"]
     order = [m for m in ("open_llama_3b_v2", "Mistral-7B-v0.1", "Mistral-7B-Instruct-v0.2", "Qwen2.5-7B", "Llama-2-7b-hf") if m in per]
     LAB = {"open_llama_3b_v2": "OpenLLaMA-3B", "Mistral-7B-v0.1": "Mistral-7B-v0.1", "Mistral-7B-Instruct-v0.2": "Mistral-7B-Instruct", "Qwen2.5-7B": "Qwen2.5-7B", "Llama-2-7b-hf": "Llama-2-7B (development)"}
-    fig = plt.figure(figsize=(14.5, 6.0)); ax = fig.add_axes([0.07, 0.14, 0.90, 0.62])
+    fig = plt.figure(figsize=(14.5, 6.4)); ax = fig.add_axes([0.07, 0.21, 0.90, 0.56])
     xs_all = []
     for mi, m in enumerate(order):
         a = per[m]
@@ -1539,10 +1539,10 @@ if glob.glob(Q34) and not json.load(open(Q34)).get("missing"):
             if (mem["layer0"], mem["layer1"]) == tuple(a["chosen"] or ()):
                 ax.scatter([x], [mem["relative"]], s=220, facecolors="none", edgecolors=INK, linewidths=1.3, zorder=2)
         ch = a["chosen"] or ("none", "none")
-        ax.text(mi, 0.03, f"check's choice: layer 0 {ch[0]}, layer 1 {ch[1]}\nfixed rule: layer 0 {a['fixed'][0]}, layer 1 {a['fixed'][1]}", fontsize=8.5, color=INK2, ha="center", va="bottom", transform=ax.get_xaxis_transform())
+        ax.text(mi, -0.11, f"check's choice: {ch[0]} / {ch[1]}\nfixed rule: {a['fixed'][0]} / {a['fixed'][1]}", fontsize=8.5, color=INK2, ha="center", va="top", transform=ax.get_xaxis_transform())
         xs_all.append(max(mm["relative"] for mm in a["members"]))
-    ax.axhline(5, color=S2, lw=1.0, ls=(0, (4, 3))); ax.text(len(order) - 0.55, 5.4, "severe (5 times)", color=S2, fontsize=9, ha="right")
-    ax.axhline(2, color=INK2, lw=1.0, ls=(0, (4, 3))); ax.text(len(order) - 0.55, 2.15, "benign (2 times)", color=INK2, fontsize=9, ha="right")
+    ax.axhline(5, color=S2, lw=1.0, ls=(0, (4, 3))); ax.text(-0.55, 5.4, "severe (5 times)", color=S2, fontsize=9, ha="left", va="bottom")
+    ax.axhline(2, color=INK2, lw=1.0, ls=(0, (4, 3))); ax.text(-0.55, 2.15, "benign (2 times)", color=INK2, fontsize=9, ha="left", va="bottom")
     ax.set_yscale("log"); TK = [0.5, 1, 2, 5, 10, 30, 100, 300, 1000]; ax.set_ylim(0.6, max(12, 2.0 * max(xs_all)))
     ax.yaxis.set_major_locator(FixedLocator(TK)); ax.yaxis.set_major_formatter(FixedFormatter([str(t) for t in TK])); ax.yaxis.set_minor_locator(NullLocator())
     ax.set_xticks(range(len(order))); ax.set_xticklabels([LAB[m] for m in order], fontsize=10); ax.set_xlim(-0.6, len(order) - 0.4)
@@ -1553,7 +1553,7 @@ if glob.glob(Q34) and not json.load(open(Q34)).get("missing"):
     for sp in ("left", "bottom"): ax.spines[sp].set_color(GRID)
     fig.text(0.012, 0.985, "A quarter of the heads with layers 0 and 1 each unmerged, at pairs or at groups of four: what the check flags and chooses (round 34)", fontsize=15, color=INK, va="top")
     fig.text(0.012, 0.925, "Nine members per model (layer 0 left to right: unmerged, pairs, groups of four; within each, layer 1 the same), every other layer at the residual's groups of four; damage relative to the both-unmerged member\n"
-             "(PREREGISTRATION34.md, frozen at c3cc48c; quad_check_round.py, eval_quad_check.py). Llama-2-7B set the threshold and the fixed rule and is reported, not scored.", fontsize=9.5, color=INK2, va="top")
+             "(PREREGISTRATION34.md, frozen at c3cc48c; quad_check_round.py, eval_quad_check.py). Llama-2-7B set the threshold and the fixed rule and is reported, not scored. The annotations give each layer's setting (0 / 1).", fontsize=9.5, color=INK2, va="top")
     fig.savefig(OUT + "fig36_quad_check.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
 # ============ Figure 37: A10b, which local statistic selects a layer's pairing (development) ============
