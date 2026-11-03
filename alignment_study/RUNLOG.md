@@ -1683,3 +1683,20 @@ in the early layers the closed-form residual selects at chance or below (its
 choice 58th to 66th of 105) while a one-layer forward selects in the top
 decile (28th, 10th, 1st); in layer 16 both correlate with KL but every
 matching lies within 8 percent of the best, so the choice there is immaterial.
+
+A10b, additive analysis on the complete layers (CPU, 2026-11-03 13:35 UTC, from
+residual_select_dev/Mistral-7B-v0.1.json and Mistral-7B-Instruct-v0.2.json layer
+0): regressing each matching's whole-model KL on indicators of its four pairs
+over the 105 matchings of a layer fits at R^2 0.890, 0.972, 0.992, 0.984
+(Mistral-7B-v0.1 layers 0, 1, 2, 16) and 0.958 (Mistral-7B-Instruct layer 0),
+with leave-one-out Spearman 0.92 to 0.99; the additive model's own minimum-cost
+matching ranks 5th, 2nd, 1st, 1st and 1st of 105 by KL, where the residual's
+ranks 58th, 64th, 66th, 64th and 57th and the perturbation's 28th, 10th, 1st,
+5th and 84th. In Mistral-7B-Instruct's layer 0 the three best matchings all
+contain the pairs (1, 4) and (3, 5), the worst contain (1, 5), and the
+residual's matching contains none of the good pairs. The damage of a matching
+is, to this accuracy, the sum of its pairs' damages, so a selector that
+measures each pair alone and matches on the measurement is implied;
+residual_pairs_dev.py (committed with this entry, unchecked on a model) runs it
+after A10b on the two Mistral models and Qwen2.5-7B, ranking its choice among
+the enumerated matchings without a further run.
