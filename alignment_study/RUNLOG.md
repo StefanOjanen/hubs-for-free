@@ -1654,3 +1654,8 @@ a quiet machine (kvfuse_bench.py --model NousResearch/Llama-2-7b-hf --exported
 <that path> --dtype bfloat16); the paper's Table 15 keeps the TinyLlama
 benchmark and says the 7B decode benchmark was not obtained. The waiter moved
 on to A10b.
+
+2026-11-03 10:55 UTC (operational): the kept Llama-2-7B export (13 GB in the
+scratchpad) was removed to keep the disk above the guard's floor during the
+day's chain (12 GB free with it, 25 without); a re-export takes 28 minutes
+with kvfuse.py when a quiet machine allows the benchmark.
