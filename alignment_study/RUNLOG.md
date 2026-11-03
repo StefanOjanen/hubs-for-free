@@ -1786,3 +1786,29 @@ layer in five models where the residual's choice is near the best (9th of 152,
 layer cases the residual's choice is in the better half 8 times with a median
 KL of 1.77 times the best, the perturbation's 14 times at 1.02 times, and
 layer 0 is the hard case for both.
+
+A10c, Mistral-7B-v0.1 complete (2026-11-03 19:14 to 19:57 UTC under the three
+guards; residual_select_dev/Mistral-7B-v0.1_pairs.json; residual_pairs.log).
+Each of the 28 pairs of a layer's key-value heads fused alone, the layer
+otherwise unmerged, KL on the same two held-out windows; then the minimum-cost
+matching on the 28 measured KLs, its whole-model KL read from the enumerated
+matchings: layer 0: Spearman of the 28 single-pair KLs with the residual's
+pair costs -0.29 and with the additive fit's pair effects 0.37; the measured
+matching's KL rank 2 of 105 (0.0077 against the best 0.0059; the residual's
+58, the perturbation's 28); 397 s; layer 1: Spearman of the 28 single-pair KLs
+with the residual's pair costs 0.75 and with the additive fit's pair effects
+0.14; the measured matching's KL rank 1 of 105 (0.0086 against the best
+0.0086; the residual's 64, the perturbation's 10); 406 s; layer 2: Spearman of
+the 28 single-pair KLs with the residual's pair costs -0.70 and with the
+additive fit's pair effects 0.12; the measured matching's KL rank 1 of 105
+(0.0118 against the best 0.0118; the residual's 66, the perturbation's 1); 417
+s; layer 16: Spearman of the 28 single-pair KLs with the residual's pair costs
+-0.09 and with the additive fit's pair effects 0.14; the measured matching's
+KL rank 1 of 105 (0.0074 against the best 0.0074; the residual's 64, the
+perturbation's 5); 419 s. Read: matching on measured pair damage selects the
+best or second-best of 105 matchings in every layer, about 7 minutes per layer
+at 7B, where the residual's choice ranks 58th to 66th; the measured pair KLs
+anticorrelate with the residual's pair costs in layers 0 and 2, so the pairs
+the residual calls cheap are the ones that hurt, and they correlate only
+weakly with the additive effects, the ranking being carried by a few
+catastrophic pairs.
