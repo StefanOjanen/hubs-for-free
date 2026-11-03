@@ -226,13 +226,13 @@ if os.path.exists(Q34) and not json.load(open(Q34)).get("missing"):
     table(["Model", "reference ppl"] + [f"{l0} / {l1}" for l0, l1 in settings] + ["check's choice (layer 0 / layer 1)"], rows)
 
 # ---- Table 16: A10b and A10c, which local statistic selects a layer's pairing (development) ----
-RSD = [fp for fp in sorted(glob.glob("alignment_study/residual_select_dev/*.json")) if not fp.endswith("_pairs.json") and "llama-160m" not in fp]
+RSD = [fp for fp in sorted(glob.glob("alignment_study/residual_select_dev/*.json")) if "_pairs" not in fp and "llama-160m" not in fp]
 if RSD:
     w("## Table 16. Which local statistic selects a layer's pairing: every matching of one layer fused alone, the whole model's KL on two held-out windows as ground truth (development)\n")
-    w("Per model and layer: the number of matchings evaluated (all for 8 and 4 key-value heads, a sample of 152 for 32), the Spearman correlation of the fusion's residual and of a one-layer output perturbation with KL, the KL rank of each selector's choice, and each choice's KL as a multiple of the best matching's; the last column is the matching on measured single-pair damage (A10c) where run.\n")
+    w("Per model and layer: the number of matchings evaluated (all for 8 and 4 key-value heads, a sample of 152 for 32), the Spearman correlation of the fusion's residual and of a one-layer output perturbation with KL, the KL rank of each selector's choice, and each choice's KL as a multiple of the best matching's; the last column is the matching on measured single-pair damage (A10c), the pairs measured on held-out C4 windows where that pass has run and on the ranking windows otherwise.\n")
     rows = []
     for fp in RSD:
-        r = json.load(open(fp)); m = short(os.path.basename(fp)[:-5]); pf = fp[:-5] + "_pairs.json"; PR = json.load(open(pf))["per_layer"] if os.path.exists(pf) else {}
+        r = json.load(open(fp)); m = short(os.path.basename(fp)[:-5]); pf = fp[:-5] + "_pairs_c4.json" if os.path.exists(fp[:-5] + "_pairs_c4.json") else fp[:-5] + "_pairs.json"; PR = json.load(open(pf))["per_layer"] if os.path.exists(pf) else {}
         for l, v in r["per_layer"].items():
             st = v["stats"]; b = st["kl_best"]; pr = PR.get(l, {})
             rows.append([m, l, st["candidates"], f(st["spearman_residual_kl"]), f(st["spearman_perturbation_kl"]), st["kl_rank_residual_choice"], st["kl_rank_perturbation_choice"],
