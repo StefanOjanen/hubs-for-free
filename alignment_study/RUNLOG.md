@@ -1740,3 +1740,25 @@ factor of three in layer 0 (1.21 against 0.38, the neighbouring pairing),
 which is the mechanism behind this model's matched pairs at 70.1 against 23.9
 with neighbours and its layer-0 fragility in round 34; the one-layer
 perturbation picks the best in all four.
+
+A10b, OpenLLaMA-3B complete (2026-11-03 14:42 to 16:17 UTC;
+residual_select_dev/open_llama_3b_v2.json). Thirty-two key-value heads a
+layer, so a sample of 152 matchings: the residual's, the neighbouring, 50
+single swaps of the residual's and 100 random (seed 0): layer 0: Spearman with
+KL residual 0.28 and perturbation 0.22, the residual's choice ranked 49 and
+the perturbation's 24 of 152 (residual's 0.0085, perturbation's 0.0081,
+neighbours 0.0110, best 0.0012, median 0.0091); layer 1: Spearman with KL
+residual -0.19 and perturbation 0.73, the residual's choice ranked 75 and the
+perturbation's 1 of 152 (residual's 0.0083, perturbation's 0.0037, neighbours
+0.0071, best 0.0037, median 0.0083); layer 2: Spearman with KL residual 0.50
+and perturbation 0.68, the residual's choice ranked 52 and the perturbation's
+20 of 152 (residual's 0.0082, perturbation's 0.0078, neighbours 0.0079, best
+0.0064, median 0.0085); layer 13: Spearman with KL residual 0.37 and
+perturbation 0.38, the residual's choice ranked 39 and the perturbation's 86
+of 152 (residual's 0.0135, perturbation's 0.0139, neighbours 0.0133, best
+0.0123, median 0.0138). Read: in layers 0 and 1 the residual's choice sits at
+the median of the sample while the best sampled matching is 7 and 2.2 times
+better; in layer 1 the one-layer perturbation finds that best matching; in the
+middle layer every sampled matching lies within 13 percent of the best. With
+496 pairs and 152 samples the additive fit is not estimable here; the
+measured-pair selector is a tool for models with few key-value heads.
