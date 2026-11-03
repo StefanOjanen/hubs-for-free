@@ -1,0 +1,11248 @@
+{
+ "model": "mistralai/Mistral-7B-v0.1",
+ "revision": "27d67f1b5f57dc0953326b2601d68371d40ea8da",
+ "exploratory": true,
+ "kv_heads": 8,
+ "layers": [
+  0,
+  1,
+  2,
+  16
+ ],
+ "windows": 2,
+ "calibration": [
+  128,
+  2048
+ ],
+ "all_matchings_up_to": 8,
+ "n_random": 100,
+ "n_swaps": 50,
+ "seed": 0,
+ "per_layer": {
+  "0": {
+   "stats": {
+    "candidates": 105,
+    "spearman_residual_kl": -0.34363466721957286,
+    "spearman_perturbation_kl": 0.31022185361808,
+    "spearman_residual_perturbation": -0.007256894049346879,
+    "spearman_residual_dnll": -0.3680074642338793,
+    "spearman_perturbation_dnll": 0.3089674476466929,
+    "spearman_kl_dnll": 0.995967240306863,
+    "kl_rank_residual_choice": 58,
+    "kl_rank_perturbation_choice": 28,
+    "kl_residual_choice": 0.07238516490906477,
+    "kl_perturbation_choice": 0.02126529288943857,
+    "kl_best": 0.005856785690411925,
+    "kl_median": 0.06701024994254112,
+    "kl_worst": 0.22754647582769394,
+    "kl_neighbours": 0.09844628628343344,
+    "best_matching": [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      5
+     ]
+    ],
+    "residual_matching": [
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    "perturbation_matching": [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      5
+     ]
+    ],
+    "seconds": 1556.8
+   },
+   "rows": [
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.03933945200762799,
+     "perturbation": 0.2588243782520294,
+     "kl": 0.09844628628343344,
+     "dnll": 0.10830325167626143,
+     "residual_choice": false,
+     "neighbours": true
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.01854686235638167,
+     "perturbation": 0.38222116231918335,
+     "kl": 0.09366569295525551,
+     "dnll": 0.10547946486622095,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.01943458474887898,
+     "perturbation": 0.2814215421676636,
+     "kl": 0.08923062402755022,
+     "dnll": 0.09879602864384651,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.03905856487615195,
+     "perturbation": 0.22907517850399017,
+     "kl": 0.07962866267189384,
+     "dnll": 0.08735272567719221,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.019004220890155576,
+     "perturbation": 0.3940429389476776,
+     "kl": 0.10643166769295931,
+     "dnll": 0.12188063561916351,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.01913093659488454,
+     "perturbation": 0.3621298372745514,
+     "kl": 0.15504310093820095,
+     "dnll": 0.17679217085242271,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.04152366280208081,
+     "perturbation": 0.3603379726409912,
+     "kl": 0.07577959611080587,
+     "dnll": 0.08237948513124138,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.018074177242501155,
+     "perturbation": 0.3136464059352875,
+     "kl": 0.09248479641973972,
+     "dnll": 0.10652086976915598,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.017313170554732804,
+     "perturbation": 0.34540948271751404,
+     "kl": 0.11686236131936312,
+     "dnll": 0.13443426694720984,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.023214933612700522,
+     "perturbation": 0.3402566611766815,
+     "kl": 0.08654686529189348,
+     "dnll": 0.09919032081961632,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.019819792039117236,
+     "perturbation": 0.17803382873535156,
+     "kl": 0.08588734362274408,
+     "dnll": 0.09496555011719465,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.019797031016598837,
+     "perturbation": 0.28875967860221863,
+     "kl": 0.15691701881587505,
+     "dnll": 0.1768050491809845,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.022180336691970184,
+     "perturbation": 0.2144031822681427,
+     "kl": 0.08220803178846836,
+     "dnll": 0.0916289365850389,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.017897472725889586,
+     "perturbation": 0.16240578889846802,
+     "kl": 0.0785061065107584,
+     "dnll": 0.0859520360827446,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.018635718391139536,
+     "perturbation": 0.1913219839334488,
+     "kl": 0.0976564446464181,
+     "dnll": 0.10920096095651388,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       4,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.0460682187894576,
+     "perturbation": 0.21820729970932007,
+     "kl": 0.009606598410755396,
+     "dnll": 0.011075282469391823,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       4,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.025275629138211277,
+     "perturbation": 0.3343639075756073,
+     "kl": 0.02147396234795451,
+     "dnll": 0.025165573228150606,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       4,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.026163351530708583,
+     "perturbation": 0.2240089774131775,
+     "kl": 0.018607415724545717,
+     "dnll": 0.02025495981797576,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.04514605435944121,
+     "perturbation": 0.2067682296037674,
+     "kl": 0.008871246594935656,
+     "dnll": 0.006567706586793065,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.02509171037344484,
+     "perturbation": 0.3153277635574341,
+     "kl": 0.021477594040334225,
+     "dnll": 0.02204937022179365,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.025218426078173796,
+     "perturbation": 0.21768739819526672,
+     "kl": 0.030808757059276104,
+     "dnll": 0.03489840403199196,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.0477083278436796,
+     "perturbation": 0.28287366032600403,
+     "kl": 0.10893770679831505,
+     "dnll": 0.11850939784199,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.02425884228409994,
+     "perturbation": 0.2691831588745117,
+     "kl": 0.11941643618047237,
+     "dnll": 0.13274512067437172,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.023497835596331593,
+     "perturbation": 0.31777775287628174,
+     "kl": 0.17784414254128933,
+     "dnll": 0.20229815319180489,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.02683743619135496,
+     "perturbation": 0.34535229206085205,
+     "kl": 0.048467588843777776,
+     "dnll": 0.05652604764327407,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.02344229461777167,
+     "perturbation": 0.16359461843967438,
+     "kl": 0.022638472262769938,
+     "dnll": 0.027561517897993326,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.023419533595253273,
+     "perturbation": 0.18154527246952057,
+     "kl": 0.08098224177956581,
+     "dnll": 0.09221829287707806,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.0254125456291142,
+     "perturbation": 0.24776636064052582,
+     "kl": 0.07378144469112158,
+     "dnll": 0.0769449439831078,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.021129681663033605,
+     "perturbation": 0.1871347427368164,
+     "kl": 0.08000376261770725,
+     "dnll": 0.08488062024116516,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.021867927328283555,
+     "perturbation": 0.2085193544626236,
+     "kl": 0.07888895086944103,
+     "dnll": 0.08755801897495985,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       4,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.03879600674535621,
+     "perturbation": 0.2397565096616745,
+     "kl": 0.06561393197625875,
+     "dnll": 0.0675323479808867,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       4,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.018003417094109884,
+     "perturbation": 0.3557773530483246,
+     "kl": 0.05270948726683855,
+     "dnll": 0.0595776722766459,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       4,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.018891139486607193,
+     "perturbation": 0.2687750458717346,
+     "kl": 0.05303985998034477,
+     "dnll": 0.05741898505948484,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.04063572603994199,
+     "perturbation": 0.3124886751174927,
+     "kl": 0.01695255097001791,
+     "dnll": 0.015707474667578936,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.022326996850561706,
+     "perturbation": 0.28714829683303833,
+     "kl": 0.014365160837769508,
+     "dnll": 0.018262938130646944,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.021292399929831368,
+     "perturbation": 0.20123162865638733,
+     "kl": 0.015047748573124409,
+     "dnll": 0.017833993304520845,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.04073290159825152,
+     "perturbation": 0.37359267473220825,
+     "kl": 0.17296654731035233,
+     "dnll": 0.19440923258662224,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.02149412876121681,
+     "perturbation": 0.3302464187145233,
+     "kl": 0.17860125564038754,
+     "dnll": 0.20157096162438393,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.019571809447989162,
+     "perturbation": 0.2903936505317688,
+     "kl": 0.14161274954676628,
+     "dnll": 0.15909610874950886,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.01986200994592688,
+     "perturbation": 0.343323677778244,
+     "kl": 0.0725941970013082,
+     "dnll": 0.08379214908927679,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.018931966298272457,
+     "perturbation": 0.2863665223121643,
+     "kl": 0.06581857847049832,
+     "dnll": 0.07364974450320005,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.019493507446910842,
+     "perturbation": 0.1640966534614563,
+     "kl": 0.06458310410380363,
+     "dnll": 0.07190367579460144,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.018437119383686123,
+     "perturbation": 0.34371137619018555,
+     "kl": 0.11039535515010357,
+     "dnll": 0.1257360428571701,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.01661935334353439,
+     "perturbation": 0.33098891377449036,
+     "kl": 0.06753353029489517,
+     "dnll": 0.07748573226854205,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.019103213805400424,
+     "perturbation": 0.2713102698326111,
+     "kl": 0.11521507240831852,
+     "dnll": 0.12984782457351685,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.0385742572653868,
+     "perturbation": 0.20813825726509094,
+     "kl": 0.012330915313214064,
+     "dnll": 0.008639387728180736,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.018519913279390426,
+     "perturbation": 0.3405750095844269,
+     "kl": 0.058424162678420544,
+     "dnll": 0.06517638172954321,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.018646628984119385,
+     "perturbation": 0.2688380777835846,
+     "kl": 0.09171178191900253,
+     "dnll": 0.10446983203291893,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.04133614098998897,
+     "perturbation": 0.3304360508918762,
+     "kl": 0.009652499807998538,
+     "dnll": 0.007520978571847081,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.02302741180060868,
+     "perturbation": 0.30613046884536743,
+     "kl": 0.02680874220095575,
+     "dnll": 0.03140602121129632,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.021992814879878343,
+     "perturbation": 0.20047415792942047,
+     "kl": 0.02178995148278773,
+     "dnll": 0.02668867353349924,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.04079203924975816,
+     "perturbation": 0.3094409108161926,
+     "kl": 0.13253048807382584,
+     "dnll": 0.14751502685248852,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       7
+      ]
+     ],
+     "residual": 0.021249618258729,
+     "perturbation": 0.33759668469429016,
+     "kl": 0.20407288521528244,
+     "dnll": 0.23243404179811478,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "residual": 0.0200883056332697,
+     "perturbation": 0.24161390960216522,
+     "kl": 0.11716385558247566,
+     "dnll": 0.130646419711411,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.019921147597433513,
+     "perturbation": 0.3302057385444641,
+     "kl": 0.064001539722085,
+     "dnll": 0.07438550982624292,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       7
+      ]
+     ],
+     "residual": 0.01868745579578465,
+     "perturbation": 0.28872835636138916,
+     "kl": 0.07660285010933876,
+     "dnll": 0.0864541120827198,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       5
+      ]
+     ],
+     "residual": 0.01927175796694143,
+     "perturbation": 0.14449213445186615,
+     "kl": 0.02126529288943857,
+     "dnll": 0.029154937132261693,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.018496257035192757,
+     "perturbation": 0.2858186364173889,
+     "kl": 0.07326189801096916,
+     "dnll": 0.08069352619349957,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "residual": 0.01713584952881493,
+     "perturbation": 0.31140533089637756,
+     "kl": 0.06882752850651741,
+     "dnll": 0.07736771646887064,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       5
+      ]
+     ],
+     "residual": 0.018881464325431016,
+     "perturbation": 0.18689915537834167,
+     "kl": 0.08508386090397835,
+     "dnll": 0.0901091992855072,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.04056941031666891,
+     "perturbation": 0.23128679394721985,
+     "kl": 0.014267950551584363,
+     "dnll": 0.010039249318651855,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.017119924757089247,
+     "perturbation": 0.19192634522914886,
+     "kl": 0.04955725418403745,
+     "dnll": 0.053394122049212456,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.0163589180693209,
+     "perturbation": 0.22192224860191345,
+     "kl": 0.07751569896936417,
+     "dnll": 0.08952544629573822,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.040866196115342215,
+     "perturbation": 0.2355673462152481,
+     "kl": 0.013004451524466276,
+     "dnll": 0.01149225584231317,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.021627423278307505,
+     "perturbation": 0.1769152283668518,
+     "kl": 0.013198853703215718,
+     "dnll": 0.012942825211212039,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.019705103965079858,
+     "perturbation": 0.16023467481136322,
+     "kl": 0.01471720077097416,
+     "dnll": 0.017259354470297694,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.040224918816801875,
+     "perturbation": 0.2162379026412964,
+     "kl": 0.013165495591238141,
+     "dnll": 0.012427632347680628,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       7
+      ]
+     ],
+     "residual": 0.02068249782577272,
+     "perturbation": 0.16459599137306213,
+     "kl": 0.027840640395879745,
+     "dnll": 0.03339831344783306,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "residual": 0.019521185200313422,
+     "perturbation": 0.1490185260772705,
+     "kl": 0.015961830038577318,
+     "dnll": 0.01831042394042015,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.018521159075132337,
+     "perturbation": 0.18439382314682007,
+     "kl": 0.052648233249783516,
+     "dnll": 0.06191340647637844,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       7
+      ]
+     ],
+     "residual": 0.018217510921137894,
+     "perturbation": 0.21249504387378693,
+     "kl": 0.0785975344479084,
+     "dnll": 0.08913493622094393,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "residual": 0.02126691101822354,
+     "perturbation": 0.1565980166196823,
+     "kl": 0.1693967035971582,
+     "dnll": 0.18061430344823748,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.016208546120394268,
+     "perturbation": 0.24475690722465515,
+     "kl": 0.07238516490906477,
+     "dnll": 0.07947266194969416,
+     "residual_choice": true,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "residual": 0.016665904654168173,
+     "perturbation": 0.24914959073066711,
+     "kl": 0.09221708122640848,
+     "dnll": 0.10042934119701385,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "residual": 0.020876617376713123,
+     "perturbation": 0.19773156940937042,
+     "kl": 0.07214593142271042,
+     "dnll": 0.07608440378680825,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.04277731119028683,
+     "perturbation": 0.36144348978996277,
+     "kl": 0.023222229443490505,
+     "dnll": 0.022033550078049302,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.039382169616703544,
+     "perturbation": 0.16972313821315765,
+     "kl": 0.012646459974348545,
+     "dnll": 0.012061663437634706,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.039359408594185144,
+     "perturbation": 0.21525414288043976,
+     "kl": 0.09957746788859367,
+     "dnll": 0.11629195138812065,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.04307409698896014,
+     "perturbation": 0.3458746373653412,
+     "kl": 0.019543732050806284,
+     "dnll": 0.021835563704371452,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.042144053341305714,
+     "perturbation": 0.2910010814666748,
+     "kl": 0.008844612864777446,
+     "dnll": 0.00870844954624772,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.0427055944899441,
+     "perturbation": 0.16432984173297882,
+     "kl": 0.014801770681515336,
+     "dnll": 0.016721476800739765,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.0424328196904198,
+     "perturbation": 0.322552889585495,
+     "kl": 0.01489725848659873,
+     "dnll": 0.014194906922057271,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       7
+      ]
+     ],
+     "residual": 0.041199127888770934,
+     "perturbation": 0.27791717648506165,
+     "kl": 0.027420499362051487,
+     "dnll": 0.029429963789880276,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       5
+      ]
+     ],
+     "residual": 0.04178343005992772,
+     "perturbation": 0.15087628364562988,
+     "kl": 0.005856785690411925,
+     "dnll": 0.0051935105584561825,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.0415999516010749,
+     "perturbation": 0.28274935483932495,
+     "kl": 0.12451603263616562,
+     "dnll": 0.13745377585291862,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       7
+      ]
+     ],
+     "residual": 0.04129630344708046,
+     "perturbation": 0.36603179574012756,
+     "kl": 0.22754647582769394,
+     "dnll": 0.25549592077732086,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "residual": 0.04434570354416611,
+     "perturbation": 0.2155846357345581,
+     "kl": 0.11325095035135746,
+     "dnll": 0.12315541319549084,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.039209036645258516,
+     "perturbation": 0.2385488599538803,
+     "kl": 0.0691050449386239,
+     "dnll": 0.07378058787435293,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       5
+      ]
+     ],
+     "residual": 0.03892814951378247,
+     "perturbation": 0.20350095629692078,
+     "kl": 0.08931447193026543,
+     "dnll": 0.09318308904767036,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "residual": 0.04139324743971133,
+     "perturbation": 0.32536569237709045,
+     "kl": 0.05475132865831256,
+     "dnll": 0.05889829550869763,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.043498542897629604,
+     "perturbation": 0.2477813959121704,
+     "kl": 0.014362502144649625,
+     "dnll": 0.010187612031586468,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.039215678931549,
+     "perturbation": 0.19184765219688416,
+     "kl": 0.011004533502273262,
+     "dnll": 0.00617941003292799,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.03995392459679896,
+     "perturbation": 0.20385606586933136,
+     "kl": 0.06701024994254112,
+     "dnll": 0.06962537672370672,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.04379532869630291,
+     "perturbation": 0.24457915127277374,
+     "kl": 0.01303316606208682,
+     "dnll": 0.01207832363434136,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.04197756265615117,
+     "perturbation": 0.2978604733943939,
+     "kl": 0.008437398122623563,
+     "dnll": 0.007379078306257725,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.04446142311801721,
+     "perturbation": 0.1999993622303009,
+     "kl": 0.009859323734417558,
+     "dnll": 0.010398169280961156,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.04315405139776257,
+     "perturbation": 0.23563723266124725,
+     "kl": 0.015046389540657401,
+     "dnll": 0.01340099098160863,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "residual": 0.04179364389138474,
+     "perturbation": 0.28634577989578247,
+     "kl": 0.021946202963590622,
+     "dnll": 0.020482833497226238,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       5
+      ]
+     ],
+     "residual": 0.04353925868800083,
+     "perturbation": 0.1848047375679016,
+     "kl": 0.007670914987102151,
+     "dnll": 0.007166886003687978,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.04143346091592036,
+     "perturbation": 0.28621581196784973,
+     "kl": 0.13172692153602839,
+     "dnll": 0.14433930162340403,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "residual": 0.04189081944969427,
+     "perturbation": 0.3008098602294922,
+     "kl": 0.13880542293190956,
+     "dnll": 0.153348533436656,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "residual": 0.04610153217223922,
+     "perturbation": 0.24445629119873047,
+     "kl": 0.14070244878530502,
+     "dnll": 0.15143211744725704,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.04135515891484204,
+     "perturbation": 0.19889681041240692,
+     "kl": 0.06132330000400543,
+     "dnll": 0.07000797428190708,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       5
+      ]
+     ],
+     "residual": 0.041074271783366,
+     "perturbation": 0.19137056171894073,
+     "kl": 0.022087603341788054,
+     "dnll": 0.022500233608298004,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "residual": 0.04353936970929486,
+     "perturbation": 0.30487769842147827,
+     "kl": 0.03149140044115484,
+     "dnll": 0.028836871846579015,
+     "residual_choice": false,
+     "neighbours": false
+    }
+   ]
+  },
+  "1": {
+   "stats": {
+    "candidates": 105,
+    "spearman_residual_kl": -0.042494298154675515,
+    "spearman_perturbation_kl": 0.4308625336927223,
+    "spearman_residual_perturbation": 0.6015032137673647,
+    "spearman_residual_dnll": 0.15441633837860252,
+    "spearman_perturbation_dnll": 0.3826145552560647,
+    "spearman_kl_dnll": 0.730810698735227,
+    "kl_rank_residual_choice": 64,
+    "kl_rank_perturbation_choice": 10,
+    "kl_residual_choice": 0.013880612794309855,
+    "kl_perturbation_choice": 0.01075791334733367,
+    "kl_best": 0.008568492718040943,
+    "kl_median": 0.013592034578323364,
+    "kl_worst": 0.016231305431574583,
+    "kl_neighbours": 0.015340540558099747,
+    "best_matching": [
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "residual_matching": [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    "perturbation_matching": [
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    "seconds": 1589.0
+   },
+   "rows": [
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.08118930759592656,
+     "perturbation": 0.21271979808807373,
+     "kl": 0.015340540558099747,
+     "dnll": 0.013762418646365404,
+     "residual_choice": false,
+     "neighbours": true
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.09160826304788311,
+     "perturbation": 0.22695153951644897,
+     "kl": 0.016231305431574583,
+     "dnll": 0.015192932449281216,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.08778323974852528,
+     "perturbation": 0.21884199976921082,
+     "kl": 0.014670905191451311,
+     "dnll": 0.01328094769269228,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.08032072158541793,
+     "perturbation": 0.20880118012428284,
+     "kl": 0.013596274424344301,
+     "dnll": 0.010946566238999367,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.08451413808074386,
+     "perturbation": 0.21777480840682983,
+     "kl": 0.014627073425799608,
+     "dnll": 0.013965051155537367,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.07947520900064675,
+     "perturbation": 0.21158356964588165,
+     "kl": 0.014280094299465418,
+     "dnll": 0.012764969374984503,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.08233703240739278,
+     "perturbation": 0.2105981856584549,
+     "kl": 0.013587167952209711,
+     "dnll": 0.00927851372398436,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.0821889452767381,
+     "perturbation": 0.21547608077526093,
+     "kl": 0.014131274074316025,
+     "dnll": 0.010971040930598974,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.08097503949599884,
+     "perturbation": 0.21841181814670563,
+     "kl": 0.015720324590802193,
+     "dnll": 0.01299051009118557,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.0907528169592614,
+     "perturbation": 0.21836930513381958,
+     "kl": 0.01388450339436531,
+     "dnll": 0.011377613293007016,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.0864113133332808,
+     "perturbation": 0.21354994177818298,
+     "kl": 0.01383347250521183,
+     "dnll": 0.011129229795187712,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.0789718685959109,
+     "perturbation": 0.2103179395198822,
+     "kl": 0.015619962941855192,
+     "dnll": 0.013742264825850725,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.08965501786544766,
+     "perturbation": 0.22860939800739288,
+     "kl": 0.013967357575893402,
+     "dnll": 0.013034757692366838,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.0891385375388249,
+     "perturbation": 0.23237267136573792,
+     "kl": 0.015377475414425135,
+     "dnll": 0.014695260673761368,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.08291299858219428,
+     "perturbation": 0.2259034663438797,
+     "kl": 0.015688879881054163,
+     "dnll": 0.015030163805931807,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       4,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.07668212572384599,
+     "perturbation": 0.20047660171985626,
+     "kl": 0.014539236202836037,
+     "dnll": 0.011757335159927607,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       4,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.08710108117580254,
+     "perturbation": 0.2144971787929535,
+     "kl": 0.015060794074088335,
+     "dnll": 0.013755605556070805,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       4,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.08327605787644471,
+     "perturbation": 0.20635069906711578,
+     "kl": 0.013467852026224136,
+     "dnll": 0.010936247650533915,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.08266758408321159,
+     "perturbation": 0.21101388335227966,
+     "kl": 0.012728710658848286,
+     "dnll": 0.009033093694597483,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.08686100057853752,
+     "perturbation": 0.2199382185935974,
+     "kl": 0.013424551580101252,
+     "dnll": 0.01024089427664876,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.0818220714984404,
+     "perturbation": 0.21264830231666565,
+     "kl": 0.01309968437999487,
+     "dnll": 0.009604806546121836,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.0839436761906056,
+     "perturbation": 0.2030368149280548,
+     "kl": 0.012589715886861086,
+     "dnll": 0.010496699251234531,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.08379558905995092,
+     "perturbation": 0.20735980570316315,
+     "kl": 0.012880848720669746,
+     "dnll": 0.010781973600387573,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.08258168327921164,
+     "perturbation": 0.2079671174287796,
+     "kl": 0.014268591068685055,
+     "dnll": 0.012850194238126278,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.08815875222222488,
+     "perturbation": 0.21320697665214539,
+     "kl": 0.013491884339600801,
+     "dnll": 0.011822216212749481,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.08381724859624429,
+     "perturbation": 0.20847664773464203,
+     "kl": 0.013189432676881552,
+     "dnll": 0.01083995122462511,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.07637780385887438,
+     "perturbation": 0.204371839761734,
+     "kl": 0.015048475936055183,
+     "dnll": 0.012992759235203266,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.0818804777955501,
+     "perturbation": 0.20965731143951416,
+     "kl": 0.012232625856995583,
+     "dnll": 0.008883995935320854,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.08136399746892735,
+     "perturbation": 0.21243107318878174,
+     "kl": 0.013248882256448269,
+     "dnll": 0.009325848426669836,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.07513845851229672,
+     "perturbation": 0.20888985693454742,
+     "kl": 0.013880612794309855,
+     "dnll": 0.010153937619179487,
+     "residual_choice": true,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       4,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.08156999426464039,
+     "perturbation": 0.20703983306884766,
+     "kl": 0.013473864179104567,
+     "dnll": 0.012215223629027605,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       4,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.09198894971659693,
+     "perturbation": 0.22123007476329803,
+     "kl": 0.014314077328890562,
+     "dnll": 0.014776979573071003,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       4,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.08816392641723911,
+     "perturbation": 0.21303294599056244,
+     "kl": 0.012711995746940374,
+     "dnll": 0.012161915190517902,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.08247047078357443,
+     "perturbation": 0.2123595029115677,
+     "kl": 0.013775498606264591,
+     "dnll": 0.011332092341035604,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.09088625533544303,
+     "perturbation": 0.22006849944591522,
+     "kl": 0.0132869859226048,
+     "dnll": 0.011079213116317987,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.08978845624162932,
+     "perturbation": 0.22912268340587616,
+     "kl": 0.014124067034572363,
+     "dnll": 0.012204857543110847,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.08173025206899356,
+     "perturbation": 0.2030416578054428,
+     "kl": 0.013562551233917475,
+     "dnll": 0.012921456713229418,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.08782084381685644,
+     "perturbation": 0.20796841382980347,
+     "kl": 0.013098308816552162,
+     "dnll": 0.01218980411067605,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.09054806802240055,
+     "perturbation": 0.22617599368095398,
+     "kl": 0.015224850736558437,
+     "dnll": 0.015693822875618935,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.08594532810061287,
+     "perturbation": 0.21389387547969818,
+     "kl": 0.014795022085309029,
+     "dnll": 0.014579362701624632,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.08362013529660713,
+     "perturbation": 0.211647629737854,
+     "kl": 0.014211447909474373,
+     "dnll": 0.012227649334818125,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.08434418860206329,
+     "perturbation": 0.22226257622241974,
+     "kl": 0.016037834342569113,
+     "dnll": 0.015924558974802494,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.07966705367393809,
+     "perturbation": 0.20990779995918274,
+     "kl": 0.014058299828320742,
+     "dnll": 0.012257379479706287,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.08116688416929017,
+     "perturbation": 0.21576227247714996,
+     "kl": 0.014037198852747679,
+     "dnll": 0.0123837785795331,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.07916371326920224,
+     "perturbation": 0.2092847228050232,
+     "kl": 0.013428338803350925,
+     "dnll": 0.01007858756929636,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.08589830231852805,
+     "perturbation": 0.2120189219713211,
+     "kl": 0.012373889330774546,
+     "dnll": 0.008479695301502943,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.09009171881385397,
+     "perturbation": 0.22113920748233795,
+     "kl": 0.013166558463126421,
+     "dnll": 0.010972089599817991,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.08505278973375685,
+     "perturbation": 0.21446537971496582,
+     "kl": 0.012980443425476551,
+     "dnll": 0.010481132660061121,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.08081332047809647,
+     "perturbation": 0.20601193606853485,
+     "kl": 0.013985116966068745,
+     "dnll": 0.010203312616795301,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.08922910502996509,
+     "perturbation": 0.21432581543922424,
+     "kl": 0.013950008433312178,
+     "dnll": 0.01030978886410594,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.08813130593615137,
+     "perturbation": 0.22411516308784485,
+     "kl": 0.014285449404269457,
+     "dnll": 0.011825598310679197,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.08692714613338985,
+     "perturbation": 0.21132108569145203,
+     "kl": 0.013232784811407328,
+     "dnll": 0.010820433031767607,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       7
+      ]
+     ],
+     "residual": 0.08470970713337418,
+     "perturbation": 0.20798589289188385,
+     "kl": 0.01304162573069334,
+     "dnll": 0.010828039608895779,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "residual": 0.08865083711965757,
+     "perturbation": 0.22371132671833038,
+     "kl": 0.01399525161832571,
+     "dnll": 0.012906552758067846,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.09114222216500914,
+     "perturbation": 0.2214207798242569,
+     "kl": 0.014698887709528208,
+     "dnll": 0.01252090372145176,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       7
+      ]
+     ],
+     "residual": 0.08050899861312487,
+     "perturbation": 0.21193312108516693,
+     "kl": 0.014192778151482344,
+     "dnll": 0.01107178395614028,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       5
+      ]
+     ],
+     "residual": 0.08867249665595095,
+     "perturbation": 0.22636523842811584,
+     "kl": 0.014384828507900238,
+     "dnll": 0.012808408122509718,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.08486394773833436,
+     "perturbation": 0.21818143129348755,
+     "kl": 0.01326592918485403,
+     "dnll": 0.009317114017903805,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "residual": 0.0792696532665472,
+     "perturbation": 0.21458476781845093,
+     "kl": 0.013426600024104118,
+     "dnll": 0.009350525215268135,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       5
+      ]
+     ],
+     "residual": 0.08349202132308989,
+     "perturbation": 0.2128848284482956,
+     "kl": 0.012504441197961569,
+     "dnll": 0.007609169697389007,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.08623345696013346,
+     "perturbation": 0.20250827074050903,
+     "kl": 0.009099905379116535,
+     "dnll": 0.008960068691521883,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.08608536982947879,
+     "perturbation": 0.2070762813091278,
+     "kl": 0.00960463099181652,
+     "dnll": 0.009413516148924828,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.0848714640487395,
+     "perturbation": 0.2081182897090912,
+     "kl": 0.010735178831964731,
+     "dnll": 0.011254058685153723,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.07913216429772704,
+     "perturbation": 0.1947150081396103,
+     "kl": 0.01075791334733367,
+     "dnll": 0.010379365179687738,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.0852227560455899,
+     "perturbation": 0.20043176412582397,
+     "kl": 0.010601936373859644,
+     "dnll": 0.00929040159098804,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.08794998025113401,
+     "perturbation": 0.2189418375492096,
+     "kl": 0.012496715411543846,
+     "dnll": 0.013185014948248863,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.08598620866760127,
+     "perturbation": 0.20968343317508698,
+     "kl": 0.010175128001719713,
+     "dnll": 0.008592176018282771,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       7
+      ]
+     ],
+     "residual": 0.0837687696675856,
+     "perturbation": 0.2067466825246811,
+     "kl": 0.009859022684395313,
+     "dnll": 0.007801592582836747,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "residual": 0.087709899653869,
+     "perturbation": 0.22210770845413208,
+     "kl": 0.01103142136707902,
+     "dnll": 0.01068046735599637,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.08713587318063397,
+     "perturbation": 0.20762421190738678,
+     "kl": 0.011304185260087252,
+     "dnll": 0.010722816456109285,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       7
+      ]
+     ],
+     "residual": 0.07882784243275544,
+     "perturbation": 0.1998467892408371,
+     "kl": 0.01067877421155572,
+     "dnll": 0.010482000187039375,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "residual": 0.08900765129755636,
+     "perturbation": 0.21719598770141602,
+     "kl": 0.011120150797069073,
+     "dnll": 0.011882230173796415,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.08468262205331702,
+     "perturbation": 0.21189673244953156,
+     "kl": 0.010761768091470003,
+     "dnll": 0.009432057850062847,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "residual": 0.07758849708617777,
+     "perturbation": 0.20340414345264435,
+     "kl": 0.01050424063578248,
+     "dnll": 0.00958812003955245,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "residual": 0.0838271759646953,
+     "perturbation": 0.20377792418003082,
+     "kl": 0.008568492718040943,
+     "dnll": 0.005806070519611239,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.09321456539229808,
+     "perturbation": 0.21856343746185303,
+     "kl": 0.012860756367444992,
+     "dnll": 0.010814502369612455,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.08887306176631747,
+     "perturbation": 0.21426188945770264,
+     "kl": 0.012736266944557428,
+     "dnll": 0.010563431773334742,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.08143361702894758,
+     "perturbation": 0.2103237807750702,
+     "kl": 0.013684441335499287,
+     "dnll": 0.01137112034484744,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.08611327272989167,
+     "perturbation": 0.21177400648593903,
+     "kl": 0.014471834059804678,
+     "dnll": 0.01202068105340004,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.08378807992588592,
+     "perturbation": 0.2103555053472519,
+     "kl": 0.014092695899307728,
+     "dnll": 0.00972937187179923,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.08451213323134209,
+     "perturbation": 0.22185567021369934,
+     "kl": 0.016156688798218966,
+     "dnll": 0.014700573403388262,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.09296731709976591,
+     "perturbation": 0.22406110167503357,
+     "kl": 0.013714991044253111,
+     "dnll": 0.009745263261720538,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       7
+      ]
+     ],
+     "residual": 0.08233409354788161,
+     "perturbation": 0.21677467226982117,
+     "kl": 0.013804242480546236,
+     "dnll": 0.009317574556916952,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       5
+      ]
+     ],
+     "residual": 0.0904975915907077,
+     "perturbation": 0.23133932054042816,
+     "kl": 0.014648524578660727,
+     "dnll": 0.012096113059669733,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.0899019055811793,
+     "perturbation": 0.2124214768409729,
+     "kl": 0.013547189068049192,
+     "dnll": 0.011529101524502039,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       7
+      ]
+     ],
+     "residual": 0.08159387483330077,
+     "perturbation": 0.20597264170646667,
+     "kl": 0.013398599810898304,
+     "dnll": 0.011826025787740946,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "residual": 0.09177368369810168,
+     "perturbation": 0.2240438014268875,
+     "kl": 0.0140665452927351,
+     "dnll": 0.013075878378003836,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.08124477503352509,
+     "perturbation": 0.21307438611984253,
+     "kl": 0.01382239256054163,
+     "dnll": 0.010629350785166025,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       5
+      ]
+     ],
+     "residual": 0.08037618902301646,
+     "perturbation": 0.21069544553756714,
+     "kl": 0.013872604351490736,
+     "dnll": 0.009912715759128332,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "residual": 0.08239249984499131,
+     "perturbation": 0.21293078362941742,
+     "kl": 0.01289760135114193,
+     "dnll": 0.008182030403986573,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.08788389799489045,
+     "perturbation": 0.21525834500789642,
+     "kl": 0.01212732121348381,
+     "dnll": 0.011366621125489473,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.08736741766826768,
+     "perturbation": 0.21871604025363922,
+     "kl": 0.012911062221974134,
+     "dnll": 0.011604757979512215,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.08114187871163706,
+     "perturbation": 0.21378059685230255,
+     "kl": 0.013191169127821922,
+     "dnll": 0.012526257429271936,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.08078260533248402,
+     "perturbation": 0.20972855389118195,
+     "kl": 0.014160498511046171,
+     "dnll": 0.013609605841338634,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.08228243582783612,
+     "perturbation": 0.21679487824440002,
+     "kl": 0.014965817332267761,
+     "dnll": 0.01346504595130682,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.08027926492774819,
+     "perturbation": 0.20895741879940033,
+     "kl": 0.014324520714581013,
+     "dnll": 0.012287926394492388,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.08763664970235827,
+     "perturbation": 0.22258715331554413,
+     "kl": 0.01335574360564351,
+     "dnll": 0.010675233323127031,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "residual": 0.0820423552305711,
+     "perturbation": 0.21949675679206848,
+     "kl": 0.013592034578323364,
+     "dnll": 0.010470155626535416,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       5
+      ]
+     ],
+     "residual": 0.08626472328711379,
+     "perturbation": 0.21741241216659546,
+     "kl": 0.012496648356318474,
+     "dnll": 0.009129105368629098,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.0883962614831295,
+     "perturbation": 0.21903502941131592,
+     "kl": 0.014435640536248684,
+     "dnll": 0.014433549251407385,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "residual": 0.08130213651599025,
+     "perturbation": 0.20949698984622955,
+     "kl": 0.013682893943041563,
+     "dnll": 0.013705010060220957,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "residual": 0.08754081539450778,
+     "perturbation": 0.20982138812541962,
+     "kl": 0.01261620270088315,
+     "dnll": 0.012249109335243702,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.08219238206279224,
+     "perturbation": 0.21521446108818054,
+     "kl": 0.01485593430697918,
+     "dnll": 0.01380926975980401,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       5
+      ]
+     ],
+     "residual": 0.0813237960522836,
+     "perturbation": 0.2115938663482666,
+     "kl": 0.013807929586619139,
+     "dnll": 0.011900912504643202,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "residual": 0.08334010687425847,
+     "perturbation": 0.21394528448581696,
+     "kl": 0.013523516710847616,
+     "dnll": 0.011001432314515114,
+     "residual_choice": false,
+     "neighbours": false
+    }
+   ]
+  },
+  "2": {
+   "stats": {
+    "candidates": 105,
+    "spearman_residual_kl": -0.05753680281982169,
+    "spearman_perturbation_kl": 0.7712212315985901,
+    "spearman_residual_perturbation": -0.019997926601700185,
+    "spearman_residual_dnll": -0.13068629483723823,
+    "spearman_perturbation_dnll": 0.6156334231805929,
+    "spearman_kl_dnll": 0.7544889073190959,
+    "kl_rank_residual_choice": 66,
+    "kl_rank_perturbation_choice": 1,
+    "kl_residual_choice": 0.015640154015272856,
+    "kl_perturbation_choice": 0.011839458253234625,
+    "kl_best": 0.011839458253234625,
+    "kl_median": 0.014734819065779448,
+    "kl_worst": 0.018812947906553745,
+    "kl_neighbours": 0.017677688971161842,
+    "best_matching": [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    "residual_matching": [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    "perturbation_matching": [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    "seconds": 1624.8
+   },
+   "rows": [
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.12776043751884322,
+     "perturbation": 0.23440809547901154,
+     "kl": 0.017677688971161842,
+     "dnll": 0.018406327813863754,
+     "residual_choice": false,
+     "neighbours": true
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.1269614094837306,
+     "perturbation": 0.21870577335357666,
+     "kl": 0.015256720129400492,
+     "dnll": 0.01408941438421607,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.12328097126028377,
+     "perturbation": 0.21964946389198303,
+     "kl": 0.016227753832936287,
+     "dnll": 0.015123239252716303,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.12306431659999278,
+     "perturbation": 0.22800298035144806,
+     "kl": 0.016020819079130888,
+     "dnll": 0.014785867184400558,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.12955118714677358,
+     "perturbation": 0.21693134307861328,
+     "kl": 0.014771676156669855,
+     "dnll": 0.014895985834300518,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.12161773547859452,
+     "perturbation": 0.21289879083633423,
+     "kl": 0.014019389636814594,
+     "dnll": 0.013534869067370892,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.12059449670687711,
+     "perturbation": 0.22854556143283844,
+     "kl": 0.01605910575017333,
+     "dnll": 0.016954683233052492,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.12915125844167588,
+     "perturbation": 0.22161942720413208,
+     "kl": 0.016460769809782505,
+     "dnll": 0.015661954414099455,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.12489824499694369,
+     "perturbation": 0.2163442224264145,
+     "kl": 0.014705053996294737,
+     "dnll": 0.014441319741308689,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.12068681002006906,
+     "perturbation": 0.23061470687389374,
+     "kl": 0.01593673089519143,
+     "dnll": 0.017791930120438337,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.12275670120808702,
+     "perturbation": 0.2342885583639145,
+     "kl": 0.017040321603417397,
+     "dnll": 0.01664762757718563,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.12578958634524823,
+     "perturbation": 0.2335279881954193,
+     "kl": 0.017011879943311214,
+     "dnll": 0.019228411838412285,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.11697048849408197,
+     "perturbation": 0.2242746502161026,
+     "kl": 0.015640154015272856,
+     "dnll": 0.015458745416253805,
+     "residual_choice": true,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.12272081790554679,
+     "perturbation": 0.2266991138458252,
+     "kl": 0.016237065196037292,
+     "dnll": 0.014487976673990488,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.13000671648744022,
+     "perturbation": 0.23188960552215576,
+     "kl": 0.0174642582423985,
+     "dnll": 0.018399975262582302,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       4,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.1320117669439492,
+     "perturbation": 0.23062758147716522,
+     "kl": 0.01583836553618312,
+     "dnll": 0.017464899457991123,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       4,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.13121273890883658,
+     "perturbation": 0.21508479118347168,
+     "kl": 0.0137584307231009,
+     "dnll": 0.014137066900730133,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       4,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.12753230068538973,
+     "perturbation": 0.21669277548789978,
+     "kl": 0.014581059571355581,
+     "dnll": 0.01479773549363017,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.12279846070778733,
+     "perturbation": 0.22615937888622284,
+     "kl": 0.013660138472914696,
+     "dnll": 0.012672896031290293,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.12928533125456812,
+     "perturbation": 0.2145199030637741,
+     "kl": 0.012864520773291588,
+     "dnll": 0.01345904590561986,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.12135187958638906,
+     "perturbation": 0.2111598402261734,
+     "kl": 0.011839458253234625,
+     "dnll": 0.011619148775935173,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.11855670734410254,
+     "perturbation": 0.25133514404296875,
+     "kl": 0.01747625134885311,
+     "dnll": 0.0177914765663445,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.1271134690789013,
+     "perturbation": 0.24529814720153809,
+     "kl": 0.017879871651530266,
+     "dnll": 0.0164368306286633,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.12286045563416911,
+     "perturbation": 0.23912861943244934,
+     "kl": 0.016046430449932814,
+     "dnll": 0.015446581412106752,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.12558208165959317,
+     "perturbation": 0.2243431657552719,
+     "kl": 0.013266205787658691,
+     "dnll": 0.015119983814656734,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.12765197284761115,
+     "perturbation": 0.22771528363227844,
+     "kl": 0.014327953103929758,
+     "dnll": 0.014827405102550983,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.13068485798477236,
+     "perturbation": 0.22623440623283386,
+     "kl": 0.01396459061652422,
+     "dnll": 0.016658802051097155,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.12026429508819468,
+     "perturbation": 0.22234737873077393,
+     "kl": 0.012845471501350403,
+     "dnll": 0.014025845564901829,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.12601462449965953,
+     "perturbation": 0.22367136180400848,
+     "kl": 0.013429585844278336,
+     "dnll": 0.013065765146166086,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.13330052308155294,
+     "perturbation": 0.2275414615869522,
+     "kl": 0.014449608512222767,
+     "dnll": 0.016476447228342295,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       4,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.1261489089309523,
+     "perturbation": 0.2401396483182907,
+     "kl": 0.016256130300462246,
+     "dnll": 0.01874939166009426,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       4,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.12534988089583968,
+     "perturbation": 0.22529585659503937,
+     "kl": 0.01432409742847085,
+     "dnll": 0.016452495008707047,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       4,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.12166944267239281,
+     "perturbation": 0.22701381146907806,
+     "kl": 0.014814396388828754,
+     "dnll": 0.016296861693263054,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.12078253052977905,
+     "perturbation": 0.22593963146209717,
+     "kl": 0.014423234853893518,
+     "dnll": 0.014504427555948496,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.12087484384297101,
+     "perturbation": 0.22783713042736053,
+     "kl": 0.014506513252854347,
+     "dnll": 0.015887700021266937,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.11715852231698391,
+     "perturbation": 0.22155237197875977,
+     "kl": 0.013974612578749657,
+     "dnll": 0.014019007794559002,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.11901059705920994,
+     "perturbation": 0.24956414103507996,
+     "kl": 0.01768710184842348,
+     "dnll": 0.018086411990225315,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.1187029816673042,
+     "perturbation": 0.25513315200805664,
+     "kl": 0.018766330555081367,
+     "dnll": 0.019396983552724123,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.11866709836476397,
+     "perturbation": 0.24756085872650146,
+     "kl": 0.018059737980365753,
+     "dnll": 0.017695574555546045,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.1260359713747006,
+     "perturbation": 0.2234213501214981,
+     "kl": 0.013878218363970518,
+     "dnll": 0.015293947886675596,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.12563604266960288,
+     "perturbation": 0.22801361978054047,
+     "kl": 0.015479907859116793,
+     "dnll": 0.01672826847061515,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.12649150071536722,
+     "perturbation": 0.23644784092903137,
+     "kl": 0.016519260592758656,
+     "dnll": 0.019588736817240715,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.1207181848033021,
+     "perturbation": 0.22155825793743134,
+     "kl": 0.013446090742945671,
+     "dnll": 0.01427907170727849,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.12399869432165125,
+     "perturbation": 0.22410982847213745,
+     "kl": 0.014246009290218353,
+     "dnll": 0.015786797739565372,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.12489003566995582,
+     "perturbation": 0.24048583209514618,
+     "kl": 0.016177700366824865,
+     "dnll": 0.019685915671288967,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.12579634627038397,
+     "perturbation": 0.22828665375709534,
+     "kl": 0.013561939354985952,
+     "dnll": 0.01438669441267848,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.1322832168171648,
+     "perturbation": 0.21692128479480743,
+     "kl": 0.013056161347776651,
+     "dnll": 0.014524562284350395,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.12434976514898571,
+     "perturbation": 0.21355339884757996,
+     "kl": 0.012138902209699154,
+     "dnll": 0.013205841183662415,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.12964327410537263,
+     "perturbation": 0.21825507283210754,
+     "kl": 0.014336899388581514,
+     "dnll": 0.014323750045150518,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.12973558741856459,
+     "perturbation": 0.2197369486093521,
+     "kl": 0.014376475475728512,
+     "dnll": 0.015343602746725082,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.1260192658925775,
+     "perturbation": 0.21386907994747162,
+     "kl": 0.014072336722165346,
+     "dnll": 0.01386192161589861,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.12335415531749208,
+     "perturbation": 0.2453508973121643,
+     "kl": 0.01715015061199665,
+     "dnll": 0.016319673042744398,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       7
+      ]
+     ],
+     "residual": 0.1213833041438971,
+     "perturbation": 0.24298623204231262,
+     "kl": 0.016113512683659792,
+     "dnll": 0.016370130702853203,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "residual": 0.12560043428608908,
+     "perturbation": 0.2425101399421692,
+     "kl": 0.016982190310955048,
+     "dnll": 0.01589391939342022,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.13037952963298274,
+     "perturbation": 0.2165123075246811,
+     "kl": 0.013100862503051758,
+     "dnll": 0.014047438744455576,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       7
+      ]
+     ],
+     "residual": 0.12831636514619582,
+     "perturbation": 0.2143988162279129,
+     "kl": 0.012294267304241657,
+     "dnll": 0.013659239280968904,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       5
+      ]
+     ],
+     "residual": 0.12613893805479892,
+     "perturbation": 0.22484150528907776,
+     "kl": 0.013732301071286201,
+     "dnll": 0.014214666560292244,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.12506174306158424,
+     "perturbation": 0.21467430889606476,
+     "kl": 0.012818717397749424,
+     "dnll": 0.013546973001211882,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "residual": 0.13093203024297637,
+     "perturbation": 0.21615667641162872,
+     "kl": 0.012859867420047522,
+     "dnll": 0.012879215646535158,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       5
+      ]
+     ],
+     "residual": 0.1245374730093875,
+     "perturbation": 0.22881579399108887,
+     "kl": 0.013681011274456978,
+     "dnll": 0.014314403291791677,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.13135327047059744,
+     "perturbation": 0.2420663833618164,
+     "kl": 0.0155728361569345,
+     "dnll": 0.015430062543600798,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.13991003220539622,
+     "perturbation": 0.23532547056674957,
+     "kl": 0.015997280832380056,
+     "dnll": 0.014400229323655367,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.13565701876066402,
+     "perturbation": 0.2305087447166443,
+     "kl": 0.01425342122092843,
+     "dnll": 0.014224748127162457,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.13767001819870175,
+     "perturbation": 0.2327772080898285,
+     "kl": 0.015770069789141417,
+     "dnll": 0.014536648988723755,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.137362402806796,
+     "perturbation": 0.2388419508934021,
+     "kl": 0.017031438648700714,
+     "dnll": 0.015515805687755346,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.13732651950425578,
+     "perturbation": 0.23181870579719543,
+     "kl": 0.016273126006126404,
+     "dnll": 0.01515620481222868,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.13315283288139035,
+     "perturbation": 0.23331518471240997,
+     "kl": 0.014868278056383133,
+     "dnll": 0.013353101909160614,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       7
+      ]
+     ],
+     "residual": 0.13118198170779533,
+     "perturbation": 0.23270361125469208,
+     "kl": 0.013936904724687338,
+     "dnll": 0.012440217193216085,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "residual": 0.13539911184998732,
+     "perturbation": 0.23100286722183228,
+     "kl": 0.014775961171835661,
+     "dnll": 0.012530697043985128,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.13800634502121417,
+     "perturbation": 0.23450815677642822,
+     "kl": 0.016140968538820744,
+     "dnll": 0.01424017595127225,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       7
+      ]
+     ],
+     "residual": 0.13634310923952492,
+     "perturbation": 0.2281431257724762,
+     "kl": 0.013741966336965561,
+     "dnll": 0.012856263667345047,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "residual": 0.1316958622550124,
+     "perturbation": 0.2387600839138031,
+     "kl": 0.015730329789221287,
+     "dnll": 0.01561166811734438,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.13636899667326255,
+     "perturbation": 0.23168987035751343,
+     "kl": 0.014734819065779448,
+     "dnll": 0.013911561574786901,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "residual": 0.13895877433630552,
+     "perturbation": 0.2303430438041687,
+     "kl": 0.0141275804489851,
+     "dnll": 0.012936603743582964,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "residual": 0.13009439720960098,
+     "perturbation": 0.243002787232399,
+     "kl": 0.015321772079914808,
+     "dnll": 0.01557545317336917,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.12394328056249279,
+     "perturbation": 0.22423408925533295,
+     "kl": 0.012998024467378855,
+     "dnll": 0.014702967368066311,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.12601317175051077,
+     "perturbation": 0.22772713005542755,
+     "kl": 0.01426276471465826,
+     "dnll": 0.013803215231746435,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.12904605688767198,
+     "perturbation": 0.2264833003282547,
+     "kl": 0.014088877476751804,
+     "dnll": 0.01643266249448061,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.13026002829059713,
+     "perturbation": 0.21309763193130493,
+     "kl": 0.01331400964409113,
+     "dnll": 0.012796948198229074,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.1298600995854994,
+     "perturbation": 0.21801675856113434,
+     "kl": 0.014992092736065388,
+     "dnll": 0.013954502530395985,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.13071555763126375,
+     "perturbation": 0.22751310467720032,
+     "kl": 0.015843385364860296,
+     "dnll": 0.01719775889068842,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.1257428429732857,
+     "perturbation": 0.21430882811546326,
+     "kl": 0.012700966093689203,
+     "dnll": 0.011704850476235151,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       7
+      ]
+     ],
+     "residual": 0.12367967848649876,
+     "perturbation": 0.21237215399742126,
+     "kl": 0.012213684152811766,
+     "dnll": 0.011316540651023388,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       5
+      ]
+     ],
+     "residual": 0.12150225139510187,
+     "perturbation": 0.22299888730049133,
+     "kl": 0.01372316898778081,
+     "dnll": 0.012238668277859688,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.12357098079761888,
+     "perturbation": 0.24492807686328888,
+     "kl": 0.017907746136188507,
+     "dnll": 0.0160216074436903,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       7
+      ]
+     ],
+     "residual": 0.12190774501592964,
+     "perturbation": 0.2374647706747055,
+     "kl": 0.015830264892429113,
+     "dnll": 0.014967686962336302,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "residual": 0.11726049803141711,
+     "perturbation": 0.24793334305286407,
+     "kl": 0.01746552437543869,
+     "dnll": 0.016842022072523832,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.1297580348002705,
+     "perturbation": 0.227082297205925,
+     "kl": 0.014610358513891697,
+     "dnll": 0.01619377499446273,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       5
+      ]
+     ],
+     "residual": 0.12506191388142004,
+     "perturbation": 0.2219964861869812,
+     "kl": 0.013382487930357456,
+     "dnll": 0.012857920490205288,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "residual": 0.1225920939883044,
+     "perturbation": 0.22301700711250305,
+     "kl": 0.01312610600143671,
+     "dnll": 0.013915305025875568,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.12220630741602122,
+     "perturbation": 0.22399617731571198,
+     "kl": 0.014455369208008051,
+     "dnll": 0.016633643303066492,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.12795663682748604,
+     "perturbation": 0.22583329677581787,
+     "kl": 0.014670341275632381,
+     "dnll": 0.014801510609686375,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.13524253540937947,
+     "perturbation": 0.22973936796188354,
+     "kl": 0.01573928352445364,
+     "dnll": 0.01746070198714733,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.12852305514412554,
+     "perturbation": 0.21261097490787506,
+     "kl": 0.014557625632733107,
+     "dnll": 0.014573341235518456,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.1318035646624747,
+     "perturbation": 0.21590875089168549,
+     "kl": 0.01537492498755455,
+     "dnll": 0.015492841601371765,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.13269490601077927,
+     "perturbation": 0.23291906714439392,
+     "kl": 0.01709949877113104,
+     "dnll": 0.01944531872868538,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.12400586982681411,
+     "perturbation": 0.21383076906204224,
+     "kl": 0.013950636144727468,
+     "dnll": 0.013385736849159002,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "residual": 0.12987615700820623,
+     "perturbation": 0.2155359536409378,
+     "kl": 0.01401543477550149,
+     "dnll": 0.013364536222070456,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       5
+      ]
+     ],
+     "residual": 0.12348159977461737,
+     "perturbation": 0.2287360280752182,
+     "kl": 0.014864267315715551,
+     "dnll": 0.013818418607115746,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.12551444587459415,
+     "perturbation": 0.2420876920223236,
+     "kl": 0.01814755890518427,
+     "dnll": 0.016910704318434,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "residual": 0.12810422353763712,
+     "perturbation": 0.24079585075378418,
+     "kl": 0.017631945200264454,
+     "dnll": 0.016447375062853098,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "residual": 0.11923984641093258,
+     "perturbation": 0.25229281187057495,
+     "kl": 0.018812947906553745,
+     "dnll": 0.01924516260623932,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.13333884822519743,
+     "perturbation": 0.2290242314338684,
+     "kl": 0.015993262641131878,
+     "dnll": 0.01743087312206626,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       5
+      ]
+     ],
+     "residual": 0.12864272730634696,
+     "perturbation": 0.22391323745250702,
+     "kl": 0.014441912062466145,
+     "dnll": 0.014558739494532347,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "residual": 0.12617290741323128,
+     "perturbation": 0.22486430406570435,
+     "kl": 0.014892622828483582,
+     "dnll": 0.016816395800560713,
+     "residual_choice": false,
+     "neighbours": false
+    }
+   ]
+  },
+  "16": {
+   "stats": {
+    "candidates": 105,
+    "spearman_residual_kl": 0.5387621812150114,
+    "spearman_perturbation_kl": 0.5773377565830397,
+    "spearman_residual_perturbation": 0.5547480821065726,
+    "spearman_residual_dnll": 0.30284055567074436,
+    "spearman_perturbation_dnll": 0.33928053078996473,
+    "spearman_kl_dnll": 0.4126166286543645,
+    "kl_rank_residual_choice": 64,
+    "kl_rank_perturbation_choice": 5,
+    "kl_residual_choice": 0.007933768210932612,
+    "kl_perturbation_choice": 0.007558187935501337,
+    "kl_best": 0.007400191156193614,
+    "kl_median": 0.007878845324739814,
+    "kl_worst": 0.008401078172028065,
+    "kl_neighbours": 0.007947306614369154,
+    "best_matching": [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      7
+     ]
+    ],
+    "residual_matching": [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    "perturbation_matching": [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    "seconds": 1628.8
+   },
+   "rows": [
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.2745331501566094,
+     "perturbation": 0.17282415926456451,
+     "kl": 0.007947306614369154,
+     "dnll": 0.010124430293217301,
+     "residual_choice": false,
+     "neighbours": true
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.27231342947702286,
+     "perturbation": 0.17167867720127106,
+     "kl": 0.008010051678866148,
+     "dnll": 0.008954241639003158,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.27133523721918684,
+     "perturbation": 0.17332138121128082,
+     "kl": 0.008073734119534492,
+     "dnll": 0.008988331072032452,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.2712572167503918,
+     "perturbation": 0.17295026779174805,
+     "kl": 0.007661742623895407,
+     "dnll": 0.01010039309039712,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.2733291816888206,
+     "perturbation": 0.1715061068534851,
+     "kl": 0.007680193055421114,
+     "dnll": 0.009519544197246432,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.26595724954189853,
+     "perturbation": 0.1725936084985733,
+     "kl": 0.007747706491500139,
+     "dnll": 0.008686579531058669,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.26165884802874906,
+     "perturbation": 0.17211894690990448,
+     "kl": 0.00755880237556994,
+     "dnll": 0.007658919086679816,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.2649530121944763,
+     "perturbation": 0.17002986371517181,
+     "kl": 0.0077758117113262415,
+     "dnll": 0.008729616412892938,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.2585592723053902,
+     "perturbation": 0.16982272267341614,
+     "kl": 0.0077627296559512615,
+     "dnll": 0.007400332018733025,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.26415745892497206,
+     "perturbation": 0.16742557287216187,
+     "kl": 0.007421189919114113,
+     "dnll": 0.007209577364847064,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.2653796581522705,
+     "perturbation": 0.16684846580028534,
+     "kl": 0.0076017717365175486,
+     "dnll": 0.008341175271198153,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.26327760388119975,
+     "perturbation": 0.166055366396904,
+     "kl": 0.007558187935501337,
+     "dnll": 0.008023482747375965,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.26515609816316627,
+     "perturbation": 0.1730716973543167,
+     "kl": 0.0077507696114480495,
+     "dnll": 0.008399202954024076,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.2673564896483007,
+     "perturbation": 0.1712045520544052,
+     "kl": 0.007876814110204577,
+     "dnll": 0.00951280421577394,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.271648175266316,
+     "perturbation": 0.1705954670906067,
+     "kl": 0.007839451311156154,
+     "dnll": 0.010050388285890222,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       4,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.272479243818293,
+     "perturbation": 0.17772729694843292,
+     "kl": 0.00809894921258092,
+     "dnll": 0.010111082810908556,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       4,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.27025952313870655,
+     "perturbation": 0.17675140500068665,
+     "kl": 0.008205440361052752,
+     "dnll": 0.00920144678093493,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       4,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.26928133088087053,
+     "perturbation": 0.17812833189964294,
+     "kl": 0.008191467029973865,
+     "dnll": 0.00969495764002204,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.27281040670214374,
+     "perturbation": 0.17685478925704956,
+     "kl": 0.008039577398449183,
+     "dnll": 0.009702201234176755,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.2748823716405725,
+     "perturbation": 0.17530539631843567,
+     "kl": 0.008013328071683645,
+     "dnll": 0.009277448290959,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.26751043949365044,
+     "perturbation": 0.17649856209754944,
+     "kl": 0.008164995582774282,
+     "dnll": 0.00852352729998529,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.26039843917083044,
+     "perturbation": 0.17416752874851227,
+     "kl": 0.007787668611854315,
+     "dnll": 0.009175710147246718,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.26369260333655775,
+     "perturbation": 0.17195910215377808,
+     "kl": 0.007918955059722066,
+     "dnll": 0.01018885476514697,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.25729886344747166,
+     "perturbation": 0.17163673043251038,
+     "kl": 0.007933768210932612,
+     "dnll": 0.008323132060468197,
+     "residual_choice": true,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.2639384859785391,
+     "perturbation": 0.17511171102523804,
+     "kl": 0.007691652746871114,
+     "dnll": 0.008695794735103846,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.2651606852058375,
+     "perturbation": 0.17448490858078003,
+     "kl": 0.007878845324739814,
+     "dnll": 0.01031367084942758,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.2630586309347667,
+     "perturbation": 0.17363329231739044,
+     "kl": 0.007840259466320276,
+     "dnll": 0.010346513008698821,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.26835302478166095,
+     "perturbation": 0.1765955239534378,
+     "kl": 0.007962112314999104,
+     "dnll": 0.008738795528188348,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.2705534162667954,
+     "perturbation": 0.17431700229644775,
+     "kl": 0.008060038788244128,
+     "dnll": 0.01046046894043684,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.2748451018848107,
+     "perturbation": 0.17379257082939148,
+     "kl": 0.008019273867830634,
+     "dnll": 0.010480768047273159,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       4,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.26572441134050545,
+     "perturbation": 0.1709582507610321,
+     "kl": 0.007799863116815686,
+     "dnll": 0.009868755005300045,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       4,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.26350469066091897,
+     "perturbation": 0.17005522549152374,
+     "kl": 0.007922233315184712,
+     "dnll": 0.009091793792322278,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       4,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.2625264984030829,
+     "perturbation": 0.1715511530637741,
+     "kl": 0.00793458428233862,
+     "dnll": 0.009325148304924369,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.2705114121202859,
+     "perturbation": 0.17661628127098083,
+     "kl": 0.00799349881708622,
+     "dnll": 0.00870804418809712,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.2730100230165089,
+     "perturbation": 0.17183902859687805,
+     "kl": 0.007793015567585826,
+     "dnll": 0.00815237290225923,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.2740086622547031,
+     "perturbation": 0.17754533886909485,
+     "kl": 0.008154990151524544,
+     "dnll": 0.009627219522371888,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.26769781331061543,
+     "perturbation": 0.17474335432052612,
+     "kl": 0.007734662853181362,
+     "dnll": 0.01001808070577681,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.2618202547124941,
+     "perturbation": 0.16884957253932953,
+     "kl": 0.007691510953009129,
+     "dnll": 0.008708678651601076,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.2637970862085243,
+     "perturbation": 0.17301678657531738,
+     "kl": 0.007904573809355497,
+     "dnll": 0.00903426599688828,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.27123786011832407,
+     "perturbation": 0.17575447261333466,
+     "kl": 0.00768952420912683,
+     "dnll": 0.009607576066628098,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.2628616906239797,
+     "perturbation": 0.17443490028381348,
+     "kl": 0.007811150047928095,
+     "dnll": 0.009394060354679823,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.26955685369581944,
+     "perturbation": 0.1748063564300537,
+     "kl": 0.007799337152391672,
+     "dnll": 0.009668637067079544,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.2756523989214459,
+     "perturbation": 0.1770869642496109,
+     "kl": 0.007961219176650047,
+     "dnll": 0.009497278137132525,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.2682544216849376,
+     "perturbation": 0.17431235313415527,
+     "kl": 0.007990785175934434,
+     "dnll": 0.008535815170034766,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.2729727532607471,
+     "perturbation": 0.17040887475013733,
+     "kl": 0.007794773438945413,
+     "dnll": 0.008436336182057858,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.267460477337194,
+     "perturbation": 0.1707906424999237,
+     "kl": 0.007576115895062685,
+     "dnll": 0.00933082029223442,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.2695324422756228,
+     "perturbation": 0.16922806203365326,
+     "kl": 0.007661812007427216,
+     "dnll": 0.009038404561579227,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.26216051012870073,
+     "perturbation": 0.17009437084197998,
+     "kl": 0.007655696477741003,
+     "dnll": 0.0078047411516308784,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.27191631523312376,
+     "perturbation": 0.17740751802921295,
+     "kl": 0.007832007016986609,
+     "dnll": 0.008384315529838204,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.2744149261293468,
+     "perturbation": 0.1728001832962036,
+     "kl": 0.007672488456591964,
+     "dnll": 0.007951817475259304,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.27541356536754097,
+     "perturbation": 0.17828558385372162,
+     "kl": 0.007943999487906694,
+     "dnll": 0.009460419183596969,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.27270981271352157,
+     "perturbation": 0.17472560703754425,
+     "kl": 0.007814672077074647,
+     "dnll": 0.00903002847917378,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       7
+      ]
+     ],
+     "residual": 0.26145426643811187,
+     "perturbation": 0.16753555834293365,
+     "kl": 0.007400191156193614,
+     "dnll": 0.007825676584616303,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "residual": 0.2698248378232282,
+     "perturbation": 0.17235922813415527,
+     "kl": 0.007701782276853919,
+     "dnll": 0.009498453931882977,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.27624985952123016,
+     "perturbation": 0.17544226348400116,
+     "kl": 0.007729688659310341,
+     "dnll": 0.00897614611312747,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       7
+      ]
+     ],
+     "residual": 0.2624957023495975,
+     "perturbation": 0.1730528622865677,
+     "kl": 0.007497262908145785,
+     "dnll": 0.007835088297724724,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       5
+      ]
+     ],
+     "residual": 0.271292919692508,
+     "perturbation": 0.1747828871011734,
+     "kl": 0.007610614411532879,
+     "dnll": 0.009419300593435764,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.2806643983243521,
+     "perturbation": 0.17708532512187958,
+     "kl": 0.00799907324835658,
+     "dnll": 0.00890387874096632,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "residual": 0.2742821732996415,
+     "perturbation": 0.17368634045124054,
+     "kl": 0.007773064076900482,
+     "dnll": 0.008890840457752347,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       5
+      ]
+     ],
+     "residual": 0.27470881925743573,
+     "perturbation": 0.17048527300357819,
+     "kl": 0.007520514540374279,
+     "dnll": 0.008491156855598092,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.267421063054362,
+     "perturbation": 0.17380134761333466,
+     "kl": 0.007702795788645744,
+     "dnll": 0.00818771356716752,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.2707152272200892,
+     "perturbation": 0.17159931361675262,
+     "kl": 0.007887957850471139,
+     "dnll": 0.009563618572428823,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.26432148733100314,
+     "perturbation": 0.17103776335716248,
+     "kl": 0.00788537785410881,
+     "dnll": 0.007896436844021082,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.28147526967193454,
+     "perturbation": 0.18075913190841675,
+     "kl": 0.007973373169079423,
+     "dnll": 0.009758147411048412,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.2755977110738132,
+     "perturbation": 0.17517223954200745,
+     "kl": 0.007968387333676219,
+     "dnll": 0.00817320984788239,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.27757454256984343,
+     "perturbation": 0.1789616346359253,
+     "kl": 0.008143158862367272,
+     "dnll": 0.009739150060340762,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       6,
+       7
+      ]
+     ],
+     "residual": 0.2850823659620028,
+     "perturbation": 0.1798291802406311,
+     "kl": 0.008202607510611415,
+     "dnll": 0.008937295526266098,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       7
+      ]
+     ],
+     "residual": 0.27382681968659317,
+     "perturbation": 0.17311175167560577,
+     "kl": 0.007824384840205312,
+     "dnll": 0.007575578521937132,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "residual": 0.28219739107170944,
+     "perturbation": 0.17753508687019348,
+     "kl": 0.008112157694995403,
+     "dnll": 0.00931461900472641,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.2774326444656966,
+     "perturbation": 0.17759732902050018,
+     "kl": 0.008083444088697433,
+     "dnll": 0.009338796604424715,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       7
+      ]
+     ],
+     "residual": 0.27205465678840823,
+     "perturbation": 0.17653445899486542,
+     "kl": 0.007651836145669222,
+     "dnll": 0.008973719319328666,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "residual": 0.27125350540967597,
+     "perturbation": 0.17717990279197693,
+     "kl": 0.00768313929438591,
+     "dnll": 0.008545882999897003,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.2828253755266545,
+     "perturbation": 0.17737162113189697,
+     "kl": 0.008186843013390899,
+     "dnll": 0.00929746893234551,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "residual": 0.2838411277384522,
+     "perturbation": 0.1770106554031372,
+     "kl": 0.00791794597171247,
+     "dnll": 0.010462425649166107,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "residual": 0.2746694049746036,
+     "perturbation": 0.1733277291059494,
+     "kl": 0.0076444451697170734,
+     "dnll": 0.007263492560014129,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.2688228106712843,
+     "perturbation": 0.1696414351463318,
+     "kl": 0.007716195657849312,
+     "dnll": 0.007835097145289183,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.2700450098985827,
+     "perturbation": 0.16942137479782104,
+     "kl": 0.007812630152329803,
+     "dnll": 0.008750237757340074,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.26794295562751197,
+     "perturbation": 0.16788004338741302,
+     "kl": 0.007737274281680584,
+     "dnll": 0.008765916107222438,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.28287701728885684,
+     "perturbation": 0.17696301639080048,
+     "kl": 0.007993662264198065,
+     "dnll": 0.009329591412097216,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.2745008477945125,
+     "perturbation": 0.17605060338974,
+     "kl": 0.008069225354120135,
+     "dnll": 0.008792195236310363,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.2811960108663522,
+     "perturbation": 0.17603743076324463,
+     "kl": 0.008079421240836382,
+     "dnll": 0.009820859646424651,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "residual": 0.2864841135789251,
+     "perturbation": 0.1758320927619934,
+     "kl": 0.008172632893547416,
+     "dnll": 0.00822595227509737,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       7
+      ]
+     ],
+     "residual": 0.2727299564072925,
+     "perturbation": 0.17380769550800323,
+     "kl": 0.007900828728452325,
+     "dnll": 0.007712590508162975,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       5
+      ]
+     ],
+     "residual": 0.281527173750203,
+     "perturbation": 0.1753448247909546,
+     "kl": 0.007990216137841344,
+     "dnll": 0.008761406876146793,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "residual": 0.27529434527491026,
+     "perturbation": 0.17326673865318298,
+     "kl": 0.008011603727936745,
+     "dnll": 0.008929423755034804,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       7
+      ]
+     ],
+     "residual": 0.26991635759762195,
+     "perturbation": 0.17186647653579712,
+     "kl": 0.007687682053074241,
+     "dnll": 0.008334616897627711,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "residual": 0.2691152062188896,
+     "perturbation": 0.17256613075733185,
+     "kl": 0.007778132567182183,
+     "dnll": 0.008613950107246637,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.2864468438231633,
+     "perturbation": 0.17446626722812653,
+     "kl": 0.008130340371280909,
+     "dnll": 0.009881221689283848,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       5
+      ]
+     ],
+     "residual": 0.28317091041694575,
+     "perturbation": 0.1747036576271057,
+     "kl": 0.007817800156772137,
+     "dnll": 0.010009005898609757,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       6
+      ],
+      [
+       1,
+       7
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "residual": 0.273572541695303,
+     "perturbation": 0.17393486201763153,
+     "kl": 0.007824222324416041,
+     "dnll": 0.00783915864303708,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.26658455871769937,
+     "perturbation": 0.17063461244106293,
+     "kl": 0.007830933667719364,
+     "dnll": 0.00873212469741702,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.2687849502028339,
+     "perturbation": 0.16869881749153137,
+     "kl": 0.007908213883638382,
+     "dnll": 0.009517568396404386,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.2730766358208492,
+     "perturbation": 0.16799557209014893,
+     "kl": 0.007947637466713786,
+     "dnll": 0.010653546545654535,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.28063876533527193,
+     "perturbation": 0.17836055159568787,
+     "kl": 0.008147601271048188,
+     "dnll": 0.010029935976490378,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.2732407880987636,
+     "perturbation": 0.17556039988994598,
+     "kl": 0.008208300918340683,
+     "dnll": 0.009092737454921007,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.27795911967457315,
+     "perturbation": 0.17173056304454803,
+     "kl": 0.007989950710907578,
+     "dnll": 0.008915103040635586,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       5,
+       6
+      ]
+     ],
+     "residual": 0.28424586162534027,
+     "perturbation": 0.17741037905216217,
+     "kl": 0.008401078172028065,
+     "dnll": 0.010107380570843816,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "residual": 0.2778636366006297,
+     "perturbation": 0.1739680916070938,
+     "kl": 0.008063108194619417,
+     "dnll": 0.008258807705715299,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       5
+      ]
+     ],
+     "residual": 0.2782902825584239,
+     "perturbation": 0.1707807332277298,
+     "kl": 0.007914214860647917,
+     "dnll": 0.00864484440535307,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       6
+      ]
+     ],
+     "residual": 0.27403428557916143,
+     "perturbation": 0.17263811826705933,
+     "kl": 0.008179518627002835,
+     "dnll": 0.009179904824122787,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "residual": 0.27505003779095916,
+     "perturbation": 0.17220301926136017,
+     "kl": 0.007893785135820508,
+     "dnll": 0.010082605294883251,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "residual": 0.26587831502711057,
+     "perturbation": 0.1678593009710312,
+     "kl": 0.007586970226839185,
+     "dnll": 0.00782056269235909,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "residual": 0.27979405306645655,
+     "perturbation": 0.17444463074207306,
+     "kl": 0.008103102445602417,
+     "dnll": 0.010005814721807837,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       5
+      ]
+     ],
+     "residual": 0.276518119660239,
+     "perturbation": 0.17466260492801666,
+     "kl": 0.007814132142812014,
+     "dnll": 0.010034339036792517,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       7
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "residual": 0.2669197509385962,
+     "perturbation": 0.17337827384471893,
+     "kl": 0.00769224832765758,
+     "dnll": 0.008757750503718853,
+     "residual_choice": false,
+     "neighbours": false
+    }
+   ]
+  }
+ },
+ "seconds": 7318.3
+}

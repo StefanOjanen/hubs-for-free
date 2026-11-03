@@ -1659,3 +1659,27 @@ on to A10b.
 scratchpad) was removed to keep the disk above the guard's floor during the
 day's chain (12 GB free with it, 25 without); a re-export takes 28 minutes
 with kvfuse.py when a quiet machine allows the benchmark.
+
+A10b, Mistral-7B-v0.1 complete (2026-11-03 10:23 to 12:26 UTC under the three
+guards, no pauses; residual_select_dev/Mistral-7B-v0.1.json;
+residual_select.log). Every perfect matching of one layer's 8 key-value heads
+fused alone (105 per layer), the whole model's KL to the unconverted one on 2
+held-out WikiText-2 windows as ground truth, against the matching's summed
+residual (no forward pass) and the fused layer's output perturbation on one
+held-out C4 window (one layer forward): layer 0: 105 matchings, Spearman with
+KL residual -0.34 and perturbation 0.31, the residual's choice ranked 58 and
+the perturbation's 28 by KL (residual's 0.0724, perturbation's 0.0213,
+neighbours 0.0984, best 0.0059, median 0.0670); layer 1: 105 matchings,
+Spearman with KL residual -0.04 and perturbation 0.43, the residual's choice
+ranked 64 and the perturbation's 10 by KL (residual's 0.0139, perturbation's
+0.0108, neighbours 0.0153, best 0.0086, median 0.0136); layer 2: 105
+matchings, Spearman with KL residual -0.06 and perturbation 0.77, the
+residual's choice ranked 66 and the perturbation's 1 by KL (residual's 0.0156,
+perturbation's 0.0118, neighbours 0.0177, best 0.0118, median 0.0147); layer
+16: 105 matchings, Spearman with KL residual 0.54 and perturbation 0.58, the
+residual's choice ranked 64 and the perturbation's 5 by KL (residual's 0.0079,
+perturbation's 0.0076, neighbours 0.0079, best 0.0074, median 0.0079). Read:
+in the early layers the closed-form residual selects at chance or below (its
+choice 58th to 66th of 105) while a one-layer forward selects in the top
+decile (28th, 10th, 1st); in layer 16 both correlate with KL but every
+matching lies within 8 percent of the best, so the choice there is immaterial.
