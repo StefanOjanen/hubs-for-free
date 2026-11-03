@@ -1558,7 +1558,7 @@ if glob.glob(Q34) and not json.load(open(Q34)).get("missing"):
 
 # ============ Figure 37: A10b, which local statistic selects a layer's pairing (development) ============
 RS = sorted(glob.glob("alignment_study/residual_select_dev/*.json"))
-RS = [p for p in RS if "llama-160m" not in p]
+RS = [p for p in RS if "llama-160m" not in p and not p.endswith("_pairs.json")]
 if RS:
     plt.rcParams["axes.grid"] = False
     fig = plt.figure(figsize=(14.5, 6.0))
@@ -1566,9 +1566,12 @@ if RS:
     LABS = {"Mistral-7B-v0.1": "Mistral-7B-v0.1", "Mistral-7B-Instruct-v0.2": "Mistral-7B-Instruct", "Qwen2.5-7B": "Qwen2.5-7B", "open_llama_3b_v2": "OpenLLaMA-3B", "Llama-2-7b-hf": "Llama-2-7B"}
     rows = []
     for fp in RS:
+        if fp.endswith("_pairs.json"):
+            continue
         r = json.load(open(fp)); m = LABS.get(os.path.basename(fp)[:-5], os.path.basename(fp)[:-5])
+        pf = fp[:-5] + "_pairs.json"; PR = json.load(open(pf))["per_layer"] if os.path.exists(pf) else {}
         for l, v in r["per_layer"].items():
-            st = v["stats"]; rows.append((m, int(l), st))
+            st = dict(v["stats"]); st["pairs_rank"] = PR.get(l, {}).get("measured_choice_kl_rank"); rows.append((m, int(l), st))
     rows.sort(key=lambda x: (x[0], x[1]))
     ys = list(range(len(rows)))[::-1]
     for y, (m, l, st) in zip(ys, rows):
@@ -1577,11 +1580,14 @@ if RS:
         n = st["candidates"]
         bx.scatter([st["kl_rank_residual_choice"] / n], [y], s=80, color=S2, marker="X", edgecolors=SURF, linewidths=1.1, zorder=3)
         bx.scatter([st["kl_rank_perturbation_choice"] / n], [y], s=80, color=S1, marker="o", edgecolors=SURF, linewidths=1.1, zorder=3)
+        if st.get("pairs_rank"):
+            bx.scatter([st["pairs_rank"] / n], [y], s=90, color=S3, marker="D", edgecolors=SURF, linewidths=1.1, zorder=4)
     ax.set_yticks(ys); ax.set_yticklabels([f"{m}, layer {l}" for m, l, _ in rows], fontsize=9); bx.set_yticks(ys); bx.set_yticklabels([])
     ax.axvline(0, color=GRID, lw=1.0); ax.set_xlim(-1.05, 1.05); ax.set_xlabel("Spearman with the whole model's KL over the layer's matchings", fontsize=10)
     bx.set_xlim(-0.02, 1.02); bx.set_xlabel("KL rank of the selector's choice, as a fraction of the layer's matchings (smaller is better)", fontsize=10)
     ax.scatter([], [], s=70, color=S2, marker="X", label="the fusion's residual (no forward pass)"); ax.scatter([], [], s=70, color=S1, marker="o", label="one-layer output perturbation (one layer forward)")
-    ax.legend(loc="lower left", bbox_to_anchor=(0.0, 1.01), ncol=2, fontsize=9.5, handletextpad=0.4, frameon=False)
+    ax.scatter([], [], s=80, color=S3, marker="D", label="matching on measured pair damage (right panel only)")
+    ax.legend(loc="lower left", bbox_to_anchor=(0.0, 1.01), ncol=3, fontsize=9.5, handletextpad=0.4, frameon=False)
     for a_ in (ax, bx):
         a_.set_ylim(-0.7, max(ys) + 0.7); a_.tick_params(length=0); a_.grid(axis="x", color=GRID, lw=0.8)
         for sp in ("left", "bottom"): a_.spines[sp].set_color(GRID)
