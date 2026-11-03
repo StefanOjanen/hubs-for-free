@@ -257,10 +257,20 @@ them and reports retrieval beside perplexity. Never state a head-merging
 conversion's quality from perplexity and ZS-7 alone. Random controls in
 this design must restrict the odd-remainder leftover too (the leftover rule
 picks the head whose exclusion makes the matching cheapest, which in layer 19
-is the retrieval head). A10b (development, author's go 2026-11-02; residual_select_dev.py, run_a10b.sh,
-queued after round 34 and the 7B benchmark): every matching of one layer's
-key-value heads fused alone, the summed residual and a one-layer output
-perturbation against whole-model KL, five models. 35 (draft in
+is the retrieval head). A10b and A10c (development, run 2026-11-03; residual_select_dev.py,
+residual_pairs_dev.py, residual_select_dev/): over every matching of a layer
+with whole-model KL as ground truth, the residual's choice sits at the median
+in the early layers of five models (better half in 8 of 15, 1.77 times the
+best) and is the worst of three on Qwen2.5-7B; a one-layer output perturbation
+is near-best in 14 of 15 but fails in layer 0 of three models; KL is additive
+over pairs (R^2 0.89 to 0.99); matching on measured single-pair KLs finds the
+best or second-best in 10 of 12 layers in sample and, measured on two held-out
+C4 windows, holds on Mistral-7B-v0.1 and Qwen2.5-7B and misses
+Mistral-7B-Instruct's layer 0 (one catastrophic pair unflagged). The residual
+is the fit criterion, not the selector; never let it choose groups alone.
+kvfuse.py has a drafted, uncommitted --pairing measured (eight C4 windows, a
+pair's cost its largest KL over them); run_a10cw.sh (eight windows) runs after
+round 35 to validate it. 35 (draft in
 private/drafts/PREREGISTRATION35_draft.md; instruments retrieval_protect_dev.py
 --registered and eval_retrieval35.py committed as drafts; author's go
 2026-11-02, after A10b): the retrieval-head exemption on Qwen2.5-7B and

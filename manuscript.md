@@ -1517,6 +1517,34 @@ nothing else; the early layers' ratio needs a damage measure on a held-out
 window, which the check is not (`quad_check_round.py`, `eval_quad_check.py`,
 `quad_check/`).
 
+### 6.17 Which local statistic selects a layer's pairing (development, not preregistered)
+
+Every perfect matching of one layer's key-value heads fused alone (105 for 8
+heads, 3 for 4, a sample of 152 for 32), the whole model's KL to the
+unconverted one on two held-out WikiText windows as ground truth, in layers
+0, 1, 2 and one middle layer of five models (`residual_select_dev.py`). In the
+15 early-layer cases the fusion's residual puts its choice in the better half
+of the matchings 8 times, at a median of 1.77 times the best matching's KL,
+with Spearman correlations mostly near zero (-0.46 to 0.74); the fused layer's
+output change on one window puts its choice in the better half 14 times at
+1.02 times the best, the best outright in five layers, and fails in layer 0 of
+three models, where one matching is 3 to 23 times better than its choice. In
+the middle layers every matching lies within 35 percent of the best. A
+matching's KL is additive over its pairs (least squares on pair indicators,
+R^2 0.89 to 0.99 over eight layers of two models; the additive model's own
+matching 1st to 5th of 105). Measuring each pair alone and matching on the
+measurement (`residual_pairs_dev.py`, 28 or 6 single-pair conversions a
+layer) finds the best or second-best matching in 10 of 12 layers of three
+models when measured on the ranking windows; measured on two held-out C4
+windows it is the best of 105 in Mistral-7B-v0.1's layers 0 and 1 and the
+best or second of three on Qwen2.5-7B, and ranks 67th of 105 on
+Mistral-7B-Instruct's layer 0, whose one catastrophic pair, (1, 5), the two
+windows did not flag; single-pair damage otherwise agrees across the two texts
+(Spearman 0.58 to 0.90 across six layers). The residual is the fit criterion
+and not the selector, consistent with Sections 6.8 and 6.16; a measured
+selector needs several windows of text like the target and a conservative
+aggregate, which a pass with eight windows tests next.
+
 ## 7. Limitations
 
 Results cover seventeen models up to 8B parameters in ten families, three

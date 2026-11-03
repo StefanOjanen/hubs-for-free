@@ -664,6 +664,26 @@ Each instrument below exists because a finding above required it.
 <p align="center"><img src="figures/readme/fig36_quad_check.png" alt="Dot plot of nine members per model on a log axis of perplexity relative to the member with layers 0 and 1 unmerged, for OpenLLaMA-3B, Mistral-7B-v0.1, Mistral-7B-Instruct, Qwen2.5-7B and Llama-2-7B, with the severe and benign thresholds, flagged members as crosses (Llama-2-7B's two collapses only) and the check's choice circled (the full quartering on the four scored models, severe on Qwen2.5-7B)." width="100%"></p>
 <p align="center"><em>Flags only where the super weight fires; Qwen2.5-7B's tenfold damage passes the check unseen.</em></p>
 
+- **The residual fits the heads; it does not choose which to merge.** Over
+  every matching of one layer's key-value heads fused alone, with the whole
+  model's KL on held-out windows as ground truth (19 layers of five models),
+  the fusion's closed-form residual picks a matching at the median of the
+  layer's matchings in the early layers (its choice in the better half in 8 of
+  15, at 1.77 times the best matching's KL), and on Qwen2.5-7B the worst of
+  three in three layers of four. The fused layer's output change on one window
+  picks a near-best matching in 14 of 15 (1.02 times the best), except in the
+  first layer of three models, where one matching is 3 to 23 times better
+  than either statistic's choice. A matching's KL is additive over its pairs
+  (R^2 0.89 to 0.99), so measuring each pair alone and matching on the
+  measurement is the selector: it finds the best or second-best matching in
+  10 of 12 layers when measured on the ranking text, and out of sample it
+  holds on two models and misses the first layer of Mistral-7B-Instruct, where
+  two held-out windows did not flag the one catastrophic pair. Development;
+  the pass with eight windows and the largest-over-windows cost runs next.
+
+<p align="center"><img src="figures/readme/fig37_selector.png" alt="Two panels over 19 model-layer rows. Left: the Spearman correlation with whole-model KL of the fusion's residual (crosses, mostly between -0.5 and 0.5) and of a one-layer output perturbation (dots, mostly 0.3 to 1.0). Right: the KL rank of each selector's choice as a fraction of the layer's matchings, the residual's near the middle, the perturbation's near the top, and the matching on measured pair damage (diamonds, out of sample) at the top on Mistral-7B-v0.1's early layers and Qwen2.5-7B, and mid-table on Mistral-7B-Instruct's first layer." width="100%"></p>
+<p align="center"><em>The closed form says how to merge a given group; which groups to merge needs a measurement, and a few catastrophic pairs decide it.</em></p>
+
 - **Cross-layer KV compression, against the same nulls.** Two published
   methods compress the cache across layers on the premise that adjacent
   layers' keys and values are similar. MiniCache (NeurIPS 2024) merges them
