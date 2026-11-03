@@ -1821,3 +1821,22 @@ validation windows after the calibration and check documents and keeps the
 WikiText ranking; it runs after the current pass and before round 35's
 prerequisites, about an hour. The method's option in kvfuse.py, if it comes,
 measures on C4 windows for the same reason.
+
+A10c, Mistral-7B-Instruct-v0.2 complete, in sample (2026-11-03 19:57 to 20:41
+UTC; residual_select_dev/Mistral-7B-Instruct-v0.2_pairs.json): layer 0:
+single-pair KLs against the residual's pair costs -0.23, against the additive
+effects 0.36; the measured matching ranked 1 of 105 (0.0067 against the best
+0.0067; the residual's 57, the perturbation's 84); layer 1: single-pair KLs
+against the residual's pair costs 0.59, against the additive effects -0.03;
+the measured matching ranked 7 of 105 (0.0147 against the best 0.0133; the
+residual's 93, the perturbation's 4); layer 2: single-pair KLs against the
+residual's pair costs -0.67, against the additive effects 0.28; the measured
+matching ranked 6 of 105 (0.0166 against the best 0.0161; the residual's 50,
+the perturbation's 2); layer 16: single-pair KLs against the residual's pair
+costs -0.18, against the additive effects -0.01; the measured matching ranked
+1 of 105 (0.0092 against the best 0.0092; the residual's 73, the
+perturbation's 18). Read: the measured-pair matching is within 10 percent of
+the best matching's KL in every layer and the best outright in layer 0, where
+the residual ranked 57th and the perturbation 84th; the single-pair KLs
+anticorrelate with the residual's pair costs in layers 0 and 2 again. The out-
+of-sample pass follows.
