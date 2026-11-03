@@ -39,7 +39,7 @@ LAYERS = [int(x) for x in arg("layers", "0,1,2,16").split(",")]
 N_WIN, N_CAL, T_CAL = int(arg("windows", 2)), 128, 2048
 MEASURE = arg("measure", "wikitext")
 SRC = f"alignment_study/residual_select_dev/{NAME.split('/')[-1]}.json"
-OUT = f"alignment_study/residual_select_dev/{NAME.split('/')[-1]}_pairs{'_c4' if MEASURE == 'c4' else ''}.json"
+OUT = f"alignment_study/residual_select_dev/{NAME.split('/')[-1]}_pairs{'_c4' if MEASURE == 'c4' else ''}{'_w' + str(N_WIN) if N_WIN != 2 else ''}.json"
 torch.set_grad_enabled(False)
 
 
@@ -72,30 +72,36 @@ if __name__ == "__main__":
         def put():
             for p, t in zip(kv.params(l), orig):
                 p.copy_(t.to(p.device))
-        pair_kl = {}
+        pair_kl, pair_kl_w = {}, {}
         for i, j in itertools.combinations(range(n), 2):
             put(); K.fuse_kv_group(kv, l, [i, j], S64, roots, qw=True, ow=True, Lsq=Lsq)
-            kls, _ = FC.kl_eval(model, X, base); pair_kl[(i, j)] = float(np.mean(kls))
+            kls, _ = FC.kl_eval(model, X, base); pair_kl[(i, j)] = float(np.mean(kls)); pair_kl_w[(i, j)] = [float(k) for k in kls]
         put(); del orig
         cm = torch.zeros(n, n, dtype=torch.float64)
         for (i, j), v in pair_kl.items():
             cm[i, j] = cm[j, i] = v
         choice = RS.canon(kvfuse.min_cost_pairs(cm)); res_choice = RS.canon(kvfuse.min_cost_pairs(cost))
-        entry = {"pair_kl": {f"{i}-{j}": v for (i, j), v in pair_kl.items()}, "pair_residual": {f"{i}-{j}": float(cost[i, j]) for i, j in pair_kl},
+        cmx = torch.zeros(n, n, dtype=torch.float64)
+        for (i, j), v in pair_kl_w.items():
+            cmx[i, j] = cmx[j, i] = max(v)
+        choice_max = RS.canon(kvfuse.min_cost_pairs(cmx))                     # a pair's cost as its largest KL over the windows
+        entry = {"pair_kl": {f"{i}-{j}": v for (i, j), v in pair_kl.items()}, "pair_kl_windows": {f"{i}-{j}": v for (i, j), v in pair_kl_w.items()}, "measured_choice_max": choice_max,
+                 "pair_residual": {f"{i}-{j}": float(cost[i, j]) for i, j in pair_kl},
                  "spearman_pair_kl_vs_residual": float(spearmanr([pair_kl[p] for p in pair_kl], [float(cost[p[0], p[1]]) for p in pair_kl])[0]),
                  "measured_choice": choice, "residual_choice": res_choice, "sum_pair_kl_measured_choice": float(sum(pair_kl[tuple(p)] for p in choice)), "seconds": round(time.time() - t1, 1)}
         if src and str(l) in src["per_layer"]:
             rows = src["per_layer"][str(l)]["rows"]; eff, r2 = additive_effects(rows, n)
             kl_of = {json.dumps(RS.canon(x["matching"])): x["kl"] for x in rows}; kls = sorted(kl_of.values())
-            k = json.dumps(choice)
+            k = json.dumps(choice); kx = json.dumps(choice_max)
             entry.update({"additive_r2": r2, "spearman_pair_kl_vs_additive_effect": float(spearmanr([pair_kl[p] for p in pair_kl], [eff[p] for p in pair_kl])[0]),
                           "measured_choice_kl": kl_of.get(k), "measured_choice_kl_rank": (1 + sum(v < kl_of[k] for v in kls)) if k in kl_of else None,
+                          "measured_max_choice_kl": kl_of.get(kx), "measured_max_choice_kl_rank": (1 + sum(v < kl_of[kx] for v in kls)) if kx in kl_of else None,
                           "candidates": len(rows), "best_kl": kls[0], "median_kl": float(np.median(kls)), "residual_choice_kl_rank": src["per_layer"][str(l)]["stats"]["kl_rank_residual_choice"],
                           "perturbation_choice_kl_rank": src["per_layer"][str(l)]["stats"]["kl_rank_perturbation_choice"]})
         res["per_layer"][str(l)] = entry
         json.dump(res, open(OUT, "w"), indent=1)
         log(f"layer {l}: {len(pair_kl)} pairs measured; Spearman pair KL against residual {entry['spearman_pair_kl_vs_residual']:.2f}"
-            + (f", against the additive effect {entry['spearman_pair_kl_vs_additive_effect']:.2f} (R2 {entry['additive_r2']:.3f}); the measured matching's KL rank {entry['measured_choice_kl_rank']} of {entry['candidates']} (KL {entry['measured_choice_kl'] if entry['measured_choice_kl'] is None else round(entry['measured_choice_kl'], 4)}, best {entry['best_kl']:.4f}); residual's rank {entry['residual_choice_kl_rank']}, perturbation's {entry['perturbation_choice_kl_rank']}" if "additive_r2" in entry else ""))
+            + (f", against the additive effect {entry['spearman_pair_kl_vs_additive_effect']:.2f} (R2 {entry['additive_r2']:.3f}); the measured matching's KL rank {entry['measured_choice_kl_rank']} of {entry['candidates']} (KL {entry['measured_choice_kl'] if entry['measured_choice_kl'] is None else round(entry['measured_choice_kl'], 4)}, best {entry['best_kl']:.4f}); by the largest KL over windows rank {entry['measured_max_choice_kl_rank']}; residual's rank {entry['residual_choice_kl_rank']}, perturbation's {entry['perturbation_choice_kl_rank']}" if "additive_r2" in entry else ""))
         gc.collect()
         if DEV == "mps":
             torch.mps.empty_cache()
