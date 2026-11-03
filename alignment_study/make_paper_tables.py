@@ -210,6 +210,21 @@ if U33 and os.path.exists("alignment_study/uptrain33_results.json"):
                 rows.append([m, lab, f(c[0]["ppl"]), f(c[-1]["ppl"]), f(zs, 3) if zs is not None else "", f(per["retained"], 3) if arm == "fuse" and per.get("retained") is not None else ""])
     table(["Model", "start", "ppl at 0", "ppl at 5M", "zero-shot after", "retained lead"], rows)
 
+# ---- Table 10d: round 34, the check flagging and choosing the early layers' ratio at a quarter of the heads (registered) ----
+Q34 = "alignment_study/quad_check_results.json"
+if os.path.exists(Q34) and not json.load(open(Q34)).get("missing"):
+    R34 = json.load(open(Q34))
+    w("## Table 10d. A quarter of the heads with layers 0 and 1 each unmerged, at pairs or at groups of four (round 34, registered at c3cc48c)\n")
+    w("Perplexity on 8 windows relative to the member with layers 0 and 1 unmerged (every other layer at the residual's groups of four), and the one-window check's largest ratio over layers 0 to 5 (threshold 2.35; flagged members marked). Llama-2-7B set the threshold and the fixed rule and is reported, not scored. " + f"R1 {'pass' if R34['R1']['pass'] else 'fail'}, R2 {'pass' if R34['R2']['pass'] else 'fail'}, R3 {'pass' if R34['R3']['pass'] else ('untestable' if not R34['R3'].get('testable') else 'fail')}; {R34['passes']} of {R34['of']}.\n")
+    LAB = {"open_llama_3b_v2": "OpenLLaMA-3B", "Mistral-7B-v0.1": "Mistral-7B-v0.1", "Mistral-7B-Instruct-v0.2": "Mistral-7B-Instruct", "Qwen2.5-7B": "Qwen2.5-7B", "Llama-2-7b-hf": "Llama-2-7B (development)"}
+    order = [m for m in ("open_llama_3b_v2", "Mistral-7B-v0.1", "Mistral-7B-Instruct-v0.2", "Qwen2.5-7B", "Llama-2-7b-hf") if m in R34["per_model"]]
+    settings = [(l0, l1) for l0 in ("none", "pairs", "quads") for l1 in ("none", "pairs", "quads")]
+    rows = []
+    for m in order:
+        a = R34["per_model"][m]; byk = {(x["layer0"], x["layer1"]): x for x in a["members"]}
+        rows.append([LAB[m], f(a["reference_ppl"])] + [f"{byk[k]['relative']:.2f} ({byk[k]['max_ratio']:.2f}{', flag' if byk[k]['flag'] else ''})" for k in settings] + [f"{a['chosen'][0]} / {a['chosen'][1]}" if a["chosen"] else ""])
+    table(["Model", "reference ppl"] + [f"{l0} / {l1}" for l0, l1 in settings] + ["check's choice (layer 0 / layer 1)"], rows)
+
 # ---- Table 13: the fusion's residual against merge damage at 7B scale (development) ----
 RD = [fp for fp in sorted(glob.glob("alignment_study/residual_damage/*.json")) if not fp.endswith("summary.json")]
 if RD:
