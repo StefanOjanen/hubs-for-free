@@ -1888,3 +1888,17 @@ decides a layer, so the measurement needs more windows and a conservative
 aggregate; residual_pairs_dev.py now stores per-window KLs and ranks a second
 matching on each pair's largest KL over the windows, and run_a10cw.sh measures
 on eight C4 windows for the two Mistral models after round 35.
+
+A10c out of sample, Mistral-7B-Instruct-v0.2 complete (2026-11-03 21:57 to
+22:41 UTC; residual_select_dev/Mistral-7B-Instruct-v0.2_pairs_c4.json): layer
+0: the measured matching ranked 67 of 105 (0.1283 against the best 0.0067; the
+residual's 57, the perturbation's 84); layer 1: the measured matching ranked
+20 of 105 (0.0171 against the best 0.0133; the residual's 93, the
+perturbation's 4); layer 2: the measured matching ranked 44 of 105 (0.0183
+against the best 0.0161; the residual's 50, the perturbation's 2); layer 16:
+the measured matching ranked 23 of 105 (0.0096 against the best 0.0092; the
+residual's 73, the perturbation's 18). Read: with two C4 measurement windows
+the selector does not transfer on this model's layer 0 (the one catastrophic
+pair unflagged) and sits in the better half elsewhere, within 14 percent of
+the best in layers 1, 2 and 16; the eight-window pass after round 35 tests
+whether more text and the largest-over-windows aggregate recover layer 0.
