@@ -1,0 +1,167 @@
+{
+ "model": "Qwen/Qwen2.5-7B",
+ "revision": "d149729398750b98c0af14eb82c78cfe92750796",
+ "exploratory": true,
+ "kv_heads": 4,
+ "layers": [
+  0,
+  1,
+  2,
+  14
+ ],
+ "windows": 2,
+ "measure": "wikitext",
+ "source": "alignment_study/residual_select_dev/Qwen2.5-7B.json",
+ "per_layer": {
+  "0": {
+   "pair_kl": {
+    "0-1": 0.2156820073723793,
+    "0-2": 1.1494841277599335,
+    "0-3": 0.032102969475090504,
+    "1-2": 0.4067128151655197,
+    "1-3": 0.02812329586595297,
+    "2-3": 0.035071803256869316
+   },
+   "pair_residual": {
+    "0-1": 0.09957713794464461,
+    "0-2": 0.06739870666879727,
+    "0-3": 0.03896581976177178,
+    "1-2": 0.09204606258632289,
+    "1-3": 0.045170871532129404,
+    "2-3": 0.03984370512206633
+   },
+   "spearman_pair_kl_vs_residual": 0.6,
+   "measured_choice": [
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     3
+    ]
+   ],
+   "residual_choice": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "sum_pair_kl_measured_choice": 0.2507538106292486,
+   "seconds": 122.3,
+   "additive_r2": 1.0,
+   "spearman_pair_kl_vs_additive_effect": -0.08571428571428573,
+   "measured_choice_kl": 0.37581346929073334,
+   "measured_choice_kl_rank": 1,
+   "candidates": 3,
+   "best_kl": 0.37581346929073334,
+   "median_kl": 0.5122846066951752,
+   "residual_choice_kl_rank": 3,
+   "perturbation_choice_kl_rank": 1
+  },
+  "1": {
+   "pair_kl": {
+    "0-1": 0.0036361634265631437,
+    "0-2": 0.0032868330599740148,
+    "0-3": 0.004532065591774881,
+    "1-2": 0.005104968557134271,
+    "1-3": 0.005620137555524707,
+    "2-3": 0.004696910502389073
+   },
+   "pair_residual": {
+    "0-1": 0.035700081976540406,
+    "0-2": 0.02313702007841528,
+    "0-3": 0.02713491440419084,
+    "1-2": 0.06123960262751704,
+    "1-3": 0.06811619336706641,
+    "2-3": 0.046821361661586194
+   },
+   "spearman_pair_kl_vs_residual": 0.942857142857143,
+   "measured_choice": [
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     3
+    ]
+   ],
+   "residual_choice": [
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     3
+    ]
+   ],
+   "sum_pair_kl_measured_choice": 0.008333073928952217,
+   "seconds": 96.9,
+   "additive_r2": 1.0,
+   "spearman_pair_kl_vs_additive_effect": 0.48571428571428577,
+   "measured_choice_kl": 0.008055204758420587,
+   "measured_choice_kl_rank": 1,
+   "candidates": 3,
+   "best_kl": 0.008055204758420587,
+   "median_kl": 0.008388623828068376,
+   "residual_choice_kl_rank": 1,
+   "perturbation_choice_kl_rank": 1
+  },
+  "2": {
+   "pair_kl": {
+    "0-1": 0.012297573732212186,
+    "0-2": 0.013838405255228281,
+    "0-3": 0.016988223418593407,
+    "1-2": 0.008967967703938484,
+    "1-3": 0.010804569581523538,
+    "2-3": 0.014107370749115944
+   },
+   "pair_residual": {
+    "0-1": 0.06398896019655781,
+    "0-2": 0.06022766311483733,
+    "0-3": 0.05025092424021495,
+    "1-2": 0.07439037355136563,
+    "1-3": 0.05991374483054519,
+    "2-3": 0.05172834565261735
+   },
+   "spearman_pair_kl_vs_residual": -0.8285714285714287,
+   "measured_choice": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "residual_choice": [
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     3
+    ]
+   ],
+   "sum_pair_kl_measured_choice": 0.02464297483675182,
+   "seconds": 96.3,
+   "additive_r2": 1.0,
+   "spearman_pair_kl_vs_additive_effect": -0.028571428571428574,
+   "measured_choice_kl": 0.03004073165357113,
+   "measured_choice_kl_rank": 2,
+   "candidates": 3,
+   "best_kl": 0.027495103888213634,
+   "median_kl": 0.03004073165357113,
+   "residual_choice_kl_rank": 3,
+   "perturbation_choice_kl_rank": 1
+  }
+ }
+}
