@@ -1584,3 +1584,59 @@ layer 0 at groups of four, layer 1 at groups of four: 166.6 (1.81 times, check
 1.11). Flagged 0, severe 0, benign 9 of 9; the check's choice (cheapest
 unflagged, layer 0 kept larger on ties): layer 0 at groups of four, layer 1 at
 groups of four at 1.81 times the reference.
+
+Round 34, Mistral-7B-Instruct-v0.2 (scored) complete (2026-11-03 05:20 UTC
+start; 2.5 h; quad_check/Mistral-7B-Instruct-v0.2.json). Unconverted 5.540;
+half the heads 16.68 (check 0.99); the neighbouring quartering 125.4 (check
+2.41, FLAG). The nine members, every layer from 2 at the residual's groups of
+four, relative to layers 0 and 1 unmerged (63.5): layer 0 unmerged, layer 1
+unmerged: 63.5 (1.00 times, check 1.00); layer 0 unmerged, layer 1 at pairs:
+71.1 (1.12 times, check 1.00); layer 0 unmerged, layer 1 at groups of four:
+75.2 (1.19 times, check 1.00); layer 0 at pairs, layer 1 unmerged: 73.9 (1.16
+times, check 0.96); layer 0 at pairs, layer 1 at pairs: 84.8 (1.34 times,
+check 0.99); layer 0 at pairs, layer 1 at groups of four: 91.1 (1.43 times,
+check 0.99); layer 0 at groups of four, layer 1 unmerged: 90.6 (1.43 times,
+check 1.78); layer 0 at groups of four, layer 1 at pairs: 112.4 (1.77 times,
+check 1.78); layer 0 at groups of four, layer 1 at groups of four: 128.7 (2.03
+times, check 1.78). Flagged 0, severe 0, benign 8 of 9; the check's choice:
+layer 0 at groups of four, layer 1 at groups of four at 2.03 times the
+reference.
+
+Round 34, Qwen2.5-7B (scored) complete (2026-11-03 07:40 UTC start; 2.4 h;
+quad_check/Qwen2.5-7B.json). Unconverted 5.396; half the heads 70.10 (check
+0.97); the neighbouring quartering 842.8 (check 0.98). The nine members, every
+layer from 2 at the residual's groups of four, relative to layers 0 and 1
+unmerged (78.9): layer 0 unmerged, layer 1 unmerged: 78.9 (1.00 times, check
+1.00); layer 0 unmerged, layer 1 at pairs: 83.8 (1.06 times, check 1.00);
+layer 0 unmerged, layer 1 at groups of four: 86.0 (1.09 times, check 1.00);
+layer 0 at pairs, layer 1 unmerged: 338.1 (4.29 times, check 0.97); layer 0 at
+pairs, layer 1 at pairs: 340.3 (4.31 times, check 0.97); layer 0 at pairs,
+layer 1 at groups of four: 399.4 (5.06 times, check 0.97); layer 0 at groups
+of four, layer 1 unmerged: 806.0 (10.22 times, check 0.98); layer 0 at groups
+of four, layer 1 at pairs: 825.2 (10.46 times, check 0.98); layer 0 at groups
+of four, layer 1 at groups of four: 842.8 (10.68 times, check 0.98). Flagged
+0, severe 4, benign 3 of 9; the check's choice: layer 0 at groups of four,
+layer 1 at groups of four at 10.68 times the reference.
+
+Round 34 outcome (eval_quad_check.py at 09:52 UTC; quad_check_results.json;
+registered at c3cc48c; the five models took 11.0 h under the three guards, no
+pauses). R1 FAIL: the false-alarm half passes (29 benign scored members, none
+flagged) and the recall half fails (4 severe scored members, all on Qwen2.5-7B
+at 5.06, 10.22, 10.46 and 10.68 times its reference, with the check at 0.97 to
+0.98 on every one). R2 FAIL: the check's choice, the cheapest unflagged
+member, is the full quartering on all four scored models, which is severe on
+Qwen2.5-7B (10.68 times) and 2.03, 1.81 and 1.89 times on Mistral-7B-Instruct,
+Mistral-7B-v0.1 and OpenLLaMA-3B. R3 FAIL: the choice is cheaper than the
+fixed rule on all four and severe on Qwen2.5-7B; where it is not severe it
+costs 1.41, 1.09 and 1.08 times the fixed rule's perplexity. 0 of 3. Reported,
+not scored: Llama-2-7B reproduces the development result exactly (its two
+members with layer 0 quartered and layer 1 merged collapse at 95.9 and 235
+times with the check at 359.6 and 576.3; everything else under 2.7 times and
+under 1.0 on the check; the check's choice is the fixed rule's member at 1.71
+times); Mistral-7B-Instruct's reported neighbouring quartering reads 2.41 on
+the check at 1.98 times its reference, a benign conversion flagged, on an
+extra outside the scored population. Read: the check detects the super-weight
+event, which occurs in one of five models, and sees nothing of Qwen2.5-7B's
+damage, whose layer 0 at pairs alone costs 4.3 times with the check at 0.97; a
+ratio chosen by the check alone is unsafe, and a damage measure on a held-out
+window is the missing ingredient.

@@ -1,0 +1,9 @@
+R1 FAIL {'recall_testable': True, 'recall_pass': False, 'false_alarm_pass': True, 'severe_members': 4, 'benign_members': 29}
+R2 FAIL {'chosen': {'Mistral-7B-Instruct-v0.2': ('quads', 'quads'), 'Qwen2.5-7B': ('quads', 'quads'), 'Mistral-7B-v0.1': ('quads', 'quads'), 'open_llama_3b_v2': ('quads', 'quads')}, 'chosen_relative': {'Mistral-7B-Instruct-v0.2': 2.0277274430275574, 'Qwen2.5-7B': 10.684758689915657, 'Mistral-7B-v0.1': 1.8086260388891457, 'open_llama_3b_v2': 1.8858363622734033}}
+R3 FAIL {'testable': True, 'cheaper_on': ['Mistral-7B-Instruct-v0.2', 'Qwen2.5-7B', 'Mistral-7B-v0.1', 'open_llama_3b_v2'], 'perplexity_cost_of_the_check_over_the_fixed_rule': {'Mistral-7B-Instruct-v0.2': 1.4134684194956189, 'Qwen2.5-7B': 2.110366049103176, 'Mistral-7B-v0.1': 1.0857172871097314, 'open_llama_3b_v2': 1.0830211452944034}}
+Llama-2-7b-hf development reference 60.68 chosen ('pairs', 'quads') severe [('quads', 'pairs'), ('quads', 'quads')] benign flagged []
+Mistral-7B-Instruct-v0.2 scored reference 63.48 chosen ('quads', 'quads') severe [] benign flagged []
+Qwen2.5-7B scored reference 78.88 chosen ('quads', 'quads') severe [('pairs', 'quads'), ('quads', 'none'), ('quads', 'pairs'), ('quads', 'quads')] benign flagged []
+Mistral-7B-v0.1 scored reference 92.09 chosen ('quads', 'quads') severe [] benign flagged []
+open_llama_3b_v2 scored reference 82.31 chosen ('quads', 'quads') severe [] benign flagged []
+passes 0 of 3 missing []

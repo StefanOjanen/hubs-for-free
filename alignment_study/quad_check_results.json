@@ -1,0 +1,929 @@
+{
+ "missing": [],
+ "per_model": {
+  "Llama-2-7b-hf": {
+   "reference_ppl": 60.68435405949306,
+   "severe": [
+    [
+     "quads",
+     "pairs"
+    ],
+    [
+     "quads",
+     "quads"
+    ]
+   ],
+   "benign": [
+    [
+     "none",
+     "none"
+    ],
+    [
+     "none",
+     "pairs"
+    ],
+    [
+     "none",
+     "quads"
+    ],
+    [
+     "pairs",
+     "none"
+    ],
+    [
+     "pairs",
+     "pairs"
+    ],
+    [
+     "pairs",
+     "quads"
+    ]
+   ],
+   "benign_flagged": [],
+   "severe_unflagged": [],
+   "chosen": [
+    "pairs",
+    "quads"
+   ],
+   "chosen_severe": false,
+   "chosen_ppl": 103.7588863288855,
+   "chosen_cache": 0.75,
+   "fixed": [
+    "pairs",
+    "quads"
+   ],
+   "fixed_ppl": 103.7588863288855,
+   "fixed_cache": 0.75,
+   "fixed_severe": false,
+   "members": [
+    {
+     "layer0": "none",
+     "layer1": "none",
+     "ppl": 60.68435405949306,
+     "relative": 1.0,
+     "max_ratio": 1.0,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 2.0
+    },
+    {
+     "layer0": "none",
+     "layer1": "pairs",
+     "ppl": 65.18460060647709,
+     "relative": 1.0741582672623018,
+     "max_ratio": 1.0,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 1.5
+    },
+    {
+     "layer0": "none",
+     "layer1": "quads",
+     "ppl": 85.8209008537208,
+     "relative": 1.4142179180087284,
+     "max_ratio": 1.0,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 1.25
+    },
+    {
+     "layer0": "pairs",
+     "layer1": "none",
+     "ppl": 67.5987346276854,
+     "relative": 1.11394008678767,
+     "max_ratio": 0.9821428571428571,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 1.5
+    },
+    {
+     "layer0": "pairs",
+     "layer1": "pairs",
+     "ppl": 74.53759710885166,
+     "relative": 1.228283603971088,
+     "max_ratio": 0.9821428571428571,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 1.0
+    },
+    {
+     "layer0": "pairs",
+     "layer1": "quads",
+     "ppl": 103.7588863288855,
+     "relative": 1.7098128164495827,
+     "max_ratio": 0.9821428571428571,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 0.75
+    },
+    {
+     "layer0": "quads",
+     "layer1": "none",
+     "ppl": 158.79786142551248,
+     "relative": 2.616784241780542,
+     "max_ratio": 0.9196428571428571,
+     "flag": false,
+     "severe": false,
+     "benign": false,
+     "cache": 1.25
+    },
+    {
+     "layer0": "quads",
+     "layer1": "pairs",
+     "ppl": 5816.471237879718,
+     "relative": 95.8479550128758,
+     "max_ratio": 359.5906976744186,
+     "flag": true,
+     "severe": true,
+     "benign": false,
+     "cache": 0.75
+    },
+    {
+     "layer0": "quads",
+     "layer1": "quads",
+     "ppl": 14264.529830270842,
+     "relative": 235.06108042752402,
+     "max_ratio": 576.2976744186046,
+     "flag": true,
+     "severe": true,
+     "benign": false,
+     "cache": 0.5
+    }
+   ],
+   "reported": [
+    {
+     "kind": "half",
+     "ppl": 15.99973968846477,
+     "max_ratio": 0.9821428571428571,
+     "flag": false
+    },
+    {
+     "kind": "neighbour quarter",
+     "ppl": 16640.69466338803,
+     "max_ratio": 542.9581395348837,
+     "flag": true
+    }
+   ]
+  },
+  "Mistral-7B-Instruct-v0.2": {
+   "reference_ppl": 63.48335260040002,
+   "severe": [],
+   "benign": [
+    [
+     "none",
+     "none"
+    ],
+    [
+     "none",
+     "pairs"
+    ],
+    [
+     "none",
+     "quads"
+    ],
+    [
+     "pairs",
+     "none"
+    ],
+    [
+     "pairs",
+     "pairs"
+    ],
+    [
+     "pairs",
+     "quads"
+    ],
+    [
+     "quads",
+     "none"
+    ],
+    [
+     "quads",
+     "pairs"
+    ]
+   ],
+   "benign_flagged": [],
+   "severe_unflagged": [],
+   "chosen": [
+    "quads",
+    "quads"
+   ],
+   "chosen_severe": false,
+   "chosen_ppl": 128.72693624322596,
+   "chosen_cache": 0.5,
+   "fixed": [
+    "pairs",
+    "quads"
+   ],
+   "fixed_ppl": 91.07167480201701,
+   "fixed_cache": 0.75,
+   "fixed_severe": false,
+   "members": [
+    {
+     "layer0": "none",
+     "layer1": "none",
+     "ppl": 63.48335260040002,
+     "relative": 1.0,
+     "max_ratio": 1.0,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 2.0
+    },
+    {
+     "layer0": "none",
+     "layer1": "pairs",
+     "ppl": 71.12491036135576,
+     "relative": 1.1203710492269683,
+     "max_ratio": 1.0,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 1.5
+    },
+    {
+     "layer0": "none",
+     "layer1": "quads",
+     "ppl": 75.23510502229065,
+     "relative": 1.185115497851268,
+     "max_ratio": 1.0,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 1.25
+    },
+    {
+     "layer0": "pairs",
+     "layer1": "none",
+     "ppl": 73.88454351151117,
+     "relative": 1.1638412353011995,
+     "max_ratio": 0.9595375722543352,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 1.5
+    },
+    {
+     "layer0": "pairs",
+     "layer1": "pairs",
+     "ppl": 84.82534653480654,
+     "relative": 1.3361825275477346,
+     "max_ratio": 0.9942196531791907,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 1.0
+    },
+    {
+     "layer0": "pairs",
+     "layer1": "quads",
+     "ppl": 91.07167480201701,
+     "relative": 1.4345756969590664,
+     "max_ratio": 0.9942196531791907,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 0.75
+    },
+    {
+     "layer0": "quads",
+     "layer1": "none",
+     "ppl": 90.60738674597408,
+     "relative": 1.4272621566839423,
+     "max_ratio": 1.7777777777777777,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 1.25
+    },
+    {
+     "layer0": "quads",
+     "layer1": "pairs",
+     "ppl": 112.36670862012046,
+     "relative": 1.7700185011875447,
+     "max_ratio": 1.7777777777777777,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 0.75
+    },
+    {
+     "layer0": "quads",
+     "layer1": "quads",
+     "ppl": 128.72693624322596,
+     "relative": 2.0277274430275574,
+     "max_ratio": 1.7777777777777777,
+     "flag": false,
+     "severe": false,
+     "benign": false,
+     "cache": 0.5
+    }
+   ],
+   "reported": [
+    {
+     "kind": "half",
+     "ppl": 16.678713727737772,
+     "max_ratio": 0.9942196531791907,
+     "flag": false
+    },
+    {
+     "kind": "neighbour quarter",
+     "ppl": 125.3862101246533,
+     "max_ratio": 2.4126984126984126,
+     "flag": true
+    }
+   ]
+  },
+  "Qwen2.5-7B": {
+   "reference_ppl": 78.8788211889423,
+   "severe": [
+    [
+     "pairs",
+     "quads"
+    ],
+    [
+     "quads",
+     "none"
+    ],
+    [
+     "quads",
+     "pairs"
+    ],
+    [
+     "quads",
+     "quads"
+    ]
+   ],
+   "benign": [
+    [
+     "none",
+     "none"
+    ],
+    [
+     "none",
+     "pairs"
+    ],
+    [
+     "none",
+     "quads"
+    ]
+   ],
+   "benign_flagged": [],
+   "severe_unflagged": [
+    [
+     "pairs",
+     "quads"
+    ],
+    [
+     "quads",
+     "none"
+    ],
+    [
+     "quads",
+     "pairs"
+    ],
+    [
+     "quads",
+     "quads"
+    ]
+   ],
+   "chosen": [
+    "quads",
+    "quads"
+   ],
+   "chosen_severe": true,
+   "chosen_ppl": 842.8011701488545,
+   "chosen_cache": 0.5,
+   "fixed": [
+    "pairs",
+    "quads"
+   ],
+   "fixed_ppl": 399.3625515853102,
+   "fixed_cache": 0.75,
+   "fixed_severe": true,
+   "members": [
+    {
+     "layer0": "none",
+     "layer1": "none",
+     "ppl": 78.8788211889423,
+     "relative": 1.0,
+     "max_ratio": 1.0,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 2.0
+    },
+    {
+     "layer0": "none",
+     "layer1": "pairs",
+     "ppl": 83.75348104567199,
+     "relative": 1.061799349727263,
+     "max_ratio": 1.0,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 1.5
+    },
+    {
+     "layer0": "none",
+     "layer1": "quads",
+     "ppl": 85.96799529777276,
+     "relative": 1.0898742400301522,
+     "max_ratio": 1.0,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 1.25
+    },
+    {
+     "layer0": "pairs",
+     "layer1": "none",
+     "ppl": 338.138473829113,
+     "relative": 4.286809421494185,
+     "max_ratio": 0.9711538461538461,
+     "flag": false,
+     "severe": false,
+     "benign": false,
+     "cache": 1.5
+    },
+    {
+     "layer0": "pairs",
+     "layer1": "pairs",
+     "ppl": 340.28497045060556,
+     "relative": 4.314022006433189,
+     "max_ratio": 0.9711538461538461,
+     "flag": false,
+     "severe": false,
+     "benign": false,
+     "cache": 1.0
+    },
+    {
+     "layer0": "pairs",
+     "layer1": "quads",
+     "ppl": 399.3625515853102,
+     "relative": 5.062988335344129,
+     "max_ratio": 0.9711538461538461,
+     "flag": false,
+     "severe": true,
+     "benign": false,
+     "cache": 0.75
+    },
+    {
+     "layer0": "quads",
+     "layer1": "none",
+     "ppl": 806.0213945039409,
+     "relative": 10.218476675421384,
+     "max_ratio": 0.9759615384615384,
+     "flag": false,
+     "severe": true,
+     "benign": false,
+     "cache": 1.25
+    },
+    {
+     "layer0": "quads",
+     "layer1": "pairs",
+     "ppl": 825.2413421769533,
+     "relative": 10.462140911059159,
+     "max_ratio": 0.9759615384615384,
+     "flag": false,
+     "severe": true,
+     "benign": false,
+     "cache": 0.75
+    },
+    {
+     "layer0": "quads",
+     "layer1": "quads",
+     "ppl": 842.8011701488545,
+     "relative": 10.684758689915657,
+     "max_ratio": 0.9759615384615384,
+     "flag": false,
+     "severe": true,
+     "benign": false,
+     "cache": 0.5
+    }
+   ],
+   "reported": [
+    {
+     "kind": "half",
+     "ppl": 70.10193413256377,
+     "max_ratio": 0.9711538461538461,
+     "flag": false
+    },
+    {
+     "kind": "neighbour quarter",
+     "ppl": 842.8011701488545,
+     "max_ratio": 0.9759615384615384,
+     "flag": false
+    }
+   ]
+  },
+  "Mistral-7B-v0.1": {
+   "reference_ppl": 92.0924128929154,
+   "severe": [],
+   "benign": [
+    [
+     "none",
+     "none"
+    ],
+    [
+     "none",
+     "pairs"
+    ],
+    [
+     "none",
+     "quads"
+    ],
+    [
+     "pairs",
+     "none"
+    ],
+    [
+     "pairs",
+     "pairs"
+    ],
+    [
+     "pairs",
+     "quads"
+    ],
+    [
+     "quads",
+     "none"
+    ],
+    [
+     "quads",
+     "pairs"
+    ],
+    [
+     "quads",
+     "quads"
+    ]
+   ],
+   "benign_flagged": [],
+   "severe_unflagged": [],
+   "chosen": [
+    "quads",
+    "quads"
+   ],
+   "chosen_severe": false,
+   "chosen_ppl": 166.56073594225728,
+   "chosen_cache": 0.5,
+   "fixed": [
+    "pairs",
+    "quads"
+   ],
+   "fixed_ppl": 153.41078006195852,
+   "fixed_cache": 0.75,
+   "fixed_severe": false,
+   "members": [
+    {
+     "layer0": "none",
+     "layer1": "none",
+     "ppl": 92.0924128929154,
+     "relative": 1.0,
+     "max_ratio": 1.0,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 2.0
+    },
+    {
+     "layer0": "none",
+     "layer1": "pairs",
+     "ppl": 104.56571191086428,
+     "relative": 1.135443286000691,
+     "max_ratio": 1.0,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 1.5
+    },
+    {
+     "layer0": "none",
+     "layer1": "quads",
+     "ppl": 111.49768278095463,
+     "relative": 1.2107151857406926,
+     "max_ratio": 1.0,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 1.25
+    },
+    {
+     "layer0": "pairs",
+     "layer1": "none",
+     "ppl": 152.1735175175146,
+     "relative": 1.6524001569430176,
+     "max_ratio": 0.9808917197452229,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 1.5
+    },
+    {
+     "layer0": "pairs",
+     "layer1": "pairs",
+     "ppl": 144.0850948758343,
+     "relative": 1.564570743122734,
+     "max_ratio": 1.019108280254777,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 1.0
+    },
+    {
+     "layer0": "pairs",
+     "layer1": "quads",
+     "ppl": 153.41078006195852,
+     "relative": 1.6658351675543979,
+     "max_ratio": 1.0318471337579618,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 0.75
+    },
+    {
+     "layer0": "quads",
+     "layer1": "none",
+     "ppl": 121.35261834561716,
+     "relative": 1.3177265589373293,
+     "max_ratio": 1.1054852320675106,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 1.25
+    },
+    {
+     "layer0": "quads",
+     "layer1": "pairs",
+     "ppl": 152.04187366940772,
+     "relative": 1.6509706814414913,
+     "max_ratio": 1.1054852320675106,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 0.75
+    },
+    {
+     "layer0": "quads",
+     "layer1": "quads",
+     "ppl": 166.56073594225728,
+     "relative": 1.8086260388891457,
+     "max_ratio": 1.1054852320675106,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 0.5
+    }
+   ],
+   "reported": [
+    {
+     "kind": "half",
+     "ppl": 28.682697071521382,
+     "max_ratio": 1.019108280254777,
+     "flag": false
+    },
+    {
+     "kind": "neighbour quarter",
+     "ppl": 190.0974824907134,
+     "max_ratio": 2.1181434599156117,
+     "flag": false
+    }
+   ]
+  },
+  "open_llama_3b_v2": {
+   "reference_ppl": 82.31322551527553,
+   "severe": [],
+   "benign": [
+    [
+     "none",
+     "none"
+    ],
+    [
+     "none",
+     "pairs"
+    ],
+    [
+     "none",
+     "quads"
+    ],
+    [
+     "pairs",
+     "none"
+    ],
+    [
+     "pairs",
+     "pairs"
+    ],
+    [
+     "pairs",
+     "quads"
+    ],
+    [
+     "quads",
+     "none"
+    ],
+    [
+     "quads",
+     "pairs"
+    ],
+    [
+     "quads",
+     "quads"
+    ]
+   ],
+   "benign_flagged": [],
+   "severe_unflagged": [],
+   "chosen": [
+    "quads",
+    "quads"
+   ],
+   "chosen_severe": false,
+   "chosen_ppl": 155.2292737727175,
+   "chosen_cache": 0.5,
+   "fixed": [
+    "pairs",
+    "quads"
+   ],
+   "fixed_ppl": 143.32986428489417,
+   "fixed_cache": 0.75,
+   "fixed_severe": false,
+   "members": [
+    {
+     "layer0": "none",
+     "layer1": "none",
+     "ppl": 82.31322551527553,
+     "relative": 1.0,
+     "max_ratio": 1.000000941807149,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 2.0
+    },
+    {
+     "layer0": "none",
+     "layer1": "pairs",
+     "ppl": 90.05472630690527,
+     "relative": 1.0940492945473639,
+     "max_ratio": 1.02815509373169,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 1.5
+    },
+    {
+     "layer0": "none",
+     "layer1": "quads",
+     "ppl": 97.49068918639591,
+     "relative": 1.1843866957722824,
+     "max_ratio": 1.0258881354615828,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 1.25
+    },
+    {
+     "layer0": "pairs",
+     "layer1": "none",
+     "ppl": 84.57280049883657,
+     "relative": 1.0274509347606808,
+     "max_ratio": 1.0221736720636925,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 1.5
+    },
+    {
+     "layer0": "pairs",
+     "layer1": "pairs",
+     "ppl": 128.3420005321239,
+     "relative": 1.5591905156031876,
+     "max_ratio": 1.0221736720636925,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 1.0
+    },
+    {
+     "layer0": "pairs",
+     "layer1": "quads",
+     "ppl": 143.32986428489417,
+     "relative": 1.7412738158134173,
+     "max_ratio": 1.0221736720636925,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 0.75
+    },
+    {
+     "layer0": "quads",
+     "layer1": "none",
+     "ppl": 86.8135856899308,
+     "relative": 1.0546735976689445,
+     "max_ratio": 1.0581445834080894,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 1.25
+    },
+    {
+     "layer0": "quads",
+     "layer1": "pairs",
+     "ppl": 134.954831962558,
+     "relative": 1.6395279266211398,
+     "max_ratio": 1.0581445834080894,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 0.75
+    },
+    {
+     "layer0": "quads",
+     "layer1": "quads",
+     "ppl": 155.2292737727175,
+     "relative": 1.8858363622734033,
+     "max_ratio": 1.0581445834080894,
+     "flag": false,
+     "severe": false,
+     "benign": true,
+     "cache": 0.5
+    }
+   ],
+   "reported": [
+    {
+     "kind": "half",
+     "ppl": 27.562768199747975,
+     "max_ratio": 1.0221736720636925,
+     "flag": false
+    },
+    {
+     "kind": "neighbour quarter",
+     "ppl": 203.6746216365743,
+     "max_ratio": 1.0725995572564593,
+     "flag": false
+    }
+   ]
+  }
+ },
+ "development_model": [
+  "Llama-2-7b-hf"
+ ],
+ "R1": {
+  "recall_testable": true,
+  "recall_pass": false,
+  "false_alarm_pass": true,
+  "severe_members": 4,
+  "benign_members": 29,
+  "pass": false
+ },
+ "R2": {
+  "pass": false,
+  "chosen": {
+   "Mistral-7B-Instruct-v0.2": [
+    "quads",
+    "quads"
+   ],
+   "Qwen2.5-7B": [
+    "quads",
+    "quads"
+   ],
+   "Mistral-7B-v0.1": [
+    "quads",
+    "quads"
+   ],
+   "open_llama_3b_v2": [
+    "quads",
+    "quads"
+   ]
+  },
+  "chosen_relative": {
+   "Mistral-7B-Instruct-v0.2": 2.0277274430275574,
+   "Qwen2.5-7B": 10.684758689915657,
+   "Mistral-7B-v0.1": 1.8086260388891457,
+   "open_llama_3b_v2": 1.8858363622734033
+  }
+ },
+ "R3": {
+  "testable": true,
+  "pass": false,
+  "cheaper_on": [
+   "Mistral-7B-Instruct-v0.2",
+   "Qwen2.5-7B",
+   "Mistral-7B-v0.1",
+   "open_llama_3b_v2"
+  ],
+  "perplexity_cost_of_the_check_over_the_fixed_rule": {
+   "Mistral-7B-Instruct-v0.2": 1.4134684194956189,
+   "Qwen2.5-7B": 2.110366049103176,
+   "Mistral-7B-v0.1": 1.0857172871097314,
+   "open_llama_3b_v2": 1.0830211452944034
+  }
+ },
+ "passes": 0,
+ "of": 3
+}
