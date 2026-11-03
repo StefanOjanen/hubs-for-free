@@ -1902,3 +1902,17 @@ the selector does not transfer on this model's layer 0 (the one catastrophic
 pair unflagged) and sits in the better half elsewhere, within 14 percent of
 the best in layers 1, 2 and 16; the eight-window pass after round 35 tests
 whether more text and the largest-over-windows aggregate recover layer 0.
+
+A10c out of sample, Qwen2.5-7B complete (2026-11-03 22:40 to 23:03 UTC;
+residual_select_dev/Qwen2.5-7B_pairs_c4.json): layer 0: the measured matching
+ranked 2 of 3 (0.5123 against the best 0.3758; by the largest KL over windows
+2; the residual's 3, the perturbation's 1); layer 1: the measured matching
+ranked 1 of 3 (0.0081 against the best 0.0081; by the largest KL over windows
+2; the residual's 1, the perturbation's 1); layer 2: the measured matching
+ranked 1 of 3 (0.0275 against the best 0.0275; by the largest KL over windows
+1; the residual's 3, the perturbation's 1); layer 14: the measured matching
+ranked 2 of 3 (0.0356 against the best 0.0350; by the largest KL over windows
+2; the residual's 3, the perturbation's 1). The out-of-sample pass is complete
+on three models; the selector test (A10b, 19 layers of five models; A10c, 12
+layers of three models in sample and out of sample) closes here, with the
+eight-window pass to follow round 35.
