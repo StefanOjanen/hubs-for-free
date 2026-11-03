@@ -4,6 +4,7 @@
 # from small synthetic arrays and carry no reported numbers.
 import glob
 import json
+import os
 
 import numpy as np
 import matplotlib
