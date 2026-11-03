@@ -1,0 +1,448 @@
+{
+ "model": "Qwen/Qwen2.5-7B",
+ "revision": "d149729398750b98c0af14eb82c78cfe92750796",
+ "exploratory": true,
+ "kv_heads": 4,
+ "layers": [
+  0,
+  1,
+  2,
+  14
+ ],
+ "windows": 2,
+ "calibration": [
+  128,
+  2048
+ ],
+ "all_matchings_up_to": 8,
+ "n_random": 100,
+ "n_swaps": 50,
+ "seed": 0,
+ "per_layer": {
+  "0": {
+   "stats": {
+    "candidates": 3,
+    "spearman_residual_kl": -1.0,
+    "spearman_perturbation_kl": 1.0,
+    "spearman_residual_perturbation": -1.0,
+    "spearman_residual_dnll": -1.0,
+    "spearman_perturbation_dnll": 1.0,
+    "spearman_kl_dnll": 1.0,
+    "kl_rank_residual_choice": 3,
+    "kl_rank_perturbation_choice": 1,
+    "kl_residual_choice": 1.21412193775177,
+    "kl_perturbation_choice": 0.37581346929073334,
+    "kl_best": 0.37581346929073334,
+    "kl_median": 0.5122846066951752,
+    "kl_worst": 1.21412193775177,
+    "kl_neighbours": 0.37581346929073334,
+    "best_matching": [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    "residual_matching": [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    "perturbation_matching": [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    "seconds": 73.0
+   },
+   "rows": [
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       3
+      ]
+     ],
+     "residual": 0.13942084306671093,
+     "perturbation": 0.3761806786060333,
+     "kl": 0.37581346929073334,
+     "dnll": 0.4046984612941742,
+     "residual_choice": false,
+     "neighbours": true
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       3
+      ]
+     ],
+     "residual": 0.11256957820092667,
+     "perturbation": 0.4068711996078491,
+     "kl": 1.21412193775177,
+     "dnll": 1.236345112323761,
+     "residual_choice": true,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       2
+      ]
+     ],
+     "residual": 0.1310118823480947,
+     "perturbation": 0.3845181465148926,
+     "kl": 0.5122846066951752,
+     "dnll": 0.5345596075057983,
+     "residual_choice": false,
+     "neighbours": false
+    }
+   ]
+  },
+  "1": {
+   "stats": {
+    "candidates": 3,
+    "spearman_residual_kl": 0.5,
+    "spearman_perturbation_kl": 1.0,
+    "spearman_residual_perturbation": 0.5,
+    "spearman_residual_dnll": 0.5,
+    "spearman_perturbation_dnll": 1.0,
+    "spearman_kl_dnll": 1.0,
+    "kl_rank_residual_choice": 1,
+    "kl_rank_perturbation_choice": 1,
+    "kl_residual_choice": 0.008055204758420587,
+    "kl_perturbation_choice": 0.008055204758420587,
+    "kl_best": 0.008055204758420587,
+    "kl_median": 0.008388623828068376,
+    "kl_worst": 0.009657480521127582,
+    "kl_neighbours": 0.008055204758420587,
+    "best_matching": [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    "residual_matching": [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    "perturbation_matching": [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    "seconds": 59.9
+   },
+   "rows": [
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       3
+      ]
+     ],
+     "residual": 0.08252144363812661,
+     "perturbation": 0.12476510554552078,
+     "kl": 0.008055204758420587,
+     "dnll": 0.0072602319996804,
+     "residual_choice": true,
+     "neighbours": true
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       3
+      ]
+     ],
+     "residual": 0.09125321344548169,
+     "perturbation": 0.1285499781370163,
+     "kl": 0.008388623828068376,
+     "dnll": 0.008089917013421655,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       2
+      ]
+     ],
+     "residual": 0.08837451703170789,
+     "perturbation": 0.1326097995042801,
+     "kl": 0.009657480521127582,
+     "dnll": 0.009225418791174889,
+     "residual_choice": false,
+     "neighbours": false
+    }
+   ]
+  },
+  "2": {
+   "stats": {
+    "candidates": 3,
+    "spearman_residual_kl": -1.0,
+    "spearman_perturbation_kl": 0.5,
+    "spearman_residual_perturbation": -0.5,
+    "spearman_residual_dnll": -1.0,
+    "spearman_perturbation_dnll": 0.5,
+    "spearman_kl_dnll": 1.0,
+    "kl_rank_residual_choice": 3,
+    "kl_rank_perturbation_choice": 1,
+    "kl_residual_choice": 0.03186649829149246,
+    "kl_perturbation_choice": 0.027495103888213634,
+    "kl_best": 0.027495103888213634,
+    "kl_median": 0.03004073165357113,
+    "kl_worst": 0.03186649829149246,
+    "kl_neighbours": 0.03186649829149246,
+    "best_matching": [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    "residual_matching": [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    "perturbation_matching": [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    "seconds": 62.3
+   },
+   "rows": [
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       3
+      ]
+     ],
+     "residual": 0.11571730584917517,
+     "perturbation": 0.19092951714992523,
+     "kl": 0.03186649829149246,
+     "dnll": 0.029170324094593525,
+     "residual_choice": true,
+     "neighbours": true
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       3
+      ]
+     ],
+     "residual": 0.12014140794538253,
+     "perturbation": 0.19212405383586884,
+     "kl": 0.03004073165357113,
+     "dnll": 0.028131592087447643,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       2
+      ]
+     ],
+     "residual": 0.12464129779158058,
+     "perturbation": 0.18826328217983246,
+     "kl": 0.027495103888213634,
+     "dnll": 0.027015000581741333,
+     "residual_choice": false,
+     "neighbours": false
+    }
+   ]
+  },
+  "14": {
+   "stats": {
+    "candidates": 3,
+    "spearman_residual_kl": -0.5,
+    "spearman_perturbation_kl": 1.0,
+    "spearman_residual_perturbation": -0.5,
+    "spearman_residual_dnll": -0.5,
+    "spearman_perturbation_dnll": 1.0,
+    "spearman_kl_dnll": 1.0,
+    "kl_rank_residual_choice": 3,
+    "kl_rank_perturbation_choice": 1,
+    "kl_residual_choice": 0.036400578916072845,
+    "kl_perturbation_choice": 0.03504063840955496,
+    "kl_best": 0.03504063840955496,
+    "kl_median": 0.03555097337812185,
+    "kl_worst": 0.036400578916072845,
+    "kl_neighbours": 0.036400578916072845,
+    "best_matching": [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    "residual_matching": [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    "perturbation_matching": [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    "seconds": 66.1
+   },
+   "rows": [
+    {
+     "matching": [
+      [
+       0,
+       1
+      ],
+      [
+       2,
+       3
+      ]
+     ],
+     "residual": 0.16440274524038861,
+     "perturbation": 0.1607542335987091,
+     "kl": 0.036400578916072845,
+     "dnll": 0.044248674996197224,
+     "residual_choice": true,
+     "neighbours": true
+    },
+    {
+     "matching": [
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       3
+      ]
+     ],
+     "residual": 0.17889429403366375,
+     "perturbation": 0.1484953910112381,
+     "kl": 0.03555097337812185,
+     "dnll": 0.04356267582625151,
+     "residual_choice": false,
+     "neighbours": false
+    },
+    {
+     "matching": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       2
+      ]
+     ],
+     "residual": 0.17418430584458272,
+     "perturbation": 0.14316962659358978,
+     "kl": 0.03504063840955496,
+     "dnll": 0.03942955005913973,
+     "residual_choice": false,
+     "neighbours": false
+    }
+   ]
+  }
+ },
+ "seconds": 1189.6
+}

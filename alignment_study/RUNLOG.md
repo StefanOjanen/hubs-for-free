@@ -1723,3 +1723,20 @@ informative (its choice 57th and 93rd of 105, the latter 1.8 times the best);
 the one-layer perturbation fails in layer 0 (84th; one matching there is 17
 times better than the median) and selects well elsewhere; the additive
 matching ranks 1st, 2nd, 1st and 1st.
+
+A10b, Qwen2.5-7B complete (2026-11-03 14:22 to 14:43 UTC;
+residual_select_dev/Qwen2.5-7B.json). Four key-value heads a layer, so three
+perfect matchings, all evaluated: layer 0: the residual's choice ranked 3 and
+the perturbation's 1 of 3 (residual's 1.2141, perturbation's 0.3758,
+neighbours 0.3758, best 0.3758, worst 1.2141); layer 1: the residual's choice
+ranked 1 and the perturbation's 1 of 3 (residual's 0.0081, perturbation's
+0.0081, neighbours 0.0081, best 0.0081, worst 0.0097); layer 2: the residual's
+choice ranked 3 and the perturbation's 1 of 3 (residual's 0.0319,
+perturbation's 0.0275, neighbours 0.0319, best 0.0275, worst 0.0319); layer
+14: the residual's choice ranked 3 and the perturbation's 1 of 3 (residual's
+0.0364, perturbation's 0.0350, neighbours 0.0364, best 0.0350, worst 0.0364).
+Read: the residual picks the worst matching in three of four layers, by a
+factor of three in layer 0 (1.21 against 0.38, the neighbouring pairing),
+which is the mechanism behind this model's matched pairs at 70.1 against 23.9
+with neighbours and its layer-0 fragility in round 34; the one-layer
+perturbation picks the best in all four.
