@@ -8,7 +8,9 @@
 # digit; the rank of the code's first token), and one 24-token greedy decode that stops only at the end of sequence,
 # scored twice, as the protocol scores it (cut at the first newline after the first token) and uncut. Writes
 # alignment_study/retrieval_diag/<model>.json after every arm.
-#   python alignment_study/retrieval_decode_diag.py --model=mistralai/Mistral-7B-v0.1 [--arms=fusion,retrieval_0.3]
+#   python alignment_study/retrieval_decode_diag.py --model=mistralai/Mistral-7B-v0.1 [--arms=fusion,retrieval_0.3] [--bos]
+# --bos prepends the beginning-of-sequence token to every prompt (the registered prompts carry none; pair_start_diag.py found
+# layer 0's sink-serving pairs fail only without it) and writes retrieval_diag/<model>_bos.json.
 import json
 import os
 import sys
@@ -26,7 +28,8 @@ import retrieval_protect_dev as R                     # ND, K, C, Z, DEV, the re
 sys.argv = argv0
 ND, K, C, Z, kvfuse, DEV = R.ND, R.K, R.C, R.Z, R.kvfuse, R.DEV
 ARMS = [a for a in next((x.split("=", 1)[1] for x in argv0 if x.startswith("--arms=")), "fusion,retrieval_0.3").split(",") if a]
-OUT = f"alignment_study/retrieval_diag/{NAME.split('/')[-1]}.json"
+BOS = "--bos" in argv0                                  # prepend the beginning-of-sequence token to every prompt (the registered prompts carry none)
+OUT = f"alignment_study/retrieval_diag/{NAME.split('/')[-1]}{'_bos' if BOS else ''}.json"
 torch.set_grad_enabled(False)
 
 
@@ -74,6 +77,8 @@ def run_arm(model, tok, context_ids, nl_ids, dg_ids):
         question = f" Based on the content of the book, Question: What is the secret code for the {colour} door?\nAnswer:"
         for depth in ND.DEPTHS:
             ids = ND.build(tok, context_ids, needle, question, depth)
+            if BOS:
+                ids = torch.cat([torch.tensor([[tok.bos_token_id]], dtype=ids.dtype), ids], dim=1)
             inst.append({"colour": colour, "code": code, "depth": depth, **decode(model, tok, ids, nl_ids, dg_ids, code)})
     summ = {k: float(np.mean([i[k] for i in inst])) for k in ("p_eos", "p_newline", "p_digit", "p_code_first_token")}
     summ["median_rank_of_code_first_token"] = float(np.median([i["rank_of_code_first_token"] for i in inst]))
@@ -90,7 +95,7 @@ if __name__ == "__main__":
     context_ids = tok.encode(ND.haystack_text(3 * ND.CTX), add_special_tokens=False)
     scores = np.load(R.SCORES)
     model = R.load(); kv = K.KV(model); n, L, rep = kv.nkv, kv.L, kv.rep
-    res = {"model": NAME, "revision": R.REV, "exploratory": True, "arms": {}, "newline_tokens": int(len(nl_ids)), "digit_tokens": int(len(dg_ids)),
+    res = {"model": NAME, "revision": R.REV, "exploratory": True, "bos_prepended": BOS, "arms": {}, "newline_tokens": int(len(nl_ids)), "digit_tokens": int(len(dg_ids)),
            "needle": {"context_tokens": ND.CTX, "facts": len(ND.FACTS), "depths": list(ND.DEPTHS)}}
     a = run_arm(model, tok, context_ids, nl_ids, dg_ids); res["arms"]["unconverted"] = a
     json.dump(res, open(OUT, "w"), indent=1); log(f"{NAME}, unconverted: {a['summary']}")
