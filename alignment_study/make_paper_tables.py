@@ -287,6 +287,15 @@ if RR or RD:
     if os.path.exists("alignment_study/retrieval_round_results.json"):
         e = json.load(open("alignment_study/retrieval_round_results.json"))
         w("\nClauses: " + "; ".join(f"{k} {'pass' if e[k]['pass'] else ('untestable' if e[k].get('testable') is False else 'fail')}" for k in ("E1", "E2", "E3", "E4", "E5")) + f"; {e['passes']} of {e['of']}" + (f"; excluded {', '.join(e['excluded'])}" if e.get("excluded") else "") + ".\n")
+RA = "alignment_study/retrieval_round_answers.json"
+if os.path.exists(RA):
+    w("## Table 14d. How the converted arms fail the retrieval task (retrieval_answers.py): answers that are empty, carry any digit, carry a five-digit number, take the sentence form, or repeat a phrase of three or more words three times within 24 tokens; the commonest digit string among the misses\n")
+    rows = []
+    for key, r in json.load(open(RA)).items():
+        for arm, a in r["arms"].items():
+            rows.append([short(key.split("/")[-1]) + (" (development run)" if key.startswith("dev/") else ""), arm, f"{a['hits']} of {a['instances']}", a["empty"], a["any_digit"], a["five_digit_number"], a["sentence_form"], a["degenerate"],
+                         ", ".join(f"'{d}' {n}" for d, n in a["commonest_wrong_digits"][:2])])
+    table(["Model", "arm", "retrieved", "empty", "any digit", "five-digit number", "sentence form", "degenerate", "commonest wrong digits"], rows)
 KB = sorted(glob.glob("alignment_study/kvfuse_bench/*.json"))
 if KB:
     w("## Table 15. The exported checkpoint's cache and decode speed (one laptop, MPS)\n")
