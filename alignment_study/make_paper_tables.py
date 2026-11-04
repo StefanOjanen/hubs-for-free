@@ -323,11 +323,12 @@ if BP:
     rows = []
     for fp in BP:
         r = json.load(open(fp)); m = short(os.path.basename(fp)[:-5])
-        for arm in ("unconverted", "fusion"):
+        for arm in [x for x in ("unconverted", "fusion") if x in r["arms"]]:
             for v in ("as_is", "bos_prepended"):
                 a = r["arms"][arm][v]
                 rows.append([m, arm, v.replace("_", " "), f(a["perplexity"], 2), f(a["band_nll"]["0_31"], 3), f(a["band_nll"]["32_127"], 3), f(a["band_nll"]["128_on"], 3)])
-        rows.append([m, "fused over unconverted", "", f"{r['ratio_as_is']:.3f} as is, {r['ratio_bos_prepended']:.3f} with the token", "", "", ""])
+        if "ratio_as_is" in r:
+            rows.append([m, "fused over unconverted", "", f"{r['ratio_as_is']:.3f} as is, {r['ratio_bos_prepended']:.3f} with the token", "", "", ""])
     table(["Model", "arm", "windows", "perplexity", "NLL 0 to 31", "NLL 32 to 127", "NLL 128 on"], rows)
 KB = sorted(glob.glob("alignment_study/kvfuse_bench/*.json"))
 if KB:
