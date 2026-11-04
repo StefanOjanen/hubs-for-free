@@ -1550,9 +1550,8 @@ no steadier (67, 1, 38, 45; 1, 41, 48, 68), and the catastrophic pair,
 (1, 5), costs 0.101 nats fused alone on the WikiText ranking windows and
 0.001 on every C4 window while every matching containing it ranks in the
 worst fifth on WikiText (`residual_select_dev/*_pairs_c4_w8.json`):
-single-pair damage can be text-dependent by a factor of a hundred, which no
-amount of C4 can measure; a per-token diagnostic of that pair
-(`pair_text_diag.py`) follows.
+single-pair damage can differ by a factor of a hundred between window
+sets; Section 6.19 locates that pair's cost at the sequence start.
 
 ### 6.18 The retrieval-head exemption on models it was not tuned on (preregistration 35)
 
@@ -1600,6 +1599,38 @@ loses the planted code on each (10, 0 and 0 of 50) while perplexity stays
 within 3 to 13 times, so retrieval, not perplexity, shows whether a head-
 merging conversion kept the task; the exemption costs no perplexity and
 repairs retrieval where the model still answers.
+
+### 6.19 The catastrophic pair serves the attention sink (development, not preregistered)
+
+Per position (`pair_text_diag.py`), the whole cost of Mistral-7B-Instruct's
+layer-0 pair (1, 5) fused alone sits in the first 25 positions of WikiText-2's
+first window, the opening of the test file (a bare space and two newlines,
+then "= Robert Boulter ="), where single predictions cost up to 26 nats; the
+second WikiText window, which starts mid-document, and both held-out C4
+windows are quiet; WikiText's markup carries little (positions predicting "@",
+"=", digits or newlines carry 1, 4, 2 and 9 percent of the cost); the pair (0,
+1) behaves the same (0.116 against 0.002 nats per position) and the pair (0,
+3), costliest on C4, does not (0.043 against 0.083). Under four variants of
+the same windows (`pair_start_diag.py`): with the beginning-of-sequence token
+prepended the cost vanishes on every window (at most 0.0012 nats per position,
+below the quiet C4 levels); with WikiText's three opening tokens prepended it
+appears on every window, the mid-document WikiText window and both C4 windows
+included (0.021 to 0.305 over the window, positions 0 to 31 at 0.4 to 8.1
+nats); and dropping a C4 window's first three tokens creates it too (up to
+0.026, the largest single cost 9.9 nats at position 2). None of the windows
+carries the beginning-of-sequence token. The merged heads serve the attention
+sink (Sections 4 and 6.5 to 6.7 on the sink): their merge is exact enough when
+the sink is the beginning-of-sequence token and fails when an ordinary first
+token must act as it, which some first tokens trigger and others do not, and
+the failure then reaches every position of the window (positions 128 on at
+0.11 nats against 0.0009 with the token). The "catastrophic pair" of Section
+6.17 is therefore a property of ranking windows sliced from the test text
+without the beginning-of-sequence token, not of the text; a selector measured
+on windows that open with benign tokens cannot see it, and one measured on
+windows with the token would not need to. Every perplexity in Section 6 is
+measured on such windows, so part of what they charge a conversion is this
+sink-start effect; `bos_ppl_check.py` sizes it for the whole conversion.
+Development, one model, one layer, two pairs, two windows of each text.
 
 ## 7. Limitations
 

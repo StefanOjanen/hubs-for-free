@@ -1597,6 +1597,29 @@ if RS:
              "output change on one held-out window, against KL(unconverted || converted) on held-out WikiText-2 windows through the whole model (residual_select_dev.py, development).", fontsize=9.5, color=INK2, va="top")
     fig.savefig(OUT + "fig37_selector.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
+# ============ Figure 39: a merged pair's damage follows the sequence start (pair_start_diag.py, development) ============
+PSD = sorted(glob.glob("alignment_study/pair_start_diag/*.json"))
+if PSD:
+    plt.rcParams["axes.grid"] = False
+    r = json.load(open(PSD[0])); pair = list(r["pairs"])[0]; e = r["pairs"][pair]
+    panels = [("wikitext", 0, "WikiText-2, first window (the test file's opening: a bare space and two newlines)"), ("c4", 1, "C4, held-out window (opens with an ordinary word)")]
+    VAR = [("as_is", "as it is", INK2, "-"), ("bos_prepended", "beginning-of-sequence token prepended", S1, "-"), ("first_3_dropped", "first three tokens dropped", S3, "-"), ("wikitext_start_prepended", "WikiText's three opening tokens prepended", S2, "-")]
+    fig, axes = plt.subplots(1, 2, figsize=(14.5, 6.0)); fig.subplots_adjust(left=0.06, right=0.99, top=0.76, bottom=0.26, wspace=0.14)
+    for ax, (name, wi, title) in zip(axes, panels):
+        row = e["texts"][name][wi]
+        for key, lab, col, ls in VAR:
+            kl = np.array(row[key]["kl"][:256]); ax.plot(np.arange(len(kl)), np.maximum(kl, 1e-4), color=col, lw=1.6, ls=ls, label=f"{lab} (mean over the window {row[key]['mean']:.4f})")
+        ax.set_yscale("log"); ax.set_ylim(1e-4, 60); ax.set_xlim(0, 255); ax.set_title(title, fontsize=10.5, color=INK, loc="left")
+        ax.set_xlabel("position in the window (first 256 of 2,048)", fontsize=10); ax.grid(axis="y", color=GRID, lw=0.8); ax.tick_params(length=0)
+        for sp in ("top", "right"): ax.spines[sp].set_visible(False)
+        for sp in ("left", "bottom"): ax.spines[sp].set_color(GRID)
+        ax.legend(fontsize=8.5, frameon=False, loc="upper center", bbox_to_anchor=(0.5, -0.17), ncol=2)
+    axes[0].set_ylabel("KL(unconverted || fused) at the position, nats (log)", fontsize=10)
+    fig.text(0.012, 0.975, f"A merged pair's damage follows the sequence start, not the text: layer {r['layer']} pair ({pair.replace('-', ', ')}) of Mistral-7B-Instruct fused alone", fontsize=15, color=INK, va="top")
+    fig.text(0.012, 0.915, "With the beginning-of-sequence token the cost vanishes on every window; with WikiText's opening tokens prepended it appears on every window, C4's included; without the token an ordinary first token must act as the attention\n"
+             "sink and the merged heads, which serve it, fail from the start onward (pair_start_diag.py; the ranking and perplexity windows of this repository carry no such token).", fontsize=9.5, color=INK2, va="top")
+    fig.savefig(OUT + "fig39_sequence_start.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
 # ============ Figure 38: round 35, the retrieval-head exemption on models it was not tuned on (registered) ============
 RR = sorted(glob.glob("alignment_study/retrieval_round/*.json"))
 RR += [fp for fp in sorted(glob.glob("alignment_study/retrieval_round_dev/*.json")) if not os.path.exists(fp.replace("retrieval_round_dev", "retrieval_round"))]   # the development model from its run before the freeze unless the registered run has it

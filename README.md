@@ -714,13 +714,33 @@ Each instrument below exists because a finding above required it.
   no steadier (67, 1, 38 and 45; 1, 41, 48 and 68). Windows are not the
   problem: the catastrophic pair, fused alone, costs 0.101 nats on the WikiText
   ranking windows and 0.001 on every C4 window, and every matching containing
-  it ranks in the worst fifth on WikiText, so a pair's damage can be
-  text-dependent by a factor of a hundred and no C4 measurement can see it; a
-  per-token diagnostic of that pair runs next. Development; the measured
-  selector is not a recipe.
+  it ranks in the worst fifth on WikiText, so a pair's damage can differ by a factor of a hundred between window
+  sets; the next bullet locates it at the sequence start. Development; the
+  measured selector is not a recipe.
 
 <p align="center"><img src="figures/readme/fig37_selector.png" alt="Two panels over 19 model-layer rows. Left: the Spearman correlation with whole-model KL of the fusion's residual (crosses, mostly between -0.5 and 0.5) and of a one-layer output perturbation (dots, mostly 0.3 to 1.0). Right: the KL rank of each selector's choice as a fraction of the layer's matchings, the residual's near the middle, the perturbation's near the top, and the matching on measured pair damage (diamonds, out of sample) at the top on Mistral-7B-v0.1's early layers and Qwen2.5-7B, and mid-table on Mistral-7B-Instruct's first layer." width="100%"></p>
 <p align="center"><em>The closed form says how to merge a given group; which groups to merge needs a measurement, and a few catastrophic pairs decide it.</em></p>
+
+- **The catastrophic pair serves the attention sink, and its damage follows
+  the sequence start, not the text.** Per position, the whole cost of
+  Mistral-7B-Instruct's layer-0 pair (1, 5) sits in the first 25 positions of
+  WikiText's first window, the test file's opening (a bare space and two
+  newlines), where single predictions cost up to 26 nats; the mid-document
+  WikiText window and both C4 windows are quiet, and WikiText's markup carries
+  little. Under four variants of the same windows, prepending the beginning-
+  of-sequence token removes the cost on every window (at most 0.001 nats per
+  position), prepending WikiText's three opening tokens creates it on every
+  window including C4's, and dropping a C4 window's first three tokens creates
+  it too. The merged heads serve the sink: exact enough when the sink is the
+  beginning-of-sequence token, failing when an ordinary first token must act
+  as it, with the failure reaching every position of the window. The selector
+  tests' ranking windows carry no such token, so their layer-0 catastrophe is
+  a property of how the windows were cut, and so, to a degree a running check
+  sizes, is every perplexity measured on such windows. Development, one model,
+  one layer, two pairs.
+
+<p align="center"><img src="figures/readme/fig39_sequence_start.png" alt="Two panels of KL by position over the first 256 positions of a window, log scale, for layer-0 pair (1, 5) of Mistral-7B-Instruct fused alone. Left, WikiText-2's first window: as it is the KL starts near 26 nats and stays around a tenth of a nat; with the beginning-of-sequence token prepended it sits near a thousandth throughout; with the first three tokens dropped or WikiText's opening tokens prepended it is high again. Right, a C4 window: as it is and with the token it sits near a thousandth; with its first three tokens dropped or WikiText's opening tokens prepended it rises to tenths of a nat from the start onward." width="100%"></p>
+<p align="center"><em>The merged heads serve the attention sink: with the beginning-of-sequence token their cost vanishes, and without it the window's first tokens decide the whole window, on C4 as on WikiText.</em></p>
 
 - **Cross-layer KV compression, against the same nulls.** Two published
   methods compress the cache across layers on the premise that adjacent

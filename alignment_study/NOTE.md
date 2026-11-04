@@ -1844,3 +1844,42 @@ first digit token falls from a median rank of 6 unconverted to about 1,700
 under the plain fusion and 1,300 under the exemption (the first-position digit
 mass reads the tokenizer's space marker and is not comparable across models).
 The newline is a loss of the context, not a prefix the stop rule cuts.
+
+## The catastrophic pair serves the attention sink: a merged pair's damage follows the sequence start, not the text (2026-11-04, development)
+
+The eight-window pass (A10c) left Mistral-7B-Instruct's layer 0 unexplained:
+the pair (1, 5) fused alone costs 0.104 nats of KL on the WikiText-2 ranking
+windows and 0.001 on every held-out C4 window, and every matching containing
+it ranks in the worst fifth of 105 on WikiText. Two diagnostics locate it. Per
+position (`pair_text_diag.py`, `pair_text_diag/`): the cost sits in the first
+25 positions of WikiText's first window, the opening of the test file (a bare
+space and two newlines, then "= Robert Boulter ="), where single predictions
+cost up to 26 nats; the second WikiText window, which starts mid-document, and
+both C4 windows are quiet; WikiText's markup carries little (the positions
+predicting "@", "=", digits or newlines carry 1, 4, 2 and 9 percent of the
+cost); the pair (0, 1) behaves the same (0.116 against 0.002) and the pair (0,
+3), costliest on C4, does not (0.043 against 0.083). Under four variants of
+the same windows (`pair_start_diag.py`, `pair_start_diag/`, Figure 39 of the
+README): with the beginning-of-sequence token prepended the cost vanishes on
+every window (at most 0.0012 nats per position, below the quiet C4 levels);
+with WikiText's three opening tokens prepended it appears on every window, the
+mid-document WikiText window and both C4 windows included (0.021 to 0.305 per
+position over the window, positions 0 to 31 at 0.4 to 8.1 nats); and dropping
+a C4 window's first three tokens creates it too (0.0007 to 0.026, the largest
+9.9 nats at position 2). None of the windows carries the beginning-of-sequence
+token. Reading: layer 0's heads 1 and 5 (and 0 and 1) serve the attention
+sink; their merge is exact enough when the sink is the beginning-of-sequence
+token and fails when an ordinary first token must act as the sink, which some
+first tokens trigger and others do not, and the failure then reaches every
+position of the window (positions 128 on at 0.11 nats against 0.0009 with the
+token). Three consequences. The "catastrophic pair" of the selector tests is a
+property of ranking windows sliced from the test text without the beginning-
+of-sequence token, not of the text: a selector measured on C4 windows that
+happen to open with benign tokens cannot see it, and one measured on windows
+with the token would not need to. Any evaluation on windows without the token
+mixes the conversion's damage with the sink-start effect; the project's
+perplexity windows are such windows, and `bos_ppl_check.py` sizes that for the
+whole conversion. And the sink line of this repository (rounds 9 to 13 and 21)
+meets the fusion line here: the heads whose merge is hazardous in layer 0 are
+the sink's. Development, one model, one layer, two pairs, two windows of each
+text.
