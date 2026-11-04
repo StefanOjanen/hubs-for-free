@@ -1843,7 +1843,7 @@ best of the most important thing is"), and at the answer position the code's
 first digit token falls from a median rank of 6 unconverted to about 1,700
 under the plain fusion and 1,300 under the exemption (the first-position digit
 mass reads the tokenizer's space marker and is not comparable across models).
-The newline is a loss of the context, not a prefix the stop rule cuts. With the beginning-of-sequence token prepended to every prompt (`retrieval_decode_diag.py --bos`, `retrieval_diag/Mistral-7B-v0.1_bos.json`) the fused Mistral-7B-v0.1 still retrieves 0 of 50 under the plain fusion and 0 under the exemption, cut or uncut, with the code's first token at a median rank of about 2,900 and 2,200: the collapse is not the sink-start failure of the layer-0 pairs, and the prompt format does not explain round 35.
+The newline is a loss of the context, not a prefix the stop rule cuts. With the beginning-of-sequence token prepended to every prompt (`retrieval_decode_diag.py --bos`, `retrieval_diag/Mistral-7B-v0.1_bos.json`) the fused Mistral-7B-v0.1 still retrieves 0 of 50 under the plain fusion and 0 under the exemption, cut or uncut, with the code's first token at a median rank of about 2,900 and 2,200: the collapse is not the sink-start failure of the layer-0 pairs, and the prompt format does not explain round 35. Qwen2.5-7B's tokenizer has no such token, so the test does not apply to it and its deployment prompts are token-less by design.
 
 ## The catastrophic pair serves the attention sink: a merged pair's damage follows the sequence start, not the text (2026-11-04, development)
 
