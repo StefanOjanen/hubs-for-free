@@ -1,0 +1,2638 @@
+{
+ "model": "JackFram/llama-160m",
+ "revision": null,
+ "exploratory": true,
+ "sink_scoring": {
+  "windows": 1,
+  "prefix": 256,
+  "positions": 16,
+  "mean_attention_on_position_0": 0.22407410300365882
+ },
+ "top_kv_heads": [
+  {
+   "layer": 4,
+   "head": 7,
+   "score": 0.802001953125
+  },
+  {
+   "layer": 4,
+   "head": 5,
+   "score": 0.6739501953125
+  },
+  {
+   "layer": 9,
+   "head": 10,
+   "score": 0.6572265625
+  },
+  {
+   "layer": 4,
+   "head": 9,
+   "score": 0.63275146484375
+  },
+  {
+   "layer": 10,
+   "head": 0,
+   "score": 0.614990234375
+  },
+  {
+   "layer": 8,
+   "head": 6,
+   "score": 0.609130859375
+  },
+  {
+   "layer": 8,
+   "head": 8,
+   "score": 0.5762939453125
+  },
+  {
+   "layer": 4,
+   "head": 6,
+   "score": 0.56695556640625
+  },
+  {
+   "layer": 9,
+   "head": 8,
+   "score": 0.5457763671875
+  },
+  {
+   "layer": 5,
+   "head": 4,
+   "score": 0.5457763671875
+  },
+  {
+   "layer": 8,
+   "head": 2,
+   "score": 0.536865234375
+  },
+  {
+   "layer": 11,
+   "head": 6,
+   "score": 0.5163726806640625
+  },
+  {
+   "layer": 4,
+   "head": 2,
+   "score": 0.50091552734375
+  },
+  {
+   "layer": 10,
+   "head": 1,
+   "score": 0.4954833984375
+  },
+  {
+   "layer": 7,
+   "head": 7,
+   "score": 0.48114013671875
+  },
+  {
+   "layer": 9,
+   "head": 2,
+   "score": 0.48040771484375
+  },
+  {
+   "layer": 6,
+   "head": 4,
+   "score": 0.4788055419921875
+  },
+  {
+   "layer": 9,
+   "head": 9,
+   "score": 0.4771728515625
+  },
+  {
+   "layer": 7,
+   "head": 2,
+   "score": 0.4757080078125
+  },
+  {
+   "layer": 10,
+   "head": 11,
+   "score": 0.4747314453125
+  },
+  {
+   "layer": 7,
+   "head": 8,
+   "score": 0.471038818359375
+  },
+  {
+   "layer": 4,
+   "head": 1,
+   "score": 0.4698486328125
+  },
+  {
+   "layer": 9,
+   "head": 5,
+   "score": 0.468017578125
+  },
+  {
+   "layer": 6,
+   "head": 10,
+   "score": 0.4679718017578125
+  },
+  {
+   "layer": 6,
+   "head": 5,
+   "score": 0.4643707275390625
+  },
+  {
+   "layer": 9,
+   "head": 7,
+   "score": 0.4410552978515625
+  },
+  {
+   "layer": 10,
+   "head": 4,
+   "score": 0.4368896484375
+  },
+  {
+   "layer": 5,
+   "head": 9,
+   "score": 0.435089111328125
+  },
+  {
+   "layer": 11,
+   "head": 3,
+   "score": 0.433135986328125
+  },
+  {
+   "layer": 6,
+   "head": 2,
+   "score": 0.422821044921875
+  },
+  {
+   "layer": 9,
+   "head": 3,
+   "score": 0.4208831787109375
+  },
+  {
+   "layer": 10,
+   "head": 6,
+   "score": 0.418304443359375
+  }
+ ],
+ "calibration": [
+  8,
+  1024
+ ],
+ "eval_windows": 2,
+ "arms": {
+  "fusion": {
+   "protected": [],
+   "n_protected": 0,
+   "kv_heads_kept": 72,
+   "cache_fraction": 0.5,
+   "ppl_as_is": 116.60388845763624,
+   "ppl_bos_prepended": 115.55804000729057,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     }
+    ],
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    }
+   },
+   "needle_bos": {
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    },
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "answer": "the.\n",
+      "hit": false
+     }
+    ]
+   },
+   "seconds": 21.0
+  },
+  "sink_top2": {
+   "protected": [
+    [
+     4,
+     5
+    ],
+    [
+     4,
+     7
+    ]
+   ],
+   "n_protected": 2,
+   "kv_heads_kept": 73,
+   "cache_fraction": 0.5069444444444444,
+   "ppl_as_is": 105.4003932706701,
+   "ppl_bos_prepended": 104.9338938500886,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     }
+    ],
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    }
+   },
+   "seconds": 13.0
+  },
+  "sink_top4": {
+   "protected": [
+    [
+     4,
+     5
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     4,
+     9
+    ],
+    [
+     9,
+     10
+    ]
+   ],
+   "n_protected": 4,
+   "kv_heads_kept": 75,
+   "cache_fraction": 0.5208333333333334,
+   "ppl_as_is": 103.53723847976863,
+   "ppl_bos_prepended": 103.1622737671389,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the, and the, and the, and the, and, and, and have, and the.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the, and the, and the, and the, and, and, and have, and the.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "the, and the, and the, and the, and, and, and have, and the.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     }
+    ],
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    }
+   },
+   "needle_bos": {
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    },
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "answer": "the, and the, and the, and the, and, and, and have, and the.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "answer": "the, and the.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "answer": "the, and the, and the, and the, and, and, and have, and the.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "answer": ".\n",
+      "hit": false
+     }
+    ]
+   },
+   "seconds": 22.8
+  },
+  "random4_seed100": {
+   "protected": [
+    [
+     0,
+     3
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     3,
+     7
+    ]
+   ],
+   "n_protected": 4,
+   "kv_heads_kept": 75,
+   "cache_fraction": 0.5208333333333334,
+   "ppl_as_is": 115.12361293581735,
+   "ppl_bos_prepended": 113.81055815527569,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     }
+    ],
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    }
+   },
+   "seconds": 12.9
+  }
+ },
+ "seconds": 77.4
+}
