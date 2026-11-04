@@ -2120,3 +2120,29 @@ token 76; commonest first token ' The' 50; retrieval_0.3: protocol 7 of 50,
 uncut 7; mean mass on end-of-sequence 0.009, newline 0.002, digit tokens
 0.007, the code's first token 0.002; median rank of the code's first token 84;
 commonest first token ' The' 50.
+
+Pair text-dependence diagnostic (2026-11-04 16:48 to 2026-11-04 17:06 UTC;
+pair_text_diag.py; pair_text_diag/<model>_L<layer>.json; pair_text_diag.log;
+development): each listed pair fused alone, the per-position KL(unconverted ||
+fused) on the WikiText-2 ranking windows and on held-out C4 windows; per text
+the mean, the share of the total carried by the top one percent of positions,
+the shares carried by positions predicting a token with '@', '=', a digit or a
+newline, and the positions with the largest KL.
+
+Mistral-7B-Instruct-v0.2_L0 (2 windows of each text, layer 0, 17 min): pair
+1-5 (residual 0.003): wikitext 0.1042 (top one percent of positions 0.30;
+shares '@' 0.01, '=' 0.04, digits 0.02, newlines 0.09; largest at '=' then
+'Robert' 26.34, 'English' then 'film' 12.71, 'B' then 'oul' 11.58); c4 0.0012
+(top one percent of positions 0.13; shares '@' 0.00, '=' 0.00, digits 0.03,
+newlines 0.02; largest at 'it' then 'so' 0.04, 'looks' then 'and' 0.04, 'an'
+then 'online' 0.04). pair 0-1 (residual 0.003): wikitext 0.1156 (top one
+percent of positions 0.36; shares '@' 0.01, '=' 0.04, digits 0.02, newlines
+0.16; largest at '=' then 'Robert' 27.63, 'film' then ',' 21.14, 'B' then
+'oul' 16.05); c4 0.0019 (top one percent of positions 0.13; shares '@' 0.00,
+'=' 0.00, digits 0.03, newlines 0.01; largest at 'looks' then 'and' 0.22, 'it'
+then 'so' 0.11, 'for' then 'an' 0.10). pair 0-3 (residual 0.004): wikitext
+0.0431 (top one percent of positions 0.39; shares '@' 0.01, '=' 0.03, digits
+0.02, newlines 0.07; largest at 'B' then 'oul' 13.67, 'and' then 'theatre'
+8.70, 'B' then 'oul' 7.96); c4 0.0833 (top one percent of positions 0.30;
+shares '@' 0.00, '=' 0.00, digits 0.04, newlines 0.02; largest at '’' then 't'
+8.99, 'that' then 'much' 7.34, '.' then 'Hill' 5.91).

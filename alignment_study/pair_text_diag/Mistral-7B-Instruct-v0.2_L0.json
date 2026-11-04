@@ -1,0 +1,1891 @@
+{
+ "model": "mistralai/Mistral-7B-Instruct-v0.2",
+ "revision": "63a8b081895390a26e140280378bc85ec8bce07a",
+ "exploratory": true,
+ "layer": 0,
+ "windows": 2,
+ "pairs": {
+  "1-5": {
+   "residual": 0.002882626112728358,
+   "texts": {
+    "wikitext": {
+     "mean_kl": 0.10424122220138088,
+     "windows": [
+      {
+       "mean_kl": 0.20761694014072418,
+       "top_1pct_share": 0.41143298149108887,
+       "max_kl": 26.33649444580078,
+       "top": [
+        {
+         "position": 3,
+         "input_token": "=",
+         "predicted_token": "Robert",
+         "kl": 26.33649444580078
+        },
+        {
+         "position": 21,
+         "input_token": "English",
+         "predicted_token": "film",
+         "kl": 12.707210540771484
+        },
+        {
+         "position": 16,
+         "input_token": "B",
+         "predicted_token": "oul",
+         "kl": 11.584005355834961
+        },
+        {
+         "position": 22,
+         "input_token": "film",
+         "predicted_token": ",",
+         "kl": 11.191341400146484
+        },
+        {
+         "position": 23,
+         "input_token": ",",
+         "predicted_token": "television",
+         "kl": 11.180742263793945
+        },
+        {
+         "position": 17,
+         "input_token": "oul",
+         "predicted_token": "ter",
+         "kl": 10.076495170593262
+        },
+        {
+         "position": 24,
+         "input_token": "television",
+         "predicted_token": "and",
+         "kl": 8.911395072937012
+        },
+        {
+         "position": 25,
+         "input_token": "and",
+         "predicted_token": "theatre",
+         "kl": 8.559200286865234
+        },
+        {
+         "position": 6,
+         "input_token": "oul",
+         "predicted_token": "ter",
+         "kl": 8.273449897766113
+        },
+        {
+         "position": 9,
+         "input_token": "",
+         "predicted_token": "\n",
+         "kl": 7.045328140258789
+        },
+        {
+         "position": 19,
+         "input_token": "is",
+         "predicted_token": "an",
+         "kl": 6.9048848152160645
+        },
+        {
+         "position": 1615,
+         "input_token": "iles",
+         "predicted_token": ":",
+         "kl": 6.547297477722168
+        },
+        {
+         "position": 15,
+         "input_token": "Robert",
+         "predicted_token": "B",
+         "kl": 5.873105049133301
+        },
+        {
+         "position": 5,
+         "input_token": "B",
+         "predicted_token": "oul",
+         "kl": 5.442765235900879
+        },
+        {
+         "position": 1616,
+         "input_token": ":",
+         "predicted_token": "Tu",
+         "kl": 5.436888694763184
+        },
+        {
+         "position": 7,
+         "input_token": "ter",
+         "predicted_token": "=",
+         "kl": 5.322005748748779
+        },
+        {
+         "position": 492,
+         "input_token": "=",
+         "predicted_token": "=",
+         "kl": 5.219607353210449
+        },
+        {
+         "position": 112,
+         "input_token": "B",
+         "predicted_token": "oul",
+         "kl": 5.000275135040283
+        },
+        {
+         "position": 502,
+         "input_token": "\n",
+         "predicted_token": "\n",
+         "kl": 4.725918769836426
+        },
+        {
+         "position": 11,
+         "input_token": "\n",
+         "predicted_token": "\n",
+         "kl": 4.322819709777832
+        }
+       ],
+       "classes": {
+        "at_sign": {
+         "positions": 16,
+         "mean_kl": 0.2561001181602478,
+         "mean_kl_rest": 0.20723500847816467,
+         "share_of_total": 0.009641600772738457
+        },
+        "equals": {
+         "positions": 46,
+         "mean_kl": 0.6597275733947754,
+         "mean_kl_rest": 0.19722360372543335,
+         "share_of_total": 0.07140717655420303
+        },
+        "digit": {
+         "positions": 135,
+         "mean_kl": 0.032972075045108795,
+         "mean_kl_rest": 0.21994803845882416,
+         "share_of_total": 0.010473682545125484
+        },
+        "newline": {
+         "positions": 96,
+         "mean_kl": 0.5342617034912109,
+         "mean_kl_rest": 0.19154421985149384,
+         "share_of_total": 0.12068259716033936
+        }
+       }
+      },
+      {
+       "mean_kl": 0.0008655042620375752,
+       "top_1pct_share": 0.18257828056812286,
+       "max_kl": 0.055733852088451385,
+       "top": [
+        {
+         "position": 1662,
+         "input_token": "=",
+         "predicted_token": "",
+         "kl": 0.055733852088451385
+        },
+        {
+         "position": 1882,
+         "input_token": "\n",
+         "predicted_token": "\n",
+         "kl": 0.026154793798923492
+        },
+        {
+         "position": 1652,
+         "input_token": "\n",
+         "predicted_token": "\n",
+         "kl": 0.025246798992156982
+        },
+        {
+         "position": 39,
+         "input_token": "used",
+         "predicted_token": "for",
+         "kl": 0.023295661434531212
+        },
+        {
+         "position": 248,
+         "input_token": "@",
+         "predicted_token": "-",
+         "kl": 0.02015312947332859
+        },
+        {
+         "position": 55,
+         "input_token": "Early",
+         "predicted_token": "years",
+         "kl": 0.019876020029187202
+        },
+        {
+         "position": 249,
+         "input_token": "-",
+         "predicted_token": "@",
+         "kl": 0.01614558883011341
+        },
+        {
+         "position": 59,
+         "input_token": "=",
+         "predicted_token": "",
+         "kl": 0.013379189185798168
+        },
+        {
+         "position": 530,
+         "input_token": "\n",
+         "predicted_token": "In",
+         "kl": 0.012416623532772064
+        },
+        {
+         "position": 1208,
+         "input_token": "\n",
+         "predicted_token": "Bro",
+         "kl": 0.011066671460866928
+        },
+        {
+         "position": 970,
+         "input_token": "\n",
+         "predicted_token": "\n",
+         "kl": 0.010563697665929794
+        },
+        {
+         "position": 86,
+         "input_token": "grandfather",
+         "predicted_token": "was",
+         "kl": 0.010358715429902077
+        },
+        {
+         "position": 48,
+         "input_token": "\n",
+         "predicted_token": "\n",
+         "kl": 0.010113589465618134
+        },
+        {
+         "position": 135,
+         "input_token": "(",
+         "predicted_token": "G",
+         "kl": 0.009736239910125732
+        },
+        {
+         "position": 1325,
+         "input_token": "ong",
+         "predicted_token": "w",
+         "kl": 0.009460424073040485
+        },
+        {
+         "position": 633,
+         "input_token": "the",
+         "predicted_token": "younger",
+         "kl": 0.009350607171654701
+        },
+        {
+         "position": 73,
+         "input_token": "Fu",
+         "predicted_token": "'",
+         "kl": 0.008318383246660233
+        },
+        {
+         "position": 250,
+         "input_token": "@",
+         "predicted_token": "official",
+         "kl": 0.008137263357639313
+        },
+        {
+         "position": 457,
+         "input_token": "\n",
+         "predicted_token": "His",
+         "kl": 0.00805579498410225
+        },
+        {
+         "position": 170,
+         "input_token": "the",
+         "predicted_token": "Du",
+         "kl": 0.008028296753764153
+        }
+       ],
+       "classes": {
+        "at_sign": {
+         "positions": 12,
+         "mean_kl": 0.0017457697540521622,
+         "mean_kl_rest": 0.0008603135356679559,
+         "share_of_total": 0.011824455112218857
+        },
+        "equals": {
+         "positions": 24,
+         "mean_kl": 0.0007136024069041014,
+         "mean_kl_rest": 0.0008673064294271171,
+         "share_of_total": 0.009666750207543373
+        },
+        "digit": {
+         "positions": 93,
+         "mean_kl": 0.0004073012387380004,
+         "mean_kl_rest": 0.0008873123442754149,
+         "share_of_total": 0.021380193531513214
+        },
+        "newline": {
+         "positions": 76,
+         "mean_kl": 0.0015139972092583776,
+         "mean_kl_rest": 0.0008404989494010806,
+         "share_of_total": 0.06494587659835815
+        }
+       }
+      }
+     ]
+    },
+    "c4": {
+     "mean_kl": 0.0011830823495984077,
+     "windows": [
+      {
+       "mean_kl": 0.0016317815752699971,
+       "top_1pct_share": 0.15561428666114807,
+       "max_kl": 0.037951190024614334,
+       "top": [
+        {
+         "position": 295,
+         "input_token": "it",
+         "predicted_token": "so",
+         "kl": 0.037951190024614334
+        },
+        {
+         "position": 283,
+         "input_token": "looks",
+         "predicted_token": "and",
+         "kl": 0.037080004811286926
+        },
+        {
+         "position": 313,
+         "input_token": "an",
+         "predicted_token": "online",
+         "kl": 0.03545089066028595
+        },
+        {
+         "position": 44,
+         "input_token": "teaching",
+         "predicted_token": "segments",
+         "kl": 0.03252333402633667
+        },
+        {
+         "position": 47,
+         "input_token": "a",
+         "predicted_token": "guid",
+         "kl": 0.029846906661987305
+        },
+        {
+         "position": 51,
+         "input_token": "an",
+         "predicted_token": "upcoming",
+         "kl": 0.029203638434410095
+        },
+        {
+         "position": 90,
+         "input_token": "centuries",
+         "predicted_token": "-",
+         "kl": 0.02873988077044487
+        },
+        {
+         "position": 285,
+         "input_token": "sounds",
+         "predicted_token": "a",
+         "kl": 0.028372716158628464
+        },
+        {
+         "position": 52,
+         "input_token": "upcoming",
+         "predicted_token": "message",
+         "kl": 0.026644419878721237
+        },
+        {
+         "position": 1156,
+         "input_token": "\n",
+         "predicted_token": "Stand",
+         "kl": 0.025467921048402786
+        },
+        {
+         "position": 317,
+         "input_token": "the",
+         "predicted_token": "once",
+         "kl": 0.022003494203090668
+        },
+        {
+         "position": 46,
+         "input_token": "as",
+         "predicted_token": "a",
+         "kl": 0.02146853692829609
+        },
+        {
+         "position": 389,
+         "input_token": "of",
+         "predicted_token": "candy",
+         "kl": 0.019833073019981384
+        },
+        {
+         "position": 82,
+         "input_token": "This",
+         "predicted_token": "lesson",
+         "kl": 0.019226374104619026
+        },
+        {
+         "position": 284,
+         "input_token": "and",
+         "predicted_token": "sounds",
+         "kl": 0.018894508481025696
+        },
+        {
+         "position": 2,
+         "input_token": "What",
+         "predicted_token": "you",
+         "kl": 0.018631428480148315
+        },
+        {
+         "position": 775,
+         "input_token": "ON",
+         "predicted_token": "",
+         "kl": 0.01828727498650551
+        },
+        {
+         "position": 50,
+         "input_token": "for",
+         "predicted_token": "an",
+         "kl": 0.01817622408270836
+        },
+        {
+         "position": 53,
+         "input_token": "message",
+         "predicted_token": ".",
+         "kl": 0.018025776371359825
+        },
+        {
+         "position": 364,
+         "input_token": "from",
+         "predicted_token": "each",
+         "kl": 0.017140893265604973
+        }
+       ],
+       "classes": {
+        "at_sign": {
+         "positions": 0,
+         "mean_kl": null,
+         "mean_kl_rest": 0.0016317815752699971,
+         "share_of_total": 0.0
+        },
+        "equals": {
+         "positions": 0,
+         "mean_kl": null,
+         "mean_kl_rest": 0.0016317815752699971,
+         "share_of_total": 0.0
+        },
+        "digit": {
+         "positions": 14,
+         "mean_kl": 0.0014085638104006648,
+         "mean_kl_rest": 0.0016333188395947218,
+         "share_of_total": 0.0059037054888904095
+        },
+        "newline": {
+         "positions": 69,
+         "mean_kl": 0.001402639434672892,
+         "mean_kl_rest": 0.0016397750005126,
+         "share_of_total": 0.02897445298731327
+        }
+       }
+      },
+      {
+       "mean_kl": 0.0007343831239268184,
+       "top_1pct_share": 0.11116579174995422,
+       "max_kl": 0.017611004412174225,
+       "top": [
+        {
+         "position": 1043,
+         "input_token": "bag",
+         "predicted_token": "ging",
+         "kl": 0.017611004412174225
+        },
+        {
+         "position": 391,
+         "input_token": "the",
+         "predicted_token": "Civil",
+         "kl": 0.014453237876296043
+        },
+        {
+         "position": 1946,
+         "input_token": "Cond",
+         "predicted_token": "ensed",
+         "kl": 0.014163178391754627
+        },
+        {
+         "position": 176,
+         "input_token": "years",
+         "predicted_token": "following",
+         "kl": 0.012235136702656746
+        },
+        {
+         "position": 366,
+         "input_token": "),",
+         "predicted_token": "while",
+         "kl": 0.010190672241151333
+        },
+        {
+         "position": 20,
+         "input_token": "6",
+         "predicted_token": "5",
+         "kl": 0.009023064747452736
+        },
+        {
+         "position": 400,
+         "input_token": "0",
+         "predicted_token": "the",
+         "kl": 0.007811904419213533
+        },
+        {
+         "position": 846,
+         "input_token": "following",
+         "predicted_token": "decade",
+         "kl": 0.007424910552799702
+        },
+        {
+         "position": 32,
+         "input_token": "the",
+         "predicted_token": "Rev",
+         "kl": 0.007404882460832596
+        },
+        {
+         "position": 64,
+         "input_token": "account",
+         "predicted_token": "also",
+         "kl": 0.006731887347996235
+        },
+        {
+         "position": 135,
+         "input_token": "son",
+         "predicted_token": "Pres",
+         "kl": 0.006712285801768303
+        },
+        {
+         "position": 106,
+         "input_token": "1",
+         "predicted_token": "9",
+         "kl": 0.006024651229381561
+        },
+        {
+         "position": 394,
+         "input_token": ".",
+         "predicted_token": "In",
+         "kl": 0.005931629799306393
+        },
+        {
+         "position": 1578,
+         "input_token": "son",
+         "predicted_token": "Station",
+         "kl": 0.005877964664250612
+        },
+        {
+         "position": 1300,
+         "input_token": "moral",
+         "predicted_token": "temper",
+         "kl": 0.0058260466903448105
+        },
+        {
+         "position": 780,
+         "input_token": "iff",
+         "predicted_token": "was",
+         "kl": 0.005585336592048407
+        },
+        {
+         "position": 63,
+         "input_token": "the",
+         "predicted_token": "account",
+         "kl": 0.005081981886178255
+        },
+        {
+         "position": 526,
+         "input_token": "6",
+         "predicted_token": "8",
+         "kl": 0.004890132695436478
+        },
+        {
+         "position": 52,
+         "input_token": "the",
+         "predicted_token": "P",
+         "kl": 0.004836008884012699
+        },
+        {
+         "position": 1280,
+         "input_token": "in",
+         "predicted_token": "",
+         "kl": 0.004656024277210236
+        }
+       ],
+       "classes": {
+        "at_sign": {
+         "positions": 0,
+         "mean_kl": null,
+         "mean_kl_rest": 0.0007343831239268184,
+         "share_of_total": 0.0
+        },
+        "equals": {
+         "positions": 0,
+         "mean_kl": null,
+         "mean_kl_rest": 0.0007343831239268184,
+         "share_of_total": 0.0
+        },
+        "digit": {
+         "positions": 135,
+         "mean_kl": 0.0006804620497860014,
+         "mean_kl_rest": 0.0007381903124041855,
+         "share_of_total": 0.06110787019133568
+        },
+        "newline": {
+         "positions": 18,
+         "mean_kl": 0.0007023205398581922,
+         "mean_kl_rest": 0.0007346676429733634,
+         "share_of_total": 0.00840944517403841
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  "0-1": {
+   "residual": 0.003326294575806981,
+   "texts": {
+    "wikitext": {
+     "mean_kl": 0.11561295116553083,
+     "windows": [
+      {
+       "mean_kl": 0.23054282367229462,
+       "top_1pct_share": 0.4555242955684662,
+       "max_kl": 27.628507614135742,
+       "top": [
+        {
+         "position": 3,
+         "input_token": "=",
+         "predicted_token": "Robert",
+         "kl": 27.628507614135742
+        },
+        {
+         "position": 22,
+         "input_token": "film",
+         "predicted_token": ",",
+         "kl": 21.141056060791016
+        },
+        {
+         "position": 16,
+         "input_token": "B",
+         "predicted_token": "oul",
+         "kl": 16.047542572021484
+        },
+        {
+         "position": 5,
+         "input_token": "B",
+         "predicted_token": "oul",
+         "kl": 15.449394226074219
+        },
+        {
+         "position": 6,
+         "input_token": "oul",
+         "predicted_token": "ter",
+         "kl": 13.890870094299316
+        },
+        {
+         "position": 21,
+         "input_token": "English",
+         "predicted_token": "film",
+         "kl": 12.35391616821289
+        },
+        {
+         "position": 24,
+         "input_token": "television",
+         "predicted_token": "and",
+         "kl": 11.625238418579102
+        },
+        {
+         "position": 23,
+         "input_token": ",",
+         "predicted_token": "television",
+         "kl": 11.490060806274414
+        },
+        {
+         "position": 17,
+         "input_token": "oul",
+         "predicted_token": "ter",
+         "kl": 10.338068008422852
+        },
+        {
+         "position": 19,
+         "input_token": "is",
+         "predicted_token": "an",
+         "kl": 10.260261535644531
+        },
+        {
+         "position": 25,
+         "input_token": "and",
+         "predicted_token": "theatre",
+         "kl": 8.62158489227295
+        },
+        {
+         "position": 7,
+         "input_token": "ter",
+         "predicted_token": "=",
+         "kl": 8.53069019317627
+        },
+        {
+         "position": 9,
+         "input_token": "",
+         "predicted_token": "\n",
+         "kl": 6.743160247802734
+        },
+        {
+         "position": 1615,
+         "input_token": "iles",
+         "predicted_token": ":",
+         "kl": 6.378305435180664
+        },
+        {
+         "position": 15,
+         "input_token": "Robert",
+         "predicted_token": "B",
+         "kl": 5.213011264801025
+        },
+        {
+         "position": 1616,
+         "input_token": ":",
+         "predicted_token": "Tu",
+         "kl": 5.0714921951293945
+        },
+        {
+         "position": 112,
+         "input_token": "B",
+         "predicted_token": "oul",
+         "kl": 5.06288480758667
+        },
+        {
+         "position": 1,
+         "input_token": "\n",
+         "predicted_token": "\n",
+         "kl": 5.047611236572266
+        },
+        {
+         "position": 502,
+         "input_token": "\n",
+         "predicted_token": "\n",
+         "kl": 4.857057571411133
+        },
+        {
+         "position": 492,
+         "input_token": "=",
+         "predicted_token": "=",
+         "kl": 4.632969379425049
+        }
+       ],
+       "classes": {
+        "at_sign": {
+         "positions": 16,
+         "mean_kl": 0.19402165710926056,
+         "mean_kl_rest": 0.23083053529262543,
+         "share_of_total": 0.006578104104846716
+        },
+        "equals": {
+         "positions": 46,
+         "mean_kl": 0.7091134190559387,
+         "mean_kl_rest": 0.21954119205474854,
+         "share_of_total": 0.06912005692720413
+        },
+        "digit": {
+         "positions": 135,
+         "mean_kl": 0.033803790807724,
+         "mean_kl_rest": 0.2444339096546173,
+         "share_of_total": 0.009670072235167027
+        },
+        "newline": {
+         "positions": 96,
+         "mean_kl": 0.5887139439582825,
+         "mean_kl_rest": 0.21291881799697876,
+         "share_of_total": 0.11975842714309692
+        }
+       }
+      },
+      {
+       "mean_kl": 0.0006830786587670445,
+       "top_1pct_share": 0.2714003026485443,
+       "max_kl": 0.07814610004425049,
+       "top": [
+        {
+         "position": 984,
+         "input_token": "\n",
+         "predicted_token": "\n",
+         "kl": 0.07814610004425049
+        },
+        {
+         "position": 1882,
+         "input_token": "\n",
+         "predicted_token": "\n",
+         "kl": 0.0625334084033966
+        },
+        {
+         "position": 1652,
+         "input_token": "\n",
+         "predicted_token": "\n",
+         "kl": 0.04085966944694519
+        },
+        {
+         "position": 970,
+         "input_token": "\n",
+         "predicted_token": "\n",
+         "kl": 0.02435987815260887
+        },
+        {
+         "position": 65,
+         "input_token": "\n",
+         "predicted_token": "Most",
+         "kl": 0.023697536438703537
+        },
+        {
+         "position": 1667,
+         "input_token": "\n",
+         "predicted_token": "\n",
+         "kl": 0.020513810217380524
+        },
+        {
+         "position": 250,
+         "input_token": "@",
+         "predicted_token": "official",
+         "kl": 0.014456822536885738
+        },
+        {
+         "position": 1896,
+         "input_token": "\n",
+         "predicted_token": "\n",
+         "kl": 0.011000259779393673
+        },
+        {
+         "position": 985,
+         "input_token": "\n",
+         "predicted_token": "The",
+         "kl": 0.010461176745593548
+        },
+        {
+         "position": 597,
+         "input_token": "@",
+         "predicted_token": "scholar",
+         "kl": 0.00925198569893837
+        },
+        {
+         "position": 1208,
+         "input_token": "\n",
+         "predicted_token": "Bro",
+         "kl": 0.009206479415297508
+        },
+        {
+         "position": 1486,
+         "input_token": "'",
+         "predicted_token": "an",
+         "kl": 0.008438479155302048
+        },
+        {
+         "position": 731,
+         "input_token": "(",
+         "predicted_token": "apparently",
+         "kl": 0.008054452016949654
+        },
+        {
+         "position": 249,
+         "input_token": "-",
+         "predicted_token": "@",
+         "kl": 0.007943243719637394
+        },
+        {
+         "position": 137,
+         "input_token": "ong",
+         "predicted_token": "county",
+         "kl": 0.007897946983575821
+        },
+        {
+         "position": 2,
+         "input_token": "Owen",
+         "predicted_token": "suggests",
+         "kl": 0.00740580540150404
+        },
+        {
+         "position": 64,
+         "input_token": "\n",
+         "predicted_token": "\n",
+         "kl": 0.007403368130326271
+        },
+        {
+         "position": 762,
+         "input_token": "7",
+         "predicted_token": "5",
+         "kl": 0.007402651943266392
+        },
+        {
+         "position": 546,
+         "input_token": "Li",
+         "predicted_token": "Po",
+         "kl": 0.0070360885001719
+        },
+        {
+         "position": 635,
+         "input_token": ",",
+         "predicted_token": "while",
+         "kl": 0.006747167091816664
+        }
+       ],
+       "classes": {
+        "at_sign": {
+         "positions": 12,
+         "mean_kl": 0.0011018961668014526,
+         "mean_kl_rest": 0.000680609024129808,
+         "share_of_total": 0.009456563740968704
+        },
+        "equals": {
+         "positions": 24,
+         "mean_kl": 0.00048213894478976727,
+         "mean_kl_rest": 0.0006854626117274165,
+         "share_of_total": 0.008275512605905533
+        },
+        "digit": {
+         "positions": 93,
+         "mean_kl": 0.0004190226027276367,
+         "mean_kl_rest": 0.0006956463330425322,
+         "share_of_total": 0.02786967158317566
+        },
+        "newline": {
+         "positions": 76,
+         "mean_kl": 0.0036170827224850655,
+         "mean_kl_rest": 0.0005699460743926466,
+         "share_of_total": 0.19659999012947083
+        }
+       }
+      }
+     ]
+    },
+    "c4": {
+     "mean_kl": 0.0018509062065277249,
+     "windows": [
+      {
+       "mean_kl": 0.0032337959855794907,
+       "top_1pct_share": 0.1934380680322647,
+       "max_kl": 0.21936509013175964,
+       "top": [
+        {
+         "position": 283,
+         "input_token": "looks",
+         "predicted_token": "and",
+         "kl": 0.21936509013175964
+        },
+        {
+         "position": 295,
+         "input_token": "it",
+         "predicted_token": "so",
+         "kl": 0.11028425395488739
+        },
+        {
+         "position": 50,
+         "input_token": "for",
+         "predicted_token": "an",
+         "kl": 0.10071161389350891
+        },
+        {
+         "position": 285,
+         "input_token": "sounds",
+         "predicted_token": "a",
+         "kl": 0.07857418805360794
+        },
+        {
+         "position": 51,
+         "input_token": "an",
+         "predicted_token": "upcoming",
+         "kl": 0.06771820783615112
+        },
+        {
+         "position": 284,
+         "input_token": "and",
+         "predicted_token": "sounds",
+         "kl": 0.0627908781170845
+        },
+        {
+         "position": 313,
+         "input_token": "an",
+         "predicted_token": "online",
+         "kl": 0.06166135519742966
+        },
+        {
+         "position": 44,
+         "input_token": "teaching",
+         "predicted_token": "segments",
+         "kl": 0.06017889082431793
+        },
+        {
+         "position": 1404,
+         "input_token": "the",
+         "predicted_token": "candy",
+         "kl": 0.05653673782944679
+        },
+        {
+         "position": 43,
+         "input_token": "the",
+         "predicted_token": "teaching",
+         "kl": 0.05523281171917915
+        },
+        {
+         "position": 47,
+         "input_token": "a",
+         "predicted_token": "guid",
+         "kl": 0.0478682704269886
+        },
+        {
+         "position": 1161,
+         "input_token": "high",
+         "predicted_token": "l",
+         "kl": 0.04404354467988014
+        },
+        {
+         "position": 82,
+         "input_token": "This",
+         "predicted_token": "lesson",
+         "kl": 0.042955245822668076
+        },
+        {
+         "position": 53,
+         "input_token": "message",
+         "predicted_token": ".",
+         "kl": 0.04089037701487541
+        },
+        {
+         "position": 450,
+         "input_token": "and",
+         "predicted_token": "win",
+         "kl": 0.03935086727142334
+        },
+        {
+         "position": 1515,
+         "input_token": "does",
+         "predicted_token": "have",
+         "kl": 0.03923090547323227
+        },
+        {
+         "position": 317,
+         "input_token": "the",
+         "predicted_token": "once",
+         "kl": 0.03715290129184723
+        },
+        {
+         "position": 377,
+         "input_token": "student",
+         "predicted_token": "/",
+         "kl": 0.03235194832086563
+        },
+        {
+         "position": 87,
+         "input_token": "help",
+         "predicted_token": "make",
+         "kl": 0.03156610578298569
+        },
+        {
+         "position": 661,
+         "input_token": "their",
+         "predicted_token": "nos",
+         "kl": 0.02710944041609764
+        }
+       ],
+       "classes": {
+        "at_sign": {
+         "positions": 0,
+         "mean_kl": null,
+         "mean_kl_rest": 0.0032337959855794907,
+         "share_of_total": 0.0
+        },
+        "equals": {
+         "positions": 0,
+         "mean_kl": null,
+         "mean_kl_rest": 0.0032337959855794907,
+         "share_of_total": 0.0
+        },
+        "digit": {
+         "positions": 14,
+         "mean_kl": 0.0009005159372463822,
+         "mean_kl_rest": 0.003249863628298044,
+         "share_of_total": 0.0019045351073145866
+        },
+        "newline": {
+         "positions": 69,
+         "mean_kl": 0.0016874183202162385,
+         "mean_kl_rest": 0.003287739120423794,
+         "share_of_total": 0.017589010298252106
+        }
+       }
+      },
+      {
+       "mean_kl": 0.00046801642747595906,
+       "top_1pct_share": 0.07253992557525635,
+       "max_kl": 0.0050557199865579605,
+       "top": [
+        {
+         "position": 1946,
+         "input_token": "Cond",
+         "predicted_token": "ensed",
+         "kl": 0.0050557199865579605
+        },
+        {
+         "position": 925,
+         "input_token": ".",
+         "predicted_token": "D",
+         "kl": 0.004815125372260809
+        },
+        {
+         "position": 1781,
+         "input_token": "of",
+         "predicted_token": "",
+         "kl": 0.004132654517889023
+        },
+        {
+         "position": 1940,
+         "input_token": "Cold",
+         "predicted_token": "Spring",
+         "kl": 0.004042748361825943
+        },
+        {
+         "position": 1164,
+         "input_token": "8",
+         "predicted_token": "6",
+         "kl": 0.0040423087775707245
+        },
+        {
+         "position": 1938,
+         "input_token": "ry",
+         "predicted_token": "in",
+         "kl": 0.003649789374321699
+        },
+        {
+         "position": 619,
+         "input_token": "7",
+         "predicted_token": "5",
+         "kl": 0.0035946108400821686
+        },
+        {
+         "position": 1203,
+         "input_token": "City",
+         "predicted_token": ".",
+         "kl": 0.003560323268175125
+        },
+        {
+         "position": 1043,
+         "input_token": "bag",
+         "predicted_token": "ging",
+         "kl": 0.003523701336234808
+        },
+        {
+         "position": 1578,
+         "input_token": "son",
+         "predicted_token": "Station",
+         "kl": 0.003218627767637372
+        },
+        {
+         "position": 1939,
+         "input_token": "in",
+         "predicted_token": "Cold",
+         "kl": 0.003056459128856659
+        },
+        {
+         "position": 1747,
+         "input_token": "town",
+         "predicted_token": "officers",
+         "kl": 0.0029993634670972824
+        },
+        {
+         "position": 1313,
+         "input_token": ",",
+         "predicted_token": "farm",
+         "kl": 0.002943621948361397
+        },
+        {
+         "position": 1779,
+         "input_token": "a",
+         "predicted_token": "vote",
+         "kl": 0.0027725324034690857
+        },
+        {
+         "position": 1638,
+         "input_token": "B",
+         "predicted_token": ".",
+         "kl": 0.002726782113313675
+        },
+        {
+         "position": 39,
+         "input_token": "Hill",
+         "predicted_token": "ery",
+         "kl": 0.002673206850886345
+        },
+        {
+         "position": 1046,
+         "input_token": "political",
+         "predicted_token": "app",
+         "kl": 0.0026133456267416477
+        },
+        {
+         "position": 159,
+         "input_token": "the",
+         "predicted_token": "first",
+         "kl": 0.0025885477662086487
+        },
+        {
+         "position": 1695,
+         "input_token": "",
+         "predicted_token": "0",
+         "kl": 0.0025057923048734665
+        },
+        {
+         "position": 1588,
+         "input_token": "Super",
+         "predicted_token": "vis",
+         "kl": 0.0024912357330322266
+        }
+       ],
+       "classes": {
+        "at_sign": {
+         "positions": 0,
+         "mean_kl": null,
+         "mean_kl_rest": 0.00046801642747595906,
+         "share_of_total": 0.0
+        },
+        "equals": {
+         "positions": 0,
+         "mean_kl": null,
+         "mean_kl_rest": 0.00046801642747595906,
+         "share_of_total": 0.0
+        },
+        "digit": {
+         "positions": 135,
+         "mean_kl": 0.00035062566166743636,
+         "mean_kl_rest": 0.0004763049946632236,
+         "share_of_total": 0.049408141523599625
+        },
+        "newline": {
+         "positions": 18,
+         "mean_kl": 0.00039610208477824926,
+         "mean_kl_rest": 0.0004686544125434011,
+         "share_of_total": 0.007442189380526543
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  "0-3": {
+   "residual": 0.003509645561302789,
+   "texts": {
+    "wikitext": {
+     "mean_kl": 0.04308918118476868,
+     "windows": [
+      {
+       "mean_kl": 0.06503023952245712,
+       "top_1pct_share": 0.45199885964393616,
+       "max_kl": 13.674093246459961,
+       "top": [
+        {
+         "position": 16,
+         "input_token": "B",
+         "predicted_token": "oul",
+         "kl": 13.674093246459961
+        },
+        {
+         "position": 25,
+         "input_token": "and",
+         "predicted_token": "theatre",
+         "kl": 8.697463989257812
+        },
+        {
+         "position": 5,
+         "input_token": "B",
+         "predicted_token": "oul",
+         "kl": 7.96154260635376
+        },
+        {
+         "position": 1615,
+         "input_token": "iles",
+         "predicted_token": ":",
+         "kl": 6.233644008636475
+        },
+        {
+         "position": 1616,
+         "input_token": ":",
+         "predicted_token": "Tu",
+         "kl": 5.184070110321045
+        },
+        {
+         "position": 8,
+         "input_token": "=",
+         "predicted_token": "",
+         "kl": 3.63749361038208
+        },
+        {
+         "position": 1601,
+         "input_token": "=",
+         "predicted_token": "",
+         "kl": 1.6528936624526978
+        },
+        {
+         "position": 492,
+         "input_token": "=",
+         "predicted_token": "=",
+         "kl": 1.284374475479126
+        },
+        {
+         "position": 607,
+         "input_token": "A",
+         "predicted_token": "review",
+         "kl": 1.2148706912994385
+        },
+        {
+         "position": 926,
+         "input_token": ",",
+         "predicted_token": "Robert",
+         "kl": 1.0959042310714722
+        },
+        {
+         "position": 553,
+         "input_token": "he",
+         "predicted_token": "port",
+         "kl": 1.0908082723617554
+        },
+        {
+         "position": 494,
+         "input_token": "Career",
+         "predicted_token": "=",
+         "kl": 0.9912636280059814
+        },
+        {
+         "position": 1613,
+         "input_token": "\u2013",
+         "predicted_token": "G",
+         "kl": 0.9469832181930542
+        },
+        {
+         "position": 1630,
+         "input_token": "",
+         "predicted_token": "7",
+         "kl": 0.9027857780456543
+        },
+        {
+         "position": 1619,
+         "input_token": ";",
+         "predicted_token": "Chinese",
+         "kl": 0.8918163180351257
+        },
+        {
+         "position": 18,
+         "input_token": "ter",
+         "predicted_token": "is",
+         "kl": 0.8457155227661133
+        },
+        {
+         "position": 493,
+         "input_token": "=",
+         "predicted_token": "Career",
+         "kl": 0.8242360353469849
+        },
+        {
+         "position": 67,
+         "input_token": "Simon",
+         "predicted_token": "Step",
+         "kl": 0.8200184106826782
+        },
+        {
+         "position": 66,
+         "input_token": "by",
+         "predicted_token": "Simon",
+         "kl": 0.7504841089248657
+        },
+        {
+         "position": 1600,
+         "input_token": "Fu",
+         "predicted_token": "=",
+         "kl": 0.7389382123947144
+        }
+       ],
+       "classes": {
+        "at_sign": {
+         "positions": 16,
+         "mean_kl": 0.029859457165002823,
+         "mean_kl_rest": 0.06530730426311493,
+         "share_of_total": 0.00358896073885262
+        },
+        "equals": {
+         "positions": 46,
+         "mean_kl": 0.15176790952682495,
+         "mean_kl_rest": 0.06303627043962479,
+         "share_of_total": 0.05244506150484085
+        },
+        "digit": {
+         "positions": 135,
+         "mean_kl": 0.01623624563217163,
+         "mean_kl_rest": 0.06847541779279709,
+         "share_of_total": 0.01646592654287815
+        },
+        "newline": {
+         "positions": 96,
+         "mean_kl": 0.06530901044607162,
+         "mean_kl_rest": 0.06501651555299759,
+         "share_of_total": 0.04709894210100174
+        }
+       }
+      },
+      {
+       "mean_kl": 0.02114812284708023,
+       "top_1pct_share": 0.3324492573738098,
+       "max_kl": 2.3071866035461426,
+       "top": [
+        {
+         "position": 24,
+         "input_token": "of",
+         "predicted_token": "his",
+         "kl": 2.3071866035461426
+        },
+        {
+         "position": 13,
+         "input_token": "that",
+         "predicted_token": "the",
+         "kl": 2.0668489933013916
+        },
+        {
+         "position": 64,
+         "input_token": "\n",
+         "predicted_token": "\n",
+         "kl": 1.865312099456787
+        },
+        {
+         "position": 8,
+         "input_token": "to",
+         "predicted_token": "Du",
+         "kl": 1.6310577392578125
+        },
+        {
+         "position": 65,
+         "input_token": "\n",
+         "predicted_token": "Most",
+         "kl": 1.1533172130584717
+        },
+        {
+         "position": 984,
+         "input_token": "\n",
+         "predicted_token": "\n",
+         "kl": 0.7789890766143799
+        },
+        {
+         "position": 25,
+         "input_token": "his",
+         "predicted_token": "whole",
+         "kl": 0.695202648639679
+        },
+        {
+         "position": 416,
+         "input_token": "ou",
+         "predicted_token": "suggests",
+         "kl": 0.49955183267593384
+        },
+        {
+         "position": 1077,
+         "input_token": "largely",
+         "predicted_token": "it",
+         "kl": 0.40888068079948425
+        },
+        {
+         "position": 249,
+         "input_token": "-",
+         "predicted_token": "@",
+         "kl": 0.3808145523071289
+        },
+        {
+         "position": 915,
+         "input_token": "ant",
+         "predicted_token": "'",
+         "kl": 0.3599713444709778
+        },
+        {
+         "position": 1662,
+         "input_token": "=",
+         "predicted_token": "",
+         "kl": 0.315585196018219
+        },
+        {
+         "position": 1882,
+         "input_token": "\n",
+         "predicted_token": "\n",
+         "kl": 0.25691866874694824
+        },
+        {
+         "position": 731,
+         "input_token": "(",
+         "predicted_token": "apparently",
+         "kl": 0.2388085126876831
+        },
+        {
+         "position": 1035,
+         "input_token": "@",
+         "predicted_token": "",
+         "kl": 0.2149784415960312
+        },
+        {
+         "position": 31,
+         "input_token": "the",
+         "predicted_token": "\"",
+         "kl": 0.2127755880355835
+        },
+        {
+         "position": 1114,
+         "input_token": "Shan",
+         "predicted_token": "Ch",
+         "kl": 0.21172666549682617
+        },
+        {
+         "position": 1088,
+         "input_token": "associated",
+         "predicted_token": "fam",
+         "kl": 0.20453447103500366
+        },
+        {
+         "position": 542,
+         "input_token": "Li",
+         "predicted_token": "B",
+         "kl": 0.20168167352676392
+        },
+        {
+         "position": 33,
+         "input_token": "re",
+         "predicted_token": "duct",
+         "kl": 0.19386214017868042
+        }
+       ],
+       "classes": {
+        "at_sign": {
+         "positions": 12,
+         "mean_kl": 0.06476812809705734,
+         "mean_kl_rest": 0.02089090645313263,
+         "share_of_total": 0.01795365661382675
+        },
+        "equals": {
+         "positions": 24,
+         "mean_kl": 0.02766401320695877,
+         "mean_kl_rest": 0.021070823073387146,
+         "share_of_total": 0.015336871147155762
+        },
+        "digit": {
+         "positions": 93,
+         "mean_kl": 0.006535383407026529,
+         "mean_kl_rest": 0.02184361219406128,
+         "share_of_total": 0.014039911329746246
+        },
+        "newline": {
+         "positions": 76,
+         "mean_kl": 0.048767875880002975,
+         "mean_kl_rest": 0.020083129405975342,
+         "share_of_total": 0.08561655879020691
+        }
+       }
+      }
+     ]
+    },
+    "c4": {
+     "mean_kl": 0.08327330276370049,
+     "windows": [
+      {
+       "mean_kl": 0.09132040292024612,
+       "top_1pct_share": 0.33497297763824463,
+       "max_kl": 8.991138458251953,
+       "top": [
+        {
+         "position": 31,
+         "input_token": "\u2019",
+         "predicted_token": "t",
+         "kl": 8.991138458251953
+        },
+        {
+         "position": 37,
+         "input_token": "that",
+         "predicted_token": "much",
+         "kl": 7.341813564300537
+        },
+        {
+         "position": 20,
+         "input_token": "and",
+         "predicted_token": "many",
+         "kl": 5.627737045288086
+        },
+        {
+         "position": 24,
+         "input_token": ".",
+         "predicted_token": "However",
+         "kl": 5.214995384216309
+        },
+        {
+         "position": 26,
+         "input_token": ",",
+         "predicted_token": "if",
+         "kl": 5.167489051818848
+        },
+        {
+         "position": 17,
+         "input_token": "with",
+         "predicted_token": "younger",
+         "kl": 4.942575931549072
+        },
+        {
+         "position": 54,
+         "input_token": ".",
+         "predicted_token": "Or",
+         "kl": 3.9107465744018555
+        },
+        {
+         "position": 13,
+         "input_token": ",",
+         "predicted_token": "which",
+         "kl": 3.8009519577026367
+        },
+        {
+         "position": 9,
+         "input_token": "of",
+         "predicted_token": "games",
+         "kl": 2.757596731185913
+        },
+        {
+         "position": 80,
+         "input_token": ".",
+         "predicted_token": "\n",
+         "kl": 2.1085205078125
+        },
+        {
+         "position": 1971,
+         "input_token": ".",
+         "predicted_token": "A",
+         "kl": 2.09680438041687
+        },
+        {
+         "position": 11,
+         "input_token": "and",
+         "predicted_token": "activities",
+         "kl": 1.5835009813308716
+        },
+        {
+         "position": 1473,
+         "input_token": ".",
+         "predicted_token": "G",
+         "kl": 1.5199930667877197
+        },
+        {
+         "position": 1901,
+         "input_token": "res",
+         "predicted_token": ",",
+         "kl": 1.1863151788711548
+        },
+        {
+         "position": 940,
+         "input_token": "often",
+         "predicted_token": "coinc",
+         "kl": 1.0176962614059448
+        },
+        {
+         "position": 723,
+         "input_token": "ball",
+         "predicted_token": "before",
+         "kl": 0.99770188331604
+        },
+        {
+         "position": 1140,
+         "input_token": "up",
+         "predicted_token": "one",
+         "kl": 0.9369487166404724
+        },
+        {
+         "position": 1899,
+         "input_token": "of",
+         "predicted_token": "cho",
+         "kl": 0.9361382722854614
+        },
+        {
+         "position": 1306,
+         "input_token": "to",
+         "predicted_token": "either",
+         "kl": 0.874455451965332
+        },
+        {
+         "position": 1188,
+         "input_token": "the",
+         "predicted_token": "edge",
+         "kl": 0.8707897067070007
+        }
+       ],
+       "classes": {
+        "at_sign": {
+         "positions": 0,
+         "mean_kl": null,
+         "mean_kl_rest": 0.09132040292024612,
+         "share_of_total": 0.0
+        },
+        "equals": {
+         "positions": 0,
+         "mean_kl": null,
+         "mean_kl_rest": 0.09132040292024612,
+         "share_of_total": 0.0
+        },
+        "digit": {
+         "positions": 14,
+         "mean_kl": 0.0069561670534312725,
+         "mean_kl_rest": 0.09190136939287186,
+         "share_of_total": 0.0005209696246311069
+        },
+        "newline": {
+         "positions": 69,
+         "mean_kl": 0.06815394759178162,
+         "mean_kl_rest": 0.09212852269411087,
+         "share_of_total": 0.025156745687127113
+        }
+       }
+      },
+      {
+       "mean_kl": 0.07522620260715485,
+       "top_1pct_share": 0.2638329565525055,
+       "max_kl": 5.908473968505859,
+       "top": [
+        {
+         "position": 38,
+         "input_token": ".",
+         "predicted_token": "Hill",
+         "kl": 5.908473968505859
+        },
+        {
+         "position": 197,
+         "input_token": ".",
+         "predicted_token": "Russia",
+         "kl": 5.009528160095215
+        },
+        {
+         "position": 221,
+         "input_token": ".",
+         "predicted_token": "Spain",
+         "kl": 4.6760149002075195
+        },
+        {
+         "position": 17,
+         "input_token": "",
+         "predicted_token": "1",
+         "kl": 4.344754219055176
+        },
+        {
+         "position": 41,
+         "input_token": ".",
+         "predicted_token": "Hill",
+         "kl": 3.9517974853515625
+        },
+        {
+         "position": 27,
+         "input_token": ",",
+         "predicted_token": "and",
+         "kl": 2.0541155338287354
+        },
+        {
+         "position": 265,
+         "input_token": ".",
+         "predicted_token": "France",
+         "kl": 1.4673097133636475
+        },
+        {
+         "position": 34,
+         "input_token": ".",
+         "predicted_token": "Hor",
+         "kl": 1.3306787014007568
+        },
+        {
+         "position": 7,
+         "input_token": "in",
+         "predicted_token": "the",
+         "kl": 1.2276389598846436
+        },
+        {
+         "position": 9,
+         "input_token": "",
+         "predicted_token": "1",
+         "kl": 1.1639422178268433
+        },
+        {
+         "position": 1552,
+         "input_token": "Hav",
+         "predicted_token": "il",
+         "kl": 1.1418195962905884
+        },
+        {
+         "position": 2005,
+         "input_token": "is",
+         "predicted_token": "presented",
+         "kl": 1.0654021501541138
+        },
+        {
+         "position": 1300,
+         "input_token": "moral",
+         "predicted_token": "temper",
+         "kl": 0.8764896392822266
+        },
+        {
+         "position": 328,
+         "input_token": ".",
+         "predicted_token": "Two",
+         "kl": 0.8359568119049072
+        },
+        {
+         "position": 22,
+         "input_token": "-",
+         "predicted_token": "1",
+         "kl": 0.8271971344947815
+        },
+        {
+         "position": 335,
+         "input_token": "the",
+         "predicted_token": "status",
+         "kl": 0.8213540315628052
+        },
+        {
+         "position": 1056,
+         "input_token": "red",
+         "predicted_token": "in",
+         "kl": 0.81606125831604
+        },
+        {
+         "position": 2027,
+         "input_token": "a",
+         "predicted_token": "broad",
+         "kl": 0.8006227016448975
+        },
+        {
+         "position": 18,
+         "input_token": "1",
+         "predicted_token": "8",
+         "kl": 0.7884688377380371
+        },
+        {
+         "position": 1695,
+         "input_token": "",
+         "predicted_token": "0",
+         "kl": 0.7808215618133545
+        }
+       ],
+       "classes": {
+        "at_sign": {
+         "positions": 0,
+         "mean_kl": null,
+         "mean_kl_rest": 0.07522620260715485,
+         "share_of_total": 0.0
+        },
+        "equals": {
+         "positions": 0,
+         "mean_kl": null,
+         "mean_kl_rest": 0.07522620260715485,
+         "share_of_total": 0.0
+        },
+        "digit": {
+         "positions": 135,
+         "mean_kl": 0.09403938055038452,
+         "mean_kl_rest": 0.07389786839485168,
+         "share_of_total": 0.08244352042675018
+        },
+        "newline": {
+         "positions": 18,
+         "mean_kl": 0.05298703536391258,
+         "mean_kl_rest": 0.07542349398136139,
+         "share_of_total": 0.006193771027028561
+        }
+       }
+      }
+     ]
+    }
+   }
+  }
+ },
+ "seconds": 1028.0
+}

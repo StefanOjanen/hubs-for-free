@@ -1,0 +1,7 @@
+pair text diagnostic starting Wed Nov  4 17:02:01 UTC 2026
+[   929s] mistralai/Mistral-7B-Instruct-v0.2: layer 0 of 32, 8 KV heads; moments from 262144 tokens; 2 windows of each text; pairs [(1, 5), (0, 1), (0, 3)]
+[   975s] pair (1, 5): wikitext KL 0.1042 (top 1 percent of positions carry 0.30; at_sign 0.01, equals 0.04, digit 0.02, newline 0.09); c4 KL 0.0012 (top 1 percent of positions carry 0.13; at_sign 0.00, equals 0.00, digit 0.03, newline 0.02)
+[  1002s] pair (0, 1): wikitext KL 0.1156 (top 1 percent of positions carry 0.36; at_sign 0.01, equals 0.04, digit 0.02, newline 0.16); c4 KL 0.0019 (top 1 percent of positions carry 0.13; at_sign 0.00, equals 0.00, digit 0.03, newline 0.01)
+[  1028s] pair (0, 3): wikitext KL 0.0431 (top 1 percent of positions carry 0.39; at_sign 0.01, equals 0.03, digit 0.02, newline 0.07); c4 KL 0.0833 (top 1 percent of positions carry 0.30; at_sign 0.00, equals 0.00, digit 0.04, newline 0.02)
+[  1028s] PAIR_TEXT_DIAG_DONE
+PTD_DONE
