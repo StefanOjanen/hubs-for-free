@@ -296,6 +296,16 @@ if os.path.exists(RA):
             rows.append([short(key.split("/")[-1]) + (" (development run)" if key.startswith("dev/") else ""), arm, f"{a['hits']} of {a['instances']}", a["empty"], a["any_digit"], a["five_digit_number"], a["sentence_form"], a["degenerate"],
                          ", ".join(f"'{d}' {n}" for d, n in a["commonest_wrong_digits"][:2])])
     table(["Model", "arm", "retrieved", "empty", "any digit", "five-digit number", "sentence form", "degenerate", "commonest wrong digits"], rows)
+RDG = sorted(glob.glob("alignment_study/retrieval_diag/*.json"))
+if RDG:
+    w("## Table 14e. Decode diagnostic (retrieval_decode_diag.py, development): at the answer position of the registered prompts, the next-token mass on the end-of-sequence token, on tokens containing a newline, on tokens beginning with a digit and on the code's first digit token, the median rank of that token, and one greedy decode scored as the protocol scores it (cut at the first newline after the first token) and uncut\n")
+    rows = []
+    for fp in RDG:
+        r = json.load(open(fp)); m = short(os.path.basename(fp)[:-5])
+        for arm, a in r["arms"].items():
+            s_ = a["summary"]
+            rows.append([m, arm, f"{s_['hits_protocol']} of {s_['of']}", s_["hits_uncut"], f(s_["p_eos"], 3), f(s_["p_newline"], 3), f(s_["p_digit"], 3), f(s_.get("p_code_first_token"), 3) if s_.get("p_code_first_token") is not None else "", f"{s_['median_rank_of_code_first_token']:.0f}"])
+    table(["Model", "arm", "retrieved, protocol", "retrieved, uncut", "mass on end", "on newline", "on digits", "on the code's first token", "median rank of that token"], rows)
 KB = sorted(glob.glob("alignment_study/kvfuse_bench/*.json"))
 if KB:
     w("## Table 15. The exported checkpoint's cache and decode speed (one laptop, MPS)\n")
