@@ -1,0 +1,16 @@
+decode diagnostic mistralai/Mistral-7B-v0.1 starting Wed Nov  4 14:10:04 UTC 2026
+mistralai/Mistral-7B-v0.1, unconverted: {'p_eos': 0.0019092762004584074, 'p_newline': 0.02185005437582731, 'p_digit': 0.005711652860045433, 'p_code_first_token': 0.005080727702006698, 'median_rank_of_code_first_token': 6.0, 'hits_protocol': 50, 'hits_uncut': 50, 'of': 50} (432s)
+mistralai/Mistral-7B-v0.1, fusion: {'p_eos': 0.009471352510154248, 'p_newline': 0.04419235303997993, 'p_digit': 0.001196993120247498, 'p_code_first_token': 0.00012204211830976419, 'median_rank_of_code_first_token': 1715.5, 'hits_protocol': 0, 'hits_uncut': 0, 'of': 50} (2456s)
+mistralai/Mistral-7B-v0.1, retrieval_0.3: {'p_eos': 0.008377138264477254, 'p_newline': 0.045151691660284994, 'p_digit': 0.001313049163436517, 'p_code_first_token': 0.00012747289812978124, 'median_rank_of_code_first_token': 1268.5, 'hits_protocol': 0, 'hits_uncut': 0, 'of': 50} (3502s)
+RETRIEVAL_DIAG_DONE (3502s)
+decode diagnostic Qwen/Qwen2.5-7B starting Wed Nov  4 15:08:30 UTC 2026
+Qwen/Qwen2.5-7B, unconverted: {'p_eos': 0.00618448740337044, 'p_newline': 0.0011888538021594286, 'p_digit': 1.0854380425371346e-05, 'p_code_first_token': 9.585796451574424e-06, 'median_rank_of_code_first_token': 249.0, 'hits_protocol': 50, 'hits_uncut': 50, 'of': 50} (419s)
+Qwen/Qwen2.5-7B, fusion: {'p_eos': 0.01851855931803584, 'p_newline': 0.0035584443900734185, 'p_digit': 0.01943192269653082, 'p_code_first_token': 0.0023599421844119205, 'median_rank_of_code_first_token': 76.0, 'hits_protocol': 0, 'hits_uncut': 0, 'of': 50} (2334s)
+Qwen/Qwen2.5-7B, retrieval_0.3: {'p_eos': 0.00947397891432047, 'p_newline': 0.0019425592850893735, 'p_digit': 0.006631846185773611, 'p_code_first_token': 0.0021921276580542325, 'median_rank_of_code_first_token': 84.0, 'hits_protocol': 7, 'hits_uncut': 7, 'of': 50} (3376s)
+RETRIEVAL_DIAG_DONE (3376s)
+decode diagnostic mistralai/Mistral-7B-Instruct-v0.2 starting Wed Nov  4 16:04:52 UTC 2026
+mistralai/Mistral-7B-Instruct-v0.2, unconverted: {'p_eos': 7.885774669702527e-08, 'p_newline': 9.309864553870284e-05, 'p_digit': 8.59690691868309e-05, 'p_code_first_token': 8.545253578631673e-05, 'median_rank_of_code_first_token': 9.0, 'hits_protocol': 50, 'hits_uncut': 50, 'of': 50} (377s)
+mistralai/Mistral-7B-Instruct-v0.2, fusion: {'p_eos': 6.101515832597216e-06, 'p_newline': 0.004424516027793288, 'p_digit': 0.00041027120663784445, 'p_code_first_token': 0.000201158238487551, 'median_rank_of_code_first_token': 184.0, 'hits_protocol': 10, 'hits_uncut': 10, 'of': 50} (2359s)
+mistralai/Mistral-7B-Instruct-v0.2, retrieval_0.3: {'p_eos': 5.2609898784794495e-06, 'p_newline': 0.0031799643952399492, 'p_digit': 0.0006324005636270158, 'p_code_first_token': 0.0005675022228388115, 'median_rank_of_code_first_token': 50.5, 'hits_protocol': 46, 'hits_uncut': 46, 'of': 50} (3385s)
+RETRIEVAL_DIAG_DONE (3385s)
+G2_DONE

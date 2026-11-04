@@ -1583,9 +1583,10 @@ of Section 6.14 holds at fifty. The answers (`retrieval_answers.py`) place the
 difference: the fused development model always answers in the sentence form
 with wrong, stereotyped digits that the exemption corrects; the fused Mistral-7B-v0.1 answers with newline tokens, at which the
 protocol's decoding ends (46 of 50 plain-fusion answers empty), or repeats a
-phrase, with no digit in any of its 400 converted answers (whether the
-newline is a refusal or a prefix the stop rule cuts before the code is a
-pending decode diagnostic, `retrieval_decode_diag.py`); the fused
+phrase, with no digit in any of its 400 converted answers (a decode that stops only at the end of sequence retrieves the same counts
+on every arm of the three models and continues the base model's prompts with
+one prompt-independent text, `retrieval_decode_diag.py`: the newline is a
+loss of the context, not a prefix the stop rule cuts); the fused
 Qwen2.5-7B answers degenerate text that the exemptions turn into the sentence
 form in every instance and the right digits in 8. The exemption repairs the
 retrieval heads' share of the loss where the conversion otherwise leaves the

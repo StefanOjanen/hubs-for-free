@@ -2074,3 +2074,49 @@ exported at 126 s; kvfuse_bench.py on the export: cache ratio 0.500, decode
 whose timing is not a speed claim (the TinyLlama benchmark, 1.08 times, is the
 cited number). The option is committed labelled experimental: the eight-window
 pass above shows the measured selector unreliable out of sample.
+
+Decode diagnostic after round 35 (2026-11-04 14:10 to 2026-11-04 16:47 UTC;
+retrieval_decode_diag.py; retrieval_diag/<model>.json; retrieval_diag.log;
+development): the registered prompts under the unconverted model, the plain
+fusion at half the key-value heads and the 0.3 exemption; at the answer
+position the next-token mass on the end-of-sequence token, on tokens
+containing a newline, on tokens beginning with a digit and on the code's first
+digit token, the rank of that token, and one 24-token greedy decode that stops
+only at the end of sequence, scored as the protocol scores it (cut at the
+first newline after the first token) and uncut. Both tokenizers put a space
+marker before digits, so at the first position the digit statistics read the
+marker, not the code; the uncut hits and the newline and end-of-sequence
+masses carry the answer.
+
+Mistral-7B-Instruct-v0.2 (1 newline and 30 digit tokens in the vocabulary; 56
+min): unconverted: protocol 50 of 50, uncut 50; mean mass on end-of-sequence
+0.000, newline 0.000, digit tokens 0.000, the code's first token 0.000; median
+rank of the code's first token 9; commonest first token '' 50; fusion:
+protocol 10 of 50, uncut 10; mean mass on end-of-sequence 0.000, newline
+0.004, digit tokens 0.000, the code's first token 0.000; median rank of the
+code's first token 184; commonest first token 'The' 50; retrieval_0.3:
+protocol 46 of 50, uncut 46; mean mass on end-of-sequence 0.000, newline
+0.003, digit tokens 0.001, the code's first token 0.001; median rank of the
+code's first token 50; commonest first token '' 25, 'The' 25.
+
+Mistral-7B-v0.1 (1 newline and 30 digit tokens in the vocabulary; 58 min):
+unconverted: protocol 50 of 50, uncut 50; mean mass on end-of-sequence 0.002,
+newline 0.022, digit tokens 0.006, the code's first token 0.005; median rank
+of the code's first token 6; commonest first token '' 50; fusion: protocol 0
+of 50, uncut 0; mean mass on end-of-sequence 0.009, newline 0.044, digit
+tokens 0.001, the code's first token 0.000; median rank of the code's first
+token 1716; commonest first token '\n' 40, 'the' 10; retrieval_0.3: protocol 0
+of 50, uncut 0; mean mass on end-of-sequence 0.008, newline 0.045, digit
+tokens 0.001, the code's first token 0.000; median rank of the code's first
+token 1268; commonest first token '\n' 33, 'the' 17.
+
+Qwen2.5-7B (2178 newline and 28 digit tokens in the vocabulary; 56 min):
+unconverted: protocol 50 of 50, uncut 50; mean mass on end-of-sequence 0.006,
+newline 0.001, digit tokens 0.000, the code's first token 0.000; median rank
+of the code's first token 249; commonest first token ' ' 50; fusion: protocol
+0 of 50, uncut 0; mean mass on end-of-sequence 0.019, newline 0.004, digit
+tokens 0.019, the code's first token 0.002; median rank of the code's first
+token 76; commonest first token ' The' 50; retrieval_0.3: protocol 7 of 50,
+uncut 7; mean mass on end-of-sequence 0.009, newline 0.002, digit tokens
+0.007, the code's first token 0.002; median rank of the code's first token 84;
+commonest first token ' The' 50.

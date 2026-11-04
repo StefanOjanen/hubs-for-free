@@ -645,8 +645,9 @@ Each instrument below exists because a finding above required it.
   identical before the freeze and in the registered rerun. The answers say
   why: the fused development model always answers in the right form and the
   exemption fixes the digits, while the fused Mistral-7B-v0.1 answers with newlines, at which the
-  protocol's decoding ends, or repeats a phrase, with no digit in any of its
-  400 converted answers, and the
+  protocol's decoding ends, or repeats a phrase, with no digit in any of its 400 converted answers
+  (decoded to the end of sequence instead, it continues every prompt with the
+  same prompt-independent text and still no code), and the
   fused Qwen2.5-7B answers degenerate text that the exemption turns into the
   right form with stereotyped digits; no exemption at these budgets brings the
   task back. The exemption repairs what merging the retrieval heads removed

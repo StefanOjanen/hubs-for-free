@@ -293,9 +293,11 @@ waiter per stage keyed on the previous waiter's PID). Run 2026-11-04 01:59 to
 retrieval_round_answers.json by retrieval_answers.py): 2 of 5; the exemption
 at 0.3 retrieves 7 of 50 on Qwen2.5-7B (plain 0, random 1 and 0, residual 0;
 margin 10 missed) and 0 on Mistral-7B-v0.1 (every converted arm 0; no digit in 400 converted answers: the fused base model answers with newlines,
-at which the protocol's decoding ends, or repeats; whether the code would
-follow the newline is the decode diagnostic retrieval_decode_diag.py,
-retrieval_diag/, queued behind the eight-window pass); E4 and E5 hold;
+at which the protocol's decoding ends, or repeats; the decode diagnostic (retrieval_decode_diag.py, retrieval_diag/,
+2026-11-04) shows a decode that stops only at the end of sequence retrieving
+the same counts on every arm of the three models and the fused base model
+continuing every prompt with one prompt-independent text: a loss of the
+context, not of the format); E4 and E5 hold;
 the development model 46 and 48 of 50 under the protocol, identical in the
 rerun. The exemption repairs retrieval only where the conversion leaves the
 model answering; the plain fusion at half the heads loses the planted code on

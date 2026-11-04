@@ -1833,8 +1833,14 @@ retrieval and exempting where it helps. Follow-up prepared for the author's
 decision (`retrieval_protect_dev.py --pairing=neighbours --instances=50`): the
 same arms on Qwen2.5-7B under the neighbour pairing, whose plain fusion sits
 at 23.9 against the residual's 70.1, to ask whether the exemption repairs a conversion that is otherwise sound.
-Whether the newline is a refusal or a prefix the protocol's stop rule cuts
-before the code is the decode diagnostic (`retrieval_decode_diag.py`:
-the next-token mass on newline, end-of-sequence and digit tokens, and a
-decode that stops only at the end of sequence; `retrieval_diag/`), queued
-behind the eight-window pass.
+The decode diagnostic (`retrieval_decode_diag.py`, `retrieval_diag/`)
+settles what the newline is: a 24-token decode that stops only at the end of
+sequence retrieves exactly what the protocol's cut retrieves on every arm of
+the three models (0 and 0 of 50 on Mistral-7B-v0.1, 0 and 7 on Qwen2.5-7B, 10
+and 46 on the development model), the fused Mistral-7B-v0.1 continues every
+prompt with the same prompt-independent text ("## 10.100% of the time, to the
+best of the most important thing is"), and at the answer position the code's
+first digit token falls from a median rank of 6 unconverted to about 1,700
+under the plain fusion and 1,300 under the exemption (the first-position digit
+mass reads the tokenizer's space marker and is not comparable across models).
+The newline is a loss of the context, not a prefix the stop rule cuts.
