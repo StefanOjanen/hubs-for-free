@@ -647,7 +647,9 @@ Each instrument below exists because a finding above required it.
   exemption fixes the digits, while the fused Mistral-7B-v0.1 answers with newlines, at which the
   protocol's decoding ends, or repeats a phrase, with no digit in any of its 400 converted answers
   (decoded to the end of sequence instead, it continues every prompt with the
-  same prompt-independent text and still no code), and the
+  same prompt-independent text and still no code, and with the
+  beginning-of-sequence token prepended to every prompt it still retrieves
+  nothing, so the collapse is not the sink failure of the next bullet), and the
   fused Qwen2.5-7B answers degenerate text that the exemption turns into the
   right form with stereotyped digits; no exemption at these budgets brings the
   task back. The exemption repairs what merging the retrieval heads removed

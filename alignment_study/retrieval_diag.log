@@ -14,3 +14,18 @@ mistralai/Mistral-7B-Instruct-v0.2, fusion: {'p_eos': 6.101515832597216e-06, 'p_
 mistralai/Mistral-7B-Instruct-v0.2, retrieval_0.3: {'p_eos': 5.2609898784794495e-06, 'p_newline': 0.0031799643952399492, 'p_digit': 0.0006324005636270158, 'p_code_first_token': 0.0005675022228388115, 'median_rank_of_code_first_token': 50.5, 'hits_protocol': 46, 'hits_uncut': 46, 'of': 50} (3385s)
 RETRIEVAL_DIAG_DONE (3385s)
 G2_DONE
+decode diagnostic with BOS mistralai/Mistral-7B-v0.1 starting Wed Nov  4 18:13:04 UTC 2026
+mistralai/Mistral-7B-v0.1, unconverted: {'p_eos': 0.0025151039205957206, 'p_newline': 0.020055173598229885, 'p_digit': 0.005730722704902292, 'p_code_first_token': 0.005073822038248181, 'median_rank_of_code_first_token': 6.0, 'hits_protocol': 50, 'hits_uncut': 50, 'of': 50} (430s)
+mistralai/Mistral-7B-v0.1, fusion: {'p_eos': 0.00898256708867848, 'p_newline': 0.045476779602468015, 'p_digit': 0.0006563427281798795, 'p_code_first_token': 6.758689503840288e-05, 'median_rank_of_code_first_token': 2851.5, 'hits_protocol': 0, 'hits_uncut': 0, 'of': 50} (2409s)
+mistralai/Mistral-7B-v0.1, retrieval_0.3: {'p_eos': 0.008206411143764853, 'p_newline': 0.04822968028485775, 'p_digit': 0.0007729133730754257, 'p_code_first_token': 7.697356968492386e-05, 'median_rank_of_code_first_token': 2203.5, 'hits_protocol': 0, 'hits_uncut': 0, 'of': 50} (3467s)
+RETRIEVAL_DIAG_DONE (3467s)
+decode diagnostic with BOS Qwen/Qwen2.5-7B starting Wed Nov  4 19:10:56 UTC 2026
+Traceback (most recent call last):
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/alignment_study/retrieval_decode_diag.py", line 100, in <module>
+    a = run_arm(model, tok, context_ids, nl_ids, dg_ids); res["arms"]["unconverted"] = a
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/alignment_study/retrieval_decode_diag.py", line 81, in run_arm
+    ids = torch.cat([torch.tensor([[tok.bos_token_id]], dtype=ids.dtype), ids], dim=1)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object cannot be interpreted as an integer
+decode diagnostic with BOS mistralai/Mistral-7B-Instruct-v0.2 starting Wed Nov  4 19:11:36 UTC 2026

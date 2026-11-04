@@ -1584,8 +1584,7 @@ with wrong, stereotyped digits that the exemption corrects; the fused Mistral-7B
 protocol's decoding ends (46 of 50 plain-fusion answers empty), or repeats a
 phrase, with no digit in any of its 400 converted answers (a decode that stops only at the end of sequence retrieves the same counts
 on every arm of the three models and continues the base model's prompts with
-one prompt-independent text, `retrieval_decode_diag.py`: the newline is a
-loss of the context, not a prefix the stop rule cuts); the fused
+one prompt-independent text, `retrieval_decode_diag.py`: the newline is a loss of the context, not a prefix the stop rule cuts; With the beginning-of-sequence token prepended to every prompt (retrieval_decode_diag.py --bos, retrieval_diag/Mistral-7B-v0.1_bos.json) the fused Mistral-7B-v0.1 still retrieves 0 of 50 under the plain fusion and 0 under the exemption, cut or uncut, with the code's first token at a median rank of about 2,900 and 2,200: the collapse is not the sink-start failure of Section 6.19, and the prompt format does not explain round 35.) the fused
 Qwen2.5-7B answers degenerate text that the exemptions turn into the sentence
 form in every instance and the right digits in 8. The exemption repairs the
 retrieval heads' share of the loss where the conversion otherwise leaves the
