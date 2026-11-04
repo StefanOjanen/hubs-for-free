@@ -1,0 +1,1814 @@
+{
+ "model": "mistralai/Mistral-7B-v0.1",
+ "revision": "27d67f1b5f57dc0953326b2601d68371d40ea8da",
+ "exploratory": true,
+ "design": "private/drafts/DEV_token_first_calibration.md",
+ "calibration": [
+  128,
+  2048
+ ],
+ "windows": 8,
+ "bos": 1,
+ "needle": {
+  "context_tokens": 2048,
+  "facts": 10,
+  "depths": [
+   10,
+   30,
+   50,
+   70,
+   90
+  ]
+ },
+ "arms": {
+  "unconverted": {
+   "as_is": {
+    "perplexity": 4.858765602111816,
+    "per_window_nll": [
+     1.3608356714248657,
+     1.9040346145629883,
+     2.110625982284546,
+     1.840259313583374,
+     1.4846794605255127,
+     1.5435340404510498,
+     1.1488889455795288,
+     1.25341796875
+    ],
+    "band_nll": {
+     "0_31": 3.8959182500839233,
+     "32_127": 2.1372954547405243,
+     "128_on": 1.5143387466669083
+    }
+   },
+   "bos_prepended": {
+    "perplexity": 4.931756019592285,
+    "per_window_nll": [
+     1.3848074674606323,
+     1.9159212112426758,
+     2.1229705810546875,
+     1.8492244482040405,
+     1.5127840042114258,
+     1.557975172996521,
+     1.1489458084106445,
+     1.2729319334030151
+    ],
+    "band_nll": {
+     "0_31": 4.309995144605637,
+     "32_127": 2.2092460989952087,
+     "128_on": 1.5197396725416183
+    }
+   },
+   "needle_bos": {
+    "hits": 50,
+    "of": 50,
+    "by_depth": {
+     "10": 10,
+     "30": 10,
+     "50": 10,
+     "70": 10,
+     "90": 10
+    },
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "answer": "48213\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "answer": "48213\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "answer": "48213\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "answer": "48213\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "answer": "48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "answer": "90457\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "answer": "90457.\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "answer": "90457\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "answer": "90457\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "answer": "90457.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "answer": "27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "answer": "27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "answer": "27365\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "answer": "27365\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "answer": "27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "answer": "61928\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "answer": "61928\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "answer": "61928\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "answer": "61928\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "answer": "61928.\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "answer": "35074\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "answer": "35074\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "answer": "35074\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "answer": "35074\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "answer": "35074.\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "answer": "73506\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "answer": "73506.\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "answer": "73506\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "answer": "73506\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "answer": "73506.\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "answer": "18649\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "answer": "18649\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "answer": "18649\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "answer": "18649\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "answer": "18649.\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "answer": "52937\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "answer": "52937\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "answer": "52937\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "answer": "52937\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "answer": "52937.  the case, the cost of classroom training is not justified. In this case,",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "answer": "84071</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "answer": "84071\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "answer": "84071\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "answer": "84071\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "answer": "84071.\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "answer": "39615\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "answer": "39615\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "answer": "39615\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "answer": "39615\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "answer": "39615\n",
+      "hit": true
+     }
+    ]
+   }
+  },
+  "fit_token_less": {
+   "as_is": {
+    "perplexity": 28.68269920349121,
+    "per_window_nll": [
+     3.669665575027466,
+     3.0536210536956787,
+     3.6751091480255127,
+     3.58054518699646,
+     3.050548553466797,
+     3.354691743850708,
+     3.6337554454803467,
+     2.832415819168091
+    ],
+    "band_nll": {
+     "0_31": 5.4362901747226715,
+     "32_127": 3.657526195049286,
+     "128_on": 3.306540012359619
+    }
+   },
+   "bos_prepended": {
+    "perplexity": 27.547006607055664,
+    "per_window_nll": [
+     3.306731700897217,
+     3.2639386653900146,
+     3.9595682621002197,
+     3.714514970779419,
+     3.0476245880126953,
+     3.658785581588745,
+     2.93178129196167,
+     2.644205093383789
+    ],
+    "band_nll": {
+     "0_31": 4.94830584526062,
+     "32_127": 3.5337104499340057,
+     "128_on": 3.277776211500168
+    }
+   },
+   "needle_bos": {
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    },
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     }
+    ]
+   },
+   "kv_heads_kept": 128,
+   "ratio_as_is": 5.903289343907545,
+   "ratio_bos_prepended": 5.585638563144697
+  },
+  "fit_token_first": {
+   "as_is": {
+    "perplexity": 30.259510040283203,
+    "per_window_nll": [
+     3.6616344451904297,
+     3.0478675365448,
+     3.677011728286743,
+     3.5803089141845703,
+     3.0334222316741943,
+     3.36063289642334,
+     4.09443998336792,
+     2.8231678009033203
+    ],
+    "band_nll": {
+     "0_31": 5.445284128189087,
+     "32_127": 3.710042029619217,
+     "128_on": 3.3608491122722626
+    }
+   },
+   "bos_prepended": {
+    "perplexity": 27.746484756469727,
+    "per_window_nll": [
+     3.314239501953125,
+     3.2739157676696777,
+     3.9945199489593506,
+     3.710416555404663,
+     3.0374114513397217,
+     3.6794052124023438,
+     2.9213643074035645,
+     2.653599262237549
+    ],
+    "band_nll": {
+     "0_31": 5.042102217674255,
+     "32_127": 3.5476082861423492,
+     "128_on": 3.283213287591934
+    }
+   },
+   "needle_bos": {
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    },
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     }
+    ]
+   },
+   "kv_heads_kept": 128,
+   "ratio_as_is": 6.227818445724402,
+   "ratio_bos_prepended": 5.626086255330118
+  }
+ },
+ "groups": [
+  [
+   [
+    0,
+    5
+   ],
+   [
+    1,
+    7
+   ],
+   [
+    2,
+    3
+   ],
+   [
+    4,
+    6
+   ]
+  ],
+  [
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    7
+   ],
+   [
+    3,
+    6
+   ],
+   [
+    4,
+    5
+   ]
+  ],
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    7
+   ],
+   [
+    3,
+    4
+   ],
+   [
+    5,
+    6
+   ]
+  ],
+  [
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    7
+   ],
+   [
+    3,
+    5
+   ],
+   [
+    4,
+    6
+   ]
+  ],
+  [
+   [
+    0,
+    6
+   ],
+   [
+    1,
+    7
+   ],
+   [
+    2,
+    5
+   ],
+   [
+    3,
+    4
+   ]
+  ],
+  [
+   [
+    0,
+    3
+   ],
+   [
+    1,
+    5
+   ],
+   [
+    2,
+    4
+   ],
+   [
+    6,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    6
+   ],
+   [
+    3,
+    4
+   ],
+   [
+    5,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    4
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    3,
+    7
+   ],
+   [
+    5,
+    6
+   ]
+  ],
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    6
+   ],
+   [
+    3,
+    5
+   ],
+   [
+    4,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    3
+   ],
+   [
+    1,
+    5
+   ],
+   [
+    2,
+    4
+   ],
+   [
+    6,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    6
+   ],
+   [
+    3,
+    4
+   ],
+   [
+    5,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    5
+   ],
+   [
+    1,
+    3
+   ],
+   [
+    2,
+    6
+   ],
+   [
+    4,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    7
+   ],
+   [
+    3,
+    4
+   ],
+   [
+    5,
+    6
+   ]
+  ],
+  [
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    7
+   ],
+   [
+    3,
+    5
+   ],
+   [
+    4,
+    6
+   ]
+  ],
+  [
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    6
+   ],
+   [
+    3,
+    5
+   ],
+   [
+    4,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    7
+   ],
+   [
+    3,
+    6
+   ],
+   [
+    4,
+    5
+   ]
+  ],
+  [
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    5
+   ],
+   [
+    3,
+    7
+   ],
+   [
+    4,
+    6
+   ]
+  ],
+  [
+   [
+    0,
+    3
+   ],
+   [
+    1,
+    5
+   ],
+   [
+    2,
+    7
+   ],
+   [
+    4,
+    6
+   ]
+  ],
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    4
+   ],
+   [
+    3,
+    5
+   ],
+   [
+    6,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    7
+   ],
+   [
+    1,
+    3
+   ],
+   [
+    2,
+    4
+   ],
+   [
+    5,
+    6
+   ]
+  ],
+  [
+   [
+    0,
+    6
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    3,
+    7
+   ],
+   [
+    4,
+    5
+   ]
+  ],
+  [
+   [
+    0,
+    4
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    3,
+    6
+   ],
+   [
+    5,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    7
+   ],
+   [
+    3,
+    4
+   ],
+   [
+    5,
+    6
+   ]
+  ],
+  [
+   [
+    0,
+    4
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    3,
+    7
+   ],
+   [
+    5,
+    6
+   ]
+  ],
+  [
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    4
+   ],
+   [
+    3,
+    5
+   ],
+   [
+    6,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    6
+   ],
+   [
+    3,
+    5
+   ],
+   [
+    4,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    4
+   ],
+   [
+    3,
+    6
+   ],
+   [
+    5,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    3
+   ],
+   [
+    4,
+    5
+   ],
+   [
+    6,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    6
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    3,
+    5
+   ],
+   [
+    4,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    4
+   ],
+   [
+    1,
+    7
+   ],
+   [
+    2,
+    5
+   ],
+   [
+    3,
+    6
+   ]
+  ],
+  [
+   [
+    0,
+    6
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    3,
+    7
+   ],
+   [
+    4,
+    5
+   ]
+  ],
+  [
+   [
+    0,
+    7
+   ],
+   [
+    1,
+    4
+   ],
+   [
+    2,
+    3
+   ],
+   [
+    5,
+    6
+   ]
+  ]
+ ],
+ "pairs_fixed_to": "the token-less fit's residual matching",
+ "seconds": 4961.9
+}

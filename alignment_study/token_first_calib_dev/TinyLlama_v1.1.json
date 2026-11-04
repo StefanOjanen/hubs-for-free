@@ -1,0 +1,1458 @@
+{
+ "model": "TinyLlama/TinyLlama_v1.1",
+ "revision": null,
+ "exploratory": true,
+ "design": "private/drafts/DEV_token_first_calibration.md",
+ "calibration": [
+  128,
+  2048
+ ],
+ "windows": 8,
+ "bos": 1,
+ "needle": {
+  "context_tokens": 2048,
+  "facts": 10,
+  "depths": [
+   10,
+   30,
+   50,
+   70,
+   90
+  ]
+ },
+ "arms": {
+  "unconverted": {
+   "as_is": {
+    "perplexity": 7.237625598907471,
+    "per_window_nll": [
+     1.6702152490615845,
+     2.228717803955078,
+     2.4985525608062744,
+     2.3588764667510986,
+     1.7850534915924072,
+     1.97378408908844,
+     1.696140170097351,
+     1.6230063438415527
+    ],
+    "band_nll": {
+     "0_31": 3.7734176218509674,
+     "32_127": 2.3663675040006638,
+     "128_on": 1.9300118386745453
+    }
+   },
+   "bos_prepended": {
+    "perplexity": 8.792840003967285,
+    "per_window_nll": [
+     1.669631838798523,
+     2.366727828979492,
+     2.8010079860687256,
+     2.6912877559661865,
+     1.8358469009399414,
+     2.356377124786377,
+     1.9021241664886475,
+     1.7684985399246216
+    ],
+    "band_nll": {
+     "0_31": 6.401661843061447,
+     "32_127": 4.655756205320358,
+     "128_on": 1.9792834371328354
+    }
+   },
+   "needle_bos": {
+    "hits": 49,
+    "of": 50,
+    "by_depth": {
+     "10": 10,
+     "30": 10,
+     "50": 9,
+     "70": 10,
+     "90": 10
+    },
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "answer": "The secret code for the blue door is 48213. The secret code for the blue door is ",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "answer": "48213. . The secret code for the blue door is 48213.",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "answer": "The secret code for the blue door is 48213.  (10-4 en absorb",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "answer": "48213.  The secret code for the blue door is 48213. ",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "answer": "48213. The secret code for the blue door is 48213. The secret",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "answer": "The secret code for the green door is 90457. The secret code for the green door is ",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "answer": "The secret code for the green door is 90457. . Be the best textile manufacturing",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "answer": "The secret code for the green door is 90457.  (10-4 en absorb",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "answer": "90457.  The secret code for the green door is 90457. ",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "answer": "90457. The secret code for the green door is 90457.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "answer": "The secret code for the red door is 27365. The secret code for the red door is ",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "answer": "27365. . The secret code for the red door is 27365.",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "answer": "27365.  (10-4 en absorbance). Three units on this property for",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "answer": "27365.  The secret code for the red door is 27365. ",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "answer": "27365. The secret code for the red door is 27365. The secret",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "answer": "The secret code for the yellow door is 61928. The answer is 61928",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "answer": "The yellow door is 61928. . Be the best textile manufacturing partner, meeting each",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "answer": "The secret code for the yellow door is 61928.  (10-4 en absorb",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "answer": "61928. The secret code for the yellow door is 61928.  without",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "answer": "61928. The secret code for the yellow door is 61928. The secret",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "answer": "The secret code for the white door is 35074. The secret code for the white door is ",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "answer": "35074. . Be the best textile manufacturing partner, meeting each and every one of",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "answer": "The secret code for the white door is 35074.  (10-4 en absorb",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "answer": "35074.  The secret code for the white door is 35074. ",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "answer": "35074. The secret code for the white door is 35074. The secret",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "answer": "The secret code for the black door is 73506. The secret code for the black door is ",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "answer": "73506. . Be the best textile manufacturing partner, meeting each and every one of",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "answer": "73506.  (10-4 en absorbance). Three units on this property for",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "answer": "73506. The secret code for the black door is 73506.  without",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "answer": "73506. The secret code for the black door is 73506. The secret",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "answer": "The secret code for the orange door is 18649.  the job. Founded in 2",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "answer": "18649. . Be the best textile manufacturing partner, meeting each and every one of",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "answer": "All Hail the Queen!\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "answer": "18649. The secret code for the orange door is 18649.  without",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "answer": "18649. The secret code for the orange door is 18649. The secret",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "answer": "The secret code for the purple door is 52937.  for the job. Founded in",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "answer": "The secret code for the purple door is 52937.  The secret code for the purple",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "answer": "The secret code for the purple door is 52937.  The secret code for the purple",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "answer": "52937.\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "answer": "52937 room environment removes all cues to memory that would help later. But by creating artificial c",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "answer": "The secret code for the grey door is 84071. The secret code for the grey door is ",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "answer": "The secret code for the grey door is 84071. . Be the best textile manufacturing",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "answer": "The secret code for the grey door is 84071.  (10-4 en absorb",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "answer": "84071.  The secret code for the grey door is 84071. ",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "answer": "84071. The secret code for the grey door is 84071. The secret",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "answer": "The secret code for the brown door is 39615. The answer is 39615",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "answer": "39615. . Be the best textile manufacturing partner, meeting each and every one of",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "answer": "The secret code for the brown door is 39615.  (10-4 en absorb",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "answer": "39615. The secret code for the brown door is 39615.  without",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "answer": "39615. The secret code for the brown door is 39615. The secret",
+      "hit": true
+     }
+    ]
+   }
+  },
+  "fit_token_less": {
+   "as_is": {
+    "perplexity": 57.99236297607422,
+    "per_window_nll": [
+     4.317903995513916,
+     3.949592113494873,
+     4.450691223144531,
+     4.645310401916504,
+     3.930511951446533,
+     4.087165355682373,
+     3.6455507278442383,
+     3.4557650089263916
+    ],
+    "band_nll": {
+     "0_31": 4.988668441772461,
+     "32_127": 3.888450860977173,
+     "128_on": 4.05342823266983
+    }
+   },
+   "bos_prepended": {
+    "perplexity": 68.48942565917969,
+    "per_window_nll": [
+     4.347828388214111,
+     4.036405086517334,
+     4.69902229309082,
+     4.81427526473999,
+     4.052420616149902,
+     4.362861633300781,
+     3.923701763153076,
+     3.576920747756958
+    ],
+    "band_nll": {
+     "0_31": 6.768233001232147,
+     "32_127": 5.353511244058609,
+     "128_on": 4.12792706489563
+    }
+   },
+   "needle_bos": {
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    },
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "answer": "The 1990000000000000000000",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "answer": "The 1990000000000000000000",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "answer": "The 1990000000000000000000",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "answer": "The 1990000000000000000000",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "answer": "The 1990000000000000000000",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "answer": "The 1990000000000000000000",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "answer": "The 1999999999999999999999",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "answer": "The 1999999999999999999999",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "answer": "The 1990000000000000000000",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "answer": "The 1990000000000000000000",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "answer": "The 1990000000000000000000",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "answer": "The 1990000000000000000000",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "answer": "The 1990000000000000000000",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "answer": "The 1990000000000000000000",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "answer": "The 1990000000000000000000",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "answer": "The 1990000000000000000000",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "answer": "The 1990000000000000000000",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "answer": "The most important thing to be a part of the world, and the most important thing to be a part of the world",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "answer": "The 1990000000000000000000",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "answer": "The most important thing to be a part of the world, and the most important thing to be a part of the world",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "answer": "The 1990000000000000000000",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "answer": "The 1990000000000000000000",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "answer": "The 1990000000000000000000",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "answer": "The most important thing to be a part of the world, and the most important thing to be a part of the world",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "answer": "The answer is that the most important thing to be a part of the world.\n",
+      "hit": false
+     }
+    ]
+   },
+   "kv_heads_kept": 44,
+   "ratio_as_is": 8.012622673495054,
+   "ratio_bos_prepended": 7.789226874170075
+  },
+  "fit_token_first": {
+   "as_is": {
+    "perplexity": 58.180511474609375,
+    "per_window_nll": [
+     4.318531513214111,
+     3.9590678215026855,
+     4.4536871910095215,
+     4.659757614135742,
+     3.9177098274230957,
+     4.078392505645752,
+     3.6505417823791504,
+     3.4707155227661133
+    ],
+    "band_nll": {
+     "0_31": 4.935971677303314,
+     "32_127": 3.88925039768219,
+     "128_on": 4.057722210884094
+    }
+   },
+   "bos_prepended": {
+    "perplexity": 97.07772064208984,
+    "per_window_nll": [
+     4.497621536254883,
+     4.374111652374268,
+     4.974085807800293,
+     5.294954299926758,
+     4.511293411254883,
+     4.922122955322266,
+     4.225094318389893,
+     3.804811716079712
+    ],
+    "band_nll": {
+     "0_31": 8.61594557762146,
+     "32_127": 6.800016671419144,
+     "128_on": 4.396853178739548
+    }
+   },
+   "needle_bos": {
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    },
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "answer": "The most important thing to be a part of the most important and most importantly, and the most important thing to be",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "answer": "The most important thing to be a part of the most important and most importantly, and the most important thing to be",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "answer": "The most important thing to be a part of the most important and the most important thing to be a part of the most",
+      "hit": false
+     }
+    ]
+   },
+   "kv_heads_kept": 44,
+   "ratio_as_is": 8.03861856067711,
+   "ratio_bos_prepended": 11.040542145460268
+  }
+ },
+ "groups": [
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    3
+   ]
+  ],
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    3
+   ]
+  ],
+  [
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    3
+   ]
+  ],
+  [
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    3
+   ]
+  ],
+  [
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    3
+   ]
+  ],
+  [
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    3
+   ]
+  ],
+  [
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    3
+   ]
+  ],
+  [
+   [
+    0,
+    3
+   ],
+   [
+    1,
+    2
+   ]
+  ],
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    3
+   ]
+  ],
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    3
+   ]
+  ],
+  [
+   [
+    0,
+    3
+   ],
+   [
+    1,
+    2
+   ]
+  ],
+  [
+   [
+    0,
+    3
+   ],
+   [
+    1,
+    2
+   ]
+  ],
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    3
+   ]
+  ],
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    3
+   ]
+  ],
+  [
+   [
+    0,
+    3
+   ],
+   [
+    1,
+    2
+   ]
+  ],
+  [
+   [
+    0,
+    3
+   ],
+   [
+    1,
+    2
+   ]
+  ],
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    3
+   ]
+  ],
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    3
+   ]
+  ],
+  [
+   [
+    0,
+    3
+   ],
+   [
+    1,
+    2
+   ]
+  ],
+  [
+   [
+    0,
+    3
+   ],
+   [
+    1,
+    2
+   ]
+  ],
+  [
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    3
+   ]
+  ],
+  [
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    3
+   ]
+  ]
+ ],
+ "pairs_fixed_to": "the token-less fit's residual matching",
+ "seconds": 665.3
+}

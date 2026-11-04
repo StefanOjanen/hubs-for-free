@@ -1916,7 +1916,18 @@ Mistral-7B-v0.1 retrieves nothing either way. On the base Mistral-7B-v0.1 the
 share is 3 percent (perplexity 28.68 as is and 27.55 with the token against
 4.86 and 4.93 unconverted, a ratio of 5.90 against 5.59): the base model's
 cost is not the sink-start effect, as its retrieval, which the token did not
-restore, already said. And the sink line of this repository (rounds 9 to 13
+restore, already said. Fitting the moments on token-first calibration windows
+does not buy the cost back (`token_first_calib_dev.py`,
+`token_first_calib_dev/`, Table 12d; pairs fixed to the token-less matching;
+design by the parallel session, prediction stated before running): with the
+token the fused perplexity rises by 1.5 percent on Mistral-7B-Instruct (13.48
+to 13.69), 0.7 on Mistral-7B-v0.1 (27.55 to 27.75) and 42 on TinyLlama (68.5
+to 97.1), without it by 1.0, 5.5 and 0.3 percent, and the token-first needle
+moves from 45 to 46, 0 to 0 and 0 to 0 of 50. The prediction that the gain
+scales with the sink-start share is falsified on all three models: the sink-
+start cost belongs to the merged heads' failure to serve an ordinary first
+token, not to the regime the fit saw, and a token-first fit loses the sinkless
+regime on the base model. And the sink line of this repository (rounds 9 to 13
 and 21) meets the fusion line here: the heads whose merge is hazardous in
 layer 0 are the sink's. Development, one model, one layer, two pairs, two
 windows of each text.

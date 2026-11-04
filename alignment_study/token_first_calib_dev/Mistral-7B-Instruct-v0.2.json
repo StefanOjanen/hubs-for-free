@@ -1,0 +1,1814 @@
+{
+ "model": "mistralai/Mistral-7B-Instruct-v0.2",
+ "revision": "63a8b081895390a26e140280378bc85ec8bce07a",
+ "exploratory": true,
+ "design": "private/drafts/DEV_token_first_calibration.md",
+ "calibration": [
+  128,
+  2048
+ ],
+ "windows": 8,
+ "bos": 1,
+ "needle": {
+  "context_tokens": 2048,
+  "facts": 10,
+  "depths": [
+   10,
+   30,
+   50,
+   70,
+   90
+  ]
+ },
+ "arms": {
+  "unconverted": {
+   "as_is": {
+    "perplexity": 5.540459632873535,
+    "per_window_nll": [
+     1.4855538606643677,
+     2.0173370838165283,
+     2.2436439990997314,
+     2.027722120285034,
+     1.59491765499115,
+     1.6731377840042114,
+     1.290350079536438,
+     1.3639572858810425
+    ],
+    "band_nll": {
+     "0_31": 4.602454036474228,
+     "32_127": 2.271451026201248,
+     "128_on": 1.635896161198616
+    }
+   },
+   "bos_prepended": {
+    "perplexity": 5.6409478187561035,
+    "per_window_nll": [
+     1.4993679523468018,
+     2.0378429889678955,
+     2.258775234222412,
+     2.0450611114501953,
+     1.6244261264801025,
+     1.6954176425933838,
+     1.2947691679000854,
+     1.3847575187683105
+    ],
+    "band_nll": {
+     "0_31": 4.558644324541092,
+     "32_127": 2.3278783410787582,
+     "128_on": 1.652977541089058
+    }
+   },
+   "needle_bos": {
+    "hits": 50,
+    "of": 50,
+    "by_depth": {
+     "10": 10,
+     "30": 10,
+     "50": 10,
+     "70": 10,
+     "90": 10
+    },
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "answer": "48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "answer": "48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "answer": "48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "answer": "48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "answer": "48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "answer": "90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "answer": "90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "answer": "90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "answer": "90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "answer": "90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "answer": "27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "answer": "27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "answer": "27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "answer": "27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "answer": "27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "answer": "61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "answer": "61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "answer": "61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "answer": "61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "answer": "61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "answer": "35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "answer": "35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "answer": "35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "answer": "35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "answer": "35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "answer": "73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "answer": "73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "answer": "73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "answer": "73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "answer": "73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "answer": "18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "answer": "18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "answer": "18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "answer": "18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "answer": "18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "answer": "52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "answer": "52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "answer": "52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "answer": "52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "answer": "52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "answer": "84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "answer": "84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "answer": "84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "answer": "84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "answer": "84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "answer": "39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "answer": "39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "answer": "39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "answer": "39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "answer": "39615.</s>",
+      "hit": true
+     }
+    ]
+   }
+  },
+  "fit_token_less": {
+   "as_is": {
+    "perplexity": 16.6787109375,
+    "per_window_nll": [
+     3.2260663509368896,
+     2.667973756790161,
+     3.1715142726898193,
+     2.8968632221221924,
+     2.4820096492767334,
+     2.6303727626800537,
+     3.1547067165374756,
+     2.283559560775757
+    ],
+    "band_nll": {
+     "0_31": 6.430624902248383,
+     "32_127": 3.4906126856803894,
+     "128_on": 2.7199854850769043
+    }
+   },
+   "bos_prepended": {
+    "perplexity": 13.47731876373291,
+    "per_window_nll": [
+     2.466412305831909,
+     2.7298343181610107,
+     3.1595208644866943,
+     2.9263460636138916,
+     2.390636444091797,
+     2.7122747898101807,
+     2.2261123657226562,
+     2.196927547454834
+    ],
+    "band_nll": {
+     "0_31": 4.8241614401340485,
+     "32_127": 3.06648325920105,
+     "128_on": 2.540650427341461
+    }
+   },
+   "needle_bos": {
+    "hits": 45,
+    "of": 50,
+    "by_depth": {
+     "10": 8,
+     "30": 9,
+     "50": 9,
+     "70": 9,
+     "90": 10
+    },
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "answer": "The secret code for the red door is 2736.</s>",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "answer": "The secret code for the red door is 2736.</s>",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "answer": "The secret code for the red door is 27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "answer": "The secret code for the red door is 2736.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "answer": "The secret code for the red door is 27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "answer": "The secret code for the orange door is 1864.</s>",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "answer": "The secret code for the orange door is 1864.</s>",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     }
+    ]
+   },
+   "kv_heads_kept": 128,
+   "ratio_as_is": 3.0103478849551077,
+   "ratio_bos_prepended": 2.389194014332297
+  },
+  "fit_token_first": {
+   "as_is": {
+    "perplexity": 16.839405059814453,
+    "per_window_nll": [
+     3.252041816711426,
+     2.6819798946380615,
+     3.17630934715271,
+     2.913975238800049,
+     2.486194372177124,
+     2.640925168991089,
+     3.150312900543213,
+     2.288034439086914
+    ],
+    "band_nll": {
+     "0_31": 6.481298923492432,
+     "32_127": 3.5018529295921326,
+     "128_on": 2.728806048631668
+    }
+   },
+   "bos_prepended": {
+    "perplexity": 13.685772895812988,
+    "per_window_nll": [
+     2.50529408454895,
+     2.7301762104034424,
+     3.152602434158325,
+     2.9488742351531982,
+     2.408163547515869,
+     2.742027997970581,
+     2.24200701713562,
+     2.2017080783843994
+    ],
+    "band_nll": {
+     "0_31": 4.883942484855652,
+     "32_127": 3.0934928953647614,
+     "128_on": 2.554674655199051
+    }
+   },
+   "needle_bos": {
+    "hits": 46,
+    "of": 50,
+    "by_depth": {
+     "10": 8,
+     "30": 9,
+     "50": 9,
+     "70": 10,
+     "90": 10
+    },
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "answer": "The secret code for the red door is 2736.</s>",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "answer": "The secret code for the red door is 2736.</s>",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "answer": "The secret code for the red door is 27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "answer": "The secret code for the red door is 27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "answer": "The secret code for the red door is 27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "answer": "The secret code for the orange door is 1864.</s>",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "answer": "The secret code for the orange door is 1864.</s>",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     }
+    ]
+   },
+   "kv_heads_kept": 128,
+   "ratio_as_is": 3.039351637885821,
+   "ratio_bos_prepended": 2.426147756642582
+  }
+ },
+ "groups": [
+  [
+   [
+    0,
+    5
+   ],
+   [
+    1,
+    7
+   ],
+   [
+    2,
+    3
+   ],
+   [
+    4,
+    6
+   ]
+  ],
+  [
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    7
+   ],
+   [
+    3,
+    6
+   ],
+   [
+    4,
+    5
+   ]
+  ],
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    7
+   ],
+   [
+    3,
+    4
+   ],
+   [
+    5,
+    6
+   ]
+  ],
+  [
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    7
+   ],
+   [
+    3,
+    5
+   ],
+   [
+    4,
+    6
+   ]
+  ],
+  [
+   [
+    0,
+    6
+   ],
+   [
+    1,
+    7
+   ],
+   [
+    2,
+    5
+   ],
+   [
+    3,
+    4
+   ]
+  ],
+  [
+   [
+    0,
+    3
+   ],
+   [
+    1,
+    5
+   ],
+   [
+    2,
+    4
+   ],
+   [
+    6,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    6
+   ],
+   [
+    3,
+    4
+   ],
+   [
+    5,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    4
+   ],
+   [
+    1,
+    6
+   ],
+   [
+    2,
+    3
+   ],
+   [
+    5,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    6
+   ],
+   [
+    3,
+    5
+   ],
+   [
+    4,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    3
+   ],
+   [
+    1,
+    5
+   ],
+   [
+    2,
+    4
+   ],
+   [
+    6,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    4
+   ],
+   [
+    1,
+    7
+   ],
+   [
+    2,
+    5
+   ],
+   [
+    3,
+    6
+   ]
+  ],
+  [
+   [
+    0,
+    5
+   ],
+   [
+    1,
+    3
+   ],
+   [
+    2,
+    6
+   ],
+   [
+    4,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    7
+   ],
+   [
+    3,
+    4
+   ],
+   [
+    5,
+    6
+   ]
+  ],
+  [
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    7
+   ],
+   [
+    3,
+    5
+   ],
+   [
+    4,
+    6
+   ]
+  ],
+  [
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    6
+   ],
+   [
+    3,
+    5
+   ],
+   [
+    4,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    7
+   ],
+   [
+    3,
+    6
+   ],
+   [
+    4,
+    5
+   ]
+  ],
+  [
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    5
+   ],
+   [
+    3,
+    7
+   ],
+   [
+    4,
+    6
+   ]
+  ],
+  [
+   [
+    0,
+    3
+   ],
+   [
+    1,
+    5
+   ],
+   [
+    2,
+    7
+   ],
+   [
+    4,
+    6
+   ]
+  ],
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    4
+   ],
+   [
+    3,
+    5
+   ],
+   [
+    6,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    7
+   ],
+   [
+    1,
+    3
+   ],
+   [
+    2,
+    4
+   ],
+   [
+    5,
+    6
+   ]
+  ],
+  [
+   [
+    0,
+    6
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    3,
+    7
+   ],
+   [
+    4,
+    5
+   ]
+  ],
+  [
+   [
+    0,
+    4
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    3,
+    6
+   ],
+   [
+    5,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    7
+   ],
+   [
+    3,
+    4
+   ],
+   [
+    5,
+    6
+   ]
+  ],
+  [
+   [
+    0,
+    4
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    3,
+    7
+   ],
+   [
+    5,
+    6
+   ]
+  ],
+  [
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    4
+   ],
+   [
+    3,
+    5
+   ],
+   [
+    6,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    6
+   ],
+   [
+    3,
+    5
+   ],
+   [
+    4,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    3
+   ],
+   [
+    1,
+    4
+   ],
+   [
+    2,
+    6
+   ],
+   [
+    5,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    1
+   ],
+   [
+    2,
+    3
+   ],
+   [
+    4,
+    5
+   ],
+   [
+    6,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    6
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    3,
+    5
+   ],
+   [
+    4,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    4
+   ],
+   [
+    1,
+    7
+   ],
+   [
+    2,
+    5
+   ],
+   [
+    3,
+    6
+   ]
+  ],
+  [
+   [
+    0,
+    6
+   ],
+   [
+    1,
+    3
+   ],
+   [
+    2,
+    5
+   ],
+   [
+    4,
+    7
+   ]
+  ],
+  [
+   [
+    0,
+    7
+   ],
+   [
+    1,
+    4
+   ],
+   [
+    2,
+    3
+   ],
+   [
+    5,
+    6
+   ]
+  ]
+ ],
+ "pairs_fixed_to": "the token-less fit's residual matching",
+ "seconds": 4634.8
+}

@@ -1,0 +1,23 @@
+token-first calibration mistralai/Mistral-7B-Instruct-v0.2 starting Wed Nov  4 20:46:05 UTC 2026
+mistralai/Mistral-7B-Instruct-v0.2: unconverted 5.540 as is, 5.641 with the token; needle with the token 50 of 50 (477s)
+token-less moments from 262144 tokens (1356s)
+token-first moments from 262144 tokens (2267s)
+mistralai/Mistral-7B-Instruct-v0.2, fit_token_less: perplexity 16.679 as is (ratio 3.010), 13.477 with the token (ratio 2.389); bands with the token {'0_31': 4.8241614401340485, '32_127': 3.06648325920105, '128_on': 2.540650427341461}; needle with the token 45 of 50 {'10': 8, '30': 9, '50': 9, '70': 9, '90': 10} (3479s)
+mistralai/Mistral-7B-Instruct-v0.2, fit_token_first: perplexity 16.839 as is (ratio 3.039), 13.686 with the token (ratio 2.426); bands with the token {'0_31': 4.883942484855652, '32_127': 3.0934928953647614, '128_on': 2.554674655199051}; needle with the token 46 of 50 {'10': 8, '30': 9, '50': 9, '70': 10, '90': 10} (4635s)
+TOKEN_FIRST_CALIB_DONE (4635s)
+token-first calibration mistralai/Mistral-7B-v0.1 starting Wed Nov  4 22:03:24 UTC 2026
+mistralai/Mistral-7B-v0.1: unconverted 4.859 as is, 4.932 with the token; needle with the token 50 of 50 (487s)
+token-less moments from 262144 tokens (1633s)
+token-first moments from 262144 tokens (2680s)
+mistralai/Mistral-7B-v0.1, fit_token_less: perplexity 28.683 as is (ratio 5.903), 27.547 with the token (ratio 5.586); bands with the token {'0_31': 4.94830584526062, '32_127': 3.5337104499340057, '128_on': 3.277776211500168}; needle with the token 0 of 50 {'10': 0, '30': 0, '50': 0, '70': 0, '90': 0} (3827s)
+mistralai/Mistral-7B-v0.1, fit_token_first: perplexity 30.260 as is (ratio 6.228), 27.746 with the token (ratio 5.626); bands with the token {'0_31': 5.042102217674255, '32_127': 3.5476082861423492, '128_on': 3.283213287591934}; needle with the token 0 of 50 {'10': 0, '30': 0, '50': 0, '70': 0, '90': 0} (4962s)
+TOKEN_FIRST_CALIB_DONE (4962s)
+TFC_DONE
+token-first calibration TinyLlama/TinyLlama_v1.1 starting Wed Nov  4 23:26:47 UTC 2026
+TinyLlama/TinyLlama_v1.1: unconverted 7.238 as is, 8.793 with the token; needle with the token 49 of 50 (97s)
+token-less moments from 262144 tokens (238s)
+token-first moments from 262144 tokens (380s)
+TinyLlama/TinyLlama_v1.1, fit_token_less: perplexity 57.992 as is (ratio 8.013), 68.489 with the token (ratio 7.789); bands with the token {'0_31': 6.768233001232147, '32_127': 5.353511244058609, '128_on': 4.12792706489563}; needle with the token 0 of 50 {'10': 0, '30': 0, '50': 0, '70': 0, '90': 0} (523s)
+TinyLlama/TinyLlama_v1.1, fit_token_first: perplexity 58.181 as is (ratio 8.039), 97.078 with the token (ratio 11.041); bands with the token {'0_31': 8.61594557762146, '32_127': 6.800016671419144, '128_on': 4.396853178739548}; needle with the token 0 of 50 {'10': 0, '30': 0, '50': 0, '70': 0, '90': 0} (665s)
+TOKEN_FIRST_CALIB_DONE (665s)
+TFC_TINY_DONE

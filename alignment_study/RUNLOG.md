@@ -2251,3 +2251,53 @@ with the token (bands as is 0 to 31 5.436, 32 to 127 3.658, 128 on 3.307; with
 the token 4.948, 3.534, 3.278). Fused over unconverted: 5.903 as is, 5.586
 with the token.
 
+
+Token-first calibration test (2026-11-04 20:46 to 2026-11-04 23:38 UTC;
+token_first_calib_dev.py; token_first_calib_dev/<model>.json;
+token_first_calib.log; development, design
+private/drafts/DEV_token_first_calibration.md, prediction stated before
+running: a larger token-first gain on the Instruct than on the base): the
+fusion's second moments on the 128 calibration windows without the beginning-
+of-sequence token (every round's fit) and with it prepended, the pairs fixed
+to the token-less fit's residual matching, each conversion at half the key-
+value heads evaluated on the 8 registered WikiText-2 windows as they are and
+with the token prepended, with the mean negative log-likelihood over positions
+0 to 31, 32 to 127 and 128 on, and the registered needle protocol with the
+token prepended on both conversions.
+
+Mistral-7B-Instruct-v0.2 (128 windows of 2,048 for the moments, 8 evaluation
+windows, 77 min): unconverted 5.54 as is, 5.64 with the token, needle with the
+token 50 of 50; fit token less: 16.68 as is (ratio 3.010), 13.48 with the
+token (ratio 2.389; bands 4.824, 3.066, 2.541); needle with the token 45 of
+50; fit token first: 16.84 as is (ratio 3.039), 13.69 with the token (ratio
+2.426; bands 4.884, 3.093, 2.555); needle with the token 46 of 50; token-first
+calibration changes the token-first perplexity by +1.5 percent and the token-
+less one by +1.0 percent; the needle with the token moves from 45 to 46 of 50.
+
+Mistral-7B-v0.1 (128 windows of 2,048 for the moments, 8 evaluation windows,
+83 min): unconverted 4.86 as is, 4.93 with the token, needle with the token 50
+of 50; fit token less: 28.68 as is (ratio 5.903), 27.55 with the token (ratio
+5.586; bands 4.948, 3.534, 3.278); needle with the token 0 of 50; fit token
+first: 30.26 as is (ratio 6.228), 27.75 with the token (ratio 5.626; bands
+5.042, 3.548, 3.283); needle with the token 0 of 50; token-first calibration
+changes the token-first perplexity by +0.7 percent and the token-less one by
++5.5 percent; the needle with the token moves from 0 to 0 of 50.
+
+TinyLlama_v1.1 (128 windows of 2,048 for the moments, 8 evaluation windows, 11
+min): unconverted 7.24 as is, 8.79 with the token, needle with the token 49 of
+50; fit token less: 57.99 as is (ratio 8.013), 68.49 with the token (ratio
+7.789; bands 6.768, 5.354, 4.128); needle with the token 0 of 50; fit token
+first: 58.18 as is (ratio 8.039), 97.08 with the token (ratio 11.041; bands
+8.616, 6.800, 4.397); needle with the token 0 of 50; token-first calibration
+changes the token-first perplexity by +41.7 percent and the token-less one by
++0.3 percent; the needle with the token moves from 0 to 0 of 50.
+
+llama-160m (16 windows of 1,024 for the moments, 2 evaluation windows, 1 min;
+the Llama-160m dry run): unconverted 69.26 as is, 71.53 with the token, needle
+with the token 0 of 50; fit token less: 116.08 as is (ratio 1.676), 115.48
+with the token (ratio 1.614; bands 5.936, 4.557, 4.739); needle with the token
+0 of 50; fit token first: 116.41 as is (ratio 1.681), 116.12 with the token
+(ratio 1.623; bands 5.921, 4.578, 4.744); needle with the token 0 of 50;
+token-first calibration changes the token-first perplexity by +0.5 percent and
+the token-less one by +0.3 percent; the needle with the token moves from 0 to
+0 of 50.
