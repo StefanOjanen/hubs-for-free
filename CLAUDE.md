@@ -306,7 +306,7 @@ margin 10 missed) and 0 on Mistral-7B-v0.1 (every converted arm 0; no digit in 4
 at which the protocol's decoding ends, or repeats; the decode diagnostic (retrieval_decode_diag.py, retrieval_diag/,
 2026-11-04) shows a decode that stops only at the end of sequence retrieving
 the same counts on every arm of the three models and the fused base model
-continuing every prompt with one prompt-independent text: a loss of the context, not of the format; with the beginning-of-sequence token prepended to every prompt, retrieval_decode_diag.py --bos, the fused base model still retrieves 0 of 50 under both arms, so the collapse is not the sink-start failure below; Qwen2.5's tokenizer has no such token, so the test does not apply to it); E4 and E5 hold;
+continuing every prompt with one prompt-independent text: a loss of the context, not of the format; with the beginning-of-sequence token prepended to every prompt, retrieval_decode_diag.py --bos, the fused base model still retrieves 0 of 50 under both arms, so the collapse is not the sink-start failure below; Qwen2.5's tokenizer has no such token, so the test does not apply to it; the development model with the token: plain fusion 45 of 50 against 10 without, exemption 50 against 46: most of the Instruct's retrieval loss was the sink-start failure of token-less prompts; report retrieval under the deployed prompt format); E4 and E5 hold;
 the development model 46 and 48 of 50 under the protocol, identical in the
 rerun. The exemption repairs retrieval only where the conversion leaves the
 model answering; the plain fusion at half the heads loses the planted code on

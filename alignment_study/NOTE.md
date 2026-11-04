@@ -881,11 +881,11 @@ Development on gpt2 labeled. 7 of 7 clauses pass:
 
 Correction found while writing this round up: the statistic called Voita et
 al.'s confidence in preregistrations 12, 14 and 15 is the largest attention
-weight over all tokens, sink included. Voita et al. exclude the
-end-of-sentence token (their footnote 2), which in translation encoders
-draws attention the way the sink does in a decoder. The registered results stand for the statistic computed; the
-attribution was wrong. Preregistration 16 (frozen at f5a9539) tests their
-definition.
+weight over all tokens, sink included. Voita et al. exclude the end-of-
+sentence token (their footnote 2), which in translation encoders draws
+attention the way the sink does in a decoder. The registered results stand for
+the statistic computed; the attribution was wrong. Preregistration 16 (frozen
+at f5a9539) tests their definition.
 
 ## Voita et al.'s confidence as they define it (2026-10-13, preregistration 16)
 
@@ -1808,42 +1808,62 @@ perplexities), the conversion and the greedy decoding being deterministic.
 How the arms fail differs by model (`retrieval_answers.py`,
 `retrieval_round_answers.json`): the fused development model always answers in
 the sentence form with wrong digits, mostly the same two or three strings
-("1111", "10110101", "1234"), and the exemption corrects the digits; the fused Mistral-7B-v0.1 answers with newline tokens, at which the
-protocol's decoding ends (46 of the plain fusion's 50 answers are empty), or
-repeats a phrase, and not one of its 400 converted answers contains a digit, the exemptions trading empty answers for repetition (10 empty and 19
-degenerate at 0.1); the fused Qwen2.5-7B answers degenerate text (26 of 50)
-that the exemptions turn into the sentence form in all 50 instances with the
-right digits in 8. The exemption repairs the retrieval heads' part of the loss
-where the conversion otherwise leaves the model answering, as on the
-development model at a perplexity of 3.0 times the unconverted on these
-windows, and cannot repair a conversion that loses the task outright, as on
-the base models at 5.9 and 13 times; a 21-head random draw on Mistral-7B-v0.1
-at 3.7 times answers nothing either, so the ratio alone does not mark the
-boundary, and whether instruction tuning, the base models' answer behaviour
-under damage or the damage itself separates the cases is open. The registered
-claim, that the exemption restores retrieval on other models at the same small
-cost, is false as stated and reported as such. What survives is the cheaper
-finding, now on three models under one protocol: the plain fusion at half the
-heads loses the planted code on every model (10, 0 and 0 of 50) while its
-perplexity stays within 3 to 13 times, so the retrieval test, not perplexity,
-shows whether a head-merging conversion kept the task; the exemption never
-costs perplexity and repairs retrieval where the model still answers. The
-draft paper's recommendation changes from exempting by default to reporting
-retrieval and exempting where it helps. Follow-up prepared for the author's
-decision (`retrieval_protect_dev.py --pairing=neighbours --instances=50`): the
-same arms on Qwen2.5-7B under the neighbour pairing, whose plain fusion sits
-at 23.9 against the residual's 70.1, to ask whether the exemption repairs a conversion that is otherwise sound.
-The decode diagnostic (`retrieval_decode_diag.py`, `retrieval_diag/`)
-settles what the newline is: a 24-token decode that stops only at the end of
-sequence retrieves exactly what the protocol's cut retrieves on every arm of
-the three models (0 and 0 of 50 on Mistral-7B-v0.1, 0 and 7 on Qwen2.5-7B, 10
-and 46 on the development model), the fused Mistral-7B-v0.1 continues every
-prompt with the same prompt-independent text ("## 10.100% of the time, to the
-best of the most important thing is"), and at the answer position the code's
-first digit token falls from a median rank of 6 unconverted to about 1,700
-under the plain fusion and 1,300 under the exemption (the first-position digit
-mass reads the tokenizer's space marker and is not comparable across models).
-The newline is a loss of the context, not a prefix the stop rule cuts. With the beginning-of-sequence token prepended to every prompt (`retrieval_decode_diag.py --bos`, `retrieval_diag/Mistral-7B-v0.1_bos.json`) the fused Mistral-7B-v0.1 still retrieves 0 of 50 under the plain fusion and 0 under the exemption, cut or uncut, with the code's first token at a median rank of about 2,900 and 2,200: the collapse is not the sink-start failure of the layer-0 pairs, and the prompt format does not explain round 35. Qwen2.5-7B's tokenizer has no such token, so the test does not apply to it and its deployment prompts are token-less by design.
+("1111", "10110101", "1234"), and the exemption corrects the digits; the fused
+Mistral-7B-v0.1 answers with newline tokens, at which the protocol's decoding
+ends (46 of the plain fusion's 50 answers are empty), or repeats a phrase, and
+not one of its 400 converted answers contains a digit, the exemptions trading
+empty answers for repetition (10 empty and 19 degenerate at 0.1); the fused
+Qwen2.5-7B answers degenerate text (26 of 50) that the exemptions turn into
+the sentence form in all 50 instances with the right digits in 8. The
+exemption repairs the retrieval heads' part of the loss where the conversion
+otherwise leaves the model answering, as on the development model at a
+perplexity of 3.0 times the unconverted on these windows, and cannot repair a
+conversion that loses the task outright, as on the base models at 5.9 and 13
+times; a 21-head random draw on Mistral-7B-v0.1 at 3.7 times answers nothing
+either, so the ratio alone does not mark the boundary, and whether instruction
+tuning, the base models' answer behaviour under damage or the damage itself
+separates the cases is open. The registered claim, that the exemption restores
+retrieval on other models at the same small cost, is false as stated and
+reported as such. What survives is the cheaper finding, now on three models
+under one protocol: the plain fusion at half the heads loses the planted code
+on every model (10, 0 and 0 of 50) while its perplexity stays within 3 to 13
+times, so the retrieval test, not perplexity, shows whether a head-merging
+conversion kept the task; the exemption never costs perplexity and repairs
+retrieval where the model still answers. The draft paper's recommendation
+changes from exempting by default to reporting retrieval and exempting where
+it helps. Follow-up prepared for the author's decision
+(`retrieval_protect_dev.py --pairing=neighbours --instances=50`): the same
+arms on Qwen2.5-7B under the neighbour pairing, whose plain fusion sits at
+23.9 against the residual's 70.1, to ask whether the exemption repairs a
+conversion that is otherwise sound. The decode diagnostic
+(`retrieval_decode_diag.py`, `retrieval_diag/`) settles what the newline is: a
+24-token decode that stops only at the end of sequence retrieves exactly what
+the protocol's cut retrieves on every arm of the three models (0 and 0 of 50
+on Mistral-7B-v0.1, 0 and 7 on Qwen2.5-7B, 10 and 46 on the development
+model), the fused Mistral-7B-v0.1 continues every prompt with the same prompt-
+independent text ("## 10.100% of the time, to the best of the most important
+thing is"), and at the answer position the code's first digit token falls from
+a median rank of 6 unconverted to about 1,700 under the plain fusion and 1,300
+under the exemption (the first-position digit mass reads the tokenizer's space
+marker and is not comparable across models). The newline is a loss of the
+context, not a prefix the stop rule cuts. With the beginning-of-sequence token
+prepended to every prompt (`retrieval_decode_diag.py --bos`,
+`retrieval_diag/Mistral-7B-v0.1_bos.json`) the fused Mistral-7B-v0.1 still
+retrieves 0 of 50 under the plain fusion and 0 under the exemption, cut or
+uncut, with the code's first token at a median rank of about 2,900 and 2,200:
+the collapse is not the sink-start failure of the layer-0 pairs, and the
+prompt format does not explain round 35. Qwen2.5-7B's tokenizer has no such
+token, so the test does not apply to it and its deployment prompts are token-
+less by design. On the development model the token changes the picture: with
+it the plain fusion retrieves 45 of 50 (10 without) and the exemption 50 (46
+without), so most of the retrieval loss reported for this model was the sink-
+start failure of prompts without the token; under the deployed, token-first
+format the plain fusion at half the heads loses 5 of 50 and the exemption
+restores all 50. Retrieval needs either intact sink handling or intact
+retrieval heads: the plain fusion under token-less prompts damages both and
+fails, the exemption keeps the second, the token keeps the first, and the base
+model fails under both formats.
+(`retrieval_diag/Mistral-7B-Instruct-v0.2_bos.json`.)
 
 ## The catastrophic pair serves the attention sink: a merged pair's damage follows the sequence start, not the text (2026-11-04, development)
 
@@ -1888,7 +1908,11 @@ negative log-likelihood over the unconverted model falls from 1.83 to 0.27
 nats in positions 0 to 31, from 1.22 to 0.74 in 32 to 127 and from 1.08 to
 0.89 from 128 on. Comparisons between recipes within a round were made under
 the same windowing and stand; absolute costs on windows without the token
-overstate the token-first case. And the sink line of this repository (rounds 9
-to 13 and 21) meets the fusion line here: the heads whose merge is hazardous
-in layer 0 are the sink's. Development, one model, one layer, two pairs, two
-windows of each text.
+overstate the token-first case. The needle prompts carry no token either: with
+it prepended the development model's plain fusion retrieves 45 of 50 against
+10 without, and the exemption 50 against 46, so the retrieval loss of the
+development section above was mostly this effect; the fused base
+Mistral-7B-v0.1 retrieves nothing either way. And the sink line of this
+repository (rounds 9 to 13 and 21) meets the fusion line here: the heads whose
+merge is hazardous in layer 0 are the sink's. Development, one model, one
+layer, two pairs, two windows of each text.

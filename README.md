@@ -603,8 +603,10 @@ Each instrument below exists because a finding above required it.
 <p align="center"><img src="figures/readme/fig33_quarter_heads.png" alt="Two panels. Left: WikiText-2 perplexity on a log axis for Llama-2-7B and Mistral-7B-v0.1 unconverted, at half the key-value heads and at a quarter with three groupings, each point marked by whether the one-window check exceeds 2.35; Llama-2-7B's two fused quarter conversions are flagged and sit near 15,000 and 19,000, averaging is unflagged at 4,066, and the conversion with layer 0 at half and the rest at a quarter is unflagged at 105; Mistral's quarter conversions are unflagged at 146 to 813. Right: the check on Llama-2-7B against the number of early layers kept at half, 576 at zero and 0.98 from one onward, with the threshold line" width="880"></p>
 <p align="center"><em>The check flags the quarter conversions that collapse through the super weight, not the ones that fail the ordinary way, and keeping the first layer at half, which it also chooses, recovers the model.</em></p>
 
-- **Merging key-value heads loses copying from context; on the development
-  model the retrieval heads are the cheap repair.** Perplexity and the seven zero-shot tasks did
+- **Merging key-value heads loses copying from context under prompts without
+  the beginning-of-sequence token; on the development model the retrieval
+  heads are the cheap repair, and with the token the plain fusion keeps 45 of
+  50.** Perplexity and the seven zero-shot tasks did
   not see it: at half the key-value heads, the plain fusion of
   Mistral-7B-Instruct keeps perplexity within 2.4 times on the whole test and
   retrieves a planted five-digit code 2 times in 15 (unconverted 15 of 15),
@@ -624,7 +626,9 @@ Each instrument below exists because a finding above required it.
   include early-layer heads reach 11.1 to 12.9 against the retrieval 24's
   12.5. Development, one model, fifteen instances per arm, underpowered for
   the five-head contrast; the preregistered test on two more models with fifty
-  instances follows. A random control in this design must also restrict the leftover
+  instances follows. Measured without the beginning-of-sequence token, as the
+  prompts were built: with it prepended the plain fusion retrieves 45 of 50
+  and the exemption 50 (the sink bullet below). A random control in this design must also restrict the leftover
   of an odd layer, which the cheapest-matching rule twice made a retrieval
   head.
 
@@ -649,7 +653,9 @@ Each instrument below exists because a finding above required it.
   (decoded to the end of sequence instead, it continues every prompt with the
   same prompt-independent text and still no code, and with the
   beginning-of-sequence token prepended to every prompt it still retrieves
-  nothing, so the collapse is not the sink failure of the next bullet), and the
+  nothing, so the collapse is not the sink failure of the next bullet; the
+  development model is different: with the token its plain fusion retrieves
+  45 of 50 against 10 without, and the exemption 50 against 46), and the
   fused Qwen2.5-7B answers degenerate text that the exemption turns into the
   right form with stereotyped digits; no exemption at these budgets brings the
   task back. The exemption repairs what merging the retrieval heads removed

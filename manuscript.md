@@ -698,41 +698,40 @@ Target 5, Retrieval Heads (2024), the positive control: 3 to 6 percent of
 heads copy from the context during needle retrieval (retrieval score above
 0.1) and masking them breaks retrieval (arXiv version 1). A compact
 reimplementation of the score on Qwen2.5-7B at contexts of 1,024 and 2,048
-tokens (20 instances) retrieved the needle every time and put 4.2 percent
-of heads above 0.1, with the strongest in layers 14, 22 and 23; on the
-paper's Mistral-7B-Instruct-v0.2 the same protocol gives 3.4 percent, again
-with every needle retrieved. Our prompt ends with the first half of the
-needle sentence and our score divides by the whole needle, so scores top
-out near 0.6 rather than 1 and the threshold of 0.1 is correspondingly
-stricter than the source's. On Llama-2-7B-80K, the paper's running example,
-our haystack and prompt retrieve only half of the needles and 0.7 percent
-of heads score above 0.1. The frozen inclusion rule repeated the test with the
-source repository's own haystack, needles, insertion rule, prompt and
-success criterion: the needle is then retrieved in 20 of 20 instances, so
-the earlier failure was our haystack and prompt, but 1.3 percent of heads
-score above 0.1 at 1K and 2K tokens on 20 instances, below the rule's 2
-percent floor, and the model stays excluded as the rule was applied. That
-repeat scored heads against the whole needle span, whereas the source's
-code scores against the answer span; rerun with the answer span, 20 of
-1,024 heads (1.95 percent) score above 0.1, still below the floor by one
-head, so the model stays excluded as the rule is written, by that margin. Reproduced on Qwen2.5-7B and on the
-paper's Mistral-7B-Instruct-v0.2; criteria frozen. The battery must not
-remove this structure; if it does, its thresholds are revised before any
-other outcome is reported. Battery (200 draws, 20 instances per model): on
-Qwen2.5-7B and on Mistral-7B-Instruct-v0.2, random rows, marginal-matched
-rows and sink-column-preserving rows put the fraction of heads above 0.1
-and the top-10 score at the 100th percentile of 200 draws and reproduce
-0.7 to 1.1 percent of the top-10 score; the three untrained
-initializations score zero. E3 holds on both models: the surrogates that
-absorb the layer clustering of Target 1 and the redundancy of Target 3 do
+tokens (20 instances) retrieved the needle every time and put 4.2 percent of
+heads above 0.1, with the strongest in layers 14, 22 and 23; on the paper's
+Mistral-7B-Instruct-v0.2 the same protocol gives 3.4 percent, again with every
+needle retrieved. Our prompt ends with the first half of the needle sentence
+and our score divides by the whole needle, so scores top out near 0.6 rather
+than 1 and the threshold of 0.1 is correspondingly stricter than the source's.
+On Llama-2-7B-80K, the paper's running example, our haystack and prompt
+retrieve only half of the needles and 0.7 percent of heads score above 0.1.
+The frozen inclusion rule repeated the test with the source repository's own
+haystack, needles, insertion rule, prompt and success criterion: the needle is
+then retrieved in 20 of 20 instances, so the earlier failure was our haystack
+and prompt, but 1.3 percent of heads score above 0.1 at 1K and 2K tokens on 20
+instances, below the rule's 2 percent floor, and the model stays excluded as
+the rule was applied. That repeat scored heads against the whole needle span,
+whereas the source's code scores against the answer span; rerun with the
+answer span, 20 of 1,024 heads (1.95 percent) score above 0.1, still below the
+floor by one head, so the model stays excluded as the rule is written, by that
+margin. Reproduced on Qwen2.5-7B and on the paper's Mistral-7B-Instruct-v0.2;
+criteria frozen. The battery must not remove this structure; if it does, its
+thresholds are revised before any other outcome is reported. Battery (200
+draws, 20 instances per model): on Qwen2.5-7B and on Mistral-7B-Instruct-v0.2,
+random rows, marginal-matched rows and sink-column-preserving rows put the
+fraction of heads above 0.1 and the top-10 score at the 100th percentile of
+200 draws and reproduce 0.7 to 1.1 percent of the top-10 score; the three
+untrained initializations score zero. E3 holds on both models: the surrogates
+that absorb the layer clustering of Target 1 and the redundancy of Target 3 do
 not touch a head set that copies specific context tokens, which is what a
 permutation of where a row looks cannot produce. Because such a permutation
 destroys token copying almost by construction, the control shows that the
 battery can return "survives"; it does not calibrate the nulls for the
 distribution-level statistics of Targets 1 and 3. What supports those two
 results is the pattern across nulls: random and untrained maps reproduce
-nothing, row values alone reproduce 1 to 10 percent, and only the nulls
-that keep the shared columns reproduce most of the effect.
+nothing, row values alone reproduce 1 to 10 percent, and only the nulls that
+keep the shared columns reproduce most of the effect.
 
 Registered expectations, with every battery complete. E3 holds on both
 control models. E1, E2 and E5 fail as written, for different reasons. E1
@@ -1262,20 +1261,20 @@ pairing is as good as the fusion's own: 1.4 percent worse in the fusion's
 residual in the median layer and at most 6.0 percent outside layer 0, and
 within 0.83 percent in perplexity when any single layer is converted alone.
 Converting layers cumulatively and swapping single layers between the two
-pairings locates the whole difference in layer 1, and testing its pairs one
-at a time locates it in one pair: merging key-value heads 8 and 18, once layer
-0 is converted, takes perplexity on four windows from 6.2 to 2,325 (layer 0 on
+pairings locates the whole difference in layer 1, and testing its pairs one at
+a time locates it in one pair: merging key-value heads 8 and 18, once layer 0
+is converted, takes perplexity on four windows from 6.2 to 2,325 (layer 0 on
 round 28's pairs) or 6,008 (on CAGA's), while layer 1's other pairs, and the
-merge with layer 0 unconverted, stay at 6.4 to 6.5. The merge switches on neuron 7890 of layer
-1's MLP, whose down-projection weight [2533, 7890] is the super weight that
-Yu et al. (2024) identify in this model and that writes its massive
-activation (Sun et al. 2024) into the first position. At ordinary tokens the
-neuron's median activation rises from 0.05 to 48.6, against 380 at the first
-position, because head 8's contribution to its gate input turns from -1.3 to
-+18.5 when the merge removes its attention to newline tokens. On round 28's
-matching (8 with 1, 18 with 11) head 8's push of +10.6 is offset by head 11's
--11.7, and the neuron stays off. Averaging, CAGA's construction on the other
-two pairings and 3-bit round-to-nearest quantization of the same model
+merge with layer 0 unconverted, stay at 6.4 to 6.5. The merge switches on
+neuron 7890 of layer 1's MLP, whose down-projection weight [2533, 7890] is the
+super weight that Yu et al. (2024) identify in this model and that writes its
+massive activation (Sun et al. 2024) into the first position. At ordinary
+tokens the neuron's median activation rises from 0.05 to 48.6, against 380 at
+the first position, because head 8's contribution to its gate input turns from
+-1.3 to +18.5 when the merge removes its attention to newline tokens. On round
+28's matching (8 with 1, 18 with 11) head 8's push of +10.6 is offset by head
+11's -11.7, and the neuron stays off. Averaging, CAGA's construction on the
+other two pairings and 3-bit round-to-nearest quantization of the same model
 collapse without this spike. A per-layer criterion therefore cannot certify a
 conversion. One calibration window separates the cases: the median token's
 residual norm after layer 1 is 0.99 to 1.22 times the unconverted model's in
@@ -1340,28 +1339,29 @@ column norms down to 0.0008). Two families of rescalings leave the function
 unchanged: value row r times d_r with column r of every output slice of the
 group divided by d_r, and rotary plane p of the shared key times c_p with the
 same plane of every query of the group divided by c_p (a real factor commutes
-with the rotation). Choosing d_r and c_p as the square root of the ratio of the
-two sides' norms gives the minimum-norm factorization of each product. This is
-cross-layer equalization from data-free quantization (Nagel et al. 2019), the
-move AWQ and SmoothQuant make between activations and weights, applied to the
-value-output and query-key pairs; what is new is only that the closed-form
-fusion creates a severe imbalance, which standard equalization repairs. Preregistration 30 tested its effect
-on rounding in six models and on uptraining in two; 4 of 6 clauses pass. With
-the attention projections rounded to 4 bits per output channel, the rebalanced
-model is lower in all six (Q2) and keeps 0.48 of the rounding cost in log
-perplexity, pooled (Q3; per model 0.11 to 0.97); at 3 bits it is lower by up to
-a factor of 27 (Qwen2.5-7B, 88 against 2,423). Uptraining OLMo-1B and
-h2o-danube-1.8b for 327,680 tokens at learning rates 5e-6 to 2e-4, the
-rebalanced start's best run is below the unbalanced start's best (25.9 against
-27.0 and 15.4 against 16.6; T1) and below averaging's best at every checkpoint
-(T3). The unbalanced start degrades at 8e-5 and diverges at 2e-4 (to 176 and
-2,455) where the rebalanced one stays at 26.9 to 36.2 and 15.4 to 16.7. Two
-clauses fail. At 5e-6 the unbalanced start ends lower in both models (T2). And
-rebalancing weights already stored in bfloat16 rounds them twice: perplexity
-moves by 0.7 percent in Llama-2-7B and 4.2 percent in Qwen2.5-7B, and the logits
-of h2o-danube-1.8b in float32 move by 3.1e-4 of the largest logit, beyond the
-registered tolerances (Q1). The conversion command now fuses and rebalances
-each layer in float32 and rounds once.
+with the rotation). Choosing d_r and c_p as the square root of the ratio of
+the two sides' norms gives the minimum-norm factorization of each product.
+This is cross-layer equalization from data-free quantization (Nagel et al.
+2019), the move AWQ and SmoothQuant make between activations and weights,
+applied to the value-output and query-key pairs; what is new is only that the
+closed-form fusion creates a severe imbalance, which standard equalization
+repairs. Preregistration 30 tested its effect on rounding in six models and on
+uptraining in two; 4 of 6 clauses pass. With the attention projections rounded
+to 4 bits per output channel, the rebalanced model is lower in all six (Q2)
+and keeps 0.48 of the rounding cost in log perplexity, pooled (Q3; per model
+0.11 to 0.97); at 3 bits it is lower by up to a factor of 27 (Qwen2.5-7B, 88
+against 2,423). Uptraining OLMo-1B and h2o-danube-1.8b for 327,680 tokens at
+learning rates 5e-6 to 2e-4, the rebalanced start's best run is below the
+unbalanced start's best (25.9 against 27.0 and 15.4 against 16.6; T1) and
+below averaging's best at every checkpoint (T3). The unbalanced start degrades
+at 8e-5 and diverges at 2e-4 (to 176 and 2,455) where the rebalanced one stays
+at 26.9 to 36.2 and 15.4 to 16.7. Two clauses fail. At 5e-6 the unbalanced
+start ends lower in both models (T2). And rebalancing weights already stored
+in bfloat16 rounds them twice: perplexity moves by 0.7 percent in Llama-2-7B
+and 4.2 percent in Qwen2.5-7B, and the logits of h2o-danube-1.8b in float32
+move by 3.1e-4 of the largest logit, beyond the registered tolerances (Q1).
+The conversion command now fuses and rebalances each layer in float32 and
+rounds once.
 
 ### 6.11 Fitting the shared heads where attention looks
 
@@ -1458,27 +1458,30 @@ experiment, in which masking the top retrieval heads drops needle accuracy
 below half while masking random heads does not; Zhang et al. (arXiv
 2506.09944) score heads by attention to the query-relevant span and find
 masking their top 32 in Llama-3.1-8B ends needle retrieval where Wu et al.'s
-top 32 only lowers it, so which scoring picks the cheapest exemption is open. Wu et al.'s retrieval heads, scored for this model in
-the audit of Section 4, serve 5 key-value heads at 0.3 or more and 24 at 0.1 or
-more, and the residual's matching pairs each of the five with a head scoring
-at most 0.21. With the five kept unmerged and the rest matched (133 of 256
-heads, 0.520 of the full cache) the model retrieves 14 of 15 at 13.9; with the
-24 (146 heads, 0.570), 15 of 15 at 12.5; with the strongest alone, 7 at 15.8.
-Five random heads drawn from those below 0.1, with the odd layers' leftovers
-held below it, give 7 of 15 at 16.0; twenty-four give 13 of 15 at 12.9; the 24
-heads whose cheapest pairing costs most give 5 of 15 at 14.0. The effect is
-graded rather than carried by a few heads, the retrieval heads are where a
-small exemption buys most (five of them do what twenty-four random heads do,
-on one clean draw of five), and the residual's own choice does least, in line
-with Section 6.8's finding that the local residual does not see what matters
+top 32 only lowers it, so which scoring picks the cheapest exemption is open.
+Wu et al.'s retrieval heads, scored for this model in the audit of Section 4,
+serve 5 key-value heads at 0.3 or more and 24 at 0.1 or more, and the
+residual's matching pairs each of the five with a head scoring at most 0.21.
+With the five kept unmerged and the rest matched (133 of 256 heads, 0.520 of
+the full cache) the model retrieves 14 of 15 at 13.9; with the 24 (146 heads,
+0.570), 15 of 15 at 12.5; with the strongest alone, 7 at 15.8. Five random
+heads drawn from those below 0.1, with the odd layers' leftovers held below
+it, give 7 of 15 at 16.0; twenty-four give 13 of 15 at 12.9; the 24 heads
+whose cheapest pairing costs most give 5 of 15 at 14.0. The effect is graded
+rather than carried by a few heads, the retrieval heads are where a small
+exemption buys most (five of them do what twenty-four random heads do, on one
+clean draw of five), and the residual's own choice does least, in line with
+Section 6.8's finding that the local residual does not see what matters
 globally; the retrieval heads are not where perplexity is won, since random
 draws that include early-layer heads reach 11.1 to 12.9 against the retrieval
-24's 12.5. One model, fifteen instances per arm, underpowered for the
-five-head contrast (`needle_dev.py`, `retrieval_protect_dev.py`,
+24's 12.5. One model, fifteen instances per arm, underpowered for the five-
+head contrast (`needle_dev.py`, `retrieval_protect_dev.py`,
 `retrieval_pairs_check.py`); a random control in this design must restrict the
 leftover head of an odd layer, which the cheapest-matching rule twice made a
 retrieval head. The preregistered test on two base models is Section 6.18,
-where the exemption did not transfer.
+where the exemption did not transfer; the prompts carry no beginning-of-
+sequence token, and with it prepended this model's plain fusion retrieves 45
+of 50 and the exemption 50 (Sections 6.18 and 6.19).
 
 ### 6.15 Uptraining from three starts at 5M tokens (preregistration 33)
 
@@ -1580,24 +1583,43 @@ fusion's 10, random heads 7, 12, 38 and 6, the residual's choice 19, identical
 before the freeze and in the registered rerun, so the fifteen-instance picture
 of Section 6.14 holds at fifty. The answers (`retrieval_answers.py`) place the
 difference: the fused development model always answers in the sentence form
-with wrong, stereotyped digits that the exemption corrects; the fused Mistral-7B-v0.1 answers with newline tokens, at which the
-protocol's decoding ends (46 of 50 plain-fusion answers empty), or repeats a
-phrase, with no digit in any of its 400 converted answers (a decode that stops only at the end of sequence retrieves the same counts
-on every arm of the three models and continues the base model's prompts with
-one prompt-independent text, `retrieval_decode_diag.py`: the newline is a loss of the context, not a prefix the stop rule cuts; With the beginning-of-sequence token prepended to every prompt (retrieval_decode_diag.py --bos, retrieval_diag/Mistral-7B-v0.1_bos.json) the fused Mistral-7B-v0.1 still retrieves 0 of 50 under the plain fusion and 0 under the exemption, cut or uncut, with the code's first token at a median rank of about 2,900 and 2,200: the collapse is not the sink-start failure of Section 6.19, and the prompt format does not explain round 35; Qwen2.5-7B's tokenizer has no such token, so the test does not apply to it and its deployment prompts are token-less by design) the fused
-Qwen2.5-7B answers degenerate text that the exemptions turn into the sentence
-form in every instance and the right digits in 8. The exemption repairs the
-retrieval heads' share of the loss where the conversion otherwise leaves the
-model answering (the development model, at a perplexity 3.0 times the
-unconverted on these windows) and cannot repair a conversion that loses the
-task outright (the base models at 5.9 and 13 times; a random draw on
-Mistral-7B-v0.1 at 3.7 times answers nothing either, so the ratio alone does
-not mark the boundary). The registered claim fails as stated. What holds on
-three models under one protocol is that the plain fusion at half the heads
-loses the planted code on each (10, 0 and 0 of 50) while perplexity stays
-within 3 to 13 times, so retrieval, not perplexity, shows whether a head-
-merging conversion kept the task; the exemption costs no perplexity and
-repairs retrieval where the model still answers.
+with wrong, stereotyped digits that the exemption corrects; the fused
+Mistral-7B-v0.1 answers with newline tokens, at which the protocol's decoding
+ends (46 of 50 plain-fusion answers empty), or repeats a phrase, with no digit
+in any of its 400 converted answers (a decode that stops only at the end of
+sequence retrieves the same counts on every arm of the three models and
+continues the base model's prompts with one prompt-independent text,
+`retrieval_decode_diag.py`: the newline is a loss of the context, not a prefix
+the stop rule cuts; With the beginning-of-sequence token prepended to every
+prompt (retrieval_decode_diag.py --bos,
+retrieval_diag/Mistral-7B-v0.1_bos.json) the fused Mistral-7B-v0.1 still
+retrieves 0 of 50 under the plain fusion and 0 under the exemption, cut or
+uncut, with the code's first token at a median rank of about 2,900 and 2,200:
+the collapse is not the sink-start failure of Section 6.19, and the prompt
+format does not explain round 35; Qwen2.5-7B's tokenizer has no such token, so
+the test does not apply to it and its deployment prompts are token-less by
+design; on the development model the token changes the picture: with it the
+plain fusion retrieves 45 of 50 (10 without) and the exemption 50 (46
+without), so most of the retrieval loss reported for this model was the sink-
+start failure of prompts without the token; under the deployed, token-first
+format the plain fusion at half the heads loses 5 of 50 and the exemption
+restores all 50. Retrieval needs either intact sink handling or intact
+retrieval heads: the plain fusion under token-less prompts damages both and
+fails, the exemption keeps the second, the token keeps the first, and the base
+model fails under both formats.) the fused Qwen2.5-7B answers degenerate text
+that the exemptions turn into the sentence form in every instance and the
+right digits in 8. The exemption repairs the retrieval heads' share of the
+loss where the conversion otherwise leaves the model answering (the
+development model, at a perplexity 3.0 times the unconverted on these windows)
+and cannot repair a conversion that loses the task outright (the base models
+at 5.9 and 13 times; a random draw on Mistral-7B-v0.1 at 3.7 times answers
+nothing either, so the ratio alone does not mark the boundary). The registered
+claim fails as stated. What holds on three models under one protocol is that
+the plain fusion at half the heads loses the planted code on each (10, 0 and 0
+of 50) while perplexity stays within 3 to 13 times, so retrieval, not
+perplexity, shows whether a head- merging conversion kept the task; the
+exemption costs no perplexity and repairs retrieval where the model still
+answers.
 
 ### 6.19 The catastrophic pair serves the attention sink (development, not preregistered)
 
@@ -1637,65 +1659,66 @@ and not only at the start: the excess negative log-likelihood over the
 unconverted model falls from 1.83 to 0.27 nats in positions 0 to 31, from 1.22
 to 0.74 in 32 to 127 and from 1.08 to 0.89 from 128 on. Comparisons between
 recipes within a round were made under the same windowing and stand; absolute
-costs on windows without the token overstate the token-first case.
+costs on windows without the token overstate the token-first case, and so does
+the needle loss of Section 6.14: with the token prepended the development
+model's plain fusion retrieves 45 of 50 against 10 without (Section 6.18).
 Development, one model, one layer, two pairs, two windows of each text.
 
 ## 7. Limitations
 
 Results cover seventeen models up to 8B parameters in ten families, three
-position schemes and three attention layouts, English text and code,
-windows up to 256 tokens for the statistics and 512 for perplexity; the
-functional comparisons of Section 6.2 were repeated at 1,024 tokens on two
-models (six of seven clauses hold), on three multi-head models with C4 as a
-second corpus (seven of seven), and on the encoder heads of three
-translation models; the later rounds add vision transformers (ViT-B/16,
-ViT-L/16, DINOv2-L with and without registers), BERT-base cased,
-Pythia-1.4B, OPT-1.3B and GPT-2 large for the merge benchmark, one
-downstream task (LAMBADA accuracy on 1,000 examples, where the merge
-criterion's advantage held in 5 of 6 models at one pair per layer and 4 of 6
-at two), and contexts of 2,048 tokens for the KV-cache and streaming tests.
-The weighting account of Section 5 was tested prospectively on five pairs of
-statistics, and its occupancy refinement failed on the one small-k statistic.
-The conversion of Section 6.5 was tested on five multi-head models up to 2.7B
-parameters and without uptraining; its best recipe still leaves perplexity at
-2 to 5 times the unconverted model's at half the key-value heads in four of
-them, and whether its advantage survives uptraining is untested. The fusion of
-Section 6.6 narrows that gap on the same five models and, in Section 6.8, on
-Llama-2-7B against the best published training-free head-merging result, whose evaluation
-length, subsets and harness are not stated and whose pairing could not be
-reproduced, and in Section 6.9 on five models that already share key-value
-heads or are multi-head, where its weighting fails in the two Qwen2.5 cells
-that merge every key-value head into one; it was not tested after uptraining.
-Its Llama-2-7B result also depends on the pairing in a way its own residual
-does not see: on a third pairing, matched by CAGA's residual, one merged pair
-in layer 1 switches on the super-weight neuron and the conversion collapses
-(Section 6.8, exploratory); the fusion's matching avoided that pair, but
-nothing in the matching protects against it. A preregistered search for the
-same failure in four other models found no severe damage (Section 6.8), so its
-generality and the recall of the one-window check remain untested. The cross-layer audit of Section 6.7 covers four 3.8B to 7B models,
-one of them apparently misconfigured, and continuation loss after 1,536 tokens
-of context on WikiText-103. Where the sink sits on a mid-sequence, window-varying column
-(OLMo-2, late Qwen2.5-3B layers), the sink-operator identification weakens
-(cosine 0.61 to 0.82 with one column) and the column set repairs most but
-not all of it (four of OLMo-2's 19 high-sink layers keep a sufficiency
-residual above 0.4). Restoring the rank-one geometry under a dissociation
-control needs a causal width of roughly eight tokens per head. The
-deviation directions carry structure the shared-operator description does
-not capture (Section 4.6). The commutator pipeline is one instrument among
-many the audits address; it is the one whose failure started this work.
-The dynamics result rests on one model family. The derivation gate and the practical test both failed as
-registered; each is reported in full. Except for Section 6.1, every
-statistic is computed on attention maps; that section shows the maps leave
-out most of what predicts a head's functional role, and its practical
-criterion did not beat the generator cosine at choosing single merges. The audit
-criteria are frozen for four targets by public commit and their batteries
-run against that freeze (Section 5 reports each as it completes); the
-reproductions of Targets 3 and 5 ran at reduced scale
-(fewer documents, shorter contexts) than the sources. Target 1 was repeated
-in the source's input format, on WikiText-103's Wikipedia articles rather
-than the source's sample, and Target 3 under the every-row reading
-(preregistration 17); which rows CHAI's Figure 6 uses is still not stated
-by the source.
+position schemes and three attention layouts, English text and code, windows
+up to 256 tokens for the statistics and 512 for perplexity; the functional
+comparisons of Section 6.2 were repeated at 1,024 tokens on two models (six of
+seven clauses hold), on three multi-head models with C4 as a second corpus
+(seven of seven), and on the encoder heads of three translation models; the
+later rounds add vision transformers (ViT-B/16, ViT-L/16, DINOv2-L with and
+without registers), BERT-base cased, Pythia-1.4B, OPT-1.3B and GPT-2 large for
+the merge benchmark, one downstream task (LAMBADA accuracy on 1,000 examples,
+where the merge criterion's advantage held in 5 of 6 models at one pair per
+layer and 4 of 6 at two), and contexts of 2,048 tokens for the KV-cache and
+streaming tests. The weighting account of Section 5 was tested prospectively
+on five pairs of statistics, and its occupancy refinement failed on the one
+small-k statistic. The conversion of Section 6.5 was tested on five multi-head
+models up to 2.7B parameters and without uptraining; its best recipe still
+leaves perplexity at 2 to 5 times the unconverted model's at half the key-
+value heads in four of them, and whether its advantage survives uptraining is
+untested. The fusion of Section 6.6 narrows that gap on the same five models
+and, in Section 6.8, on Llama-2-7B against the best published training-free
+head-merging result, whose evaluation length, subsets and harness are not
+stated and whose pairing could not be reproduced, and in Section 6.9 on five
+models that already share key-value heads or are multi-head, where its
+weighting fails in the two Qwen2.5 cells that merge every key-value head into
+one; it was not tested after uptraining. Its Llama-2-7B result also depends on
+the pairing in a way its own residual does not see: on a third pairing,
+matched by CAGA's residual, one merged pair in layer 1 switches on the super-
+weight neuron and the conversion collapses (Section 6.8, exploratory); the
+fusion's matching avoided that pair, but nothing in the matching protects
+against it. A preregistered search for the same failure in four other models
+found no severe damage (Section 6.8), so its generality and the recall of the
+one-window check remain untested. The cross-layer audit of Section 6.7 covers
+four 3.8B to 7B models, one of them apparently misconfigured, and continuation
+loss after 1,536 tokens of context on WikiText-103. Where the sink sits on a
+mid-sequence, window-varying column (OLMo-2, late Qwen2.5-3B layers), the
+sink-operator identification weakens (cosine 0.61 to 0.82 with one column) and
+the column set repairs most but not all of it (four of OLMo-2's 19 high-sink
+layers keep a sufficiency residual above 0.4). Restoring the rank-one geometry
+under a dissociation control needs a causal width of roughly eight tokens per
+head. The deviation directions carry structure the shared-operator description
+does not capture (Section 4.6). The commutator pipeline is one instrument
+among many the audits address; it is the one whose failure started this work.
+The dynamics result rests on one model family. The derivation gate and the
+practical test both failed as registered; each is reported in full. Except for
+Section 6.1, every statistic is computed on attention maps; that section shows
+the maps leave out most of what predicts a head's functional role, and its
+practical criterion did not beat the generator cosine at choosing single
+merges. The audit criteria are frozen for four targets by public commit and
+their batteries run against that freeze (Section 5 reports each as it
+completes); the reproductions of Targets 3 and 5 ran at reduced scale (fewer
+documents, shorter contexts) than the sources. Target 1 was repeated in the
+source's input format, on WikiText-103's Wikipedia articles rather than the
+source's sample, and Target 3 under the every-row reading (preregistration
+17); which rows CHAI's Figure 6 uses is still not stated by the source.
 
 ## 8. Recommendations
 

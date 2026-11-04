@@ -2219,3 +2219,27 @@ is and 5.64 with the token (bands as is 0 to 31 4.602, 32 to 127 2.271, 128 on
 13.48 with the token (bands as is 0 to 31 6.431, 32 to 127 3.491, 128 on
 2.720; with the token 4.824, 3.066, 2.541). Fused over unconverted: 3.010 as
 is, 2.389 with the token.
+
+Token-prepended rerun (retrieval_decode_diag.py --bos; Qwen2.5-7B's tokenizer has no such token, so it is absent): Mistral-7B-Instruct-v0.2_bos with the beginning-of-sequence token prepended to
+every prompt (1 newline and 30 digit tokens in the vocabulary; 56 min):
+unconverted: protocol 50 of 50, uncut 50; mean mass on end-of-sequence 0.000,
+newline 0.000, digit tokens 0.000, the code's first token 0.000; median rank
+of the code's first token 9; commonest first token '' 50; fusion: protocol 45
+of 50, uncut 45; mean mass on end-of-sequence 0.000, newline 0.005, digit
+tokens 0.000, the code's first token 0.000; median rank of the code's first
+token 75; commonest first token 'The' 50; retrieval_0.3: protocol 50 of 50,
+uncut 50; mean mass on end-of-sequence 0.000, newline 0.003, digit tokens
+0.001, the code's first token 0.001; median rank of the code's first token 43;
+commonest first token '' 25, 'The' 25.
+
+Mistral-7B-v0.1_bos with the beginning-of-sequence token prepended to every
+prompt (1 newline and 30 digit tokens in the vocabulary; 58 min): unconverted:
+protocol 50 of 50, uncut 50; mean mass on end-of-sequence 0.003, newline
+0.020, digit tokens 0.006, the code's first token 0.005; median rank of the
+code's first token 6; commonest first token '' 50; fusion: protocol 0 of 50,
+uncut 0; mean mass on end-of-sequence 0.009, newline 0.045, digit tokens
+0.001, the code's first token 0.000; median rank of the code's first token
+2852; commonest first token '\n' 37, 'the' 12; retrieval_0.3: protocol 0 of
+50, uncut 0; mean mass on end-of-sequence 0.008, newline 0.048, digit tokens
+0.001, the code's first token 0.000; median rank of the code's first token
+2204; commonest first token '\n' 31, 'the' 19.

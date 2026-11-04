@@ -29,3 +29,8 @@ Traceback (most recent call last):
                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 TypeError: 'NoneType' object cannot be interpreted as an integer
 decode diagnostic with BOS mistralai/Mistral-7B-Instruct-v0.2 starting Wed Nov  4 19:11:36 UTC 2026
+mistralai/Mistral-7B-Instruct-v0.2, unconverted: {'p_eos': 7.19404013338476e-08, 'p_newline': 5.525703470084409e-05, 'p_digit': 6.299175120147993e-05, 'p_code_first_token': 6.267980024858844e-05, 'median_rank_of_code_first_token': 9.0, 'hits_protocol': 50, 'hits_uncut': 50, 'of': 50} (372s)
+mistralai/Mistral-7B-Instruct-v0.2, fusion: {'p_eos': 4.038260553897998e-06, 'p_newline': 0.004697992806322873, 'p_digit': 0.00047399141476489604, 'p_code_first_token': 0.0003661482548341155, 'median_rank_of_code_first_token': 75.0, 'hits_protocol': 45, 'hits_uncut': 45, 'of': 50} (2318s)
+mistralai/Mistral-7B-Instruct-v0.2, retrieval_0.3: {'p_eos': 4.96250569995027e-06, 'p_newline': 0.0034887981228530407, 'p_digit': 0.0005619397439295425, 'p_code_first_token': 0.0005199255357729271, 'median_rank_of_code_first_token': 43.0, 'hits_protocol': 50, 'hits_uncut': 50, 'of': 50} (3333s)
+RETRIEVAL_DIAG_DONE (3333s)
+G2B_DONE
