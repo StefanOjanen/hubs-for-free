@@ -2243,3 +2243,11 @@ uncut 0; mean mass on end-of-sequence 0.009, newline 0.045, digit tokens
 50, uncut 0; mean mass on end-of-sequence 0.008, newline 0.048, digit tokens
 0.001, the code's first token 0.000; median rank of the code's first token
 2204; commonest first token '\n' 31, 'the' 19.
+
+Sequence-start perplexity check, second model (bos_ppl_check.py; bos_ppl/Mistral-7B-v0.1.json; 2026-11-04 20:16 to 20:46 UTC): Mistral-7B-v0.1 (8 windows, 30 min): unconverted: perplexity 4.86 as is and
+4.93 with the token (bands as is 0 to 31 3.896, 32 to 127 2.137, 128 on 1.514;
+with the token 4.310, 2.209, 1.520); fusion: perplexity 28.68 as is and 27.55
+with the token (bands as is 0 to 31 5.436, 32 to 127 3.658, 128 on 3.307; with
+the token 4.948, 3.534, 3.278). Fused over unconverted: 5.903 as is, 5.586
+with the token.
+

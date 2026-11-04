@@ -1912,7 +1912,11 @@ overstate the token-first case. The needle prompts carry no token either: with
 it prepended the development model's plain fusion retrieves 45 of 50 against
 10 without, and the exemption 50 against 46, so the retrieval loss of the
 development section above was mostly this effect; the fused base
-Mistral-7B-v0.1 retrieves nothing either way. And the sink line of this
-repository (rounds 9 to 13 and 21) meets the fusion line here: the heads whose
-merge is hazardous in layer 0 are the sink's. Development, one model, one
-layer, two pairs, two windows of each text.
+Mistral-7B-v0.1 retrieves nothing either way. On the base Mistral-7B-v0.1 the
+share is 3 percent (perplexity 28.68 as is and 27.55 with the token against
+4.86 and 4.93 unconverted, a ratio of 5.90 against 5.59): the base model's
+cost is not the sink-start effect, as its retrieval, which the token did not
+restore, already said. And the sink line of this repository (rounds 9 to 13
+and 21) meets the fusion line here: the heads whose merge is hazardous in
+layer 0 are the sink's. Development, one model, one layer, two pairs, two
+windows of each text.

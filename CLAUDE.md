@@ -283,7 +283,7 @@ sequence start, vanishes with the beginning-of-sequence token prepended (at
 most 0.0012 nats per position on every window), appears on every window with
 WikiText's opening tokens prepended, C4's included, and reaches every position
 when it fires; the ranking and perplexity windows carry no such token
-(bos_ppl_check.py, bos_ppl/: the plain fusion of Mistral-7B-Instruct at half the heads is at 16.68 on the 8 windows as they are and 13.48 with the token, ratio 3.01 against 2.39: 21 percent of its log-perplexity cost on these windows is the sink-start effect; within-round comparisons stand, absolute costs overstate the token-first case). Measure and
+(bos_ppl_check.py, bos_ppl/: the plain fusion of Mistral-7B-Instruct at half the heads is at 16.68 on the 8 windows as they are and 13.48 with the token, ratio 3.01 against 2.39: 21 percent of its log-perplexity cost on these windows is the sink-start effect; within-round comparisons stand, absolute costs overstate the token-first case; on the base Mistral-7B-v0.1 the share is 3 percent, ratio 5.90 against 5.59: its cost is not the sink effect). Measure and
 evaluate with the token as deployment prompts have it, or test sinkless starts
 explicitly.
 kvfuse.py's drafted --pairing measured is committed as an experimental option, labelled so in its docstring and not a
