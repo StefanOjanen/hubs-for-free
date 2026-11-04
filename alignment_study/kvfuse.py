@@ -2,7 +2,12 @@
 # a real grouped-query checkpoint whose KV cache is smaller by the same factor.
 #
 #   python alignment_study/kvfuse.py --model meta-llama/Llama-2-7b-hf --out llama2-7b-kv16
-#       [--group 2|4] [--pairing matched|neighbour] [--calib 128] [--calib-len 2048] [--dtype bfloat16]
+#       [--group 2|4] [--pairing matched|neighbour|measured] [--calib 128] [--calib-len 2048] [--dtype bfloat16]
+#       (measured: each pair of a layer fused alone and scored by its largest KL over held-out C4 windows, then matched;
+#        groups of 2; about 28 single-pair conversions per layer. Experimental, not a recipe: out of sample it chose the
+#        best or a near-best matching in some layers and the 67th of 105 in others, because a pair's damage can be
+#        text-dependent by a factor of a hundred (RUNLOG 2026-11-04, the eight-window pass); measure on text like the
+#        deployment's)
 #
 # What it does (rounds 26 to 28 of alignment_study/NOTE.md):
 # 1. the second moment of every layer's attention input over C4 calibration documents (CAGA's setting: 128
@@ -130,12 +135,52 @@ def quad_groups(kv, l, S):
     return sorted(sorted(pairs[p] + pairs[q]) for p, q in min_cost_pairs(cost))
 
 
+KL_TOPK = 256
+
+
+def kl_base(model, X, dev):
+    """The unconverted model's top-KL_TOPK log-probabilities per position on the measurement windows."""
+    out = {"ids": [], "lp": []}
+    for w in range(X.shape[0]):
+        logp = torch.log_softmax(model(input_ids=X[w:w + 1].to(dev)).logits[0, :-1].float(), -1)
+        lp, ids = logp.topk(KL_TOPK, dim=-1); out["ids"].append(ids); out["lp"].append(lp); del logp
+    return out
+
+
+def kl_windows(model, X, base, dev):
+    """Per-window mean KL(unconverted || converted) over the top-KL_TOPK tokens plus the remainder."""
+    out = []
+    for w in range(X.shape[0]):
+        logq = torch.log_softmax(model(input_ids=X[w:w + 1].to(dev)).logits[0, :-1].float(), -1)
+        ids, lp = base["ids"][w], base["lp"][w]; lq = logq.gather(1, ids); p, q = lp.exp(), lq.exp()
+        rp = (1 - p.sum(1)).clamp_min(1e-12); rq = (1 - q.sum(1)).clamp_min(1e-12)
+        out.append(float(((p * (lp - lq)).sum(1) + rp * (rp.log() - rq.log())).mean())); del logq
+    return out
+
+
+def measured_pair_costs(model, kv, l, S64, X, base, dev):
+    """Every pair of layer l's KV heads fused alone (the layer otherwise unmerged), scored by KL on the measurement
+    windows; returns the cost matrix for min_cost_pairs and the pair KLs. The weights are restored after each pair."""
+    n = kv.nkv; roots = F.layer_roots(S64, kv.d); Lsq = roots[0] @ roots[0]
+    orig = [p.detach().clone() for p in kv.params(l)]
+    cm = torch.zeros(n, n, dtype=torch.float64); pk = {}
+    for i in range(n):
+        for j in range(i + 1, n):
+            K.fuse_kv_group(kv, l, [i, j], S64, roots, qw=True, ow=True, Lsq=Lsq)
+            v = kl_windows(model, X, base, dev); cm[i, j] = cm[j, i] = max(v); pk[f"{i}-{j}"] = v        # the largest over windows guards against rare catastrophes
+            for p, t in zip(kv.params(l), orig):
+                p.copy_(t)
+    return cm, pk
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--model", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--group", type=int, default=2, help="KV heads per group (2 halves the cache)")
-    ap.add_argument("--pairing", choices=("matched", "neighbour"), default="matched")
+    ap.add_argument("--pairing", choices=("matched", "neighbour", "measured"), default="matched",
+                    help="matched: the fusion's residual; measured: each pair fused alone and scored by KL on held-out windows (groups of 2)")
+    ap.add_argument("--measure-windows", type=int, default=8, help="held-out C4 windows for --pairing measured (after the calibration and check documents); a pair's cost is its largest KL over them")
     ap.add_argument("--calib", type=int, default=128)
     ap.add_argument("--calib-len", type=int, default=2048)
     ap.add_argument("--dtype", choices=("bfloat16", "float32"), default="bfloat16")
@@ -146,6 +191,8 @@ def main():
     args = ap.parse_args()
     if args.pairing == "matched" and args.group not in (2, 4):
         sys.exit("matched pairing is for groups of 2 or 4; use --pairing neighbour for other sizes")
+    if args.pairing == "measured" and args.group != 2:
+        sys.exit("measured pairing is for groups of 2")
     dev = args.device or ("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
     t0 = time.time(); log = lambda s: print(f"[{time.time() - t0:6.0f}s] {s}", flush=True)
     from transformers import AutoTokenizer, AutoModelForCausalLM
@@ -159,9 +206,17 @@ def main():
     cal = C.windows_c4(tok, args.calib, args.calib_len)
     S, ntok = K.second_moments(model, kv, cal, dev)
     log(f"second moments from {ntok} calibration tokens")
+    measured = None
     if args.pairing == "matched":
         groups = [min_cost_pairs(pair_costs(kv, l, S[l].double())) if args.group == 2 else quad_groups(kv, l, S[l].double())
                   for l in range(kv.L)]
+    elif args.pairing == "measured":
+        X = C.windows_c4(tok, args.calib + 1 + args.measure_windows, args.calib_len)[-args.measure_windows:]
+        base = kl_base(model, X, dev); groups, measured = [], {}
+        for l in range(kv.L):
+            t1 = time.time(); cm, pk = measured_pair_costs(model, kv, l, S[l].double(), X, base, dev)
+            groups.append(min_cost_pairs(cm)); measured[l] = pk
+            log(f"layer {l}: {len(pk)} pairs measured in {time.time() - t1:.0f}s; matching {groups[-1]}")
     else:
         groups = [[list(range(s, s + args.group)) for s in range(0, kv.nkv, args.group)] for _ in range(kv.L)]
     log(f"{args.pairing} groups chosen")
@@ -188,6 +243,7 @@ def main():
     tok.save_pretrained(args.out)
     json.dump({"source": args.model, "revision": args.revision, "group": args.group, "pairing": args.pairing,
                "calibration": {"source": "allenai/c4 en validation shard 0", "documents": args.calib, "tokens": args.calib_len},
+               "measure_windows": args.measure_windows if args.pairing == "measured" else None, "measured_pair_kl": measured,
                "kv_heads": [kv.nkv, kv.nkv // args.group], "balanced": not args.no_balance, "groups": groups}, open(os.path.join(args.out, "kvfuse.json"), "w"), indent=1)
     log(f"saved {args.out} ({kv.nkv // args.group} KV heads per layer)")
 

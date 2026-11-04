@@ -268,9 +268,16 @@ best or second-best in 10 of 12 layers in sample and, measured on two held-out
 C4 windows, holds on Mistral-7B-v0.1 and Qwen2.5-7B and misses
 Mistral-7B-Instruct's layer 0 (one catastrophic pair unflagged). The residual
 is the fit criterion, not the selector; never let it choose groups alone.
-kvfuse.py has a drafted, uncommitted --pairing measured (eight C4 windows, a
-pair's cost its largest KL over them); run_a10cw.sh (eight windows) runs after
-round 35 to validate it. 35 (alignment_study/PREREGISTRATION35.md, frozen at 5def124 on 2026-11-04
+The eight-window pass (run_a10cw.sh, 2026-11-04,
+residual_select_dev/*_pairs_c4_w8.json): by the mean the measured matching
+ranks 67, 20, 21, 23 of 105 on Mistral-7B-Instruct's layers 0, 1, 2, 16 and
+28, 39, 48, 8 on Mistral-7B-v0.1's (two windows: 1, 1, 48, 8); by the
+largest KL over windows 67, 1, 38, 45 and 1, 41, 48, 68: more C4
+windows do not make the measured selector reliable, and the Instruct's
+layer-0 pair (1, 5) costs 0.101 on WikiText against 0.001 on every C4 window
+(text-dependent damage, not an interaction; pair_text_diag.py queued).
+kvfuse.py's drafted --pairing measured is committed as an experimental option, labelled so in its docstring and not a
+recipe (its Llama-160m check: kvfuse_measured_check.log). 35 (alignment_study/PREREGISTRATION35.md, frozen at 5def124 on 2026-11-04
 after the development population on Mistral-7B-Instruct under the registered
 protocol, retrieval_round_dev/: fusion 10 of 50, retrieval heads at 0.3 and
 0.1 46 and 48, random five 7 and 12, random 24 38 and 6, the residual's five

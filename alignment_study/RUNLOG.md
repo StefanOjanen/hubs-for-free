@@ -2063,3 +2063,14 @@ the mean, None by the largest); layer 16: the measured matching ranked 8 of
 over windows (KL 0.0079); the residual's 64, the perturbation's 5; Spearman of
 pair KL against the residual 0.09, against the additive effect 0.11 (with two
 windows: 8 by the mean, None by the largest).
+
+A10d, the measured-pairing option's check (Wed Nov  4 14:06:59 UTC; kvfuse.py
+--pairing measured on JackFram/llama-160m, --measure-windows 2 --calib 16
+--calib-len 1024 --dtype float32; kvfuse_measured_check.log; the export in the
+session scratchpad, not kept): 12 to 6 key-value heads, 66 pairs a layer
+measured in 10 s over 12 layers, the matching chosen, fused and rebalanced,
+exported at 126 s; kvfuse_bench.py on the export: cache ratio 0.500, decode
+3.930 times the original's tokens per second at this size, a code-path check
+whose timing is not a speed claim (the TinyLlama benchmark, 1.08 times, is the
+cited number). The option is committed labelled experimental: the eight-window
+pass above shows the measured selector unreliable out of sample.
