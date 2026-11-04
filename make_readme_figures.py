@@ -1599,12 +1599,13 @@ if RS:
 
 # ============ Figure 38: round 35, the retrieval-head exemption on models it was not tuned on (registered) ============
 RR = sorted(glob.glob("alignment_study/retrieval_round/*.json"))
+RR += [fp for fp in sorted(glob.glob("alignment_study/retrieval_round_dev/*.json")) if not os.path.exists(fp.replace("retrieval_round_dev", "retrieval_round"))]   # the development model from its run before the freeze unless the registered run has it
 if RR and os.path.exists("alignment_study/retrieval_round_results.json"):
     plt.rcParams["axes.grid"] = False
     ARMS35 = [("unconverted", "unconverted", INK2, "o"), ("a_fusion", "plain fusion, half the heads", INK2, "o"), ("b_retrieval_0.3", "retrieval heads at 0.3 exempt", S1, "o"),
               ("c_retrieval_0.1", "retrieval heads at 0.1 exempt", S1, "D"), ("d_random", "random non-retrieval heads, the 0.3 count (two draws)", INK2, "s"),
               ("e_random", "random non-retrieval heads, the 0.1 count (two draws)", INK2, "^"), ("f_residual", "the residual's choice, the 0.3 count", S2, "X")]
-    LAB35 = {"Qwen2.5-7B": "Qwen2.5-7B", "Mistral-7B-v0.1": "Mistral-7B-v0.1", "Mistral-7B-Instruct-v0.2": "Mistral-7B-Instruct (development)"}
+    LAB35 = {"Qwen2.5-7B": "Qwen2.5-7B", "Mistral-7B-v0.1": "Mistral-7B-v0.1", "Mistral-7B-Instruct-v0.2": "Mistral-7B-Instruct (development model)"}
     models = [os.path.basename(fp)[:-5] for fp in RR]
     fig = plt.figure(figsize=(14.5, 2.4 + 1.9 * len(models)))
     ax = fig.add_axes([0.30, 0.12, 0.31, 0.66]); bx = fig.add_axes([0.67, 0.12, 0.31, 0.66])
@@ -1628,7 +1629,7 @@ if RR and os.path.exists("alignment_study/retrieval_round_results.json"):
     bx.set_yticks(ax.get_yticks()); bx.set_yticklabels([])
     of = max(r[2] for r in rows if r is not None); ax.set_xlim(-1, of * 1.25); ax.set_xlabel(f"planted codes retrieved, of {of}", fontsize=10)
     from matplotlib.ticker import FixedLocator, FixedFormatter, NullLocator
-    bx.set_xscale("log"); TKX = [3, 5, 10, 20, 50, 100, 200]; bx.xaxis.set_major_locator(FixedLocator(TKX)); bx.xaxis.set_major_formatter(FixedFormatter([str(t) for t in TKX])); bx.xaxis.set_minor_locator(NullLocator())
+    bx.set_xscale("log"); PP = [r[3] for r in rows if r is not None]; bx.set_xlim(min(PP) * 0.8, max(PP) * 1.7); TKX = [3, 5, 10, 20, 50, 100, 200]; bx.xaxis.set_major_locator(FixedLocator(TKX)); bx.xaxis.set_major_formatter(FixedFormatter([str(t) for t in TKX])); bx.xaxis.set_minor_locator(NullLocator())
     bx.set_xlabel("WikiText-2 perplexity, 8 windows of 2,048 tokens (log)", fontsize=10)
     for a_ in (ax, bx):
         a_.set_ylim(-0.7, max(ys) + 0.7); a_.tick_params(length=0); a_.grid(axis="x", color=GRID, lw=0.8)

@@ -274,6 +274,19 @@ if RP:
         for arm, v in r["arms"].items():
             rows.append([m, arm, v["n_protected"], f"{v['cache_fraction']:.3f}", f(v["ppl_8_windows"]), f"{v['needle']['hits']} of {v['needle']['of']}"] + [str(v["needle"]["by_depth"][str(d)]) for d in r["needle"]["depths"]])
     table(["Model", "arm", "protected", "cache fraction", "ppl, 8 windows", "retrieved"] + [f"depth {d}%" for d in json.load(open(RP[0]))["needle"]["depths"]], rows)
+RR = sorted(glob.glob("alignment_study/retrieval_round/*.json")); RD = sorted(glob.glob("alignment_study/retrieval_round_dev/*.json"))
+if RR or RD:
+    w("## Table 14c. Round 35: the retrieval-head exemption under the registered protocol (ten codes at five depths of a 2,048-token C4 haystack, 50 instances per arm; the fusion at half the key-value heads). Scored: Qwen2.5-7B and Mistral-7B-v0.1; Mistral-7B-Instruct-v0.2 is the development model, reported\n")
+    rows = []
+    SCORED35 = ("Qwen2.5-7B", "Mistral-7B-v0.1")
+    for fp in RR + RD:
+        r = json.load(open(fp)); b = os.path.basename(fp)[:-5]; m = short(b) + (" (development run, before the freeze)" if "retrieval_round_dev" in fp else "" if b in SCORED35 else " (development model, registered run)")
+        for arm, v in r["arms"].items():
+            rows.append([m, arm, v.get("n_protected", 0), f"{v['cache_fraction']:.3f}", f(v["ppl_8_windows"]), f"{v['needle']['hits']} of {v['needle']['of']}"] + [str(v["needle"]["by_depth"][str(d)]) for d in r["needle"]["depths"]])
+    table(["Model", "arm", "exempt", "cache fraction", "ppl, 8 windows", "retrieved"] + [f"depth {d}%" for d in json.load(open((RR + RD)[0]))["needle"]["depths"]], rows)
+    if os.path.exists("alignment_study/retrieval_round_results.json"):
+        e = json.load(open("alignment_study/retrieval_round_results.json"))
+        w("\nClauses: " + "; ".join(f"{k} {'pass' if e[k]['pass'] else ('untestable' if e[k].get('testable') is False else 'fail')}" for k in ("E1", "E2", "E3", "E4", "E5")) + f"; {e['passes']} of {e['of']}" + (f"; excluded {', '.join(e['excluded'])}" if e.get("excluded") else "") + ".\n")
 KB = sorted(glob.glob("alignment_study/kvfuse_bench/*.json"))
 if KB:
     w("## Table 15. The exported checkpoint's cache and decode speed (one laptop, MPS)\n")
