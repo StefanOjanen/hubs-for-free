@@ -330,6 +330,19 @@ if BP:
         if "ratio_as_is" in r:
             rows.append([m, "fused over unconverted", "", f"{r['ratio_as_is']:.3f} as is, {r['ratio_bos_prepended']:.3f} with the token", "", "", ""])
     table(["Model", "arm", "windows", "perplexity", "NLL 0 to 31", "NLL 32 to 127", "NLL 128 on"], rows)
+TF = [fp for fp in sorted(glob.glob("alignment_study/token_first_calib_dev/*.json")) if "llama-160m" not in fp]
+if TF:
+    w("## Table 12d. Token-first calibration (token_first_calib_dev.py, development): the fusion's moments on calibration windows without the beginning-of-sequence token and with it prepended, pairs fixed to the token-less matching; perplexity on the 8 registered windows as they are and with the token, the negative log-likelihood bands with the token, and the registered needle protocol with the token\n")
+    rows = []
+    for fp in TF:
+        r = json.load(open(fp)); m = short(os.path.basename(fp)[:-5])
+        for k in ("unconverted", "fit_token_less", "fit_token_first"):
+            if k not in r["arms"]:
+                continue
+            a = r["arms"][k]; b = a["bos_prepended"]["band_nll"]
+            rows.append([m, k.replace("_", " "), f(a["as_is"]["perplexity"], 2), f(a["bos_prepended"]["perplexity"], 2), f(a.get("ratio_as_is"), 3) if a.get("ratio_as_is") else "", f(a.get("ratio_bos_prepended"), 3) if a.get("ratio_bos_prepended") else "",
+                         f(b["0_31"], 3), f(b["32_127"], 3), f(b["128_on"], 3), f"{a['needle_bos']['hits']} of {a['needle_bos']['of']}" if "needle_bos" in a else ""])
+    table(["Model", "arm", "ppl as is", "ppl with the token", "ratio as is", "ratio with the token", "NLL 0 to 31", "NLL 32 to 127", "NLL 128 on", "needle with the token"], rows)
 KB = [fp for fp in sorted(glob.glob("alignment_study/kvfuse_bench/*.json")) if "llama-160m" not in fp]   # the Llama-160m file is the measured option's code-path check, not a speed measurement
 if KB:
     w("## Table 15. The exported checkpoint's cache and decode speed (one laptop, MPS; the Llama-160m file in the directory is the measured option's code-path check and is not shown)\n")
