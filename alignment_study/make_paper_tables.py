@@ -317,6 +317,18 @@ if PTD:
                 ws = t["windows"]; sh = lambda c: f"{sum((x['classes'][c]['share_of_total'] or 0) for x in ws) / len(ws):.2f}"
                 rows.append([m, r["layer"], pair, f(e["residual"], 3), name, f(t["mean_kl"], 4), f"{sum(x['top_1pct_share'] for x in ws) / len(ws):.2f}", sh("at_sign"), sh("equals"), sh("digit"), sh("newline")])
     table(["Model", "layer", "pair", "residual", "text", "mean KL", "top 1% share", "'@'", "'='", "digits", "newline"], rows)
+BP = sorted(glob.glob("alignment_study/bos_ppl/*.json"))
+if BP:
+    w("## Table 12c. The sequence-start share of a conversion's perplexity cost (bos_ppl_check.py, development): the 8 registered WikiText-2 windows as they are and with the beginning-of-sequence token prepended; mean negative log-likelihood over positions 0 to 31, 32 to 127 and 128 on\n")
+    rows = []
+    for fp in BP:
+        r = json.load(open(fp)); m = short(os.path.basename(fp)[:-5])
+        for arm in ("unconverted", "fusion"):
+            for v in ("as_is", "bos_prepended"):
+                a = r["arms"][arm][v]
+                rows.append([m, arm, v.replace("_", " "), f(a["perplexity"], 2), f(a["band_nll"]["0_31"], 3), f(a["band_nll"]["32_127"], 3), f(a["band_nll"]["128_on"], 3)])
+        rows.append([m, "fused over unconverted", "", f"{r['ratio_as_is']:.3f} as is, {r['ratio_bos_prepended']:.3f} with the token", "", "", ""])
+    table(["Model", "arm", "windows", "perplexity", "NLL 0 to 31", "NLL 32 to 127", "NLL 128 on"], rows)
 KB = sorted(glob.glob("alignment_study/kvfuse_bench/*.json"))
 if KB:
     w("## Table 15. The exported checkpoint's cache and decode speed (one laptop, MPS)\n")
