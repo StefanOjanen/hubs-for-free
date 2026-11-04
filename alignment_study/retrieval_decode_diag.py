@@ -91,6 +91,8 @@ if __name__ == "__main__":
     t0 = time.time(); log = lambda s: print(s, f"({time.time() - t0:.0f}s)", flush=True)
     ND.FACTS, ND.DEPTHS = R.REG_FACTS, R.REG_DEPTHS
     tok = R.AutoTokenizer.from_pretrained(NAME, revision=R.REV)
+    if BOS and tok.bos_token_id is None:
+        print(f"{NAME}: the tokenizer has no beginning-of-sequence token (Qwen2.5 prompts carry none in deployment either); --bos does not apply", flush=True); sys.exit(0)
     nl_ids, dg_ids = token_classes(tok)
     context_ids = tok.encode(ND.haystack_text(3 * ND.CTX), add_special_tokens=False)
     scores = np.load(R.SCORES)
