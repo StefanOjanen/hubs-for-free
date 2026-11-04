@@ -51,6 +51,7 @@ def decode(model, tok, ids, nl_ids, dg_ids, code):
         firsts.add(next(t for t in enc if any(ch.isdigit() for ch in tok.decode([t]))))      # the first token carrying a digit (a space marker may precede it)
     order = torch.argsort(p, descending=True); rank = min(int((order == f).nonzero()[0, 0]) + 1 for f in firsts)
     dist = {"p_eos": float(p[tok.eos_token_id]), "p_newline": float(p[nl_ids].sum()), "p_digit": float(p[dg_ids].sum()),
+            "p_code_first_token": float(max(p[t] for t in firsts)),
             "top_token": tok.decode([int(order[0])]), "rank_of_code_first_token": rank}
     nxt = int(out.logits[0, -1].argmax()); gen = [nxt]
     for _ in range(ND.MAX_NEW - 1):
@@ -74,7 +75,7 @@ def run_arm(model, tok, context_ids, nl_ids, dg_ids):
         for depth in ND.DEPTHS:
             ids = ND.build(tok, context_ids, needle, question, depth)
             inst.append({"colour": colour, "code": code, "depth": depth, **decode(model, tok, ids, nl_ids, dg_ids, code)})
-    summ = {k: float(np.mean([i[k] for i in inst])) for k in ("p_eos", "p_newline", "p_digit")}
+    summ = {k: float(np.mean([i[k] for i in inst])) for k in ("p_eos", "p_newline", "p_digit", "p_code_first_token")}
     summ["median_rank_of_code_first_token"] = float(np.median([i["rank_of_code_first_token"] for i in inst]))
     summ["hits_protocol"] = sum(i["hit_protocol"] for i in inst); summ["hits_uncut"] = sum(i["hit_uncut"] for i in inst); summ["of"] = len(inst)
     return {"instances": inst, "summary": summ}
