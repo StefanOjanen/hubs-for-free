@@ -1877,7 +1877,18 @@ property of ranking windows sliced from the test text without the beginning-
 of-sequence token, not of the text: a selector measured on C4 windows that
 happen to open with benign tokens cannot see it, and one measured on windows
 with the token would not need to. Any evaluation on windows without the token
-mixes the conversion's damage with the sink-start effect; the project's perplexity windows are such windows. The check (`bos_ppl_check.py`, `bos_ppl/`, Table 12c): on the 8 registered windows the plain fusion of Mistral-7B-Instruct at half the heads is at 16.68 as they are and 13.48 with the beginning-of-sequence token prepended (unconverted 5.54 and 5.64), a ratio of 3.01 against 2.39, so 21 percent of its log-perplexity cost on these windows is the sink-start effect, and not only at the start: the excess negative log-likelihood over the unconverted model falls from 1.83 to 0.27 nats in positions 0 to 31, from 1.22 to 0.74 in 32 to 127 and from 1.08 to 0.89 from 128 on. Comparisons between recipes within a round were made under the same windowing and stand; absolute costs on windows without the token overstate the token-first case. And the sink line of this repository (rounds 9 to 13 and 21)
-meets the fusion line here: the heads whose merge is hazardous in layer 0 are
-the sink's. Development, one model, one layer, two pairs, two windows of each
-text.
+mixes the conversion's damage with the sink-start effect; the project's
+perplexity windows are such windows. The check (`bos_ppl_check.py`,
+`bos_ppl/`, Table 12c): on the 8 registered windows the plain fusion of
+Mistral-7B-Instruct at half the heads is at 16.68 as they are and 13.48 with
+the beginning-of-sequence token prepended (unconverted 5.54 and 5.64), a ratio
+of 3.01 against 2.39, so 21 percent of its log-perplexity cost on these
+windows is the sink-start effect, and not only at the start: the excess
+negative log-likelihood over the unconverted model falls from 1.83 to 0.27
+nats in positions 0 to 31, from 1.22 to 0.74 in 32 to 127 and from 1.08 to
+0.89 from 128 on. Comparisons between recipes within a round were made under
+the same windowing and stand; absolute costs on windows without the token
+overstate the token-first case. And the sink line of this repository (rounds 9
+to 13 and 21) meets the fusion line here: the heads whose merge is hazardous
+in layer 0 are the sink's. Development, one model, one layer, two pairs, two
+windows of each text.
