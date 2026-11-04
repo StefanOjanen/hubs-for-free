@@ -275,7 +275,17 @@ ranks 67, 20, 21, 23 of 105 on Mistral-7B-Instruct's layers 0, 1, 2, 16 and
 largest KL over windows 67, 1, 38, 45 and 1, 41, 48, 68: more C4
 windows do not make the measured selector reliable, and the Instruct's
 layer-0 pair (1, 5) costs 0.101 on WikiText against 0.001 on every C4 window
-(text-dependent damage, not an interaction; pair_text_diag.py queued).
+(the sequence-start effect, not an interaction). Pair diagnostics
+(pair_text_diag.py, pair_start_diag.py, 2026-11-04; pair_text_diag/,
+pair_start_diag/; Figure 39): the catastrophic pairs (1, 5) and (0, 1) of
+Mistral-7B-Instruct's layer 0 serve the attention sink; their cost sits at the
+sequence start, vanishes with the beginning-of-sequence token prepended (at
+most 0.0012 nats per position on every window), appears on every window with
+WikiText's opening tokens prepended, C4's included, and reaches every position
+when it fires; the ranking and perplexity windows carry no such token
+(bos_ppl_check.py sizes the effect for the whole conversion). Measure and
+evaluate with the token as deployment prompts have it, or test sinkless starts
+explicitly.
 kvfuse.py's drafted --pairing measured is committed as an experimental option, labelled so in its docstring and not a
 recipe (its Llama-160m check: kvfuse_measured_check.log). 35 (alignment_study/PREREGISTRATION35.md, frozen at 5def124 on 2026-11-04
 after the development population on Mistral-7B-Instruct under the registered
