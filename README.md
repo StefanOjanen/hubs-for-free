@@ -644,8 +644,9 @@ Each instrument below exists because a finding above required it.
   fusion's 10, random heads 7, 12, 38 and 6, the residual's choice 19,
   identical before the freeze and in the registered rerun. The answers say
   why: the fused development model always answers in the right form and the
-  exemption fixes the digits, while the fused Mistral-7B-v0.1 stops at once or
-  repeats a phrase, with no digit in any of its 400 converted answers, and the
+  exemption fixes the digits, while the fused Mistral-7B-v0.1 answers with newlines, at which the
+  protocol's decoding ends, or repeats a phrase, with no digit in any of its
+  400 converted answers, and the
   fused Qwen2.5-7B answers degenerate text that the exemption turns into the
   right form with stereotyped digits; no exemption at these budgets brings the
   task back. The exemption repairs what merging the retrieval heads removed
@@ -656,7 +657,7 @@ Each instrument below exists because a finding above required it.
   retrieval beside perplexity.
 
 <p align="center"><img src="figures/readme/fig38_retrieval_round.png" alt="Two panels of dot plots for Qwen2.5-7B, Mistral-7B-v0.1 and Mistral-7B-Instruct at half the key-value heads, fifty planted codes per arm. Left: codes retrieved for the unconverted model (50 on each), the plain fusion (0, 0 and 10), the retrieval heads exempt at two thresholds (7 and 8 on Qwen, 0 and 0 on Mistral-7B-v0.1, 46 and 48 on the development model), random heads at the same counts (0 to 6 on Qwen, 0 on Mistral-7B-v0.1, 6 to 38 on the development model) and the residual's choice (0, 0 and 19). Right: 8-window perplexity for the same arms, 4.9 to 70." width="100%"></p>
-<p align="center"><em>Registered on two base models, the retrieval-head exemption does not bring the planted code back: their fused models stop answering, and no exemption at these budgets restores the task.</em></p>
+<p align="center"><em>Registered on two base models, the retrieval-head exemption does not bring the planted code back: their fused models answer with newlines or repetition under the protocol's decoding, and no exemption at these budgets restores the task.</em></p>
 
 - **Uptraining from the fused start: a head start that narrows and holds at
   5M tokens.** Round 33 (registered) uptrained OLMo-1B and h2o-danube-1.8b at

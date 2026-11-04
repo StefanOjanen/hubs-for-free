@@ -1808,10 +1808,9 @@ perplexities), the conversion and the greedy decoding being deterministic.
 How the arms fail differs by model (`retrieval_answers.py`,
 `retrieval_round_answers.json`): the fused development model always answers in
 the sentence form with wrong digits, mostly the same two or three strings
-("1111", "10110101", "1234"), and the exemption corrects the digits; the fused
-Mistral-7B-v0.1 stops at once (46 of the plain fusion's 50 answers are empty)
-or repeats a phrase, and not one of its 400 converted answers contains a
-digit, the exemptions trading empty answers for repetition (10 empty and 19
+("1111", "10110101", "1234"), and the exemption corrects the digits; the fused Mistral-7B-v0.1 answers with newline tokens, at which the
+protocol's decoding ends (46 of the plain fusion's 50 answers are empty), or
+repeats a phrase, and not one of its 400 converted answers contains a digit, the exemptions trading empty answers for repetition (10 empty and 19
 degenerate at 0.1); the fused Qwen2.5-7B answers degenerate text (26 of 50)
 that the exemptions turn into the sentence form in all 50 instances with the
 right digits in 8. The exemption repairs the retrieval heads' part of the loss
@@ -1833,5 +1832,9 @@ draft paper's recommendation changes from exempting by default to reporting
 retrieval and exempting where it helps. Follow-up prepared for the author's
 decision (`retrieval_protect_dev.py --pairing=neighbours --instances=50`): the
 same arms on Qwen2.5-7B under the neighbour pairing, whose plain fusion sits
-at 23.9 against the residual's 70.1, to ask whether the exemption repairs a
-conversion that is otherwise sound.
+at 23.9 against the residual's 70.1, to ask whether the exemption repairs a conversion that is otherwise sound.
+Whether the newline is a refusal or a prefix the protocol's stop rule cuts
+before the code is the decode diagnostic (`retrieval_decode_diag.py`:
+the next-token mass on newline, end-of-sequence and digit tokens, and a
+decode that stops only at the end of sequence; `retrieval_diag/`), queued
+behind the eight-window pass.
