@@ -1927,3 +1927,25 @@ largest over the four queries each serves) 21 at 0.1 and 3 at 0.3, layer 12
 head 1 (0.62), layer 18 head 0 (0.61) and layer 30 head 2 (0.31), the same
 three heads that lead Mistral-7B-Instruct's list. The development population
 on Mistral-7B-Instruct runs next.
+
+Round 35 prerequisites, the development population on Mistral-7B-Instruct-v0.2
+under the registered protocol (2026-11-03 23:08 to 2026-11-04 01:55 UTC;
+retrieval_round_dev/Mistral-7B-Instruct-v0.2.json; retrieval_round_prep.log).
+Ten five-digit codes at five depths of a 2,048-token C4 haystack, 50 instances
+per arm, bfloat16, the fusion at half the key-value heads; counts: 5 key-value
+heads at 0.3 or more, 24 at 0.1 or more, 232 below 0.1 in the random pool. The
+unconverted model: 50 of 50 (by depth 10, 10, 10, 10, 10), perplexity 5.54,
+cache 1.000; the plain fusion (a): 10 of 50 (by depth 0, 4, 2, 3, 1),
+perplexity 16.68, cache 0.500, 20 min; retrieval heads at 0.3 or more (b): 46
+of 50 (by depth 10, 9, 10, 9, 8), perplexity 13.93, cache 0.520, 18 min; at
+0.1 or more (c): 48 of 50 (by depth 10, 9, 9, 10, 10), perplexity 12.47, cache
+0.570, 18 min; five random heads, seed 0 (d): 7 of 50 (by depth 1, 1, 3, 0,
+2), perplexity 15.44, cache 0.520, 18 min; seed 1: 12 of 50 (by depth 1, 4, 3,
+2, 2), perplexity 15.12, cache 0.520, 18 min; 24 random heads, seed 0 (e): 38
+of 50 (by depth 8, 7, 9, 8, 6), perplexity 12.02, cache 0.578, 18 min; seed 1:
+6 of 50 (by depth 3, 1, 0, 1, 1), perplexity 12.73, cache 0.582, 18 min; the
+residual's five (f): 19 of 50 (by depth 0, 5, 6, 7, 1), perplexity 15.15,
+cache 0.520, 18 min. Of the 214 converted-arm misses, the answer's digits are
+'10110101' 59 times, '1234' 51 times, '1111' 42 times: the failed arms answer
+a stereotyped code rather than a nearby one. The sizes of E1 to E5 were set
+before this population and are unchanged by it; the freeze follows.
