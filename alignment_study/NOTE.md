@@ -1721,8 +1721,8 @@ choice is worst; and the retrieval heads are not where perplexity is won
 (random draws that include early-layer heads reach 11.1 to 12.9 against the
 retrieval 24's 12.5). One model, fifteen instances per arm, one clean random
 draw at five heads, underpowered for that contrast; labelled development;
-the draft paper makes the exemption part of the method and the preregistered
-test on Qwen2.5-7B and Mistral-7B-v0.1 is proposed.
+the preregistered test on Qwen2.5-7B and Mistral-7B-v0.1 is the round 35
+section below, where the exemption did not transfer.
 
 ## Uptraining from three starts at 5M tokens (2026-11-02, preregistration 33)
 

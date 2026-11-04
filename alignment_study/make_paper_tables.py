@@ -232,7 +232,7 @@ if RSD:
     w("Per model and layer: the number of matchings evaluated (all for 8 and 4 key-value heads, a sample of 152 for 32), the Spearman correlation of the fusion's residual and of a one-layer output perturbation with KL, the KL rank of each selector's choice, and each choice's KL as a multiple of the best matching's; the last column is the matching on measured single-pair damage (A10c), the pairs measured on held-out C4 windows where that pass has run and on the ranking windows otherwise.\n")
     rows = []
     for fp in RSD:
-        r = json.load(open(fp)); m = short(os.path.basename(fp)[:-5]); pf = fp[:-5] + "_pairs_c4.json" if os.path.exists(fp[:-5] + "_pairs_c4.json") else fp[:-5] + "_pairs.json"; PR = json.load(open(pf))["per_layer"] if os.path.exists(pf) else {}
+        r = json.load(open(fp)); m = short(os.path.basename(fp)[:-5]); pf = next((fp[:-5] + sfx for sfx in ("_pairs_c4_w8.json", "_pairs_c4.json", "_pairs.json") if os.path.exists(fp[:-5] + sfx)), fp[:-5] + "_pairs.json"); PR = json.load(open(pf))["per_layer"] if os.path.exists(pf) else {}
         for l, v in r["per_layer"].items():
             st = v["stats"]; b = st["kl_best"]; pr = PR.get(l, {})
             rows.append([m, l, st["candidates"], f(st["spearman_residual_kl"]), f(st["spearman_perturbation_kl"]), st["kl_rank_residual_choice"], st["kl_rank_perturbation_choice"],

@@ -1570,7 +1570,7 @@ if RS:
         if "_pairs" in fp:
             continue
         r = json.load(open(fp)); m = LABS.get(os.path.basename(fp)[:-5], os.path.basename(fp)[:-5])
-        pf = fp[:-5] + "_pairs_c4.json" if os.path.exists(fp[:-5] + "_pairs_c4.json") else fp[:-5] + "_pairs.json"; PR = json.load(open(pf))["per_layer"] if os.path.exists(pf) else {}
+        pf = next((fp[:-5] + sfx for sfx in ("_pairs_c4_w8.json", "_pairs_c4.json", "_pairs.json") if os.path.exists(fp[:-5] + sfx)), fp[:-5] + "_pairs.json"); PR = json.load(open(pf))["per_layer"] if os.path.exists(pf) else {}
         for l, v in r["per_layer"].items():
             st = dict(v["stats"]); st["pairs_rank"] = PR.get(l, {}).get("measured_choice_kl_rank"); rows.append((m, int(l), st))
     rows.sort(key=lambda x: (x[0], x[1]))
