@@ -1,0 +1,59 @@
+A10c mistralai/Mistral-7B-v0.1 starting Tue Nov  3 19:13:51 UTC 2026
+[   946s] mistralai/Mistral-7B-v0.1: 32 layers, 8 KV heads; moments from 262144 tokens; 2 held-out windows; enumerated matchings from alignment_study/residual_select_dev/Mistral-7B-v0.1.json
+[  1343s] layer 0: 28 pairs measured; Spearman pair KL against residual -0.29, against the additive effect 0.37 (R2 0.890); the measured matching's KL rank 2 of 105 (KL 0.0077, best 0.0059); residual's rank 58, perturbation's 28
+[  1750s] layer 1: 28 pairs measured; Spearman pair KL against residual 0.75, against the additive effect 0.14 (R2 0.972); the measured matching's KL rank 1 of 105 (KL 0.0086, best 0.0086); residual's rank 64, perturbation's 10
+[  2167s] layer 2: 28 pairs measured; Spearman pair KL against residual -0.70, against the additive effect 0.12 (R2 0.992); the measured matching's KL rank 1 of 105 (KL 0.0118, best 0.0118); residual's rank 66, perturbation's 1
+[  2587s] layer 16: 28 pairs measured; Spearman pair KL against residual -0.09, against the additive effect 0.14 (R2 0.984); the measured matching's KL rank 1 of 105 (KL 0.0074, best 0.0074); residual's rank 64, perturbation's 5
+[  2587s] RESIDUAL_PAIRS_DONE
+A10c mistralai/Mistral-7B-Instruct-v0.2 starting Tue Nov  3 19:57:03 UTC 2026
+[  1041s] mistralai/Mistral-7B-Instruct-v0.2: 32 layers, 8 KV heads; moments from 262144 tokens; 2 held-out windows; enumerated matchings from alignment_study/residual_select_dev/Mistral-7B-Instruct-v0.2.json
+[  1433s] layer 0: 28 pairs measured; Spearman pair KL against residual -0.23, against the additive effect 0.36 (R2 0.958); the measured matching's KL rank 1 of 105 (KL 0.0067, best 0.0067); residual's rank 57, perturbation's 84
+[  1817s] layer 1: 28 pairs measured; Spearman pair KL against residual 0.59, against the additive effect -0.03 (R2 0.990); the measured matching's KL rank 7 of 105 (KL 0.0147, best 0.0133); residual's rank 93, perturbation's 4
+[  2204s] layer 2: 28 pairs measured; Spearman pair KL against residual -0.67, against the additive effect 0.28 (R2 0.990); the measured matching's KL rank 6 of 105 (KL 0.0166, best 0.0161); residual's rank 50, perturbation's 2
+[  2583s] layer 16: 28 pairs measured; Spearman pair KL against residual -0.18, against the additive effect -0.01 (R2 0.981); the measured matching's KL rank 1 of 105 (KL 0.0092, best 0.0092); residual's rank 73, perturbation's 18
+[  2583s] RESIDUAL_PAIRS_DONE
+A10c Qwen/Qwen2.5-7B starting Tue Nov  3 20:40:12 UTC 2026
+[   955s] Qwen/Qwen2.5-7B: 28 layers, 4 KV heads; moments from 262144 tokens; 2 held-out windows; enumerated matchings from alignment_study/residual_select_dev/Qwen2.5-7B.json
+[  1077s] layer 0: 6 pairs measured; Spearman pair KL against residual 0.60, against the additive effect -0.09 (R2 1.000); the measured matching's KL rank 1 of 3 (KL 0.3758, best 0.3758); residual's rank 3, perturbation's 1
+[  1175s] layer 1: 6 pairs measured; Spearman pair KL against residual 0.94, against the additive effect 0.49 (R2 1.000); the measured matching's KL rank 1 of 3 (KL 0.0081, best 0.0081); residual's rank 1, perturbation's 1
+[  1271s] layer 2: 6 pairs measured; Spearman pair KL against residual -0.83, against the additive effect -0.03 (R2 1.000); the measured matching's KL rank 2 of 3 (KL 0.03, best 0.0275); residual's rank 3, perturbation's 1
+[  1369s] layer 14: 6 pairs measured; Spearman pair KL against residual 0.03, against the additive effect 0.20 (R2 1.000); the measured matching's KL rank 1 of 3 (KL 0.035, best 0.0350); residual's rank 3, perturbation's 1
+[  1369s] RESIDUAL_PAIRS_DONE
+A10C_DONE
+A10c (c4 measurement) mistralai/Mistral-7B-v0.1 starting Tue Nov  3 21:03:29 UTC 2026
+[   965s] mistralai/Mistral-7B-v0.1: 32 layers, 8 KV heads; moments from 262144 tokens; 2 held-out windows; enumerated matchings from alignment_study/residual_select_dev/Mistral-7B-v0.1.json
+[  1364s] layer 0: 28 pairs measured; Spearman pair KL against residual -0.24, against the additive effect 0.19 (R2 0.890); the measured matching's KL rank 1 of 105 (KL 0.0059, best 0.0059); residual's rank 58, perturbation's 28
+[  1761s] layer 1: 28 pairs measured; Spearman pair KL against residual 0.80, against the additive effect 0.11 (R2 0.972); the measured matching's KL rank 1 of 105 (KL 0.0086, best 0.0086); residual's rank 64, perturbation's 10
+[  2815s] layer 2: 28 pairs measured; Spearman pair KL against residual -0.52, against the additive effect -0.06 (R2 0.992); the measured matching's KL rank 48 of 105 (KL 0.0146, best 0.0118); residual's rank 66, perturbation's 1
+[  3232s] layer 16: 28 pairs measured; Spearman pair KL against residual 0.01, against the additive effect 0.14 (R2 0.984); the measured matching's KL rank 8 of 105 (KL 0.0076, best 0.0074); residual's rank 64, perturbation's 5
+[  3232s] RESIDUAL_PAIRS_DONE
+A10c (c4 measurement) mistralai/Mistral-7B-Instruct-v0.2 starting Tue Nov  3 21:57:26 UTC 2026
+[  1009s] mistralai/Mistral-7B-Instruct-v0.2: 32 layers, 8 KV heads; moments from 262144 tokens; 2 held-out windows; enumerated matchings from alignment_study/residual_select_dev/Mistral-7B-Instruct-v0.2.json
+[  1408s] layer 0: 28 pairs measured; Spearman pair KL against residual -0.18, against the additive effect 0.02 (R2 0.958); the measured matching's KL rank 67 of 105 (KL 0.1283, best 0.0067); residual's rank 57, perturbation's 84
+[  1798s] layer 1: 28 pairs measured; Spearman pair KL against residual 0.69, against the additive effect 0.01 (R2 0.990); the measured matching's KL rank 20 of 105 (KL 0.0171, best 0.0133); residual's rank 93, perturbation's 4
+[  2185s] layer 2: 28 pairs measured; Spearman pair KL against residual -0.60, against the additive effect -0.09 (R2 0.990); the measured matching's KL rank 44 of 105 (KL 0.0183, best 0.0161); residual's rank 50, perturbation's 2
+[  2568s] layer 16: 28 pairs measured; Spearman pair KL against residual -0.08, against the additive effect 0.01 (R2 0.981); the measured matching's KL rank 23 of 105 (KL 0.0096, best 0.0092); residual's rank 73, perturbation's 18
+[  2568s] RESIDUAL_PAIRS_DONE
+A10c (c4 measurement) Qwen/Qwen2.5-7B starting Tue Nov  3 22:40:19 UTC 2026
+[   935s] Qwen/Qwen2.5-7B: 28 layers, 4 KV heads; moments from 262144 tokens; 2 held-out windows; enumerated matchings from alignment_study/residual_select_dev/Qwen2.5-7B.json
+[  1065s] layer 0: 6 pairs measured; Spearman pair KL against residual 0.66, against the additive effect -0.26 (R2 1.000); the measured matching's KL rank 2 of 3 (KL 0.5123, best 0.3758); by the largest KL over windows rank 2; residual's rank 3, perturbation's 1
+[  1167s] layer 1: 6 pairs measured; Spearman pair KL against residual 0.26, against the additive effect 0.31 (R2 1.000); the measured matching's KL rank 1 of 3 (KL 0.0081, best 0.0081); by the largest KL over windows rank 2; residual's rank 1, perturbation's 1
+[  1267s] layer 2: 6 pairs measured; Spearman pair KL against residual -0.43, against the additive effect -0.26 (R2 1.000); the measured matching's KL rank 1 of 3 (KL 0.0275, best 0.0275); by the largest KL over windows rank 1; residual's rank 3, perturbation's 1
+[  1372s] layer 14: 6 pairs measured; Spearman pair KL against residual -0.71, against the additive effect 0.31 (R2 1.000); the measured matching's KL rank 2 of 3 (KL 0.0356, best 0.0350); by the largest KL over windows rank 2; residual's rank 3, perturbation's 1
+[  1372s] RESIDUAL_PAIRS_DONE
+A10CP_DONE
+A10c (c4, 8 windows) mistralai/Mistral-7B-Instruct-v0.2 starting Wed Nov  4 10:15:49 UTC 2026
+[   946s] mistralai/Mistral-7B-Instruct-v0.2: 32 layers, 8 KV heads; moments from 262144 tokens; 8 held-out windows; enumerated matchings from alignment_study/residual_select_dev/Mistral-7B-Instruct-v0.2.json
+[  2375s] layer 0: 28 pairs measured; Spearman pair KL against residual -0.15, against the additive effect 0.02 (R2 0.958); the measured matching's KL rank 67 of 105 (KL 0.1283, best 0.0067); by the largest KL over windows rank 67; residual's rank 57, perturbation's 84
+[  3798s] layer 1: 28 pairs measured; Spearman pair KL against residual 0.66, against the additive effect -0.04 (R2 0.990); the measured matching's KL rank 20 of 105 (KL 0.0171, best 0.0133); by the largest KL over windows rank 1; residual's rank 93, perturbation's 4
+[  5244s] layer 2: 28 pairs measured; Spearman pair KL against residual -0.58, against the additive effect -0.09 (R2 0.990); the measured matching's KL rank 21 of 105 (KL 0.0174, best 0.0161); by the largest KL over windows rank 38; residual's rank 50, perturbation's 2
+[  6663s] layer 16: 28 pairs measured; Spearman pair KL against residual 0.07, against the additive effect 0.04 (R2 0.981); the measured matching's KL rank 23 of 105 (KL 0.0096, best 0.0092); by the largest KL over windows rank 45; residual's rank 73, perturbation's 18
+[  6663s] RESIDUAL_PAIRS_DONE
+A10c (c4, 8 windows) mistralai/Mistral-7B-v0.1 starting Wed Nov  4 12:07:02 UTC 2026
+[   964s] mistralai/Mistral-7B-v0.1: 32 layers, 8 KV heads; moments from 262144 tokens; 8 held-out windows; enumerated matchings from alignment_study/residual_select_dev/Mistral-7B-v0.1.json
+[  2463s] layer 0: 28 pairs measured; Spearman pair KL against residual -0.49, against the additive effect 0.32 (R2 0.890); the measured matching's KL rank 28 of 105 (KL 0.0213, best 0.0059); by the largest KL over windows rank 1; residual's rank 58, perturbation's 28
+[  4042s] layer 1: 28 pairs measured; Spearman pair KL against residual 0.76, against the additive effect 0.10 (R2 0.972); the measured matching's KL rank 39 of 105 (KL 0.0133, best 0.0086); by the largest KL over windows rank 41; residual's rank 64, perturbation's 10
+[  5589s] layer 2: 28 pairs measured; Spearman pair KL against residual -0.51, against the additive effect -0.10 (R2 0.992); the measured matching's KL rank 48 of 105 (KL 0.0146, best 0.0118); by the largest KL over windows rank 48; residual's rank 66, perturbation's 1
+[  7163s] layer 16: 28 pairs measured; Spearman pair KL against residual 0.09, against the additive effect 0.11 (R2 0.984); the measured matching's KL rank 8 of 105 (KL 0.0076, best 0.0074); by the largest KL over windows rank 68; residual's rank 64, perturbation's 5
+[  7164s] RESIDUAL_PAIRS_DONE
+A10CW_DONE

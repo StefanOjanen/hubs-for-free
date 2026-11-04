@@ -706,8 +706,17 @@ Each instrument below exists because a finding above required it.
   measurement is the selector: it finds the best or second-best matching in
   10 of 12 layers when measured on the ranking text, and out of sample it
   holds on two models and misses the first layer of Mistral-7B-Instruct, where
-  two held-out windows did not flag the one catastrophic pair. Development;
-  the pass with eight windows and the largest-over-windows cost runs next.
+  two held-out windows did not flag the one catastrophic pair. With eight windows the picture does not improve: by the mean pair KL the
+  measured matching ranks 67, 20, 21 and 23 of 105 in Mistral-7B-Instruct's
+  four layers and 28, 39, 48 and 8 in Mistral-7B-v0.1's, where two windows
+  had ranked the latter 1, 1, 48 and 8, and the largest KL over the windows is
+  no steadier (67, 1, 38 and 45; 1, 41, 48 and 68). Windows are not the
+  problem: the catastrophic pair, fused alone, costs 0.101 nats on the WikiText
+  ranking windows and 0.001 on every C4 window, and every matching containing
+  it ranks in the worst fifth on WikiText, so a pair's damage can be
+  text-dependent by a factor of a hundred and no C4 measurement can see it; a
+  per-token diagnostic of that pair runs next. Development; the measured
+  selector is not a recipe.
 
 <p align="center"><img src="figures/readme/fig37_selector.png" alt="Two panels over 19 model-layer rows. Left: the Spearman correlation with whole-model KL of the fusion's residual (crosses, mostly between -0.5 and 0.5) and of a one-layer output perturbation (dots, mostly 0.3 to 1.0). Right: the KL rank of each selector's choice as a fraction of the layer's matchings, the residual's near the middle, the perturbation's near the top, and the matching on measured pair damage (diamonds, out of sample) at the top on Mistral-7B-v0.1's early layers and Qwen2.5-7B, and mid-table on Mistral-7B-Instruct's first layer." width="100%"></p>
 <p align="center"><em>The closed form says how to merge a given group; which groups to merge needs a measurement, and a few catastrophic pairs decide it.</em></p>

@@ -1542,9 +1542,17 @@ best or second of three on Qwen2.5-7B, and ranks 67th of 105 on
 Mistral-7B-Instruct's layer 0, whose one catastrophic pair, (1, 5), the two
 windows did not flag; single-pair damage otherwise agrees across the two texts
 (Spearman 0.58 to 0.90 across six layers). The residual is the fit criterion
-and not the selector, consistent with Sections 6.8 and 6.16; a measured
-selector needs several windows of text like the target and a conservative
-aggregate, which a pass with eight windows tests next.
+and not the selector, consistent with Sections 6.8 and 6.16; a measured selector needs text like the target more than it needs windows:
+with eight C4 windows the measured matching ranks 67, 20, 21 and 23 of 105 in
+Mistral-7B-Instruct's four layers and 28, 39, 48 and 8 in
+Mistral-7B-v0.1's (two windows: 1, 1, 48, 8), the largest KL over the windows
+no steadier (67, 1, 38, 45; 1, 41, 48, 68), and the catastrophic pair,
+(1, 5), costs 0.101 nats fused alone on the WikiText ranking windows and
+0.001 on every C4 window while every matching containing it ranks in the
+worst fifth on WikiText (`residual_select_dev/*_pairs_c4_w8.json`):
+single-pair damage can be text-dependent by a factor of a hundred, which no
+amount of C4 can measure; a per-token diagnostic of that pair
+(`pair_text_diag.py`) follows.
 
 ### 6.18 The retrieval-head exemption on models it was not tuned on (preregistration 35)
 

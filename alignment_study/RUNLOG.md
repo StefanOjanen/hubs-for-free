@@ -2017,3 +2017,49 @@ Clauses (eval_retrieval35.py): E1 FAIL (per model {'Qwen2.5-7B': False,
 'Mistral-7B-v0.1': False}); E3 FAIL (per model {'Qwen2.5-7B': True,
 'Mistral-7B-v0.1': False}); E4 PASS (per model {'Qwen2.5-7B': True,
 'Mistral-7B-v0.1': True}); E5 PASS (pooled c 8, b 7, e [2, 6]). 2 of 5.
+
+A10c with eight measurement windows (2026-11-04 10:15 to 2026-11-04 14:07 UTC;
+residual_select_dev/<model>_pairs_c4_w8.json; residual_pairs.log): each pair
+of a layer's key-value heads fused alone and its KL measured on eight held-out
+C4 windows (documents after the calibration and check documents) instead of
+two; the matching on the mean pair KL and on the largest pair KL over the
+windows, ranked by whole-model KL among the layer's enumerated matchings
+(A10b's WikiText ranking windows).
+
+Mistral-7B-Instruct-v0.2 (8 key-value heads, 8 windows, 111 min): layer 0: the
+measured matching ranked 67 of 105 by the mean (KL 0.1283 against the best
+0.0067) and 67 by the largest KL over windows (KL 0.1283); the residual's 57,
+the perturbation's 84; Spearman of pair KL against the residual -0.15, against
+the additive effect 0.02 (with two windows: 67 by the mean, None by the
+largest); layer 1: the measured matching ranked 20 of 105 by the mean (KL
+0.0171 against the best 0.0133) and 1 by the largest KL over windows (KL
+0.0133); the residual's 93, the perturbation's 4; Spearman of pair KL against
+the residual 0.66, against the additive effect -0.04 (with two windows: 20 by
+the mean, None by the largest); layer 2: the measured matching ranked 21 of
+105 by the mean (KL 0.0174 against the best 0.0161) and 38 by the largest KL
+over windows (KL 0.0180); the residual's 50, the perturbation's 2; Spearman of
+pair KL against the residual -0.58, against the additive effect -0.09 (with
+two windows: 44 by the mean, None by the largest); layer 16: the measured
+matching ranked 23 of 105 by the mean (KL 0.0096 against the best 0.0092) and
+45 by the largest KL over windows (KL 0.0098); the residual's 73, the
+perturbation's 18; Spearman of pair KL against the residual 0.07, against the
+additive effect 0.04 (with two windows: 23 by the mean, None by the largest).
+
+Mistral-7B-v0.1 (8 key-value heads, 8 windows, 119 min): layer 0: the measured
+matching ranked 28 of 105 by the mean (KL 0.0213 against the best 0.0059) and
+1 by the largest KL over windows (KL 0.0059); the residual's 58, the
+perturbation's 28; Spearman of pair KL against the residual -0.49, against the
+additive effect 0.32 (with two windows: 1 by the mean, None by the largest);
+layer 1: the measured matching ranked 39 of 105 by the mean (KL 0.0133 against
+the best 0.0086) and 41 by the largest KL over windows (KL 0.0134); the
+residual's 64, the perturbation's 10; Spearman of pair KL against the residual
+0.76, against the additive effect 0.10 (with two windows: 1 by the mean, None
+by the largest); layer 2: the measured matching ranked 48 of 105 by the mean
+(KL 0.0146 against the best 0.0118) and 48 by the largest KL over windows (KL
+0.0146); the residual's 66, the perturbation's 1; Spearman of pair KL against
+the residual -0.51, against the additive effect -0.10 (with two windows: 48 by
+the mean, None by the largest); layer 16: the measured matching ranked 8 of
+105 by the mean (KL 0.0076 against the best 0.0074) and 68 by the largest KL
+over windows (KL 0.0079); the residual's 64, the perturbation's 5; Spearman of
+pair KL against the residual 0.09, against the additive effect 0.11 (with two
+windows: 8 by the mean, None by the largest).
