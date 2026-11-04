@@ -306,6 +306,17 @@ if RDG:
             s_ = a["summary"]
             rows.append([m, arm, f"{s_['hits_protocol']} of {s_['of']}", s_["hits_uncut"], f(s_["p_eos"], 3), f(s_["p_newline"], 3), f(s_["p_digit"], 3), f(s_.get("p_code_first_token"), 3) if s_.get("p_code_first_token") is not None else "", f"{s_['median_rank_of_code_first_token']:.0f}"])
     table(["Model", "arm", "retrieved, protocol", "retrieved, uncut", "mass on end", "on newline", "on digits", "on the code's first token", "median rank of that token"], rows)
+PTD = sorted(glob.glob("alignment_study/pair_text_diag/*.json"))
+if PTD:
+    w("## Table 16b. Is a merged pair's damage text-dependent? (pair_text_diag.py, development): each pair fused alone, the per-position KL on the WikiText-2 ranking windows and on held-out C4 windows; the mean, the share of the total carried by the top one percent of positions, and the shares carried by positions predicting a token with '@', '=', a digit or a newline\n")
+    rows = []
+    for fp in PTD:
+        r = json.load(open(fp)); m = short(os.path.basename(fp).split("_L")[0])
+        for pair, e in r["pairs"].items():
+            for name, t in e["texts"].items():
+                ws = t["windows"]; sh = lambda c: f"{sum((x['classes'][c]['share_of_total'] or 0) for x in ws) / len(ws):.2f}"
+                rows.append([m, r["layer"], pair, f(e["residual"], 3), name, f(t["mean_kl"], 4), f"{sum(x['top_1pct_share'] for x in ws) / len(ws):.2f}", sh("at_sign"), sh("equals"), sh("digit"), sh("newline")])
+    table(["Model", "layer", "pair", "residual", "text", "mean KL", "top 1% share", "'@'", "'='", "digits", "newline"], rows)
 KB = sorted(glob.glob("alignment_study/kvfuse_bench/*.json"))
 if KB:
     w("## Table 15. The exported checkpoint's cache and decode speed (one laptop, MPS)\n")
