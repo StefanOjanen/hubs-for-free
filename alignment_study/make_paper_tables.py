@@ -343,6 +343,15 @@ if TF:
             rows.append([m, k.replace("_", " "), f(a["as_is"]["perplexity"], 2), f(a["bos_prepended"]["perplexity"], 2), f(a.get("ratio_as_is"), 3) if a.get("ratio_as_is") else "", f(a.get("ratio_bos_prepended"), 3) if a.get("ratio_bos_prepended") else "",
                          f(b["0_31"], 3), f(b["32_127"], 3), f(b["128_on"], 3), f"{a['needle_bos']['hits']} of {a['needle_bos']['of']}" if "needle_bos" in a else ""])
     table(["Model", "arm", "ppl as is", "ppl with the token", "ratio as is", "ratio with the token", "NLL 0 to 31", "NLL 32 to 127", "NLL 128 on", "needle with the token"], rows)
+SE = [fp for fp in sorted(glob.glob("alignment_study/sink_exempt_dev/*.json")) if "llama-160m" not in fp]
+if SE:
+    w("## Table 14f. A sink-aware exemption (sink_exempt_dev.py, development): query heads scored by their attention on position 0 over held-out token-less windows, a key-value head by the largest of its query heads; the top-k kept unmerged at half the key-value heads; perplexity on the 8 registered windows as they are and with the token prepended, the registered needle protocol without the token (and with it where run); random controls from the lower half of the scores\n")
+    rows = []
+    for fp in SE:
+        r = json.load(open(fp)); m = short(os.path.basename(fp)[:-5])
+        for k, a in r["arms"].items():
+            rows.append([m, k, a["n_protected"], f"{a['cache_fraction']:.3f}", f(a["ppl_as_is"], 2), f(a["ppl_bos_prepended"], 2) if a.get("ppl_bos_prepended") else "", f"{a['needle']['hits']} of {a['needle']['of']}", f"{a['needle_bos']['hits']} of {a['needle_bos']['of']}" if "needle_bos" in a else ""])
+    table(["Model", "arm", "exempt", "cache fraction", "ppl as is", "ppl with the token", "needle without the token", "needle with the token"], rows)
 KB = [fp for fp in sorted(glob.glob("alignment_study/kvfuse_bench/*.json")) if "llama-160m" not in fp]   # the Llama-160m file is the measured option's code-path check, not a speed measurement
 if KB:
     w("## Table 15. The exported checkpoint's cache and decode speed (one laptop, MPS; the Llama-160m file in the directory is the measured option's code-path check and is not shown)\n")
