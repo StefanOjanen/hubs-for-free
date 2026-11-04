@@ -2146,3 +2146,62 @@ then 'so' 0.11, 'for' then 'an' 0.10). pair 0-3 (residual 0.004): wikitext
 8.70, 'B' then 'oul' 7.96); c4 0.0833 (top one percent of positions 0.30;
 shares '@' 0.00, '=' 0.00, digits 0.04, newlines 0.02; largest at '’' then 't'
 8.99, 'that' then 'much' 7.34, '.' then 'Hill' 5.91).
+
+Pair sequence-start diagnostic (2026-11-04 17:21 to 2026-11-04 17:42 UTC;
+pair_start_diag.py; pair_start_diag/<model>_L<layer>.json;
+pair_start_diag.log; development): each listed pair fused alone, the per-
+position KL(unconverted || fused) on the WikiText-2 ranking windows and on
+held-out C4 windows under four variants of each window: as it is, the
+beginning-of-sequence token prepended, the first three tokens dropped, and
+WikiText's three opening tokens prepended; per variant the mean over all
+positions and over positions 0 to 31, 32 to 127 and 128 on, and the largest KL
+with its position.
+
+Mistral-7B-Instruct-v0.2_L0 (layer 0, 2 windows of each text; WikiText's
+opening tokens ['▁', '<0x0A>', '<0x0A>'], bos 1; 21 min): pair 1-5, wikitext
+window 0: as is 0.2076 (positions 0 to 31 5.428, 32 to 127 0.3266, 128 on
+0.1146; largest 26.3 at 3); bos prepended 0.0009 (positions 0 to 31 0.005, 32
+to 127 0.0005, 128 on 0.0009; largest 0.2 at 1880); first 3 dropped 0.0431
+(positions 0 to 31 1.095, 32 to 127 0.0515, 128 on 0.0251; largest 15.8 at
+13); wikitext start prepended 0.3047 (positions 0 to 31 8.135, 32 to 127
+0.7416, 128 on 0.1522; largest 28.0 at 6). pair 1-5, wikitext window 1: as is
+0.0009 (positions 0 to 31 0.002, 32 to 127 0.0025, 128 on 0.0008; largest 0.1
+at 1662); bos prepended 0.0005 (positions 0 to 31 0.000, 32 to 127 0.0008, 128
+on 0.0005; largest 0.0 at 1653); first 3 dropped 0.0009 (positions 0 to 31
+0.002, 32 to 127 0.0023, 128 on 0.0008; largest 0.1 at 1659); wikitext start
+prepended 0.0322 (positions 0 to 31 0.861, 32 to 127 0.0986, 128 on 0.0151;
+largest 6.9 at 4). pair 1-5, c4 window 0: as is 0.0016 (positions 0 to 31
+0.003, 32 to 127 0.0050, 128 on 0.0014; largest 0.0 at 295); bos prepended
+0.0007 (positions 0 to 31 0.000, 32 to 127 0.0003, 128 on 0.0007; largest 0.0
+at 1279); first 3 dropped 0.0016 (positions 0 to 31 0.002, 32 to 127 0.0056,
+128 on 0.0014; largest 0.1 at 280); wikitext start prepended 0.0316 (positions
+0 to 31 0.664, 32 to 127 0.0972, 128 on 0.0178; largest 7.6 at 4). pair 1-5,
+c4 window 1: as is 0.0007 (positions 0 to 31 0.002, 32 to 127 0.0012, 128 on
+0.0007; largest 0.0 at 1043); bos prepended 0.0004 (positions 0 to 31 0.000,
+32 to 127 0.0004, 128 on 0.0004; largest 0.0 at 2002); first 3 dropped 0.0261
+(positions 0 to 31 0.674, 32 to 127 0.0937, 128 on 0.0119; largest 9.9 at 2);
+wikitext start prepended 0.0665 (positions 0 to 31 1.391, 32 to 127 0.2137,
+128 on 0.0370; largest 12.0 at 8). pair 0-1, wikitext window 0: as is 0.2305
+(positions 0 to 31 6.971, 32 to 127 0.3186, 128 on 0.1137; largest 27.6 at 3);
+bos prepended 0.0012 (positions 0 to 31 0.012, 32 to 127 0.0009, 128 on
+0.0010; largest 0.3 at 1880); first 3 dropped 0.0551 (positions 0 to 31 1.752,
+32 to 127 0.0722, 128 on 0.0259; largest 25.2 at 13); wikitext start prepended
+0.2816 (positions 0 to 31 7.094, 32 to 127 0.4928, 128 on 0.1575; largest 29.2
+at 6). pair 0-1, wikitext window 1: as is 0.0007 (positions 0 to 31 0.001, 32
+to 127 0.0013, 128 on 0.0006; largest 0.1 at 984); bos prepended 0.0005
+(positions 0 to 31 0.000, 32 to 127 0.0010, 128 on 0.0005; largest 0.1 at
+1883); first 3 dropped 0.0008 (positions 0 to 31 0.000, 32 to 127 0.0025, 128
+on 0.0008; largest 0.1 at 1879); wikitext start prepended 0.0211 (positions 0
+to 31 0.371, 32 to 127 0.0805, 128 on 0.0123; largest 5.0 at 1). pair 0-1, c4
+window 0: as is 0.0032 (positions 0 to 31 0.001, 32 to 127 0.0112, 128 on
+0.0029; largest 0.2 at 283); bos prepended 0.0007 (positions 0 to 31 0.000, 32
+to 127 0.0004, 128 on 0.0008; largest 0.0 at 1279); first 3 dropped 0.0019
+(positions 0 to 31 0.001, 32 to 127 0.0071, 128 on 0.0016; largest 0.1 at
+280); wikitext start prepended 0.0300 (positions 0 to 31 0.550, 32 to 127
+0.0860, 128 on 0.0186; largest 5.0 at 1). pair 0-1, c4 window 1: as is 0.0005
+(positions 0 to 31 0.000, 32 to 127 0.0004, 128 on 0.0005; largest 0.0 at
+1946); bos prepended 0.0004 (positions 0 to 31 0.000, 32 to 127 0.0003, 128 on
+0.0004; largest 0.0 at 431); first 3 dropped 0.0034 (positions 0 to 31 0.043,
+32 to 127 0.0135, 128 on 0.0023; largest 0.2 at 12); wikitext start prepended
+0.0261 (positions 0 to 31 0.392, 32 to 127 0.0614, 128 on 0.0182; largest 5.0
+at 1).
