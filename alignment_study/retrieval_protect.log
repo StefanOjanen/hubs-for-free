@@ -1,0 +1,21 @@
+A11 starting Sun Nov  1 23:46:57 UTC 2026
+mistralai/Mistral-7B-Instruct-v0.2: 32 layers, 32 query heads over 8 key-value heads; moments from 262144 tokens; retrieval scores from audits/retrieval_heads/Mistral-7B-Instruct-v0.2_scores.npy (936s)
+mistralai/Mistral-7B-Instruct-v0.2, protect_retrieval_0.1: 15 of 15 retrieved; by depth {'10': 5, '50': 5, '90': 5}; ppl 12.474; cache 0.570 (146 of 256 key-value heads) (1706s)
+mistralai/Mistral-7B-Instruct-v0.2, protect_random_24: 14 of 15 retrieved; by depth {'10': 5, '50': 5, '90': 4}; ppl 11.448; cache 0.570 (146 of 256 key-value heads) (2523s)
+mistralai/Mistral-7B-Instruct-v0.2, protect_residual_24: 5 of 15 retrieved; by depth {'10': 1, '50': 2, '90': 2}; ppl 13.952; cache 0.555 (142 of 256 key-value heads) (3343s)
+mistralai/Mistral-7B-Instruct-v0.2, protect_retrieval_0.3: 14 of 15 retrieved; by depth {'10': 5, '50': 5, '90': 4}; ppl 13.932; cache 0.520 (133 of 256 key-value heads) (4144s)
+RETRIEVAL_PROTECT_DONE (4144s)
+A11_DONE
+A11 follow-up starting Mon Nov  2 00:56:29 UTC 2026
+mistralai/Mistral-7B-Instruct-v0.2: 32 layers, 32 query heads over 8 key-value heads; moments from 262144 tokens; retrieval scores from audits/retrieval_heads/Mistral-7B-Instruct-v0.2_scores.npy (933s)
+mistralai/Mistral-7B-Instruct-v0.2, protect_single18_0: 7 of 15 retrieved; by depth {'10': 2, '50': 3, '90': 2}; ppl 15.832; cache 0.504 (129 of 256 key-value heads) (1738s)
+mistralai/Mistral-7B-Instruct-v0.2, protect_random_5_below0.1_seed1: 13 of 15 retrieved; by depth {'10': 5, '50': 4, '90': 4}; ppl 15.045; cache 0.520 (133 of 256 key-value heads) (2567s)
+mistralai/Mistral-7B-Instruct-v0.2, protect_random_24_below0.1_seed1: 14 of 15 retrieved; by depth {'10': 5, '50': 5, '90': 4}; ppl 11.070; cache 0.570 (146 of 256 key-value heads) (3403s)
+RETRIEVAL_PROTECT_DONE (3403s)
+A11B_DONE
+A11 clean controls starting Mon Nov  2 01:53:47 UTC 2026
+mistralai/Mistral-7B-Instruct-v0.2: 32 layers, 32 query heads over 8 key-value heads; moments from 262144 tokens; retrieval scores from audits/retrieval_heads/Mistral-7B-Instruct-v0.2_scores.npy (933s)
+mistralai/Mistral-7B-Instruct-v0.2, protect_random_5_below0.1_seed2: 7 of 15 retrieved; by depth {'10': 2, '50': 4, '90': 1}; ppl 16.004; cache 0.516 (132 of 256 key-value heads) (1727s)
+mistralai/Mistral-7B-Instruct-v0.2, protect_random_24_below0.1_seed2: 13 of 15 retrieved; by depth {'10': 4, '50': 5, '90': 4}; ppl 12.878; cache 0.574 (147 of 256 key-value heads) (2503s)
+RETRIEVAL_PROTECT_DONE (2503s)
+A11C_DONE

@@ -624,12 +624,39 @@ Each instrument below exists because a finding above required it.
   include early-layer heads reach 11.1 to 12.9 against the retrieval 24's
   12.5. Development, one model, fifteen instances per arm, underpowered for
   the five-head contrast; the preregistered test on two more models with fifty
-  instances is the next round. A random control in this design must also restrict the leftover
+  instances follows. A random control in this design must also restrict the leftover
   of an odd layer, which the cheapest-matching rule twice made a retrieval
   head.
 
 <p align="center"><img src="figures/readme/fig34_retrieval_exemption.png" alt="Two panels of dot plots for Mistral-7B-Instruct at half the key-value heads. Left: planted codes retrieved of 15 for the unconverted model (15), the plain fusion (2), the strongest retrieval head exempt (7), the five retrieval heads exempt (14), the 24 exempt (15), five and 24 random non-retrieval heads exempt (7 and 13), and the residual's 24 costliest-to-pair heads exempt (5). Right: 8-window perplexity for the same arms, 5.5 to 16.7." width="100%"></p>
 <p align="center"><em>Retrieval under head merging is graded: five exempt retrieval heads do what twenty-four random heads do, and the heads the residual would protect do least.</em></p>
+
+- **Preregistered on two base models, the exemption did not transfer.** Round
+  35 (`alignment_study/PREREGISTRATION35.md`, frozen at 5def124) ran the same
+  arms with fifty instances per arm on Qwen2.5-7B and Mistral-7B-v0.1, which
+  retrieve 50 of 50 unconverted and nothing after the plain fusion at half the
+  heads. Exempting the retrieval heads brings back 7 of 50 on Qwen2.5-7B (8
+  with seventeen heads exempt; random heads 0 to 6, the residual's choice 0)
+  and nothing on Mistral-7B-v0.1 at either threshold; E1 to E3 fail, E4 (no
+  perplexity cost, cache within 0.55) and E5 (the larger exemption above its
+  random pools, carried by Qwen) pass, 2 of 5. The development model under the
+  same protocol gives 46 and 48 of 50 at the two thresholds against the plain
+  fusion's 10, random heads 7, 12, 38 and 6, the residual's choice 19,
+  identical before the freeze and in the registered rerun. The answers say
+  why: the fused development model always answers in the right form and the
+  exemption fixes the digits, while the fused Mistral-7B-v0.1 stops at once or
+  repeats a phrase, with no digit in any of its 400 converted answers, and the
+  fused Qwen2.5-7B answers degenerate text that the exemption turns into the
+  right form with stereotyped digits; no exemption at these budgets brings the
+  task back. The exemption repairs what merging the retrieval heads removed
+  only where the conversion leaves the model answering. What holds on all
+  three models is the cheaper finding: the plain fusion at half the heads
+  loses the planted code (10, 0 and 0 of 50) while perplexity stays within 3
+  to 13 times the unconverted, so a head-merging conversion must report
+  retrieval beside perplexity.
+
+<p align="center"><img src="figures/readme/fig38_retrieval_round.png" alt="Two panels of dot plots for Qwen2.5-7B, Mistral-7B-v0.1 and Mistral-7B-Instruct at half the key-value heads, fifty planted codes per arm. Left: codes retrieved for the unconverted model (50 on each), the plain fusion (0, 0 and 10), the retrieval heads exempt at two thresholds (7 and 8 on Qwen, 0 and 0 on Mistral-7B-v0.1, 46 and 48 on the development model), random heads at the same counts (0 to 6 on Qwen, 0 on Mistral-7B-v0.1, 6 to 38 on the development model) and the residual's choice (0, 0 and 19). Right: 8-window perplexity for the same arms, 4.9 to 70." width="100%"></p>
+<p align="center"><em>Registered on two base models, the retrieval-head exemption does not bring the planted code back: their fused models stop answering, and no exemption at these budgets restores the task.</em></p>
 
 - **Uptraining from the fused start: a head start that narrows and holds at
   5M tokens.** Round 33 (registered) uptrained OLMo-1B and h2o-danube-1.8b at

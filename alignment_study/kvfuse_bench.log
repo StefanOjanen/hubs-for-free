@@ -1,0 +1,25 @@
+7B export and benchmark starting Sun Nov  1 23:16:39 UTC 2026
+[    18s] NousResearch/Llama-2-7b-hf: 32 layers, 32 query heads, 32 KV heads -> 16
+[   884s] second moments from 262144 calibration tokens
+[  1002s] matched groups chosen
+[  1705s] fused and rebalanced
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:53<00:00, 53.17s/it]Writing model shards: 100%|██████████| 1/1 [00:53<00:00, 53.17s/it]
+[  1762s] saved /private/tmp/claude-501/-Users-stefanojanen-Documents-The-Emergent-Coordinator-Hypothesis/29d2a60f-5423-4601-9108-e586ff2b2a8c/scratchpad/llama2-7b-kv16 (16 KV heads per layer)
+7B export and benchmark (retry) starting Mon Nov  2 02:35:45 UTC 2026
+[    16s] NousResearch/Llama-2-7b-hf: 32 layers, 32 query heads, 32 KV heads -> 16
+[   851s] second moments from 262144 calibration tokens
+[   963s] matched groups chosen
+[  1575s] fused and rebalanced
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:46<00:00, 46.77s/it]Writing model shards: 100%|██████████| 1/1 [00:46<00:00, 46.77s/it]
+[  1626s] saved /private/tmp/claude-501/-Users-stefanojanen-Documents-The-Emergent-Coordinator-Hypothesis/29d2a60f-5423-4601-9108-e586ff2b2a8c/scratchpad/llama2-7b-kv16 (16 KV heads per layer)
+EXPORT_BENCH_DONE
+7B export and benchmark (third attempt) starting Tue Nov  3 09:53:21 UTC 2026
+[    16s] NousResearch/Llama-2-7b-hf: 32 layers, 32 query heads, 32 KV heads -> 16
+[   852s] second moments from 262144 calibration tokens
+[   973s] matched groups chosen
+[  1658s] fused and rebalanced
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:35<00:00, 35.84s/it]Writing model shards: 100%|██████████| 1/1 [00:35<00:00, 35.85s/it]
+[  1698s] saved /private/tmp/claude-501/-Users-stefanojanen-Documents-The-Emergent-Coordinator-Hypothesis/29d2a60f-5423-4601-9108-e586ff2b2a8c/scratchpad/llama2-7b-kv16 (16 KV heads per layer)
+benchmark starting with free memory 88 percent Tue Nov  3 10:21:44 UTC 2026
+benchmark produced no result; checkpoint kept at /private/tmp/claude-501/-Users-stefanojanen-Documents-The-Emergent-Coordinator-Hypothesis/29d2a60f-5423-4601-9108-e586ff2b2a8c/scratchpad/llama2-7b-kv16 Tue Nov  3 10:22:29 UTC 2026
+EXPORT_BENCH2_DONE

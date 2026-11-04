@@ -1,0 +1,129 @@
+{
+ "missing": [],
+ "excluded": [],
+ "per_model": {
+  "Mistral-7B-Instruct-v0.2": {
+   "unconverted": 50,
+   "plain": 10,
+   "b": 46,
+   "c": 48,
+   "d": [
+    7,
+    12
+   ],
+   "e": [
+    38,
+    6
+   ],
+   "f": 19,
+   "excluded": false,
+   "no_repair_possible": false,
+   "complete": true,
+   "E1": true,
+   "E2": true,
+   "E3": true,
+   "E4": true,
+   "cache_b": 0.51953125,
+   "ppl_b": 13.932318452981903,
+   "ppl_plain": 16.678713727737772
+  },
+  "Qwen2.5-7B": {
+   "unconverted": 50,
+   "plain": 0,
+   "b": 7,
+   "c": 8,
+   "d": [
+    1,
+    0
+   ],
+   "e": [
+    2,
+    6
+   ],
+   "f": 0,
+   "excluded": false,
+   "no_repair_possible": false,
+   "complete": true,
+   "E1": false,
+   "E2": true,
+   "E3": true,
+   "E4": true,
+   "cache_b": 0.5446428571428571,
+   "ppl_b": 54.06052026678426,
+   "ppl_plain": 70.10193413256377
+  },
+  "Mistral-7B-v0.1": {
+   "unconverted": 50,
+   "plain": 0,
+   "b": 0,
+   "c": 0,
+   "d": [
+    0,
+    0
+   ],
+   "e": [
+    0,
+    0
+   ],
+   "f": 0,
+   "excluded": false,
+   "no_repair_possible": false,
+   "complete": true,
+   "E1": false,
+   "E2": false,
+   "E3": false,
+   "E4": true,
+   "cache_b": 0.51171875,
+   "ppl_b": 24.18953551048833,
+   "ppl_plain": 28.682697071521382
+  }
+ },
+ "development_model": [
+  "Mistral-7B-Instruct-v0.2"
+ ],
+ "E1": {
+  "testable": true,
+  "pass": false,
+  "per_model": {
+   "Qwen2.5-7B": false,
+   "Mistral-7B-v0.1": false
+  },
+  "untestable_on": []
+ },
+ "E2": {
+  "testable": true,
+  "pass": false,
+  "per_model": {
+   "Qwen2.5-7B": true,
+   "Mistral-7B-v0.1": false
+  },
+  "untestable_on": []
+ },
+ "E3": {
+  "testable": true,
+  "pass": false,
+  "per_model": {
+   "Qwen2.5-7B": true,
+   "Mistral-7B-v0.1": false
+  },
+  "untestable_on": []
+ },
+ "E4": {
+  "pass": true,
+  "per_model": {
+   "Qwen2.5-7B": true,
+   "Mistral-7B-v0.1": true
+  }
+ },
+ "E5": {
+  "pass": true,
+  "pooled_c": 8,
+  "pooled_b": 7,
+  "pooled_e": [
+   2,
+   6
+  ]
+ },
+ "passes": 2,
+ "of": 5
+}

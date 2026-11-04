@@ -1949,3 +1949,71 @@ cache 0.520, 18 min. Of the 214 converted-arm misses, the answer's digits are
 '10110101' 59 times, '1234' 51 times, '1111' 42 times: the failed arms answer
 a stereotyped code rather than a nearby one. The sizes of E1 to E5 were set
 before this population and are unchanged by it; the freeze follows.
+
+Round 35, the retrieval-head exemption under the registered protocol
+(2026-11-04 01:59 to 2026-11-04 10:15 UTC;
+alignment_study/retrieval_round/<model>.json, retrieval_round_results.json;
+retrieval_round.log, eval_retrieval35.log; frozen at 5def124).
+
+Mistral-7B-Instruct-v0.2 (the development model, reported, 256 key-value
+heads, revision 63a8b08). Counts: 5 key-value heads at 0.3 or more, 24 at 0.1
+or more, 232 below 0.1 in the random pool. Exempt at 0.3: layer 2 head 5,
+layer 12 head 1, layer 18 head 0, layer 19 head 2, layer 30 head 2. The
+unconverted model: 50 of 50 (by depth 10, 10, 10, 10, 10), perplexity 5.54,
+cache 1.000; the plain fusion (a): 10 of 50 (by depth 0, 4, 2, 3, 1),
+perplexity 16.68, cache 0.500, 18 min; retrieval heads at 0.3 or more (b): 46
+of 50 (by depth 10, 9, 10, 9, 8), perplexity 13.93, cache 0.520, 18 min; at
+0.1 or more (c): 48 of 50 (by depth 10, 9, 9, 10, 10), perplexity 12.47, cache
+0.570, 18 min; random heads at the 0.3 count (d), seed 0: 7 of 50 (by depth 1,
+1, 3, 0, 2), perplexity 15.44, cache 0.520, 18 min; random heads at the 0.1
+count (e), seed 0: 38 of 50 (by depth 8, 7, 9, 8, 6), perplexity 12.02, cache
+0.578, 18 min; random heads at the 0.3 count (d), seed 1: 12 of 50 (by depth
+1, 4, 3, 2, 2), perplexity 15.12, cache 0.520, 18 min; random heads at the 0.1
+count (e), seed 1: 6 of 50 (by depth 3, 1, 0, 1, 1), perplexity 12.73, cache
+0.582, 18 min; the residual's choice at the 0.3 count (f): 19 of 50 (by depth
+0, 5, 6, 7, 1), perplexity 15.15, cache 0.520, 18 min. Of the 214 converted-
+arm misses, the answer's digits are '10110101' 59 times, '1234' 51 times,
+'1111' 42 times.
+
+Mistral-7B-v0.1 (scored, 256 key-value heads, revision 27d67f1). Counts: 3
+key-value heads at 0.3 or more, 21 at 0.1 or more, 235 below 0.1 in the random
+pool. Exempt at 0.3: layer 12 head 1, layer 18 head 0, layer 30 head 2. The
+unconverted model: 50 of 50 (by depth 10, 10, 10, 10, 10), perplexity 4.86,
+cache 1.000; the plain fusion (a): 0 of 50 (by depth 0, 0, 0, 0, 0),
+perplexity 28.68, cache 0.500, 18 min; retrieval heads at 0.3 or more (b): 0
+of 50 (by depth 0, 0, 0, 0, 0), perplexity 24.19, cache 0.512, 18 min; at 0.1
+or more (c): 0 of 50 (by depth 0, 0, 0, 0, 0), perplexity 20.01, cache 0.562,
+18 min; random heads at the 0.3 count (d), seed 0: 0 of 50 (by depth 0, 0, 0,
+0, 0), perplexity 26.92, cache 0.512, 17 min; random heads at the 0.1 count
+(e), seed 0: 0 of 50 (by depth 0, 0, 0, 0, 0), perplexity 24.42, cache 0.566,
+18 min; random heads at the 0.3 count (d), seed 1: 0 of 50 (by depth 0, 0, 0,
+0, 0), perplexity 25.95, cache 0.512, 17 min; random heads at the 0.1 count
+(e), seed 1: 0 of 50 (by depth 0, 0, 0, 0, 0), perplexity 18.10, cache 0.570,
+18 min; the residual's choice at the 0.3 count (f): 0 of 50 (by depth 0, 0, 0,
+0, 0), perplexity 26.30, cache 0.512, 18 min. Of the 400 converted-arm misses,
+the answer's digits are '(no digits)' 400 times.
+
+Qwen2.5-7B (scored, 112 key-value heads, revision d149729). Counts: 6 key-
+value heads at 0.3 or more, 17 at 0.1 or more, 95 below 0.1 in the random
+pool. Exempt at 0.3: layer 5 head 2, layer 14 head 0, layer 17 head 1, layer
+22 head 0, layer 22 head 3, layer 23 head 1. The unconverted model: 50 of 50
+(by depth 10, 10, 10, 10, 10), perplexity 5.40, cache 1.000; the plain fusion
+(a): 0 of 50 (by depth 0, 0, 0, 0, 0), perplexity 70.10, cache 0.500, 18 min;
+retrieval heads at 0.3 or more (b): 7 of 50 (by depth 1, 4, 0, 0, 2),
+perplexity 54.06, cache 0.545, 18 min; at 0.1 or more (c): 8 of 50 (by depth
+1, 4, 0, 0, 3), perplexity 45.96, cache 0.625, 18 min; random heads at the 0.3
+count (d), seed 0: 1 of 50 (by depth 0, 0, 0, 0, 1), perplexity 62.55, cache
+0.554, 18 min; random heads at the 0.1 count (e), seed 0: 2 of 50 (by depth 1,
+0, 0, 0, 1), perplexity 30.25, cache 0.634, 18 min; random heads at the 0.3
+count (d), seed 1: 0 of 50 (by depth 0, 0, 0, 0, 0), perplexity 45.80, cache
+0.554, 18 min; random heads at the 0.1 count (e), seed 1: 6 of 50 (by depth 0,
+4, 0, 0, 2), perplexity 42.96, cache 0.625, 18 min; the residual's choice at
+the 0.3 count (f): 0 of 50 (by depth 0, 0, 0, 0, 0), perplexity 63.46, cache
+0.536, 18 min. Of the 376 converted-arm misses, the answer's digits are '(no
+digits)' 185 times, '1' 46 times, '10' 41 times.
+
+Clauses (eval_retrieval35.py): E1 FAIL (per model {'Qwen2.5-7B': False,
+'Mistral-7B-v0.1': False}); E2 FAIL (per model {'Qwen2.5-7B': True,
+'Mistral-7B-v0.1': False}); E3 FAIL (per model {'Qwen2.5-7B': True,
+'Mistral-7B-v0.1': False}); E4 PASS (per model {'Qwen2.5-7B': True,
+'Mistral-7B-v0.1': True}); E5 PASS (pooled c 8, b 7, e [2, 6]). 2 of 5.

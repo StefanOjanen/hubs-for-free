@@ -1,0 +1,8873 @@
+{
+ "model": "mistralai/Mistral-7B-v0.1",
+ "revision": "27d67f1b5f57dc0953326b2601d68371d40ea8da",
+ "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/5def124/alignment_study/PREREGISTRATION35.md",
+ "dev": false,
+ "development": false,
+ "scores": "audits/retrieval_heads/Mistral-7B-v0.1_scores.npy",
+ "needle": {
+  "context_tokens": 2048,
+  "facts": 10,
+  "depths": [
+   10,
+   30,
+   50,
+   70,
+   90
+  ]
+ },
+ "ppl_windows": 8,
+ "kv_heads_total": 256,
+ "arms": {
+  "unconverted": {
+   "n_protected": 0,
+   "kv_heads_kept": 256,
+   "cache_fraction": 1.0,
+   "ppl_8_windows": 4.858766172190064,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "48213\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "48213\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "48213\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "48213\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "90457\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "90457\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "90457\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "90457\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "90457.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "27365\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "27365\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "27365\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "61928\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "61928\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "61928\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "61928\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "61928.\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "35074\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "35074\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "35074\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "35074\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "35074.\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "73506\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "73506\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "73506\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "73506\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "73506.\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "18649\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "18649\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "18649\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "18649\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "18649.\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "52937\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "52937\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "52937\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "52937\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "52937.\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "84071\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "84071\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "84071\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "84071\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "84071.\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "39615\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "39615\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "39615\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "39615\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "39615.\n",
+      "hit": true
+     }
+    ],
+    "hits": 50,
+    "of": 50,
+    "by_depth": {
+     "10": 10,
+     "30": 10,
+     "50": 10,
+     "70": 10,
+     "90": 10
+    }
+   }
+  },
+  "a_fusion": {
+   "protected": [],
+   "n_protected": 0,
+   "kv_heads_kept": 128,
+   "cache_fraction": 0.5,
+   "groups": [
+    [
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      7
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      3,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      7
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      5,
+      6
+     ]
+    ]
+   ],
+   "ppl_8_windows": 28.682697071521382,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     }
+    ],
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    }
+   },
+   "seconds": 1058.6
+  },
+  "b_retrieval_0.3": {
+   "protected": [
+    [
+     12,
+     1
+    ],
+    [
+     18,
+     0
+    ],
+    [
+     30,
+     2
+    ]
+   ],
+   "n_protected": 3,
+   "kv_heads_kept": 131,
+   "cache_fraction": 0.51171875,
+   "groups": [
+    [
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      7
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      3,
+      6
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      7
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      5,
+      6
+     ]
+    ]
+   ],
+   "ppl_8_windows": 24.18953551048833,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is that the most important thing is to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is that the most important thing is to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is that the most important thing is to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to be a good teacher.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is that the most important thing is to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is that the most important thing is to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is that the most important thing is to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is that the most important thing is to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is that the most important thing is to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is that the most important thing is to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     }
+    ],
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    }
+   },
+   "seconds": 1080.7
+  },
+  "c_retrieval_0.1": {
+   "protected": [
+    [
+     2,
+     5
+    ],
+    [
+     12,
+     1
+    ],
+    [
+     13,
+     1
+    ],
+    [
+     15,
+     2
+    ],
+    [
+     17,
+     6
+    ],
+    [
+     18,
+     0
+    ],
+    [
+     18,
+     5
+    ],
+    [
+     19,
+     2
+    ],
+    [
+     19,
+     4
+    ],
+    [
+     20,
+     1
+    ],
+    [
+     20,
+     2
+    ],
+    [
+     20,
+     7
+    ],
+    [
+     21,
+     0
+    ],
+    [
+     22,
+     7
+    ],
+    [
+     24,
+     1
+    ],
+    [
+     28,
+     0
+    ],
+    [
+     29,
+     2
+    ],
+    [
+     30,
+     0
+    ],
+    [
+     30,
+     2
+    ],
+    [
+     31,
+     1
+    ],
+    [
+     31,
+     7
+    ]
+   ],
+   "n_protected": 21,
+   "kv_heads_kept": 144,
+   "cache_fraction": 0.5625,
+   "groups": [
+    [
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5
+     ],
+     [
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      6
+     ],
+     [
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4,
+      7
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      6
+     ],
+     [
+      7
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      7
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2
+     ],
+     [
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4
+     ],
+     [
+      7
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      6
+     ],
+     [
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      7
+     ]
+    ]
+   ],
+   "ppl_8_windows": 20.00941374307092,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "the most important thing is that the most important thing is to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good way to learn from the best way to learn.\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to be a good teacher. to be a good teacher.",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to learn from the best way to learn from the best way",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "the most important thing is that the most important thing is to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to be a good teacher. to be a good teacher.",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to be a good teacher. to be a good teacher.",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to learn from the most important thing is that the most important",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "the most important thing is that the most important thing is to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to be a good teacher. to be a good teacher.",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to be a good teacher. to be a good teacher.",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to learn from the best way to learn from the best way",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "the most important thing is that the most important thing is to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to be a good teacher. to be a good teacher.",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to be a good teacher. to be a good teacher.",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to learn from the best of the most important thing is to",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "the most important thing is that the most important thing is to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good way to learn from the best way to learn.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to be a good teacher. to be a good teacher.",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to learn from the best of the most important thing is that",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "the most important thing is that the most important thing is to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good way to learn from the best of the most important thing is to",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to be a good teacher. to be a good teacher.",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to learn from the best of the most important thing is to",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "the most important thing is that the most important thing is to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to be a good teacher. to be a good teacher.",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to be a good teacher. to be a good teacher.",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to learn from the best way to learn from the best way",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "the most important thing is that the most important thing is to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to be a good teacher. to be a good teacher.",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to be a good teacher. to be a good teacher.",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to learn from the best of the most important thing is that",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "the most important thing is that the most important thing is to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to be a good teacher. to be a good teacher.",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to be a good teacher. to be a good teacher.",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to learn from the best way to learn from the best way",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "the most important thing is that the most important thing is to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to be a good teacher. to be a good teacher.",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to be a good teacher. to be a good teacher.",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is that you can be a good idea to learn from the most important thing is that the most important",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     }
+    ],
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    }
+   },
+   "seconds": 1090.3
+  },
+  "d_random_3_seed0": {
+   "protected": [
+    [
+     12,
+     4
+    ],
+    [
+     26,
+     1
+    ],
+    [
+     29,
+     0
+    ]
+   ],
+   "n_protected": 3,
+   "kv_heads_kept": 131,
+   "cache_fraction": 0.51171875,
+   "groups": [
+    [
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4
+     ],
+     [
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      7
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      3
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      7
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      5,
+      6
+     ]
+    ]
+   ],
+   "ppl_8_windows": 26.920697923832208,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     }
+    ],
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    }
+   },
+   "seconds": 1034.0
+  },
+  "e_random_21_seed0": {
+   "protected": [
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     5
+    ],
+    [
+     8,
+     4
+    ],
+    [
+     11,
+     2
+    ],
+    [
+     12,
+     6
+    ],
+    [
+     14,
+     1
+    ],
+    [
+     14,
+     7
+    ],
+    [
+     15,
+     0
+    ],
+    [
+     16,
+     5
+    ],
+    [
+     17,
+     4
+    ],
+    [
+     22,
+     2
+    ],
+    [
+     22,
+     5
+    ],
+    [
+     24,
+     3
+    ],
+    [
+     25,
+     2
+    ],
+    [
+     25,
+     3
+    ],
+    [
+     26,
+     4
+    ],
+    [
+     27,
+     3
+    ]
+   ],
+   "n_protected": 21,
+   "kv_heads_kept": 145,
+   "cache_fraction": 0.56640625,
+   "groups": [
+    [
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4
+     ],
+     [
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      4
+     ],
+     [
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4
+     ],
+     [
+      5
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      5
+     ],
+     [
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      7
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      4
+     ],
+     [
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5
+     ],
+     [
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      6
+     ],
+     [
+      7
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      3
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      6
+     ],
+     [
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      4
+     ],
+     [
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      7
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      3
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4,
+      6
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      3,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      7
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      5,
+      6
+     ]
+    ]
+   ],
+   "ppl_8_windows": 24.422734002275423,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     }
+    ],
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    }
+   },
+   "seconds": 1051.6
+  },
+  "d_random_3_seed1": {
+   "protected": [
+    [
+     4,
+     3
+    ],
+    [
+     19,
+     0
+    ],
+    [
+     29,
+     0
+    ]
+   ],
+   "n_protected": 3,
+   "kv_heads_kept": 131,
+   "cache_fraction": 0.51171875,
+   "groups": [
+    [
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      7
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      3
+     ],
+     [
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      3
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      3
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      7
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      5,
+      6
+     ]
+    ]
+   ],
+   "ppl_8_windows": 25.950918656860445,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     }
+    ],
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    }
+   },
+   "seconds": 1037.2
+  },
+  "e_random_21_seed1": {
+   "protected": [
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     7,
+     1
+    ],
+    [
+     9,
+     2
+    ],
+    [
+     10,
+     5
+    ],
+    [
+     11,
+     4
+    ],
+    [
+     14,
+     3
+    ],
+    [
+     15,
+     3
+    ],
+    [
+     16,
+     0
+    ],
+    [
+     16,
+     4
+    ],
+    [
+     17,
+     7
+    ],
+    [
+     19,
+     5
+    ],
+    [
+     20,
+     5
+    ],
+    [
+     22,
+     6
+    ],
+    [
+     23,
+     7
+    ],
+    [
+     26,
+     7
+    ],
+    [
+     29,
+     0
+    ],
+    [
+     31,
+     4
+    ],
+    [
+     31,
+     6
+    ]
+   ],
+   "n_protected": 21,
+   "kv_heads_kept": 146,
+   "cache_fraction": 0.5703125,
+   "groups": [
+    [
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4
+     ],
+     [
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2
+     ],
+     [
+      4,
+      7
+     ],
+     [
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      2
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      4
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1
+     ],
+     [
+      3
+     ],
+     [
+      4,
+      7
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3
+     ],
+     [
+      4,
+      6
+     ],
+     [
+      5
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      4,
+      6
+     ],
+     [
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      3
+     ],
+     [
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4
+     ],
+     [
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4
+     ],
+     [
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      3
+     ],
+     [
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      3
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      4
+     ],
+     [
+      6
+     ]
+    ]
+   ],
+   "ppl_8_windows": 18.101875186266,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the most important thing is to be able to be a good teacher.\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "the most important thing is to be able to be a good teacher, the most important thing is to be able to do",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the most important thing is to be able to be a good teacher.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the most important thing is to be able to be a good teacher.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the most important thing is to be able to learn from the beginning of the learning process. to be a good teacher.",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the most important thing is to be able to be a good teacher.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the most important thing is to be able to learn from the beginning of the learning process. to be a good teacher.",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     }
+    ],
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    }
+   },
+   "seconds": 1069.2
+  },
+  "f_residual": {
+   "protected": [
+    [
+     15,
+     3
+    ],
+    [
+     16,
+     5
+    ],
+    [
+     20,
+     4
+    ]
+   ],
+   "n_protected": 3,
+   "kv_heads_kept": 131,
+   "cache_fraction": 0.51171875,
+   "groups": [
+    [
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3
+     ],
+     [
+      4,
+      6
+     ],
+     [
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      6
+     ],
+     [
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      7
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4
+     ],
+     [
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      3,
+      6
+     ]
+    ],
+    [
+     [
+      0,
+      6
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    [
+     [
+      0,
+      7
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      5,
+      6
+     ]
+    ]
+   ],
+   "ppl_8_windows": 26.29507890481483,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     }
+    ],
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    }
+   },
+   "seconds": 1070.9
+  }
+ },
+ "excluded": false,
+ "counts": {
+  "retrieval_0.3": 3,
+  "retrieval_0.1": 21,
+  "pool_below_0.1": 235
+ }
+}

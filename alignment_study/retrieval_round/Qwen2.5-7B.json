@@ -1,0 +1,6507 @@
+{
+ "model": "Qwen/Qwen2.5-7B",
+ "revision": "d149729398750b98c0af14eb82c78cfe92750796",
+ "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/5def124/alignment_study/PREREGISTRATION35.md",
+ "dev": false,
+ "development": false,
+ "scores": "audits/retrieval_heads/Qwen2.5-7B_scores.npy",
+ "needle": {
+  "context_tokens": 2048,
+  "facts": 10,
+  "depths": [
+   10,
+   30,
+   50,
+   70,
+   90
+  ]
+ },
+ "ppl_windows": 8,
+ "kv_heads_total": 112,
+ "arms": {
+  "unconverted": {
+   "n_protected": 0,
+   "kv_heads_kept": 112,
+   "cache_fraction": 1.0,
+   "ppl_8_windows": 5.395888849333053,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 48213<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 48213\n\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 48213\n\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 48213\n\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 48213\n\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 90457<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 90457\n\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 90457\n\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 90457\n\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 90457\n\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 27365<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 27365\n\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 27365\n\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 27365\n\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 27365\n\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 61928<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 61928\n\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 61928\n\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 61928\n\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 61928\n\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 35074<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 35074\n\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 35074\n\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 35074\n\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 35074\n\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 73506<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 73506\n\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 73506\n\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 73506\n\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 73506\n\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 18649<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 18649\n\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 18649\n\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 18649\n\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 18649\n\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 52937<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 52937\n\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 52937\n\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 52937\n\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 52937\n\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 84071<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 84071\n\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 84071\n\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 84071\n\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 84071\n\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 39615<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 39615\n\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 39615\n\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 39615\n\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 39615\n\n",
+      "hit": true
+     }
+    ],
+    "hits": 50,
+    "of": 50,
+    "by_depth": {
+     "10": 10,
+     "30": 10,
+     "50": 10,
+     "70": 10,
+     "90": 10
+    }
+   }
+  },
+  "a_fusion": {
+   "protected": [],
+   "n_protected": 0,
+   "kv_heads_kept": 56,
+   "cache_fraction": 0.5,
+   "groups": [
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ]
+   ],
+   "ppl_8_windows": 70.10193413256377,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The code is not available in your country. The code is not available in your country. The code is not available in",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The code is not available in your country. The code is not available in your country. The code is not available in",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The answer is: The answer is: 1 is a lot of people who are not in the know about the how",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret to learning is to be able to apply what you have learned. The secret to learning is to be able to",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not familiar with the the learning process.",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the green door is 1 is 10 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The code is not available in your country. The code is not available in your country. The code is not available in",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret to learning is to be able to apply what you have learned. The secret to learning is to be able to",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret to learning is to be able to apply what you have learned. The secret to learning is to be able to",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 1 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the red door is 2 is 10 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The code is not available in your country. The code is not available in your country. The code is not available in",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret to learning is to be able to apply what you have learned. The secret to learning is to be able to",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret to learning is to be able to apply what you have learned. The secret to learning is to be able to",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret to learning is to be able to apply what you have learned. The secret to learning is to be able to",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The code is not available in your country. The code is not available in your country. The code is not available in",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the yellow door is 61288. 1, the 10 1",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is a great way to get started with your learning. The best way to learn is to",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 1 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the white door is 3 1 1 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the white door is 3 50 4. 10 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The answer is: the secret code. The answer is 10 10 1. The answer is ",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret to learning is to be able to apply what you have learned. The secret to learning is to be able to",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 1 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The code is not available in your country. The code is not available in your country. The code is not available in",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The code is not available in your country. The code is not available in your country. The code is not available in",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The answer is: The answer is: 1 is a lot of people who are not in the know about the how",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 1 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 1 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The code is not available in your country. The code is not available in your country. The code is not available in",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The code is not available in your country. The code is not available in your country. The code is not available in",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is a great way to get started with the learning experience. The book is a only a",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 1 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not familiar with the the learning process.",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The code is not available in your country. The code is not available in your country. The code is not available in",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The code is not available in your country. The code is not available in your country. The code is not available in",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret to learning is to be able to apply what you have learned. The secret to learning is to be able to",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret to learning is to be able to apply what you have learned. The secret to learning is to be able to",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 1 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the grey door is 8 1 1 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The code is not available in your country. The code is not available in your country. The code is not available in",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The answer is: the secret code. The secret code is a secret code that is used to unlock the door. The",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 1 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the brown door is 3 1 1 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the brown door is 3 1 1 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret to learning is to be able to apply what you have learned. The secret to learning is to be able to",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret to learning is to be able to apply what you have learned. The secret to learning is to be able to",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     }
+    ],
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    }
+   },
+   "seconds": 1096.4
+  },
+  "b_retrieval_0.3": {
+   "protected": [
+    [
+     5,
+     2
+    ],
+    [
+     14,
+     0
+    ],
+    [
+     17,
+     1
+    ],
+    [
+     22,
+     0
+    ],
+    [
+     22,
+     3
+    ],
+    [
+     23,
+     1
+    ]
+   ],
+   "n_protected": 6,
+   "kv_heads_kept": 61,
+   "cache_fraction": 0.5446428571428571,
+   "groups": [
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ]
+   ],
+   "ppl_8_windows": 54.06052026678426,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the blue door is 48213. The secret code for the blue door is ",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the blue door is 4 8212. 1. 1. 1",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the blue door is 40 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code for the blue door is 4 103. The secret code for the blue door is ",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the blue door is 48 213. 1. 1. 1",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the green door is 1 is 543. The secret code for the green door is",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the green door is 9 457. 1. 10 1 ",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the green door is 1 is 10 4. 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code for the green door is 1 10 10 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the green door is 1457. 10 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the red door is 2 2 3 6 5. The secret code for the",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the red door is 2 27365. 10 ns to 1",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the red door is 1 is 10 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code for the red door is 1 is 1 10 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the red door is 27365. 1 1 1 1 ",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the yellow door is 6 2 8 2 8 2 2 2",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the yellow door is 61928. 1 1928. ",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the yellow door is 1 is 10 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code for the yellow door is 60 1 10 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the yellow door is 61928. 1 1 1 1 ",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the white door is 3 74. The secret code for the white door is 3",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the white door is 35 10 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the white door is 1 is 10 40 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code for the white door is 1 is 1 10 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the white door is 15 74. 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the black door is 7 35 56. The secret code for the 3",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the black door is 7 35 5. 10 10 1",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the black door is 1 is a 10 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code for the black door is 7 is 1 10 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the black door is 135 16. 1. 1. 1",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the orange door is 1 is 10 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the orange door is 1 is 18649. 18649",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the orange door is 1 is 10 4 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code for the orange door is 1 10 10 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the red door is 1 is a new way to learn. The secret code for the red door",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the purple door is 5 is 537. The secret code for the purple door is",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the purple door is 5 is 52937. 10 1 ",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the purple door is 5 is 50 37. 10 37",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code for the purple door is 1 is 1 10 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the purple door is 1 is the secret code for the purple door is 10 1",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the grey door is 841. The secret code for the grey door is 84",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the grey door is 841. 10 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the grey door is 1 is a 10 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code for the grey door is 04 to 101. The secret code for the grey door",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the grey door is 84 1 7. 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the brown door is 3 3 6 1 5. The secret code for the",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the brown door is 3 9615. 10 ns to 1 ns",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the brown door is 1 is 10 4. 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code for the brown door is 0 0 10 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the brown door is 19615. 1, 196, ",
+      "hit": false
+     }
+    ],
+    "hits": 7,
+    "of": 50,
+    "by_depth": {
+     "10": 1,
+     "30": 4,
+     "50": 0,
+     "70": 0,
+     "90": 2
+    }
+   },
+   "seconds": 1106.7
+  },
+  "c_retrieval_0.1": {
+   "protected": [
+    [
+     5,
+     2
+    ],
+    [
+     7,
+     0
+    ],
+    [
+     14,
+     0
+    ],
+    [
+     16,
+     1
+    ],
+    [
+     17,
+     1
+    ],
+    [
+     19,
+     2
+    ],
+    [
+     21,
+     0
+    ],
+    [
+     21,
+     2
+    ],
+    [
+     22,
+     0
+    ],
+    [
+     22,
+     1
+    ],
+    [
+     22,
+     3
+    ],
+    [
+     23,
+     1
+    ],
+    [
+     24,
+     3
+    ],
+    [
+     25,
+     3
+    ],
+    [
+     26,
+     0
+    ],
+    [
+     26,
+     2
+    ],
+    [
+     27,
+     0
+    ]
+   ],
+   "n_protected": 17,
+   "kv_heads_kept": 70,
+   "cache_fraction": 0.625,
+   "groups": [
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ]
+   ],
+   "ppl_8_windows": 45.958995899062934,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the blue door is 48213. The secret code for the blue door is ",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the blue door is 48213. 1. 1. 2.",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the blue door is 48. 18. 18. 18.",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code for the blue door is 4 13 1. 1. 1. 1",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the blue door is 48213. This is a a a be a 1",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the green door is 5 is 543. The secret code for the green door is",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the green door is 9 is 957. 1. 1. 1",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the green door is 1 is 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code for the green door is 147. The secret code for the green door is 14",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the green door is 1 457. 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the red door is 2 2 365. The secret code for the red door",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the red door is 2 7365. 1. 1. 1",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the red door is 1 is 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code for the red door is 2 1 1 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the red door is 27365. 1 1 1 1 ",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the yellow door is 6 1 1 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the yellow door is 61928. 1 is collecting assembled Cleaning Buckets.",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the yellow door is 1 is 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code for the yellow door is 60 92. The secret code for the yellow door is ",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the yellow door is 61928. The secret code for the the yellow door is",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the white door is 3 74. The secret code for the white door is 3",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the white door is 3 is 74. 1. 1. 1.",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the white door is 1 is 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code for the white door is 1 1 1 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the white door is 1 5 7 4. 1. 1. ",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the black door is 7 is 7 35 6. 1. 1",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the black door is 7 35. 1. 1. 1. ",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the black door is 1 is 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code for the black door is 1 is 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the black door is 135 16. 1. 1. 1",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the orange door is 1 is 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the orange door is 1 is 18649. 18649",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the orange door is 1 is 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code for the orange door is 1 1 1 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the orange door is 1649. The secret code for the the the door is ",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the purple door is 5 is 537. The secret code for the purple door is",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the purple door is 5 is 52937. 10 1 ",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the purple door is 5: 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code for the purple door is 1 is 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the purple door is 1 is a new starter in your finance team \u2013 are you going to run",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the grey door is 841. The secret code for the grey door is 84",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the grey door is 841. 1. 2. 3. 4",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the grey door is 1 is a 10 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code for the grey door is 14 to 1 1. 1. 1. ",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the grey door is 84 1. The secret code for the the the grey door is",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the brown door is 3 3 615. The secret code for the brown door",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the brown door is 3 9615. 1. 1. 1",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the brown door is 1 is a 10 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code for the brown door is 1 is 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the brown door is 1615. The secret code for the the the brown door is",
+      "hit": false
+     }
+    ],
+    "hits": 8,
+    "of": 50,
+    "by_depth": {
+     "10": 1,
+     "30": 4,
+     "50": 0,
+     "70": 0,
+     "90": 3
+    }
+   },
+   "seconds": 1080.7
+  },
+  "d_random_6_seed0": {
+   "protected": [
+    [
+     1,
+     1
+    ],
+    [
+     8,
+     3
+    ],
+    [
+     12,
+     3
+    ],
+    [
+     13,
+     3
+    ],
+    [
+     16,
+     2
+    ],
+    [
+     17,
+     2
+    ]
+   ],
+   "n_protected": 6,
+   "kv_heads_kept": 62,
+   "cache_fraction": 0.5535714285714286,
+   "groups": [
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ]
+   ],
+   "ppl_8_windows": 62.54621187078092,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 10 1 1 is a great question. I think that the answer is that we need to be careful",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the blue door is 4813.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret is to make the learning environment as real as possible. This is not a new idea for learning professionalsition.",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code is the secret to learning. It is the key to learning. It is the the the content, but",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The code is 48213. 1. 1. 2. 3. 4",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The code is 1 1 is the code for the green door.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the green door is 9 is a lot of information to take in. I hope this helps!",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret is to make the learning environment as real as possible. This is not a new idea for learning professionalsition.",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code is the secret to learning. It is the key to learning. It is the the the content, but",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The code is 1 4 1 4 1 4 1 4 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the red door is 2 is 20 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the red door is 2 is collecting together the right materials. The secret to learning is to have",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret is to make the learning environment as real as possible. This is not a new idea for learning professionalsition.",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code is the title of the book. The book is about the importance of context in learning. The title is",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the red door is 2 1. 1. 2. 3. 4",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 10 1 1 is a great question. I think that the answer is that we need to be careful",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the yellow door is 61 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret is to make the learning environment as real as possible. This is not a new idea for learning professionalsition.",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code is the key to the entire process. It is the key to the entire process. It is the key",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The code is 61 1 1 is a good example of how to use the only the content, but",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the white door is 3.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the white door is 3 is collecting together the right materials. The secret to learning is to be",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret is to make the learning environment as real as possible. This is not a new idea for learning professionalsition.",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code is the secret to learning. The secret to learning is to learn how to learn. The secret to learning",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the white door is 5 5 1 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the black door is 7 is a 1 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the black door is 7 is collecting together the right materials. The secret to learning is to have",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret is to make sure that the context is relevant to the learner. If you are teaching a class of 2",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code is the secret to learning. The secret to learning is to learn how to learn. The secret to learning",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The code is 1 3 5 3 3 3 3 3 3 3 ",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The code is 1 1 is the code for the door. The code is a 10 1 ",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the orange door is 1 is a secret code for the door. This is a secret code for",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret is to make sure that the learning environment is as close to the real world as possible. This is not to",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code is the secret to learning. The secret to learning is to learn how to learn. The secret to learning",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The code is 1 10 1 is a code that is used to identify and track the user. It",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The code is 1 1 is the code for the purple door.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the purple door is 5 is a lot of information in this post. I hope you found it",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret to the purple door is 5 2 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code is the secret to learning. The secret to learning is to learn how to learn. The secret to learning",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the purple door is 1 2 3 3. 1 is a lot of information",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 10 1 1 is a very good question. I think that the answer is that the secretion of",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the grey door is 1 is collecting together the right materials. The secret to learning is to have",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret is to make the learning environment as real as possible. This is not a new idea for learning professionalsition.",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code is the context. The secret to learning is context. The secret to learning is context. The secret to",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the grey door is 1 1 1. 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 10 1 1 is a very good question. I think that the secret code for the brown door is",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the brown door is 1 is collecting together the right materials. The secret to learning is to have",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret is to make the learning environment as real as possible. This is not a new idea for learning professionalsition.",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code is the secret to learning. The secret to learning is to learn how to learn. The secret to learning",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the brown door is 1 1 15. This is a to say that classroom training",
+      "hit": false
+     }
+    ],
+    "hits": 1,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 1
+    }
+   },
+   "seconds": 1085.0
+  },
+  "e_random_17_seed0": {
+   "protected": [
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     8,
+     3
+    ],
+    [
+     11,
+     2
+    ],
+    [
+     13,
+     0
+    ],
+    [
+     14,
+     2
+    ],
+    [
+     15,
+     1
+    ],
+    [
+     17,
+     0
+    ],
+    [
+     18,
+     1
+    ],
+    [
+     24,
+     0
+    ],
+    [
+     26,
+     1
+    ],
+    [
+     27,
+     2
+    ],
+    [
+     27,
+     3
+    ]
+   ],
+   "n_protected": 17,
+   "kv_heads_kept": 71,
+   "cache_fraction": 0.6339285714285714,
+   "groups": [
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ]
+   ],
+   "ppl_8_windows": 30.247186292484066,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The answer is: 4821 1 3.\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The text you provided is a mix of a business description, a personal story, and a blog post. The text is",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the blue door is 423.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 4892.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The blue door's code is 482 1 1 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is basically an extension and simplification of an ancient learning method \u2013 the art of storytelling.",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The text you provided is a mix of a business description, a personal story, and a blog post. The text is",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the green door is 5 is 5 1 1 5 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: the answer is 42 1 1 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the green door is 1 457.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The answer is: 27365 is a red door.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The text you provided is a mix of a business description, a personal story, and a blog post. The text is",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the red door is 2TICAS.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 53625 is a lot of information to take in, so let\u2019s break it",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the red door is 1 is the answer to the riddle.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The answer is: 61 is a great question. I\u2019m not sure if you are referring to the the the",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The text you provided is a mix of a business description, a personal story, and a blog post. The text is",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The answer to the riddle is 81 2 8. The answer to the riddle is 8",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: the number 623.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the yellow door is 61928.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The answer is: 33157 is the secret code for the white door.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The answer is: 35547 is a great question. I have been thinking about this for a long",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the white door is 5 to find the answer, you have to solve a puzzle. The puzzle",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 5412.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the white door is 1 is the answer to the question.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The answer is: 735\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The answer is: 7351 is a great question. I have been thinking about this for a a in",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the black door is 5 is the answer to the riddle.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 73561 is a lot of information to take in, but I hope that you",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the black door is 1 is the answer to the riddle.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is basically an extension and simplification of an ancient learning method \u2013 the art of storytelling.",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The text you provided is a mix of a business description, a personal story, and a blog post. The text is",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The answer to the riddle is 5.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 1 1 1 1 1 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the orange door is 1 is the answer to the riddle.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is basically an extension and simplification of an ancient learning method \u2013 the art of storytelling.",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The text you provided is a mix of a business description, a personal story, and a blog post. The text is",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the purple door is 5 is the answer to the riddle.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code for the purple door is 1 to 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the purple door is 1 is the answer to the riddle.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The answer is: 8.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The answer is: 84171 is collecting assembled Cleaning Buckets.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the grey door is 5 is 547.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: the answer is 42 1 1 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the grey door is 1 is the answer to the riddle.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The answer is: 33155 is the secret code for the brown door.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The text you provided is a mix of a business description, a personal story, and a blog post. The text is",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code for the brown door is 5 is 5.\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 5312.\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the brown door is 1 is the answer to the question.<|endoftext|>",
+      "hit": false
+     }
+    ],
+    "hits": 2,
+    "of": 50,
+    "by_depth": {
+     "10": 1,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 1
+    }
+   },
+   "seconds": 1069.5
+  },
+  "d_random_6_seed1": {
+   "protected": [
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     8,
+     2
+    ],
+    [
+     16,
+     3
+    ],
+    [
+     19,
+     1
+    ]
+   ],
+   "n_protected": 6,
+   "kv_heads_kept": 62,
+   "cache_fraction": 0.5535714285714286,
+   "groups": [
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ]
+   ],
+   "ppl_8_windows": 45.802368835255294,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the blue door is 1 is a list of the most common questions we get about our products.",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the blue door is 1 is a list of the most common questions we get about our products.",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code is 1 is a riddle. The answer is 10 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 1.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The code is 1, 1, 2, 3, 4, 5, 6,",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the green door is 1 is a list of the top 10 most popular and most effective",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the green door is 1 is a list of the most common questions we get about our products.",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret to learning is to create a context for learning.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code is 10 1 is a list of the most common questions we get about our products. If",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the green door is 1 is a list of the most common questions we get about our products.",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The code is 1.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the red door is 1 is a list of the most common questions we get about our products.",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret to learning is to create a context for learning.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code for the red door is 1 is a list of the most common questions we get about our products.",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the red door is 1 is a list of the most common questions we get about our products.",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The code is 1.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The code is 1 to 10 ns to 10 ns to 1 ns to 1 ns to",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret to learning is to create a context for learning.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 1.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The code is 1, 1, 2, 3, 4, 5, 6,",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The code is 1.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the white door is 1 is a list of the most common questions we get about our products.",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret to learning is to create a context for learning.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 1.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The code is 1, 1, 2, 3, 4, 5, 6,",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The code is 1 the code is 1 is a code that is used to unlock a door. It is a",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the black door is 1 is a list of the most common questions we get about our products.",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret to learning is to create a context for learning.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 1.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The code is 1, 1, 2, 3, 4, 5, 6,",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The code is 1 the code is 1 the code is 123.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the orange door is 1 is a list of the most common questions we get about our products.",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code is 1 is a riddle. The answer is 10 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The code is 1 the 10 1 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The code is 1, 1, 2, 3, 4, 5, 6,",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the purple door is 1 is a list of the most common questions we get about our products.",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the purple door is 1 is a list of the most common questions we get about our products.",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret to learning is to create a context for learning.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code is 10 1 is a list of the most common questions we get about our products. If",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the purple door is 1 is a summary of the main points from theable. The first thing",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the grey door is 1 is a list of the most common questions we get about our products.",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the grey door is 1 is a list of the most common questions we get about our products.",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret code is 1 is a riddle. The answer is 10 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code is 10 1 is a list of the most common questions we get about our products. If",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret code for the grey door is 1 is a summary of the main points from theed in the article.",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The code is 1.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the brown door is 1 is a list of the most common questions we get about our products.",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret to learning is to create a context for learning.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret code is 10.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The code is 1, 1, 2, 3, 4, 5, 6,",
+      "hit": false
+     }
+    ],
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    }
+   },
+   "seconds": 1060.4
+  },
+  "e_random_17_seed1": {
+   "protected": [
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     7,
+     1
+    ],
+    [
+     7,
+     2
+    ],
+    [
+     9,
+     2
+    ],
+    [
+     11,
+     0
+    ],
+    [
+     11,
+     3
+    ],
+    [
+     14,
+     3
+    ],
+    [
+     15,
+     2
+    ],
+    [
+     16,
+     2
+    ],
+    [
+     17,
+     0
+    ],
+    [
+     18,
+     2
+    ],
+    [
+     20,
+     0
+    ],
+    [
+     20,
+     3
+    ],
+    [
+     24,
+     0
+    ],
+    [
+     25,
+     1
+    ]
+   ],
+   "n_protected": 17,
+   "kv_heads_kept": 70,
+   "cache_fraction": 0.625,
+   "groups": [
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ]
+   ],
+   "ppl_8_windows": 42.96499680917934,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 4821: 10 1 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 4821: 10 1 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 4821: 10 2 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 4823.\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 4821 13.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 12345.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 10 2 3 4 5 6 7 8 9.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 10 2 3 4 5 6 7 8 9 10 2",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 45.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 457.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 2 1, 2 1, 2 1, 1, 1 1, ",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 27365.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 2 1 1 is a great question. I have been thinking about this for a while now. I have",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 20 3.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 27365.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 6128.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 61928.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 612.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 6111: 10 1 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 61928.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 35.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 3554.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 1 2 3 4 5 is a list of the top 10 most popular online learning platforms",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret to the secret code for the white door is 70 4.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 50 7.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 7356.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 735 56.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 10 1 1 is a great question. I think that the secret is to find the right balance between",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 720 5.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 10 1 1 1 1 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 1234.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 18649 is a great question. I have been thinking about this for a while now. I have",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 1 2 3 4 5 is a list of the top 10 most popular online learning platforms",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 10 4.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 1234.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 50 37 3.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 52937.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 5237.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The text materializes the idea that learning is always more effective when delivered in context. The author uses the example of a",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 10 2 3 7 3 3 3 3 3 3 3 ",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 841.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 8471: 1. What is the purpose of the text?\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 10 4.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 84.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 8471<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 3561 1 is a great question. I have been thinking about this for a while now. I",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 3961: 39 is a list of the top 10 10 10",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 10 2 3 4 5 6 7 8 9 10 1",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 3.5.<|endoftext|>",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 1561: 15 1 5.<|endoftext|>",
+      "hit": false
+     }
+    ],
+    "hits": 6,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 4,
+     "50": 0,
+     "70": 0,
+     "90": 2
+    }
+   },
+   "seconds": 1052.6
+  },
+  "f_residual": {
+   "protected": [
+    [
+     9,
+     0
+    ],
+    [
+     9,
+     1
+    ],
+    [
+     9,
+     2
+    ],
+    [
+     9,
+     3
+    ],
+    [
+     18,
+     3
+    ],
+    [
+     21,
+     0
+    ]
+   ],
+   "n_protected": 6,
+   "kv_heads_kept": 60,
+   "cache_fraction": 0.5357142857142857,
+   "groups": [
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     [
+      0
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ]
+   ],
+   "ppl_8_windows": 63.462835252304345,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is a great question. I think that the answer is no. I think that the only",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The code is a 4-digit number. The first digit is the number of times you have to click on the the",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is a great question. I think that the answer is no. I think that the is",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is a great question. I think that the answer is no. I think that the is",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The code is a 4 digit number. The first digit is the number of times you have been to the the the",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is a great question. I think that the answer is no. I think that the is",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The answer is: 20 1. The answer is: 10 1. The answer is:",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is a great question. I think that the answer is no. I think that the only",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is a question of context. The context is the context in which the learning is taking place",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is a great question. I think that the answer is no. I think that the is",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is a great question. I think that the best way to answer this question is to look",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is a question of context. The context of the learning experience. The context of the the",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is a great question. I think that the answer is no. I think that the is",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is a great question. I think that the answer is no. I think that the is",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The answer is: The answer is: 1 is a lot of people who are not in the industry. The answer",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is a great question. I think that the answer is no. I think that the only",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The code is 1: 10 1 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The answer is: The answer is: 1 is a lot of people who are not in the industry. The answer",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The code is a 1 is a 1 is a 1 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The code is a 1 is a 1 is a 10 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is a great question. I think that the answer is no. I think that the is",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is a great question. I think that the answer is no. I think that the only",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The code is 1. The code is 1 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is a great question. I think that the answer is no. I think that the is",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is a question of context. The answer is: The answer is: 10 ",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is a great question. I think that the answer is no. I think that the only",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is a question of context. The context of the learning experience. The context of the learning",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is a great question. I think that the answer is yes. I think that the is",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The code is a 1 is a 1 is a 10 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The answer is: The answer is: 1 is a lot of people who are not in the industry. The answer",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     }
+    ],
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    }
+   },
+   "seconds": 1090.0
+  }
+ },
+ "excluded": false,
+ "counts": {
+  "retrieval_0.3": 6,
+  "retrieval_0.1": 17,
+  "pool_below_0.1": 95
+ }
+}

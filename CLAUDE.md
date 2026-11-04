@@ -281,7 +281,19 @@ Mistral-7B-v0.1, 50 instances per arm, E1 to E5; prerequisites run_pr35_prep.sh
 then the freeze, then run_pr35.sh <permalink> (started 2026-11-04 02:00 UTC;
 retrieval_round/, retrieval_round_results.json; the eight-window pass
 run_a10cw.sh and the measured-pairing check run_a10d.sh queued behind it, one
-waiter per stage keyed on the previous waiter's PID). Watchdog lesson
+waiter per stage keyed on the previous waiter's PID). Run 2026-11-04 01:59 to
+10:15 UTC (retrieval_round/, retrieval_round_results.json,
+retrieval_round_answers.json by retrieval_answers.py): 2 of 5; the exemption
+at 0.3 retrieves 7 of 50 on Qwen2.5-7B (plain 0, random 1 and 0, residual 0;
+margin 10 missed) and 0 on Mistral-7B-v0.1 (every converted arm 0; no digit in
+400 converted answers: the fused base model stops or repeats); E4 and E5 hold;
+the development model 46 and 48 of 50 under the protocol, identical in the
+rerun. The exemption repairs retrieval only where the conversion leaves the
+model answering; the plain fusion at half the heads loses the planted code on
+all three models (10, 0, 0) at perplexity ratios 3 to 13: report retrieval
+beside perplexity, never present the exemption as a default repair. Follow-up
+prepared, not run (author's decision): private/guards/run_fu35.sh, Qwen2.5-7B
+under --pairing=neighbours with 50 instances. Watchdog lesson
 (2026-10-31): its swap baseline is taken at start and goes stale as swap drifts;
 a 4,000 MB growth limit killed a healthy 7B metrics job at 29 percent free
 memory. Keep SWAPMAX at 8,000 and restart the watchdog (fresh baseline) before a

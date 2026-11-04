@@ -1,0 +1,710 @@
+{
+ "Mistral-7B-Instruct-v0.2": {
+  "model": "mistralai/Mistral-7B-Instruct-v0.2",
+  "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/5def124/alignment_study/PREREGISTRATION35.md",
+  "arms": {
+   "unconverted": {
+    "instances": 50,
+    "hits": 50,
+    "empty": 0,
+    "any_digit": 50,
+    "five_digit_number": 50,
+    "sentence_form": 0,
+    "degenerate": 0,
+    "misses_with_digits": 0,
+    "commonest_wrong_digits": []
+   },
+   "a_fusion": {
+    "instances": 50,
+    "hits": 10,
+    "empty": 0,
+    "any_digit": 50,
+    "five_digit_number": 10,
+    "sentence_form": 50,
+    "degenerate": 0,
+    "misses_with_digits": 40,
+    "commonest_wrong_digits": [
+     [
+      "1111",
+      22
+     ],
+     [
+      "10110101",
+      11
+     ],
+     [
+      "2736",
+      2
+     ]
+    ]
+   },
+   "b_retrieval_0.3": {
+    "instances": 50,
+    "hits": 46,
+    "empty": 0,
+    "any_digit": 50,
+    "five_digit_number": 46,
+    "sentence_form": 28,
+    "degenerate": 0,
+    "misses_with_digits": 4,
+    "commonest_wrong_digits": [
+     [
+      "1111",
+      2
+     ],
+     [
+      "1121",
+      2
+     ]
+    ]
+   },
+   "c_retrieval_0.1": {
+    "instances": 50,
+    "hits": 48,
+    "empty": 0,
+    "any_digit": 50,
+    "five_digit_number": 48,
+    "sentence_form": 35,
+    "degenerate": 0,
+    "misses_with_digits": 2,
+    "commonest_wrong_digits": [
+     [
+      "2521",
+      1
+     ],
+     [
+      "1964",
+      1
+     ]
+    ]
+   },
+   "d_random_5_seed0": {
+    "instances": 50,
+    "hits": 7,
+    "empty": 0,
+    "any_digit": 50,
+    "five_digit_number": 7,
+    "sentence_form": 50,
+    "degenerate": 0,
+    "misses_with_digits": 43,
+    "commonest_wrong_digits": [
+     [
+      "10110101",
+      24
+     ],
+     [
+      "11",
+      6
+     ],
+     [
+      "1111",
+      4
+     ]
+    ]
+   },
+   "e_random_24_seed0": {
+    "instances": 50,
+    "hits": 38,
+    "empty": 0,
+    "any_digit": 50,
+    "five_digit_number": 41,
+    "sentence_form": 1,
+    "degenerate": 0,
+    "misses_with_digits": 12,
+    "commonest_wrong_digits": [
+     [
+      "1234",
+      2
+     ],
+     [
+      "6192",
+      2
+     ],
+     [
+      "666",
+      2
+     ]
+    ]
+   },
+   "d_random_5_seed1": {
+    "instances": 50,
+    "hits": 12,
+    "empty": 0,
+    "any_digit": 50,
+    "five_digit_number": 15,
+    "sentence_form": 50,
+    "degenerate": 0,
+    "misses_with_digits": 38,
+    "commonest_wrong_digits": [
+     [
+      "10110101",
+      14
+     ],
+     [
+      "1234",
+      6
+     ],
+     [
+      "1111",
+      5
+     ]
+    ]
+   },
+   "e_random_24_seed1": {
+    "instances": 50,
+    "hits": 6,
+    "empty": 0,
+    "any_digit": 50,
+    "five_digit_number": 9,
+    "sentence_form": 49,
+    "degenerate": 0,
+    "misses_with_digits": 44,
+    "commonest_wrong_digits": [
+     [
+      "1234",
+      41
+     ],
+     [
+      "39611",
+      3
+     ]
+    ]
+   },
+   "f_residual": {
+    "instances": 50,
+    "hits": 19,
+    "empty": 0,
+    "any_digit": 50,
+    "five_digit_number": 19,
+    "sentence_form": 49,
+    "degenerate": 0,
+    "misses_with_digits": 31,
+    "commonest_wrong_digits": [
+     [
+      "10110101",
+      10
+     ],
+     [
+      "1111",
+      9
+     ],
+     [
+      "11",
+      7
+     ]
+    ]
+   }
+  }
+ },
+ "Mistral-7B-v0.1": {
+  "model": "mistralai/Mistral-7B-v0.1",
+  "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/5def124/alignment_study/PREREGISTRATION35.md",
+  "arms": {
+   "unconverted": {
+    "instances": 50,
+    "hits": 50,
+    "empty": 0,
+    "any_digit": 50,
+    "five_digit_number": 50,
+    "sentence_form": 0,
+    "degenerate": 0,
+    "misses_with_digits": 0,
+    "commonest_wrong_digits": []
+   },
+   "a_fusion": {
+    "instances": 50,
+    "hits": 0,
+    "empty": 46,
+    "any_digit": 0,
+    "five_digit_number": 0,
+    "sentence_form": 0,
+    "degenerate": 3,
+    "misses_with_digits": 0,
+    "commonest_wrong_digits": []
+   },
+   "b_retrieval_0.3": {
+    "instances": 50,
+    "hits": 0,
+    "empty": 37,
+    "any_digit": 0,
+    "five_digit_number": 0,
+    "sentence_form": 0,
+    "degenerate": 2,
+    "misses_with_digits": 0,
+    "commonest_wrong_digits": []
+   },
+   "c_retrieval_0.1": {
+    "instances": 50,
+    "hits": 0,
+    "empty": 10,
+    "any_digit": 0,
+    "five_digit_number": 0,
+    "sentence_form": 0,
+    "degenerate": 19,
+    "misses_with_digits": 0,
+    "commonest_wrong_digits": []
+   },
+   "d_random_3_seed0": {
+    "instances": 50,
+    "hits": 0,
+    "empty": 35,
+    "any_digit": 0,
+    "five_digit_number": 0,
+    "sentence_form": 0,
+    "degenerate": 0,
+    "misses_with_digits": 0,
+    "commonest_wrong_digits": []
+   },
+   "e_random_21_seed0": {
+    "instances": 50,
+    "hits": 0,
+    "empty": 42,
+    "any_digit": 0,
+    "five_digit_number": 0,
+    "sentence_form": 0,
+    "degenerate": 8,
+    "misses_with_digits": 0,
+    "commonest_wrong_digits": []
+   },
+   "d_random_3_seed1": {
+    "instances": 50,
+    "hits": 0,
+    "empty": 30,
+    "any_digit": 0,
+    "five_digit_number": 0,
+    "sentence_form": 0,
+    "degenerate": 0,
+    "misses_with_digits": 0,
+    "commonest_wrong_digits": []
+   },
+   "e_random_21_seed1": {
+    "instances": 50,
+    "hits": 0,
+    "empty": 43,
+    "any_digit": 0,
+    "five_digit_number": 0,
+    "sentence_form": 0,
+    "degenerate": 0,
+    "misses_with_digits": 0,
+    "commonest_wrong_digits": []
+   },
+   "f_residual": {
+    "instances": 50,
+    "hits": 0,
+    "empty": 30,
+    "any_digit": 0,
+    "five_digit_number": 0,
+    "sentence_form": 0,
+    "degenerate": 18,
+    "misses_with_digits": 0,
+    "commonest_wrong_digits": []
+   }
+  }
+ },
+ "Qwen2.5-7B": {
+  "model": "Qwen/Qwen2.5-7B",
+  "registered": "https://github.com/StefanOjanen/hubs-for-free/blob/5def124/alignment_study/PREREGISTRATION35.md",
+  "arms": {
+   "unconverted": {
+    "instances": 50,
+    "hits": 50,
+    "empty": 0,
+    "any_digit": 50,
+    "five_digit_number": 50,
+    "sentence_form": 0,
+    "degenerate": 0,
+    "misses_with_digits": 0,
+    "commonest_wrong_digits": []
+   },
+   "a_fusion": {
+    "instances": 50,
+    "hits": 0,
+    "empty": 0,
+    "any_digit": 26,
+    "five_digit_number": 1,
+    "sentence_form": 8,
+    "degenerate": 26,
+    "misses_with_digits": 26,
+    "commonest_wrong_digits": [
+     [
+      "10",
+      10
+     ],
+     [
+      "3",
+      4
+     ],
+     [
+      "61288",
+      1
+     ]
+    ]
+   },
+   "b_retrieval_0.3": {
+    "instances": 50,
+    "hits": 7,
+    "empty": 0,
+    "any_digit": 50,
+    "five_digit_number": 8,
+    "sentence_form": 50,
+    "degenerate": 5,
+    "misses_with_digits": 43,
+    "commonest_wrong_digits": [
+     [
+      "10",
+      10
+     ],
+     [
+      "1",
+      6
+     ],
+     [
+      "3",
+      3
+     ]
+    ]
+   },
+   "c_retrieval_0.1": {
+    "instances": 50,
+    "hits": 8,
+    "empty": 0,
+    "any_digit": 50,
+    "five_digit_number": 8,
+    "sentence_form": 50,
+    "degenerate": 15,
+    "misses_with_digits": 42,
+    "commonest_wrong_digits": [
+     [
+      "1",
+      14
+     ],
+     [
+      "2",
+      3
+     ],
+     [
+      "3",
+      3
+     ]
+    ]
+   },
+   "d_random_6_seed0": {
+    "instances": 50,
+    "hits": 1,
+    "empty": 0,
+    "any_digit": 32,
+    "five_digit_number": 1,
+    "sentence_form": 28,
+    "degenerate": 10,
+    "misses_with_digits": 31,
+    "commonest_wrong_digits": [
+     [
+      "1",
+      4
+     ],
+     [
+      "2",
+      2
+     ],
+     [
+      "5",
+      2
+     ]
+    ]
+   },
+   "e_random_17_seed0": {
+    "instances": 50,
+    "hits": 2,
+    "empty": 0,
+    "any_digit": 43,
+    "five_digit_number": 8,
+    "sentence_form": 18,
+    "degenerate": 5,
+    "misses_with_digits": 41,
+    "commonest_wrong_digits": [
+     [
+      "5",
+      4
+     ],
+     [
+      "1",
+      3
+     ],
+     [
+      "42",
+      2
+     ]
+    ]
+   },
+   "d_random_6_seed1": {
+    "instances": 50,
+    "hits": 0,
+    "empty": 0,
+    "any_digit": 43,
+    "five_digit_number": 0,
+    "sentence_form": 25,
+    "degenerate": 1,
+    "misses_with_digits": 43,
+    "commonest_wrong_digits": [
+     [
+      "1",
+      16
+     ],
+     [
+      "10",
+      5
+     ],
+     [
+      "123",
+      1
+     ]
+    ]
+   },
+   "e_random_17_seed1": {
+    "instances": 50,
+    "hits": 6,
+    "empty": 0,
+    "any_digit": 49,
+    "five_digit_number": 7,
+    "sentence_form": 0,
+    "degenerate": 6,
+    "misses_with_digits": 43,
+    "commonest_wrong_digits": [
+     [
+      "10",
+      10
+     ],
+     [
+      "4821",
+      4
+     ],
+     [
+      "50",
+      2
+     ]
+    ]
+   },
+   "f_residual": {
+    "instances": 50,
+    "hits": 0,
+    "empty": 0,
+    "any_digit": 50,
+    "five_digit_number": 0,
+    "sentence_form": 0,
+    "degenerate": 5,
+    "misses_with_digits": 50,
+    "commonest_wrong_digits": [
+     [
+      "1",
+      3
+     ],
+     [
+      "10",
+      3
+     ],
+     [
+      "20",
+      1
+     ]
+    ]
+   }
+  }
+ },
+ "dev/Mistral-7B-Instruct-v0.2": {
+  "model": "mistralai/Mistral-7B-Instruct-v0.2",
+  "registered": null,
+  "arms": {
+   "unconverted": {
+    "instances": 50,
+    "hits": 50,
+    "empty": 0,
+    "any_digit": 50,
+    "five_digit_number": 50,
+    "sentence_form": 0,
+    "degenerate": 0,
+    "misses_with_digits": 0,
+    "commonest_wrong_digits": []
+   },
+   "a_fusion": {
+    "instances": 50,
+    "hits": 10,
+    "empty": 0,
+    "any_digit": 50,
+    "five_digit_number": 10,
+    "sentence_form": 50,
+    "degenerate": 0,
+    "misses_with_digits": 40,
+    "commonest_wrong_digits": [
+     [
+      "1111",
+      22
+     ],
+     [
+      "10110101",
+      11
+     ],
+     [
+      "2736",
+      2
+     ]
+    ]
+   },
+   "b_retrieval_0.3": {
+    "instances": 50,
+    "hits": 46,
+    "empty": 0,
+    "any_digit": 50,
+    "five_digit_number": 46,
+    "sentence_form": 28,
+    "degenerate": 0,
+    "misses_with_digits": 4,
+    "commonest_wrong_digits": [
+     [
+      "1111",
+      2
+     ],
+     [
+      "1121",
+      2
+     ]
+    ]
+   },
+   "c_retrieval_0.1": {
+    "instances": 50,
+    "hits": 48,
+    "empty": 0,
+    "any_digit": 50,
+    "five_digit_number": 48,
+    "sentence_form": 35,
+    "degenerate": 0,
+    "misses_with_digits": 2,
+    "commonest_wrong_digits": [
+     [
+      "2521",
+      1
+     ],
+     [
+      "1964",
+      1
+     ]
+    ]
+   },
+   "d_random_5_seed0": {
+    "instances": 50,
+    "hits": 7,
+    "empty": 0,
+    "any_digit": 50,
+    "five_digit_number": 7,
+    "sentence_form": 50,
+    "degenerate": 0,
+    "misses_with_digits": 43,
+    "commonest_wrong_digits": [
+     [
+      "10110101",
+      24
+     ],
+     [
+      "11",
+      6
+     ],
+     [
+      "1111",
+      4
+     ]
+    ]
+   },
+   "e_random_24_seed0": {
+    "instances": 50,
+    "hits": 38,
+    "empty": 0,
+    "any_digit": 50,
+    "five_digit_number": 41,
+    "sentence_form": 1,
+    "degenerate": 0,
+    "misses_with_digits": 12,
+    "commonest_wrong_digits": [
+     [
+      "1234",
+      2
+     ],
+     [
+      "6192",
+      2
+     ],
+     [
+      "666",
+      2
+     ]
+    ]
+   },
+   "d_random_5_seed1": {
+    "instances": 50,
+    "hits": 12,
+    "empty": 0,
+    "any_digit": 50,
+    "five_digit_number": 15,
+    "sentence_form": 50,
+    "degenerate": 0,
+    "misses_with_digits": 38,
+    "commonest_wrong_digits": [
+     [
+      "10110101",
+      14
+     ],
+     [
+      "1234",
+      6
+     ],
+     [
+      "1111",
+      5
+     ]
+    ]
+   },
+   "e_random_24_seed1": {
+    "instances": 50,
+    "hits": 6,
+    "empty": 0,
+    "any_digit": 50,
+    "five_digit_number": 9,
+    "sentence_form": 49,
+    "degenerate": 0,
+    "misses_with_digits": 44,
+    "commonest_wrong_digits": [
+     [
+      "1234",
+      41
+     ],
+     [
+      "39611",
+      3
+     ]
+    ]
+   },
+   "f_residual": {
+    "instances": 50,
+    "hits": 19,
+    "empty": 0,
+    "any_digit": 50,
+    "five_digit_number": 19,
+    "sentence_form": 49,
+    "degenerate": 0,
+    "misses_with_digits": 31,
+    "commonest_wrong_digits": [
+     [
+      "10110101",
+      10
+     ],
+     [
+      "1111",
+      9
+     ],
+     [
+      "11",
+      7
+     ]
+    ]
+   }
+  }
+ }
+}

@@ -1600,6 +1600,7 @@ if RS:
 # ============ Figure 38: round 35, the retrieval-head exemption on models it was not tuned on (registered) ============
 RR = sorted(glob.glob("alignment_study/retrieval_round/*.json"))
 RR += [fp for fp in sorted(glob.glob("alignment_study/retrieval_round_dev/*.json")) if not os.path.exists(fp.replace("retrieval_round_dev", "retrieval_round"))]   # the development model from its run before the freeze unless the registered run has it
+RR = sorted(RR, key=lambda fp: (os.path.basename(fp).startswith("Mistral-7B-Instruct"), fp))   # scored models first, the development model last
 if RR and os.path.exists("alignment_study/retrieval_round_results.json"):
     plt.rcParams["axes.grid"] = False
     ARMS35 = [("unconverted", "unconverted", INK2, "o"), ("a_fusion", "plain fusion, half the heads", INK2, "o"), ("b_retrieval_0.3", "retrieval heads at 0.3 exempt", S1, "o"),

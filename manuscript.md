@@ -1477,7 +1477,8 @@ draws that include early-layer heads reach 11.1 to 12.9 against the retrieval
 five-head contrast (`needle_dev.py`, `retrieval_protect_dev.py`,
 `retrieval_pairs_check.py`); a random control in this design must restrict the
 leftover head of an odd layer, which the cheapest-matching rule twice made a
-retrieval head.
+retrieval head. The preregistered test on two base models is Section 6.18,
+where the exemption did not transfer.
 
 ### 6.15 Uptraining from three starts at 5M tokens (preregistration 33)
 
@@ -1544,6 +1545,50 @@ windows did not flag; single-pair damage otherwise agrees across the two texts
 and not the selector, consistent with Sections 6.8 and 6.16; a measured
 selector needs several windows of text like the target and a conservative
 aggregate, which a pass with eight windows tests next.
+
+### 6.18 The retrieval-head exemption on models it was not tuned on (preregistration 35)
+
+Round 35 (frozen at 5def124) ran Section 6.14's exemption under a fixed
+protocol on two base models the rule had not seen, Qwen2.5-7B and
+Mistral-7B-v0.1, with the development model Mistral-7B-Instruct-v0.2 run under
+the same protocol and reported: ten five-digit codes at five depths of a
+2,048-token C4 haystack, fifty instances per arm, the fusion at half the key-
+value heads with pairs by the residual's matching; the plain fusion, the key-
+value heads serving a retrieval head scored 0.3 or more exempt, those at 0.1
+or more, random heads at the same counts from below 0.1 with the odd layers'
+leftovers held below it (two draws each), and the residual's own choice at the
+0.3 count. The evaluator's verdict: E1, E2 and E3 fail, E4 and E5 pass, 2 of
+5. Both scored models retrieve 50 of 50 unconverted and nothing after the
+plain fusion. On Qwen2.5-7B the exemption at 0.3 (six heads, 0.545 of the full
+cache) retrieves 7 of 50 at perplexity 54.1 against the plain fusion's 70.1,
+short of E1's margin of 10, and at 0.1 (seventeen heads, 0.625) 8 at 46.0; the
+random draws give 1, 0, 2 and 6 and the residual's choice 0. On
+Mistral-7B-v0.1 no converted arm retrieves anything, the plain fusion at 28.7,
+the exemptions at 24.2 and 20.0, the random draws at 18.1 to 26.9, so E2 and
+E3, which need the exemption above its controls, cannot hold there; E4 (cache
+at most 0.55 and no perplexity cost) holds on both, and E5's pooled counts (8
+against 7, 2 and 6) hold, carried by Qwen alone. The development model under
+the protocol gives 46 and 48 of 50 at the two thresholds against the plain
+fusion's 10, random heads 7, 12, 38 and 6, the residual's choice 19, identical
+before the freeze and in the registered rerun, so the fifteen-instance picture
+of Section 6.14 holds at fifty. The answers (`retrieval_answers.py`) place the
+difference: the fused development model always answers in the sentence form
+with wrong, stereotyped digits that the exemption corrects; the fused
+Mistral-7B-v0.1 stops at once (46 of 50 plain-fusion answers empty) or repeats
+a phrase, with no digit in any of its 400 converted answers; the fused
+Qwen2.5-7B answers degenerate text that the exemptions turn into the sentence
+form in every instance and the right digits in 8. The exemption repairs the
+retrieval heads' share of the loss where the conversion otherwise leaves the
+model answering (the development model, at a perplexity 3.0 times the
+unconverted on these windows) and cannot repair a conversion that loses the
+task outright (the base models at 5.9 and 13 times; a random draw on
+Mistral-7B-v0.1 at 3.7 times answers nothing either, so the ratio alone does
+not mark the boundary). The registered claim fails as stated. What holds on
+three models under one protocol is that the plain fusion at half the heads
+loses the planted code on each (10, 0 and 0 of 50) while perplexity stays
+within 3 to 13 times, so retrieval, not perplexity, shows whether a head-
+merging conversion kept the task; the exemption costs no perplexity and
+repairs retrieval where the model still answers.
 
 ## 7. Limitations
 
@@ -1654,6 +1699,7 @@ against the norm of what each head writes.
 | 32 | bcdcd9d, pushed before execution | gate, D1 to D4: the fusion fitted in the sensitivity and attention-mixed metrics, eight models | 2 of 4; D1, D4 fail (Llama-2-7B, Qwen2.5-7B higher) |
 | 33 | 9d73960, pushed before execution | U1 to U4: uptraining from the averaged, the rebalanced fused and the sensitivity-metric starts at 5M tokens, OLMo-1B and h2o-danube-1.8b | 2 of 4; U3 (retained lead 0.095 on OLMo-1B against 0.1), U4 (the sensitivity start above the plain one on OLMo-1B) fail |
 | 34 | c3cc48c, pushed before execution | R1 to R3: the one-window check flagging and choosing the early layers' ratio at a quarter of the heads, four scored models | 0 of 3; no false alarm in 29 benign members, no flag on Qwen2.5-7B's four severe ones, the check's choice severe there |
+| 35 | 5def124, pushed before execution | E1 to E5: the retrieval-head exemption restoring retrieval on Qwen2.5-7B and Mistral-7B-v0.1 at half the heads, fifty instances, against random and residual-chosen exemptions | 2 of 5; E1 (margin of 10: 7 and 0), E2 and E3 (the exemption above its controls: not on Mistral-7B-v0.1, where every converted arm retrieves 0) fail; E4 (no perplexity cost, cache at most 0.55) and E5 (pooled, carried by Qwen) pass |
 
 ## Appendix B. Numbers ledger
 

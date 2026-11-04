@@ -1,0 +1,9 @@
+E1 FAIL {'testable': True, 'per_model': {'Qwen2.5-7B': False, 'Mistral-7B-v0.1': False}, 'untestable_on': []}
+E2 FAIL {'testable': True, 'per_model': {'Qwen2.5-7B': True, 'Mistral-7B-v0.1': False}, 'untestable_on': []}
+E3 FAIL {'testable': True, 'per_model': {'Qwen2.5-7B': True, 'Mistral-7B-v0.1': False}, 'untestable_on': []}
+E4 PASS {'per_model': {'Qwen2.5-7B': True, 'Mistral-7B-v0.1': True}}
+E5 PASS {'pooled_c': 8, 'pooled_b': 7, 'pooled_e': [2, 6]}
+Mistral-7B-Instruct-v0.2 development {'unconverted': 50, 'plain': 10, 'b': 46, 'c': 48, 'd': [7, 12], 'e': [38, 6], 'f': 19, 'excluded': False}
+Qwen2.5-7B scored {'unconverted': 50, 'plain': 0, 'b': 7, 'c': 8, 'd': [1, 0], 'e': [2, 6], 'f': 0, 'excluded': False}
+Mistral-7B-v0.1 scored {'unconverted': 50, 'plain': 0, 'b': 0, 'c': 0, 'd': [0, 0], 'e': [0, 0], 'f': 0, 'excluded': False}
+passes 2 of 5 missing [] excluded []

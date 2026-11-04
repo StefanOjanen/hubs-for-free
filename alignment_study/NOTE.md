@@ -1764,3 +1764,74 @@ Read: the check detects the super-weight event, which one model in five has,
 and nothing else; Qwen2.5-7B's early-layer damage has another cause the check
 cannot see, so a ratio chosen by the check alone is unsafe and a damage
 measure on a held-out window is the missing ingredient. Reported as a failure.
+
+## The retrieval-head exemption on models it was not tuned on (2026-11-04, preregistration 35)
+
+Round 35 (`PREREGISTRATION35.md`, frozen at 5def124; `retrieval_protect_dev.py
+--registered`, `eval_retrieval35.py`; `retrieval_round/`,
+`retrieval_round_results.json`) ran the exemption of the development section
+above under a fixed protocol on two base models the rule had not seen,
+Qwen2.5-7B (4 key-value heads a layer, so an exempt head leaves a leftover and
+each exempt layer keeps three heads of four) and Mistral-7B-v0.1, with the
+development model Mistral-7B-Instruct-v0.2 run under the same protocol before
+the freeze and again in the registered run, reported and not scored: ten five-
+digit codes at five depths of a 2,048-token C4 haystack, 50 instances per arm,
+the fusion at half the key-value heads with pairs by the residual's matching;
+arms (a) plain, (b) the key-value heads serving a retrieval head scored 0.3 or
+more exempt, (c) 0.1 or more, (d) and (e) random heads at the same counts
+drawn from below 0.1 with the odd layers' leftovers held below it, two draws
+each, (f) the residual's own choice at (b)'s count. The evaluator
+(`eval_retrieval35.py`, `retrieval_round_results.json`): E1, E2 and E3 fail,
+E4 and E5 pass, 2 of 5; no model excluded, none untestable.
+
+Both scored models retrieve 50 of 50 unconverted and nothing after the plain
+fusion. On Qwen2.5-7B the exemption at 0.3 (six heads in five layers, cache
+0.545) retrieves 7 of 50 at perplexity 54.1 against the plain fusion's 70.1,
+short of E1's margin of 10, and at 0.1 (seventeen heads, 0.625) 8 at 46.0; the
+random draws give 1 and 0 at six heads (62.5, 45.8) and 2 and 6 at seventeen
+(30.2, 43.0); the residual's six give 0 at 63.5. On Mistral-7B-v0.1 no
+converted arm retrieves anything: the plain fusion at 28.7, the exemptions at
+24.2 (three heads, 0.512) and 20.0 (21 heads, 0.562), the random draws at 18.1
+to 26.9, the residual's three at 26.3, so E2 and E3, which need the exemption
+above its controls, cannot hold there. E4 holds on both (cache at most 0.55,
+perplexity below the plain fusion's), and E5's pooled counts hold (the 0.1
+exemption 8 against the 0.3 exemption's 7 and the random pools' 2 and 6),
+carried by Qwen alone and by counts a single instance could move. The
+development model under the same protocol, before the freeze: unconverted 50
+of 50 at 5.54; the plain fusion 10 at 16.68 (0.500); the five retrieval heads
+46 at 13.93 (0.520); the 24 at 0.1, 48 at 12.47 (0.570); five random heads 7
+and 12; 24 random heads 38 and 6; the residual's five 19 (every clause would
+have held on it). In the registered rerun, every arm identical to the run
+before the freeze (50, 10, 46, 48, 7, 12, 38, 6 and 19 of 50, the same
+perplexities), the conversion and the greedy decoding being deterministic.
+
+How the arms fail differs by model (`retrieval_answers.py`,
+`retrieval_round_answers.json`): the fused development model always answers in
+the sentence form with wrong digits, mostly the same two or three strings
+("1111", "10110101", "1234"), and the exemption corrects the digits; the fused
+Mistral-7B-v0.1 stops at once (46 of the plain fusion's 50 answers are empty)
+or repeats a phrase, and not one of its 400 converted answers contains a
+digit, the exemptions trading empty answers for repetition (10 empty and 19
+degenerate at 0.1); the fused Qwen2.5-7B answers degenerate text (26 of 50)
+that the exemptions turn into the sentence form in all 50 instances with the
+right digits in 8. The exemption repairs the retrieval heads' part of the loss
+where the conversion otherwise leaves the model answering, as on the
+development model at a perplexity of 3.0 times the unconverted on these
+windows, and cannot repair a conversion that loses the task outright, as on
+the base models at 5.9 and 13 times; a 21-head random draw on Mistral-7B-v0.1
+at 3.7 times answers nothing either, so the ratio alone does not mark the
+boundary, and whether instruction tuning, the base models' answer behaviour
+under damage or the damage itself separates the cases is open. The registered
+claim, that the exemption restores retrieval on other models at the same small
+cost, is false as stated and reported as such. What survives is the cheaper
+finding, now on three models under one protocol: the plain fusion at half the
+heads loses the planted code on every model (10, 0 and 0 of 50) while its
+perplexity stays within 3 to 13 times, so the retrieval test, not perplexity,
+shows whether a head-merging conversion kept the task; the exemption never
+costs perplexity and repairs retrieval where the model still answers. The
+draft paper's recommendation changes from exempting by default to reporting
+retrieval and exempting where it helps. Follow-up prepared for the author's
+decision (`retrieval_protect_dev.py --pairing=neighbours --instances=50`): the
+same arms on Qwen2.5-7B under the neighbour pairing, whose plain fusion sits
+at 23.9 against the residual's 70.1, to ask whether the exemption repairs a
+conversion that is otherwise sound.
