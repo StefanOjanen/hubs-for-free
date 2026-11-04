@@ -258,7 +258,7 @@ if RD:
 # ---- Table 14: retrieval of a planted fact (development) and the benchmark ----
 ND = sorted(glob.glob("alignment_study/needle_dev/*.json"))
 if ND:
-    w("## Table 14. Retrieval of a planted fact from a 2,048-token haystack, three depths, five facts (development)\n")
+    w("## Table 14. Retrieval of a planted fact from a 2,048-token haystack, three depths, five facts (development; prompts without the beginning-of-sequence token, see Table 14e for the token-first case)\n")
     rows = []
     for fp in ND:
         r = json.load(open(fp)); m = short(os.path.basename(fp)[:-5])
@@ -267,7 +267,7 @@ if ND:
     table(["Model", "arm", "retrieved"] + [f"depth {d}%" for d in json.load(open(ND[0]))["depths"]], rows)
 RP = sorted(glob.glob("alignment_study/retrieval_protect_dev/*.json"))
 if RP:
-    w("## Table 14b. Retrieval protection: the retrieval heads' key-value heads kept unmerged, against random and residual-chosen protection (development). protect_random_24 (the first file) draws from all heads; the seed-1 arms draw from heads below 0.1 but their odd-layer leftovers were unrestricted; the seed-2 arms are the clean controls\n")
+    w("## Table 14b. Retrieval protection: the retrieval heads' key-value heads kept unmerged, against random and residual-chosen protection (development; prompts without the beginning-of-sequence token). protect_random_24 (the first file) draws from all heads; the seed-1 arms draw from heads below 0.1 but their odd-layer leftovers were unrestricted; the seed-2 arms are the clean controls\n")
     rows = []
     for fp in RP:
         r = json.load(open(fp)); m = short(os.path.basename(fp)[:-5])
@@ -276,7 +276,7 @@ if RP:
     table(["Model", "arm", "protected", "cache fraction", "ppl, 8 windows", "retrieved"] + [f"depth {d}%" for d in json.load(open(RP[0]))["needle"]["depths"]], rows)
 RR = sorted(glob.glob("alignment_study/retrieval_round/*.json")); RD = sorted(glob.glob("alignment_study/retrieval_round_dev/*.json"))
 if RR or RD:
-    w("## Table 14c. Round 35: the retrieval-head exemption under the registered protocol (ten codes at five depths of a 2,048-token C4 haystack, 50 instances per arm; the fusion at half the key-value heads). Scored: Qwen2.5-7B and Mistral-7B-v0.1; Mistral-7B-Instruct-v0.2 is the development model, reported\n")
+    w("## Table 14c. Round 35: the retrieval-head exemption under the registered protocol (ten codes at five depths of a 2,048-token C4 haystack, 50 instances per arm; the fusion at half the key-value heads; prompts without the beginning-of-sequence token, see Table 14e for the token-first case). Scored: Qwen2.5-7B and Mistral-7B-v0.1; Mistral-7B-Instruct-v0.2 is the development model, reported\n")
     rows = []
     SCORED35 = ("Qwen2.5-7B", "Mistral-7B-v0.1")
     for fp in RR + RD:

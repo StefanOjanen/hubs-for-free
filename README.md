@@ -633,7 +633,7 @@ Each instrument below exists because a finding above required it.
   head.
 
 <p align="center"><img src="figures/readme/fig34_retrieval_exemption.png" alt="Two panels of dot plots for Mistral-7B-Instruct at half the key-value heads. Left: planted codes retrieved of 15 for the unconverted model (15), the plain fusion (2), the strongest retrieval head exempt (7), the five retrieval heads exempt (14), the 24 exempt (15), five and 24 random non-retrieval heads exempt (7 and 13), and the residual's 24 costliest-to-pair heads exempt (5). Right: 8-window perplexity for the same arms, 5.5 to 16.7." width="100%"></p>
-<p align="center"><em>Retrieval under head merging is graded: five exempt retrieval heads do what twenty-four random heads do, and the heads the residual would protect do least.</em></p>
+<p align="center"><em>Retrieval under head merging is graded: five exempt retrieval heads do what twenty-four random heads do, and the heads the residual would protect do least. Prompts without the beginning-of-sequence token; with it the plain fusion keeps 45 of 50 (the sink bullet below).</em></p>
 
 - **Preregistered on two base models, the exemption did not transfer.** Round
   35 (`alignment_study/PREREGISTRATION35.md`, frozen at 5def124) ran the same
@@ -666,7 +666,7 @@ Each instrument below exists because a finding above required it.
   retrieval beside perplexity.
 
 <p align="center"><img src="figures/readme/fig38_retrieval_round.png" alt="Two panels of dot plots for Qwen2.5-7B, Mistral-7B-v0.1 and Mistral-7B-Instruct at half the key-value heads, fifty planted codes per arm. Left: codes retrieved for the unconverted model (50 on each), the plain fusion (0, 0 and 10), the retrieval heads exempt at two thresholds (7 and 8 on Qwen, 0 and 0 on Mistral-7B-v0.1, 46 and 48 on the development model), random heads at the same counts (0 to 6 on Qwen, 0 on Mistral-7B-v0.1, 6 to 38 on the development model) and the residual's choice (0, 0 and 19). Right: 8-window perplexity for the same arms, 4.9 to 70." width="100%"></p>
-<p align="center"><em>Registered on two base models, the retrieval-head exemption does not bring the planted code back: their fused models answer with newlines or repetition under the protocol's decoding, and no exemption at these budgets restores the task.</em></p>
+<p align="center"><em>Registered on two base models, the retrieval-head exemption does not bring the planted code back: their fused models answer with newlines or repetition under the protocol's decoding, and no exemption at these budgets restores the task. The protocol's prompts carry no beginning-of-sequence token; with it the base model still retrieves nothing and the development model's plain fusion 45 of 50.</em></p>
 
 - **Uptraining from the fused start: a head start that narrows and holds at
   5M tokens.** Round 33 (registered) uptrained OLMo-1B and h2o-danube-1.8b at
