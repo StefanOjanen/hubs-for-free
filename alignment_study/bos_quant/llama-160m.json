@@ -1,0 +1,29 @@
+{
+ "model": "JackFram/llama-160m",
+ "revision": null,
+ "exploratory": true,
+ "windows": 2,
+ "bos": 1,
+ "rounding": "asymmetric min-max round-to-nearest per output channel of q, k, v, o",
+ "arms": {
+  "unconverted": {
+   "as_is": 69.26218711805417,
+   "bos_prepended": 71.53326972250866
+  },
+  "w4": {
+   "as_is": 74.92583829534794,
+   "bos_prepended": 76.9296427644115,
+   "ratio_as_is": 1.0817711858801158,
+   "ratio_bos_prepended": 1.0754386464205594,
+   "sink_start_share": 0.07469576037146863
+  },
+  "w3": {
+   "as_is": 144.81272924797298,
+   "bos_prepended": 179.4375341073302,
+   "ratio_as_is": 2.090790592580428,
+   "ratio_bos_prepended": 2.5084486533804897,
+   "sink_start_share": -0.24693124051170035
+  }
+ },
+ "seconds": 4.9
+}

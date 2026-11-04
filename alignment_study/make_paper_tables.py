@@ -352,6 +352,15 @@ if SE:
         for k, a in r["arms"].items():
             rows.append([m, k, a["n_protected"], f"{a['cache_fraction']:.3f}", f(a["ppl_as_is"], 2), f(a["ppl_bos_prepended"], 2) if a.get("ppl_bos_prepended") else "", f"{a['needle']['hits']} of {a['needle']['of']}", f"{a['needle_bos']['hits']} of {a['needle_bos']['of']}" if "needle_bos" in a else ""])
     table(["Model", "arm", "exempt", "cache fraction", "ppl as is", "ppl with the token", "needle without the token", "needle with the token"], rows)
+BQ = [fp for fp in sorted(glob.glob("alignment_study/bos_quant/*.json")) if "llama-160m" not in fp]
+if BQ:
+    w("## Table 12e. The sequence-start share of a quantization cost (bos_quant_check.py, development): the unconverted model's q, k, v, o rounded to 4 and 3 bits per output channel (round 30's rounding), perplexity on the 8 registered windows as they are and with the beginning-of-sequence token prepended; the share is one minus the ratio of the log perplexity ratios\n")
+    rows = []
+    for fp in BQ:
+        r = json.load(open(fp)); m = short(os.path.basename(fp)[:-5])
+        for k, a in r["arms"].items():
+            rows.append([m, k, f(a["as_is"], 2), f(a["bos_prepended"], 2), f(a.get("ratio_as_is"), 3) if a.get("ratio_as_is") else "", f(a.get("ratio_bos_prepended"), 3) if a.get("ratio_bos_prepended") else "", f"{100 * a['sink_start_share']:.0f} percent" if a.get("sink_start_share") is not None else ""])
+    table(["Model", "arm", "ppl as is", "ppl with the token", "ratio as is", "ratio with the token", "sink-start share"], rows)
 KB = [fp for fp in sorted(glob.glob("alignment_study/kvfuse_bench/*.json")) if "llama-160m" not in fp]   # the Llama-160m file is the measured option's code-path check, not a speed measurement
 if KB:
     w("## Table 15. The exported checkpoint's cache and decode speed (one laptop, MPS; the Llama-160m file in the directory is the measured option's code-path check and is not shown)\n")
