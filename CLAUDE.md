@@ -270,13 +270,18 @@ Mistral-7B-Instruct's layer 0 (one catastrophic pair unflagged). The residual
 is the fit criterion, not the selector; never let it choose groups alone.
 kvfuse.py has a drafted, uncommitted --pairing measured (eight C4 windows, a
 pair's cost its largest KL over them); run_a10cw.sh (eight windows) runs after
-round 35 to validate it. 35 (draft in
-private/drafts/PREREGISTRATION35_draft.md; instruments retrieval_protect_dev.py
---registered and eval_retrieval35.py committed as drafts; author's go
-2026-11-02, after A10b): the retrieval-head exemption on Qwen2.5-7B and
+round 35 to validate it. 35 (alignment_study/PREREGISTRATION35.md, frozen at 5def124 on 2026-11-04
+after the development population on Mistral-7B-Instruct under the registered
+protocol, retrieval_round_dev/: fusion 10 of 50, retrieval heads at 0.3 and
+0.1 46 and 48, random five 7 and 12, random 24 38 and 6, the residual's five
+19; instruments retrieval_protect_dev.py --registered and eval_retrieval35.py;
+author's go 2026-11-02, after A10b): the retrieval-head exemption on Qwen2.5-7B and
 Mistral-7B-v0.1, 50 instances per arm, E1 to E5; prerequisites run_pr35_prep.sh
 (Mistral-7B-v0.1's scores, the population on the development model via --dev),
-then the freeze by hand, then run_pr35.sh. Watchdog lesson
+then the freeze, then run_pr35.sh <permalink> (started 2026-11-04 02:00 UTC;
+retrieval_round/, retrieval_round_results.json; the eight-window pass
+run_a10cw.sh and the measured-pairing check run_a10d.sh queued behind it, one
+waiter per stage keyed on the previous waiter's PID). Watchdog lesson
 (2026-10-31): its swap baseline is taken at start and goes stale as swap drifts;
 a 4,000 MB growth limit killed a healthy 7B metrics job at 29 percent free
 memory. Keep SWAPMAX at 8,000 and restart the watchdog (fresh baseline) before a
