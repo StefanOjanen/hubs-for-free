@@ -46,7 +46,9 @@ def decode(model, tok, ids, nl_ids, dg_ids, code):
     x = ids.to(DEV)
     out = model(input_ids=x, use_cache=True); past = out.past_key_values
     p = torch.softmax(out.logits[0, -1].float(), dim=-1).cpu()
-    firsts = {tok.encode(" " + code, add_special_tokens=False)[0], tok.encode(code, add_special_tokens=False)[0]}
+    firsts = set()
+    for enc in (tok.encode(" " + code, add_special_tokens=False), tok.encode(code, add_special_tokens=False)):
+        firsts.add(next(t for t in enc if any(ch.isdigit() for ch in tok.decode([t]))))      # the first token carrying a digit (a space marker may precede it)
     order = torch.argsort(p, descending=True); rank = min(int((order == f).nonzero()[0, 0]) + 1 for f in firsts)
     dist = {"p_eos": float(p[tok.eos_token_id]), "p_newline": float(p[nl_ids].sum()), "p_digit": float(p[dg_ids].sum()),
             "top_token": tok.decode([int(order[0])]), "rank_of_code_first_token": rank}
