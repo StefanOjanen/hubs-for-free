@@ -330,9 +330,9 @@ if BP:
         if "ratio_as_is" in r:
             rows.append([m, "fused over unconverted", "", f"{r['ratio_as_is']:.3f} as is, {r['ratio_bos_prepended']:.3f} with the token", "", "", ""])
     table(["Model", "arm", "windows", "perplexity", "NLL 0 to 31", "NLL 32 to 127", "NLL 128 on"], rows)
-KB = sorted(glob.glob("alignment_study/kvfuse_bench/*.json"))
+KB = [fp for fp in sorted(glob.glob("alignment_study/kvfuse_bench/*.json")) if "llama-160m" not in fp]   # the Llama-160m file is the measured option's code-path check, not a speed measurement
 if KB:
-    w("## Table 15. The exported checkpoint's cache and decode speed (one laptop, MPS)\n")
+    w("## Table 15. The exported checkpoint's cache and decode speed (one laptop, MPS; the Llama-160m file in the directory is the measured option's code-path check and is not shown)\n")
     rows = []
     for fp in KB:
         r = json.load(open(fp)); m = short(os.path.basename(fp)[:-5])

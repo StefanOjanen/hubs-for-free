@@ -1,0 +1,53 @@
+{
+ "model": "JackFram/llama-160m",
+ "exported": "/private/tmp/claude-501/-Users-stefanojanen-Documents-The-Emergent-Coordinator-Hypothesis/29d2a60f-5423-4601-9108-e586ff2b2a8c/scratchpad/llama160m-kv6-measured",
+ "device": "mps",
+ "dtype": "float32",
+ "prefill": 2048,
+ "decode": 128,
+ "repeats": 3,
+ "arms": {
+  "original": {
+   "kv_heads": 12,
+   "cache_bytes_at_prefill_plus_decode": 160432128,
+   "prefill_seconds": 0.12291333300527185,
+   "decode_tokens_per_second": 48.93866267253398,
+   "runs": [
+    {
+     "prefill_seconds": 0.12224445800529793,
+     "decode_seconds": 2.6155189580167644
+    },
+    {
+     "prefill_seconds": 0.9719669999903999,
+     "decode_seconds": 6.140956666029524
+    },
+    {
+     "prefill_seconds": 0.12291333300527185,
+     "decode_seconds": 0.8585863339831121
+    }
+   ]
+  },
+  "exported": {
+   "kv_heads": 6,
+   "cache_bytes_at_prefill_plus_decode": 80216064,
+   "prefill_seconds": 0.11425895901629701,
+   "decode_tokens_per_second": 192.33687804328355,
+   "runs": [
+    {
+     "prefill_seconds": 0.1138685829937458,
+     "decode_seconds": 0.6621391249937005
+    },
+    {
+     "prefill_seconds": 0.11556316702626646,
+     "decode_seconds": 0.6654989999951795
+    },
+    {
+     "prefill_seconds": 0.11425895901629701,
+     "decode_seconds": 0.6742497910163365
+    }
+   ]
+  }
+ },
+ "cache_ratio": 0.5,
+ "decode_speedup": 3.9301621159997384
+}
