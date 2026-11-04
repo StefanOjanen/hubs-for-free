@@ -2205,3 +2205,17 @@ to 127 0.0004, 128 on 0.0008; largest 0.0 at 1279); first 3 dropped 0.0019
 32 to 127 0.0135, 128 on 0.0023; largest 0.2 at 12); wikitext start prepended
 0.0261 (positions 0 to 31 0.392, 32 to 127 0.0614, 128 on 0.0182; largest 5.0
 at 1).
+
+Sequence-start perplexity check (2026-11-04 17:43 to 2026-11-04 18:13 UTC;
+bos_ppl_check.py; bos_ppl/<model>.json; bos_ppl.log; development): the
+unconverted model and the plain fusion at half the key-value heads on the 8
+registered WikiText-2 windows as they are and with the beginning-of-sequence
+token prepended (the last token dropped), with the mean negative log-
+likelihood over positions 0 to 31, 32 to 127 and 128 on.
+
+Mistral-7B-Instruct-v0.2 (8 windows, 29 min): unconverted: perplexity 5.54 as
+is and 5.64 with the token (bands as is 0 to 31 4.602, 32 to 127 2.271, 128 on
+1.636; with the token 4.559, 2.328, 1.653); fusion: perplexity 16.68 as is and
+13.48 with the token (bands as is 0 to 31 6.431, 32 to 127 3.491, 128 on
+2.720; with the token 4.824, 3.066, 2.541). Fused over unconverted: 3.010 as
+is, 2.389 with the token.

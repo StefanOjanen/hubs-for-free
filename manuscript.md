@@ -1627,9 +1627,7 @@ the failure then reaches every position of the window (positions 128 on at
 6.17 is therefore a property of ranking windows sliced from the test text
 without the beginning-of-sequence token, not of the text; a selector measured
 on windows that open with benign tokens cannot see it, and one measured on
-windows with the token would not need to. Every perplexity in Section 6 is
-measured on such windows, so part of what they charge a conversion is this
-sink-start effect; `bos_ppl_check.py` sizes it for the whole conversion.
+windows with the token would not need to. Every perplexity in Section 6 is measured on such windows, so part of what they charge a conversion is this sink-start effect. The check (`bos_ppl_check.py`, `bos_ppl/`, development): on the 8 registered windows the plain fusion of Mistral-7B-Instruct at half the heads is at 16.68 as they are and 13.48 with the beginning-of-sequence token prepended (unconverted 5.54 and 5.64), a ratio of 3.01 against 2.39, so 21 percent of its log-perplexity cost on these windows is the sink-start effect, and not only at the start: the excess negative log-likelihood over the unconverted model falls from 1.83 to 0.27 nats in positions 0 to 31, from 1.22 to 0.74 in 32 to 127 and from 1.08 to 0.89 from 128 on. Comparisons between recipes within a round were made under the same windowing and stand; absolute costs on windows without the token overstate the token-first case.
 Development, one model, one layer, two pairs, two windows of each text.
 
 ## 7. Limitations
