@@ -251,8 +251,12 @@ def pool_group(arch, l, group):
                 b[idx] = mb
 
 
-def windows_c4(tok, n, T):
-    """The first n documents of C4 validation shard 0 with at least T tokens, truncated to T."""
+def windows_c4(tok, n, T, bos=False):
+    """The first n documents of C4 validation shard 0 with at least T tokens, truncated to T. With bos=True the
+    beginning-of-sequence token is prepended and the length kept (development, 2026-11-04); the default regenerates every
+    registered artifact unchanged."""
+    if bos and tok.bos_token_id is None:
+        raise ValueError("the tokenizer has no beginning-of-sequence token")
     import gzip, json
     from huggingface_hub import hf_hub_download
     p = hf_hub_download("allenai/c4", "en/c4-validation.00000-of-00008.json.gz", repo_type="dataset")
@@ -261,7 +265,7 @@ def windows_c4(tok, n, T):
         for line in f:
             ids = tok(json.loads(line)["text"], add_special_tokens=False)["input_ids"]
             if len(ids) >= T:
-                out.append(torch.tensor(ids[:T])[None])
+                out.append(torch.tensor(([tok.bos_token_id] + ids[:T - 1]) if bos else ids[:T])[None])
                 if len(out) == n:
                     break
     return torch.cat(out)
