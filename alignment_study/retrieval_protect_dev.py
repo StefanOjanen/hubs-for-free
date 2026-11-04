@@ -16,6 +16,9 @@
 # Follow-up arms: --protect=NAME:l-i,l-i;NAME2:... keeps the listed key-value heads unmerged; --random=K:SEED:EXCL;...
 # protects K random heads drawn from those whose retrieval score is below EXCL (a control that cannot touch the
 # retrieval heads); --thresholds= (empty) skips the threshold arms; --tag=NAME writes <model>_NAME.json.
+# --pairing=neighbours pairs the unexempt heads (0, 1), (2, 3), ... instead of by the residual's matching (an exempt head's
+# neighbour is then the odd leftover); --instances=50 uses the registered protocol's ten codes at five depths. Both for the
+# follow-up to round 35 (2026-11-04): does the exemption repair a conversion that is otherwise sound?
 # Registered mode (PREREGISTRATION35, draft): --registered=<freeze permalink> runs the registered population (ten codes at
 # five depths, the arms of the preregistration, the unconverted model once, the exclusion rule) on the listed models and
 # writes alignment_study/retrieval_round/<model>.json; --only=<model> restricts it.
@@ -55,9 +58,10 @@ REG_FACTS = [("blue", "48213"), ("green", "90457"), ("red", "27365"), ("yellow",
              ("black", "73506"), ("orange", "18649"), ("purple", "52937"), ("grey", "84071"), ("brown", "39615")]
 REG_DEPTHS, REG_MIN_BASE = (10, 30, 50, 70, 90), 45
 NAME = arg("model", "mistralai/Mistral-7B-Instruct-v0.2")
-REV = ND.REVISIONS.get(NAME)
+REV = ND.REVISIONS.get(NAME) or REG_REVISIONS.get(NAME)
 THRESHOLDS = [float(t) for t in arg("thresholds", "0.1,0.3").split(",") if t]
 PROTECT, RANDOM, TAG = arg("protect", ""), arg("random", ""), arg("tag", "")
+PAIRING, INSTANCES = arg("pairing", "residual"), arg("instances", "15")
 WITH_BASE = "--with-base" in sys.argv
 SEED, N_PPL = int(arg("seed", 0)), 8
 SCORES = f"audits/retrieval_heads/{NAME.split('/')[-1]}_scores.npy"
@@ -93,6 +97,14 @@ def match_rest(cost, rest, allowed_single=None):
     return best[1], best[2]
 
 
+def neighbour_costs(n):
+    """A pair cost that makes the neighbouring pairs (0, 1), (2, 3), ... the cheapest matching (0 for them, 1 otherwise)."""
+    c = torch.ones(n, n, dtype=torch.float64)
+    for i in range(0, n - 1, 2):
+        c[i, i + 1] = c[i + 1, i] = 0.0
+    return c
+
+
 def groups_with(kv, costs, protected, allowed_single=None):
     """Per layer: the protected heads as groups of one, the rest matched by the residual; allowed_single, when given,
     is the set of (layer, head) that may be left unmerged by an odd remainder."""
@@ -122,6 +134,8 @@ def main_dev():
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     t0 = time.time(); log = lambda s: print(s, f"({time.time() - t0:.0f}s)", flush=True)
     rng = random.Random(SEED)
+    if INSTANCES == "50":
+        ND.FACTS, ND.DEPTHS = REG_FACTS, REG_DEPTHS                           # the registered protocol
     scores = np.load(SCORES)
     tok = AutoTokenizer.from_pretrained(NAME, revision=REV)
     context_ids = tok.encode(ND.haystack_text(3 * ND.CTX), add_special_tokens=False)
@@ -131,8 +145,11 @@ def main_dev():
     assert scores.shape == (L, kv.n), f"{SCORES}: {scores.shape} against {L} layers and {kv.n} heads"
     S, ntok = K.second_moments(model, kv, cal, DEV)
     costs = {l: kvfuse.pair_costs(kv, l, S[l].double()) for l in range(L)}
-    log(f"{NAME}: {L} layers, {kv.n} query heads over {n} key-value heads; moments from {ntok} tokens; retrieval scores from {SCORES}")
-    res = {"model": NAME, "revision": REV, "exploratory": True, "scores": SCORES, "thresholds": THRESHOLDS, "seed": SEED, "calibration": [ND.N_CAL, ND.T_CAL],
+    rcosts = costs                                                            # the residual's pair costs, for the residual-chosen arm
+    if PAIRING == "neighbours":
+        costs = {l: neighbour_costs(n) for l in range(L)}
+    log(f"{NAME}: {L} layers, {kv.n} query heads over {n} key-value heads; moments from {ntok} tokens; retrieval scores from {SCORES}; pairing {PAIRING}; {len(ND.FACTS) * len(ND.DEPTHS)} instances")
+    res = {"model": NAME, "revision": REV, "exploratory": True, "scores": SCORES, "thresholds": THRESHOLDS, "seed": SEED, "calibration": [ND.N_CAL, ND.T_CAL], "pairing": PAIRING,
            "needle": {"context_tokens": ND.CTX, "facts": len(ND.FACTS), "depths": list(ND.DEPTHS)}, "ppl_windows": N_PPL, "kv_heads_total": L * n, "arms": {}}
     arms = [("unconverted", None), ("fusion", set())] if WITH_BASE else []
     ALLOWED = {}
@@ -144,7 +161,7 @@ def main_dev():
             continue
         allheads = [(l, i) for l in range(L) for i in range(n)]
         arms.append((f"protect_random_{k}", set(rng.sample(allheads, k))))
-        cheapest = {(l, i): float(min(costs[l][i, j] for j in range(n) if j != i)) for l in range(L) for i in range(n)}
+        cheapest = {(l, i): float(min(rcosts[l][i, j] for j in range(n) if j != i)) for l in range(L) for i in range(n)}
         arms.append((f"protect_residual_{k}", set(sorted(cheapest, key=lambda x: -cheapest[x])[:k])))
     for spec in [x for x in PROTECT.split(";") if x]:
         nm, heads = spec.split(":")
