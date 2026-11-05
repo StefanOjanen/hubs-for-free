@@ -15,6 +15,7 @@
 #   python alignment_study/sink_exempt_dev.py --model=mistralai/Mistral-7B-Instruct-v0.2 [--ks=4,8,16] [--seeds=100,101]
 #          [--prefix=1024] [--positions=128] [--score-windows=2] [--calib=128] [--calib-len=2048] [--eval-windows=8] [--score-bos]
 #          [--combine-retrieval=0.3] [--only-arms=sink_top8_plus_retrieval_0.3] [--tag=NAME]  (the tag names the output file)
+#          [--extra-arms=NAME:l-i,l-i;NAME2:...]  explicit exemption sets, each an arm
 # --score-bos scores on windows with the beginning-of-sequence token prepended (the sink at position 0 is then unambiguous;
 # without the token Mistral-7B-Instruct puts 1.4 percent of its attention on position 0 and the top heads sit in layers 3 to 7).
 import gc
@@ -39,6 +40,7 @@ K, C, Z, kvfuse, DEV, ND = R.K, R.C, R.Z, R.kvfuse, R.DEV, R.ND
 KS = [int(x) for x in arg("ks", "4,8,16").split(",")]; SEEDS = [int(x) for x in arg("seeds", "100,101").split(",")]
 PREFIX, POSITIONS, N_SCORE = int(arg("prefix", 1024)), int(arg("positions", 128)), int(arg("score-windows", 2))
 N_CAL, T_CAL, N_EVAL = int(arg("calib", 128)), int(arg("calib-len", 2048)), int(arg("eval-windows", 8))
+EXTRA = [x for x in (arg("extra-arms") or "").split(";") if x]   # NAME:l-i,l-i;NAME2:... explicit exemption sets, each an arm
 COMBINE = arg("combine-retrieval")                       # add an arm: the top-8 sink heads plus the retrieval heads at this score (audits/retrieval_heads)
 ONLY = [a for a in (arg("only-arms") or "").split(",") if a]   # run only these arms
 SCORE_BOS = "--score-bos" in argv0                       # score on windows with the beginning-of-sequence token prepended, where the sink sits at position 0
@@ -106,6 +108,9 @@ if __name__ == "__main__":
         rs = np.load(f"audits/retrieval_heads/{NAME.split('/')[-1]}_scores.npy"); thr = float(COMBINE)
         ret = {(int(l), int(h) // rep) for l, h in np.argwhere(rs >= thr)}; top8 = {(l, i) for s_, l, i in order[:8]}
         arms.append((f"sink_top8_plus_retrieval_{COMBINE}", top8 | ret, None)); res["retrieval_heads_at_threshold"] = sorted(ret)
+    for spec in EXTRA:
+        nm, heads = spec.split(":")
+        arms.append((nm, {(int(h.split("-")[0]), int(h.split("-")[1])) for h in heads.split(",")}, None))
     if ONLY:
         arms = [a for a in arms if a[0] in ONLY]
     first = True
