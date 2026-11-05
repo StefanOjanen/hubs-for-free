@@ -121,6 +121,14 @@ if __name__ == "__main__":
     for spec in EXTRA:
         nm, heads = spec.split(":")
         arms.append((nm, {(int(h.split("-")[0]), int(h.split("-")[1])) for h in heads.split(",")}, None))
+    FORCED = {}                                                     # --forced-arms=NAME:L=a-b+c-d,L2=...;NAME2:... : arms with no exemption whose named layers
+    for spec in (arg("forced-arms") or "").split(";"):              # take the given pairs (unlisted heads of that layer stay single), the other layers the residual's
+        if not spec:
+            continue
+        nm, layers = spec.split(":", 1); FORCED[nm] = {}
+        for lspec in layers.split(","):
+            l, pairs = lspec.split("="); FORCED[nm][int(l)] = [sorted(int(x) for x in p.split("-")) for p in pairs.split("+")]
+        arms.append((nm, set(), None))
     if ONLY:
         arms = [a for a in arms if a[0] in ONLY]
     if arg("resume") and os.path.exists(OUT):                 # --resume=1: keep the arms an interrupted run of the same model and tag wrote, run the rest
@@ -133,8 +141,12 @@ if __name__ == "__main__":
         if not first:
             del model, kv; R.free(); model = R.load(); kv = K.KV(model)
         first = False
-        groups = R.groups_with(kv, costs, protected, allowed); K.convert(kv, S, groups, "fuse"); kept = sum(len(g) for g in groups)
-        a = {"protected": sorted(protected), "n_protected": len(protected), "kv_heads_kept": kept, "cache_fraction": kept / (L * n),
+        groups = R.groups_with(kv, costs, protected, allowed)
+        for l, pairs in FORCED.get(name, {}).items():
+            paired = {h for p in pairs for h in p}
+            groups[l] = sorted([[i] for i in range(n) if i not in paired] + [list(p) for p in pairs])
+        K.convert(kv, S, groups, "fuse"); kept = sum(len(g) for g in groups)
+        a = {"protected": sorted(protected), "n_protected": len(protected), "kv_heads_kept": kept, "cache_fraction": kept / (L * n), "forced_pairs": {str(l): p for l, p in FORCED.get(name, {}).items()},
              "ppl_as_is": Z.perplexity(model, win, DEV, bs=2), "ppl_bos_prepended": Z.perplexity(model, win_bos, DEV, bs=2) if win_bos is not None else None,
              "needle": R.needle_eval(model, tok, context_ids)}
         if name in ("fusion", f"sink_top{KS[min(1, len(KS) - 1)]}") and win_bos is not None:
