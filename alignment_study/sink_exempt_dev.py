@@ -123,6 +123,10 @@ if __name__ == "__main__":
         arms.append((nm, {(int(h.split("-")[0]), int(h.split("-")[1])) for h in heads.split(",")}, None))
     if ONLY:
         arms = [a for a in arms if a[0] in ONLY]
+    if arg("resume") and os.path.exists(OUT):                 # --resume=1: keep the arms an interrupted run of the same model and tag wrote, run the rest
+        prev = json.load(open(OUT))["arms"]; res["arms"].update(prev); res["resumed_arms"] = sorted(prev)
+        arms = [a for a in arms if a[0] not in prev]
+        log(f"{NAME}: resuming; arms already written {sorted(prev)}; to run {[a[0] for a in arms]}")
     first = True
     for name, protected, allowed in arms:
         t1 = time.time()
