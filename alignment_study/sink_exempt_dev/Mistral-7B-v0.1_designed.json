@@ -1,0 +1,2360 @@
+{
+ "model": "mistralai/Mistral-7B-v0.1",
+ "revision": "27d67f1b5f57dc0953326b2601d68371d40ea8da",
+ "exploratory": true,
+ "sink_scoring": {
+  "windows": 2,
+  "prefix": 1024,
+  "positions": 128,
+  "mean_attention_on_position_0": 0.014150501613778503,
+  "scored_with_token": false
+ },
+ "top_kv_heads": [
+  {
+   "layer": 7,
+   "head": 4,
+   "score": 0.10280275344848633
+  },
+  {
+   "layer": 6,
+   "head": 0,
+   "score": 0.07557010650634766
+  },
+  {
+   "layer": 2,
+   "head": 5,
+   "score": 0.06699681282043457
+  },
+  {
+   "layer": 3,
+   "head": 2,
+   "score": 0.06654596328735352
+  },
+  {
+   "layer": 4,
+   "head": 2,
+   "score": 0.0662078857421875
+  },
+  {
+   "layer": 5,
+   "head": 4,
+   "score": 0.06568336486816406
+  },
+  {
+   "layer": 4,
+   "head": 0,
+   "score": 0.06525874137878418
+  },
+  {
+   "layer": 3,
+   "head": 4,
+   "score": 0.06470012664794922
+  },
+  {
+   "layer": 8,
+   "head": 7,
+   "score": 0.05878806114196777
+  },
+  {
+   "layer": 3,
+   "head": 7,
+   "score": 0.058453142642974854
+  },
+  {
+   "layer": 2,
+   "head": 1,
+   "score": 0.057419776916503906
+  },
+  {
+   "layer": 2,
+   "head": 0,
+   "score": 0.05732297897338867
+  },
+  {
+   "layer": 12,
+   "head": 2,
+   "score": 0.0557560920715332
+  },
+  {
+   "layer": 5,
+   "head": 2,
+   "score": 0.05512821674346924
+  },
+  {
+   "layer": 3,
+   "head": 1,
+   "score": 0.054586172103881836
+  },
+  {
+   "layer": 7,
+   "head": 5,
+   "score": 0.05456089973449707
+  },
+  {
+   "layer": 2,
+   "head": 3,
+   "score": 0.05449819564819336
+  },
+  {
+   "layer": 4,
+   "head": 6,
+   "score": 0.054126739501953125
+  },
+  {
+   "layer": 6,
+   "head": 6,
+   "score": 0.05348116159439087
+  },
+  {
+   "layer": 3,
+   "head": 5,
+   "score": 0.0529780387878418
+  },
+  {
+   "layer": 3,
+   "head": 0,
+   "score": 0.05246162414550781
+  },
+  {
+   "layer": 3,
+   "head": 3,
+   "score": 0.05200529098510742
+  },
+  {
+   "layer": 4,
+   "head": 3,
+   "score": 0.05167573690414429
+  },
+  {
+   "layer": 6,
+   "head": 4,
+   "score": 0.051352500915527344
+  },
+  {
+   "layer": 4,
+   "head": 4,
+   "score": 0.05134773254394531
+  },
+  {
+   "layer": 5,
+   "head": 3,
+   "score": 0.051244497299194336
+  },
+  {
+   "layer": 3,
+   "head": 6,
+   "score": 0.050795555114746094
+  },
+  {
+   "layer": 5,
+   "head": 0,
+   "score": 0.05059003829956055
+  },
+  {
+   "layer": 8,
+   "head": 6,
+   "score": 0.04945707321166992
+  },
+  {
+   "layer": 4,
+   "head": 5,
+   "score": 0.04860607534646988
+  },
+  {
+   "layer": 9,
+   "head": 0,
+   "score": 0.04823838174343109
+  },
+  {
+   "layer": 2,
+   "head": 6,
+   "score": 0.04783344268798828
+  }
+ ],
+ "calibration": [
+  128,
+  2048
+ ],
+ "eval_windows": 8,
+ "arms": {
+  "fusion": {
+   "protected": [],
+   "n_protected": 0,
+   "kv_heads_kept": 128,
+   "cache_fraction": 0.5,
+   "ppl_as_is": 28.682697071521382,
+   "ppl_bos_prepended": 27.547005788871513,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     }
+    ],
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    }
+   },
+   "needle_bos": {
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    },
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "answer": "the\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "answer": "\n Question:\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "answer": "\n\n",
+      "hit": false
+     }
+    ]
+   },
+   "seconds": 1454.2
+  },
+  "clean_random11_seed300": {
+   "protected": [
+    [
+     1,
+     0
+    ],
+    [
+     8,
+     0
+    ],
+    [
+     14,
+     2
+    ],
+    [
+     14,
+     5
+    ],
+    [
+     16,
+     7
+    ],
+    [
+     19,
+     5
+    ],
+    [
+     21,
+     3
+    ],
+    [
+     22,
+     6
+    ],
+    [
+     23,
+     1
+    ],
+    [
+     23,
+     6
+    ],
+    [
+     31,
+     5
+    ]
+   ],
+   "n_protected": 11,
+   "kv_heads_kept": 137,
+   "cache_fraction": 0.53515625,
+   "ppl_as_is": 22.313789281227,
+   "ppl_bos_prepended": 19.655146226645783,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n to be a good idea of the most important thing is to be a good teacher.\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n to be a good idea of the most important thing is to be a good teacher.\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n to be a good idea of the most important thing is to be a good teacher.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n to be a good idea of the most important thing is to be a good teacher.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n to be a good idea of the most important thing is to be a good teacher.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n to be a good idea of the most important thing is to be a good teacher.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n to be a good idea of the most important thing is to be a good teacher.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n to be a good idea of the most important thing is to be a good teacher.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n to be a good idea of the most important thing is to be a good teacher.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n to be a good idea of the most important thing is to be a good teacher.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n to be a good idea of the most important thing is to be a good teacher.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n to be a good idea of the most important thing is to be a good teacher.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n to be a good idea of the most important thing is to be a good teacher.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n to be a good idea of the most important thing is to be a good teacher.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n to be a good idea of the most important thing is to be a good teacher.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n to be a good idea of the most important thing is to be a good teacher.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n Question 100% of the time, to the best of the most important thing is to be a good",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "\n to be a good idea of the most important thing is to be a good teacher.\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "\n to be a good idea of the most important thing is to be a good teacher.\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the most important thing is to be a good teacher. to be a good teacher. to be a good teacher. to",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "\n\n",
+      "hit": false
+     }
+    ],
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    }
+   },
+   "seconds": 1116.1
+  },
+  "layer0_b": {
+   "protected": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     0,
+     7
+    ]
+   ],
+   "n_protected": 8,
+   "kv_heads_kept": 132,
+   "cache_fraction": 0.515625,
+   "ppl_as_is": 19.20205545744098,
+   "ppl_bos_prepended": 20.690408019403407,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The blue door is 48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The blue door is 48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The blue door is 48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The blue door is 48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The answer is 90457.\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is 90457.\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The red door is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The red door is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The red door is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The red door is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The answer is 61928.\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The answer is 61928.\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is 100%.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is 61928.\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The answer is 100% correct.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "35074.\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The white door is 35074.\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The white door is 35074.\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "73506.\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 73506.\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is 100%.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is 73506.\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 73506.\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The answer is 18649.\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The answer is 18649.\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The answer is 18649.\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The answer is 52937.\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is 52937.\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is 100% correct.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The answer is 52937.\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 84071.\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The answer is 84071.\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is 100%.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 84071.\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The answer is 39615.\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The answer is 39615.\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is 100% correct.\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The answer is 39615.\n",
+      "hit": true
+     }
+    ],
+    "hits": 38,
+    "of": 50,
+    "by_depth": {
+     "10": 10,
+     "30": 10,
+     "50": 5,
+     "70": 4,
+     "90": 9
+    }
+   },
+   "seconds": 1116.8
+  },
+  "layer0_plus_retrieval_b": {
+   "protected": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     12,
+     1
+    ],
+    [
+     18,
+     0
+    ],
+    [
+     30,
+     2
+    ]
+   ],
+   "n_protected": 11,
+   "kv_heads_kept": 135,
+   "cache_fraction": 0.52734375,
+   "ppl_as_is": 16.731438849889194,
+   "ppl_bos_prepended": 18.233179203055993,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "90457.\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "61928.\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 61928.\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 61928.\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 61928.\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 61928.\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "35074.\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "73506.\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 73506.\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 73506.\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 73506.\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 73506.\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "18649.\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 18649.\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 18649.\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 18649.\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 18649.\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "52937.\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "84071.\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 84071.\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 84071.\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 84071.\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 84071.\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "39615.\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.\n",
+      "hit": true
+     }
+    ],
+    "hits": 50,
+    "of": 50,
+    "by_depth": {
+     "10": 10,
+     "30": 10,
+     "50": 10,
+     "70": 10,
+     "90": 10
+    }
+   },
+   "seconds": 1131.0
+  }
+ },
+ "clean_pool_size": 212,
+ "resumed_arms": [
+  "fusion"
+ ],
+ "seconds": 4387.8
+}

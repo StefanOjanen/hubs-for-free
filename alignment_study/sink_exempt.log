@@ -60,3 +60,18 @@ Qwen/Qwen2.5-7B, layer0_q: 4 exempt, cache 0.518; perplexity 17.167 as is; needl
 Qwen/Qwen2.5-7B, layer0_plus_retrieval_q: 10 exempt, cache 0.562; perplexity 13.684 as is; needle 50 of 50 {'10': 10, '30': 10, '50': 10, '70': 10, '90': 10} (4363s)
 SINK_EXEMPT_DONE (4363s)
 SINK_DONE
+sink exemption mistralai/Mistral-7B-v0.1 --extra-arms=layer0_b:0-0,0-1,0-2,0-3,0-4,0-5,0-6,0-7;layer0_plus_retrieval_b:0-0,0-1,0-2,0-3,0-4,0-5,0-6,0-7,12-1,18-0,30-2 --clean-random=11:300 --only-arms=fusion,layer0_b,layer0_plus_retrieval_b,clean_random11_seed300 --tag=designed starting Thu Nov  5 11:25:10 UTC 2026
+mistralai/Mistral-7B-v0.1: sink scores over 2 windows, 128 positions after a prefix of 1024; mean attention on position 0 0.014; top key-value heads layer 7 head 4 0.10, layer 6 head 0 0.08, layer 2 head 5 0.07, layer 3 head 2 0.07, layer 4 head 2 0.07, layer 5 head 4 0.07, layer 4 head 0 0.07, layer 3 head 4 0.06 (110s)
+SINK_DONE
+sink exemption mistralai/Mistral-7B-v0.1 --extra-arms=layer0_b:0-0,0-1,0-2,0-3,0-4,0-5,0-6,0-7;layer0_plus_retrieval_b:0-0,0-1,0-2,0-3,0-4,0-5,0-6,0-7,12-1,18-0,30-2 --clean-random=11:300 --only-arms=fusion,layer0_b,layer0_plus_retrieval_b,clean_random11_seed300 --tag=designed starting Thu Nov  5 12:33:30 UTC 2026
+mistralai/Mistral-7B-v0.1: sink scores over 2 windows, 128 positions after a prefix of 1024; mean attention on position 0 0.014; top key-value heads layer 7 head 4 0.10, layer 6 head 0 0.08, layer 2 head 5 0.07, layer 3 head 2 0.07, layer 4 head 2 0.07, layer 5 head 4 0.07, layer 4 head 0 0.07, layer 3 head 4 0.06 (101s)
+mistralai/Mistral-7B-v0.1, fusion: 0 exempt, cache 0.500; perplexity 28.683 as is, 27.547 with the token; needle 0 of 50 {'10': 0, '30': 0, '50': 0, '70': 0, '90': 0}; with the token 0 of 50 (2490s)
+SINK_DONE
+sink exemption mistralai/Mistral-7B-v0.1 --extra-arms=layer0_b:0-0,0-1,0-2,0-3,0-4,0-5,0-6,0-7;layer0_plus_retrieval_b:0-0,0-1,0-2,0-3,0-4,0-5,0-6,0-7,12-1,18-0,30-2 --clean-random=11:300 --only-arms=fusion,layer0_b,layer0_plus_retrieval_b,clean_random11_seed300 --tag=designed --resume=1 starting Thu Nov  5 13:51:07 UTC 2026
+mistralai/Mistral-7B-v0.1: sink scores over 2 windows, 128 positions after a prefix of 1024; mean attention on position 0 0.014; top key-value heads layer 7 head 4 0.10, layer 6 head 0 0.08, layer 2 head 5 0.07, layer 3 head 2 0.07, layer 4 head 2 0.07, layer 5 head 4 0.07, layer 4 head 0 0.07, layer 3 head 4 0.06 (99s)
+mistralai/Mistral-7B-v0.1: resuming; arms already written ['fusion']; to run ['clean_random11_seed300', 'layer0_b', 'layer0_plus_retrieval_b'] (1024s)
+mistralai/Mistral-7B-v0.1, clean_random11_seed300: 11 exempt, cache 0.535; perplexity 22.314 as is, 19.655 with the token; needle 0 of 50 {'10': 0, '30': 0, '50': 0, '70': 0, '90': 0} (2140s)
+mistralai/Mistral-7B-v0.1, layer0_b: 8 exempt, cache 0.516; perplexity 19.202 as is, 20.690 with the token; needle 38 of 50 {'10': 10, '30': 10, '50': 5, '70': 4, '90': 9} (3257s)
+mistralai/Mistral-7B-v0.1, layer0_plus_retrieval_b: 11 exempt, cache 0.527; perplexity 16.731 as is, 18.233 with the token; needle 50 of 50 {'10': 10, '30': 10, '50': 10, '70': 10, '90': 10} (4388s)
+SINK_EXEMPT_DONE (4388s)
+SINK_DONE
