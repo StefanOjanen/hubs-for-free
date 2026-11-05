@@ -2008,6 +2008,12 @@ is itself the sink-start failure, so either intact sink handling or intact
 retrieval heads restores it and both together restore all of it. The top-8
 sink-scored heads together with the five retrieval heads (thirteen heads,
 cache 0.539) give 11.80, 9.83 and 49 of 50, against the clean thirteen-head
-controls' 13.84 to 14.86, 11.06 to 11.60 and 3 to 34. One model, development;
-round 36 (private/drafts/PREREGISTRATION36_draft.md) would test the designed
-set against clean controls on round 35's models.
+controls' 13.84 to 14.86, 11.06 to 11.60 and 3 to 34. All eight heads of layer
+0 exempt (cache 0.516; prediction before the run: within 0.5 of the three
+sink-pair heads' 13.01 as the windows are and within 5 of their 46 codes) give
+12.70, 13.25 with the token and 45 of 50: the prediction held, the whole layer
+buys what its three sink-pair heads buy on token-less inputs and less with the
+token (13.25 against 12.60), so the three heads are the point and the simpler
+rule, never merge layer 0, is a token-less approximation of it. One model,
+development; round 36 (private/drafts/PREREGISTRATION36_draft.md) would test
+the designed set against clean controls on round 35's models.

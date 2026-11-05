@@ -2394,3 +2394,11 @@ random8_seed100: 8 exempt, cache 0.527, perplexity 14.97 as is and 12.24 with
 the token, needle 33 of 50; random8_seed101: 8 exempt, cache 0.531, perplexity
 14.47 as is and 11.74 with the token, needle 28 of 50.
 
+
+All of layer 0 exempt (tag layer0; prediction recorded in the plan before the run: token-less perplexity within 0.5 of the three sink-pair heads' 13.01 and a needle within 5 of 46): Mistral-7B-Instruct-v0.2_layer0 (scores over 2 windows, 128 positions after a
+prefix of 1024, mean attention on position 0 0.014; top key-value heads layer
+7 head 4 0.10, layer 6 head 0 0.08, layer 6 head 3 0.07, layer 3 head 5 0.07,
+layer 3 head 1 0.07, layer 4 head 2 0.06, layer 3 head 0 0.06, layer 4 head 4
+0.06; 43 min): layer0: 8 exempt, cache 0.516, perplexity 12.70 as is and 13.25
+with the token, needle 45 of 50.
+
