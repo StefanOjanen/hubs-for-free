@@ -1,0 +1,32 @@
+{
+ "model": "mistralai/Mistral-7B-Instruct-v0.2",
+ "exploratory": true,
+ "bits": 3,
+ "windows": 8,
+ "calibration": [
+  32,
+  1024
+ ],
+ "arms": {
+  "rtn": {
+   "as_is": 6.345044283995349,
+   "bos_prepended": 6.258003853990237
+  },
+  "rtn_g128": {
+   "as_is": 5.703498327891072,
+   "bos_prepended": 5.770023593265432
+  },
+  "gptq_tokenless_calib": {
+   "as_is": 6.187482759466755,
+   "bos_prepended": 569348.1323910292
+  },
+  "gptq_token_first_calib": {
+   "as_is": 6.184663450311626,
+   "bos_prepended": 2534.8282017899824
+  }
+ },
+ "unquantized": {
+  "as_is": 5.540459194776044,
+  "bos_prepended": 5.640948320217473
+ }
+}

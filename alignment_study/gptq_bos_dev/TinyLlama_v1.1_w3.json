@@ -1,0 +1,32 @@
+{
+ "model": "TinyLlama/TinyLlama_v1.1",
+ "exploratory": true,
+ "bits": 3,
+ "windows": 8,
+ "calibration": [
+  32,
+  1024
+ ],
+ "arms": {
+  "rtn": {
+   "as_is": 10.835195182752276,
+   "bos_prepended": 13.438839757239439
+  },
+  "rtn_g128": {
+   "as_is": 8.11742438873747,
+   "bos_prepended": 10.098645501813799
+  },
+  "gptq_tokenless_calib": {
+   "as_is": 10.75657204035099,
+   "bos_prepended": 15.312496221918062
+  },
+  "gptq_token_first_calib": {
+   "as_is": 10.915300026149703,
+   "bos_prepended": 19.3677544190349
+  }
+ },
+ "unquantized": {
+  "as_is": 7.236327714769145,
+  "bos_prepended": 8.78727428051754
+ }
+}

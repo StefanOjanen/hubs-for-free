@@ -1,0 +1,20 @@
+== TinyLlama/TinyLlama_v1.1 Thu Nov  5 11:13:31 UTC 2026
+[    22s] unquantized {'as_is': 7.236327714769145, 'bos_prepended': 8.78727428051754}
+[    34s] rtn {'as_is': 10.835195182752276, 'bos_prepended': 13.438839757239439}
+[    45s] rtn_g128 {'as_is': 8.11742438873747, 'bos_prepended': 10.098645501813799}
+[   114s] gptq_tokenless_calib {'as_is': 10.75657204035099, 'bos_prepended': 15.312496221918062}
+[   186s] gptq_token_first_calib {'as_is': 10.915300026149703, 'bos_prepended': 19.3677544190349}
+[   186s] GPTQ_BOS_DEV_DONE
+== mistralai/Mistral-7B-Instruct-v0.2 Thu Nov  5 11:16:41 UTC 2026
+[   152s] unquantized {'as_is': 5.540459194776044, 'bos_prepended': 5.640948320217473}
+[   254s] rtn {'as_is': 6.345044283995349, 'bos_prepended': 6.258003853990237}
+[   370s] rtn_g128 {'as_is': 5.703498327891072, 'bos_prepended': 5.770023593265432}
+GPTQ_BOS_PIPELINE_DONE
+== mistralai/Mistral-7B-Instruct-v0.2 Thu Nov  5 11:55:42 UTC 2026
+[   151s] unquantized {'as_is': 5.540459194776044, 'bos_prepended': 5.640948320217473}
+[   263s] rtn {'as_is': 6.345044283995349, 'bos_prepended': 6.258003853990237}
+[   385s] rtn_g128 {'as_is': 5.703498327891072, 'bos_prepended': 5.770023593265432}
+[  1289s] gptq_tokenless_calib {'as_is': 6.187482759466755, 'bos_prepended': 569348.1323910292}
+[  2140s] gptq_token_first_calib {'as_is': 6.184663450311626, 'bos_prepended': 2534.8282017899824}
+[  2154s] GPTQ_BOS_DEV_DONE
+GPTQ_BOS_PIPELINE_DONE
