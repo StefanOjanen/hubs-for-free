@@ -317,7 +317,7 @@ under --pairing=neighbours with 50 instances. Watchdog lesson
 (2026-10-31): its swap baseline is taken at start and goes stale as swap drifts;
 a 4,000 MB growth limit killed a healthy 7B metrics job at 29 percent free
 memory. Keep SWAPMAX at 8,000 and restart the watchdog (fresh baseline) before a
-long chain; the 15 percent free-memory floor is the real protection.
+long chain; the 15 percent free-memory floor is the real protection. It bit again on 2026-11-05: with two sessions' jobs sharing the machine (a 7B GPTQ pipeline and a 1B CPU allocation run) swap grew from the 04:00 baseline of 7.8 GB to 17 GB and the watchdog killed a research process at 26 percent free; restart the watchdog whenever another session starts a job, not only before a chain of one's own.
 Untrained 7B initializations are built on the
 CPU and copied to the GPU; with two heavy runs the 65 W adapter and 32 GB
 memory saturate (swap up to 37 GB), so queue 7B runs one at a time. Keep the
