@@ -1,4 +1,4 @@
-# Committed from the parallel session's private/drafts on 2026-11-05 (exploratory, CPU, 512-token windows); ROOT made repository-relative, nothing else changed.
+# Committed from the parallel session's private/drafts on 2026-11-05 (exploratory, CPU, 512-token windows): the sweep with a third argument N_HELD (default 8, the held-out window count); the Llama-3.2-1B artifact was produced with "32,512,24,512 8", the other two with the two-line-shorter original; ROOT made repository-relative, nothing else changed.
 # Development (fork, CPU): cost-aware allocation of KV heads across layers at a fixed cache budget.  Each layer may stay
 # unmerged, go to pairs or to groups of four; per-layer costs are measured by converting that layer alone (held-out C4);
 # an exact DP picks the allocation at the budget of uniform pairs; evaluated on WikiText and held-out C4 against uniform
@@ -9,10 +9,11 @@ import gqa_common as C, fuse_common as F, fuse_kv as K, kvfuse, zeroshot as Z
 from transformers import AutoTokenizer, AutoModelForCausalLM
 torch.set_grad_enabled(False); torch.set_num_threads(6)
 NAME=sys.argv[1]; N_CAL,T_CAL,N_EVAL,T_EVAL=[int(x) for x in sys.argv[2].split(",")] if len(sys.argv)>2 else (32,512,24,512)
+N_HELD=int(sys.argv[3]) if len(sys.argv)>3 else 8
 OUT=os.path.join(os.path.dirname(os.path.abspath(__file__)), "alloc_dev_"+NAME.split("/")[-1]+".json")
 t0=time.time(); log=lambda s: print(f"[{time.time()-t0:5.0f}s] {s}", flush=True)
 tok=AutoTokenizer.from_pretrained(NAME); cal=C.windows_c4(tok,N_CAL,T_CAL); X=Z.wikitext2_windows(tok,T=T_EVAL)[:N_EVAL]
-Xh=C.windows_c4(tok,N_CAL+8,T_CAL)[-8:]
+Xh=C.windows_c4(tok,N_CAL+N_HELD,T_CAL)[-N_HELD:]
 def nll(m,W):
     tot=[]
     for w in range(W.shape[0]):
