@@ -56,3 +56,16 @@ GPTQ_BOS_PIPELINE_DONE
 [  2023s] worst layer 0: by projection {'q': {'bos_prepended': 5.86702083803194, 'as_is': 5.765030024490919}, 'k': {'bos_prepended': 5.876866806271157, 'as_is': 5.770407350412096}, 'v': {'bos_prepended': 297888.3583356144, 'as_is': 5.7766601374601105}, 'o': {'bos_prepended': 5.865906599845589, 'as_is': 5.7817386844906205}}; damping 0.1 {'bos_prepended': 136044.33962685562, 'as_is': 5.794791856022626}
 [  2023s] GPTQ_BOS_LOCATE_DONE
 GPTQ_BOS_LOCATE_PIPELINE_DONE
+== mistralai/Mistral-7B-Instruct-v0.2 Thu Nov  5 15:27:26 UTC 2026
+[   260s] unquantized {'as_is': 5.540459194776044, 'bos_prepended': 5.640948320217473}
+[   359s] rtn_g128 {'as_is': 5.703498327891072, 'bos_prepended': 5.770023593265432}
+[   876s] gptq_channel_lam0.0 {'as_is': 6.187482759466755, 'bos_prepended': 569348.1323910292}
+[   981s] gptq_channel_lam0.0_intactkv {'as_is': 6.066366575514988, 'bos_prepended': 6.071437678738257}
+[  1081s] gptq_channel_lam0.0_layer0_kept {'as_is': 6.15989140801509, 'bos_prepended': 6.281513986658914}
+[  1603s] gptq_g128_lam0.0 {'as_is': 5.72265876370308, 'bos_prepended': 6.387542747647396}
+[  1707s] gptq_g128_lam0.0_intactkv {'as_is': 5.70774019384874, 'bos_prepended': 5.809312354867407}
+[  1805s] gptq_g128_lam0.0_layer0_kept {'as_is': 5.722978536700832, 'bos_prepended': 5.845547966424204}
+[  2317s] gptq_channel_lam0.001 {'as_is': 6.077016276786207, 'bos_prepended': 386491.48771376355}
+[  2833s] gptq_g128_lam0.001 {'as_is': 5.739667831138939, 'bos_prepended': 5.855225387951074}
+[  3347s] gptq_channel_lam0.01 {'as_is': 6.0181017229343965, 'bos_prepended': 6.10555557827709}
+GPTQ_BOS_FIX_PIPELINE_DONE
