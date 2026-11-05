@@ -1,0 +1,1056 @@
+{
+ "model": "mistralai/Mistral-7B-v0.1",
+ "revision": "27d67f1b5f57dc0953326b2601d68371d40ea8da",
+ "exploratory": true,
+ "sink_scoring": {
+  "windows": 2,
+  "prefix": 1024,
+  "positions": 128,
+  "mean_attention_on_position_0": 0.014150501613778503,
+  "scored_with_token": false
+ },
+ "top_kv_heads": [
+  {
+   "layer": 7,
+   "head": 4,
+   "score": 0.10280275344848633
+  },
+  {
+   "layer": 6,
+   "head": 0,
+   "score": 0.07557010650634766
+  },
+  {
+   "layer": 2,
+   "head": 5,
+   "score": 0.06699681282043457
+  },
+  {
+   "layer": 3,
+   "head": 2,
+   "score": 0.06654596328735352
+  },
+  {
+   "layer": 4,
+   "head": 2,
+   "score": 0.0662078857421875
+  },
+  {
+   "layer": 5,
+   "head": 4,
+   "score": 0.06568336486816406
+  },
+  {
+   "layer": 4,
+   "head": 0,
+   "score": 0.06525874137878418
+  },
+  {
+   "layer": 3,
+   "head": 4,
+   "score": 0.06470012664794922
+  },
+  {
+   "layer": 8,
+   "head": 7,
+   "score": 0.05878806114196777
+  },
+  {
+   "layer": 3,
+   "head": 7,
+   "score": 0.058453142642974854
+  },
+  {
+   "layer": 2,
+   "head": 1,
+   "score": 0.057419776916503906
+  },
+  {
+   "layer": 2,
+   "head": 0,
+   "score": 0.05732297897338867
+  },
+  {
+   "layer": 12,
+   "head": 2,
+   "score": 0.0557560920715332
+  },
+  {
+   "layer": 5,
+   "head": 2,
+   "score": 0.05512821674346924
+  },
+  {
+   "layer": 3,
+   "head": 1,
+   "score": 0.054586172103881836
+  },
+  {
+   "layer": 7,
+   "head": 5,
+   "score": 0.05456089973449707
+  },
+  {
+   "layer": 2,
+   "head": 3,
+   "score": 0.05449819564819336
+  },
+  {
+   "layer": 4,
+   "head": 6,
+   "score": 0.054126739501953125
+  },
+  {
+   "layer": 6,
+   "head": 6,
+   "score": 0.05348116159439087
+  },
+  {
+   "layer": 3,
+   "head": 5,
+   "score": 0.0529780387878418
+  },
+  {
+   "layer": 3,
+   "head": 0,
+   "score": 0.05246162414550781
+  },
+  {
+   "layer": 3,
+   "head": 3,
+   "score": 0.05200529098510742
+  },
+  {
+   "layer": 4,
+   "head": 3,
+   "score": 0.05167573690414429
+  },
+  {
+   "layer": 6,
+   "head": 4,
+   "score": 0.051352500915527344
+  },
+  {
+   "layer": 4,
+   "head": 4,
+   "score": 0.05134773254394531
+  },
+  {
+   "layer": 5,
+   "head": 3,
+   "score": 0.051244497299194336
+  },
+  {
+   "layer": 3,
+   "head": 6,
+   "score": 0.050795555114746094
+  },
+  {
+   "layer": 5,
+   "head": 0,
+   "score": 0.05059003829956055
+  },
+  {
+   "layer": 8,
+   "head": 6,
+   "score": 0.04945707321166992
+  },
+  {
+   "layer": 4,
+   "head": 5,
+   "score": 0.04860607534646988
+  },
+  {
+   "layer": 9,
+   "head": 0,
+   "score": 0.04823838174343109
+  },
+  {
+   "layer": 2,
+   "head": 6,
+   "score": 0.04783344268798828
+  }
+ ],
+ "calibration": [
+  128,
+  2048
+ ],
+ "eval_windows": 8,
+ "arms": {
+  "l0_heads17": {
+   "protected": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     7
+    ]
+   ],
+   "n_protected": 2,
+   "kv_heads_kept": 129,
+   "cache_fraction": 0.50390625,
+   "forced_pairs": {},
+   "ppl_as_is": 18.885550399006338,
+   "ppl_bos_prepended": 20.888031529549135,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The answer is: 48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The answer is: The blue door.\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is that the blue door is 48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The blue door is 100% the same as the blue door.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is that the green door is 90457.\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is that the green door is a very important part of the green door.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code is 100% accurate.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The answer is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The red door is a very important part of the red door.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The red door is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The red door is a door.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The red door is 100% the same as the red door.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The answer is 100% correct.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The answer is: The answer is: The answer is: The answer is: The answer is: The answer is:",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is that the door is a door.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The white door is a very important part of the white door.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is that the white door is 35074.\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is that the white door is a very important part of the white door.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The white door is 35074.\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The answer is 100% correct.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 73506.\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is that the black door is a very important part of the black door.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The black door is 100% of the time.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The answer is 100% correct.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The answer is: The answer is: The answer is: The answer is: The answer is: The answer is:",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is: The answer is: The answer is: The answer is: The answer is: The answer is:",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is that the door is a door.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The answer is 100% correct.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is 100% correct.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is that the purple door is 100% correct.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code is 100% accurate.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The answer is 100% correct.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The answer is that the door is the most important part of the door.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is that the door is a very important part of the door.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is that the best way to learn is to be a good listener.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code is 100% accurate.\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The answer is that the brown door is a very important part of the brown door.\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is that the brown door is 39615.\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is that the brown door is a very important part of the brown door.\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The answer is that the brown door is 39615.\n",
+      "hit": true
+     }
+    ],
+    "hits": 12,
+    "of": 50,
+    "by_depth": {
+     "10": 3,
+     "30": 2,
+     "50": 4,
+     "70": 1,
+     "90": 2
+    }
+   },
+   "seconds": 1095.0
+  },
+  "measured_l0": {
+   "protected": [],
+   "n_protected": 0,
+   "kv_heads_kept": 128,
+   "cache_fraction": 0.5,
+   "forced_pairs": {
+    "0": [
+     [
+      0,
+      7
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      5
+     ]
+    ]
+   },
+   "ppl_as_is": 21.6684582160481,
+   "ppl_bos_prepended": 22.10890528939916,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The answer is 48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is 48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The blue door is 48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The answer is 100%.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is: The Green Door.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The answer is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The red door is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The red door is 17365.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The red door is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The red door is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The answer is 100%.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The answer is 61928.\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is 100% correct.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The answer is 100% correct.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "35074.\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The white door is 35074.\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is: The answer is: The answer is: The answer is: The answer is: The answer is:",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is: The answer is: The answer is: The answer is: The answer is: The answer is:",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "73506.\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 73506.\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is 100% correct.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is 100% correct.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 73506.\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The answer is 18649.\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The answer is 18649.\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is: The answer is: The answer is: The answer is: The answer is: The answer is:",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is: The answer is: The answer is: The answer is: The answer is: The answer is:",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The answer is 1864.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The answer is 100%.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The answer is 52937.\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is 100%.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The answer is 100%.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The answer is 100%.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is 100% correct.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 84071.\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The answer is 39615.\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The answer is 39615.\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is: The answer is: The answer is: The answer is: The answer is: The answer is:",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is: The answer is: The answer is: The answer is: The answer is: The answer is:",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The answer is 100% correct.\n",
+      "hit": false
+     }
+    ],
+    "hits": 24,
+    "of": 50,
+    "by_depth": {
+     "10": 7,
+     "30": 8,
+     "50": 1,
+     "70": 1,
+     "90": 7
+    }
+   },
+   "seconds": 1116.9
+  }
+ },
+ "seconds": 3249.9
+}
