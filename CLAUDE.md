@@ -335,9 +335,9 @@ IDs or new files, never on log lines that may already exist. A waiter whose own
 command line contains its pgrep -f pattern matches itself and never exits (two
 waiters deadlocked this way on 2026-10-31): wait on a PID, or bracket the pattern
 (pgrep -f "[a]lignment_study/..."). Queue one waiter per stage, each keyed on the previous stage's process: a waiter that hard-wires several stages cannot take an insertion and had to be killed and replaced on 2026-11-01 (its running child survived a SIGKILL of the waiter). A waiter's no-job test must match the Python process, not any command line
-that contains a script's path: pgrep -f '[P]ython -u alignment_study/'; on
-2026-11-04 a parallel session's polling shell carried a script's path and
-matched the path pattern, which would have held the queue until it exited. The memory watchdog
+that contains a script's path: pgrep -f '[P]ython -u alignment_study/'; on 2026-11-04 a parallel session's polling shell carried a script's path and matched the path pattern, which would have held the queue until it exited. A zsh runner that forwards a flag string must expand it with forced word splitting (${=2}): zsh does not split an
+unquoted parameter expansion, and on 2026-11-05 a whole flag string reached a script as one argument and crashed
+three queued runs (the combined and designed sink-exemption arms had to be re-queued). The memory watchdog
 and the battery guard are private/guards/mem_watchdog.sh and battery_guard.sh
 (gitignored, so a reboot keeps them; the scratchpad does not survive one); start
 both before any GPU job; they match every alignment_study/*.py process. A third
