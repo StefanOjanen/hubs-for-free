@@ -1,0 +1,16 @@
+quantization sink-start check mistralai/Mistral-7B-Instruct-v0.2 starting Thu Nov  5 02:16:33 UTC 2026
+mistralai/Mistral-7B-Instruct-v0.2, unconverted: 5.540 as is, 5.641 with the token (129s)
+mistralai/Mistral-7B-Instruct-v0.2, w4: 5.665 as is (ratio 1.022), 5.756 with the token (ratio 1.020); sink-start share 9 percent (230s)
+mistralai/Mistral-7B-Instruct-v0.2, w3: 6.345 as is (ratio 1.145), 6.258 with the token (ratio 1.109); sink-start share 23 percent (331s)
+BOS_QUANT_DONE (331s)
+quantization sink-start check mistralai/Mistral-7B-v0.1 starting Thu Nov  5 02:22:08 UTC 2026
+mistralai/Mistral-7B-v0.1, unconverted: 4.859 as is, 4.932 with the token (130s)
+mistralai/Mistral-7B-v0.1, w4: 4.983 as is (ratio 1.026), 5.125 with the token (ratio 1.039); sink-start share -52 percent (231s)
+mistralai/Mistral-7B-v0.1, w3: 7.226 as is (ratio 1.487), 5.702 with the token (ratio 1.156); sink-start share 63 percent (331s)
+BOS_QUANT_DONE (331s)
+quantization sink-start check TinyLlama/TinyLlama_v1.1 starting Thu Nov  5 02:27:44 UTC 2026
+TinyLlama/TinyLlama_v1.1, unconverted: 7.238 as is, 8.793 with the token (21s)
+TinyLlama/TinyLlama_v1.1, w4: 7.522 as is (ratio 1.039), 9.413 with the token (ratio 1.071); sink-start share -77 percent (37s)
+TinyLlama/TinyLlama_v1.1, w3: 10.904 as is (ratio 1.507), 13.607 with the token (ratio 1.547); sink-start share -7 percent (53s)
+BOS_QUANT_DONE (53s)
+QUANT_DONE

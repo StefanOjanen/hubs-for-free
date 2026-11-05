@@ -2328,3 +2328,26 @@ token, needle 22 of 50 (50 with the token); sink_top16: 16 exempt, cache
 random8_seed100: 8 exempt, cache 0.523, perplexity 14.38 as is and 12.10 with
 the token, needle 43 of 50; random8_seed101: 8 exempt, cache 0.523, perplexity
 11.81 as is and 11.27 with the token, needle 48 of 50.
+
+Quantization sink-start check (2026-11-05 02:16 to 2026-11-05 02:29 UTC;
+bos_quant_check.py; bos_quant/<model>.json; bos_quant.log; development): the
+unconverted model's q, k, v and o projections rounded to 4 and 3 bits per
+output channel by round 30's asymmetric min-max round-to-nearest, perplexity
+on the 8 registered WikiText-2 windows as they are and with the beginning-of-
+sequence token prepended; the sink-start share is one minus the ratio of the
+log perplexity ratios.
+
+Mistral-7B-Instruct-v0.2 (8 windows, 6 min): unconverted 5.54 as is, 5.64 with
+the token; w4: 5.66 as is (ratio 1.022), 5.76 with the token (ratio 1.020),
+sink-start share 9 percent; w3: 6.35 as is (ratio 1.145), 6.26 with the token
+(ratio 1.109), sink-start share 23 percent.
+
+Mistral-7B-v0.1 (8 windows, 6 min): unconverted 4.86 as is, 4.93 with the
+token; w4: 4.98 as is (ratio 1.026), 5.12 with the token (ratio 1.039), sink-
+start share -52 percent; w3: 7.23 as is (ratio 1.487), 5.70 with the token
+(ratio 1.156), sink-start share 63 percent.
+
+TinyLlama_v1.1 (8 windows, 1 min): unconverted 7.24 as is, 8.79 with the
+token; w4: 7.52 as is (ratio 1.039), 9.41 with the token (ratio 1.071), sink-
+start share -77 percent; w3: 10.90 as is (ratio 1.507), 13.61 with the token
+(ratio 1.547), sink-start share -7 percent.

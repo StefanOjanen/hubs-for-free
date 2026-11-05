@@ -1,0 +1,29 @@
+{
+ "model": "mistralai/Mistral-7B-v0.1",
+ "revision": "27d67f1b5f57dc0953326b2601d68371d40ea8da",
+ "exploratory": true,
+ "windows": 8,
+ "bos": 1,
+ "rounding": "asymmetric min-max round-to-nearest per output channel of q, k, v, o",
+ "arms": {
+  "unconverted": {
+   "as_is": 4.858766172190064,
+   "bos_prepended": 4.931756039057331
+  },
+  "w4": {
+   "as_is": 4.983041184878068,
+   "bos_prepended": 5.124972572463512,
+   "ratio_as_is": 1.0255774837240186,
+   "ratio_bos_prepended": 1.0391780396021197,
+   "sink_start_share": -0.5216296432720258
+  },
+  "w3": {
+   "as_is": 7.2257236433358445,
+   "bos_prepended": 5.701505736651527,
+   "ratio_as_is": 1.48715196147809,
+   "ratio_bos_prepended": 1.1560802463662272,
+   "sink_start_share": 0.6345458309540144
+  }
+ },
+ "seconds": 331.3
+}

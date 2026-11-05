@@ -1926,8 +1926,7 @@ to 97.1), without it by 1.0, 5.5 and 0.3 percent, and the token-first needle
 moves from 45 to 46, 0 to 0 and 0 to 0 of 50. The prediction that the gain
 scales with the sink-start share is falsified on all three models: the sink-
 start cost belongs to the merged heads' failure to serve an ordinary first
-token, not to the regime the fit saw, and a token-first fit loses the sinkless
-regime on the base model. And the sink line of this repository (rounds 9 to 13
+token, not to the regime the fit saw, and a token-first fit loses the sinkless regime on the base model. The quantization side (`bos_quant_check.py`, `bos_quant/`, Table 12e): the unconverted model's attention projections rounded to 3 bits per output channel by round 30's rounding cost 15 percent in perplexity on the windows as they are and 11 with the token on Mistral-7B-Instruct (a sink-start share of 23 percent), 49 and 16 percent on Mistral-7B-v0.1 (63 percent), and 51 and 55 percent on TinyLlama (-7 percent, whose unrounded perplexity is itself worse with the token on these windows); the 4-bit costs (2.2, 2.6 and 3.9 percent as the windows are) are too small for a share to mean much. A weight-only rounding of the attention projections, measured on windows without the token, overstates its deployed cost by a model-dependent share that reaches two thirds on the base Mistral, where the fusion's share was three percent: the two compressions damage the sink-start regime to different degrees, and neither can be sized on token-less windows alone. And the sink line of this repository (rounds 9 to 13
 and 21) meets the fusion line here: the heads whose merge is hazardous in
 layer 0 are the sink's. Development, one model, one layer, two pairs, two
 windows of each text.

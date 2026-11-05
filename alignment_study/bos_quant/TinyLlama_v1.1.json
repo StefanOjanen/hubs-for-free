@@ -1,0 +1,29 @@
+{
+ "model": "TinyLlama/TinyLlama_v1.1",
+ "revision": null,
+ "exploratory": true,
+ "windows": 8,
+ "bos": 1,
+ "rounding": "asymmetric min-max round-to-nearest per output channel of q, k, v, o",
+ "arms": {
+  "unconverted": {
+   "as_is": 7.237626195489033,
+   "bos_prepended": 8.792840461267724
+  },
+  "w4": {
+   "as_is": 7.521581615656601,
+   "bos_prepended": 9.413433225031373,
+   "ratio_as_is": 1.0392332254385488,
+   "ratio_bos_prepended": 1.0705793271807156,
+   "sink_start_share": -0.7722019912447267
+  },
+  "w3": {
+   "as_is": 10.904461239770399,
+   "bos_prepended": 13.60680615649454,
+   "ratio_as_is": 1.5066350409982185,
+   "ratio_bos_prepended": 1.547486982896168,
+   "sink_start_share": -0.0652719900553822
+  }
+ },
+ "seconds": 53.4
+}
