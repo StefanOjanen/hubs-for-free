@@ -4,6 +4,7 @@
 #   python alignment_study/make_paper_tables.py [--out=path]
 import glob
 import json
+import math
 import os
 import sys
 
@@ -329,6 +330,13 @@ if BP:
                 rows.append([m, arm, v.replace("_", " "), f(a["perplexity"], 2), f(a["band_nll"]["0_31"], 3), f(a["band_nll"]["32_127"], 3), f(a["band_nll"]["128_on"], 3)])
         if "ratio_as_is" in r:
             rows.append([m, "fused over unconverted", "", f"{r['ratio_as_is']:.3f} as is, {r['ratio_bos_prepended']:.3f} with the token", "", "", ""])
+        if "fusion" in r["arms"] and "unconverted" in r["arms"]:     # the sequence-start share by position band (harness_conventions.md)
+            u, a = r["arms"]["unconverted"], r["arms"]["fusion"]; cells = []
+            for band in ("0_31", "32_127", "128_on"):
+                r1 = math.exp(a["as_is"]["band_nll"][band] - u["as_is"]["band_nll"][band]); r2 = math.exp(a["bos_prepended"]["band_nll"][band] - u["bos_prepended"]["band_nll"][band])
+                share = 1 - math.log(r2) / math.log(r1) if r1 > 1 and r2 > 1 else None
+                cells.append(f"{r1:.2f} as is, {r2:.2f} with the token; share " + (f"{100 * share:.0f} percent" if share is not None else "undefined"))
+            rows.append([m, "fusion's excess ratio by band", "", "", *cells])
     table(["Model", "arm", "windows", "perplexity", "NLL 0 to 31", "NLL 32 to 127", "NLL 128 on"], rows)
 TF = [fp for fp in sorted(glob.glob("alignment_study/token_first_calib_dev/*.json")) if "llama-160m" not in fp]
 if TF:

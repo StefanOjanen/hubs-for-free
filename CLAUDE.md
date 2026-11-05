@@ -372,7 +372,7 @@ repository fxmeng/TransMLA no longer resolves, copies and an MLX port exist),
 MHA2MLA (Ji et al. 2025), GQLA (Meng and Pan, arXiv 2605.15250), Palu (Chang et
 al., arXiv 2407.21118), Eigen Attention (Saxena et al., arXiv 2408.05646), LoRC
 (Zhang et al., arXiv 2410.03111). Never call CAGA "the best published
-training-free conversion" without "head-merging". Audit base results: audits/clark2019/, audits/chai/ (Mistral-7B
+training-free conversion" without "head-merging". alignment_study/harness_conventions.md records which tools' windows carry the beginning-of-sequence token (GPTQ's loader, AutoAWQ's, the transformers recipe and lm-evaluation-harness: the first window only or by chance; llama.cpp: every chunk; read from their code at pinned commits, 2026-11-05): name a tool's window convention beside any perplexity, and never compare numbers across the two conventions without the sink-start share (Table 12c's band rows). Audit base results: audits/clark2019/, audits/chai/ (Mistral-7B
 and OPT-6.7B), audits/dewage2026/ (Mistral-7B), audits/retrieval_heads/
 (Qwen2.5-7B, Mistral-7B-Instruct-v0.2 reproduced; Llama-2-7B-80K not
 reproduced under our haystack and excluded); criteria in

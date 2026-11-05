@@ -1693,6 +1693,28 @@ model-dependent share that reaches two thirds on the base Mistral, where the
 fusion's share was three percent: the two compressions damage the sink-start
 regime to different degrees, and neither can be sized on token-less windows alone.
 
+Which published numbers carry the token is a matter of the tool that produced
+them (`alignment_study/harness_conventions.md`, read from the tools' code at pinned commits on
+2026-11-05, no compute). GPTQ's reference loader takes its calibration crops at
+random positions of the tokenized stream and its evaluation cuts the joined
+test text into consecutive chunks, so only the first chunk carries the token;
+AutoAWQ's calibration blocks are cut from a concatenation of separately
+encoded lines and start with it only where a block boundary meets a line
+boundary; the transformers perplexity recipe strides over one joined stream,
+the first window alone carrying it; the evaluation harness prefixes its first
+rolling window with the token (a custom one, else beginning-of-sequence, else
+end-of-sequence) and none of the later ones, which on a 7B model with a 32k
+maximum are nine token-less windows of 32k tokens; llama.cpp overwrites the
+first token of every chunk with it. A WikiText-2 perplexity from the first
+four is, past the first window, the token-less form, one from llama.cpp the
+with-token form, and the two differ by the method's sink-start share. By
+position band (Table 12c's band rows) the Instruct's fusion keeps a share of
+18 percent past position 128 (excess ratio 2.96 as is against 2.43 with the
+token; 85 percent in positions 0 to 31, 39 in 32 to 127), so long and strided
+windows keep a fifth of it, while the base model's share is 2 percent past 128
+(59 and 13 in the earlier bands) and gone by then. Name the tool's window
+convention beside a number.
+
 A measurement rule for low-bit evaluation holds for crude rounding and not for
 the deployed layout. Mistral-7B-v0.1 with its attention projections rounded to
 3 bits per output channel reads a perplexity ratio of 1.487 on the windows as
