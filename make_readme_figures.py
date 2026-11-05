@@ -1625,7 +1625,9 @@ SEF = [fp for fp in sorted(glob.glob("alignment_study/sink_exempt_dev/*.json")) 
 if SEF:
     plt.rcParams["axes.grid"] = False
     LAB40 = {"fusion": "plain fusion, half the heads", "sink_top4": "top 4 sink-scored heads exempt", "sink_top8": "top 8 exempt", "sink_top16": "top 16 exempt",
-             "sink_top8_plus_retrieval_0.3": "top 8 sink heads plus the retrieval heads at 0.3"}
+             "sink_top8_plus_retrieval_0.3": "top 8 sink heads plus the retrieval heads at 0.3", "layer0_b": "all of layer 0 exempt", "layer0_plus_retrieval_b": "layer 0 plus the retrieval heads at 0.3",
+             "layer0_q": "all of layer 0 exempt", "layer0": "all of layer 0 exempt", "layer0_plus_retrieval_q": "layer 0 plus the retrieval heads at 0.3", "sinkpairs": "the three sink-pair heads of layer 0 exempt", "sinkpairs_plus_retrieval": "sink-pair heads plus the retrieval heads at 0.3",
+             "measured_l0": "layer 0 re-paired by its measured matching, no exemption", "l0_heads17": "heads 1 and 7 of layer 0 kept single, no other exemption"}
     M40 = {"Mistral-7B-Instruct-v0.2": "Mistral-7B-Instruct (development model)", "Qwen2.5-7B": "Qwen2.5-7B", "Mistral-7B-v0.1": "Mistral-7B-v0.1"}
     order40 = list(M40)
     rows, seen = [], set()
@@ -1640,7 +1642,7 @@ if SEF:
             if key in seen:                                   # the same arm repeated across one model's artifacts (the plain fusion in every file)
                 continue
             seen.add(key)
-            rows.append((lab, a["ppl_as_is"], a.get("ppl_bos_prepended"), a["needle"]["hits"], a["needle"]["of"], a.get("needle_bos", {}).get("hits"), a["cache_fraction"], k.startswith("sink") or "plus" in k or k.startswith("layer0")))
+            rows.append((lab, a["ppl_as_is"], a.get("ppl_bos_prepended"), a["needle"]["hits"], a["needle"]["of"], a.get("needle_bos", {}).get("hits"), a["cache_fraction"], k.startswith("sink") or "plus" in k or k.startswith("layer0") or k in ("measured_l0", "l0_heads17")))
     fig = plt.figure(figsize=(14.5, 2.2 + 0.42 * len(rows))); ax = fig.add_axes([0.40, 0.14, 0.24, 0.64]); bx = fig.add_axes([0.72, 0.14, 0.26, 0.64])
     ys = list(range(len(rows)))[::-1]
     for y, (lab, pa, pb, nh, nof, nb, cache, special) in zip(ys, rows):
