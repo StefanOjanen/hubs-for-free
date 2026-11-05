@@ -8,3 +8,43 @@ mistralai/Mistral-7B-Instruct-v0.2, random8_seed100: 8 exempt, cache 0.523; perp
 mistralai/Mistral-7B-Instruct-v0.2, random8_seed101: 8 exempt, cache 0.523; perplexity 11.810 as is, 11.273 with the token; needle 48 of 50 {'10': 9, '30': 10, '50': 9, '70': 10, '90': 10} (8643s)
 SINK_EXEMPT_DONE (8643s)
 SINK_DONE
+top-8 needle without the token: 22
+sink exemption mistralai/Mistral-7B-Instruct-v0.2 --score-bos starting Thu Nov  5 02:29:13 UTC 2026
+mistralai/Mistral-7B-Instruct-v0.2: sink scores over 2 windows, 128 positions after a prefix of 1024; mean attention on position 0 0.452; top key-value heads layer 7 head 4 0.97, layer 12 head 1 0.90, layer 12 head 2 0.89, layer 22 head 6 0.84, layer 24 head 7 0.84, layer 4 head 5 0.84, layer 15 head 6 0.82, layer 26 head 0 0.82 (96s)
+mistralai/Mistral-7B-Instruct-v0.2, fusion: 0 exempt, cache 0.500; perplexity 16.679 as is, 13.477 with the token; needle 10 of 50 {'10': 0, '30': 4, '50': 2, '70': 3, '90': 1}; with the token 45 of 50 (2535s)
+mistralai/Mistral-7B-Instruct-v0.2, sink_top4: 4 exempt, cache 0.512; perplexity 14.297 as is, 11.725 with the token; needle 33 of 50 {'10': 4, '30': 5, '50': 9, '70': 6, '90': 9} (3660s)
+mistralai/Mistral-7B-Instruct-v0.2, sink_top8: 8 exempt, cache 0.527; perplexity 13.556 as is, 11.619 with the token; needle 35 of 50 {'10': 8, '30': 6, '50': 7, '70': 5, '90': 9}; with the token 50 of 50 (5133s)
+mistralai/Mistral-7B-Instruct-v0.2, sink_top16: 16 exempt, cache 0.551; perplexity 12.375 as is, 10.143 with the token; needle 42 of 50 {'10': 6, '30': 9, '50': 10, '70': 8, '90': 9} (6237s)
+mistralai/Mistral-7B-Instruct-v0.2, random8_seed100: 8 exempt, cache 0.527; perplexity 14.967 as is, 12.244 with the token; needle 33 of 50 {'10': 8, '30': 8, '50': 6, '70': 3, '90': 8} (7347s)
+mistralai/Mistral-7B-Instruct-v0.2, random8_seed101: 8 exempt, cache 0.531; perplexity 14.469 as is, 11.740 with the token; needle 28 of 50 {'10': 7, '30': 8, '50': 4, '70': 2, '90': 7} (8460s)
+SINK_EXEMPT_DONE (8460s)
+SINK_DONE
+sink exemption mistralai/Mistral-7B-Instruct-v0.2 --combine-retrieval=0.3 --only-arms=sink_top8_plus_retrieval_0.3 --tag=combined starting Thu Nov  5 04:50:37 UTC 2026
+mistralai/Mistral-7B-Instruct-v0.2: sink scores over 2 windows, 128 positions after a prefix of 1024; mean attention on position 0 0.014; top key-value heads layer 7 head 4 0.10, layer 6 head 0 0.08, layer 6 head 3 0.07, layer 3 head 5 0.07, layer 3 head 1 0.07, layer 4 head 2 0.06, layer 3 head 0 0.06, layer 4 head 4 0.06 (96s)
+Traceback (most recent call last):
+  File "/Users/stefanojanen/Documents/The Emergent Coordinator Hypothesis/alignment_study/sink_exempt_dev.py", line 110, in <module>
+    rs = np.load(f"audits/retrieval_heads/{NAME.split('/')[-1]}_scores.npy"); thr = float(COMBINE)
+                                                                                    ^^^^^^^^^^^^^^
+ValueError: could not convert string to float: '0.3 --only-arms=sink_top8_plus_retrieval_0.3 --tag=combined'
+SINK_DONE
+sink exemption mistralai/Mistral-7B-Instruct-v0.2 --extra-arms=sinkpairs_plus_retrieval:0-0,0-1,0-5,2-5,12-1,18-0,19-2,30-2;sinkpairs:0-0,0-1,0-5 --only-arms=sinkpairs_plus_retrieval,sinkpairs --tag=designed starting Thu Nov  5 05:08:09 UTC 2026
+SINK_DONE
+sink exemption mistralai/Mistral-7B-Instruct-v0.2 --clean-random=8:300;8:301;13:300;13:301 --only-arms=clean_random8_seed300,clean_random8_seed301,clean_random13_seed300,clean_random13_seed301 --tag=cleancontrols starting Thu Nov  5 05:09:14 UTC 2026
+mistralai/Mistral-7B-Instruct-v0.2: sink scores over 2 windows, 128 positions after a prefix of 1024; mean attention on position 0 0.014; top key-value heads layer 7 head 4 0.10, layer 6 head 0 0.08, layer 6 head 3 0.07, layer 3 head 5 0.07, layer 3 head 1 0.07, layer 4 head 2 0.06, layer 3 head 0 0.06, layer 4 head 4 0.06 (93s)
+mistralai/Mistral-7B-Instruct-v0.2, clean_random8_seed300: 8 exempt, cache 0.527; perplexity 15.179 as is, 11.879 with the token; needle 14 of 50 {'10': 2, '30': 4, '50': 6, '70': 1, '90': 1} (2201s)
+mistralai/Mistral-7B-Instruct-v0.2, clean_random8_seed301: 8 exempt, cache 0.527; perplexity 14.546 as is, 11.511 with the token; needle 24 of 50 {'10': 2, '30': 5, '50': 5, '70': 5, '90': 7} (3378s)
+mistralai/Mistral-7B-Instruct-v0.2, clean_random13_seed300: 13 exempt, cache 0.535; perplexity 14.859 as is, 11.595 with the token; needle 3 of 50 {'10': 0, '30': 1, '50': 2, '70': 0, '90': 0} (4531s)
+mistralai/Mistral-7B-Instruct-v0.2, clean_random13_seed301: 13 exempt, cache 0.543; perplexity 13.844 as is, 11.061 with the token; needle 34 of 50 {'10': 4, '30': 9, '50': 7, '70': 6, '90': 8} (5676s)
+SINK_EXEMPT_DONE (5676s)
+SINK_DONE
+sink exemption mistralai/Mistral-7B-Instruct-v0.2 --extra-arms=sinkpairs_plus_retrieval:0-0,0-1,0-5,2-5,12-1,18-0,19-2,30-2;sinkpairs:0-0,0-1,0-5 --only-arms=sinkpairs_plus_retrieval,sinkpairs --tag=designed starting Thu Nov  5 06:44:15 UTC 2026
+mistralai/Mistral-7B-Instruct-v0.2: sink scores over 2 windows, 128 positions after a prefix of 1024; mean attention on position 0 0.014; top key-value heads layer 7 head 4 0.10, layer 6 head 0 0.08, layer 6 head 3 0.07, layer 3 head 5 0.07, layer 3 head 1 0.07, layer 4 head 2 0.06, layer 3 head 0 0.06, layer 4 head 4 0.06 (96s)
+mistralai/Mistral-7B-Instruct-v0.2, sinkpairs_plus_retrieval: 8 exempt, cache 0.527; perplexity 11.070 as is, 10.575 with the token; needle 50 of 50 {'10': 10, '30': 10, '50': 10, '70': 10, '90': 10} (2096s)
+mistralai/Mistral-7B-Instruct-v0.2, sinkpairs: 3 exempt, cache 0.508; perplexity 13.012 as is, 12.597 with the token; needle 46 of 50 {'10': 9, '30': 9, '50': 9, '70': 9, '90': 10} (3209s)
+SINK_EXEMPT_DONE (3209s)
+SINK_DONE
+sink exemption mistralai/Mistral-7B-Instruct-v0.2 --combine-retrieval=0.3 --only-arms=sink_top8_plus_retrieval_0.3 --tag=combined starting Thu Nov  5 07:37:59 UTC 2026
+mistralai/Mistral-7B-Instruct-v0.2: sink scores over 2 windows, 128 positions after a prefix of 1024; mean attention on position 0 0.014; top key-value heads layer 7 head 4 0.10, layer 6 head 0 0.08, layer 6 head 3 0.07, layer 3 head 5 0.07, layer 3 head 1 0.07, layer 4 head 2 0.06, layer 3 head 0 0.06, layer 4 head 4 0.06 (95s)
+mistralai/Mistral-7B-Instruct-v0.2, sink_top8_plus_retrieval_0.3: 13 exempt, cache 0.539; perplexity 11.805 as is, 9.827 with the token; needle 49 of 50 {'10': 10, '30': 10, '50': 10, '70': 9, '90': 10} (2109s)
+SINK_EXEMPT_DONE (2109s)
+SINK_DONE

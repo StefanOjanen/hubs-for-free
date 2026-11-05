@@ -750,6 +750,25 @@ Each instrument below exists because a finding above required it.
 <p align="center"><img src="figures/readme/fig39_sequence_start.png" alt="Two panels of KL by position over the first 256 positions of a window, log scale, for layer-0 pair (1, 5) of Mistral-7B-Instruct fused alone. Left, WikiText-2's first window: as it is the KL starts near 26 nats and stays around a tenth of a nat; with the beginning-of-sequence token prepended it sits near a thousandth throughout; with the first three tokens dropped or WikiText's opening tokens prepended it is high again. Right, a C4 window: as it is and with the token it sits near a thousandth; with its first three tokens dropped or WikiText's opening tokens prepended it rises to tenths of a nat from the start onward." width="100%"></p>
 <p align="center"><em>The merged heads serve the attention sink: with the beginning-of-sequence token their cost vanishes, and without it the window's first tokens decide the whole window, on C4 as on WikiText.</em></p>
 
+- **A designed exemption of eight heads recovers a third of the perplexity
+  cost and all of the retrieval loss.** Scoring heads by their attention on
+  position 0 buys perplexity but not retrieval (the top 8 by that score: 13.66
+  as the windows are, 11.17 with the token, 22 of 50 codes), and random heads
+  do almost as well on the needle once the retrieval heads are excluded from
+  the draw (clean controls at 8 and 13 heads: 13.84 to 15.18 and 3 to 34). The
+  two mechanisms found this week choose better: layer 0's three sink-pair
+  heads plus the five retrieval heads, eight key-value heads at three percent
+  of the cache above half, give 11.07 as the windows are, 10.58 with the token
+  and 50 of 50 on the token-less needle, against the plain fusion's 16.68,
+  13.48 and 10, with the prediction stated before the run. The three sink-pair
+  heads alone give 13.01, 12.60 and 46: on this model the token-less retrieval
+  loss is the sink-start failure itself, and either intact sink handling or
+  intact retrieval heads restores it. Development, one model; the
+  preregistered test on the base models is drafted.
+
+<p align="center"><img src="figures/readme/fig40_sink_exemption.png" alt="Two panels of dot plots for Mistral-7B-Instruct at half the key-value heads: perplexity as the windows are and with the token, and planted codes retrieved without and with the token, for the plain fusion, sink-scored exemptions of 4 to 16 heads under two scorings, random and clean random controls, the combined set and the designed sets (sink-pair heads plus retrieval heads at 11.07, 10.58 and 50 of 50; sink-pair heads alone at 13.01, 12.60 and 46)." width="100%"></p>
+<p align="center"><em>Two mechanisms choose eight heads that random draws of the same count do not match: the sink-pair heads carry the sequence-start cost and the retrieval heads the needle.</em></p>
+
 - **Cross-layer KV compression, against the same nulls.** Two published
   methods compress the cache across layers on the premise that adjacent
   layers' keys and values are similar. MiniCache (NeurIPS 2024) merges them

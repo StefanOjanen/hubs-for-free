@@ -2351,3 +2351,46 @@ TinyLlama_v1.1 (8 windows, 1 min): unconverted 7.24 as is, 8.79 with the
 token; w4: 7.52 as is (ratio 1.039), 9.41 with the token (ratio 1.071), sink-
 start share -77 percent; w3: 10.90 as is (ratio 1.507), 13.61 with the token
 (ratio 1.547), sink-start share -7 percent.
+
+Sink-exemption variants (the token-prepended scoring, the clean controls, the designed arms, the combined arm; one runner crashed on a one-argument flag string and two stages were re-queued): Mistral-7B-Instruct-v0.2_cleancontrols (scores over 2 windows, 128 positions
+after a prefix of 1024, mean attention on position 0 0.014; top key-value
+heads layer 7 head 4 0.10, layer 6 head 0 0.08, layer 6 head 3 0.07, layer 3
+head 5 0.07, layer 3 head 1 0.07, layer 4 head 2 0.06, layer 3 head 0 0.06,
+layer 4 head 4 0.06; 95 min): clean_random8_seed300: 8 exempt, cache 0.527,
+perplexity 15.18 as is and 11.88 with the token, needle 14 of 50;
+clean_random8_seed301: 8 exempt, cache 0.527, perplexity 14.55 as is and 11.51
+with the token, needle 24 of 50; clean_random13_seed300: 13 exempt, cache
+0.535, perplexity 14.86 as is and 11.60 with the token, needle 3 of 50;
+clean_random13_seed301: 13 exempt, cache 0.543, perplexity 13.84 as is and
+11.06 with the token, needle 34 of 50.
+
+Mistral-7B-Instruct-v0.2_combined (scores over 2 windows, 128 positions after
+a prefix of 1024, mean attention on position 0 0.014; top key-value heads
+layer 7 head 4 0.10, layer 6 head 0 0.08, layer 6 head 3 0.07, layer 3 head 5
+0.07, layer 3 head 1 0.07, layer 4 head 2 0.06, layer 3 head 0 0.06, layer 4
+head 4 0.06; 35 min): sink_top8_plus_retrieval_0.3: 13 exempt, cache 0.539,
+perplexity 11.80 as is and 9.83 with the token, needle 49 of 50.
+
+Mistral-7B-Instruct-v0.2_designed (scores over 2 windows, 128 positions after
+a prefix of 1024, mean attention on position 0 0.014; top key-value heads
+layer 7 head 4 0.10, layer 6 head 0 0.08, layer 6 head 3 0.07, layer 3 head 5
+0.07, layer 3 head 1 0.07, layer 4 head 2 0.06, layer 3 head 0 0.06, layer 4
+head 4 0.06; 53 min): sinkpairs_plus_retrieval: 8 exempt, cache 0.527,
+perplexity 11.07 as is and 10.58 with the token, needle 50 of 50; sinkpairs: 3
+exempt, cache 0.508, perplexity 13.01 as is and 12.60 with the token, needle
+46 of 50.
+
+Mistral-7B-Instruct-v0.2_scorebos (scores over 2 windows, 128 positions after
+a prefix of 1024, mean attention on position 0 0.452; top key-value heads
+layer 7 head 4 0.97, layer 12 head 1 0.90, layer 12 head 2 0.89, layer 22 head
+6 0.84, layer 24 head 7 0.84, layer 4 head 5 0.84, layer 15 head 6 0.82, layer
+26 head 0 0.82; 141 min): fusion: 0 exempt, cache 0.500, perplexity 16.68 as
+is and 13.48 with the token, needle 10 of 50 (45 with the token); sink_top4: 4
+exempt, cache 0.512, perplexity 14.30 as is and 11.72 with the token, needle
+33 of 50; sink_top8: 8 exempt, cache 0.527, perplexity 13.56 as is and 11.62
+with the token, needle 35 of 50 (50 with the token); sink_top16: 16 exempt,
+cache 0.551, perplexity 12.38 as is and 10.14 with the token, needle 42 of 50;
+random8_seed100: 8 exempt, cache 0.527, perplexity 14.97 as is and 12.24 with
+the token, needle 33 of 50; random8_seed101: 8 exempt, cache 0.531, perplexity
+14.47 as is and 11.74 with the token, needle 28 of 50.
+
