@@ -1688,8 +1688,20 @@ for a share to mean much. A weight-only rounding of the attention projections,
 measured on windows without the token, overstates its deployed cost by a
 model-dependent share that reaches two thirds on the base Mistral, where the
 fusion's share was three percent: the two compressions damage the sink-start
-regime to different degrees, and neither can be sized on token-less windows
-alone. Development, one model, one layer, two pairs, two windows of each text.
+regime to different degrees, and neither can be sized on token-less windows alone.
+
+A measurement rule for low-bit evaluation follows from the base model's 3-bit
+row. Mistral-7B-v0.1 with its attention projections rounded to 3 bits per
+output channel reads a perplexity ratio of 1.487 on the windows as they are
+and 1.156 with the beginning-of-sequence token prepended, so a token-less
+benchmark reports 2.7 times the deployed log cost of that rounding on this
+model (1.3 times on Mistral-7B-Instruct), while the fusion's share on the same
+base model is three percent: the artefact is model- and method-dependent and
+no constant corrects it. Evaluate low-bit conversions with the token as
+deployment prompts carry it, or report both forms; at 4 bits both models are
+within noise of the unconverted (ratios 1.02 to 1.04) and the base model's
+share reads negative. Development, one model, one layer, two pairs, two
+windows of each text.
 
 ## 7. Limitations
 
