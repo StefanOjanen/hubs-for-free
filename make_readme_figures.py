@@ -1664,6 +1664,60 @@ if SEF:
     fig.text(0.012, 0.915, "Half the key-value heads; sink scores from held-out C4 windows; random controls from the lower half of the scores, clean controls from heads below retrieval score 0.1 outside layer 0 and the top sink heads (sink_exempt_dev.py). Blue: sink-scored, layer-0 and designed exemptions; grey: the plain fusion and the controls.", fontsize=9.5, color=INK2, va="top")
     fig.savefig(OUT + "fig40_sink_exemption.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
+# ============ Figure 41: cost-aware allocation at 7B (alloc7b_dev.py, development) ============
+ALF = [fp for fp in sorted(glob.glob("alignment_study/alloc7b_dev/*.json")) if "_dry" not in fp]
+if ALF:
+    plt.rcParams["axes.grid"] = False
+    n41 = len(ALF)
+    fig = plt.figure(figsize=(14.5, 1.8 + 4.4 * n41))
+    LAB41 = {"uniform_pairs": "uniform pairs", "dp_as_is": "allocation from token-less costs", "dp_with_token": "allocation from with-token costs",
+             "random_seed0": "random allocation, seed 0", "random_seed1": "random allocation, seed 1", "random_seed2": "random allocation, seed 2"}
+    for k41, fp in enumerate(ALF):
+        r = json.load(open(fp)); m = os.path.basename(fp)[:-5]; L = r["layers"]; C = r["per_layer_cost"]; b = r["base"]
+        top = 0.86 - k41 * (0.82 / n41); h = 0.82 / n41 - 0.14
+        ax = fig.add_axes([0.06, top - h, 0.40, h]); bx = fig.add_axes([0.73, top - h, 0.25, h])
+        xs = [l for l in range(L) if f"{l}_2" in C]
+        p2 = [C[f"{l}_2"]["as_is"] for l in xs]; p4 = [C[f"{l}_4"]["as_is"] for l in xs]
+        t2 = [C[f"{l}_2"].get("with_token") for l in xs]; t4 = [C[f"{l}_4"].get("with_token") for l in xs]
+        ax.plot(xs, p2, color=S1, lw=2, marker="o", ms=5, label="pairs, as the windows are")
+        ax.plot(xs, p4, color=S2, lw=2, marker="o", ms=5, label="groups of four, as the windows are")
+        if xs and t2[0] is not None:
+            ax.plot(xs, t2, color=S1, lw=1.2, ls="--", marker="D", ms=4, alpha=0.7, label="pairs, with the token")
+            ax.plot(xs, t4, color=S2, lw=1.2, ls="--", marker="D", ms=4, alpha=0.7, label="groups of four, with the token")
+        ax.set_yscale("log"); ax.set_xlabel("layer", fontsize=9.5); ax.set_ylabel("log-perplexity increase, layer converted alone (nats)", fontsize=9.5)
+        ax.legend(fontsize=8.5, frameon=False, loc="upper right", ncol=2); ax.grid(axis="y", color=GRID, lw=0.8)
+        for sp in ("top", "right"): ax.spines[sp].set_visible(False)
+        for sp in ("left", "bottom"): ax.spines[sp].set_color(GRID)
+        ax.set_title(f"{m}: single-layer costs", fontsize=11, color=INK, loc="left")
+        order = [a for a in LAB41 if a in r["arms"]]
+        if not order:
+            continue
+        ys = list(range(len(order)))[::-1]
+        vals = [r["arms"][a]["wikitext"]["as_is"] for a in order] + [r["arms"][a]["wikitext"].get("with_token") or 1 for a in order]
+        lo41, hi41 = b["wikitext"]["as_is"] * 0.85, max(vals) * 2.2
+        bx.set_xscale("log"); bx.set_xlim(lo41, hi41)
+        for y, a in zip(ys, order):
+            v = r["arms"][a]; col = S1 if a.startswith("dp") else INK2
+            bx.scatter([v["wikitext"]["as_is"]], [y], s=80, color=col, marker="o", edgecolors=SURF, linewidths=1.1, zorder=3)
+            bx.text(v["wikitext"]["as_is"] * 1.04, y + 0.2, f"{v['wikitext']['as_is']:.2f}", fontsize=8, color=INK2)
+            if v["wikitext"].get("with_token"):
+                bx.scatter([v["wikitext"]["with_token"]], [y], s=80, color=col, marker="D", edgecolors=SURF, linewidths=1.1, zorder=3)
+                bx.text(v["wikitext"]["with_token"] * 1.04, y - 0.33, f"{v['wikitext']['with_token']:.2f}", fontsize=8, color=INK2)
+            if "needle" in v:
+                bx.text(hi41 * 0.95, y, f"{v['needle']['hits']} of {v['needle']['of']} codes", ha="right", va="center", fontsize=8.5, color=INK)
+        bx.axvline(b["wikitext"]["as_is"], color=GRID, lw=1); bx.text(b["wikitext"]["as_is"] * 1.02, max(ys) + 0.6, f"unconverted {b['wikitext']['as_is']:.2f}", fontsize=8, color=INK2)
+        ticks = [t for t in (5, 10, 20, 30, 50, 100, 200, 500, 1000) if lo41 <= t <= hi41]
+        bx.set_xticks(ticks); bx.set_xticklabels([str(t) for t in ticks]); bx.xaxis.set_minor_locator(matplotlib.ticker.NullLocator())
+        bx.set_yticks(ys); bx.set_yticklabels([f"{LAB41[a]}  (cache {r['arms'][a]['cache_fraction']:.3f})" for a in order], fontsize=8.5)
+        bx.set_ylim(-0.7, max(ys) + 0.95); bx.tick_params(length=0); bx.grid(axis="x", color=GRID, lw=0.8)
+        for sp in ("top", "right"): bx.spines[sp].set_visible(False)
+        for sp in ("left", "bottom"): bx.spines[sp].set_color(GRID)
+        bx.set_xlabel("WikiText-2 perplexity, 8 windows (circles as they are, diamonds with the token)", fontsize=9.5)
+        bx.set_title("arms at uniform pairs' head count", fontsize=11, color=INK, loc="left")
+    fig.text(0.012, 0.975, "Cost-aware allocation of key-value heads across layers at a fixed cache budget (development)", fontsize=15, color=INK, va="top")
+    fig.text(0.012, 0.935, "Each layer's cost is measured by converting it alone (log-perplexity increase on 8 held-out C4 windows); an exact dynamic programme picks unmerged, pairs or groups of four per layer at the head count of uniform pairs (alloc7b_dev.py). Blue: the allocations; grey: uniform pairs and random allocations.", fontsize=9.5, color=INK2, va="top")
+    fig.savefig(OUT + "fig41_allocation.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+
 # ============ Figure 38: round 35, the retrieval-head exemption on models it was not tuned on (registered) ============
 RR = sorted(glob.glob("alignment_study/retrieval_round/*.json"))
 RR += [fp for fp in sorted(glob.glob("alignment_study/retrieval_round_dev/*.json")) if not os.path.exists(fp.replace("retrieval_round_dev", "retrieval_round"))]   # the development model from its run before the freeze unless the registered run has it
