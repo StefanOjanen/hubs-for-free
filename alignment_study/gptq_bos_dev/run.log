@@ -18,3 +18,41 @@ GPTQ_BOS_PIPELINE_DONE
 [  2140s] gptq_token_first_calib {'as_is': 6.184663450311626, 'bos_prepended': 2534.8282017899824}
 [  2154s] GPTQ_BOS_DEV_DONE
 GPTQ_BOS_PIPELINE_DONE
+== mistralai/Mistral-7B-Instruct-v0.2 Thu Nov  5 13:16:26 UTC 2026
+[   170s] unquantized {'bos_prepended': 5.862671086615885, 'as_is': 5.76292641092934}
+[   602s] whole model, GPTQ groups of 128: {'bos_prepended': 7.002543487774887, 'as_is': 5.98310993811673}
+[   639s] layer 0: {'bos_prepended': 401777.3295039634, 'as_is': 5.795714934299915}
+[   682s] layer 1: {'bos_prepended': 5.968975442591506, 'as_is': 5.888300797663648}
+[   722s] layer 2: {'bos_prepended': 5.875336197738684, 'as_is': 5.760263279142493}
+[   763s] layer 3: {'bos_prepended': 5.909273820688151, 'as_is': 5.797651422605}
+[   808s] layer 4: {'bos_prepended': 5.858619422206058, 'as_is': 5.777645790208262}
+[   850s] layer 5: {'bos_prepended': 5.8850718834702525, 'as_is': 5.777686446396838}
+[   892s] layer 6: {'bos_prepended': 5.876107058795574, 'as_is': 5.781451828961485}
+[   936s] layer 7: {'bos_prepended': 5.904900842345197, 'as_is': 5.778867668016123}
+[   978s] layer 8: {'bos_prepended': 5.880470986993488, 'as_is': 5.79141701228594}
+[  1020s] layer 9: {'bos_prepended': 5.893795213088492, 'as_is': 5.789561323575486}
+[  1058s] layer 10: {'bos_prepended': 5.862741359277597, 'as_is': 5.784948161232493}
+[  1095s] layer 11: {'bos_prepended': 5.901558300567962, 'as_is': 5.795950652130866}
+[  1134s] layer 12: {'bos_prepended': 5.89841251412998, 'as_is': 5.7969261143330115}
+[  1175s] layer 13: {'bos_prepended': 5.877509934973777, 'as_is': 5.774663853323835}
+[  1212s] layer 14: {'bos_prepended': 5.8263720675989, 'as_is': 5.741492462788682}
+[  1249s] layer 15: {'bos_prepended': 5.875703745691882, 'as_is': 5.77276189471088}
+[  1287s] layer 16: {'bos_prepended': 5.873694250498571, 'as_is': 5.780564115073146}
+[  1326s] layer 17: {'bos_prepended': 5.859511785024711, 'as_is': 5.761995154066294}
+[  1369s] layer 18: {'bos_prepended': 5.86073979220902, 'as_is': 5.770258696330263}
+[  1409s] layer 19: {'bos_prepended': 5.859294097457922, 'as_is': 5.772518858258358}
+[  1449s] layer 20: {'bos_prepended': 5.877613332803129, 'as_is': 5.776429337803929}
+[  1490s] layer 21: {'bos_prepended': 5.873804586739178, 'as_is': 5.774468946060185}
+[  1526s] layer 22: {'bos_prepended': 5.866843805203167, 'as_is': 5.769702653905625}
+[  1563s] layer 23: {'bos_prepended': 5.857855396512249, 'as_is': 5.759649466315444}
+[  1605s] layer 24: {'bos_prepended': 5.869068299376331, 'as_is': 5.7707989621355535}
+[  1645s] layer 25: {'bos_prepended': 5.880769769353221, 'as_is': 5.773168470065389}
+[  1683s] layer 26: {'bos_prepended': 5.857870766874625, 'as_is': 5.767747296668042}
+[  1722s] layer 27: {'bos_prepended': 5.868165732640519, 'as_is': 5.763570475102124}
+[  1761s] layer 28: {'bos_prepended': 5.851874847140277, 'as_is': 5.758669287575039}
+[  1799s] layer 29: {'bos_prepended': 5.868344555115714, 'as_is': 5.775046455440342}
+[  1838s] layer 30: {'bos_prepended': 5.852725696184155, 'as_is': 5.7634945171524175}
+[  1875s] layer 31: {'bos_prepended': 5.871638872696131, 'as_is': 5.7762915513604405}
+[  2023s] worst layer 0: by projection {'q': {'bos_prepended': 5.86702083803194, 'as_is': 5.765030024490919}, 'k': {'bos_prepended': 5.876866806271157, 'as_is': 5.770407350412096}, 'v': {'bos_prepended': 297888.3583356144, 'as_is': 5.7766601374601105}, 'o': {'bos_prepended': 5.865906599845589, 'as_is': 5.7817386844906205}}; damping 0.1 {'bos_prepended': 136044.33962685562, 'as_is': 5.794791856022626}
+[  2023s] GPTQ_BOS_LOCATE_DONE
+GPTQ_BOS_LOCATE_PIPELINE_DONE
