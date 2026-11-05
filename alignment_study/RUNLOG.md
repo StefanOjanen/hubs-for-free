@@ -2402,3 +2402,14 @@ layer 3 head 1 0.07, layer 4 head 2 0.06, layer 3 head 0 0.06, layer 4 head 4
 0.06; 43 min): layer0: 8 exempt, cache 0.516, perplexity 12.70 as is and 13.25
 with the token, needle 45 of 50.
 
+
+Grouped-rounding check (bos_quant_check.py --group=128 --bits=3; the earlier per-channel rows' sink-start shares tested under the layout of GPTQ and AWQ deployments; outcome rule recorded in the plan before the run): Mistral-7B-Instruct-v0.2_g128 (8 windows; asymmetric min-max round-to-nearest
+of q, k, v, o per group of 128 input columns; 4 min): unconverted 5.54 as is,
+5.64 with the token; w3: 5.70 as is (ratio 1.029), 5.77 with the token (ratio
+1.023), sink-start share 22 percent.
+
+Mistral-7B-v0.1_g128 (8 windows; asymmetric min-max round-to-nearest of q, k,
+v, o per group of 128 input columns; 4 min): unconverted 4.86 as is, 4.93 with
+the token; w3: 5.09 as is (ratio 1.048), 5.17 with the token (ratio 1.049),
+sink-start share -2 percent.
+

@@ -14,3 +14,12 @@ TinyLlama/TinyLlama_v1.1, w4: 7.522 as is (ratio 1.039), 9.413 with the token (r
 TinyLlama/TinyLlama_v1.1, w3: 10.904 as is (ratio 1.507), 13.607 with the token (ratio 1.547); sink-start share -7 percent (53s)
 BOS_QUANT_DONE (53s)
 QUANT_DONE
+grouped (128) quantization sink-start check mistralai/Mistral-7B-v0.1 starting Thu Nov  5 09:45:24 UTC 2026
+mistralai/Mistral-7B-v0.1, unconverted: 4.859 as is, 4.932 with the token (130s)
+mistralai/Mistral-7B-v0.1, w3: 5.094 as is (ratio 1.048), 5.174 with the token (ratio 1.049); sink-start share -2 percent (231s)
+BOS_QUANT_DONE (231s)
+grouped (128) quantization sink-start check mistralai/Mistral-7B-Instruct-v0.2 starting Thu Nov  5 09:49:20 UTC 2026
+mistralai/Mistral-7B-Instruct-v0.2, unconverted: 5.540 as is, 5.641 with the token (129s)
+mistralai/Mistral-7B-Instruct-v0.2, w3: 5.703 as is (ratio 1.029), 5.770 with the token (ratio 1.023); sink-start share 22 percent (230s)
+BOS_QUANT_DONE (230s)
+QUANT_G128_DONE

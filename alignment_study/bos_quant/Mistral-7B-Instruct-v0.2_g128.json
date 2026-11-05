@@ -1,0 +1,24 @@
+{
+ "model": "mistralai/Mistral-7B-Instruct-v0.2",
+ "revision": "63a8b081895390a26e140280378bc85ec8bce07a",
+ "exploratory": true,
+ "windows": 8,
+ "bos": 1,
+ "rounding": "asymmetric min-max round-to-nearest of q, k, v, o per group of 128 input columns",
+ "arms": {
+  "unconverted": {
+   "as_is": 5.540459194776044,
+   "bos_prepended": 5.640948320217473
+  },
+  "w3": {
+   "as_is": 5.703498327891072,
+   "bos_prepended": 5.770023593265432,
+   "exempt_layers": [],
+   "group": 128,
+   "ratio_as_is": 1.0294270072900733,
+   "ratio_bos_prepended": 1.0228818393150927,
+   "sink_start_share": 0.21992593673986305
+  }
+ },
+ "seconds": 229.9
+}
