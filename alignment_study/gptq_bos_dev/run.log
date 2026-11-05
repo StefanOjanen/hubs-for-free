@@ -69,3 +69,32 @@ GPTQ_BOS_LOCATE_PIPELINE_DONE
 [  2833s] gptq_g128_lam0.001 {'as_is': 5.739667831138939, 'bos_prepended': 5.855225387951074}
 [  3347s] gptq_channel_lam0.01 {'as_is': 6.0181017229343965, 'bos_prepended': 6.10555557827709}
 GPTQ_BOS_FIX_PIPELINE_DONE
+== mistralai/Mistral-7B-v0.1 Thu Nov  5 20:22:13 UTC 2026
+[   266s] unquantized {'as_is': 4.858766172190064, 'bos_prepended': 4.931756039057331}
+[   365s] rtn_g128 {'as_is': 5.094038098004333, 'bos_prepended': 5.174244488838758}
+[   866s] gptq_channel_lam0.0 {'as_is': 5.563346284986761, 'bos_prepended': 25321.19978707343}
+[   968s] gptq_channel_lam0.0_intactkv {'as_is': 5.475235383076127, 'bos_prepended': 5.351091156778942}
+[  1066s] gptq_channel_lam0.0_layer0_kept {'as_is': 5.546688722307394, 'bos_prepended': 5.645168324842143}
+[  1596s] gptq_g128_lam0.0 {'as_is': 5.086469435005978, 'bos_prepended': 5.139171280515927}
+[  1702s] gptq_g128_lam0.0_intactkv {'as_is': 5.048797177409536, 'bos_prepended': 5.066768262115483}
+[  1801s] gptq_g128_lam0.0_layer0_kept {'as_is': 5.086923684942856, 'bos_prepended': 5.153465872683249}
+[  2324s] gptq_channel_lam0.001 {'as_is': 5.521257245642641, 'bos_prepended': 6.013112819255556}
+[  2852s] gptq_g128_lam0.001 {'as_is': 5.058382602419399, 'bos_prepended': 5.1046432570878535}
+[  3359s] gptq_channel_lam0.01 {'as_is': 5.364325891655128, 'bos_prepended': 5.448887271726185}
+[  3890s] gptq_g128_lam0.01 {'as_is': 5.020564768057663, 'bos_prepended': 5.106585984947269}
+[  3890s] GPTQ_BOS_FIX_DONE
+== NousResearch/Llama-2-7b-hf Thu Nov  5 21:27:16 UTC 2026
+[   229s] unquantized {'as_is': 5.026648043692182, 'bos_prepended': 5.052271993704672}
+[   325s] rtn_g128 {'as_is': 5.351704193943367, 'bos_prepended': 5.386296600945145}
+[   912s] gptq_channel_lam0.0 {'as_is': 5.803469615706295, 'bos_prepended': 5.895736521312952}
+[  1019s] gptq_channel_lam0.0_intactkv {'as_is': 5.6877950829533575, 'bos_prepended': 5.742445061882117}
+[  1117s] gptq_channel_lam0.0_layer0_kept {'as_is': 5.809465739286229, 'bos_prepended': 5.870241248564199}
+[  1707s] gptq_g128_lam0.0 {'as_is': 5.283143169284679, 'bos_prepended': 5.315215955052805}
+[  1820s] gptq_g128_lam0.0_intactkv {'as_is': 5.23397486375419, 'bos_prepended': 5.265133880429727}
+[  1916s] gptq_g128_lam0.0_layer0_kept {'as_is': 5.277834190574876, 'bos_prepended': 5.308089311625621}
+[  2505s] gptq_channel_lam0.001 {'as_is': 5.843507752002157, 'bos_prepended': 5.894572450569888}
+[  3104s] gptq_g128_lam0.001 {'as_is': 5.281130280890039, 'bos_prepended': 5.305016664020494}
+[  3692s] gptq_channel_lam0.01 {'as_is': 5.890338648963375, 'bos_prepended': 5.913219992572618}
+[  4301s] gptq_g128_lam0.01 {'as_is': 5.307991976056305, 'bos_prepended': 5.340226202107966}
+[  4301s] GPTQ_BOS_FIX_DONE
+GPTQ_BOS_FIX_PIPELINE_DONE

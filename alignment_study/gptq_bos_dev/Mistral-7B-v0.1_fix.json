@@ -1,0 +1,57 @@
+{
+ "model": "mistralai/Mistral-7B-v0.1",
+ "exploratory": true,
+ "bits": 3,
+ "windows": 8,
+ "calibration_tokens": 32768,
+ "arms": {
+  "rtn_g128": {
+   "as_is": 5.094038098004333,
+   "bos_prepended": 5.174244488838758
+  },
+  "gptq_channel_lam0.0": {
+   "as_is": 5.563346284986761,
+   "bos_prepended": 25321.19978707343
+  },
+  "gptq_channel_lam0.0_intactkv": {
+   "as_is": 5.475235383076127,
+   "bos_prepended": 5.351091156778942
+  },
+  "gptq_channel_lam0.0_layer0_kept": {
+   "as_is": 5.546688722307394,
+   "bos_prepended": 5.645168324842143
+  },
+  "gptq_g128_lam0.0": {
+   "as_is": 5.086469435005978,
+   "bos_prepended": 5.139171280515927
+  },
+  "gptq_g128_lam0.0_intactkv": {
+   "as_is": 5.048797177409536,
+   "bos_prepended": 5.066768262115483
+  },
+  "gptq_g128_lam0.0_layer0_kept": {
+   "as_is": 5.086923684942856,
+   "bos_prepended": 5.153465872683249
+  },
+  "gptq_channel_lam0.001": {
+   "as_is": 5.521257245642641,
+   "bos_prepended": 6.013112819255556
+  },
+  "gptq_g128_lam0.001": {
+   "as_is": 5.058382602419399,
+   "bos_prepended": 5.1046432570878535
+  },
+  "gptq_channel_lam0.01": {
+   "as_is": 5.364325891655128,
+   "bos_prepended": 5.448887271726185
+  },
+  "gptq_g128_lam0.01": {
+   "as_is": 5.020564768057663,
+   "bos_prepended": 5.106585984947269
+  }
+ },
+ "unquantized": {
+  "as_is": 4.858766172190064,
+  "bos_prepended": 4.931756039057331
+ }
+}
