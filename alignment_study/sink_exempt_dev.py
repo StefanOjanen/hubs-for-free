@@ -14,7 +14,7 @@
 # Writes alignment_study/sink_exempt_dev/<model>.json after every arm and <model>_sink_scores.npy.
 #   python alignment_study/sink_exempt_dev.py --model=mistralai/Mistral-7B-Instruct-v0.2 [--ks=4,8,16] [--seeds=100,101]
 #          [--prefix=1024] [--positions=128] [--score-windows=2] [--calib=128] [--calib-len=2048] [--eval-windows=8] [--score-bos]
-#          [--combine-retrieval=0.3] [--only-arms=sink_top8_plus_retrieval_0.3]
+#          [--combine-retrieval=0.3] [--only-arms=sink_top8_plus_retrieval_0.3] [--tag=NAME]  (the tag names the output file)
 # --score-bos scores on windows with the beginning-of-sequence token prepended (the sink at position 0 is then unambiguous;
 # without the token Mistral-7B-Instruct puts 1.4 percent of its attention on position 0 and the top heads sit in layers 3 to 7).
 import gc
@@ -42,7 +42,8 @@ N_CAL, T_CAL, N_EVAL = int(arg("calib", 128)), int(arg("calib-len", 2048)), int(
 COMBINE = arg("combine-retrieval")                       # add an arm: the top-8 sink heads plus the retrieval heads at this score (audits/retrieval_heads)
 ONLY = [a for a in (arg("only-arms") or "").split(",") if a]   # run only these arms
 SCORE_BOS = "--score-bos" in argv0                       # score on windows with the beginning-of-sequence token prepended, where the sink sits at position 0
-OUT = f"alignment_study/sink_exempt_dev/{NAME.split('/')[-1]}{'_scorebos' if SCORE_BOS else ''}.json"
+TAG = arg("tag")
+OUT = f"alignment_study/sink_exempt_dev/{NAME.split('/')[-1]}{'_scorebos' if SCORE_BOS else ''}{'_' + TAG if TAG else ''}.json"
 torch.set_grad_enabled(False)
 
 
