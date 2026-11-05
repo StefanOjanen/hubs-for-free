@@ -1,0 +1,1506 @@
+{
+ "model": "Qwen/Qwen2.5-7B",
+ "revision": "d149729398750b98c0af14eb82c78cfe92750796",
+ "exploratory": true,
+ "sink_scoring": {
+  "windows": 2,
+  "prefix": 1024,
+  "positions": 128,
+  "mean_attention_on_position_0": 0.3183039068082912,
+  "scored_with_token": false
+ },
+ "top_kv_heads": [
+  {
+   "layer": 14,
+   "head": 0,
+   "score": 0.999603271484375
+  },
+  {
+   "layer": 4,
+   "head": 1,
+   "score": 0.9970245361328125
+  },
+  {
+   "layer": 14,
+   "head": 1,
+   "score": 0.8928184509277344
+  },
+  {
+   "layer": 8,
+   "head": 3,
+   "score": 0.8575077056884766
+  },
+  {
+   "layer": 6,
+   "head": 0,
+   "score": 0.8535137176513672
+  },
+  {
+   "layer": 4,
+   "head": 0,
+   "score": 0.82745361328125
+  },
+  {
+   "layer": 6,
+   "head": 2,
+   "score": 0.8134521842002869
+  },
+  {
+   "layer": 15,
+   "head": 2,
+   "score": 0.808506965637207
+  },
+  {
+   "layer": 26,
+   "head": 1,
+   "score": 0.8005218505859375
+  },
+  {
+   "layer": 5,
+   "head": 3,
+   "score": 0.7928600311279297
+  },
+  {
+   "layer": 4,
+   "head": 3,
+   "score": 0.7832870483398438
+  },
+  {
+   "layer": 5,
+   "head": 2,
+   "score": 0.7782764434814453
+  },
+  {
+   "layer": 22,
+   "head": 0,
+   "score": 0.7747182101011276
+  },
+  {
+   "layer": 10,
+   "head": 1,
+   "score": 0.7726278305053711
+  },
+  {
+   "layer": 24,
+   "head": 3,
+   "score": 0.7690982818603516
+  },
+  {
+   "layer": 23,
+   "head": 0,
+   "score": 0.7584495544433594
+  },
+  {
+   "layer": 4,
+   "head": 2,
+   "score": 0.7576801776885986
+  },
+  {
+   "layer": 5,
+   "head": 1,
+   "score": 0.7523240149021149
+  },
+  {
+   "layer": 23,
+   "head": 1,
+   "score": 0.7516526579856873
+  },
+  {
+   "layer": 8,
+   "head": 2,
+   "score": 0.7321147918701172
+  },
+  {
+   "layer": 26,
+   "head": 3,
+   "score": 0.7214250564575195
+  },
+  {
+   "layer": 23,
+   "head": 2,
+   "score": 0.7163658142089844
+  },
+  {
+   "layer": 25,
+   "head": 2,
+   "score": 0.7152659893035889
+  },
+  {
+   "layer": 10,
+   "head": 2,
+   "score": 0.7058258056640625
+  },
+  {
+   "layer": 11,
+   "head": 1,
+   "score": 0.6980734467506409
+  },
+  {
+   "layer": 12,
+   "head": 0,
+   "score": 0.6939796768128872
+  },
+  {
+   "layer": 25,
+   "head": 0,
+   "score": 0.6753654479980469
+  },
+  {
+   "layer": 25,
+   "head": 3,
+   "score": 0.6653175354003906
+  },
+  {
+   "layer": 7,
+   "head": 0,
+   "score": 0.6527776718139648
+  },
+  {
+   "layer": 24,
+   "head": 0,
+   "score": 0.6526349782943726
+  },
+  {
+   "layer": 11,
+   "head": 2,
+   "score": 0.623999834060669
+  },
+  {
+   "layer": 18,
+   "head": 0,
+   "score": 0.617751955986023
+  }
+ ],
+ "calibration": [
+  128,
+  2048
+ ],
+ "eval_windows": 8,
+ "arms": {
+  "fusion": {
+   "protected": [],
+   "n_protected": 0,
+   "kv_heads_kept": 56,
+   "cache_fraction": 0.5,
+   "ppl_as_is": 70.10193413256377,
+   "ppl_bos_prepended": null,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The code is not available in your country. The code is not available in your country. The code is not available in",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The code is not available in your country. The code is not available in your country. The code is not available in",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The answer is: The answer is: 1 is a lot of people who are not in the know about the how",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret to learning is to be able to apply what you have learned. The secret to learning is to be able to",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not familiar with the the learning process.",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the green door is 1 is 10 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The code is not available in your country. The code is not available in your country. The code is not available in",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret to learning is to be able to apply what you have learned. The secret to learning is to be able to",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret to learning is to be able to apply what you have learned. The secret to learning is to be able to",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 1 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the red door is 2 is 10 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The code is not available in your country. The code is not available in your country. The code is not available in",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret to learning is to be able to apply what you have learned. The secret to learning is to be able to",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret to learning is to be able to apply what you have learned. The secret to learning is to be able to",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The secret to learning is to be able to apply what you have learned. The secret to learning is to be able to",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The code is not available in your country. The code is not available in your country. The code is not available in",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the yellow door is 61288. 1, the 10 1",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is a great way to get started with your learning. The best way to learn is to",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 1 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the white door is 3 1 1 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the white door is 3 50 4. 10 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The answer is: the secret code. The answer is 10 10 1. The answer is ",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret to learning is to be able to apply what you have learned. The secret to learning is to be able to",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 1 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The code is not available in your country. The code is not available in your country. The code is not available in",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The code is not available in your country. The code is not available in your country. The code is not available in",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The answer is: The answer is: 1 is a lot of people who are not in the know about the how",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 1 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 1 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The code is not available in your country. The code is not available in your country. The code is not available in",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The code is not available in your country. The code is not available in your country. The code is not available in",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The answer is: 1 is a great way to get started with the learning experience. The book is a only a",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 1 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not familiar with the the learning process.",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The code is not available in your country. The code is not available in your country. The code is not available in",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The code is not available in your country. The code is not available in your country. The code is not available in",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret to learning is to be able to apply what you have learned. The secret to learning is to be able to",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret to learning is to be able to apply what you have learned. The secret to learning is to be able to",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 1 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the grey door is 8 1 1 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The code is not available in your country. The code is not available in your country. The code is not available in",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The answer is: the secret code. The secret code is a secret code that is used to unlock the door. The",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 1 1 1 1 1 1 1 ",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " The secret code for the brown door is 3 1 1 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " The secret code for the brown door is 3 1 1 1 1 1 1 1",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " The secret to learning is to be able to apply what you have learned. The secret to learning is to be able to",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " The secret to learning is to be able to apply what you have learned. The secret to learning is to be able to",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " The answer is: 10 1 is a lot of people who are not in the the they are not going",
+      "hit": false
+     }
+    ],
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    }
+   },
+   "seconds": 1068.8
+  },
+  "layer0_q": {
+   "protected": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     3
+    ]
+   ],
+   "n_protected": 4,
+   "kv_heads_kept": 58,
+   "cache_fraction": 0.5178571428571429,
+   "ppl_as_is": 17.166660938578193,
+   "ppl_bos_prepended": null,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 1. The best way to learn is to do it. The best way to learn is to do it. The",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first thing to know about the course is that it is not a course. The course",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first step is to identify the learning objectives. The first step is to identify the learning",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first step is to identify the learning objectives. The learning objectives are the most important part",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first step is to identify the learning objectives. The first step is to identify the learning",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 1. The best way to learn is to do it. The best way to learn is to do it. The",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 1. The best way to learn is to do it. The best way to learn is to do it. The",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 1. The best way to learn is to do it. The best way to learn is to do it. The",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first step is to identify the learning objectives. The learning objectives are the most important part",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first step is to identify the learning objectives. The first step is to identify the learning",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 1. The best way to learn is to do it. The best way to learn is to do it. The",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first step is to identify the learning objectives. The first step is to identify the learning",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 1. The best way to learn is to do it. The best way to learn is to do it. The",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first step is to identify the learning objectives. The first step is to identify the learning",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first step is to identify the learning objectives. The first step is to identify the learning",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 1. The best way to learn is to do it. The best way to learn is to do it. The",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 1.5% of the population is color blind. The best way to learn is to do it. The best",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 1. The best way to learn is to do it. The best way to learn is to do it. The",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first step is to identify the learning objectives. The learning objectives are the most important part",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first step is to identify the learning objectives. The first step is to identify the learning",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 1. The first step is to identify the learning objectives. The first step is to identify the learning objectives. The",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 1. The best way to learn is to do it. The best way to learn is to do it. The",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 1. The best way to learn is to do it. The best way to learn is to do it. The",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first step is to identify the learning objectives. The learning objectives are the most important part",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first step is to identify the learning objectives. The first step is to identify the learning",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 1. The best way to learn is to do it. The best way to learn is to do it. The",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 1. The best way to learn is to do it. The best way to learn is to do it. The",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 1. The best way to learn is to do it. The best way to learn is to do it. The",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first step is to identify the learning objectives. The learning objectives are the most important part",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first step is to identify the learning objectives. The first step is to identify the learning",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 1. The best way to learn is to do it. The best way to learn is to do it. The",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 1.5% of the total cost of the project. The first step is to identify the learning objectives. The",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first step is to identify the learning objectives. The first step is to identify the learning",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first step is to identify the learning objectives. The learning objectives are the most important part",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 18649. The best way to learn is to do it. The best way to learn is to",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 1. The best way to learn is to do it. The best way to learn is to do it. The",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first step is to identify the learning objectives. The first step is to identify the learning",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first step is to identify the learning objectives. The first step is to identify the learning",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first step is to identify the learning objectives. The first step is to identify the learning",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first step is to identify the learning objectives. The first step is to identify the learning",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 1. The first step is to identify the learning objectives. The learning objectives are the most important part of any learning",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 1. The best way to learn is to do it. The best way to learn is to do it. The",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 1. The best way to learn is to do it. The best way to learn is to do it. The",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first step is to identify the learning objectives. The first step is to identify the learning",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first step is to identify the learning objectives. The first step is to identify the learning",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 1. The best way to learn is to do it. The best way to learn is to do it. The",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 1. The best way to learn is to do it. The best way to learn is to do it. The",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 1. The best way to learn is to do it. The best way to learn is to do it. The",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first step is to identify the learning objectives. The first step is to identify the learning",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 1.5 hours. The first step is to identify the learning objectives. The first step is to identify the learning",
+      "hit": false
+     }
+    ],
+    "hits": 1,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 1
+    }
+   },
+   "seconds": 1083.6
+  },
+  "layer0_plus_retrieval_q": {
+   "protected": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     14,
+     0
+    ],
+    [
+     17,
+     1
+    ],
+    [
+     22,
+     0
+    ],
+    [
+     22,
+     3
+    ],
+    [
+     23,
+     1
+    ]
+   ],
+   "n_protected": 10,
+   "kv_heads_kept": 63,
+   "cache_fraction": 0.5625,
+   "ppl_as_is": 13.68359294520548,
+   "ppl_bos_prepended": null,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 48213.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 48213.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 48213.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 48213.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 48213.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 90457.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 90457.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 90457.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 90457.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 90457.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 27365.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 27365.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 27365.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 27365.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 27365.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 61928.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 61928.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 61928.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 61928.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 61928.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 35074.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 35074.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 35074.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 35074.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 35074.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 73506.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 73506.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 73506.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 73506.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 73506.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 18649.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 18649.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 18649.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 18649.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 18649.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 52937.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 52937.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 52937.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 52937.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 52937.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 84071.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 84071.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 84071.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 84071.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 84071.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": " 39615.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": " 39615.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": " 39615.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": " 39615.<|endoftext|>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": " 39615.<|endoftext|>",
+      "hit": true
+     }
+    ],
+    "hits": 50,
+    "of": 50,
+    "by_depth": {
+     "10": 10,
+     "30": 10,
+     "50": 10,
+     "70": 10,
+     "90": 10
+    }
+   },
+   "seconds": 1066.2
+  }
+ },
+ "seconds": 4363.0
+}

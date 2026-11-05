@@ -2020,6 +2020,20 @@ sink-pair heads' 13.01 as the windows are and within 5 of their 46 codes) give
 12.70, 13.25 with the token and 45 of 50: the prediction held, the whole layer
 buys what its three sink-pair heads buy on token-less inputs and less with the
 token (13.25 against 12.60), so the three heads are the point and the simpler
-rule, never merge layer 0, is a token-less approximation of it. One model,
-development; round 36 (private/drafts/PREREGISTRATION36_draft.md) would test
-the designed set against clean controls on round 35's models.
+rule, never merge layer 0, is a token-less approximation of it. On Qwen2.5-7B,
+whose tokenizer has no beginning-of-sequence token, the single-pair artifacts
+name layer 0's pairs (1, 2) and (0, 2) as sink pairs
+(`sink_pair_candidates.py`), so the only sink-safe pairing of its four heads
+is neighbours, the pairing that gave 23.9 against the residual's 70.1 in the
+development work. With all four layer-0 heads exempt (cache 0.518) the plain
+fusion's 70.10 becomes 17.17 and the needle stays at 1 of 50; with the six
+retrieval heads at 0.3 exempt as well (ten heads, cache 0.562) perplexity is
+13.68 and the needle 50 of 50, against the registered round's 7 for the
+retrieval heads alone. The prediction recorded before the run (below 30; at
+least 30 of 50) held with room on both counts. Round 35's failure on this
+model is therefore explained and repaired: the retrieval-head exemption could
+not work while layer 0's sink pairs were merged on inputs that never carry the
+token, and the two exemptions together restore everything; the base Mistral,
+with no sink-pair candidate, is the model whose loss is of another kind. One
+model, development; round 36 (private/drafts/PREREGISTRATION36_draft.md) would
+test the designed set against clean controls on round 35's models.

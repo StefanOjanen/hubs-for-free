@@ -658,8 +658,7 @@ Each instrument below exists because a finding above required it.
   45 of 50 against 10 without, and the exemption 50 against 46), and the
   fused Qwen2.5-7B answers degenerate text that the exemption turns into the
   right form with stereotyped digits; no exemption at these budgets brings the
-  task back. The exemption repairs what merging the retrieval heads removed
-  only where the conversion leaves the model answering. What holds on all
+  task back. The exemption repairs what merging the retrieval heads removed only where the conversion leaves the model answering; on Qwen2.5-7B the reason was layer 0's sink pairs, and with those exempt too the code comes back 50 of 50 (the next bullets). What holds on all
   three models is the cheaper finding: the plain fusion at half the heads
   loses the planted code (10, 0 and 0 of 50) while perplexity stays within 3
   to 13 times the unconverted, so a head-merging conversion must report
@@ -763,8 +762,12 @@ Each instrument below exists because a finding above required it.
   13.48 and 10, with the prediction stated before the run. The three sink-pair
   heads alone give 13.01, 12.60 and 46: on this model the token-less retrieval
   loss is the sink-start failure itself, and either intact sink handling or
-  intact retrieval heads restores it. Development, one model; the
-  preregistered test on the base models is drafted.
+  intact retrieval heads restores it. On Qwen2.5-7B, whose inputs never carry the token, the same two mechanisms
+  turn round 35's failure into a repair: its layer-0 sink pairs read off the
+  committed single-pair artifacts, exempting the layer takes the plain fusion
+  from 70.1 to 17.2, and adding the six retrieval heads gives 13.7 and
+  50 of 50 codes at cache 0.562, where the retrieval heads alone gave 7.
+  Development, two models; the preregistered test is drafted.
 
 <p align="center"><img src="figures/readme/fig40_sink_exemption.png" alt="Two panels of dot plots for Mistral-7B-Instruct at half the key-value heads: perplexity as the windows are and with the token, and planted codes retrieved without and with the token, for the plain fusion, sink-scored exemptions of 4 to 16 heads under two scorings, random and clean random controls, the combined set and the designed sets (sink-pair heads plus retrieval heads at 11.07, 10.58 and 50 of 50; sink-pair heads alone at 13.01, 12.60 and 46)." width="100%"></p>
 <p align="center"><em>Two mechanisms choose eight heads that random draws of the same count do not match: the sink-pair heads carry the sequence-start cost and the retrieval heads the needle.</em></p>

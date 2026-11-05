@@ -2413,3 +2413,13 @@ v, o per group of 128 input columns; 4 min): unconverted 4.86 as is, 4.93 with
 the token; w3: 5.09 as is (ratio 1.048), 5.17 with the token (ratio 1.049),
 sink-start share -2 percent.
 
+
+Qwen2.5-7B designed arms (tag designed; sink_pair_candidates.py named layer 0's heads 0, 1, 2 from the committed single-pair artifacts; with four heads a layer the three plus the odd leftover are the whole layer; prediction recorded in the plan before the run: layer 0 exempt brings perplexity below 30 and the designed set restores the token-less needle to at least 30 of 50): Qwen2.5-7B_designed (scores over 2 windows, 128 positions after a prefix of
+1024, mean attention on position 0 0.318; top key-value heads layer 14 head 0
+1.00, layer 4 head 1 1.00, layer 14 head 1 0.89, layer 8 head 3 0.86, layer 6
+head 0 0.85, layer 4 head 0 0.83, layer 6 head 2 0.81, layer 15 head 2 0.81;
+73 min): fusion: 0 exempt, cache 0.500, perplexity 70.10 as is, needle 0 of
+50; layer0_q: 4 exempt, cache 0.518, perplexity 17.17 as is, needle 1 of 50;
+layer0_plus_retrieval_q: 10 exempt, cache 0.562, perplexity 13.68 as is,
+needle 50 of 50.
+

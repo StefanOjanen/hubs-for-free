@@ -1525,11 +1525,11 @@ window, which the check is not (`quad_check_round.py`, `eval_quad_check.py`,
 
 Every perfect matching of one layer's key-value heads fused alone (105 for 8
 heads, 3 for 4, a sample of 152 for 32), the whole model's KL to the
-unconverted one on two held-out WikiText windows as ground truth, in layers
-0, 1, 2 and one middle layer of five models (`residual_select_dev.py`). In the
-15 early-layer cases the fusion's residual puts its choice in the better half
-of the matchings 8 times, at a median of 1.77 times the best matching's KL,
-with Spearman correlations mostly near zero (-0.46 to 0.74); the fused layer's
+unconverted one on two held-out WikiText windows as ground truth, in layers 0,
+1, 2 and one middle layer of five models (`residual_select_dev.py`). In the 15
+early-layer cases the fusion's residual puts its choice in the better half of
+the matchings 8 times, at a median of 1.77 times the best matching's KL, with
+Spearman correlations mostly near zero (-0.46 to 0.74); the fused layer's
 output change on one window puts its choice in the better half 14 times at
 1.02 times the best, the best outright in five layers, and fails in layer 0 of
 three models, where one matching is 3 to 23 times better than its choice. In
@@ -1537,24 +1537,24 @@ the middle layers every matching lies within 35 percent of the best. A
 matching's KL is additive over its pairs (least squares on pair indicators,
 R^2 0.89 to 0.99 over eight layers of two models; the additive model's own
 matching 1st to 5th of 105). Measuring each pair alone and matching on the
-measurement (`residual_pairs_dev.py`, 28 or 6 single-pair conversions a
-layer) finds the best or second-best matching in 10 of 12 layers of three
-models when measured on the ranking windows; measured on two held-out C4
-windows it is the best of 105 in Mistral-7B-v0.1's layers 0 and 1 and the
-best or second of three on Qwen2.5-7B, and ranks 67th of 105 on
-Mistral-7B-Instruct's layer 0, whose one catastrophic pair, (1, 5), the two
-windows did not flag; single-pair damage otherwise agrees across the two texts
-(Spearman 0.58 to 0.90 across six layers). The residual is the fit criterion
-and not the selector, consistent with Sections 6.8 and 6.16; a measured selector needs text like the target more than it needs windows:
-with eight C4 windows the measured matching ranks 67, 20, 21 and 23 of 105 in
-Mistral-7B-Instruct's four layers and 28, 39, 48 and 8 in
-Mistral-7B-v0.1's (two windows: 1, 1, 48, 8), the largest KL over the windows
-no steadier (67, 1, 38, 45; 1, 41, 48, 68), and the catastrophic pair,
-(1, 5), costs 0.101 nats fused alone on the WikiText ranking windows and
-0.001 on every C4 window while every matching containing it ranks in the
-worst fifth on WikiText (`residual_select_dev/*_pairs_c4_w8.json`):
-single-pair damage can differ by a factor of a hundred between window
-sets; Section 6.19 locates that pair's cost at the sequence start.
+measurement (`residual_pairs_dev.py`, 28 or 6 single-pair conversions a layer)
+finds the best or second-best matching in 10 of 12 layers of three models when
+measured on the ranking windows; measured on two held-out C4 windows it is the
+best of 105 in Mistral-7B-v0.1's layers 0 and 1 and the best or second of
+three on Qwen2.5-7B, and ranks 67th of 105 on Mistral-7B-Instruct's layer 0,
+whose one catastrophic pair, (1, 5), the two windows did not flag; single-pair
+damage otherwise agrees across the two texts (Spearman 0.58 to 0.90 across six
+layers). The residual is the fit criterion and not the selector, consistent
+with Sections 6.8 and 6.16; a measured selector needs text like the target
+more than it needs windows: with eight C4 windows the measured matching ranks
+67, 20, 21 and 23 of 105 in Mistral-7B-Instruct's four layers and 28, 39, 48
+and 8 in Mistral-7B-v0.1's (two windows: 1, 1, 48, 8), the largest KL over the
+windows no steadier (67, 1, 38, 45; 1, 41, 48, 68), and the catastrophic pair,
+(1, 5), costs 0.101 nats fused alone on the WikiText ranking windows and 0.001
+on every C4 window while every matching containing it ranks in the worst fifth
+on WikiText (`residual_select_dev/*_pairs_c4_w8.json`): single-pair damage can
+differ by a factor of a hundred between window sets; Section 6.19 locates that
+pair's cost at the sequence start.
 
 ### 6.18 The retrieval-head exemption on models it was not tuned on (preregistration 35)
 
@@ -1619,7 +1619,10 @@ the plain fusion at half the heads loses the planted code on each (10, 0 and 0
 of 50) while perplexity stays within 3 to 13 times, so retrieval, not
 perplexity, shows whether a head- merging conversion kept the task; the
 exemption costs no perplexity and repairs retrieval where the model still
-answers.
+answers. Section 6.20 finds the reason on Qwen2.5-7B, layer 0's sink pairs
+merged on inputs that never carry the token, and repairs it: with those heads
+and the retrieval heads exempt the model retrieves 50 of 50 at perplexity
+13.68.
 
 ### 6.19 The catastrophic pair serves the attention sink (development, not preregistered)
 
@@ -1745,8 +1748,22 @@ is itself the sink-start failure, so either intact sink handling or intact
 retrieval heads restores it and both together restore all of it. The top-8
 sink-scored heads together with the five retrieval heads (thirteen heads,
 cache 0.539) give 11.80, 9.83 and 49 of 50, against the clean thirteen-head
-controls' 13.84 to 14.86, 11.06 to 11.60 and 3 to 34. One model, development;
-the preregistered test on the base models is drafted as round 36.
+controls' 13.84 to 14.86, 11.06 to 11.60 and 3 to 34. On Qwen2.5-7B, whose
+tokenizer has no beginning-of-sequence token, the single-pair artifacts name
+layer 0's pairs (1, 2) and (0, 2) as sink pairs (sink_pair_candidates.py), so
+the only sink-safe pairing of its four heads is neighbours, the pairing that
+gave 23.9 against the residual's 70.1 in the development work. With all four
+layer-0 heads exempt (cache 0.518) the plain fusion's 70.10 becomes 17.17 and
+the needle stays at 1 of 50; with the six retrieval heads at 0.3 exempt as
+well (ten heads, cache 0.562) perplexity is 13.68 and the needle 50 of 50,
+against the registered round's 7 for the retrieval heads alone. The prediction
+recorded before the run (below 30; at least 30 of 50) held with room on both
+counts. Round 35's failure on this model is therefore explained and repaired:
+the retrieval-head exemption could not work while layer 0's sink pairs were
+merged on inputs that never carry the token, and the two exemptions together
+restore everything; the base Mistral, with no sink-pair candidate, is the
+model whose loss is of another kind. Two models, development; the
+preregistered test is drafted as round 36.
 
 ## 7. Limitations
 
