@@ -1,0 +1,50 @@
+== JackFram/llama-160m Thu Nov  5 08:53:12 UTC 2026
+[     6s] all heads, 16 bits: {'as_is': 67.80978661267942, 'bos_prepended': 69.60545043023141}
+[     8s] all heads, 8 bits: {'as_is': 67.78620148367662, 'bos_prepended': 69.63589723521032}
+[    10s] all heads, 4 bits: {'as_is': 70.08592486757512, 'bos_prepended': 71.35775584531676}
+[    12s] all heads, 3 bits: {'as_is': 81.12971931447512, 'bos_prepended': 83.71477485256017}
+[    15s] all heads, 2 bits: {'as_is': 216.4223308118902, 'bos_prepended': 229.87918973926602}
+[    23s] half heads, 16 bits: {'as_is': 114.5396575771073, 'bos_prepended': 116.84764851195074}
+[    25s] half heads, 8 bits: {'as_is': 114.50462282644722, 'bos_prepended': 116.85364120148085}
+[    27s] half heads, 4 bits: {'as_is': 118.56370108394093, 'bos_prepended': 120.90889473998084}
+[    30s] half heads, 3 bits: {'as_is': 136.38729559553886, 'bos_prepended': 140.75440100502306}
+[    32s] half heads, 2 bits: {'as_is': 299.0548321441893, 'bos_prepended': 303.80918803690435}
+[    32s] CACHEBUDGET_DEV_DONE
+== TinyLlama/TinyLlama_v1.1 Thu Nov  5 08:53:48 UTC 2026
+[    16s] all heads, 16 bits: {'as_is': 7.236327714769145, 'bos_prepended': 8.78727428051754}
+[    30s] all heads, 8 bits: {'as_is': 7.234196596801599, 'bos_prepended': 9.511836206192898}
+[    43s] all heads, 4 bits: {'as_is': 7.58208232744755, 'bos_prepended': 9.917912871847104}
+[    57s] all heads, 3 bits: {'as_is': 9.798886320746323, 'bos_prepended': 14.232912376050624}
+[    71s] all heads, 2 bits: {'as_is': 439.7914642223063, 'bos_prepended': 538.8526989764497}
+[   179s] half heads, 16 bits: {'as_is': 58.51192761296712, 'bos_prepended': 111.42300266636818}
+[   192s] half heads, 8 bits: {'as_is': 58.78615619655032, 'bos_prepended': 64.23162830763829}
+[   204s] half heads, 4 bits: {'as_is': 96.71049365151535, 'bos_prepended': 106.37651117609772}
+[   216s] half heads, 3 bits: {'as_is': 97.52322246995482, 'bos_prepended': 104.1794832553752}
+[   228s] half heads, 2 bits: {'as_is': 448.9953043117012, 'bos_prepended': 484.79414034773254}
+[   228s] CACHEBUDGET_DEV_DONE
+CACHEBUDGET_PIPELINE_DONE
+== JackFram/llama-160m Thu Nov  5 08:58:29 UTC 2026
+[     6s] all heads, 16 bits: {'as_is': 67.80978661267942, 'bos_prepended': 69.60545043023141}
+[     8s] all heads, 8 bits: {'as_is': 67.82462274234132, 'bos_prepended': 69.6172999970319}
+[    11s] all heads, 4 bits: {'as_is': 68.86211307949478, 'bos_prepended': 70.78295620526892}
+[    13s] all heads, 3 bits: {'as_is': 72.07876553082514, 'bos_prepended': 73.5016256515058}
+[    15s] all heads, 2 bits: {'as_is': 95.24068542890289, 'bos_prepended': 98.71832331801339}
+[    23s] half heads, 16 bits: {'as_is': 114.5396575771073, 'bos_prepended': 116.84764851195074}
+[    26s] half heads, 8 bits: {'as_is': 114.53060078398605, 'bos_prepended': 116.86673560064057}
+[    28s] half heads, 4 bits: {'as_is': 116.22482935384639, 'bos_prepended': 119.38478850679542}
+[    30s] half heads, 3 bits: {'as_is': 121.35581701503361, 'bos_prepended': 124.93748262898984}
+[    33s] half heads, 2 bits: {'as_is': 172.77276619199185, 'bos_prepended': 172.51013417805456}
+[    33s] CACHEBUDGET_DEV_DONE
+== TinyLlama/TinyLlama_v1.1 Thu Nov  5 08:59:05 UTC 2026
+[    15s] all heads, 16 bits: {'as_is': 7.236327714769145, 'bos_prepended': 8.78727428051754}
+[    27s] all heads, 8 bits: {'as_is': 7.235316280428377, 'bos_prepended': 9.510297444948268}
+[    39s] all heads, 4 bits: {'as_is': 7.274894393108947, 'bos_prepended': 9.422242953728592}
+[    51s] all heads, 3 bits: {'as_is': 7.454520253648893, 'bos_prepended': 10.215348668135618}
+[    63s] all heads, 2 bits: {'as_is': 9.365846024968976, 'bos_prepended': 12.645719506253428}
+[   146s] half heads, 16 bits: {'as_is': 58.51192761296712, 'bos_prepended': 111.42300266636818}
+[   158s] half heads, 8 bits: {'as_is': 58.737871827375685, 'bos_prepended': 64.067624176958}
+[   170s] half heads, 4 bits: {'as_is': 68.8036735517518, 'bos_prepended': 76.11359598535394}
+[   182s] half heads, 3 bits: {'as_is': 60.220599008891924, 'bos_prepended': 65.29533601792683}
+[   193s] half heads, 2 bits: {'as_is': 101.36807744510924, 'bos_prepended': 114.88518275268169}
+[   193s] CACHEBUDGET_DEV_DONE
+CACHEBUDGET_KIVI_DONE
