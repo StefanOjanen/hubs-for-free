@@ -13,7 +13,9 @@
 # codes, five depths, 50 instances) without the token, and with the token for the plain fusion and the top-8 arm.
 # Writes alignment_study/sink_exempt_dev/<model>.json after every arm and <model>_sink_scores.npy.
 #   python alignment_study/sink_exempt_dev.py --model=mistralai/Mistral-7B-Instruct-v0.2 [--ks=4,8,16] [--seeds=100,101]
-#          [--prefix=1024] [--positions=128] [--score-windows=2] [--calib=128] [--calib-len=2048] [--eval-windows=8]
+#          [--prefix=1024] [--positions=128] [--score-windows=2] [--calib=128] [--calib-len=2048] [--eval-windows=8] [--score-bos]
+# --score-bos scores on windows with the beginning-of-sequence token prepended (the sink at position 0 is then unambiguous;
+# without the token Mistral-7B-Instruct puts 1.4 percent of its attention on position 0 and the top heads sit in layers 3 to 7).
 import gc
 import json
 import os
@@ -36,7 +38,8 @@ K, C, Z, kvfuse, DEV, ND = R.K, R.C, R.Z, R.kvfuse, R.DEV, R.ND
 KS = [int(x) for x in arg("ks", "4,8,16").split(",")]; SEEDS = [int(x) for x in arg("seeds", "100,101").split(",")]
 PREFIX, POSITIONS, N_SCORE = int(arg("prefix", 1024)), int(arg("positions", 128)), int(arg("score-windows", 2))
 N_CAL, T_CAL, N_EVAL = int(arg("calib", 128)), int(arg("calib-len", 2048)), int(arg("eval-windows", 8))
-OUT = f"alignment_study/sink_exempt_dev/{NAME.split('/')[-1]}.json"
+SCORE_BOS = "--score-bos" in argv0                       # score on windows with the beginning-of-sequence token prepended, where the sink sits at position 0
+OUT = f"alignment_study/sink_exempt_dev/{NAME.split('/')[-1]}{'_scorebos' if SCORE_BOS else ''}.json"
 torch.set_grad_enabled(False)
 
 
@@ -76,7 +79,7 @@ if __name__ == "__main__":
     tok = R.AutoTokenizer.from_pretrained(NAME, revision=R.REV)
     ND.FACTS, ND.DEPTHS = R.REG_FACTS, R.REG_DEPTHS
     cfg = R.AutoConfig.from_pretrained(NAME, revision=R.REV) if hasattr(R, "AutoConfig") else None
-    score_win = C.windows_c4(tok, N_CAL + 1 + N_SCORE, T_CAL)[-N_SCORE:]                       # held-out documents after the calibration and check documents
+    score_win = C.windows_c4(tok, N_CAL + 1 + N_SCORE, T_CAL, bos=SCORE_BOS)[-N_SCORE:]        # held-out documents after the calibration and check documents
     model = R.load(); kv = K.KV(model); n, L, rep, H = kv.nkv, kv.L, kv.rep, kv.n
     del model, kv; R.free()
     sc = sink_scores(tok, score_win, L, H); np.save(OUT[:-5] + "_sink_scores.npy", sc)
@@ -90,7 +93,7 @@ if __name__ == "__main__":
     cal = C.windows_c4(tok, N_CAL, T_CAL)
     model = R.load(); kv = K.KV(model)
     S, ntok = K.second_moments(model, kv, cal, DEV); costs = {l: kvfuse.pair_costs(kv, l, S[l].double()) for l in range(L)}
-    res = {"model": NAME, "revision": R.REV, "exploratory": True, "sink_scoring": {"windows": N_SCORE, "prefix": PREFIX, "positions": POSITIONS, "mean_attention_on_position_0": float(sc.mean())},
+    res = {"model": NAME, "revision": R.REV, "exploratory": True, "sink_scoring": {"windows": N_SCORE, "prefix": PREFIX, "positions": POSITIONS, "mean_attention_on_position_0": float(sc.mean()), "scored_with_token": SCORE_BOS},
            "top_kv_heads": [{"layer": l, "head": i, "score": s} for s, l, i in order[:32]], "calibration": [N_CAL, T_CAL], "eval_windows": N_EVAL, "arms": {}}
     pool = [(l, i) for s, l, i in order[len(order) // 2:]]                                      # the lower half of the sink scores, for the random controls
     arms = [("fusion", set(), None)] + [(f"sink_top{k}", {(l, i) for s, l, i in order[:k]}, None) for k in KS]
