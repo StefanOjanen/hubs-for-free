@@ -1,0 +1,562 @@
+{
+ "min_kl": 0.05,
+ "ratio": 10.0,
+ "models": {
+  "Mistral-7B-Instruct-v0.2": {
+   "ranking_windows_file": "alignment_study/residual_select_dev/Mistral-7B-Instruct-v0.2_pairs.json",
+   "c4_file": "alignment_study/residual_select_dev/Mistral-7B-Instruct-v0.2_pairs_c4_w8.json",
+   "layers": {
+    "0": {
+     "candidates": [
+      {
+       "pair": "1-5",
+       "kl_ranking": 0.10142934738541953,
+       "kl_c4": 0.0011366785183781758,
+       "ratio": 89.23309954879761,
+       "candidate": true
+      },
+      {
+       "pair": "0-1",
+       "kl_ranking": 0.11197176040150225,
+       "kl_c4": 0.0014740304577571806,
+       "ratio": 75.96298964668173,
+       "candidate": true
+      },
+      {
+       "pair": "1-7",
+       "kl_ranking": 0.06375839817337692,
+       "kl_c4": 0.004109087021788582,
+       "ratio": 15.516439013166602,
+       "candidate": true
+      }
+     ],
+     "heads": [
+      0,
+      1,
+      5,
+      7
+     ],
+     "top_by_ratio": [
+      {
+       "pair": "1-5",
+       "kl_ranking": 0.10142934738541953,
+       "kl_c4": 0.0011366785183781758,
+       "ratio": 89.23309954879761,
+       "candidate": true
+      },
+      {
+       "pair": "0-1",
+       "kl_ranking": 0.11197176040150225,
+       "kl_c4": 0.0014740304577571806,
+       "ratio": 75.96298964668173,
+       "candidate": true
+      },
+      {
+       "pair": "1-2",
+       "kl_ranking": 0.028058791416697204,
+       "kl_c4": 0.0011074063731939532,
+       "ratio": 25.337393838334844,
+       "candidate": false
+      },
+      {
+       "pair": "1-6",
+       "kl_ranking": 0.02656454936368391,
+       "kl_c4": 0.0010885470765060745,
+       "ratio": 24.40367526313013,
+       "candidate": false
+      },
+      {
+       "pair": "1-7",
+       "kl_ranking": 0.06375839817337692,
+       "kl_c4": 0.004109087021788582,
+       "ratio": 15.516439013166602,
+       "candidate": true
+      }
+     ]
+    },
+    "1": {
+     "candidates": [],
+     "heads": [],
+     "top_by_ratio": [
+      {
+       "pair": "1-5",
+       "kl_ranking": 0.005117569584399462,
+       "kl_c4": 0.0015583783679176122,
+       "ratio": 3.283906970062623,
+       "candidate": false
+      },
+      {
+       "pair": "0-5",
+       "kl_ranking": 0.005929654696956277,
+       "kl_c4": 0.0018085381452692673,
+       "ratio": 3.2787003760285245,
+       "candidate": false
+      },
+      {
+       "pair": "2-5",
+       "kl_ranking": 0.010133008006960154,
+       "kl_c4": 0.003412372840102762,
+       "ratio": 2.969490287777288,
+       "candidate": false
+      },
+      {
+       "pair": "4-5",
+       "kl_ranking": 0.007927813800051808,
+       "kl_c4": 0.002846199757186696,
+       "ratio": 2.7854031608406835,
+       "candidate": false
+      },
+      {
+       "pair": "3-5",
+       "kl_ranking": 0.004623977933079004,
+       "kl_c4": 0.0018585655343485996,
+       "ratio": 2.487928376816501,
+       "candidate": false
+      }
+     ]
+    },
+    "2": {
+     "candidates": [],
+     "heads": [],
+     "top_by_ratio": [
+      {
+       "pair": "4-7",
+       "kl_ranking": 0.007848317036405206,
+       "kl_c4": 0.0024582623300375417,
+       "ratio": 3.1926279553270254,
+       "candidate": false
+      },
+      {
+       "pair": "0-7",
+       "kl_ranking": 0.006757181836292148,
+       "kl_c4": 0.002162958888220601,
+       "ratio": 3.1240454328982055,
+       "candidate": false
+      },
+      {
+       "pair": "3-7",
+       "kl_ranking": 0.0043247685534879565,
+       "kl_c4": 0.0015052331073093228,
+       "ratio": 2.873155348820815,
+       "candidate": false
+      },
+      {
+       "pair": "0-3",
+       "kl_ranking": 0.0055416414979845285,
+       "kl_c4": 0.002743801014730707,
+       "ratio": 2.0196951120846562,
+       "candidate": false
+      },
+      {
+       "pair": "6-7",
+       "kl_ranking": 0.0033594073029235005,
+       "kl_c4": 0.0017145367455668747,
+       "ratio": 1.9593673402507246,
+       "candidate": false
+      }
+     ]
+    },
+    "16": {
+     "candidates": [],
+     "heads": [],
+     "top_by_ratio": [
+      {
+       "pair": "4-6",
+       "kl_ranking": 0.004385204985737801,
+       "kl_c4": 0.0037049937818665057,
+       "ratio": 1.1835930757024422,
+       "candidate": false
+      },
+      {
+       "pair": "3-4",
+       "kl_ranking": 0.002516599837690592,
+       "kl_c4": 0.0022678758832626045,
+       "ratio": 1.109672648430023,
+       "candidate": false
+      },
+      {
+       "pair": "3-6",
+       "kl_ranking": 0.0037011917447671294,
+       "kl_c4": 0.003497207158943638,
+       "ratio": 1.0583278532133358,
+       "candidate": false
+      },
+      {
+       "pair": "2-6",
+       "kl_ranking": 0.0035064765252172947,
+       "kl_c4": 0.00337684502301272,
+       "ratio": 1.0383883480944949,
+       "candidate": false
+      },
+      {
+       "pair": "4-7",
+       "kl_ranking": 0.0029674310935661197,
+       "kl_c4": 0.0028892561385873705,
+       "ratio": 1.027057121705025,
+       "candidate": false
+      }
+     ]
+    }
+   }
+  },
+  "Mistral-7B-v0.1": {
+   "ranking_windows_file": "alignment_study/residual_select_dev/Mistral-7B-v0.1_pairs.json",
+   "c4_file": "alignment_study/residual_select_dev/Mistral-7B-v0.1_pairs_c4_w8.json",
+   "layers": {
+    "0": {
+     "candidates": [],
+     "heads": [],
+     "top_by_ratio": [
+      {
+       "pair": "1-6",
+       "kl_ranking": 0.010042162495665252,
+       "kl_c4": 0.001281288426980609,
+       "ratio": 7.837550300309728,
+       "candidate": false
+      },
+      {
+       "pair": "1-2",
+       "kl_ranking": 0.008568046730943024,
+       "kl_c4": 0.001999411397264339,
+       "ratio": 4.285284530570402,
+       "candidate": false
+      },
+      {
+       "pair": "2-7",
+       "kl_ranking": 0.0020792240975424647,
+       "kl_c4": 0.0007715885367360897,
+       "ratio": 2.6947317106832966,
+       "candidate": false
+      },
+      {
+       "pair": "0-6",
+       "kl_ranking": 0.001834062219131738,
+       "kl_c4": 0.0006978059245739132,
+       "ratio": 2.6283270957489124,
+       "candidate": false
+      },
+      {
+       "pair": "1-5",
+       "kl_ranking": 0.11204766668379307,
+       "kl_c4": 0.04873912804032443,
+       "ratio": 2.2989263696119098,
+       "candidate": false
+      }
+     ]
+    },
+    "1": {
+     "candidates": [],
+     "heads": [],
+     "top_by_ratio": [
+      {
+       "pair": "1-5",
+       "kl_ranking": 0.005098061403259635,
+       "kl_c4": 0.0012491093402786646,
+       "ratio": 4.081357202982971,
+       "candidate": false
+      },
+      {
+       "pair": "3-5",
+       "kl_ranking": 0.004945182241499424,
+       "kl_c4": 0.0012124951390433125,
+       "ratio": 4.0785171686554476,
+       "candidate": false
+      },
+      {
+       "pair": "4-5",
+       "kl_ranking": 0.006769935833290219,
+       "kl_c4": 0.0017926645305124111,
+       "ratio": 3.776465545037094,
+       "candidate": false
+      },
+      {
+       "pair": "5-7",
+       "kl_ranking": 0.005019227974116802,
+       "kl_c4": 0.0015781304900883697,
+       "ratio": 3.1804898299859494,
+       "candidate": false
+      },
+      {
+       "pair": "5-6",
+       "kl_ranking": 0.0038719711592420936,
+       "kl_c4": 0.0013190390163799748,
+       "ratio": 2.9354485433406596,
+       "candidate": false
+      }
+     ]
+    },
+    "2": {
+     "candidates": [],
+     "heads": [],
+     "top_by_ratio": [
+      {
+       "pair": "0-7",
+       "kl_ranking": 0.004619258572347462,
+       "kl_c4": 0.0013673743815161288,
+       "ratio": 3.3781959314066436,
+       "candidate": false
+      },
+      {
+       "pair": "0-3",
+       "kl_ranking": 0.004661038052290678,
+       "kl_c4": 0.001779752128641121,
+       "ratio": 2.6189253982516547,
+       "candidate": false
+      },
+      {
+       "pair": "4-7",
+       "kl_ranking": 0.003390075173228979,
+       "kl_c4": 0.0014269271123339422,
+       "ratio": 2.3757872030926857,
+       "candidate": false
+      },
+      {
+       "pair": "0-6",
+       "kl_ranking": 0.0032912440365180373,
+       "kl_c4": 0.001424799054802861,
+       "ratio": 2.3099706765129926,
+       "candidate": false
+      },
+      {
+       "pair": "0-1",
+       "kl_ranking": 0.0064766069408506155,
+       "kl_c4": 0.0030191477562766522,
+       "ratio": 2.1451772035290704,
+       "candidate": false
+      }
+     ]
+    },
+    "16": {
+     "candidates": [],
+     "heads": [],
+     "top_by_ratio": [
+      {
+       "pair": "4-6",
+       "kl_ranking": 0.0035205247113481164,
+       "kl_c4": 0.00275472056819126,
+       "ratio": 1.2779970324393666,
+       "candidate": false
+      },
+      {
+       "pair": "3-6",
+       "kl_ranking": 0.002802645554766059,
+       "kl_c4": 0.0023762669443385676,
+       "ratio": 1.1794321178617302,
+       "candidate": false
+      },
+      {
+       "pair": "3-4",
+       "kl_ranking": 0.001919259608257562,
+       "kl_c4": 0.0016668948010192253,
+       "ratio": 1.151398160870157,
+       "candidate": false
+      },
+      {
+       "pair": "4-7",
+       "kl_ranking": 0.002421203418634832,
+       "kl_c4": 0.0021774395718239248,
+       "ratio": 1.1119497642851779,
+       "candidate": false
+      },
+      {
+       "pair": "2-6",
+       "kl_ranking": 0.0026034294860437512,
+       "kl_c4": 0.002403365244390443,
+       "ratio": 1.083243378059272,
+       "candidate": false
+      }
+     ]
+    }
+   }
+  },
+  "Qwen2.5-7B": {
+   "ranking_windows_file": "alignment_study/residual_select_dev/Qwen2.5-7B_pairs.json",
+   "c4_file": "alignment_study/residual_select_dev/Qwen2.5-7B_pairs_c4.json",
+   "layers": {
+    "0": {
+     "candidates": [
+      {
+       "pair": "1-2",
+       "kl_ranking": 0.4067128151655197,
+       "kl_c4": 0.017785655334591866,
+       "ratio": 22.86746299274627,
+       "candidate": true
+      },
+      {
+       "pair": "0-2",
+       "kl_ranking": 1.1494841277599335,
+       "kl_c4": 0.05713151767849922,
+       "ratio": 20.11996485422491,
+       "candidate": true
+      }
+     ],
+     "heads": [
+      0,
+      1,
+      2
+     ],
+     "top_by_ratio": [
+      {
+       "pair": "1-2",
+       "kl_ranking": 0.4067128151655197,
+       "kl_c4": 0.017785655334591866,
+       "ratio": 22.86746299274627,
+       "candidate": true
+      },
+      {
+       "pair": "0-2",
+       "kl_ranking": 1.1494841277599335,
+       "kl_c4": 0.05713151767849922,
+       "ratio": 20.11996485422491,
+       "candidate": true
+      },
+      {
+       "pair": "0-3",
+       "kl_ranking": 0.032102969475090504,
+       "kl_c4": 0.0031624921830371022,
+       "ratio": 10.151161684219687,
+       "candidate": false
+      },
+      {
+       "pair": "1-3",
+       "kl_ranking": 0.02812329586595297,
+       "kl_c4": 0.0030885040760040283,
+       "ratio": 9.105798527013595,
+       "candidate": false
+      },
+      {
+       "pair": "2-3",
+       "kl_ranking": 0.035071803256869316,
+       "kl_c4": 0.003979450324550271,
+       "ratio": 8.813228058282869,
+       "candidate": false
+      }
+     ]
+    },
+    "1": {
+     "candidates": [],
+     "heads": [],
+     "top_by_ratio": [
+      {
+       "pair": "1-3",
+       "kl_ranking": 0.005620137555524707,
+       "kl_c4": 0.0013948422274552286,
+       "ratio": 4.029228141291773,
+       "candidate": false
+      },
+      {
+       "pair": "1-2",
+       "kl_ranking": 0.005104968557134271,
+       "kl_c4": 0.0013115309993736446,
+       "ratio": 3.8923735386904923,
+       "candidate": false
+      },
+      {
+       "pair": "2-3",
+       "kl_ranking": 0.004696910502389073,
+       "kl_c4": 0.0012227670522406697,
+       "ratio": 3.8412144764468263,
+       "candidate": false
+      },
+      {
+       "pair": "0-2",
+       "kl_ranking": 0.0032868330599740148,
+       "kl_c4": 0.0011550114140845835,
+       "ratio": 2.8457147867919805,
+       "candidate": false
+      },
+      {
+       "pair": "0-1",
+       "kl_ranking": 0.0036361634265631437,
+       "kl_c4": 0.0013220116379670799,
+       "ratio": 2.750477622235342,
+       "candidate": false
+      }
+     ]
+    },
+    "2": {
+     "candidates": [],
+     "heads": [],
+     "top_by_ratio": [
+      {
+       "pair": "2-3",
+       "kl_ranking": 0.014107370749115944,
+       "kl_c4": 0.0021777114016003907,
+       "ratio": 6.478071767796457,
+       "candidate": false
+      },
+      {
+       "pair": "1-2",
+       "kl_ranking": 0.008967967703938484,
+       "kl_c4": 0.0018613680731505156,
+       "ratio": 4.817944303062787,
+       "candidate": false
+      },
+      {
+       "pair": "1-3",
+       "kl_ranking": 0.010804569581523538,
+       "kl_c4": 0.002786984550766647,
+       "ratio": 3.8767956494597016,
+       "candidate": false
+      },
+      {
+       "pair": "0-3",
+       "kl_ranking": 0.016988223418593407,
+       "kl_c4": 0.005670253885909915,
+       "ratio": 2.996025179896734,
+       "candidate": false
+      },
+      {
+       "pair": "0-2",
+       "kl_ranking": 0.013838405255228281,
+       "kl_c4": 0.004751121159642935,
+       "ratio": 2.9126609888997845,
+       "candidate": false
+      }
+     ]
+    },
+    "14": {
+     "candidates": [],
+     "heads": [],
+     "top_by_ratio": [
+      {
+       "pair": "2-3",
+       "kl_ranking": 0.021815667394548655,
+       "kl_c4": 0.005080502945929766,
+       "ratio": 4.293997587783357,
+       "candidate": false
+      },
+      {
+       "pair": "0-2",
+       "kl_ranking": 0.013503787107765675,
+       "kl_c4": 0.003568994579836726,
+       "ratio": 3.7836390069226287,
+       "candidate": false
+      },
+      {
+       "pair": "1-2",
+       "kl_ranking": 0.01637002034112811,
+       "kl_c4": 0.004370844224467874,
+       "ratio": 3.7452765416550786,
+       "candidate": false
+      },
+      {
+       "pair": "1-3",
+       "kl_ranking": 0.023682159837335348,
+       "kl_c4": 0.006990737281739712,
+       "ratio": 3.3876483814081793,
+       "candidate": false
+      },
+      {
+       "pair": "0-3",
+       "kl_ranking": 0.01925407163798809,
+       "kl_c4": 0.006374474382027984,
+       "ratio": 3.020495570940325,
+       "candidate": false
+      }
+     ]
+    }
+   }
+  }
+ }
+}
