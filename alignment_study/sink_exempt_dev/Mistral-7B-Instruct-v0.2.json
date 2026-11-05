@@ -1,0 +1,3620 @@
+{
+ "model": "mistralai/Mistral-7B-Instruct-v0.2",
+ "revision": "63a8b081895390a26e140280378bc85ec8bce07a",
+ "exploratory": true,
+ "sink_scoring": {
+  "windows": 2,
+  "prefix": 1024,
+  "positions": 128,
+  "mean_attention_on_position_0": 0.014197561209979908
+ },
+ "top_kv_heads": [
+  {
+   "layer": 7,
+   "head": 4,
+   "score": 0.09685182571411133
+  },
+  {
+   "layer": 6,
+   "head": 0,
+   "score": 0.0801239013671875
+  },
+  {
+   "layer": 6,
+   "head": 3,
+   "score": 0.07250547409057617
+  },
+  {
+   "layer": 3,
+   "head": 5,
+   "score": 0.07069015502929688
+  },
+  {
+   "layer": 3,
+   "head": 1,
+   "score": 0.07045698165893555
+  },
+  {
+   "layer": 4,
+   "head": 2,
+   "score": 0.0631566047668457
+  },
+  {
+   "layer": 3,
+   "head": 0,
+   "score": 0.0606999397277832
+  },
+  {
+   "layer": 4,
+   "head": 4,
+   "score": 0.060576438903808594
+  },
+  {
+   "layer": 3,
+   "head": 7,
+   "score": 0.05866388976573944
+  },
+  {
+   "layer": 5,
+   "head": 4,
+   "score": 0.0583803653717041
+  },
+  {
+   "layer": 3,
+   "head": 2,
+   "score": 0.058019161224365234
+  },
+  {
+   "layer": 3,
+   "head": 6,
+   "score": 0.05769968032836914
+  },
+  {
+   "layer": 4,
+   "head": 0,
+   "score": 0.05753886699676514
+  },
+  {
+   "layer": 4,
+   "head": 7,
+   "score": 0.057215213775634766
+  },
+  {
+   "layer": 6,
+   "head": 6,
+   "score": 0.05651509761810303
+  },
+  {
+   "layer": 7,
+   "head": 5,
+   "score": 0.05641674995422363
+  },
+  {
+   "layer": 5,
+   "head": 3,
+   "score": 0.056298136711120605
+  },
+  {
+   "layer": 2,
+   "head": 5,
+   "score": 0.0562397837638855
+  },
+  {
+   "layer": 6,
+   "head": 1,
+   "score": 0.056195735931396484
+  },
+  {
+   "layer": 4,
+   "head": 3,
+   "score": 0.05583810806274414
+  },
+  {
+   "layer": 4,
+   "head": 5,
+   "score": 0.05507504940032959
+  },
+  {
+   "layer": 3,
+   "head": 3,
+   "score": 0.05470728874206543
+  },
+  {
+   "layer": 2,
+   "head": 1,
+   "score": 0.054357051849365234
+  },
+  {
+   "layer": 5,
+   "head": 0,
+   "score": 0.05372476577758789
+  },
+  {
+   "layer": 2,
+   "head": 3,
+   "score": 0.05339241027832031
+  },
+  {
+   "layer": 2,
+   "head": 6,
+   "score": 0.05259132385253906
+  },
+  {
+   "layer": 5,
+   "head": 2,
+   "score": 0.051867008209228516
+  },
+  {
+   "layer": 31,
+   "head": 0,
+   "score": 0.0517345666885376
+  },
+  {
+   "layer": 4,
+   "head": 6,
+   "score": 0.051465511322021484
+  },
+  {
+   "layer": 3,
+   "head": 4,
+   "score": 0.050800323486328125
+  },
+  {
+   "layer": 7,
+   "head": 0,
+   "score": 0.05063152313232422
+  },
+  {
+   "layer": 7,
+   "head": 7,
+   "score": 0.05010342597961426
+  }
+ ],
+ "calibration": [
+  128,
+  2048
+ ],
+ "eval_windows": 8,
+ "arms": {
+  "fusion": {
+   "protected": [],
+   "n_protected": 0,
+   "kv_heads_kept": 128,
+   "cache_fraction": 0.5,
+   "ppl_as_is": 16.678713727737772,
+   "ppl_bos_prepended": 13.477316264013814,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 1111.</s>",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 1. The secret code for the blue door is 1. The secret",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 1111.</s>",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 10110101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 1111.</s>",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 1111.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 1111.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 2736.</s>",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 2. The secret code for the red door is 2. The secret",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 2736.</s>",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 1111.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 10110101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 10110101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 10110101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 10110101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 1: 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 10110101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 1111.</s>",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 1111.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 1111.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 1111.</s>",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 10110101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 1111.</s>",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 1111.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 1111.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 1111.</s>",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 1111.</s>",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 10110101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 1111.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 10110101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 10110101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 1. The secret code for the purple door is 5293",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 1121.</s>",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 1523.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 1111.</s>",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 1111.</s>",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 1111.</s>",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 1111.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 10110101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 1111.</s>",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 1111.\n",
+      "hit": false
+     }
+    ],
+    "hits": 10,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 4,
+     "50": 2,
+     "70": 3,
+     "90": 1
+    }
+   },
+   "needle_bos": {
+    "hits": 45,
+    "of": 50,
+    "by_depth": {
+     "10": 8,
+     "30": 9,
+     "50": 9,
+     "70": 9,
+     "90": 10
+    },
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "answer": "The secret code for the red door is 2736.</s>",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "answer": "The secret code for the red door is 2736.</s>",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "answer": "The secret code for the red door is 27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "answer": "The secret code for the red door is 2736.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "answer": "The secret code for the red door is 27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "answer": "The secret code for the orange door is 1864.</s>",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "answer": "The secret code for the orange door is 1864.</s>",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     }
+    ]
+   },
+   "seconds": 1511.1
+  },
+  "sink_top4": {
+   "protected": [
+    [
+     3,
+     5
+    ],
+    [
+     6,
+     0
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     7,
+     4
+    ]
+   ],
+   "n_protected": 4,
+   "kv_heads_kept": 131,
+   "cache_fraction": 0.51171875,
+   "ppl_as_is": 14.06056480786965,
+   "ppl_bos_prepended": 11.560315618974311,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 1. The secret code for the blue door is 1. The secret",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 10110101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 1. The secret code for the green door is 9045",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 201 The secret code for the red door is 201",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 2021.</s>",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 2012.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 2. The secret code for the red door is 2. The secret",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 2,000.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 1111.</s>",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 1111.</s>",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 1111.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 10110101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 10110101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 1. The secret code for the black door is 1. The secret",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 15.</s>",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 1512.</s>",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 1512.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 10110101.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 1. The secret code for the purple door is 1. The secret",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 1. The secret code for the grey door is 1. The secret",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 10110101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 1. The secret code for the grey door is 8407",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     }
+    ],
+    "hits": 25,
+    "of": 50,
+    "by_depth": {
+     "10": 2,
+     "30": 4,
+     "50": 7,
+     "70": 4,
+     "90": 8
+    }
+   },
+   "seconds": 1152.7
+  },
+  "sink_top8": {
+   "protected": [
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     4,
+     4
+    ],
+    [
+     6,
+     0
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     7,
+     4
+    ]
+   ],
+   "n_protected": 8,
+   "kv_heads_kept": 133,
+   "cache_fraction": 0.51953125,
+   "ppl_as_is": 13.657947964311795,
+   "ppl_bos_prepended": 11.165290044820065,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 10110101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 10110101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 10110101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 1111.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 2012.</s>",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 2. The secret code for the red door is 2. The secret",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 25.</s>",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 2. The secret code for the red door is 1. The secret",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 2,000.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 10110101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 1. The secret code for the yellow door is 1. The secret",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 1. The secret code for the yellow door is 1. The secret",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 1. The secret code for the yellow door is 1. The secret",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 1. The secret code for the black door is 1. The secret",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 10110101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 1111.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 10110101.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 1. The secret code for the orange door is 1. The secret",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 1511.</s>",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 1512.</s>",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 1511.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 1111.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 10110101.</s>",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 1111.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 1111.</s>",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 1. The secret code for the grey door is 1. The secret",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 1. The secret code for the grey door is 1. The secret",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 1. The secret code for the grey door is 8407",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     }
+    ],
+    "hits": 22,
+    "of": 50,
+    "by_depth": {
+     "10": 2,
+     "30": 4,
+     "50": 6,
+     "70": 3,
+     "90": 7
+    }
+   },
+   "needle_bos": {
+    "hits": 50,
+    "of": 50,
+    "by_depth": {
+     "10": 10,
+     "30": 10,
+     "50": 10,
+     "70": 10,
+     "90": 10
+    },
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "answer": "The secret code for the red door is 27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "answer": "The secret code for the red door is 27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "answer": "The secret code for the red door is 27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "answer": "The secret code for the red door is 27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "answer": "The secret code for the red door is 27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     }
+    ]
+   },
+   "seconds": 1520.7
+  },
+  "sink_top16": {
+   "protected": [
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     4,
+     4
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     6,
+     0
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     6,
+     6
+    ],
+    [
+     7,
+     4
+    ],
+    [
+     7,
+     5
+    ]
+   ],
+   "n_protected": 16,
+   "kv_heads_kept": 137,
+   "cache_fraction": 0.53515625,
+   "ppl_as_is": 13.319795583138097,
+   "ppl_bos_prepended": 11.022432873189482,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 1234.</s>",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 1234.</s>",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 1234.</s>",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 1-800-222-555-1",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 1234.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 1234.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 1234.</s>",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 1234.</s>",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 1234.</s>",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 1-2-3-5-5-5.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 1234. The secret code for the yellow door is 1",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 1234.</s>",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 1234.</s>",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 1234. The secret code for the black door is 1",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 1234.</s>",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 1-800-273-5.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 1234.</s>",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 1234.</s>",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 1234.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 1234.</s>",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 1234.</s>",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 1234.</s>",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 1-800-222-555-1",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 1234.\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     }
+    ],
+    "hits": 26,
+    "of": 50,
+    "by_depth": {
+     "10": 4,
+     "30": 4,
+     "50": 8,
+     "70": 7,
+     "90": 3
+    }
+   },
+   "seconds": 1134.9
+  },
+  "random8_seed100": {
+   "protected": [
+    [
+     0,
+     2
+    ],
+    [
+     15,
+     2
+    ],
+    [
+     15,
+     3
+    ],
+    [
+     18,
+     0
+    ],
+    [
+     27,
+     5
+    ],
+    [
+     27,
+     7
+    ],
+    [
+     30,
+     4
+    ],
+    [
+     31,
+     6
+    ]
+   ],
+   "n_protected": 8,
+   "kv_heads_kept": 134,
+   "cache_fraction": 0.5234375,
+   "ppl_as_is": 14.376655742653686,
+   "ppl_bos_prepended": 12.099691842479016,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 4821.</s>",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 2736.</s>",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 2736.</s>",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 2736.</s>",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 6123.</s>",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 7350.</s>",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 3961.</s>",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     }
+    ],
+    "hits": 43,
+    "of": 50,
+    "by_depth": {
+     "10": 9,
+     "30": 5,
+     "50": 9,
+     "70": 10,
+     "90": 10
+    }
+   },
+   "seconds": 1135.4
+  },
+  "random8_seed101": {
+   "protected": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     24,
+     1
+    ],
+    [
+     24,
+     5
+    ],
+    [
+     28,
+     4
+    ],
+    [
+     29,
+     0
+    ],
+    [
+     29,
+     5
+    ],
+    [
+     30,
+     2
+    ]
+   ],
+   "n_protected": 8,
+   "kv_heads_kept": 134,
+   "cache_fraction": 0.5234375,
+   "ppl_as_is": 11.809919151861944,
+   "ppl_bos_prepended": 11.273438599715583,
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 2736.</s>",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the red door is 27365.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 61928.\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 61928.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 73506.\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 73506.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 1864.</s>",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 18649.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 84071.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.</s>",
+      "hit": true
+     }
+    ],
+    "hits": 48,
+    "of": 50,
+    "by_depth": {
+     "10": 9,
+     "30": 10,
+     "50": 9,
+     "70": 10,
+     "90": 10
+    }
+   },
+   "seconds": 1138.8
+  }
+ },
+ "seconds": 8643.1
+}

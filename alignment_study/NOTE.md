@@ -1931,3 +1931,34 @@ regime on the base model. And the sink line of this repository (rounds 9 to 13
 and 21) meets the fusion line here: the heads whose merge is hazardous in
 layer 0 are the sink's. Development, one model, one layer, two pairs, two
 windows of each text.
+
+## A sink-aware exemption, scored by attention on position 0, buys perplexity and not retrieval; its random controls were not clean (2026-11-05, development)
+
+The rule tested (`sink_exempt_dev.py`, `sink_exempt_dev/`, Figure 40 of the
+README): score every query head by its mean attention on position 0 over 128
+sampled positions of two held-out C4 windows without the beginning-of-sequence
+token, give each key-value head the largest score of the query heads it
+serves, keep the top-k unmerged and match the rest by the residual, on
+Mistral-7B-Instruct at half the key-value heads. Prediction before running
+(plan g14): the top 8 restore token-less retrieval to at least 40 of 50 and
+bring token-less perplexity below 14.5. Result: the plain fusion reproduces
+its values (16.68 as is, 13.48 with the token, needle 10 and 45 with the
+token); the top 4, 8 and 16 give 14.06, 13.66 and 13.32 as is and 11.56, 11.17
+and 11.02 with the token at cache 0.512, 0.520 and 0.535, needle 25, 22 and 26
+without the token and 50 with it for the top 8: the perplexity half of the
+prediction holds and the retrieval half fails. The scored heads sit in layers
+3 to 7 (the model puts 1.4 percent of its attention on position 0 under token-
+less inputs, and layer 0's sink-pair heads score 0.001 and are not chosen), so
+the exemption buys the early-layer perplexity that A11 found and not
+retrieval. The random controls, 8 heads drawn from the lower half of the sink
+scores with the odd layers' leftovers held there, were not clean: the pool
+excluded neither retrieval heads nor layer 0, and the draws held retrieval
+head 18/0 with layer 0 head 2 (14.38 as is, 12.10 with the token, needle 43)
+and layer 0 head 1, a catastrophic sink-pair head of the sequence-start
+section, with layer 1 head 2 and retrieval heads 30/2 and 24/1 (11.81, 11.27,
+needle 48, the best conversion of this model so far at cache 0.523). Reading:
+three head sets matter and the attention-to-position-0 score finds only the
+cheapest of them: layer 0's sink-pair heads carry the sink-start cost, the
+retrieval heads the needle, and early-layer heads the perplexity. Designed
+arms with a stated prediction (plan g16) run next: the three layer-0 sink-pair
+heads plus the five retrieval heads at 0.3, and the three alone.

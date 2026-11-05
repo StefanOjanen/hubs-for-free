@@ -2301,3 +2301,30 @@ with the token (ratio 1.614; bands 5.936, 4.557, 4.739); needle with the token
 token-first calibration changes the token-first perplexity by +0.5 percent and
 the token-less one by +0.3 percent; the needle with the token moves from 0 to
 0 of 50.
+
+Sink-aware exemption test (2026-11-04 23:52 to 2026-11-05 02:16 UTC;
+sink_exempt_dev.py; sink_exempt_dev/<model>.json and <model>_sink_scores.npy;
+sink_exempt.log; development, prediction stated before running in the script's
+header and the plan): every query head scored by its mean attention on
+position 0 over sampled positions of held-out C4 windows without the
+beginning-of-sequence token, a key-value head taking the largest score of the
+query heads it serves; the top-k key-value heads kept unmerged and the rest
+matched by the residual, at half the key-value heads; per arm the perplexity
+on the 8 registered windows as they are and with the token prepended, the
+registered needle protocol without the token, and with the token for the plain
+fusion and the top-8 arm; random controls draw from the lower half of the sink
+scores with the odd layers' leftovers held there.
+
+Mistral-7B-Instruct-v0.2 (scores over 2 windows, 128 positions after a prefix
+of 1024, mean attention on position 0 0.014; top key-value heads layer 7 head
+4 0.10, layer 6 head 0 0.08, layer 6 head 3 0.07, layer 3 head 5 0.07, layer 3
+head 1 0.07, layer 4 head 2 0.06, layer 3 head 0 0.06, layer 4 head 4 0.06;
+144 min): fusion: 0 exempt, cache 0.500, perplexity 16.68 as is and 13.48 with
+the token, needle 10 of 50 (45 with the token); sink_top4: 4 exempt, cache
+0.512, perplexity 14.06 as is and 11.56 with the token, needle 25 of 50;
+sink_top8: 8 exempt, cache 0.520, perplexity 13.66 as is and 11.17 with the
+token, needle 22 of 50 (50 with the token); sink_top16: 16 exempt, cache
+0.535, perplexity 13.32 as is and 11.02 with the token, needle 26 of 50;
+random8_seed100: 8 exempt, cache 0.523, perplexity 14.38 as is and 12.10 with
+the token, needle 43 of 50; random8_seed101: 8 exempt, cache 0.523, perplexity
+11.81 as is and 11.27 with the token, needle 48 of 50.
