@@ -5,7 +5,9 @@
 # as they are and with the token prepended (the last token dropped). Question rather than prediction: the rounding is
 # uniform over heads, so its share is expected below the fusion's, which falls on the sink-serving heads it merges.
 # Writes alignment_study/bos_quant/<model>.json.
-#   python alignment_study/bos_quant_check.py --model=mistralai/Mistral-7B-Instruct-v0.2 [--windows=8] [--bits=4,3]
+#   python alignment_study/bos_quant_check.py --model=mistralai/Mistral-7B-Instruct-v0.2 [--windows=8] [--bits=4,3] [--exempt-layers=all,0,0+1,mid]
+# --exempt-layers runs one arm per listed set of layers left unrounded (all = none exempt; mid = the middle layer; last = the last),
+# writes bos_quant/<model>_exempt.json; the design and prediction are the parallel session's (private/drafts/DEV_quant_early_layers.md).
 import json
 import math
 import os
@@ -25,7 +27,8 @@ import retrieval_protect_dev as R                     # load (bfloat16, pinned r
 sys.argv = argv0
 K, Z, DEV = R.K, R.Z, R.DEV
 N_WIN, BITS = int(arg("windows", 8)), [int(b) for b in arg("bits", "4,3").split(",")]
-OUT = f"alignment_study/bos_quant/{NAME.split('/')[-1]}.json"
+EXEMPT = arg("exempt-layers")                           # e.g. all,0,0+1,mid: arms with these layers left unrounded (development, 2026-11-05)
+OUT = f"alignment_study/bos_quant/{NAME.split('/')[-1]}{'_exempt' if EXEMPT else ''}.json"
 torch.set_grad_enabled(False)
 
 
@@ -51,17 +54,23 @@ if __name__ == "__main__":
     res["arms"]["unconverted"] = ev(); u = res["arms"]["unconverted"]
     log(f"{NAME}, unconverted: {u['as_is']:.3f} as is, {u['bos_prepended']:.3f} with the token")
     snap = {l: [p.detach().clone() for p in kv.params(l)] for l in range(kv.L)}
+    def parse(spec):
+        return [] if spec == "all" else [kv.L // 2] if spec == "mid" else [kv.L - 1] if spec == "last" else [int(x) for x in spec.split("+")]
+    SETS = [("", [])] if not EXEMPT else [(f"_exempt_{spec}", parse(spec)) for spec in EXEMPT.split(",")]
     for bits in BITS:
-        for l in range(kv.L):
-            for p, t in zip(kv.params(l), snap[l]):
-                p.copy_(t)
-            a = kv.attn(l)
-            for m in (a.q_proj, a.k_proj, a.v_proj, a.o_proj):
-                m.weight.copy_(rtn(m.weight, bits))
-        r = ev(); r["ratio_as_is"] = r["as_is"] / u["as_is"]; r["ratio_bos_prepended"] = r["bos_prepended"] / u["bos_prepended"]
-        r["sink_start_share"] = 1 - math.log(r["ratio_bos_prepended"]) / math.log(r["ratio_as_is"]) if r["ratio_as_is"] > 1 and r["ratio_bos_prepended"] > 1 else None
-        res["arms"][f"w{bits}"] = r; json.dump(res, open(OUT, "w"), indent=1)
-        log(f"{NAME}, w{bits}: {r['as_is']:.3f} as is (ratio {r['ratio_as_is']:.3f}), {r['bos_prepended']:.3f} with the token (ratio {r['ratio_bos_prepended']:.3f}); sink-start share "
-            + (f"{100 * r['sink_start_share']:.0f} percent" if r["sink_start_share"] is not None else "undefined"))
+        for name, ex in SETS:
+            for l in range(kv.L):
+                for p, t in zip(kv.params(l), snap[l]):
+                    p.copy_(t)
+                if l in ex:
+                    continue
+                a = kv.attn(l)
+                for m in (a.q_proj, a.k_proj, a.v_proj, a.o_proj):
+                    m.weight.copy_(rtn(m.weight, bits))
+            r = ev(); r["exempt_layers"] = ex; r["ratio_as_is"] = r["as_is"] / u["as_is"]; r["ratio_bos_prepended"] = r["bos_prepended"] / u["bos_prepended"]
+            r["sink_start_share"] = 1 - math.log(r["ratio_bos_prepended"]) / math.log(r["ratio_as_is"]) if r["ratio_as_is"] > 1 and r["ratio_bos_prepended"] > 1 else None
+            res["arms"][f"w{bits}{name}"] = r; json.dump(res, open(OUT, "w"), indent=1)
+            log(f"{NAME}, w{bits}{name}: {r['as_is']:.3f} as is (ratio {r['ratio_as_is']:.3f}), {r['bos_prepended']:.3f} with the token (ratio {r['ratio_bos_prepended']:.3f}); sink-start share "
+                + (f"{100 * r['sink_start_share']:.0f} percent" if r["sink_start_share"] is not None else "undefined"))
     res["seconds"] = round(time.time() - t0, 1); json.dump(res, open(OUT, "w"), indent=1)
     log("BOS_QUANT_DONE")
