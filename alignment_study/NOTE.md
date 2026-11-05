@@ -1984,4 +1984,30 @@ section, with layer 1 head 2 and retrieval heads 30/2 and 24/1 (11.81, 11.27,
 needle 48, the best conversion of this model so far at cache 0.523). Reading:
 three head sets matter and the attention-to-position-0 score finds only the
 cheapest of them: layer 0's sink-pair heads carry the sink-start cost, the
-retrieval heads the needle, and early-layer heads the perplexity. Scored with the token prepended instead, where the sink is unambiguous (45 percent of the attention on position 0 against 1.4 without), the top heads include the strong retrieval head of layer 12, and the top 8 and 16 give 13.56 and 12.38 as the windows are, 11.62 and 10.14 with the token and 35 and 42 of 50 (the token-less scoring's 13.66, 13.32, 11.17, 11.02, 22 and 26); the clean controls at thirteen heads give 13.84 to 14.86, 11.06 to 11.60 and 3 to 34, so a sink score of either kind buys token-less perplexity beyond clean random heads and a needle count inside their wide range. Two designed sets with a stated prediction (plan g16) settle what the score missed. Layer 0's three sink-pair heads, found by the sequence-start diagnostic, plus the five retrieval heads at 0.3, eight key-value heads at cache 0.527, give perplexity 11.07 as the windows are, 10.58 with the token and 50 of 50 on the token-less needle, against the plain fusion's 16.68, 13.48 and 10 and two clean eight-head controls, drawn below retrieval score 0.1, outside layer 0 and the top-16 sink list with the leftovers held in the pool, at 14.55 to 15.18, 11.51 to 11.88 and 14 to 24: the prediction (at most 12.5 and 11.5, at least 45) held with room. The three sink-pair heads alone, under one percent of the cache, give 13.01, 12.60 and 46 of 50: the perplexity half of their prediction held and the needle half did not, because on this model the token-less retrieval loss is itself the sink-start failure, so either intact sink handling or intact retrieval heads restores it and both together restore all of it. The top-8 sink-scored heads together with the five retrieval heads (thirteen heads, cache 0.539) give 11.80, 9.83 and 49 of 50, against the clean thirteen-head controls' 13.84 to 14.86, 11.06 to 11.60 and 3 to 34. One model, development; round 36 (private/drafts/PREREGISTRATION36_draft.md) would test the designed set against clean controls on round 35's models.
+retrieval heads the needle, and early-layer heads the perplexity. Scored with
+the token prepended instead, where the sink is unambiguous (45 percent of the
+attention on position 0 against 1.4 without), the top heads include the strong
+retrieval head of layer 12, and the top 8 and 16 give 13.56 and 12.38 as the
+windows are, 11.62 and 10.14 with the token and 35 and 42 of 50 (the token-
+less scoring's 13.66, 13.32, 11.17, 11.02, 22 and 26); the clean controls at
+thirteen heads give 13.84 to 14.86, 11.06 to 11.60 and 3 to 34, so a sink
+score of either kind buys token-less perplexity beyond clean random heads and
+a needle count inside their wide range. Two designed sets with a stated
+prediction (plan g16) settle what the score missed. Layer 0's three sink-pair
+heads, found by the sequence-start diagnostic, plus the five retrieval heads
+at 0.3, eight key-value heads at cache 0.527, give perplexity 11.07 as the
+windows are, 10.58 with the token and 50 of 50 on the token-less needle,
+against the plain fusion's 16.68, 13.48 and 10 and two clean eight-head
+controls, drawn below retrieval score 0.1, outside layer 0 and the top-16 sink
+list with the leftovers held in the pool, at 14.55 to 15.18, 11.51 to 11.88
+and 14 to 24: the prediction (at most 12.5 and 11.5, at least 45) held with
+room. The three sink-pair heads alone, under one percent of the cache, give
+13.01, 12.60 and 46 of 50: the perplexity half of their prediction held and
+the needle half did not, because on this model the token-less retrieval loss
+is itself the sink-start failure, so either intact sink handling or intact
+retrieval heads restores it and both together restore all of it. The top-8
+sink-scored heads together with the five retrieval heads (thirteen heads,
+cache 0.539) give 11.80, 9.83 and 49 of 50, against the clean thirteen-head
+controls' 13.84 to 14.86, 11.06 to 11.60 and 3 to 34. One model, development;
+round 36 (private/drafts/PREREGISTRATION36_draft.md) would test the designed
+set against clean controls on round 35's models.
