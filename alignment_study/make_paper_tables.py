@@ -338,6 +338,27 @@ if BP:
                 cells.append(f"{r1:.2f} as is, {r2:.2f} with the token; share " + (f"{100 * share:.0f} percent" if share is not None else "undefined"))
             rows.append([m, "fusion's excess ratio by band", "", "", *cells])
     table(["Model", "arm", "windows", "perplexity", "NLL 0 to 31", "NLL 32 to 127", "NLL 128 on"], rows)
+AL = sorted(glob.glob("alignment_study/alloc7b_dev/*.json"))
+if AL:
+    w("## Table 14g. Cost-aware allocation of key-value heads across layers at a fixed cache budget (alloc7b_dev.py, development): each layer's cost at pairs and at groups of four from converting it alone (log-perplexity increase on 8 held-out C4 windows, as they are and with the beginning-of-sequence token), one exact dynamic programme per form at uniform pairs' head count; arms evaluated on the 8 registered WikiText-2 windows and 2 further held-out C4 windows in both forms, the registered needle protocol without the token on the named arms; the dry run on llama-160m is labelled\n")
+    rows = []
+    for fp in AL:
+        r = json.load(open(fp)); m = os.path.basename(fp)[:-5]; b = r["base"]
+        rows.append([m, "unconverted", "", str(r["layers"] * r["kv_heads"]), "1.000", f(b["wikitext"]["as_is"], 2), f(b["wikitext"]["with_token"], 2) if b["wikitext"]["with_token"] else "", f(b["val_windows"]["as_is"], 2), f(b["val_windows"]["with_token"], 2) if b["val_windows"]["with_token"] else "", "", ""])
+        for k, a in r["arms"].items():
+            lv = a["levels"]; summ = f"{lv.count(1)} unmerged, {lv.count(2)} pairs, {lv.count(4)} quads"
+            pred = ", ".join(f"{v:.3f}" for v in a["predicted_cost"].values()); act = ", ".join(f"{v:.3f}" for v in a["actual_cost"].values())
+            rows.append([m, k, summ, str(a["kv_heads_kept"]), f"{a['cache_fraction']:.3f}", f(a["wikitext"]["as_is"], 2), f(a["wikitext"]["with_token"], 2) if a["wikitext"]["with_token"] else "", f(a["val_windows"]["as_is"], 2), f(a["val_windows"]["with_token"], 2) if a["val_windows"]["with_token"] else "",
+                         f"{pred} predicted, {act} actual", f"{a['needle']['hits']} of {a['needle']['of']}" if "needle" in a else ""])
+    table(["Model", "arm", "levels", "KV heads", "cache", "WikiText as is", "with the token", "held-out C4 as is", "with the token", "summed single-layer cost (as is, with the token)", "needle"], rows)
+    for fp in AL:
+        r = json.load(open(fp)); m = os.path.basename(fp)[:-5]
+        w(f"Per-layer single-layer costs, {m} (log-perplexity increase on the measurement windows; pairs and groups of four; as is, with the token):\n")
+        rows = []
+        for l in range(r["layers"]):
+            c2, c4 = r["per_layer_cost"].get(f"{l}_2", {}), r["per_layer_cost"].get(f"{l}_4", {})
+            rows.append([str(l), f(c2.get("as_is"), 4), f(c2.get("with_token"), 4) if "with_token" in c2 else "", f(c4.get("as_is"), 4), f(c4.get("with_token"), 4) if "with_token" in c4 else ""])
+        table(["layer", "pairs as is", "pairs with the token", "quads as is", "quads with the token"], rows)
 TF = [fp for fp in sorted(glob.glob("alignment_study/token_first_calib_dev/*.json")) if "llama-160m" not in fp]
 if TF:
     w("## Table 12d. Token-first calibration (token_first_calib_dev.py, development): the fusion's moments on calibration windows without the beginning-of-sequence token and with it prepended, pairs fixed to the token-less matching; perplexity on the 8 registered windows as they are and with the token, the negative log-likelihood bands with the token, and the registered needle protocol with the token\n")
