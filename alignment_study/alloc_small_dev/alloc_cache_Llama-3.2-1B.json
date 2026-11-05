@@ -1,0 +1,79 @@
+{
+ "model": "/Users/stefanojanen/.cache/huggingface/hub/models--unsloth--Llama-3.2-1B/snapshots/9535bd9b1d1dea6acafbdc4813b728796aeb28da/",
+ "exploratory": true,
+ "quant": "kivi",
+ "dp_levels": [
+  1,
+  2,
+  4,
+  1,
+  2,
+  1,
+  4,
+  4,
+  2,
+  1,
+  4,
+  4,
+  4,
+  2,
+  4,
+  4
+ ],
+ "arms": {
+  "all_16": {
+   "ppl": 13.102846145629883,
+   "heads": 128,
+   "bits": 16,
+   "cache_fraction": 1.0
+  },
+  "all_2": {
+   "ppl": 24.668493270874023,
+   "heads": 128,
+   "bits": 2,
+   "cache_fraction": 0.125
+  },
+  "half_uniform_4": {
+   "ppl": 131.73887634277344,
+   "heads": 64,
+   "bits": 4,
+   "cache_fraction": 0.125
+  },
+  "half_dp_4": {
+   "ppl": 98.89752960205078,
+   "heads": 64,
+   "bits": 4,
+   "cache_fraction": 0.125
+  },
+  "quarter_8": {
+   "ppl": 2863.49951171875,
+   "heads": 32,
+   "bits": 8,
+   "cache_fraction": 0.125
+  },
+  "all_1": {
+   "ppl": 37114.53125,
+   "heads": 128,
+   "bits": 1,
+   "cache_fraction": 0.0625
+  },
+  "half_uniform_2": {
+   "ppl": 219.028564453125,
+   "heads": 64,
+   "bits": 2,
+   "cache_fraction": 0.0625
+  },
+  "half_dp_2": {
+   "ppl": 162.50181579589844,
+   "heads": 64,
+   "bits": 2,
+   "cache_fraction": 0.0625
+  },
+  "quarter_4": {
+   "ppl": 2798.86376953125,
+   "heads": 32,
+   "bits": 4,
+   "cache_fraction": 0.0625
+  }
+ }
+}

@@ -1,0 +1,85 @@
+{
+ "model": "TinyLlama/TinyLlama_v1.1",
+ "exploratory": true,
+ "quant": "kivi",
+ "dp_levels": [
+  1,
+  1,
+  1,
+  2,
+  4,
+  4,
+  4,
+  2,
+  4,
+  2,
+  1,
+  4,
+  2,
+  4,
+  4,
+  4,
+  4,
+  2,
+  4,
+  2,
+  1,
+  2
+ ],
+ "arms": {
+  "all_16": {
+   "ppl": 10.821480751037598,
+   "heads": 88,
+   "bits": 16,
+   "cache_fraction": 1.0
+  },
+  "all_2": {
+   "ppl": 13.904922485351562,
+   "heads": 88,
+   "bits": 2,
+   "cache_fraction": 0.125
+  },
+  "half_uniform_4": {
+   "ppl": 69.9603500366211,
+   "heads": 44,
+   "bits": 4,
+   "cache_fraction": 0.125
+  },
+  "half_dp_4": {
+   "ppl": 37.793724060058594,
+   "heads": 44,
+   "bits": 4,
+   "cache_fraction": 0.125
+  },
+  "quarter_8": {
+   "ppl": 346.30670166015625,
+   "heads": 22,
+   "bits": 8,
+   "cache_fraction": 0.125
+  },
+  "all_1": {
+   "ppl": 27085.34375,
+   "heads": 88,
+   "bits": 1,
+   "cache_fraction": 0.0625
+  },
+  "half_uniform_2": {
+   "ppl": 114.82411193847656,
+   "heads": 44,
+   "bits": 2,
+   "cache_fraction": 0.0625
+  },
+  "half_dp_2": {
+   "ppl": 52.157039642333984,
+   "heads": 44,
+   "bits": 2,
+   "cache_fraction": 0.0625
+  },
+  "quarter_4": {
+   "ppl": 353.3563232421875,
+   "heads": 22,
+   "bits": 4,
+   "cache_fraction": 0.0625
+  }
+ }
+}
