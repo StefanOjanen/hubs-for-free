@@ -354,10 +354,10 @@ if SE:
     table(["Model", "arm", "exempt", "cache fraction", "ppl as is", "ppl with the token", "needle without the token", "needle with the token"], rows)
 BQ = [fp for fp in sorted(glob.glob("alignment_study/bos_quant/*.json")) if "llama-160m" not in fp]
 if BQ:
-    w("## Table 12e. The sequence-start share of a quantization cost (bos_quant_check.py, development): the unconverted model's q, k, v, o rounded to 4 and 3 bits per output channel (round 30's rounding), perplexity on the 8 registered windows as they are and with the beginning-of-sequence token prepended; the share is one minus the ratio of the log perplexity ratios\n")
+    w("## Table 12e. The sequence-start share of a quantization cost (bos_quant_check.py, development): the unconverted model's q, k, v, o rounded to 4 and 3 bits per output channel (round 30's rounding) or, where marked, with min-max scales per group of input columns (GPTQ and AWQ's layout), perplexity on the 8 registered windows as they are and with the beginning-of-sequence token prepended; the share is one minus the ratio of the log perplexity ratios\n")
     rows = []
     for fp in BQ:
-        r = json.load(open(fp)); m = short(os.path.basename(fp)[:-5])
+        r = json.load(open(fp)); b = os.path.basename(fp)[:-5]; m = short(b.split("_g")[0].replace("_exempt", "")) + (" (groups of " + b.split("_g")[-1] + ")" if "_g" in b else "")
         for k, a in r["arms"].items():
             rows.append([m, k, f(a["as_is"], 2), f(a["bos_prepended"], 2), f(a.get("ratio_as_is"), 3) if a.get("ratio_as_is") else "", f(a.get("ratio_bos_prepended"), 3) if a.get("ratio_bos_prepended") else "", f"{100 * a['sink_start_share']:.0f} percent" if a.get("sink_start_share") is not None else ""])
     table(["Model", "arm", "ppl as is", "ppl with the token", "ratio as is", "ratio with the token", "sink-start share"], rows)
