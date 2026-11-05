@@ -1,0 +1,38 @@
+{
+ "model": "TinyLlama/TinyLlama_v1.1",
+ "exploratory": true,
+ "windows": 8,
+ "starts": {
+  "as_is": [],
+  "bos": [
+   1
+  ],
+  "eos": [
+   2
+  ],
+  "newlines": [
+   29871,
+   13,
+   13
+  ]
+ },
+ "note": "perplexity counts every predicted token after the prepended ones, so the starts score slightly different token sets",
+ "unconverted": {
+  "as_is": 7.236327714769145,
+  "bos": 8.78727428051754,
+  "eos": 7.2634836620204,
+  "newlines": 7.273156788829029
+ },
+ "cache_2bit_kivi": {
+  "as_is": 9.365846024968976,
+  "bos": 12.645719506253428,
+  "eos": 9.389768081845375,
+  "newlines": 9.41062025722426
+ },
+ "weights_3bit_attn": {
+  "as_is": 10.835195182752276,
+  "bos": 13.438839757239439,
+  "eos": 10.862308599175135,
+  "newlines": 11.253796654245876
+ }
+}

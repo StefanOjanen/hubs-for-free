@@ -1,0 +1,16 @@
+== JackFram/llama-160m Thu Nov  5 09:53:39 UTC 2026
+[     8s] unconverted {'as_is': 67.80978661267942, 'bos': 69.60545043023141, 'eos': 68.12671404987495, 'newlines': 69.4372276858494}
+[    12s] 2-bit cache {'as_is': 95.24068542890289, 'bos': 98.71832331801339, 'eos': 92.29451352503372, 'newlines': 91.56872780974757}
+[    16s] 3-bit attention weights {'as_is': 157.0611559681497, 'bos': 174.86480338128067, 'eos': 157.15584815669183, 'newlines': 147.24666021703266}
+[    16s] BOS_SMALL_DEV_DONE
+== TinyLlama/TinyLlama_v1.1 Thu Nov  5 09:53:59 UTC 2026
+[    33s] unconverted {'as_is': 7.236327714769145, 'bos': 8.78727428051754, 'eos': 7.2634836620204, 'newlines': 7.273156788829029}
+[    57s] 2-bit cache {'as_is': 9.365846024968976, 'bos': 12.645719506253428, 'eos': 9.389768081845375, 'newlines': 9.41062025722426}
+[    80s] 3-bit attention weights {'as_is': 10.835195182752276, 'bos': 13.438839757239439, 'eos': 10.862308599175135, 'newlines': 11.253796654245876}
+[    80s] BOS_SMALL_DEV_DONE
+== HuggingFaceTB/SmolLM2-360M Thu Nov  5 09:55:23 UTC 2026
+[   111s] unconverted {'as_is': 10.35418581217965, 'bos': 10.421867008272988, 'newlines': 10.374548305853075}
+[   119s] 2-bit cache {'as_is': 15.764107706017707, 'bos': 15.78834118540691, 'newlines': 15.471108911140915}
+[   127s] 3-bit attention weights {'as_is': 25.366553989168747, 'bos': 28.1826414211992, 'newlines': 25.49584636001418}
+[   127s] BOS_SMALL_DEV_DONE
+BOS_SMALL_PIPELINE_DONE

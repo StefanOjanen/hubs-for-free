@@ -1,0 +1,30 @@
+{
+ "model": "HuggingFaceTB/SmolLM2-360M",
+ "exploratory": true,
+ "windows": 8,
+ "starts": {
+  "as_is": [],
+  "bos": [
+   0
+  ],
+  "newlines": [
+   1116
+  ]
+ },
+ "note": "perplexity counts every predicted token after the prepended ones, so the starts score slightly different token sets",
+ "unconverted": {
+  "as_is": 10.35418581217965,
+  "bos": 10.421867008272988,
+  "newlines": 10.374548305853075
+ },
+ "cache_2bit_kivi": {
+  "as_is": 15.764107706017707,
+  "bos": 15.78834118540691,
+  "newlines": 15.471108911140915
+ },
+ "weights_3bit_attn": {
+  "as_is": 25.366553989168747,
+  "bos": 28.1826414211992,
+  "newlines": 25.49584636001418
+ }
+}
