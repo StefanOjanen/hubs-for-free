@@ -1942,20 +1942,20 @@ fusion's share was three percent: the two compressions damage the sink-start
 regime to different degrees, and neither can be sized on token-less windows
 alone.
 
-A measurement rule for low-bit evaluation follows from the base model's 3-bit
-row. Mistral-7B-v0.1 with its attention projections rounded to 3 bits per
-output channel reads a perplexity ratio of 1.487 on the windows as they are
-and 1.156 with the beginning-of-sequence token prepended, so a token-less
-benchmark reports 2.7 times the deployed log cost of that rounding on this
-model (1.3 times on Mistral-7B-Instruct), while the fusion's share on the same
-base model is three percent: the artefact is model- and method-dependent and
-no constant corrects it. Evaluate low-bit conversions with the token as
-deployment prompts carry it, or report both forms; at 4 bits both models are
-within noise of the unconverted (ratios 1.02 to 1.04) and the base model's
-share reads negative. And the sink line of this repository (rounds 9 to 13
-and 21) meets the fusion line here: the heads whose merge is hazardous in
-layer 0 are the sink's. Development, one model, one layer, two pairs, two
-windows of each text.
+A measurement rule for low-bit evaluation holds for crude rounding and not for
+the deployed layout. Mistral-7B-v0.1 with its attention projections rounded to
+3 bits per output channel reads a perplexity ratio of 1.487 on the windows as
+they are and 1.156 with the beginning-of-sequence token prepended, so a token-
+less benchmark reports 2.7 times the deployed log cost of that rounding, and
+the Instruct's share is 23 percent. With min-max scales per group of 128 input
+columns, the layout of GPTQ and AWQ deployments, the same rounding costs 4.8
+and 4.9 percent on the base model and 2.9 and 2.3 percent on the Instruct,
+with no sink-start share on the base (-2 percent) and a share of 22 percent of
+a cost within noise on the Instruct: the artefact is large for per-channel
+rounding, where outlier columns stretch the scales, and small for grouped
+rounding, and a low-bit result should state its rounding layout and its prompt
+format together. At 4 bits both layouts are within noise of the unconverted
+model.
 
 ## A sink-aware exemption, scored by attention on position 0, buys perplexity and not retrieval; its random controls were not clean (2026-11-05, development)
 
