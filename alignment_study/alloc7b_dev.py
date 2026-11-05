@@ -42,6 +42,9 @@ N_VAL = 2                                             # further held-out C4 wind
 SEEDS = [int(x) for x in arg("seeds", "0,1,2").split(",")]
 NEEDLE_ARMS = set(arg("needle-arms", "uniform_pairs,dp_as_is,dp_with_token").split(","))
 TAG = arg("tag")
+COSTS_FROM = arg("costs-from")                        # an earlier artifact of the same model whose per-layer costs are reused (the sweep is skipped)
+LEVELS_ARMS = {spec.split(":")[0]: [int(x) for x in spec.split(":")[1].split(",")] for spec in (arg("levels-arms") or "").split(";") if spec}   # NAME:1,2,4,... per layer
+ONLY = set(arg("only-arms").split(",")) if arg("only-arms") else None
 OUT = f"alignment_study/alloc7b_dev/{NAME.split('/')[-1]}{'_' + TAG if TAG else ''}.json"
 torch.set_grad_enabled(False)
 
@@ -111,7 +114,15 @@ if __name__ == "__main__":
            "eval_windows": N_EVAL, "layers": L, "kv_heads": H, "budget_heads": L * H // 2, "groups": {str(g): G[g] for g in G}, "base": base, "per_layer_cost": {}, "arms": {}}
     forms = ["as_is"] + (["with_token"] if cost_bos is not None else [])
     cost = {f: {} for f in forms}
-    for l in range(L):
+    if COSTS_FROM:
+        prev = json.load(open(COSTS_FROM)); assert prev["model"] == NAME and prev["cost_windows"] == [N_COST, T_COST], "costs-from must be the same model and cost windows"
+        for key, v in prev["per_layer_cost"].items():
+            l, g = (int(x) for x in key.split("_"))
+            for f in forms:
+                cost[f][(l, g)] = v[f]
+        res["per_layer_cost"] = prev["per_layer_cost"]; res["costs_from"] = COSTS_FROM
+        log(f"{NAME}: per-layer costs reused from {COSTS_FROM}")
+    for l in (range(L) if not COSTS_FROM else []):
         snap = [p.detach().clone() for p in kv.params(l)]
         line = []
         for g in (2, 4):
@@ -137,6 +148,11 @@ if __name__ == "__main__":
             if heads(lv) == B:
                 break
         arms[f"random_seed{sd}"] = lv
+    for nm, lv in LEVELS_ARMS.items():                   # given allocations (controls), e.g. layer 0 whole and the two cheapest layers quartered
+        assert len(lv) == L and heads(lv) == B, f"{nm}: {len(lv)} levels, {heads(lv)} heads (budget {B})"
+        arms[nm] = lv
+    if ONLY:
+        arms = {k: v for k, v in arms.items() if k in ONLY}
     res["allocations"] = {k: v for k, v in arms.items()}
     for nm, lv in arms.items():
         log(f"{NAME}, {nm}: levels {lv} ({heads(lv)} heads; predicted " + ", ".join(f"{sum(cost[f][(l, g)] for l, g in enumerate(lv) if g > 1):.3f} {f.replace('_', ' ')}" for f in forms) + ")")
