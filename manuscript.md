@@ -1703,7 +1703,13 @@ a cost within noise on the Instruct: the artefact is large for per-channel
 rounding, where outlier columns stretch the scales, and small for grouped
 rounding, and a low-bit result should state its rounding layout and its prompt
 format together. At 4 bits both layouts are within noise of the unconverted
-model.
+model. The token-first form is not a universal correction: on three small
+models (Llama-160m, TinyLlama, SmolLM2-360M) prepending the token to a mid-
+document window raises perplexity, 67.8 to 69.6, 7.24 to 8.79 and 10.35 to
+10.42, while an end-of-sequence token or the article-separating newlines
+barely move it (a parallel session's check, alignment_study/bos_small_dev/),
+so a window that starts mid-document is faithful to neither regime on such
+models and the safe statement reports both forms.
 
 ### 6.20 A designed exemption: the sink-pair heads plus the retrieval heads (development, not preregistered)
 
