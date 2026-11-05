@@ -1626,30 +1626,40 @@ if SEF:
     plt.rcParams["axes.grid"] = False
     LAB40 = {"fusion": "plain fusion, half the heads", "sink_top4": "top 4 sink-scored heads exempt", "sink_top8": "top 8 exempt", "sink_top16": "top 16 exempt",
              "sink_top8_plus_retrieval_0.3": "top 8 sink heads plus the retrieval heads at 0.3"}
-    rows = []
-    for fp in SEF:
-        r = json.load(open(fp)); b = os.path.basename(fp)[:-5]; tag = " (scored with the token)" if r["sink_scoring"].get("scored_with_token") else ""
+    M40 = {"Mistral-7B-Instruct-v0.2": "Mistral-7B-Instruct (development model)", "Qwen2.5-7B": "Qwen2.5-7B", "Mistral-7B-v0.1": "Mistral-7B-v0.1"}
+    order40 = list(M40)
+    rows, seen = [], set()
+    V40 = {"": 0, "layer0": 1, "designed": 2, "combined": 3, "cleancontrols": 4, "scorebos": 5}
+    key40 = lambda fp: (order40.index(os.path.basename(fp)[:-5].split("_")[0]) if os.path.basename(fp)[:-5].split("_")[0] in order40 else 9,
+                        V40.get("_".join(os.path.basename(fp)[:-5].split("_")[1:]), 8), fp)
+    for fp in sorted(SEF, key=key40):
+        r = json.load(open(fp)); b = os.path.basename(fp)[:-5]; mdl = b.split("_")[0]; tag = " (scored with the token)" if r["sink_scoring"].get("scored_with_token") else ""
         for k, a in r["arms"].items():
-            lab = LAB40.get(k, k.replace("_", " ").replace("random", "random ").replace("seed", "seed ")) + tag
-            rows.append((lab, a["ppl_as_is"], a.get("ppl_bos_prepended"), a["needle"]["hits"], a["needle"]["of"], a.get("needle_bos", {}).get("hits"), a["cache_fraction"], k.startswith("sink") or "plus" in k))
-    fig = plt.figure(figsize=(14.5, 2.2 + 0.42 * len(rows))); ax = fig.add_axes([0.34, 0.14, 0.26, 0.64]); bx = fig.add_axes([0.70, 0.14, 0.28, 0.64])
+            lab = M40.get(mdl, mdl) + ": " + LAB40.get(k, k.replace("_", " ").replace("random", "random ").replace("seed", "seed ")) + tag
+            key = (mdl, k, round(a["ppl_as_is"], 3))
+            if key in seen:                                   # the same arm repeated across one model's artifacts (the plain fusion in every file)
+                continue
+            seen.add(key)
+            rows.append((lab, a["ppl_as_is"], a.get("ppl_bos_prepended"), a["needle"]["hits"], a["needle"]["of"], a.get("needle_bos", {}).get("hits"), a["cache_fraction"], k.startswith("sink") or "plus" in k or k.startswith("layer0")))
+    fig = plt.figure(figsize=(14.5, 2.2 + 0.42 * len(rows))); ax = fig.add_axes([0.40, 0.14, 0.24, 0.64]); bx = fig.add_axes([0.72, 0.14, 0.26, 0.64])
     ys = list(range(len(rows)))[::-1]
     for y, (lab, pa, pb, nh, nof, nb, cache, special) in zip(ys, rows):
         col = S1 if special else INK2
-        ax.scatter([pa], [y], s=80, color=col, marker="o", edgecolors=SURF, linewidths=1.1, zorder=3); ax.text(pa + 0.15, y + 0.18, f"{pa:.2f}", fontsize=8, color=INK2)
+        ax.scatter([pa], [y], s=80, color=col, marker="o", edgecolors=SURF, linewidths=1.1, zorder=3); ax.text(pa * 1.03, y + 0.18, f"{pa:.2f}", fontsize=8, color=INK2)
         if pb:
-            ax.scatter([pb], [y], s=80, color=col, marker="D", edgecolors=SURF, linewidths=1.1, zorder=3); ax.text(pb + 0.15, y - 0.32, f"{pb:.2f}", fontsize=8, color=INK2)
+            ax.scatter([pb], [y], s=80, color=col, marker="D", edgecolors=SURF, linewidths=1.1, zorder=3); ax.text(pb * 1.03, y - 0.32, f"{pb:.2f}", fontsize=8, color=INK2)
         bx.scatter([nh], [y], s=80, color=col, marker="o", edgecolors=SURF, linewidths=1.1, zorder=3); bx.text(nh + 0.8, y + 0.18, f"{nh} of {nof}", fontsize=8, color=INK2)
         if nb is not None:
             bx.scatter([nb], [y], s=80, color=col, marker="D", edgecolors=SURF, linewidths=1.1, zorder=3); bx.text(nb + 0.8, y - 0.32, f"{nb} with the token", fontsize=8, color=INK2)
     ax.set_yticks(ys); ax.set_yticklabels([f"{r[0]}  (cache {r[6]:.3f})" for r in rows], fontsize=8.5); bx.set_yticks(ys); bx.set_yticklabels([])
     ax.set_xlabel("perplexity, 8 windows (circles as they are, diamonds with the token)", fontsize=9.5); bx.set_xlabel("codes retrieved (circles without the token, diamonds with it)", fontsize=9.5)
-    ax.set_xlim(min(r[2] or r[1] for r in rows) * 0.9, max(r[1] for r in rows) * 1.12); bx.set_xlim(-1, 62)
+    ax.set_xscale("log"); ax.set_xlim(min(r[2] or r[1] for r in rows) * 0.9, max(r[1] for r in rows) * 1.25); bx.set_xlim(-1, 62)
+    ax.set_xticks([10, 15, 20, 30, 50, 70]); ax.set_xticklabels(["10", "15", "20", "30", "50", "70"]); ax.xaxis.set_minor_locator(matplotlib.ticker.NullLocator())
     for a_ in (ax, bx):
         a_.set_ylim(-0.7, max(ys) + 0.7); a_.tick_params(length=0); a_.grid(axis="x", color=GRID, lw=0.8)
         for sp in ("left", "bottom"): a_.spines[sp].set_color(GRID)
     fig.text(0.012, 0.975, "A sink-aware exemption: the key-value heads whose query heads attend most to position 0, kept unmerged (development)", fontsize=15, color=INK, va="top")
-    fig.text(0.012, 0.915, "Mistral-7B-Instruct at half the key-value heads; sink scores from held-out C4 windows; random controls from the lower half of the scores (sink_exempt_dev.py). Blue: sink-scored exemptions; grey: the plain fusion and random controls.", fontsize=9.5, color=INK2, va="top")
+    fig.text(0.012, 0.915, "Half the key-value heads; sink scores from held-out C4 windows; random controls from the lower half of the scores, clean controls from heads below retrieval score 0.1 outside layer 0 and the top sink heads (sink_exempt_dev.py). Blue: sink-scored, layer-0 and designed exemptions; grey: the plain fusion and the controls.", fontsize=9.5, color=INK2, va="top")
     fig.savefig(OUT + "fig40_sink_exemption.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
 # ============ Figure 38: round 35, the retrieval-head exemption on models it was not tuned on (registered) ============
