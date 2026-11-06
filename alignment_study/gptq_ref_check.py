@@ -27,7 +27,7 @@ def arg(name, default=None):
 NAME, NS, N_PPL, BITS = arg("model", "mistralai/Mistral-7B-v0.1"), int(arg("nsamples", 128)), int(arg("pplwin", 8)), 3
 ARMS = arg("arms", "channel,channel_actorder,channel_sink0.01,g128_actorder").split(",")
 LINEAR = ("self_attn.q_proj", "self_attn.k_proj", "self_attn.v_proj", "self_attn.o_proj", "mlp.gate_proj", "mlp.up_proj", "mlp.down_proj")
-OUT = f"alignment_study/gptq_bos_dev/{NAME.split('/')[-1]}_ref.json"
+OUT = f"alignment_study/gptq_bos_dev/{NAME.split('/')[-1]}_ref{arg('tag', '')}.json"
 torch.set_grad_enabled(False)
 
 
