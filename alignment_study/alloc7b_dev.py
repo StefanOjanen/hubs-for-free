@@ -33,6 +33,8 @@ if not NAME:
 sys.argv = [argv0[0], f"--model={NAME}"]
 import retrieval_protect_dev as R                     # load (bfloat16, pinned revisions), free, needle_eval, K, C, Z, DEV, ND
 sys.argv = argv0
+if arg("revision"):                                   # --revision=SHA pins a model the harness's tables do not list (R.load reads R.REV at call time)
+    R.REV = arg("revision")
 K, C, Z, DEV, ND = R.K, R.C, R.Z, R.DEV, R.ND
 import fuse_common as F
 import kvfuse
@@ -45,6 +47,8 @@ TAG = arg("tag")
 COSTS_FROM = arg("costs-from")                        # an earlier artifact of the same model whose per-layer costs are reused (the sweep is skipped)
 LEVELS_ARMS = {spec.split(":")[0]: [int(x) for x in spec.split(":")[1].split(",")] for spec in (arg("levels-arms") or "").split(";") if spec}   # NAME:1,2,4,... per layer
 ONLY = set(arg("only-arms").split(",")) if arg("only-arms") else None
+NEEDLE_BASE = arg("needle-base") == "1"               # --needle-base=1: the registered needle protocol on the unconverted model too
+AUTO_CONTROL = arg("auto-control") == "1"             # --auto-control=1: layer 0 whole, the two layers cheapest at groups of four quartered, the rest at pairs
 OUT = f"alignment_study/alloc7b_dev/{NAME.split('/')[-1]}{'_' + TAG if TAG else ''}.json"
 torch.set_grad_enabled(False)
 
@@ -112,6 +116,9 @@ if __name__ == "__main__":
         f"cost windows ({N_COST} x {T_COST}) {base['cost_windows']['as_is']:.3f} and {base['cost_windows']['with_token']:.3f}")
     res = {"model": NAME, "revision": R.REV, "exploratory": True, "calibration": [N_CAL, T_CAL], "cost_windows": [N_COST, T_COST], "val_windows": N_VAL,
            "eval_windows": N_EVAL, "layers": L, "kv_heads": H, "budget_heads": L * H // 2, "groups": {str(g): G[g] for g in G}, "base": base, "per_layer_cost": {}, "arms": {}}
+    if NEEDLE_BASE:
+        res["base_needle"] = R.needle_eval(model, tok, context_ids); json.dump(res, open(OUT, "w"), indent=1)
+        log(f"{NAME}: unconverted needle {res['base_needle']['hits']} of {res['base_needle']['of']} {res['base_needle']['by_depth']}")
     forms = ["as_is"] + (["with_token"] if cost_bos is not None else [])
     cost = {f: {} for f in forms}
     if COSTS_FROM:
@@ -148,6 +155,9 @@ if __name__ == "__main__":
             if heads(lv) == B:
                 break
         arms[f"random_seed{sd}"] = lv
+    if AUTO_CONTROL:                                     # the g30 control built from this model's measured costs: layer 0's extra heads paid by quartering the two cheapest layers
+        cheap = sorted(range(1, L), key=lambda l: cost["as_is"][(l, 4)])[:2]
+        LEVELS_ARMS["control_l0"] = [1] + [4 if l in cheap else 2 for l in range(1, L)]
     for nm, lv in LEVELS_ARMS.items():                   # given allocations (controls), e.g. layer 0 whole and the two cheapest layers quartered
         assert len(lv) == L and heads(lv) == B, f"{nm}: {len(lv)} levels, {heads(lv)} heads (budget {B})"
         arms[nm] = lv
