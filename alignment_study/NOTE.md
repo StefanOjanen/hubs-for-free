@@ -2018,15 +2018,16 @@ against 5.09 and 5.17), and on Llama-2-7B it beats it in both forms (5.28 and
 collapse and extends it to the grouped layout (`gptq_ref_check.py`, a port of
 IST-DASLab's llama.py read on 2026-11-06; exploratory): with every linear
 layer of every block quantized in order, attention and MLP, each block's
-Hessians taken from the outputs of the quantized blocks below, on 128
-token-less C4 segments of 2,048 tokens at 3 bits, Mistral-7B-v0.1 reads 7.83
-and 53,835 per output channel, 7.28 and 47,809 with act-order and 5.49 and
-7,329 at groups of 128 with act-order (unquantized 4.86 and 4.93), so the
-grouped layout is safe only while the attention projections alone are
-quantized; the sink-aware term at 0.01 prevents the collapse (26.40 with the
-token) but costs 30.32 as the windows are once the MLP is quantized too, and 4
-bits and token-first calibration are untested under this protocol. A
-token-less evaluation credits per-channel GPTQ with beating round-to-nearest
+Hessians taken from the outputs of the quantized blocks below, on the first
+2,048 tokens of 128 C4 validation documents without the token (the reference
+script crops at random positions instead, which is token-less too) at 3 bits,
+Mistral-7B-v0.1 reads 7.83 and 53,835 per output channel, 7.28 and 47,809 with
+act-order and 5.49 and 7,329 at groups of 128 with act-order (unquantized 4.86
+and 4.93), so the grouped layout is safe only while the attention projections
+alone are quantized; the sink-aware term at 0.01 prevents the collapse (26.40
+with the token) but costs 30.32 as the windows are once the MLP is quantized
+too, and 4 bits and token-first calibration are untested under this protocol.
+A token-less evaluation credits per-channel GPTQ with beating round-to-nearest
 on both Mistral models (on the base model 5.56 against our per-channel
 round-to-nearest's 7.23, bos_quant/; with the token 5.70), while with the
 token GPTQ collapses on both: the sharpest instance of the convention note
