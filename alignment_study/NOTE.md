@@ -2045,7 +2045,13 @@ and 4.5e4. The paper calibrates GPTQ through AutoGPTQ on C4 following the GPTQ
 work, does not trace these failures to the calibration crops, and reports no
 GPTQ row for Mistral-7B. GPTQ worse than round-to-nearest under a token-first
 evaluation is the pattern found here; whether LLaMA-3's failure has the same
-cause, the token absent from the calibration crops, is untested here.
+cause, the token absent from the calibration crops, is untested here. Three
+maintained tools that produce deployed checkpoints, GPTQModel, llm-compressor
+and AutoRound, calibrate token-first, each sample starting with the token
+(`harness_conventions.md`, read at pinned commits on 2026-11-06), so the
+token-less collapse describes research pipelines that reuse the reference
+script's crops and checkpoints built from such crops; whether one position in
+2,048 is enough is the follow-up's token-first arm.
 
 ## A sink-aware exemption, scored by attention on position 0, buys perplexity and not retrieval; its random controls were not clean (2026-11-05, development)
 

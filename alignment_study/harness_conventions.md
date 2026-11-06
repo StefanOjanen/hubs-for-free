@@ -110,3 +110,58 @@ prompt format or report both forms, name the tool and its window convention
 beside the number, and state the rounding layout with it. This note adds the
 convention of each tool so that a reader can tell which form a published
 number is.
+
+## Calibration in the tools that produce deployed checkpoints (added 2026-11-06)
+
+The reference script's calibration crops carry the token only by chance
+(above). Three maintained tools that produce GPTQ and AutoRound checkpoints
+build their samples the other way: each sample is tokenized on its own with
+the tokenizer's special tokens, so for Llama and Mistral tokenizers every
+sample starts with the beginning-of-sequence token. Read from their code at
+the commits named; no compute.
+
+GPTQModel (ModelCloud/GPTQModel, commit 24d1b77, 2026-11-06).
+gptqmodel/utils/calibration.py, prepare_calibration_dataset: a raw-text sample
+is tokenized by _tokenize_text_value with add_special_tokens=True, a sample
+given as chat messages is rendered with the tokenizer's chat template and
+tokenized the same way, and rows longer than the model's maximum positions are
+trimmed. The optional calibration_dataset_concat_size packs the tokenized
+samples into blocks of that size, and the token then sits at sample boundaries
+inside the blocks. The README's example calibrates on 1,024 whole documents of
+a C4 training shard, so the token is one position per document.
+
+llm-compressor (vllm-project/llm-compressor, commit 28e421f, 2026-11-06).
+src/llmcompressor/transformers/data/base.py, tokenize: the processor is called
+with truncation to max_seq_length and the tokenizer's default special tokens
+unless the dataset class overrides add_special_tokens; the chat datasets
+(ultrachat_200k.py, perfectblend.py) set it to False because their chat
+templates render the token as text. concatenate_data is off by default
+(args/dataset_arguments.py).
+
+AutoRound (intel/auto-round, commit fe9a83c, 2026-11-06).
+auto_round/calib_dataset.py, get_tokenizer_function: the default tokenizer
+function calls the tokenizer on each text with truncation to seqlen and its
+default special tokens, and the dataset builder drops samples shorter than
+seqlen and truncates longer ones (its docstring), so each sample is the first
+seqlen tokens of a document, starting with the token, which is one position in
+seqlen.
+
+AutoGPTQ (AutoGPTQ/AutoGPTQ, commit 9f7d370, 2025-04-11, archived).
+auto_gptq/modeling/_base.py, quantize, takes examples already tokenized by the
+caller, so the convention is the caller's: the README's example tokenizes each
+example with the tokenizer's defaults, while a checkpoint built from
+GPTQ-style random C4 crops is token-less (one public 3-bit Mistral-7B-v0.1
+checkpoint's card states 128 random 2,048-token C4 segments).
+
+What this changes. A checkpoint from GPTQModel, llm-compressor or AutoRound
+was calibrated token-first, with the token at one position per sample: one in
+2,048 at AutoRound's 2,048-token samples, more wherever the samples are
+shorter. In the parallel session's attention-only data, one position in 1,024
+lowers the GPTQ collapse without preventing it (gptq_bos_dev/: token-first
+calibration on 32 windows of 1,024 tokens gives 2,535 with the token on
+Mistral-7B-Instruct, against 569,348 token-less and 6.11 with the rank-one
+term at 0.01). Whether token-first calibration at one position in 2,048
+prevents the collapse in the full protocol is the g128_actorder_bosc arm of
+that session's follow-up (gptq_ref_check.py, running from 2026-11-06).
+Research pipelines that reuse the reference script's loader, and this
+repository's own calibration windows (gqa_common.windows_c4), are token-less.
