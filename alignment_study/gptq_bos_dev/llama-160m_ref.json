@@ -1,0 +1,22 @@
+{
+ "model": "JackFram/llama-160m",
+ "exploratory": true,
+ "protocol": "IST-DASLab/gptq llama.py port, all linear layers, sequential",
+ "bits": 3,
+ "nsamples": 4,
+ "windows": 2,
+ "arms": {
+  "channel": {
+   "as_is": 149.241811309167,
+   "bos_prepended": 164.362624490209
+  },
+  "g128_actorder": {
+   "as_is": 98.30405058453778,
+   "bos_prepended": 108.22447049521622
+  }
+ },
+ "unquantized": {
+  "as_is": 69.26218711805417,
+  "bos_prepended": 71.53326972250866
+ }
+}

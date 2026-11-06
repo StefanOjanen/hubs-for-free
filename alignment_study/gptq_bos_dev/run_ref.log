@@ -1,0 +1,70 @@
+== ref mistralai/Mistral-7B-v0.1 Thu Nov  5 23:24:30 UTC 2026
+GPTQ_REF_PIPELINE_DONE
+== ref mistralai/Mistral-7B-v0.1 Thu Nov  5 23:30:33 UTC 2026
+GPTQ_REF_PIPELINE_DONE
+== ref mistralai/Mistral-7B-v0.1 Thu Nov  5 23:31:43 UTC 2026
+/opt/homebrew/Cellar/python@3.12/3.12.4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+GPTQ_REF_PIPELINE_DONE
+== ref mistralai/Mistral-7B-v0.1 Thu Nov  5 23:32:54 UTC 2026
+/opt/homebrew/Cellar/python@3.12/3.12.4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+GPTQ_REF_PIPELINE_DONE
+== ref mistralai/Mistral-7B-v0.1 Thu Nov  5 23:35:16 UTC 2026
+[   133s] unquantized {'as_is': 4.858766172190064, 'bos_prepended': 4.931756039057331}
+/opt/homebrew/Cellar/python@3.12/3.12.4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+== restart Fri Nov  6 08:19:47 UTC 2026
+== ref mistralai/Mistral-7B-v0.1 Fri Nov  6 08:19:47 UTC 2026
+[   132s] unquantized {'as_is': 4.858766172190064, 'bos_prepended': 4.931756039057331}
+[   181s] channel: block 0 self_attn.q_proj quantized in 8s (Hessians 41s)
+[   183s] channel: block 0 self_attn.k_proj quantized in 2s (Hessians 41s)
+[   185s] channel: block 0 self_attn.v_proj quantized in 2s (Hessians 41s)
+[   189s] channel: block 0 self_attn.o_proj quantized in 3s (Hessians 41s)
+[   196s] channel: block 0 mlp.gate_proj quantized in 7s (Hessians 41s)
+[   202s] channel: block 0 mlp.up_proj quantized in 6s (Hessians 41s)
+[   270s] channel: block 0 mlp.down_proj quantized in 67s (Hessians 41s)
+[  1483s] channel: block 7 quantized
+[  2847s] channel: block 15 quantized
+[  4219s] channel: block 23 quantized
+[  5579s] channel: block 31 quantized
+[  5694s] channel {'as_is': 7.8286117130918305, 'bos_prepended': 53834.99953052825}
+[  5792s] channel_actorder: block 0 self_attn.q_proj quantized in 10s (Hessians 58s)
+[  5794s] channel_actorder: block 0 self_attn.k_proj quantized in 2s (Hessians 58s)
+[  5796s] channel_actorder: block 0 self_attn.v_proj quantized in 2s (Hessians 58s)
+[  5800s] channel_actorder: block 0 self_attn.o_proj quantized in 3s (Hessians 58s)
+[  5807s] channel_actorder: block 0 mlp.gate_proj quantized in 7s (Hessians 58s)
+[  5814s] channel_actorder: block 0 mlp.up_proj quantized in 7s (Hessians 58s)
+[  5881s] channel_actorder: block 0 mlp.down_proj quantized in 67s (Hessians 58s)
+[  7126s] channel_actorder: block 7 quantized
+[  8501s] channel_actorder: block 15 quantized
+[  9872s] channel_actorder: block 23 quantized
+[ 11241s] channel_actorder: block 31 quantized
+[ 11359s] channel_actorder {'as_is': 7.2840107330683495, 'bos_prepended': 47808.95761335359}
+[ 11441s] sink term: |x_s|^2 549, rank-one 1.44e+06 against tr H 1.4e+08
+[ 11445s] channel_sink0.01: block 0 self_attn.q_proj quantized in 3s (Hessians 48s)
+[ 11447s] channel_sink0.01: block 0 self_attn.k_proj quantized in 2s (Hessians 48s)
+[ 11450s] channel_sink0.01: block 0 self_attn.v_proj quantized in 3s (Hessians 48s)
+[ 11454s] channel_sink0.01: block 0 self_attn.o_proj quantized in 4s (Hessians 48s)
+[ 11461s] channel_sink0.01: block 0 mlp.gate_proj quantized in 8s (Hessians 48s)
+[ 11469s] channel_sink0.01: block 0 mlp.up_proj quantized in 7s (Hessians 48s)
+[ 11536s] channel_sink0.01: block 0 mlp.down_proj quantized in 67s (Hessians 48s)
+[ 12758s] channel_sink0.01: block 7 quantized
+[ 14127s] channel_sink0.01: block 15 quantized
+[ 15497s] channel_sink0.01: block 23 quantized
+[ 16868s] channel_sink0.01: block 31 quantized
+[ 16985s] channel_sink0.01 {'as_is': 30.318155129524996, 'bos_prepended': 26.39619173579947}
+[ 17069s] g128_actorder: block 0 self_attn.q_proj quantized in 9s (Hessians 46s)
+[ 17072s] g128_actorder: block 0 self_attn.k_proj quantized in 2s (Hessians 46s)
+[ 17074s] g128_actorder: block 0 self_attn.v_proj quantized in 2s (Hessians 46s)
+[ 17077s] g128_actorder: block 0 self_attn.o_proj quantized in 3s (Hessians 46s)
+[ 17084s] g128_actorder: block 0 mlp.gate_proj quantized in 7s (Hessians 46s)
+[ 17091s] g128_actorder: block 0 mlp.up_proj quantized in 7s (Hessians 46s)
+[ 17157s] g128_actorder: block 0 mlp.down_proj quantized in 65s (Hessians 46s)
+[ 18373s] g128_actorder: block 7 quantized
+[ 19741s] g128_actorder: block 15 quantized
+[ 21112s] g128_actorder: block 23 quantized
+[ 22481s] g128_actorder: block 31 quantized
+[ 22625s] g128_actorder {'as_is': 5.4918696993862595, 'bos_prepended': 7329.235833945696}
+[ 22653s] GPTQ_REF_CHECK_DONE
+GPTQ_REF_PIPELINE_DONE

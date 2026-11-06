@@ -1,0 +1,30 @@
+{
+ "model": "mistralai/Mistral-7B-v0.1",
+ "exploratory": true,
+ "protocol": "IST-DASLab/gptq llama.py port, all linear layers, sequential",
+ "bits": 3,
+ "nsamples": 128,
+ "windows": 8,
+ "arms": {
+  "channel": {
+   "as_is": 7.8286117130918305,
+   "bos_prepended": 53834.99953052825
+  },
+  "channel_actorder": {
+   "as_is": 7.2840107330683495,
+   "bos_prepended": 47808.95761335359
+  },
+  "channel_sink0.01": {
+   "as_is": 30.318155129524996,
+   "bos_prepended": 26.39619173579947
+  },
+  "g128_actorder": {
+   "as_is": 5.4918696993862595,
+   "bos_prepended": 7329.235833945696
+  }
+ },
+ "unquantized": {
+  "as_is": 4.858766172190064,
+  "bos_prepended": 4.931756039057331
+ }
+}
