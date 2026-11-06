@@ -95,8 +95,23 @@ if __name__ == "__main__":
         h.remove()
         return got
 
-    def run(label, group, actorder, lam, bits=BITS, only=None):
-        inps, sink = first_inputs(cal), first_inputs(torch.tensor([[tok.bos_token_id]]))
+    def run(label, group, actorder, lam, bits=BITS, only=None, bosc=False, rtn=False):
+        if rtn:
+            # round-to-nearest at the same layout: no Hessians, no error compensation
+            for b in blocks:
+                for n in LINEAR:
+                    if not (only and not n.startswith(only)):
+                        m = b.get_submodule(n); W = m.weight.float().cpu(); Q = torch.empty_like(W)
+                        g = W.shape[1] if group == -1 else group
+                        for c in range(0, W.shape[1], g):
+                            sc, z = params(W[:, c:c + g], bits)
+                            Q[:, c:c + g] = sc[:, None] * (torch.clamp(torch.round(W[:, c:c + g] / sc[:, None]) + z[:, None], 0, 2 ** bits - 1) - z[:, None])
+                        m.weight.copy_(Q.to(m.weight.dtype))
+            r = ev(); log(f"{label} {r}")
+            return r
+        # token-first calibration (bosc): every window starts with the start token, as llama.cpp's imatrix chunks do
+        c = torch.cat([torch.full((cal.shape[0], 1), tok.bos_token_id, dtype=cal.dtype), cal[:, :-1]], 1) if bosc else cal
+        inps, sink = first_inputs(c), first_inputs(torch.tensor([[tok.bos_token_id]]))
         ntok = cal.numel()
         for l, b in enumerate(blocks):
             H, X = {}, {}
@@ -152,12 +167,13 @@ if __name__ == "__main__":
     KV0 = [(b.self_attn.k_proj.weight.detach().clone(), b.self_attn.v_proj.weight.detach().clone()) for b in blocks]
 
     def spec(a):
-        # an arm's name lists its options: channel or g128, actorder, sink<lam>, bits<n>, attn or mlp only, intact
+        # an arm's name lists its options: channel or g128, actorder, sink<lam>, bits<n>, attn or mlp only, intact, bosc
+        # (token-first calibration), rtn (round-to-nearest instead of GPTQ)
         t = a.split("_")
         lam = next((float(x[4:]) for x in t if x.startswith("sink")), 0.0)
         bits = next((int(x[4:]) for x in t if x.startswith("bits")), BITS)
         only = "self_attn" if "attn" in t else "mlp" if "mlp" in t else None
-        return (128 if "g128" in t else -1), ("actorder" in t), lam, bits, only
+        return (128 if "g128" in t else -1), ("actorder" in t), lam, bits, only, ("bosc" in t), ("rtn" in t)
     for a in ARMS:
         res["arms"][a] = run(a, *spec(a))
         # reload instead of keeping a copy of the weights: a second copy of a 7B model does not fit beside the first
