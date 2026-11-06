@@ -353,6 +353,8 @@ if AL:
     table(["Model", "arm", "levels", "KV heads", "cache", "WikiText as is", "with the token", "held-out C4 as is", "with the token", "summed single-layer cost (as is, with the token)", "needle"], rows)
     for fp in AL:
         r = json.load(open(fp)); m = os.path.basename(fp)[:-5]
+        if r.get("costs_from"):
+            continue
         w(f"Per-layer single-layer costs, {m} (log-perplexity increase on the measurement windows; pairs and groups of four; as is, with the token):\n")
         rows = []
         for l in range(r["layers"]):

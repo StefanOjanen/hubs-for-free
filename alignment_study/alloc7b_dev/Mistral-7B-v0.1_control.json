@@ -1,0 +1,2338 @@
+{
+ "model": "mistralai/Mistral-7B-v0.1",
+ "revision": "27d67f1b5f57dc0953326b2601d68371d40ea8da",
+ "exploratory": true,
+ "calibration": [
+  128,
+  2048
+ ],
+ "cost_windows": [
+  8,
+  1024
+ ],
+ "val_windows": 2,
+ "eval_windows": 8,
+ "layers": 32,
+ "kv_heads": 8,
+ "budget_heads": 128,
+ "groups": {
+  "2": [
+   [
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     5
+    ]
+   ],
+   [
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   [
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     4
+    ]
+   ],
+   [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     6,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     5,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   [
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     6,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     5,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     4,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     5
+    ]
+   ],
+   [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   [
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     6,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     7
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   [
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     4,
+     5
+    ]
+   ],
+   [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     5,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     6,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     5,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     6,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   [
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     4,
+     5
+    ]
+   ],
+   [
+    [
+     0,
+     7
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     5,
+     6
+    ]
+   ]
+  ],
+  "4": [
+   [
+    [
+     0,
+     4,
+     5,
+     6
+    ],
+    [
+     1,
+     2,
+     3,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     2,
+     4,
+     5
+    ],
+    [
+     1,
+     3,
+     6,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     1,
+     3,
+     4
+    ],
+    [
+     2,
+     5,
+     6,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     1,
+     2,
+     7
+    ],
+    [
+     3,
+     4,
+     5,
+     6
+    ]
+   ],
+   [
+    [
+     0,
+     2,
+     5,
+     6
+    ],
+    [
+     1,
+     3,
+     4,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     1,
+     3,
+     5
+    ],
+    [
+     2,
+     4,
+     6,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     2,
+     5,
+     7
+    ],
+    [
+     1,
+     3,
+     4,
+     6
+    ]
+   ],
+   [
+    [
+     0,
+     4,
+     5,
+     6
+    ],
+    [
+     1,
+     2,
+     3,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     1,
+     3,
+     5
+    ],
+    [
+     2,
+     4,
+     6,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     2,
+     3,
+     4
+    ],
+    [
+     1,
+     5,
+     6,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     1,
+     3,
+     4
+    ],
+    [
+     2,
+     5,
+     6,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     4,
+     5,
+     7
+    ],
+    [
+     1,
+     2,
+     3,
+     6
+    ]
+   ],
+   [
+    [
+     0,
+     1,
+     2,
+     7
+    ],
+    [
+     3,
+     4,
+     5,
+     6
+    ]
+   ],
+   [
+    [
+     0,
+     2,
+     4,
+     6
+    ],
+    [
+     1,
+     3,
+     5,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     2,
+     4,
+     7
+    ],
+    [
+     1,
+     3,
+     5,
+     6
+    ]
+   ],
+   [
+    [
+     0,
+     1,
+     2,
+     7
+    ],
+    [
+     3,
+     4,
+     5,
+     6
+    ]
+   ],
+   [
+    [
+     0,
+     1,
+     2,
+     5
+    ],
+    [
+     3,
+     4,
+     6,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     3,
+     4,
+     6
+    ],
+    [
+     1,
+     2,
+     5,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     1,
+     6,
+     7
+    ],
+    [
+     2,
+     3,
+     4,
+     5
+    ]
+   ],
+   [
+    [
+     0,
+     5,
+     6,
+     7
+    ],
+    [
+     1,
+     2,
+     3,
+     4
+    ]
+   ],
+   [
+    [
+     0,
+     4,
+     5,
+     6
+    ],
+    [
+     1,
+     2,
+     3,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     1,
+     2,
+     4
+    ],
+    [
+     3,
+     5,
+     6,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     1,
+     5,
+     6
+    ],
+    [
+     2,
+     3,
+     4,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     4,
+     5,
+     6
+    ],
+    [
+     1,
+     2,
+     3,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     2,
+     6,
+     7
+    ],
+    [
+     1,
+     3,
+     4,
+     5
+    ]
+   ],
+   [
+    [
+     0,
+     1,
+     3,
+     5
+    ],
+    [
+     2,
+     4,
+     6,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     2,
+     5,
+     7
+    ],
+    [
+     1,
+     3,
+     4,
+     6
+    ]
+   ],
+   [
+    [
+     0,
+     1,
+     4,
+     5
+    ],
+    [
+     2,
+     3,
+     6,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     4,
+     6,
+     7
+    ],
+    [
+     1,
+     2,
+     3,
+     5
+    ]
+   ],
+   [
+    [
+     0,
+     2,
+     4,
+     5
+    ],
+    [
+     1,
+     3,
+     6,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     1,
+     2,
+     6
+    ],
+    [
+     3,
+     4,
+     5,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     1,
+     4,
+     7
+    ],
+    [
+     2,
+     3,
+     5,
+     6
+    ]
+   ]
+  ]
+ },
+ "base": {
+  "cost_windows": {
+   "as_is": 5.796571973135883,
+   "with_token": 5.770273093551827
+  },
+  "val_windows": {
+   "as_is": 4.994555726028519,
+   "with_token": 4.948906258618833
+  },
+  "wikitext": {
+   "as_is": 4.858766172190064,
+   "with_token": 4.931756039057331
+  }
+ },
+ "per_layer_cost": {
+  "0_2": {
+   "as_is": 0.11990203559107315,
+   "with_token": 0.05426969929058423
+  },
+  "0_4": {
+   "as_is": 0.5905748891224494,
+   "with_token": 0.388538614163068
+  },
+  "1_2": {
+   "as_is": 0.0044316751399930965,
+   "with_token": 0.004293369058290253
+  },
+  "1_4": {
+   "as_is": 0.010998782757323688,
+   "with_token": 0.009163275725214692
+  },
+  "2_2": {
+   "as_is": 0.004833698738821557,
+   "with_token": 0.004064075175385096
+  },
+  "2_4": {
+   "as_is": 0.013498371530721087,
+   "with_token": 0.013761604286708362
+  },
+  "3_2": {
+   "as_is": 0.004517779904959385,
+   "with_token": 0.0033036620735773514
+  },
+  "3_4": {
+   "as_is": 0.00930801794326186,
+   "with_token": 0.008600482959318478
+  },
+  "4_2": {
+   "as_is": 0.003401106520249053,
+   "with_token": 0.003632009437240402
+  },
+  "4_4": {
+   "as_is": 0.009174141832577254,
+   "with_token": 0.008968185469551804
+  },
+  "5_2": {
+   "as_is": 0.003588932816700252,
+   "with_token": 0.0034921483909629014
+  },
+  "5_4": {
+   "as_is": 0.006517613505105269,
+   "with_token": 0.006235329636380849
+  },
+  "6_2": {
+   "as_is": 0.00537370773121526,
+   "with_token": 0.005590787497899763
+  },
+  "6_4": {
+   "as_is": 0.008439702605455235,
+   "with_token": 0.00841789581209329
+  },
+  "7_2": {
+   "as_is": 0.0045405002866205635,
+   "with_token": 0.006133179277735046
+  },
+  "7_4": {
+   "as_is": 0.009389331030822179,
+   "with_token": 0.011249952418829867
+  },
+  "8_2": {
+   "as_is": 0.006340601110971011,
+   "with_token": 0.006896316364247257
+  },
+  "8_4": {
+   "as_is": 0.009620170555972418,
+   "with_token": 0.010350019468007288
+  },
+  "9_2": {
+   "as_is": 0.008040479434433756,
+   "with_token": 0.007660270086831122
+  },
+  "9_4": {
+   "as_is": 0.011797546058572639,
+   "with_token": 0.011963587935252873
+  },
+  "10_2": {
+   "as_is": 0.007499918560128771,
+   "with_token": 0.007759761717079483
+  },
+  "10_4": {
+   "as_is": 0.016417595647996386,
+   "with_token": 0.017998912583814475
+  },
+  "11_2": {
+   "as_is": 0.005569607165085699,
+   "with_token": 0.006236455773794614
+  },
+  "11_4": {
+   "as_is": 0.010090966844605198,
+   "with_token": 0.010510482862664539
+  },
+  "12_2": {
+   "as_is": 0.010370819449774249,
+   "with_token": 0.010317126560304368
+  },
+  "12_4": {
+   "as_is": 0.022490858449031537,
+   "with_token": 0.023251042221531737
+  },
+  "13_2": {
+   "as_is": 0.013306950543982454,
+   "with_token": 0.01348347071911471
+  },
+  "13_4": {
+   "as_is": 0.01998882722528328,
+   "with_token": 0.021442584860942526
+  },
+  "14_2": {
+   "as_is": 0.007581746240282072,
+   "with_token": 0.008735651144883505
+  },
+  "14_4": {
+   "as_is": 0.01255313205812203,
+   "with_token": 0.013513350649896116
+  },
+  "15_2": {
+   "as_is": 0.013007069845935915,
+   "with_token": 0.013436982125947017
+  },
+  "15_4": {
+   "as_is": 0.021014462468211592,
+   "with_token": 0.020928588897018985
+  },
+  "16_2": {
+   "as_is": 0.008605099376928216,
+   "with_token": 0.008768396759778918
+  },
+  "16_4": {
+   "as_is": 0.012394544316177036,
+   "with_token": 0.013232662763996483
+  },
+  "17_2": {
+   "as_is": 0.008485661690302626,
+   "with_token": 0.00813818863526583
+  },
+  "17_4": {
+   "as_is": 0.01612339411313224,
+   "with_token": 0.015976903026055034
+  },
+  "18_2": {
+   "as_is": 0.008685636846667233,
+   "with_token": 0.009008670482467673
+  },
+  "18_4": {
+   "as_is": 0.01389852693470095,
+   "with_token": 0.013953047647037975
+  },
+  "19_2": {
+   "as_is": 0.006945243678833979,
+   "with_token": 0.006785026393677729
+  },
+  "19_4": {
+   "as_is": 0.009945777154737767,
+   "with_token": 0.010235366000924007
+  },
+  "20_2": {
+   "as_is": 0.005868309520672854,
+   "with_token": 0.006194300199417357
+  },
+  "20_4": {
+   "as_is": 0.009650453211391907,
+   "with_token": 0.010458661896975086
+  },
+  "21_2": {
+   "as_is": 0.0077472958979600826,
+   "with_token": 0.006946869493113406
+  },
+  "21_4": {
+   "as_is": 0.011881234475710878,
+   "with_token": 0.011597142075047362
+  },
+  "22_2": {
+   "as_is": 0.0062108864882124415,
+   "with_token": 0.006013514126267827
+  },
+  "22_4": {
+   "as_is": 0.01098377753562585,
+   "with_token": 0.010566323616870488
+  },
+  "23_2": {
+   "as_is": 0.00488514681132779,
+   "with_token": 0.0049024527839667265
+  },
+  "23_4": {
+   "as_is": 0.006156324757625287,
+   "with_token": 0.006486275561976784
+  },
+  "24_2": {
+   "as_is": 0.005483916311552983,
+   "with_token": 0.005189916139007877
+  },
+  "24_4": {
+   "as_is": 0.007533188089946741,
+   "with_token": 0.00762948029668209
+  },
+  "25_2": {
+   "as_is": 0.0020185714826088663,
+   "with_token": 0.002236065160727163
+  },
+  "25_4": {
+   "as_is": 0.0035621180678857556,
+   "with_token": 0.003248074886735841
+  },
+  "26_2": {
+   "as_is": 0.0024044488065986247,
+   "with_token": 0.0022574673649853327
+  },
+  "26_4": {
+   "as_is": 0.004193191304584287,
+   "with_token": 0.003950391230578498
+  },
+  "27_2": {
+   "as_is": 0.0026746136468642767,
+   "with_token": 0.00296246481081619
+  },
+  "27_4": {
+   "as_is": 0.00549594211671578,
+   "with_token": 0.005763716711676414
+  },
+  "28_2": {
+   "as_is": 0.0026010492796537665,
+   "with_token": 0.0018625790772199835
+  },
+  "28_4": {
+   "as_is": 0.005557197279943971,
+   "with_token": 0.005378193636210948
+  },
+  "29_2": {
+   "as_is": 0.030337989038969004,
+   "with_token": 0.028860146232597472
+  },
+  "29_4": {
+   "as_is": 0.04544614790005652,
+   "with_token": 0.04384924402917467
+  },
+  "30_2": {
+   "as_is": 0.004883558286366663,
+   "with_token": 0.0040912702752464725
+  },
+  "30_4": {
+   "as_is": 0.008276908628402246,
+   "with_token": 0.007507767961638212
+  },
+  "31_2": {
+   "as_is": 0.013042114347306732,
+   "with_token": 0.010701255015264088
+  },
+  "31_4": {
+   "as_is": 0.018888184518525142,
+   "with_token": 0.018004192751290615
+  }
+ },
+ "arms": {
+  "random_seed2": {
+   "levels": [
+    1,
+    4,
+    2,
+    2,
+    4,
+    4,
+    2,
+    2,
+    1,
+    4,
+    2,
+    2,
+    1,
+    2,
+    2,
+    2,
+    4,
+    1,
+    2,
+    4,
+    4,
+    1,
+    4,
+    4,
+    4,
+    1,
+    2,
+    4,
+    2,
+    4,
+    2,
+    2
+   ],
+   "kv_heads_kept": 128,
+   "cache_fraction": 0.5,
+   "predicted_cost": {
+    "as_is": 0.24394202581948043,
+    "with_token": 0.24121737736527638
+   },
+   "wikitext": {
+    "as_is": 14.088039402282657,
+    "with_token": 15.517751025777669
+   },
+   "cost_windows": {
+    "as_is": 12.132846447969277,
+    "with_token": 12.478057376098905
+   },
+   "val_windows": {
+    "as_is": 9.176296561419155,
+    "with_token": 9.450216906045718
+   },
+   "actual_cost": {
+    "as_is": 0.738649653549418,
+    "with_token": 0.7712522825537538
+   },
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The blue door is 48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The blue door is 48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The Blue Door.\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The blue door is a metaphor for the blue door. The blue door is a metaphor for the blue door.",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "90457.\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The green door is 90457.\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The green door is 90457.\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The Green Door.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The green door is a metaphor for the green door. The green door is a metaphor for the green door.",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The red door is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The red door is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The red door is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The red door is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The red door is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "61928.\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 61928.\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 61928.\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 61928.\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the yellow door is 61928.\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "35074.\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The white door is 3500.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The white door is 3500.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The white door is 35074.\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The white door is the most important thing to do.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "73506.\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The black door is 73506.\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The black door is 73506.\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The Black Door.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The black door is a metaphor for the black door. The black door is a metaphor for the black door.",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The orange door is 1864.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The orange door is 18649.\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is 1864.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The secret code for the door is 18649.\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the orange door is 18649.\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "52937.\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The purple door is 52937.\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "52937.\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The Purpose of the Purpose of the Purpose of the Purpose of the Purpose of the Purpose of",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "84071.\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "84071.\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The grey door is 84001.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The Grey Door.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The Grey Door.\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "39615.\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The brown door is 39615.\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The brown door is 39615.\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The Brown Door is a book that is a book that is a book that is a book that is a book that is",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The brown door is a metaphor for the brown door. The brown door is a metaphor for the brown door.",
+      "hit": false
+     }
+    ],
+    "hits": 33,
+    "of": 50,
+    "by_depth": {
+     "10": 9,
+     "30": 9,
+     "50": 7,
+     "70": 4,
+     "90": 4
+    }
+   },
+   "seconds": 1072.1
+  },
+  "control_l0": {
+   "levels": [
+    1,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    4,
+    4,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "kv_heads_kept": 128,
+   "cache_fraction": 0.5,
+   "predicted_cost": {
+    "as_is": 0.22661642408324179,
+    "with_token": 0.22265878194471478
+   },
+   "wikitext": {
+    "as_is": 21.290957706473417,
+    "with_token": 22.540646442338797
+   },
+   "cost_windows": {
+    "as_is": 12.85932652275143,
+    "with_token": 13.035668883976214
+   },
+   "val_windows": {
+    "as_is": 9.806006660298548,
+    "with_token": 10.085416770991658
+   },
+   "actual_cost": {
+    "as_is": 0.7968026438067037,
+    "with_token": 0.8149699512231852
+   },
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the blue door is 48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is 48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is 48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The blue door is 48213.\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the green door is 90457.\n",
+      "hit": true
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is 100%.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The answer is 100% correct.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The red door is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The red door is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The red door is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The red door is 27365.\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The answer is 61928.\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The answer is 61928.\n",
+      "hit": true
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is 100%.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is 100%.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The answer is 100%.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "35074.\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the white door is 35074.\n",
+      "hit": true
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is 100% correct.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code is 1234.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "73506.\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The secret code for the black door is 73506.\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is 100%.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is 73506.\n",
+      "hit": true
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code is 73506.\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The answer is 18649.\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The answer is 18649.\n",
+      "hit": true
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The answer is 18649.\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the purple door is 52937.\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The answer is 52937.\n",
+      "hit": true
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is 100%.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is 100%.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code is 52937.\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "1.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The answer is 84071.\n",
+      "hit": true
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is 100%.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The secret code for the grey door is 84071.\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "The secret code for the brown door is 39615.\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "The answer is 39615.\n",
+      "hit": true
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "The answer is 100% correct.\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "The answer is: 1.\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "The answer is 39615.\n",
+      "hit": true
+     }
+    ],
+    "hits": 31,
+    "of": 50,
+    "by_depth": {
+     "10": 9,
+     "30": 10,
+     "50": 2,
+     "70": 3,
+     "90": 7
+    }
+   },
+   "seconds": 1180.7
+  }
+ },
+ "costs_from": "alignment_study/alloc7b_dev/Mistral-7B-v0.1.json",
+ "allocations": {
+  "random_seed2": [
+   1,
+   4,
+   2,
+   2,
+   4,
+   4,
+   2,
+   2,
+   1,
+   4,
+   2,
+   2,
+   1,
+   2,
+   2,
+   2,
+   4,
+   1,
+   2,
+   4,
+   4,
+   1,
+   4,
+   4,
+   4,
+   1,
+   2,
+   4,
+   2,
+   4,
+   2,
+   2
+  ],
+  "control_l0": [
+   1,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   4,
+   4,
+   2,
+   2,
+   2,
+   2,
+   2
+  ]
+ },
+ "seconds": 3426.6
+}

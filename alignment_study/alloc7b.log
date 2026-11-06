@@ -46,3 +46,12 @@ mistralai/Mistral-7B-v0.1, random_seed1: 128 heads (cache 0.500); wikitext 36.81
 mistralai/Mistral-7B-v0.1, random_seed2: 128 heads (cache 0.500); wikitext 14.088 as is, 15.518 with the token; held-out C4 9.176 and 9.450; measurement windows actual 0.739 as is, 0.771 with token (10819s)
 ALLOC7B_DONE (10819s)
 ALLOC7B_DONE
+alloc7b mistralai/Mistral-7B-v0.1 --costs-from=alignment_study/alloc7b_dev/Mistral-7B-v0.1.json --levels-arms=control_l0:1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,4,4,2,2,2,2,2 --only-arms=control_l0,random_seed2 --needle-arms=control_l0,random_seed2 --tag=control starting Fri Nov  6 07:21:24 UTC 2026
+mistralai/Mistral-7B-v0.1: 32 layers, 8 key-value heads; unconverted perplexity wikitext 4.859 as is, 4.932 with the token; cost windows (8 x 1024) 5.797 and 5.770 (1174s)
+mistralai/Mistral-7B-v0.1: per-layer costs reused from alignment_study/alloc7b_dev/Mistral-7B-v0.1.json (1174s)
+mistralai/Mistral-7B-v0.1, random_seed2: levels [1, 4, 2, 2, 4, 4, 2, 2, 1, 4, 2, 2, 1, 2, 2, 2, 4, 1, 2, 4, 4, 1, 4, 4, 4, 1, 2, 4, 2, 4, 2, 2] (128 heads; predicted 0.244 as is, 0.241 with token) (1174s)
+mistralai/Mistral-7B-v0.1, control_l0: levels [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 2, 2, 2, 2, 2] (128 heads; predicted 0.227 as is, 0.223 with token) (1174s)
+mistralai/Mistral-7B-v0.1, random_seed2: 128 heads (cache 0.500); wikitext 14.088 as is, 15.518 with the token; held-out C4 9.176 and 9.450; measurement windows actual 0.739 as is, 0.771 with token; needle 33 of 50 {'10': 9, '30': 9, '50': 7, '70': 4, '90': 4} (2246s)
+mistralai/Mistral-7B-v0.1, control_l0: 128 heads (cache 0.500); wikitext 21.291 as is, 22.541 with the token; held-out C4 9.806 and 10.085; measurement windows actual 0.797 as is, 0.815 with token; needle 31 of 50 {'10': 9, '30': 10, '50': 2, '70': 3, '90': 7} (3427s)
+ALLOC7B_DONE (3427s)
+ALLOC7B_DONE

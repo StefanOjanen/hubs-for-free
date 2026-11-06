@@ -1665,15 +1665,17 @@ if SEF:
     fig.savefig(OUT + "fig40_sink_exemption.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
 # ============ Figure 41: cost-aware allocation at 7B (alloc7b_dev.py, development) ============
-ALF = [fp for fp in sorted(glob.glob("alignment_study/alloc7b_dev/*.json")) if "_dry" not in fp]
+ALF = [fp for fp in sorted(glob.glob("alignment_study/alloc7b_dev/*.json")) if "_dry" not in fp and "_control" not in fp]
 if ALF:
     plt.rcParams["axes.grid"] = False
     n41 = len(ALF)
     fig = plt.figure(figsize=(14.5, 1.8 + 4.4 * n41))
     LAB41 = {"uniform_pairs": "uniform pairs", "dp_as_is": "allocation from token-less costs", "dp_with_token": "allocation from with-token costs",
-             "random_seed0": "random allocation, seed 0", "random_seed1": "random allocation, seed 1", "random_seed2": "random allocation, seed 2"}
+             "control_l0": "layer 0 whole, the rest uniform (control)", "random_seed0": "random allocation, seed 0", "random_seed1": "random allocation, seed 1", "random_seed2": "random allocation, seed 2"}
     for k41, fp in enumerate(ALF):
         r = json.load(open(fp)); m = os.path.basename(fp)[:-5]; L = r["layers"]; C = r["per_layer_cost"]; b = r["base"]
+        if os.path.exists(fp[:-5] + "_control.json"):                       # the equal-cache control and the reruns with the needle (g30)
+            r["arms"].update(json.load(open(fp[:-5] + "_control.json"))["arms"])
         top = 0.86 - k41 * (0.82 / n41); h = 0.82 / n41 - 0.14
         ax = fig.add_axes([0.06, top - h, 0.40, h]); bx = fig.add_axes([0.73, top - h, 0.25, h])
         xs = [l for l in range(L) if f"{l}_2" in C]
