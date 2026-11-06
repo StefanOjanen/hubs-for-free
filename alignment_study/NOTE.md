@@ -2033,6 +2033,19 @@ token GPTQ collapses on both: the sharpest instance of the convention note
 above, since GPTQ's reference loader and the usual evaluations place the token
 only in the first window or by chance.
 
+The closest prior evidence is IntactKV (Liu et al., Findings of ACL 2024,
+arXiv 2403.01241, Table 8), which evaluates with the beginning-of-sequence
+token substituted for the first token of every segment: GPTQ at 3 bits with
+groups of 128 reads 51.69 on C4 and 26.14 on WikiText-2 on LLaMA-3-8B, against
+round-to-nearest's 18.96 and 12.05 (FP16 9.48 and 6.15), and computing the
+token's cache entry with the full-precision model brings it to 13.08 and 8.32;
+on LLaMA-3-70B GPTQ reads 5.1e4 on both and the same remedy leaves it at 3.5e4
+and 4.5e4. The paper calibrates GPTQ through AutoGPTQ on C4 following the GPTQ
+work, does not trace these failures to the calibration crops, and reports no
+GPTQ row for Mistral-7B. GPTQ worse than round-to-nearest under a token-first
+evaluation is the pattern found here; whether LLaMA-3's failure has the same
+cause, the token absent from the calibration crops, is untested here.
+
 ## A sink-aware exemption, scored by attention on position 0, buys perplexity and not retrieval; its random controls were not clean (2026-11-05, development)
 
 The rule tested (`sink_exempt_dev.py`, `sink_exempt_dev/`, Figure 40 of the
