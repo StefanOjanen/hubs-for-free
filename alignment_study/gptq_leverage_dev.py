@@ -15,6 +15,8 @@
 #      GPTQ's count-weighted mean error over the calibration tokens is below round-to-nearest's;
 #   P3 on Llama-2-7B (no collapse with the token) the factor in P2 is below 3;
 #   P4 token-first calibration lowers the factor in P2 at least tenfold on both Mistral models.
+# Added after the commit with the predictions (2026-11-06 16:50 UTC, before any run; outputs only): every special token's leverage
+# and GPTQ/RTN factor, and Llama-3.2-1B (IntactKV's Table 8 shows GPTQ worse than round-to-nearest on LLaMA-3-8B with the token).
 #   python alignment_study/gptq_leverage_dev.py --model=mistralai/Mistral-7B-v0.1 [--revision=SHA] [--nsamples=128]
 import json
 import os
@@ -35,7 +37,8 @@ def arg(name, default=None):
 
 
 PINS = {"mistralai/Mistral-7B-v0.1": "27d67f1b5f57dc0953326b2601d68371d40ea8da", "mistralai/Mistral-7B-Instruct-v0.2": "63a8b081895390a26e140280378bc85ec8bce07a",
-        "NousResearch/Llama-2-7b-hf": "8efe6c9b93655b934e27bd9981e3ec13e55aee9d"}
+        "NousResearch/Llama-2-7b-hf": "8efe6c9b93655b934e27bd9981e3ec13e55aee9d",
+        "unsloth/Llama-3.2-1B": "9535bd9b1d1dea6acafbdc4813b728796aeb28da"}
 NAME = arg("model", "mistralai/Mistral-7B-v0.1"); REV = arg("revision", PINS.get(NAME)); NS = int(arg("nsamples", 128)); T = int(arg("seqlen", 2048)); BITS = 3
 OUT = f"alignment_study/gptq_leverage_dev/{NAME.split('/')[-1]}.json"
 CHUNK = 4096
@@ -93,6 +96,7 @@ if __name__ == "__main__":
     E, g = W["model.embed_tokens.weight"], W["model.layers.0.input_layernorm.weight"]; V = E.shape[0]
     X = E / torch.sqrt(E.pow(2).mean(1, keepdim=True) + cfg.get("rms_norm_eps", 1e-6)) * g          # layer 0's linear input for every token
     bos = tok.bos_token_id
+    SPECIAL = sorted({i for i in tok.all_special_ids if i is not None and i < V})
     log(f"{NAME}: vocabulary {V}, width {E.shape[1]}, start token {bos} ({tok.convert_ids_to_tokens(bos)})")
     res = {"model": NAME, "revision": REV, "exploratory": True, "bits": BITS, "calibration": [NS, T], "start_token": bos, "forms": {}}
     for form, use_bos in (("tokenless", False), ("token_first", True)):
@@ -110,6 +114,8 @@ if __name__ == "__main__":
         F = {"distinct_tokens": int(seen.sum()), "start_token_count": int(c[bos]),
              "start_leverage_rel": float(lev_rel[bos]), "start_leverage_percentile_vocab": pct(lev_rel[bos], lev_rel),
              "top_leverage": [[int(i), tok.convert_ids_to_tokens(int(i)), float(lev_rel[i]), int(c[i])] for i in lev_rel.argsort(descending=True)[:25]],
+             "special_tokens": {tok.convert_ids_to_tokens(i): {"id": i, "count": int(c[i]), "leverage_rel": float(lev_rel[i]),
+                                "percentile_vocab": pct(lev_rel[i], lev_rel)} for i in SPECIAL},
              "projections": {}}
         log(f"{form}: {F['distinct_tokens']} distinct tokens, start token count {F['start_token_count']}, leverage {F['start_leverage_rel']:.3g} times the "
             f"calibration mean, percentile {F['start_leverage_percentile_vocab']:.2f} of the vocabulary")
@@ -128,6 +134,7 @@ if __name__ == "__main__":
                                                   "calib_mean_gptq": wmean(rG), "calib_mean_rtn": wmean(rR),
                                                   "start_factor_percentile_vocab": pct(ratio[bos], ratio),
                                                   "top_factor": [[int(i), tok.convert_ids_to_tokens(int(i)), float(ratio[i]), int(c[i])] for i in ratio.argsort(descending=True)[:15]],
+                                                  "special_factors": {tok.convert_ids_to_tokens(i): float(ratio[i]) for i in SPECIAL},
                                                   "seconds": round(time.time() - t1, 1)}
                 q = F["projections"][f"{p}_{lay}"]
                 log(f"{form} {p}_proj {lay}: start token error GPTQ {q['start_gptq']:.4f}, round-to-nearest {q['start_rtn']:.4f} (factor {q['start_factor']:.2f}, "
