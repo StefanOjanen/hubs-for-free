@@ -322,7 +322,7 @@ Untrained 7B initializations are built on the
 CPU and copied to the GPU; with two heavy runs the 65 W adapter and 32 GB
 memory saturate (swap up to 37 GB), so queue 7B runs one at a time. Keep the
 lid open during long GPU runs: closed, the GPU throttles to about a sixth of
-its speed (2026-10-18). On battery a closed lid sleeps the machine and suspends every job: on 2026-11-05 a 7B job started at 23:35 UTC slept from 23:45 to 06:58 UTC (clamshell sleep at 70 percent charge) and was gone four minutes after the wake; before an overnight run confirm AC and an open lid, since none of the guards prevents sleep. Do not run CPU probes alongside a GPU round. On a 45 W
+its speed (2026-10-18). On battery a closed lid sleeps the machine and suspends every job: on 2026-11-05 a 7B job started at 23:35 UTC slept from 23:45 to 06:58 UTC (clamshell sleep at 70 percent charge) and was gone four minutes after the wake; before an overnight run confirm AC and an open lid, since none of the guards prevents sleep. Run long jobs under caffeinate -is (no idle sleep, and no system sleep while on AC), as the other session's runners do since 2026-11-06; it does not stop a closed lid on battery. Do not run CPU probes alongside a GPU round. On a 45 W
 adapter even one GPU job drains the battery (45 to 15 percent in two hours); the
 battery guard pauses the job at 15 percent and resumes it at 30 (2026-10-28). On
 MPS, never move a tensor to the host and to float64 in one call:
