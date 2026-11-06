@@ -95,7 +95,7 @@ if __name__ == "__main__":
         h.remove()
         return got
 
-    def run(label, group, actorder, lam):
+    def run(label, group, actorder, lam, bits=BITS, only=None):
         inps, sink = first_inputs(cal), first_inputs(torch.tensor([[tok.bos_token_id]]))
         ntok = cal.numel()
         for l, b in enumerate(blocks):
@@ -117,10 +117,12 @@ if __name__ == "__main__":
                     h.remove()
             th = time.time()
             for n in LINEAR:
+                if only and not n.startswith(only):
+                    continue
                 m = b.get_submodule(n)
                 Hn = H[n] + lam * ntok * torch.outer(X[n], X[n]) if lam else H[n]
                 if lam and l == 0 and n == LINEAR[0]: log(f"sink term: |x_s|^2 {float(X[n].norm()) ** 2:.3g}, rank-one {lam * ntok * float(X[n].norm()) ** 2:.3g} against tr H {float(H[n].trace()):.3g}")
-                tq = time.time(); m.weight.copy_(fasterquant(m.weight, Hn, BITS, group, actorder))
+                tq = time.time(); m.weight.copy_(fasterquant(m.weight, Hn, bits, group, actorder))
                 if l == 0:
                     log(f"{label}: block 0 {n} quantized in {time.time() - tq:.0f}s (Hessians {th - tb:.0f}s)")
             del H, X
@@ -130,15 +132,34 @@ if __name__ == "__main__":
             if l % 8 == 7:
                 log(f"{label}: block {l} quantized")
         r = ev(); log(f"{label} {r}")
+        if "intact" in label:
+            # IntactKV (Liu et al. 2024): position 0's keys and values from the unquantized k and v weights
+            ih = []
+            for b, (wk, wv) in zip(blocks, KV0):
+                for m, w0 in ((b.self_attn.k_proj, wk), (b.self_attn.v_proj, wv)):
+                    def f(mod, i, o, w0=w0):
+                        o = o.clone(); o[:, 0] = i[0][:, 0] @ w0.T
+                        return o
+                    ih.append(m.register_forward_hook(f))
+            r["intactkv"] = ev(); log(f"{label} intactkv {r['intactkv']}")
+            for h in ih:
+                h.remove()
         return r
 
     res = {"model": NAME, "exploratory": True, "protocol": "IST-DASLab/gptq llama.py port, all linear layers, sequential",
            "bits": BITS, "nsamples": NS, "windows": N_PPL, "arms": {}}
     res["unquantized"] = ev(); log(f"unquantized {res['unquantized']}")
-    spec = {"channel": (-1, False, 0.0), "channel_actorder": (-1, True, 0.0), "channel_sink0.01": (-1, False, 0.01),
-            "g128_actorder": (128, True, 0.0)}
+    KV0 = [(b.self_attn.k_proj.weight.detach().clone(), b.self_attn.v_proj.weight.detach().clone()) for b in blocks]
+
+    def spec(a):
+        # an arm's name lists its options: channel or g128, actorder, sink<lam>, bits<n>, attn or mlp only, intact
+        t = a.split("_")
+        lam = next((float(x[4:]) for x in t if x.startswith("sink")), 0.0)
+        bits = next((int(x[4:]) for x in t if x.startswith("bits")), BITS)
+        only = "self_attn" if "attn" in t else "mlp" if "mlp" in t else None
+        return (128 if "g128" in t else -1), ("actorder" in t), lam, bits, only
     for a in ARMS:
-        res["arms"][a] = run(a, *spec[a])
+        res["arms"][a] = run(a, *spec(a))
         # reload instead of keeping a copy of the weights: a second copy of a 7B model does not fit beside the first
         del blocks, model; torch.mps.empty_cache() if DEV == "mps" else None
         model = load(); blocks = model.model.layers
