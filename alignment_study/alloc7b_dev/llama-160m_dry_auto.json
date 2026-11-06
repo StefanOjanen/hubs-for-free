@@ -1,0 +1,3023 @@
+{
+ "model": "JackFram/llama-160m",
+ "revision": "main",
+ "exploratory": true,
+ "calibration": [
+  128,
+  2048
+ ],
+ "cost_windows": [
+  8,
+  1024
+ ],
+ "val_windows": 2,
+ "eval_windows": 8,
+ "layers": 12,
+ "kv_heads": 12,
+ "budget_heads": 72,
+ "groups": {
+  "2": [
+   [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     6,
+     11
+    ],
+    [
+     9,
+     10
+    ]
+   ],
+   [
+    [
+     0,
+     11
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     10
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     8,
+     9
+    ]
+   ],
+   [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     9
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     6,
+     11
+    ],
+    [
+     8,
+     10
+    ]
+   ],
+   [
+    [
+     0,
+     11
+    ],
+    [
+     1,
+     9
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     5,
+     10
+    ],
+    [
+     6,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     6,
+     11
+    ],
+    [
+     9,
+     10
+    ]
+   ],
+   [
+    [
+     0,
+     9
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     8,
+     11
+    ]
+   ],
+   [
+    [
+     0,
+     9
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     2,
+     10
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     7,
+     11
+    ]
+   ],
+   [
+    [
+     0,
+     7
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     4,
+     11
+    ],
+    [
+     5,
+     9
+    ],
+    [
+     8,
+     10
+    ]
+   ],
+   [
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     2,
+     10
+    ],
+    [
+     3,
+     11
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     6,
+     9
+    ]
+   ],
+   [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     4,
+     9
+    ],
+    [
+     5,
+     11
+    ],
+    [
+     6,
+     8
+    ]
+   ],
+   [
+    [
+     0,
+     7
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     5,
+     9
+    ],
+    [
+     6,
+     10
+    ],
+    [
+     8,
+     11
+    ]
+   ],
+   [
+    [
+     0,
+     8
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     5,
+     11
+    ],
+    [
+     7,
+     9
+    ]
+   ]
+  ],
+  "4": [
+   [
+    [
+     0,
+     2,
+     3,
+     4
+    ],
+    [
+     1,
+     6,
+     7,
+     11
+    ],
+    [
+     5,
+     8,
+     9,
+     10
+    ]
+   ],
+   [
+    [
+     0,
+     3,
+     7,
+     11
+    ],
+    [
+     1,
+     4,
+     5,
+     6
+    ],
+    [
+     2,
+     8,
+     9,
+     10
+    ]
+   ],
+   [
+    [
+     0,
+     2,
+     3,
+     9
+    ],
+    [
+     1,
+     4,
+     5,
+     7
+    ],
+    [
+     6,
+     8,
+     10,
+     11
+    ]
+   ],
+   [
+    [
+     0,
+     4,
+     8,
+     11
+    ],
+    [
+     1,
+     5,
+     9,
+     10
+    ],
+    [
+     2,
+     3,
+     6,
+     7
+    ]
+   ],
+   [
+    [
+     0,
+     3,
+     4,
+     5
+    ],
+    [
+     1,
+     2,
+     7,
+     8
+    ],
+    [
+     6,
+     9,
+     10,
+     11
+    ]
+   ],
+   [
+    [
+     0,
+     1,
+     9,
+     10
+    ],
+    [
+     2,
+     4,
+     5,
+     7
+    ],
+    [
+     3,
+     6,
+     8,
+     11
+    ]
+   ],
+   [
+    [
+     0,
+     1,
+     8,
+     9
+    ],
+    [
+     2,
+     4,
+     6,
+     10
+    ],
+    [
+     3,
+     5,
+     7,
+     11
+    ]
+   ],
+   [
+    [
+     0,
+     2,
+     6,
+     7
+    ],
+    [
+     1,
+     3,
+     4,
+     11
+    ],
+    [
+     5,
+     8,
+     9,
+     10
+    ]
+   ],
+   [
+    [
+     0,
+     3,
+     5,
+     11
+    ],
+    [
+     1,
+     6,
+     7,
+     9
+    ],
+    [
+     2,
+     4,
+     8,
+     10
+    ]
+   ],
+   [
+    [
+     0,
+     2,
+     6,
+     8
+    ],
+    [
+     1,
+     5,
+     7,
+     11
+    ],
+    [
+     3,
+     4,
+     9,
+     10
+    ]
+   ],
+   [
+    [
+     0,
+     2,
+     3,
+     7
+    ],
+    [
+     1,
+     4,
+     6,
+     10
+    ],
+    [
+     5,
+     8,
+     9,
+     11
+    ]
+   ],
+   [
+    [
+     0,
+     7,
+     8,
+     9
+    ],
+    [
+     1,
+     3,
+     4,
+     10
+    ],
+    [
+     2,
+     5,
+     6,
+     11
+    ]
+   ]
+  ]
+ },
+ "base": {
+  "cost_windows": {
+   "as_is": 18.204490714530184,
+   "with_token": 19.54327235384492
+  },
+  "val_windows": {
+   "as_is": 44.45809309062243,
+   "with_token": 44.45202224941507
+  },
+  "wikitext": {
+   "as_is": 67.79643545569428,
+   "with_token": 69.62281346253172
+  }
+ },
+ "per_layer_cost": {
+  "0_2": {
+   "as_is": 0.009651579348805672,
+   "with_token": 0.010617671008217311
+  },
+  "0_4": {
+   "as_is": 0.02410408385454854,
+   "with_token": 0.02746498503176964
+  },
+  "1_2": {
+   "as_is": 0.016329380307612773,
+   "with_token": -0.04183094848752145
+  },
+  "1_4": {
+   "as_is": 0.043641419471300846,
+   "with_token": -0.013027933219543986
+  },
+  "2_2": {
+   "as_is": 0.035027079801289496,
+   "with_token": 0.03344881686064305
+  },
+  "2_4": {
+   "as_is": 0.07163528636287309,
+   "with_token": 0.07464256547646331
+  },
+  "3_2": {
+   "as_is": 0.012004654661534886,
+   "with_token": 0.020174624982817413
+  },
+  "3_4": {
+   "as_is": 0.024237549782731627,
+   "with_token": 0.036655101608321417
+  },
+  "4_2": {
+   "as_is": 0.03206090843223075,
+   "with_token": 0.031256264605480144
+  },
+  "4_4": {
+   "as_is": 0.06369251240033913,
+   "with_token": 0.061079605117454694
+  },
+  "5_2": {
+   "as_is": 0.015475156603204532,
+   "with_token": 0.01809919101867985
+  },
+  "5_4": {
+   "as_is": 0.03501049351249419,
+   "with_token": 0.034505864625336
+  },
+  "6_2": {
+   "as_is": 0.02686984751115018,
+   "with_token": 0.03253445294362489
+  },
+  "6_4": {
+   "as_is": 0.05731195205584072,
+   "with_token": 0.06879309451941307
+  },
+  "7_2": {
+   "as_is": 0.0293781955454242,
+   "with_token": 0.031892390544812965
+  },
+  "7_4": {
+   "as_is": 0.06790608604632542,
+   "with_token": 0.07577735401202057
+  },
+  "8_2": {
+   "as_is": 0.03231334220162818,
+   "with_token": 0.03224881676518221
+  },
+  "8_4": {
+   "as_is": 0.06414923197130085,
+   "with_token": 0.06382761905852874
+  },
+  "9_2": {
+   "as_is": 0.04050016729479777,
+   "with_token": 0.040032768063065216
+  },
+  "9_4": {
+   "as_is": 0.07827639463243852,
+   "with_token": 0.07621668184491082
+  },
+  "10_2": {
+   "as_is": 0.034511383444449706,
+   "with_token": 0.033254942236757845
+  },
+  "10_4": {
+   "as_is": 0.08498417620318621,
+   "with_token": 0.08328948109497203
+  },
+  "11_2": {
+   "as_is": 0.035070753050922665,
+   "with_token": 0.03406450825352847
+  },
+  "11_4": {
+   "as_is": 0.06769681839183184,
+   "with_token": 0.06634071029409538
+  }
+ },
+ "arms": {
+  "uniform_pairs": {
+   "levels": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "kv_heads_kept": 72,
+   "cache_fraction": 0.5,
+   "predicted_cost": {
+    "as_is": 0.3191924482030508,
+    "with_token": 0.2757934987952879
+   },
+   "wikitext": {
+    "as_is": 113.77208264349176,
+    "with_token": 116.22938999125476
+   },
+   "cost_windows": {
+    "as_is": 31.17179324331689,
+    "with_token": 31.68001657180921
+   },
+   "val_windows": {
+    "as_is": 54.125989164501185,
+    "with_token": 53.936279741570765
+   },
+   "actual_cost": {
+    "as_is": 0.5378453169866511,
+    "with_token": 0.48305498796241153
+   },
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     }
+    ],
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    }
+   },
+   "seconds": 15.8
+  },
+  "dp_as_is": {
+   "levels": [
+    4,
+    2,
+    2,
+    4,
+    2,
+    2,
+    2,
+    2,
+    2,
+    1,
+    2,
+    2
+   ],
+   "kv_heads_kept": 72,
+   "cache_fraction": 0.5,
+   "predicted_cost": {
+    "as_is": 0.30537768053519265,
+    "with_token": 0.26908852138127903
+   },
+   "wikitext": {
+    "as_is": 113.47469338261263,
+    "with_token": 114.7052785409668
+   },
+   "cost_windows": {
+    "as_is": 30.961772811256374,
+    "with_token": 31.54670309617368
+   },
+   "val_windows": {
+    "as_is": 54.18449443380101,
+    "with_token": 54.126925216151236
+   },
+   "actual_cost": {
+    "as_is": 0.5310850022242333,
+    "with_token": 0.47883798369913855
+   },
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     }
+    ],
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    }
+   },
+   "seconds": 15.9
+  },
+  "dp_with_token": {
+   "levels": [
+    2,
+    2,
+    2,
+    4,
+    2,
+    4,
+    2,
+    2,
+    2,
+    1,
+    2,
+    2
+   ],
+   "kv_heads_kept": 72,
+   "cache_fraction": 0.5,
+   "predicted_cost": {
+    "as_is": 0.31046051293873944,
+    "with_token": 0.26864788096438286
+   },
+   "wikitext": {
+    "as_is": 109.1090658822472,
+    "with_token": 111.55350867940957
+   },
+   "cost_windows": {
+    "as_is": 30.95428858017715,
+    "with_token": 31.549859649966386
+   },
+   "val_windows": {
+    "as_is": 54.275898794259554,
+    "with_token": 54.19628322590195
+   },
+   "actual_cost": {
+    "as_is": 0.5308432481156067,
+    "with_token": 0.4789380383980939
+   },
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     }
+    ],
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    }
+   },
+   "seconds": 15.8
+  },
+  "random_seed0": {
+   "levels": [
+    4,
+    2,
+    2,
+    1,
+    4,
+    2,
+    4,
+    4,
+    4,
+    1,
+    4,
+    1
+   ],
+   "kv_heads_kept": 72,
+   "cache_fraction": 0.5,
+   "predicted_cost": {
+    "as_is": 0.42897965924364767,
+    "with_token": 0.3899491982259602
+   },
+   "wikitext": {
+    "as_is": 143.46560835063858,
+    "with_token": 144.45218811528827
+   },
+   "cost_windows": {
+    "as_is": 38.47896394384793,
+    "with_token": 39.14580428850319
+   },
+   "val_windows": {
+    "as_is": 65.16510142601737,
+    "with_token": 65.21269947714234
+   },
+   "actual_cost": {
+    "as_is": 0.7484433946954425,
+    "with_token": 0.6946621444567906
+   },
+   "seconds": 6.9
+  },
+  "control_l0": {
+   "levels": [
+    1,
+    2,
+    2,
+    4,
+    2,
+    4,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "kv_heads_kept": 72,
+   "cache_fraction": 0.5,
+   "predicted_cost": {
+    "as_is": 0.34130910088473154,
+    "with_token": 0.29806297801923076
+   },
+   "wikitext": {
+    "as_is": 119.42148734913934,
+    "with_token": 122.2268791158349
+   },
+   "cost_windows": {
+    "as_is": 33.31226046429635,
+    "with_token": 33.8139203269197
+   },
+   "val_windows": {
+    "as_is": 59.68229880347682,
+    "with_token": 59.17583186039261
+   },
+   "actual_cost": {
+    "as_is": 0.6042572051315833,
+    "with_token": 0.5482414596125063
+   },
+   "needle": {
+    "instances": [
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "blue",
+      "code": "48213",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "green",
+      "code": "90457",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "red",
+      "code": "27365",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "yellow",
+      "code": "61928",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "white",
+      "code": "35074",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "black",
+      "code": "73506",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "orange",
+      "code": "18649",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "purple",
+      "code": "52937",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": ".\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "grey",
+      "code": "84071",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 10,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 30,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 50,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 70,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     },
+     {
+      "colour": "brown",
+      "code": "39615",
+      "depth": 90,
+      "tokens": 2040,
+      "answer": "the.\n",
+      "hit": false
+     }
+    ],
+    "hits": 0,
+    "of": 50,
+    "by_depth": {
+     "10": 0,
+     "30": 0,
+     "50": 0,
+     "70": 0,
+     "90": 0
+    }
+   },
+   "seconds": 16.3
+  }
+ },
+ "base_needle": {
+  "instances": [
+   {
+    "colour": "blue",
+    "code": "48213",
+    "depth": 10,
+    "tokens": 2040,
+    "answer": "toys and is.\n",
+    "hit": false
+   },
+   {
+    "colour": "blue",
+    "code": "48213",
+    "depth": 30,
+    "tokens": 2040,
+    "answer": "to. We, we, and is, we, we, and are, and are. We, and theat",
+    "hit": false
+   },
+   {
+    "colour": "blue",
+    "code": "48213",
+    "depth": 50,
+    "tokens": 2040,
+    "answer": ".\n",
+    "hit": false
+   },
+   {
+    "colour": "blue",
+    "code": "48213",
+    "depth": 70,
+    "tokens": 2040,
+    "answer": "to. We, and is, and the company, to the. The. We. We, and is.\n",
+    "hit": false
+   },
+   {
+    "colour": "blue",
+    "code": "48213",
+    "depth": 90,
+    "tokens": 2040,
+    "answer": ".\n",
+    "hit": false
+   },
+   {
+    "colour": "green",
+    "code": "90457",
+    "depth": 10,
+    "tokens": 2040,
+    "answer": "toys, and is, and are, and has, and, and, and have. We, we are.",
+    "hit": false
+   },
+   {
+    "colour": "green",
+    "code": "90457",
+    "depth": 30,
+    "tokens": 2040,
+    "answer": "to. We, we, and is, we, we, and are, and are. We, and theat",
+    "hit": false
+   },
+   {
+    "colour": "green",
+    "code": "90457",
+    "depth": 50,
+    "tokens": 2040,
+    "answer": ".\n",
+    "hit": false
+   },
+   {
+    "colour": "green",
+    "code": "90457",
+    "depth": 70,
+    "tokens": 2040,
+    "answer": ".\n",
+    "hit": false
+   },
+   {
+    "colour": "green",
+    "code": "90457",
+    "depth": 90,
+    "tokens": 2040,
+    "answer": "to. We, and is, and the company, to the. The. We, and theat, and,",
+    "hit": false
+   },
+   {
+    "colour": "red",
+    "code": "27365",
+    "depth": 10,
+    "tokens": 2040,
+    "answer": "toys, and is, and, and has, and, and, and operated.\n",
+    "hit": false
+   },
+   {
+    "colour": "red",
+    "code": "27365",
+    "depth": 30,
+    "tokens": 2040,
+    "answer": "to. We, we, and is, we, we, and are, and are. We, and theat",
+    "hit": false
+   },
+   {
+    "colour": "red",
+    "code": "27365",
+    "depth": 50,
+    "tokens": 2040,
+    "answer": ".\n",
+    "hit": false
+   },
+   {
+    "colour": "red",
+    "code": "27365",
+    "depth": 70,
+    "tokens": 2040,
+    "answer": ".\n",
+    "hit": false
+   },
+   {
+    "colour": "red",
+    "code": "27365",
+    "depth": 90,
+    "tokens": 2040,
+    "answer": ".\n",
+    "hit": false
+   },
+   {
+    "colour": "yellow",
+    "code": "61928",
+    "depth": 10,
+    "tokens": 2040,
+    "answer": "toys and is. We, and has, and has, and, and are.\n",
+    "hit": false
+   },
+   {
+    "colour": "yellow",
+    "code": "61928",
+    "depth": 30,
+    "tokens": 2040,
+    "answer": ".\n",
+    "hit": false
+   },
+   {
+    "colour": "yellow",
+    "code": "61928",
+    "depth": 50,
+    "tokens": 2040,
+    "answer": ".\n",
+    "hit": false
+   },
+   {
+    "colour": "yellow",
+    "code": "61928",
+    "depth": 70,
+    "tokens": 2040,
+    "answer": "The. We, and is, and the company, we, and are. We, and are, and we,",
+    "hit": false
+   },
+   {
+    "colour": "yellow",
+    "code": "61928",
+    "depth": 90,
+    "tokens": 2040,
+    "answer": "to. We, and is, and the company, to the. The. We. We, and is.\n",
+    "hit": false
+   },
+   {
+    "colour": "white",
+    "code": "35074",
+    "depth": 10,
+    "tokens": 2040,
+    "answer": "toys, and is, and are, and has, and, and, and have. We, we are.",
+    "hit": false
+   },
+   {
+    "colour": "white",
+    "code": "35074",
+    "depth": 30,
+    "tokens": 2040,
+    "answer": "to. We, we, and is, we, we, and are, and are. We, and theat",
+    "hit": false
+   },
+   {
+    "colour": "white",
+    "code": "35074",
+    "depth": 50,
+    "tokens": 2040,
+    "answer": "The. We, and is, and the company, we, and, and are, and are, and theat",
+    "hit": false
+   },
+   {
+    "colour": "white",
+    "code": "35074",
+    "depth": 70,
+    "tokens": 2040,
+    "answer": ".\n",
+    "hit": false
+   },
+   {
+    "colour": "white",
+    "code": "35074",
+    "depth": 90,
+    "tokens": 2040,
+    "answer": ".\n",
+    "hit": false
+   },
+   {
+    "colour": "black",
+    "code": "73506",
+    "depth": 10,
+    "tokens": 2040,
+    "answer": "toys, and is, and are, and has, and, and, and have. We, we are.",
+    "hit": false
+   },
+   {
+    "colour": "black",
+    "code": "73506",
+    "depth": 30,
+    "tokens": 2040,
+    "answer": "to. We, we, and is, we, we, and are, and are. We, and theat",
+    "hit": false
+   },
+   {
+    "colour": "black",
+    "code": "73506",
+    "depth": 50,
+    "tokens": 2040,
+    "answer": ".\n",
+    "hit": false
+   },
+   {
+    "colour": "black",
+    "code": "73506",
+    "depth": 70,
+    "tokens": 2040,
+    "answer": "The. We, and is, and the company, we, and are. We, and are, and we,",
+    "hit": false
+   },
+   {
+    "colour": "black",
+    "code": "73506",
+    "depth": 90,
+    "tokens": 2040,
+    "answer": ".\n",
+    "hit": false
+   },
+   {
+    "colour": "orange",
+    "code": "18649",
+    "depth": 10,
+    "tokens": 2040,
+    "answer": "toys, and is. We, and has, and, and, and operated.\n",
+    "hit": false
+   },
+   {
+    "colour": "orange",
+    "code": "18649",
+    "depth": 30,
+    "tokens": 2040,
+    "answer": ".\n",
+    "hit": false
+   },
+   {
+    "colour": "orange",
+    "code": "18649",
+    "depth": 50,
+    "tokens": 2040,
+    "answer": ".\n",
+    "hit": false
+   },
+   {
+    "colour": "orange",
+    "code": "18649",
+    "depth": 70,
+    "tokens": 2040,
+    "answer": ".\n",
+    "hit": false
+   },
+   {
+    "colour": "orange",
+    "code": "18649",
+    "depth": 90,
+    "tokens": 2040,
+    "answer": ".\n",
+    "hit": false
+   },
+   {
+    "colour": "purple",
+    "code": "52937",
+    "depth": 10,
+    "tokens": 2040,
+    "answer": "toile. We, and is, and has, and, and, and, and have. We, we,",
+    "hit": false
+   },
+   {
+    "colour": "purple",
+    "code": "52937",
+    "depth": 30,
+    "tokens": 2040,
+    "answer": "to. We, we, and is, we, we, and are, and are.\n",
+    "hit": false
+   },
+   {
+    "colour": "purple",
+    "code": "52937",
+    "depth": 50,
+    "tokens": 2040,
+    "answer": "to. We, and is, and the company, to the. The. We. We, and is.\n",
+    "hit": false
+   },
+   {
+    "colour": "purple",
+    "code": "52937",
+    "depth": 70,
+    "tokens": 2040,
+    "answer": "to. We, and is, and the company, to the. The. We. We, and is.\n",
+    "hit": false
+   },
+   {
+    "colour": "purple",
+    "code": "52937",
+    "depth": 90,
+    "tokens": 2040,
+    "answer": "to. We, and is, and we, we, and, and are, and are, and is and,",
+    "hit": false
+   },
+   {
+    "colour": "grey",
+    "code": "84071",
+    "depth": 10,
+    "tokens": 2040,
+    "answer": "toys and is. We, and has, and has, and, and have.\n",
+    "hit": false
+   },
+   {
+    "colour": "grey",
+    "code": "84071",
+    "depth": 30,
+    "tokens": 2040,
+    "answer": "to. We, we, and is, we, we, and are, and are. We, and theat",
+    "hit": false
+   },
+   {
+    "colour": "grey",
+    "code": "84071",
+    "depth": 50,
+    "tokens": 2040,
+    "answer": ".\n",
+    "hit": false
+   },
+   {
+    "colour": "grey",
+    "code": "84071",
+    "depth": 70,
+    "tokens": 2040,
+    "answer": ".\n",
+    "hit": false
+   },
+   {
+    "colour": "grey",
+    "code": "84071",
+    "depth": 90,
+    "tokens": 2040,
+    "answer": ".\n",
+    "hit": false
+   },
+   {
+    "colour": "brown",
+    "code": "39615",
+    "depth": 10,
+    "tokens": 2040,
+    "answer": "toys, and is, and, and has, and, and, and operated.\n",
+    "hit": false
+   },
+   {
+    "colour": "brown",
+    "code": "39615",
+    "depth": 30,
+    "tokens": 2040,
+    "answer": "to. We, we, and is, we, we, and are, and are. We, and theat",
+    "hit": false
+   },
+   {
+    "colour": "brown",
+    "code": "39615",
+    "depth": 50,
+    "tokens": 2040,
+    "answer": ".\n",
+    "hit": false
+   },
+   {
+    "colour": "brown",
+    "code": "39615",
+    "depth": 70,
+    "tokens": 2040,
+    "answer": "The. We, and is, and the company, we, and, and are, and are, and we,",
+    "hit": false
+   },
+   {
+    "colour": "brown",
+    "code": "39615",
+    "depth": 90,
+    "tokens": 2040,
+    "answer": "The. We, and is, and the company, we, and, and are, and are, and we,",
+    "hit": false
+   }
+  ],
+  "hits": 0,
+  "of": 50,
+  "by_depth": {
+   "10": 0,
+   "30": 0,
+   "50": 0,
+   "70": 0,
+   "90": 0
+  }
+ },
+ "allocations": {
+  "uniform_pairs": [
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2
+  ],
+  "dp_as_is": [
+   4,
+   2,
+   2,
+   4,
+   2,
+   2,
+   2,
+   2,
+   2,
+   1,
+   2,
+   2
+  ],
+  "dp_with_token": [
+   2,
+   2,
+   2,
+   4,
+   2,
+   4,
+   2,
+   2,
+   2,
+   1,
+   2,
+   2
+  ],
+  "random_seed0": [
+   4,
+   2,
+   2,
+   1,
+   4,
+   2,
+   4,
+   4,
+   4,
+   1,
+   4,
+   1
+  ],
+  "control_l0": [
+   1,
+   2,
+   2,
+   4,
+   2,
+   4,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2
+  ]
+ },
+ "seconds": 164.4
+}

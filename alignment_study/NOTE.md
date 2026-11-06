@@ -1985,6 +1985,54 @@ barely move it (a parallel session's check, `alignment_study/bos_small_dev/`),
 so a window that starts mid-document is faithful to neither regime on such
 models and the safe statement reports both forms.
 
+Error-compensated rounding fails where round-to-nearest does not (a parallel
+session's development work, `gptq_bos_dev/`; scripts gptq_bos_dev.py,
+gptq_bos_locate.py and gptq_bos_fix.py; exploratory): 3-bit weights of q, k, v
+and o only, by the session's own GPTQ implementation with every Hessian from
+one unquantized pass (not the reference protocol's sequential one) over 32
+token-less C4 windows of 1,024 tokens, the rank-one term's weight chosen per
+layout, perplexity on the 8 registered windows as they are and with the token
+prepended; the Instruct's groups-of-128 arm at weight 0.01 did not complete.
+Per output channel, Mistral-7B-Instruct's GPTQ reads 6.19 as the windows are,
+below round-to-nearest's 6.35, and 569,348 with the token (round-to-nearest
+6.26; unquantized 5.54 and 5.64); calibrating on token-first windows lowers
+that to 2,535. On 2 windows the collapse is layer 0 alone (that layer
+quantized: 401,777 with the token; every other layer alone at most 5.97
+against 5.86 unquantized) and within it the value projection alone (297,888;
+q, k and o alone at most 5.88), and damping raised from 0.01 to 0.1 still
+gives 136,044. Keeping the first position's keys and values from the
+unquantized weights, IntactKV's remedy, gives 6.07 and 6.07; a rank-one term
+at the token's input added to each Hessian with weight 0.01 of the calibration
+count gives 6.02 and 6.11 without a full-precision cache entry (weight 0.001:
+6.08 and 386,491); layer 0 left unquantized gives 6.16 and 6.28. The base
+Mistral-7B-v0.1 collapses the same way (5.56 and 25,321; the term at 0.01 5.36
+and 5.45, IntactKV 5.48 and 5.35); Llama-2-7B does not (5.80 and 5.90;
+unquantized 5.03 and 5.05). At groups of 128 input columns, the layout GPTQ
+and AWQ deploy, nothing collapses, but on the Instruct plain GPTQ costs more
+than round-to-nearest in both forms (5.72 and 6.39 against 5.70 and 5.77), and
+IntactKV (5.71 and 5.81) and the term at 0.001 (5.74 and 5.86) close most of
+the with-token gap; on the base Mistral GPTQ at groups of 128 ties
+round-to-nearest as the windows are and beats it with the token (5.09 and 5.14
+against 5.09 and 5.17), and on Llama-2-7B it beats it in both forms (5.28 and
+5.32 against 5.35 and 5.39). The reference protocol does not remove the
+collapse and extends it to the grouped layout (`gptq_ref_check.py`, a port of
+IST-DASLab's llama.py read on 2026-11-06; exploratory): with every linear
+layer of every block quantized in order, attention and MLP, each block's
+Hessians taken from the outputs of the quantized blocks below, on 128
+token-less C4 segments of 2,048 tokens at 3 bits, Mistral-7B-v0.1 reads 7.83
+and 53,835 per output channel, 7.28 and 47,809 with act-order and 5.49 and
+7,329 at groups of 128 with act-order (unquantized 4.86 and 4.93), so the
+grouped layout is safe only while the attention projections alone are
+quantized; the sink-aware term at 0.01 prevents the collapse (26.40 with the
+token) but costs 30.32 as the windows are once the MLP is quantized too, and 4
+bits and token-first calibration are untested under this protocol. A
+token-less evaluation credits per-channel GPTQ with beating round-to-nearest
+on both Mistral models (on the base model 5.56 against our per-channel
+round-to-nearest's 7.23, bos_quant/; with the token 5.70), while with the
+token GPTQ collapses on both: the sharpest instance of the convention note
+above, since GPTQ's reference loader and the usual evaluations place the token
+only in the first window or by chance.
+
 ## A sink-aware exemption, scored by attention on position 0, buys perplexity and not retrieval; its random controls were not clean (2026-11-05, development)
 
 The rule tested (`sink_exempt_dev.py`, `sink_exempt_dev/`, Figure 40 of the
